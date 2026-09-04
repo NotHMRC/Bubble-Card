@@ -233,11 +233,11 @@
       "thanks": "Takk fyrir að vera hluti af þessu frábæra samfélagi! Skál frá Belgíu! 🍻"
     },
     "styles": {
-      "title": "Sérsniðnir stílar & JS-sniðmát",
-      "body1": "Lengra komnir notendur geta breytt CSS-stíl þessa korts í kóðaritlinum hér fyrir ofan. Nánari upplýsingar og dæmi {examples_link}. Þú þarft ekki að bæta við {code} (aðeins notað í YAML-ham). Þú getur líka bætt við {templates_link} (Jinja er ekki stutt).",
+      "title": "Sérsniðnir stílar & sniðmát",
+      "body1": "Lengra komnir notendur geta breytt CSS-stíl þessa korts í kóðaritlinum hér fyrir ofan. Nánari upplýsingar og dæmi {examples_link}. Þú þarft ekki að bæta við {code} (aðeins notað í YAML-ham). Þú getur líka bætt við {templates_link}.",
       "js_templates": "JS-sniðmátum",
       "body2": "Kíktu á {patreon_link} mína fyrir fleiri sérsniðna stíla, sniðmát og einingar. Það er líka besta leiðin til að sýna verkefninu mínu stuðning.",
-      "error_title": "Villa í JS-sniðmáti",
+      "error_title": "Villa í sniðmáti",
       "error_delayed": "Villur í JS-sniðmátum geta stundum birst með töf í einingaritlinum."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Þú þarft að skilgreina tegund korts",
       "entity_required": "Þú þarft að skilgreina einingu",
+      "unquoted_template": "Settu sniðmátið innan gæsalappa, til dæmis name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Þú þarft að skilgreina lista yfir einingar",
       "link_required": "Þú þarft að skilgreina {key}",
       "duplicate_link": "Þú getur ekki notað {value} tvisvar",

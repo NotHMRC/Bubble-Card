@@ -233,11 +233,11 @@
       "thanks": "Dankie dat jy deel is van hierdie wonderlike gemeenskap! Gesondheid uit België! 🍻"
     },
     "styles": {
-      "title": "Pasgemaakte style & JS-sjablone",
-      "body1": "Gevorderde gebruikers kan die CSS-styl van hierdie kaart in die koderedigeerder hierbo wysig. Meer inligting en voorbeelde {examples_link}. Jy hoef nie {code} by te voeg nie (word slegs in YAML-modus gebruik). Jy kan ook {templates_link} byvoeg (Jinja word nie ondersteun nie).",
+      "title": "Pasgemaakte style & sjablone",
+      "body1": "Gevorderde gebruikers kan die CSS-styl van hierdie kaart in die koderedigeerder hierbo wysig. Meer inligting en voorbeelde {examples_link}. Jy hoef nie {code} by te voeg nie (word slegs in YAML-modus gebruik). Jy kan ook {templates_link} byvoeg.",
       "js_templates": "JS-sjablone",
       "body2": "Kyk na my {patreon_link} vir meer pasgemaakte style, sjablone en modules. Dit is ook die beste manier om jou ondersteuning aan my projek te wys.",
-      "error_title": "Fout in JS-sjabloon",
+      "error_title": "Fout in sjabloon",
       "error_delayed": "Foute in JS-sjablone kan soms vertraag word in die moduleredigeerder."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Jy moet 'n kaarttipe definieer",
       "entity_required": "Jy moet 'n entiteit definieer",
+      "unquoted_template": "Plaas die sjabloon tussen aanhalingstekens, soos name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Jy moet 'n entiteitlys definieer",
       "link_required": "Jy moet {key} definieer",
       "duplicate_link": "Jy kan {value} nie twee keer gebruik nie",

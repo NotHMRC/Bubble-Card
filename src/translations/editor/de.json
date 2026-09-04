@@ -233,11 +233,11 @@
       "thanks": "Danke, dass du Teil dieser großartigen Community bist! Prost aus Belgien! 🍻"
     },
     "styles": {
-      "title": "Benutzerdefinierte Styles & JS-Templates",
-      "body1": "Fortgeschrittene Nutzer können den CSS-Style dieser Karte im Code-Editor oben bearbeiten. Weitere Informationen und Beispiele {examples_link}. Du musst {code} nicht hinzufügen (wird nur im YAML-Modus verwendet). Du kannst auch {templates_link} hinzufügen (Jinja wird nicht unterstützt).",
+      "title": "Benutzerdefinierte Styles & Templates",
+      "body1": "Fortgeschrittene Nutzer können den CSS-Style dieser Karte im Code-Editor oben bearbeiten. Weitere Informationen und Beispiele {examples_link}. Du musst {code} nicht hinzufügen (wird nur im YAML-Modus verwendet). Du kannst auch {templates_link} hinzufügen.",
       "js_templates": "JS-Templates",
       "body2": "Schau auf meinem {patreon_link} vorbei für mehr benutzerdefinierte Styles, Vorlagen und Module. Das ist auch der beste Weg, meinem Projekt deine Unterstützung zu zeigen.",
-      "error_title": "Fehler im JS-Template",
+      "error_title": "Fehler im Template",
       "error_delayed": "Fehler in JS-Templates können im Modul-Editor manchmal verzögert erscheinen."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du musst einen Kartentyp festlegen",
       "entity_required": "Du musst eine Entität festlegen",
+      "unquoted_template": "Setze das Template in Anführungszeichen, zum Beispiel name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du musst eine Entitätenliste festlegen",
       "link_required": "Du musst {key} festlegen",
       "duplicate_link": "Du kannst {value} nicht zweimal verwenden",

@@ -233,11 +233,11 @@
       "thanks": "Tak fordi du er en del af dette fantastiske fællesskab! Skål fra Belgien! 🍻"
     },
     "styles": {
-      "title": "Brugerdefinerede stilarter & JS-skabeloner",
-      "body1": "Avancerede brugere kan redigere kortets CSS-stil i kodeeditoren ovenfor. Flere oplysninger og eksempler {examples_link}. Du behøver ikke tilføje {code} (bruges kun i YAML-tilstand). Du kan også tilføje {templates_link} (Jinja understøttes ikke).",
+      "title": "Brugerdefinerede stilarter & skabeloner",
+      "body1": "Avancerede brugere kan redigere kortets CSS-stil i kodeeditoren ovenfor. Flere oplysninger og eksempler {examples_link}. Du behøver ikke tilføje {code} (bruges kun i YAML-tilstand). Du kan også tilføje {templates_link}.",
       "js_templates": "JS-skabeloner",
       "body2": "Tjek min {patreon_link} for flere brugerdefinerede stilarter, skabeloner og moduler. Det er også den bedste måde at vise din støtte til mit projekt på.",
-      "error_title": "Fejl i JS-skabelon",
+      "error_title": "Fejl i skabelonen",
       "error_delayed": "Fejl i JS-skabeloner kan nogle gange være forsinkede i moduleditoren."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du skal angive en korttype",
       "entity_required": "Du skal angive en entitet",
+      "unquoted_template": "Sæt skabelonen i anførselstegn, for eksempel name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du skal angive en entitetsliste",
       "link_required": "Du skal angive {key}",
       "duplicate_link": "Du kan ikke bruge {value} to gange",

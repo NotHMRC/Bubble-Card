@@ -1,3 +1,4 @@
+import { isTemplate } from "../../tools/jinja.js";
 import { createElement } from "../../tools/utils.js";
 import { createDropdownStructure, createDropdownActions } from "../dropdown/index.js";
 import { updateContentContainerFixedClass } from "../base-card/index.js";
@@ -462,8 +463,9 @@ export function createSubButtonElement(context, index, isSelect, showArrow, enti
   const normalizedIndex = String(index).replace(/_/g, '-');
   const classes = [`bubble-sub-button`, `bubble-sub-button-${normalizedIndex}`];
   
-  // Add name-based class if name is defined
-  if (subButton?.name) {
+  // Add name-based class if name is defined. A templated name is not a stable
+  // identity, so it gets none.
+  if (subButton?.name && !isTemplate(subButton.name)) {
     const nameClass = normalizeNameToClass(subButton.name);
     if (nameClass) {
       classes.push(nameClass);

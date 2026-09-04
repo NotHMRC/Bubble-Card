@@ -3,12 +3,14 @@ import { applyScrollingEffect } from "../../tools/text-scrolling.js";
 import { getIcon, getLightColorSignature, getImage } from "../../tools/icon.js";
 import { addActions, addFeedback } from "../../tools/tap-actions.js";
 import { checkConditionsMet, validateConditionalConfig, ensureArray } from "../../tools/validate-condition.js";
+import { resolveTemplate } from "../../tools/render-template.js";
+import { isTemplate } from "../../tools/jinja.js";
 
 // Get entity picture for sub-button
 // Returns empty if force_icon is set or if an icon is explicitly configured for the sub-button
 // Only checks subButton.icon, not the parent card's icon
 export function getSubButtonImage(context, subButton, entity) {
-  if (subButton.force_icon || subButton.icon) return '';
+  if (subButton.force_icon || resolveTemplate(context, subButton.icon, entity)) return '';
   
   // Use getImage with ignoreConfigIcon=true to skip checking parent card's icon
   return getImage(context, entity, true);
@@ -29,7 +31,10 @@ export function getSubButtonOptions(context, subButton, index) {
     entity,
     context,
     state: context._hass.states[entity],
-    name: subButton.name ?? getAttribute(context, "friendly_name", entity) ?? '',
+    // A templated name renders what the template says, with the sub-button's
+    // own entity as `entity`, and is written as markup by the scrolling text.
+    name: (isTemplate(subButton.name) ? resolveTemplate(context, subButton.name, entity, true) : subButton.name)
+      ?? getAttribute(context, "friendly_name", entity) ?? '',
     attributeType: subButton.attribute ?? '',
     attribute: getAttribute(context, subButton.attribute ?? '', entity),
     isOn: isStateOn(context, entity),
@@ -364,7 +369,7 @@ export function handleVisibilityConditions(element, subButton, hass, context = n
     element._hasVisibilityConditions = true;
     const conditionsArray = ensureArray(conditions);
     if (validateConditionalConfig(conditionsArray)) {
-      const isVisible = checkConditionsMet(conditionsArray, hass);
+      const isVisible = checkConditionsMet(conditionsArray, hass, context);
 
       if (element._previousVisibilityState === undefined || element._previousVisibilityState !== isVisible) {
         element.classList.toggle('hidden', !isVisible);

@@ -3,6 +3,7 @@ import { isHaCardWrapper } from '../../tools/ha-boundary.js';
 import { startContentInsetSync } from '../../tools/content-inset.js';
 import { addHash, removeHash } from "../pop-up/helpers.js";
 import { getStoredButtonWidth } from './button-width-storage.js';
+import { resolveTemplate } from "../../tools/render-template.js";
 import styles from "./styles.css";
 
 let isOpen = false;
@@ -13,8 +14,8 @@ function isPopupHashLink(link) {
 }
 
 export function createButton(context, index) {
-    const name = context.config[`${index}_name`] ?? '';
-    const icon = context.config[`${index}_icon`] ?? '';
+    const name = resolveTemplate(context, context.config[`${index}_name`]) ?? '';
+    const icon = resolveTemplate(context, context.config[`${index}_icon`]) ?? '';
     const sensor = context.config[`${index}_pir_sensor`];
     const link = context.config[`${index}_link`];
     const entity = context.config[`${index}_entity`];

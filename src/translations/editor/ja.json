@@ -233,11 +233,11 @@
       "thanks": "この素晴らしいコミュニティの一員でいてくださり、ありがとうございます！ベルギーより乾杯！🍻"
     },
     "styles": {
-      "title": "カスタムスタイルとJSテンプレート",
-      "body1": "上級者向けに、上のコードエディターでこのカードのCSSスタイルを編集できます。詳しい情報と例は{examples_link}。{code}を追加する必要はありません (YAMLモードでのみ使用されます)。{templates_link}を追加することもできます (Jinjaはサポートされていません)。",
+      "title": "カスタムスタイルとテンプレート",
+      "body1": "上級者向けに、上のコードエディターでこのカードのCSSスタイルを編集できます。詳しい情報と例は{examples_link}。{code}を追加する必要はありません (YAMLモードでのみ使用されます)。{templates_link}を追加することもできます。",
       "js_templates": "JSテンプレート",
       "body2": "その他のカスタムスタイル、テンプレート、モジュールについては、私の{patreon_link}をチェックしてください。これは私のプロジェクトを支援する最良の方法でもあります。",
-      "error_title": "JSテンプレートのエラー",
+      "error_title": "テンプレートのエラー",
       "error_delayed": "モジュールエディターでは、JSテンプレートのエラー表示が遅れることがあります。"
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "カードタイプを指定してください",
       "entity_required": "エンティティを指定してください",
+      "unquoted_template": "テンプレートを引用符で囲んでください。例えば name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "エンティティリストを指定してください",
       "link_required": "{key} を指定してください",
       "duplicate_link": "{value} は 2 回使用できません",

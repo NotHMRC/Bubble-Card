@@ -233,11 +233,11 @@
       "thanks": "Hvala što ste deo ove sjajne zajednice! Pozdrav iz Belgije! 🍻"
     },
     "styles": {
-      "title": "Prilagođeni stilovi i JS šabloni",
-      "body1": "Za napredne korisnike: možete urediti CSS stil ove kartice u uređivaču koda iznad. Više informacija i primera {examples_link}. Ne morate dodavati {code} (koristi se samo u YAML režimu). Takođe možete dodati {templates_link} (Jinja nije podržana).",
+      "title": "Prilagođeni stilovi i šabloni",
+      "body1": "Za napredne korisnike: možete urediti CSS stil ove kartice u uređivaču koda iznad. Više informacija i primera {examples_link}. Ne morate dodavati {code} (koristi se samo u YAML režimu). Takođe možete dodati {templates_link}.",
       "js_templates": "JS šablone",
       "body2": "Pogledajte moj {patreon_link} za više prilagođenih stilova, šablona i modula. Ovo je ujedno najbolji način da pokažete podršku mom projektu.",
-      "error_title": "Greška u JS šablonu",
+      "error_title": "Greška u šablonu",
       "error_delayed": "Greške JS šablona ponekad mogu kasniti u uređivaču modula."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Morate definisati tip kartice",
       "entity_required": "Morate definisati entitet",
+      "unquoted_template": "Stavite šablon pod navodnike, na primer name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Morate definisati listu entiteta",
       "link_required": "Morate definisati {key}",
       "duplicate_link": "Ne možete koristiti {value} dvaput",

@@ -217,7 +217,7 @@ export function changeTriggered(context) {
         }
 
         if (preparedTriggerConditions.isValid) {
-            const trigger = checkConditionsMet(preparedTriggerConditions.conditions, context._hass);
+            const trigger = checkConditionsMet(preparedTriggerConditions.conditions, context._hass, context);
             if (trigger === context.previousTrigger) return;
 
             syncTriggeredPopupHash(

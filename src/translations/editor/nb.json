@@ -233,11 +233,11 @@
       "thanks": "Takk for at du er en del av dette fantastiske fellesskapet! Skål fra Belgia! 🍻"
     },
     "styles": {
-      "title": "Egendefinerte stiler & JS-maler",
-      "body1": "Avanserte brukere kan redigere kortets CSS-stil i kodeeditoren ovenfor. Mer informasjon og eksempler {examples_link}. Du trenger ikke å legge til {code} (brukes bare i YAML-modus). Du kan også legge til {templates_link} (Jinja støttes ikke).",
+      "title": "Egendefinerte stiler & maler",
+      "body1": "Avanserte brukere kan redigere kortets CSS-stil i kodeeditoren ovenfor. Mer informasjon og eksempler {examples_link}. Du trenger ikke å legge til {code} (brukes bare i YAML-modus). Du kan også legge til {templates_link}.",
       "js_templates": "JS-maler",
       "body2": "Sjekk ut min {patreon_link} for flere egendefinerte stiler, maler og moduler. Det er også den beste måten å vise din støtte til prosjektet mitt på.",
-      "error_title": "Feil i JS-mal",
+      "error_title": "Feil i malen",
       "error_delayed": "Feil i JS-maler kan noen ganger være forsinket i modulredigereren."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du må angi en korttype",
       "entity_required": "Du må angi en entitet",
+      "unquoted_template": "Sett malen i anførselstegn, for eksempel name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du må angi en entitetsliste",
       "link_required": "Du må angi {key}",
       "duplicate_link": "Du kan ikke bruke {value} to ganger",

@@ -233,11 +233,11 @@
       "thanks": "Bu harika topluluğun bir parçası olduğunuz için teşekkürler! Belçika'dan selamlar! 🍻"
     },
     "styles": {
-      "title": "Özel stiller ve JS şablonları",
-      "body1": "İleri düzey kullanıcılar için, bu kartın CSS stilini yukarıdaki kod düzenleyicisinde düzenleyebilirsiniz. Daha fazla bilgi ve örnek {examples_link}. {code} eklemenize gerek yok (yalnızca YAML modunda kullanılır). Ayrıca {templates_link} da ekleyebilirsiniz (Jinja desteklenmez).",
+      "title": "Özel stiller ve şablonlar",
+      "body1": "İleri düzey kullanıcılar için, bu kartın CSS stilini yukarıdaki kod düzenleyicisinde düzenleyebilirsiniz. Daha fazla bilgi ve örnek {examples_link}. {code} eklemenize gerek yok (yalnızca YAML modunda kullanılır). Ayrıca {templates_link} da ekleyebilirsiniz.",
       "js_templates": "JS şablonları",
       "body2": "Daha fazla özel stil, şablon ve modül için {patreon_link} sayfama göz atın. Bu aynı zamanda projeme desteğinizi göstermenin en iyi yoludur.",
-      "error_title": "JS şablonunda hata",
+      "error_title": "Şablonda hata",
       "error_delayed": "JS şablonu hataları modül düzenleyicisinde bazen gecikmeli görünebilir."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Bir kart türü tanımlamanız gerekiyor",
       "entity_required": "Bir varlık tanımlamanız gerekiyor",
+      "unquoted_template": "Şablonu tırnak içine alın, örneğin name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Bir varlık listesi tanımlamanız gerekiyor",
       "link_required": "{key} tanımlamanız gerekiyor",
       "duplicate_link": "{value} değerini iki kez kullanamazsınız",

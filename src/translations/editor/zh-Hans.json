@@ -233,11 +233,11 @@
       "thanks": "感谢你成为这个超棒社区的一员！来自比利时的干杯！🍻"
     },
     "styles": {
-      "title": "自定义样式和 JS 模板",
-      "body1": "面向高级用户，你可以在上方的代码编辑器中编辑此卡片的 CSS 样式。更多信息和示例{examples_link}。你不需要添加 {code} (仅在 YAML 模式中使用)。你还可以添加{templates_link} (不支持 Jinja)。",
+      "title": "自定义样式和模板",
+      "body1": "面向高级用户，你可以在上方的代码编辑器中编辑此卡片的 CSS 样式。更多信息和示例{examples_link}。你不需要添加 {code} (仅在 YAML 模式中使用)。你还可以添加{templates_link}。",
       "js_templates": "JS 模板",
       "body2": "欢迎查看我的{patreon_link}，那里有更多自定义样式、模板和模块。这也是支持我的项目的最佳方式。",
-      "error_title": "JS 模板错误",
+      "error_title": "模板错误",
       "error_delayed": "在模块编辑器中，JS 模板错误有时会延迟显示。"
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "需要指定卡片类型",
       "entity_required": "需要指定实体",
+      "unquoted_template": "请用引号包住模板，例如 name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "需要指定实体列表",
       "link_required": "需要指定 {key}",
       "duplicate_link": "{value} 不能使用两次",

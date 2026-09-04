@@ -233,11 +233,11 @@
       "thanks": "感謝您成為這個超棒社群的一員！來自比利時的乾杯！🍻"
     },
     "styles": {
-      "title": "自訂樣式與 JS 範本",
-      "body1": "針對進階使用者，您可以在上方的程式碼編輯器中編輯此卡片的 CSS 樣式。更多資訊與範例{examples_link}。您不需要加入 {code} (僅在 YAML 模式中使用)。您也可以加入{templates_link} (不支援 Jinja)。",
+      "title": "自訂樣式與範本",
+      "body1": "針對進階使用者，您可以在上方的程式碼編輯器中編輯此卡片的 CSS 樣式。更多資訊與範例{examples_link}。您不需要加入 {code} (僅在 YAML 模式中使用)。您也可以加入{templates_link}。",
       "js_templates": "JS 範本",
       "body2": "歡迎看看我的{patreon_link}，那裡有更多自訂樣式、範本與模組。這也是支持我的專案的最好方式。",
-      "error_title": "JS 範本錯誤",
+      "error_title": "範本錯誤",
       "error_delayed": "在模組編輯器中，JS 範本錯誤有時會延遲顯示。"
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "需要指定卡片類型",
       "entity_required": "需要指定實體",
+      "unquoted_template": "請用引號包住範本，例如 name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "需要指定實體清單",
       "link_required": "需要指定 {key}",
       "duplicate_link": "{value} 不能使用兩次",

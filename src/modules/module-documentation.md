@@ -8,6 +8,7 @@ This documentation covers everything you need to write a Bubble Card module: the
 
 - [Basic structure](#basic-structure)
 - [Accessing configuration values in your module code](#accessing-configuration-values-in-your-module-code)
+  - [Home Assistant templates in your module code](#home-assistant-templates-in-your-module-code)
   - [Accessing configuration in JavaScript templates](#accessing-configuration-in-javascript-templates)
   - [Tips for working with configuration values](#tips-for-working-with-configuration-values)
   - [Example: Complete module with editor and code](#example-complete-module-with-editor-and-code)
@@ -154,6 +155,22 @@ Then in your module's `code` section, you would access these values like this:
 Remember to replace `module_id` with your actual module ID in your code.
 
 </details>
+
+### Home Assistant templates in your module code
+
+The `code` of a module accepts Home Assistant templates (Jinja) next to the JavaScript ones, rendered by the server and refreshed by themselves when what they read changes:
+
+```yaml
+code: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+`entity` is the entity of the card the module is applied to, and `user` the name of the logged in user. A template that reads neither is rendered once for every card that carries the module, so prefer `states('sensor.x')` over anything that iterates `states` when the value is the same everywhere. Keep every `${ }` outside of a `{% if %} ... {% endif %}` block, a block cut in two by a JavaScript template cannot be rendered. Inside a JavaScript template, `renderTemplate("{{ ... }}")` gives you the rendered text of a Home Assistant template.
 
 ### Tips for working with configuration values
 

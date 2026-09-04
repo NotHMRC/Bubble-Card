@@ -233,11 +233,11 @@
       "thanks": "Merci, datt Dir Deel vun dëser flotter Communautéit sidd! Prost aus der Belsch! 🍻"
     },
     "styles": {
-      "title": "Personaliséiert Stiler & JS-Templates",
-      "body1": "Fortgeschratt Notzer kënnen de CSS-Stil vun dëser Kaart am Code-Editeur uewe beaarbechten. Méi Informatiounen a Beispiller {examples_link}. Dir musst {code} net dobäisetzen (gëtt nëmmen am YAML-Modus benotzt). Dir kënnt och {templates_link} dobäisetzen (Jinja gëtt net ënnerstëtzt).",
+      "title": "Personaliséiert Stiler & Templates",
+      "body1": "Fortgeschratt Notzer kënnen de CSS-Stil vun dëser Kaart am Code-Editeur uewe beaarbechten. Méi Informatiounen a Beispiller {examples_link}. Dir musst {code} net dobäisetzen (gëtt nëmmen am YAML-Modus benotzt). Dir kënnt och {templates_link} dobäisetzen.",
       "js_templates": "JS-Templates",
       "body2": "Kuckt op mengem {patreon_link} fir méi personaliséiert Stiler, Virlagen a Moduler. Dat ass och dee beschte Wee, fir mengem Projet Är Ënnerstëtzung ze weisen.",
-      "error_title": "Feeler am JS-Template",
+      "error_title": "Feeler am Template",
       "error_delayed": "Feeler a JS-Templates kënnen am Modul-Editeur heiansdo verspéit optauchen."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Dir musst e Kaartentyp definéieren",
       "entity_required": "Dir musst eng Entitéit definéieren",
+      "unquoted_template": "Setz den Template an Uféierungszeechen, zum Beispill name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Dir musst eng Lëscht vun Entitéiten definéieren",
       "link_required": "Dir musst {key} definéieren",
       "duplicate_link": "Dir kënnt {value} net zweemol benotzen",

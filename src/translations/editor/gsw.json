@@ -233,11 +233,11 @@
       "thanks": "Danke, dass du Teil vo dere super Community bisch! Proscht us Belgie! 🍻"
     },
     "styles": {
-      "title": "Eigeni Styles & JS-Templates",
-      "body1": "Fortgschritteni Nutzer chönd de CSS-Style vo dere Charte im Code-Editor obe bearbeite. Meh Informatione und Bispil {examples_link}. Du muesch {code} nöd hinzuefüege (wird nur im YAML-Modus bruucht). Du chasch au {templates_link} hinzuefüege (Jinja wird nöd unterstützt).",
+      "title": "Eigeni Styles & Templates",
+      "body1": "Fortgschritteni Nutzer chönd de CSS-Style vo dere Charte im Code-Editor obe bearbeite. Meh Informatione und Bispil {examples_link}. Du muesch {code} nöd hinzuefüege (wird nur im YAML-Modus bruucht). Du chasch au {templates_link} hinzuefüege.",
       "js_templates": "JS-Templates",
       "body2": "Lueg uf mim {patreon_link} verbii für meh eigeni Styles, Vorlage und Modul. Das isch au de best Wäg zum mim Projekt dini Unterstützig zeige.",
-      "error_title": "Fehler im JS-Template",
+      "error_title": "Fehler im Template",
       "error_delayed": "Fehler i JS-Templates chönd im Modul-Editor mängisch verzögert erschiine."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du muesch en Charte-Typ definiere",
       "entity_required": "Du muesch e Entität definiere",
+      "unquoted_template": "Setz s Template in Aführigszeiche, zum Bispil name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du muesch e Entitäte-Lischte definiere",
       "link_required": "Du muesch {key} definiere",
       "duplicate_link": "Du chasch {value} nid zweimal bruche",

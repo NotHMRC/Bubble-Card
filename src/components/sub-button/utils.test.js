@@ -157,3 +157,31 @@ describe('revealConditionalSubButtons', () => {
         expect(visible.classList.contains('hidden')).toBe(false);
     });
 });
+
+describe('getSubButtonOptions with a Home Assistant template', () => {
+    test('renders the name with the sub-button entity as `entity`, escaped for the scrolling text', async () => {
+        const { getSubButtonOptions } = await import('./utils.js');
+        const { _resetTemplateStore } = await import('../../tools/render-template.js');
+        const subscriptions = [];
+        const hass = {
+            connection: {
+                subscribeMessage: jest.fn((callback, params) => {
+                    subscriptions.push({ callback, params });
+                    return Promise.resolve(() => {});
+                }),
+            },
+            states: { 'sensor.h': { entity_id: 'sensor.h', state: '61' } },
+            user: { name: 'Q' },
+        };
+        const context = { _hass: hass, config: { entity: 'light.a' } };
+        const subButton = { entity: 'sensor.h', name: "{{ 'Wet' if states(entity) | float > 60 else 'Dry' }}", show_name: true };
+
+        expect(getSubButtonOptions(context, subButton, 1).name).toBe('');
+        await Promise.resolve();
+        expect(subscriptions[0].params.variables).toEqual({ entity: 'sensor.h', config: { entity: 'sensor.h' } });
+
+        subscriptions[0].callback({ result: '<Wet>' });
+        expect(getSubButtonOptions(context, subButton, 1).name).toBe('&lt;Wet&gt;');
+        _resetTemplateStore();
+    });
+});

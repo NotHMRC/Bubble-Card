@@ -233,11 +233,11 @@
       "thanks": "Diolch am fod yn rhan o'r gymuned wych hon! Iechyd da o Wlad Belg! 🍻"
     },
     "styles": {
-      "title": "Arddulliau wedi'u haddasu a thempledi JS",
-      "body1": "Ar gyfer defnyddwyr uwch, gallwch olygu arddull CSS y cerdyn hwn yn y golygydd cod uchod. Mwy o wybodaeth ac enghreifftiau {examples_link}. Nid oes angen i chi ychwanegu {code} (dim ond yn y modd YAML y caiff ei ddefnyddio). Gallwch hefyd ychwanegu {templates_link} (ni chefnogir Jinja).",
+      "title": "Arddulliau wedi'u haddasu a thempledi",
+      "body1": "Ar gyfer defnyddwyr uwch, gallwch olygu arddull CSS y cerdyn hwn yn y golygydd cod uchod. Mwy o wybodaeth ac enghreifftiau {examples_link}. Nid oes angen i chi ychwanegu {code} (dim ond yn y modd YAML y caiff ei ddefnyddio). Gallwch hefyd ychwanegu {templates_link}.",
       "js_templates": "templedi JS",
       "body2": "Edrychwch ar fy {patreon_link} am fwy o arddulliau, templedi a modiwlau wedi'u haddasu. Dyma hefyd y ffordd orau o ddangos eich cefnogaeth i'm prosiect.",
-      "error_title": "Gwall yn y templed JS",
+      "error_title": "Gwall yn y templed",
       "error_delayed": "Gall gwallau templedi JS ymddangos yn hwyr weithiau yn y Golygydd Modiwlau."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Mae angen i chi ddiffinio math o gerdyn",
       "entity_required": "Mae angen i chi ddiffinio endid",
+      "unquoted_template": "Rhowch y templed mewn dyfynodau, fel name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Mae angen i chi ddiffinio rhestr endidau",
       "link_required": "Mae angen i chi ddiffinio {key}",
       "duplicate_link": "Allwch chi ddim defnyddio {value} ddwywaith",

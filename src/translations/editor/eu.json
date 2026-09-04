@@ -233,11 +233,11 @@
       "thanks": "Eskerrik asko komunitate zoragarri honen parte izateagatik! Agur bero bat Belgikatik! 🍻"
     },
     "styles": {
-      "title": "Estilo pertsonalizatuak eta JS txantiloiak",
-      "body1": "Erabiltzaile aurreratuentzat, txartel honen CSS estiloa edita dezakezu goiko kode-editorean. Informazio eta adibide gehiago {examples_link}. Ez duzu {code} gehitu beharrik (YAML moduan bakarrik erabiltzen da). {templates_link} ere gehi ditzakezu (Jinja ez da onartzen).",
+      "title": "Estilo pertsonalizatuak eta txantiloiak",
+      "body1": "Erabiltzaile aurreratuentzat, txartel honen CSS estiloa edita dezakezu goiko kode-editorean. Informazio eta adibide gehiago {examples_link}. Ez duzu {code} gehitu beharrik (YAML moduan bakarrik erabiltzen da). {templates_link} ere gehi ditzakezu.",
       "js_templates": "JS txantiloiak",
       "body2": "Begiratu nire {patreon_link} estilo, txantiloi eta modulu pertsonalizatu gehiagorako. Hau ere nire proiektuari babesa erakusteko modurik onena da.",
-      "error_title": "Errorea JS txantiloian",
+      "error_title": "Errorea txantiloian",
       "error_delayed": "JS txantiloien erroreak batzuetan atzerapenez ager daitezke Modulu-editorean."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Txartel mota bat zehaztu behar duzu",
       "entity_required": "Entitate bat zehaztu behar duzu",
+      "unquoted_template": "Jarri txantiloia komatxo artean, adibidez name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Entitate zerrenda bat zehaztu behar duzu",
       "link_required": "{key} zehaztu behar duzu",
       "duplicate_link": "Ezin duzu {value} bi aldiz erabili",

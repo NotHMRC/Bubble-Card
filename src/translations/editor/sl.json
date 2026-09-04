@@ -233,11 +233,11 @@
       "thanks": "Hvala, da ste del te odlične skupnosti! Lep pozdrav iz Belgije! 🍻"
     },
     "styles": {
-      "title": "Slogi po meri in predloge JS",
-      "body1": "Napredni uporabniki lahko v zgornjem urejevalniku kode uredite slog CSS te kartice. Več informacij in primerov {examples_link}. Ni vam treba dodati {code} (uporablja se samo v načinu YAML). Dodate lahko tudi {templates_link} (Jinja ni podprta).",
+      "title": "Slogi po meri in predloge",
+      "body1": "Napredni uporabniki lahko v zgornjem urejevalniku kode uredite slog CSS te kartice. Več informacij in primerov {examples_link}. Ni vam treba dodati {code} (uporablja se samo v načinu YAML). Dodate lahko tudi {templates_link}.",
       "js_templates": "predloge JS",
       "body2": "Oglejte si moj {patreon_link} za več slogov po meri, predlog in modulov. To je tudi najboljši način, da pokažete podporo mojemu projektu.",
-      "error_title": "Napaka v predlogi JS",
+      "error_title": "Napaka v predlogi",
       "error_delayed": "Napake predlog JS se lahko v urejevalniku modulov včasih pokažejo z zamikom."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Določiti morate vrsto kartice",
       "entity_required": "Določiti morate entiteto",
+      "unquoted_template": "Predlogo dajte v narekovaje, na primer name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Določiti morate seznam entitet",
       "link_required": "Določiti morate {key}",
       "duplicate_link": "{value} ne morete uporabiti dvakrat",

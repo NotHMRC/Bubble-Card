@@ -233,11 +233,11 @@
       "thanks": "Paldies, ka esat daļa no šīs lieliskās kopienas! Sveicieni no Beļģijas! 🍻"
     },
     "styles": {
-      "title": "Pielāgoti stili un JS veidnes",
-      "body1": "Pieredzējušiem lietotājiem: šīs kartītes CSS stilu varat rediģēt augstāk esošajā koda redaktorā. Vairāk informācijas un piemēru {examples_link}. Nav jāpievieno {code} (izmanto tikai YAML režīmā). Varat pievienot arī {templates_link} (Jinja netiek atbalstīta).",
+      "title": "Pielāgoti stili un veidnes",
+      "body1": "Pieredzējušiem lietotājiem: šīs kartītes CSS stilu varat rediģēt augstāk esošajā koda redaktorā. Vairāk informācijas un piemēru {examples_link}. Nav jāpievieno {code} (izmanto tikai YAML režīmā). Varat pievienot arī {templates_link}.",
       "js_templates": "JS veidnes",
       "body2": "Apskatiet manu {patreon_link}, kur atradīsiet vairāk pielāgotu stilu, veidņu un moduļu. Tas ir arī labākais veids, kā parādīt atbalstu manam projektam.",
-      "error_title": "Kļūda JS veidnē",
+      "error_title": "Kļūda veidnē",
       "error_delayed": "JS veidņu kļūdas moduļu redaktorā dažkārt var aizkavēties."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Jānorāda kartītes tips",
       "entity_required": "Jānorāda entītija",
+      "unquoted_template": "Ievietojiet veidni pēdiņās, piemēram name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Jānorāda entītiju saraksts",
       "link_required": "Jānorāda {key}",
       "duplicate_link": "{value} nevar izmantot divreiz",

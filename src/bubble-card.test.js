@@ -26,6 +26,17 @@ jest.unstable_mockModule('./tools/icon.js', () => ({
     registerForIconRefresh: jest.fn(),
     unregisterForIconRefresh: jest.fn(),
 }));
+const beginTemplateRender = jest.fn();
+const sweepTemplates = jest.fn();
+const releaseTemplates = jest.fn();
+const refreshTemplateStyles = jest.fn(() => true);
+jest.unstable_mockModule('./tools/render-template.js', () => ({
+    beginTemplateRender,
+    sweepTemplates,
+    releaseTemplates,
+    refreshTemplateStyles,
+    TEMPLATE_STYLE: 2,
+}));
 jest.unstable_mockModule('./editor/bubble-card-editor.js', () => ({ default: class {} }));
 jest.unstable_mockModule('./cards/pop-up/index.js', () => ({ cleanupPopUp: jest.fn(), handlePopUp: jest.fn() }));
 const handleButton = jest.fn();
@@ -109,21 +120,14 @@ describe('BubbleCard disconnect contract', () => {
         expect(stopTimerInterval).toHaveBeenCalledWith(card);
     });
 
-    test('runs the template-change unsubscribe once and clears it', () => {
+    test('lets go of its templates, and of a pending styles hold', () => {
         const card = createCard();
-        const unsubscribe = jest.fn();
-        card._templateChangeUnsubscribe = unsubscribe;
-        card._templateChangeHandler = () => {};
+        card._templateHoldTimer = setTimeout(() => {}, 1000);
 
         card.disconnectedCallback();
 
-        expect(unsubscribe).toHaveBeenCalledTimes(1);
-        expect(card._templateChangeUnsubscribe).toBeNull();
-        expect(card._templateChangeHandler).toBeNull();
-
-        // A second disconnect must not call a stale reference again.
-        card.disconnectedCallback();
-        expect(unsubscribe).toHaveBeenCalledTimes(1);
+        expect(releaseTemplates).toHaveBeenCalledWith(card);
+        expect(card._templateHoldTimer).toBeNull();
     });
 
     test('removes the module refresh listeners and resets the flag for re-registration', () => {
@@ -348,5 +352,89 @@ describe('BubbleCard hass render coalescing', () => {
         expect(jest.getTimerCount()).toBe(0);
         jest.advanceTimersByTime(500);
         expect(handleButton).toHaveBeenCalledTimes(1);
+    });
+});
+
+describe('BubbleCard and the template store', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    test('a reconfigured card lets go of its templates', () => {
+        const card = createCard();
+        card.setConfig({ card_type: 'button', entity: 'light.a', name: "{{ states('sensor.t') }}" });
+        expect(releaseTemplates).toHaveBeenCalledWith(card);
+        expect(card.config.name).toBe("{{ states('sensor.t') }}");
+    });
+
+    test('an unquoted template, which YAML reads as a mapping, is rejected with a hint', () => {
+        const card = createCard();
+        const unquoted = { "{{ states('sensor.t') }}": null };
+        expect(() => card.setConfig({ card_type: 'button', entity: 'light.a', name: unquoted })).toThrow(/Wrap the template in quotes/);
+        expect(() => card.setConfig({ card_type: 'button', entity: 'light.a', icon: unquoted })).toThrow(/Wrap the template in quotes/);
+        expect(() => card.setConfig({ card_type: 'button', entity: 'light.a', sub_button: [{ name: unquoted }] })).toThrow(/Wrap the template in quotes/);
+        expect(() => card.setConfig({ card_type: 'button', entity: 'light.a', sub_button: { main: [{ group: [{ icon: unquoted }] }], bottom: [] } })).toThrow(/Wrap the template in quotes/);
+        expect(() => card.setConfig({ card_type: 'horizontal-buttons-stack', '1_link': '#a', '1_name': unquoted })).toThrow(/Wrap the template in quotes/);
+        expect(() => card.setConfig({ card_type: 'button', entity: 'light.a', name: 'Kitchen', sub_button: [{ name: 'Sub' }] })).not.toThrow();
+    });
+
+    test('a render stamps its templates and sweeps the ones it stopped reading', () => {
+        const card = createCard();
+        card.isConnected = true;
+        card._hass = { states: {} };
+
+        card.updateBubbleCard();
+
+        expect(beginTemplateRender).toHaveBeenCalledWith(card);
+        expect(handleButton).toHaveBeenCalledTimes(1);
+        expect(sweepTemplates).toHaveBeenCalledWith(card);
+        expect(card._templatePending).toBe(false);
+    });
+
+    test('a result that only concerns styles refreshes them, anything else renders the card', () => {
+        const card = createCard();
+        card.isConnected = true;
+        card.card = {};
+        card._hass = { states: {} };
+        card.renderCoalesced = jest.fn();
+        card._bb_cache = { lastStateSignature: 'stale' };
+
+        card.onTemplateResults(2);
+        expect(refreshTemplateStyles).toHaveBeenCalledWith(card);
+        expect(card.renderCoalesced).not.toHaveBeenCalled();
+        expect(card._templateResultVersion).toBe(1);
+        expect(card.lastEvaluatedStyles).toBe('');
+        expect(card._bb_cache.lastStateSignature).toBe('');
+
+        card.onTemplateResults(1 | 2);
+        expect(card.renderCoalesced).toHaveBeenCalledTimes(1);
+        expect(card._templateResultVersion).toBe(2);
+    });
+
+    test('a pop-up always renders whole, its styles live on the shell', () => {
+        const card = createCard({ card_type: 'pop-up', hash: '#a' });
+        card.isConnected = true;
+        card.card = {};
+        card.renderCoalesced = jest.fn();
+
+        card.onTemplateResults(2);
+
+        expect(refreshTemplateStyles).not.toHaveBeenCalled();
+        expect(card.renderCoalesced).toHaveBeenCalledTimes(1);
+    });
+
+    test('a card held behind an opening pop-up waits for the drain of that gate', async () => {
+        const helpers = await import('./cards/pop-up/helpers.js');
+        helpers.shouldHoldDashboardHassUpdate.mockReturnValueOnce(true);
+        const card = createCard();
+        card.isConnected = true;
+        card.card = {};
+        card.renderCoalesced = jest.fn();
+
+        card.onTemplateResults(1);
+
+        expect(card._templateResultVersion).toBe(1);
+        expect(card.renderCoalesced).not.toHaveBeenCalled();
+        expect(refreshTemplateStyles).not.toHaveBeenCalled();
     });
 });

@@ -2,6 +2,8 @@ import { isColorCloseToWhite } from "./style.js";
 import { updateContentContainerFixedClass } from "../components/base-card/index.js";
 import { getIconColor } from "./icon.js";
 import { adjustColor, areColorsSimilar, calculateLuminance, hexToRgb, rgbStringToRgb } from "./color.js";
+import { resolveTemplate } from "./render-template.js";
+import { isTemplate } from "./jinja.js";
 
 // Kept re-exported: the color primitives moved to their own leaf module, every
 // existing import of them still points here
@@ -350,13 +352,20 @@ export function getStateSurfaceColor(context, entity = context.config.entity, us
   }
 }
 
-export function getName(context) {
-    const configName = context.config.name;
-    const entityName = getAttribute(context, "friendly_name"); 
+// `html` says the name is about to be written as markup (the scrolling text
+// path), in which case a rendered template is escaped: it is entity data, not
+// something the dashboard author typed.
+export function getName(context, html = false) {
     const templateName = context.name;
-
     if (templateName) return templateName;
+
+    // A templated name shows what the template says, empty included, never
+    // the friendly name in its place.
+    const configName = context.config.name;
+    if (isTemplate(configName)) return resolveTemplate(context, configName, context.config.entity, html);
     if (configName) return configName;
+
+    const entityName = getAttribute(context, "friendly_name");
     if (entityName) return entityName;
 
     return '';

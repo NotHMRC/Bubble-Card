@@ -233,11 +233,11 @@
       "thanks": "¡Gracias por formar parte de esta increíble comunidad! ¡Salud desde Bélgica! 🍻"
     },
     "styles": {
-      "title": "Estilos personalizados y plantillas JS",
-      "body1": "Para usuarios avanzados: puedes editar el estilo CSS de esta tarjeta en el editor de código de arriba. Más información y ejemplos {examples_link}. No necesitas agregar {code} (solo se usa en modo YAML). También puedes agregar {templates_link} (Jinja no es compatible).",
+      "title": "Estilos personalizados y plantillas",
+      "body1": "Para usuarios avanzados: puedes editar el estilo CSS de esta tarjeta en el editor de código de arriba. Más información y ejemplos {examples_link}. No necesitas agregar {code} (solo se usa en modo YAML). También puedes agregar {templates_link}.",
       "js_templates": "plantillas JS",
       "body2": "Dale un vistazo a mi {patreon_link} para más estilos personalizados, plantillas y módulos. También es la mejor forma de mostrar tu apoyo a mi proyecto.",
-      "error_title": "Error en la plantilla JS",
+      "error_title": "Error en la plantilla",
       "error_delayed": "Los errores de las plantillas JS a veces pueden aparecer con retraso en el editor de módulos."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Debes definir un tipo de tarjeta",
       "entity_required": "Debes definir una entidad",
+      "unquoted_template": "Pon la plantilla entre comillas, por ejemplo name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Debes definir una lista de entidades",
       "link_required": "Debes definir {key}",
       "duplicate_link": "No puedes usar {value} dos veces",

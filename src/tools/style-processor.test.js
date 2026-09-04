@@ -18,10 +18,12 @@ jest.unstable_mockModule('./validate-condition.js', () => ({
     checkConditionsMet: jest.fn(() => true),
 }));
 
-const templateChangeUnsubscribe = jest.fn();
-const onTemplateChange = jest.fn(() => templateChangeUnsubscribe);
+const getTemplateResult = jest.fn(() => undefined);
+const setStyleRefresher = jest.fn();
 jest.unstable_mockModule('./render-template.js', () => ({
-    onTemplateChange,
+    getTemplateResult,
+    setStyleRefresher,
+    TEMPLATE_STYLE: 2,
 }));
 
 // One inert module keeps handleCustomStyles on its synchronous path, plus the
@@ -44,6 +46,7 @@ jest.unstable_mockModule('./clean-css.js', () => ({
 }));
 
 const { handleCustomStyles, evalStyles, confineSelectorToPopupChrome } = await import('./style-processor.js');
+const { checkConditionsMet: checkConditionsMetMock } = await import('./validate-condition.js');
 const { runModuleTeardowns } = await import('./module-teardown.js');
 
 function createCardElement() {
@@ -75,9 +78,6 @@ function simulateDisconnect(context) {
     document.removeEventListener('yaml-modules-updated', context._moduleChangeHandler);
     context._moduleChangeHandler = null;
     context._moduleChangeListenerAdded = false;
-    context._templateChangeUnsubscribe();
-    context._templateChangeUnsubscribe = null;
-    context._templateChangeHandler = null;
 }
 
 describe('handleCustomStyles refresh listener registration', () => {
@@ -96,8 +96,6 @@ describe('handleCustomStyles refresh listener registration', () => {
                 parentElement: null,
             })),
         };
-        onTemplateChange.mockClear();
-        templateChangeUnsubscribe.mockClear();
     });
 
     afterEach(() => {
@@ -114,8 +112,6 @@ describe('handleCustomStyles refresh listener registration', () => {
         const windowEvents = window.addEventListener.mock.calls.map(([type]) => type);
         expect(windowEvents).toEqual(expect.arrayContaining(['bubble-card-modules-changed', 'bubble-card-module-updated']));
         expect(document.addEventListener).toHaveBeenCalledWith('yaml-modules-updated', context._moduleChangeHandler);
-        expect(onTemplateChange).toHaveBeenCalledTimes(1);
-        expect(context._templateChangeUnsubscribe).toBe(templateChangeUnsubscribe);
         expect(context._moduleChangeListenerAdded).toBe(true);
     });
 
@@ -127,16 +123,13 @@ describe('handleCustomStyles refresh listener registration', () => {
         expect(context.cardLoaded).toBe(true);
 
         simulateDisconnect(context);
-        expect(templateChangeUnsubscribe).toHaveBeenCalledTimes(1);
 
         // HA re-attaches cached view elements: the next style pass must wire
         // the refresh listeners again even though cardLoaded is already set.
         handleCustomStyles(context, element);
 
-        expect(onTemplateChange).toHaveBeenCalledTimes(2);
         expect(context._moduleChangeListenerAdded).toBe(true);
         expect(typeof context._moduleChangeHandler).toBe('function');
-        expect(context._templateChangeUnsubscribe).toBe(templateChangeUnsubscribe);
     });
 
     test('resyncs module caches on reconnect so changes missed while detached apply', () => {
@@ -162,7 +155,6 @@ describe('handleCustomStyles refresh listener registration', () => {
         handleCustomStyles(context, element);
         handleCustomStyles(context, element);
 
-        expect(onTemplateChange).toHaveBeenCalledTimes(1);
         const moduleChangeRegistrations = window.addEventListener.mock.calls
             .filter(([type]) => type === 'bubble-card-modules-changed');
         expect(moduleChangeRegistrations).toHaveLength(1);
@@ -179,7 +171,6 @@ describe('handleCustomStyles refresh listener registration', () => {
 
         handleCustomStyles(context, styleElement);
 
-        expect(onTemplateChange).not.toHaveBeenCalled();
         expect(context._moduleChangeListenerAdded).toBeUndefined();
     });
 });
@@ -722,5 +713,200 @@ describe('the load hide of an ordinary card', () => {
 
         expect(element.style.display).toBe('block');
         expect(element.dataset.bubbleStyleHideMode).toBeUndefined();
+    });
+});
+
+describe('Home Assistant templates in a styles block', () => {
+    function createTemplateContext() {
+        const context = createContext(createCardElement());
+        context.elements = {};
+        context.config = { card_type: 'button', entity: 'light.a' };
+        return context;
+    }
+
+    beforeEach(() => {
+        getTemplateResult.mockReset();
+        getTemplateResult.mockReturnValue(undefined);
+        checkConditionsMetMock.mockClear();
+    });
+
+    test('a template is read from the store on behalf of the card and interpolated as a value', () => {
+        getTemplateResult.mockImplementation((hass, template) => template === "{{ states('x') }}" ? 'red' : undefined);
+        const context = createTemplateContext();
+
+        const result = evalStyles(context, ".a { color: {{ states('x') }}; }");
+
+        expect(result).toBe('.a { color: red; }');
+        expect(getTemplateResult).toHaveBeenCalledWith(context._hass, "{{ states('x') }}", 'light.a', context, 2);
+        expect(context._stylesPending).toBeFalsy();
+    });
+
+    test('a JavaScript template and a Home Assistant template live in the same block', () => {
+        getTemplateResult.mockReturnValue('42');
+        const context = createTemplateContext();
+
+        const result = evalStyles(context, ".a { width: ${1 + 1}px; height: {{ h }}px; }");
+
+        expect(result).toBe('.a { width: 2px; height: 42px; }');
+    });
+
+    test('a value the server has not answered yet is empty and says so', () => {
+        const context = createTemplateContext();
+
+        expect(evalStyles(context, '.a { color: {{ x }}; }')).toBe('.a { color: ; }');
+        expect(context._stylesPending).toBe(true);
+    });
+
+    test('a rendered value is data, it cannot break out of the literal', () => {
+        getTemplateResult.mockReturnValue('a`b${c}');
+        expect(evalStyles(createTemplateContext(), '{{ dangerous }}')).toBe('a`b${c}');
+    });
+
+    test('a changing result never compiles the block again', () => {
+        const realFunction = Function;
+        const compile = jest.fn((...args) => realFunction(...args));
+        global.Function = compile;
+        try {
+            const context = createTemplateContext();
+            const styles = '.a { width: {{ w }}px; }';
+            const seen = [];
+            for (let n = 0; n < 3; n++) {
+                getTemplateResult.mockReturnValue(String(n));
+                context._templateResultVersion = n;
+                seen.push(evalStyles(context, styles));
+            }
+            expect(seen).toEqual(['.a { width: 0px; }', '.a { width: 1px; }', '.a { width: 2px; }']);
+            expect(compile).toHaveBeenCalledTimes(1);
+        } finally {
+            global.Function = realFunction;
+        }
+    });
+
+    test('a Home Assistant template block is never served from the static cache', () => {
+        getTemplateResult.mockReturnValue('one');
+        const first = evalStyles(createTemplateContext(), '.b { --v: {{ v }}; }');
+        getTemplateResult.mockReturnValue('two');
+        const context = createTemplateContext();
+        context._templateResultVersion = 1;
+        const second = evalStyles(context, '.b { --v: {{ v }}; }');
+        expect(first).toBe('.b { --v: one; }');
+        expect(second).toBe('.b { --v: two; }');
+    });
+
+    test('renderTemplate() gives a style template the text of a Home Assistant template', () => {
+        getTemplateResult.mockImplementation((hass, template) => template === "{{ states('sensor.t') }}" ? 21.5 : undefined);
+        const context = createTemplateContext();
+
+        const result = evalStyles(context, ".a { --t: '${renderTemplate(\"{{ states('sensor.t') }}\")}'; }");
+
+        expect(result).toBe(".a { --t: '21.5'; }");
+        expect(getTemplateResult).toHaveBeenCalledWith(context._hass, "{{ states('sensor.t') }}", 'light.a', context, 2);
+    });
+
+    test('a memo hit still reads the templates the block rendered, so the store keeps them for the card', () => {
+        getTemplateResult.mockReturnValue('v');
+        const context = createTemplateContext();
+        const styles = ".a { --t: '${renderTemplate('{{ x }}', 'sensor.s')}'; }";
+
+        evalStyles(context, styles);
+        const callsAfterFirst = getTemplateResult.mock.calls.length;
+        evalStyles(context, styles);
+
+        expect(getTemplateResult.mock.calls.length).toBe(callsAfterFirst + 1);
+        expect(getTemplateResult).toHaveBeenLastCalledWith(context._hass, '{{ x }}', 'sensor.s', context, 2);
+    });
+
+    test('checkConditionsMet is bound to the card, so a template condition renders it again', () => {
+        const context = createTemplateContext();
+
+        evalStyles(context, ".a { display: ${checkConditionsMet([{ condition: 'template' }], hass) ? 'block' : 'none'}; }");
+
+        expect(checkConditionsMetMock).toHaveBeenCalledWith([{ condition: 'template' }], context._hass, context);
+    });
+});
+
+describe('the first reveal of a card whose styles wait on the server', () => {
+    beforeEach(() => {
+        jest.useFakeTimers();
+        global.window = { addEventListener: jest.fn(), removeEventListener: jest.fn() };
+        global.document = {
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+            createElement: jest.fn(() => ({ tagName: 'STYLE', textContent: '', id: '', parentElement: null })),
+        };
+        getTemplateResult.mockReset();
+        getTemplateResult.mockReturnValue(undefined);
+    });
+
+    afterEach(() => {
+        delete global.window;
+        delete global.document;
+        jest.useRealTimers();
+    });
+
+    function createPendingContext() {
+        const element = createCardElement();
+        const context = createContext(element);
+        context.elements = {};
+        context.config = { card_type: 'button', entity: 'light.a', styles: '.a { color: {{ c }}; }' };
+        return { element, context };
+    }
+
+    test('keeps the box, hides the paint, and shows the card when the result lands', () => {
+        const { element, context } = createPendingContext();
+
+        handleCustomStyles(context, element);
+
+        expect(element.style.display).toBe('');
+        expect(element.style.visibility).toBe('hidden');
+        expect(element.dataset.bubbleStyleHideMode).toBe('visibility');
+        expect(context.cardLoaded).toBeUndefined();
+
+        getTemplateResult.mockReturnValue('red');
+        context.lastEvaluatedStyles = '';
+        handleCustomStyles(context, element);
+
+        expect(element.style.visibility).toBe('');
+        expect(element.dataset.bubbleStyleHideMode).toBeUndefined();
+        expect(context.cardLoaded).toBe(true);
+        expect(jest.getTimerCount()).toBe(0);
+    });
+
+    test('shows the card anyway after a short while, once, if the server never answers', () => {
+        const { element, context } = createPendingContext();
+
+        handleCustomStyles(context, element);
+        jest.advanceTimersByTime(500);
+
+        expect(element.style.visibility).toBe('');
+        expect(element.dataset.bubbleStyleHideMode).toBeUndefined();
+        expect(context.cardLoaded).toBe(true);
+
+        // A later pass with the template still pending never hides it again.
+        context.lastEvaluatedStyles = '';
+        handleCustomStyles(context, element);
+        expect(element.style.visibility).toBe('');
+    });
+
+    test('an editor preview shows at once, it is rebuilt on every keystroke', () => {
+        const { element, context } = createPendingContext();
+        context.inEditorPreview = true;
+
+        handleCustomStyles(context, element);
+
+        expect(element.style.display).toBe('');
+        expect(element.dataset.bubbleStyleHideMode).toBeUndefined();
+        expect(context.cardLoaded).toBe(true);
+    });
+
+    test('a card without a pending template is revealed in the same pass, as before', () => {
+        const { element, context } = createPendingContext();
+        context.config.styles = '.a { color: red; }';
+
+        handleCustomStyles(context, element);
+
+        expect(element.style.display).toBe('');
+        expect(element.dataset.bubbleStyleHideMode).toBeUndefined();
+        expect(context.cardLoaded).toBe(true);
     });
 });

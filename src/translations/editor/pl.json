@@ -233,11 +233,11 @@
       "thanks": "Dziękuję, że jesteś częścią tej wspaniałej społeczności! Pozdrowienia z Belgii! 🍻"
     },
     "styles": {
-      "title": "Niestandardowe style i szablony JS",
-      "body1": "Dla zaawansowanych użytkowników: możesz edytować styl CSS tej karty w powyższym edytorze kodu. Więcej informacji i przykładów {examples_link}. Nie musisz dodawać {code} (używane tylko w trybie YAML). Możesz też dodać {templates_link} (Jinja nie jest obsługiwana).",
+      "title": "Niestandardowe style i szablony",
+      "body1": "Dla zaawansowanych użytkowników: możesz edytować styl CSS tej karty w powyższym edytorze kodu. Więcej informacji i przykładów {examples_link}. Nie musisz dodawać {code} (używane tylko w trybie YAML). Możesz też dodać {templates_link}.",
       "js_templates": "szablony JS",
       "body2": "Zajrzyj na mój {patreon_link} po więcej niestandardowych stylów, szablonów i modułów. To także najlepszy sposób, aby okazać wsparcie dla mojego projektu.",
-      "error_title": "Błąd w szablonie JS",
+      "error_title": "Błąd w szablonie",
       "error_delayed": "Błędy szablonów JS mogą czasem pojawiać się z opóźnieniem w edytorze modułów."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Musisz zdefiniować typ karty",
       "entity_required": "Musisz zdefiniować encję",
+      "unquoted_template": "Umieść szablon w cudzysłowie, na przykład name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Musisz zdefiniować listę encji",
       "link_required": "Musisz zdefiniować {key}",
       "duplicate_link": "Nie możesz użyć {value} dwa razy",

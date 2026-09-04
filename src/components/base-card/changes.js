@@ -15,6 +15,7 @@ import {
     stopRelativeTimeInterval,
     relativeTimeRefreshDelay
 } from '../../tools/utils.js';
+import { resolveTemplate } from '../../tools/render-template.js';
 import { applyScrollingEffect } from '../../tools/text-scrolling.js';
 import { getIcon, getImage, getIconColor } from '../../tools/icon.js';
 import { getClimateColor } from '../../cards/climate/helpers.js';
@@ -319,7 +320,10 @@ export function changeIcon(context) {
 
 export function changeName(context, textScrolling = true) {
     const buttonType = context.config.button_type;
-    const name = (buttonType !== 'name' ? getName(context) : context.config.name) ?? '';
+    // The scrolling text writes markup, so a rendered template is escaped there.
+    const name = (buttonType !== 'name'
+        ? getName(context, textScrolling)
+        : resolveTemplate(context, context.config.name, context.config.entity, textScrolling)) ?? '';
     
     if (!context.elements.name) return;
     

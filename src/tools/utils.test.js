@@ -833,3 +833,68 @@ describe('isStateOn', () => {
         expect(utilsModule.isStateOn(contextFor('select.mode', 'eco'))).toBe(false);
     });
 });
+
+describe('getName with a Home Assistant template', () => {
+    let utilsModule;
+    let store;
+
+    beforeEach(async () => {
+        jest.resetModules();
+        utilsModule = await import('./utils.js');
+        store = await import('./render-template.js');
+    });
+
+    afterEach(() => {
+        store._resetTemplateStore();
+    });
+
+    function makeHass() {
+        const subscriptions = [];
+        const hass = {
+            connection: {
+                subscribeMessage: jest.fn((callback, params) => {
+                    subscriptions.push({ callback, params });
+                    return Promise.resolve(() => {});
+                }),
+            },
+            states: { 'light.a': { entity_id: 'light.a', state: 'on', attributes: { friendly_name: 'Lamp' } } },
+            user: { name: 'Q' },
+        };
+        return { hass, subscriptions };
+    }
+
+    test('a templated name shows what the template renders, never the friendly name', async () => {
+        const { hass, subscriptions } = makeHass();
+        const context = { _hass: hass, config: { entity: 'light.a', name: "{{ states('sensor.t') }} °C" } };
+
+        expect(utilsModule.getName(context)).toBe('');
+        expect(context._templatePending).toBe(true);
+        await Promise.resolve();
+        expect(subscriptions[0].params.template).toBe("{{ states('sensor.t') }} °C");
+
+        subscriptions[0].callback({ result: '21.5 °C' });
+        expect(utilsModule.getName(context)).toBe('21.5 °C');
+
+        subscriptions[0].callback({ result: '' });
+        expect(utilsModule.getName(context)).toBe('');
+    });
+
+    test('the scrolling text path gets the rendered name escaped', async () => {
+        const { hass, subscriptions } = makeHass();
+        const context = { _hass: hass, config: { entity: 'light.a', name: '{{ x }}' } };
+        utilsModule.getName(context);
+        await Promise.resolve();
+
+        subscriptions[0].callback({ result: '<img src=x onerror=alert(1)>' });
+
+        expect(utilsModule.getName(context, true)).toBe('&lt;img src=x onerror=alert(1)&gt;');
+        expect(utilsModule.getName(context)).toBe('<img src=x onerror=alert(1)>');
+    });
+
+    test('a plain name is untouched and the friendly name still stands in for a missing one', () => {
+        const { hass } = makeHass();
+        expect(utilsModule.getName({ _hass: hass, config: { entity: 'light.a', name: 'Kitchen' } })).toBe('Kitchen');
+        expect(utilsModule.getName({ _hass: hass, config: { entity: 'light.a' } })).toBe('Lamp');
+        expect(hass.connection.subscribeMessage).not.toHaveBeenCalled();
+    });
+});

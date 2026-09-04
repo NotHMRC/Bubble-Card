@@ -233,11 +233,11 @@
       "thanks": "Kiitos, että olet osa tätä mahtavaa yhteisöä! Terveisiä Belgiasta! 🍻"
     },
     "styles": {
-      "title": "Mukautetut tyylit ja JS-mallit",
-      "body1": "Edistyneet käyttäjät voivat muokata tämän kortin CSS-tyyliä yllä olevassa koodieditorissa. Lisätietoja ja esimerkkejä {examples_link}. Sinun ei tarvitse lisätä {code} (käytetään vain YAML-tilassa). Voit myös lisätä {templates_link} (Jinjaa ei tueta).",
+      "title": "Mukautetut tyylit ja mallit",
+      "body1": "Edistyneet käyttäjät voivat muokata tämän kortin CSS-tyyliä yllä olevassa koodieditorissa. Lisätietoja ja esimerkkejä {examples_link}. Sinun ei tarvitse lisätä {code} (käytetään vain YAML-tilassa). Voit myös lisätä {templates_link}.",
       "js_templates": "JS-malleja",
       "body2": "Tutustu {patreon_link}, josta löydät lisää mukautettuja tyylejä, malleja ja moduuleja. Tämä on myös paras tapa osoittaa tukesi projektilleni.",
-      "error_title": "Virhe JS-mallissa",
+      "error_title": "Virhe mallissa",
       "error_delayed": "JS-mallien virheet voivat joskus näkyä viiveellä moduulieditorissa."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Sinun täytyy määrittää kortin tyyppi",
       "entity_required": "Sinun täytyy määrittää entiteetti",
+      "unquoted_template": "Laita malli lainausmerkkeihin, esimerkiksi name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Sinun täytyy määrittää entiteettiluettelo",
       "link_required": "Sinun täytyy määrittää {key}",
       "duplicate_link": "Et voi käyttää arvoa {value} kahdesti",

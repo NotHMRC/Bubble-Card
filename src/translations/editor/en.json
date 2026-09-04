@@ -269,11 +269,11 @@
       "thanks": "Thank you for being part of this awesome community! Cheers from Belgium! 🍻"
     },
     "styles": {
-      "title": "Custom styles & JS templates",
-      "body1": "For advanced users, you can edit the CSS style of this card in the above code editor. More information and examples {examples_link}. You don't need to add {code} (only used in YAML mode). You can also add {templates_link} (Jinja is not supported).",
+      "title": "Custom styles & templates",
+      "body1": "For advanced users, you can edit the CSS style of this card in the above code editor. More information and examples {examples_link}. You don't need to add {code} (only used in YAML mode). You can also add {templates_link}.",
       "js_templates": "JS templates",
       "body2": "Check out my {patreon_link} for more custom styles, templates, and modules. This is also the best way to show your support to my project.",
-      "error_title": "Error in JS template",
+      "error_title": "Error in template",
       "error_delayed": "JS template errors can sometimes be delayed in the Module Editor."
     },
     "popup": {
@@ -732,6 +732,7 @@
     "errors": {
       "card_type_required": "You need to define a card type",
       "entity_required": "You need to define an entity",
+      "unquoted_template": "Wrap the template in quotes, like name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "You need to define an entity list",
       "link_required": "You need to define {key}",
       "duplicate_link": "You can't use {value} twice",

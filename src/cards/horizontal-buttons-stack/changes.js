@@ -1,6 +1,7 @@
 import { isColorCloseToWhite } from "../../tools/style.js";
 import { isDocumentRTL } from "../../tools/utils.js";
 import { createButton } from './create.js';
+import { resolveTemplate } from "../../tools/render-template.js";
 import { getStoredButtonWidth, storeButtonWidth } from './button-width-storage.js';
 import { handleCustomStyles } from '../../tools/style-processor.js';
 
@@ -98,8 +99,8 @@ export function changeLight(context) {
 export function changeConfig(context) {
     context.elements.buttons.forEach((button) => {
         const index = button.index;
-        const name = context.config[`${index}_name`] ?? '';
-        const icon = context.config[`${index}_icon`] ?? '';
+        const name = resolveTemplate(context, context.config[`${index}_name`]) ?? '';
+        const icon = resolveTemplate(context, context.config[`${index}_icon`]) ?? '';
         const sensor = context.config[`${index}_pir_sensor`];
         const link = context.config[`${index}_link`];
         const entity = context.config[`${index}_entity`];

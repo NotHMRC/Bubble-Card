@@ -233,11 +233,11 @@
       "thanks": "Merci de faire partie de cette formidable communauté ! Santé depuis la Belgique ! 🍻"
     },
     "styles": {
-      "title": "Styles personnalisés et modèles JS",
-      "body1": "Pour les utilisateurs avancés, vous pouvez modifier le style CSS de cette carte dans l'éditeur de code ci-dessus. Plus d'informations et des exemples {examples_link}. Vous n'avez pas besoin d'ajouter {code} (uniquement utilisé en mode YAML). Vous pouvez également ajouter des {templates_link} (Jinja n'est pas pris en charge).",
+      "title": "Styles personnalisés et modèles",
+      "body1": "Pour les utilisateurs avancés, vous pouvez modifier le style CSS de cette carte dans l'éditeur de code ci-dessus. Plus d'informations et des exemples {examples_link}. Vous n'avez pas besoin d'ajouter {code} (uniquement utilisé en mode YAML). Vous pouvez également ajouter des {templates_link}.",
       "js_templates": "modèles JS",
       "body2": "Jetez un œil à mon {patreon_link} pour plus de styles personnalisés, de modèles et de modules. C'est aussi le meilleur moyen de montrer votre soutien à mon projet.",
-      "error_title": "Erreur dans le modèle JS",
+      "error_title": "Erreur dans le modèle",
       "error_delayed": "Les erreurs de modèle JS peuvent parfois être retardées dans l'éditeur de module."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Vous devez définir un type de carte",
       "entity_required": "Vous devez définir une entité",
+      "unquoted_template": "Mettez le modèle entre guillemets, par exemple name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Vous devez définir une liste d'entités",
       "link_required": "Vous devez définir {key}",
       "duplicate_link": "Vous ne pouvez pas utiliser {value} deux fois",

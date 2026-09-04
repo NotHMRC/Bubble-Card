@@ -233,11 +233,11 @@
       "thanks": "Köszönöm, hogy része ennek a nagyszerű közösségnek! Üdvözlet Belgiumból! 🍻"
     },
     "styles": {
-      "title": "Egyéni stílusok és JS sablonok",
-      "body1": "Haladó felhasználóként a fenti kódszerkesztőben szerkesztheti a kártya CSS stílusát. További információk és példák {examples_link}. Nem kell hozzáadnia a {code} elemet (csak YAML módban használatos). Hozzáadhat {templates_link} is (a Jinja nem támogatott).",
+      "title": "Egyéni stílusok és sablonok",
+      "body1": "Haladó felhasználóként a fenti kódszerkesztőben szerkesztheti a kártya CSS stílusát. További információk és példák {examples_link}. Nem kell hozzáadnia a {code} elemet (csak YAML módban használatos). Hozzáadhat {templates_link} is.",
       "js_templates": "JS sablonokat",
       "body2": "Nézze meg a {patreon_link} oldalamat további egyéni stílusokért, sablonokért és modulokért. Ez a legjobb módja annak is, hogy kifejezze támogatását a projektem iránt.",
-      "error_title": "Hiba a JS sablonban",
+      "error_title": "Hiba a sablonban",
       "error_delayed": "A JS sablonhibák néha késleltetve jelenhetnek meg a modulszerkesztőben."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Meg kell adnia egy kártyatípust",
       "entity_required": "Meg kell adnia egy entitást",
+      "unquoted_template": "Tegye a sablont idézőjelek közé, például name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Meg kell adnia egy entitáslistát",
       "link_required": "Meg kell adnia: {key}",
       "duplicate_link": "A(z) {value} nem használható kétszer",

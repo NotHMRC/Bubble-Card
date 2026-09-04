@@ -233,11 +233,11 @@
       "thanks": "Tack för att du är en del av den här fantastiska gemenskapen! Skål från Belgien! 🍻"
     },
     "styles": {
-      "title": "Anpassade stilar & JS-mallar",
-      "body1": "Avancerade användare kan redigera kortets CSS-stil i kodeditorn ovan. Mer information och exempel {examples_link}. Du behöver inte lägga till {code} (används endast i YAML-läge). Du kan även lägga till {templates_link} (Jinja stöds inte).",
+      "title": "Anpassade stilar & mallar",
+      "body1": "Avancerade användare kan redigera kortets CSS-stil i kodeditorn ovan. Mer information och exempel {examples_link}. Du behöver inte lägga till {code} (används endast i YAML-läge). Du kan även lägga till {templates_link}.",
       "js_templates": "JS-mallar",
       "body2": "Kolla in min {patreon_link} för fler anpassade stilar, mallar och moduler. Det är också det bästa sättet att visa ditt stöd för mitt projekt.",
-      "error_title": "Fel i JS-mall",
+      "error_title": "Fel i mallen",
       "error_delayed": "Fel i JS-mallar kan ibland visas med fördröjning i moduleditorn."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du behöver ange en korttyp",
       "entity_required": "Du behöver ange en entitet",
+      "unquoted_template": "Sätt mallen inom citattecken, till exempel name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du behöver ange en entitetslista",
       "link_required": "Du behöver ange {key}",
       "duplicate_link": "Du kan inte använda {value} två gånger",

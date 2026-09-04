@@ -233,11 +233,11 @@
       "thanks": "Grazie per far parte di questa fantastica community! Un brindisi dal Belgio! 🍻"
     },
     "styles": {
-      "title": "Stili personalizzati e template JS",
-      "body1": "Per gli utenti avanzati: puoi modificare lo stile CSS di questa scheda nell'editor di codice qui sopra. Maggiori informazioni ed esempi {examples_link}. Non serve aggiungere {code} (usato solo in modalità YAML). Puoi anche aggiungere {templates_link} (Jinja non è supportato).",
+      "title": "Stili personalizzati e template",
+      "body1": "Per gli utenti avanzati: puoi modificare lo stile CSS di questa scheda nell'editor di codice qui sopra. Maggiori informazioni ed esempi {examples_link}. Non serve aggiungere {code} (usato solo in modalità YAML). Puoi anche aggiungere {templates_link}.",
       "js_templates": "template JS",
       "body2": "Dai un'occhiata al mio {patreon_link} per altri stili personalizzati, template e moduli. È anche il modo migliore per mostrare il tuo sostegno al mio progetto.",
-      "error_title": "Errore nel template JS",
+      "error_title": "Errore nel template",
       "error_delayed": "Gli errori dei template JS possono a volte comparire in ritardo nell'editor dei moduli."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Devi definire un tipo di scheda",
       "entity_required": "Devi definire un'entità",
+      "unquoted_template": "Racchiudi il template tra virgolette, ad esempio name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Devi definire un elenco di entità",
       "link_required": "Devi definire {key}",
       "duplicate_link": "Non puoi usare {value} due volte",

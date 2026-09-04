@@ -233,11 +233,11 @@
       "thanks": "Ačiū, kad esate šios nuostabios bendruomenės dalis! Linkėjimai iš Belgijos! 🍻"
     },
     "styles": {
-      "title": "Pasirinktiniai stiliai ir JS šablonai",
-      "body1": "Pažengusiems naudotojams: šios kortelės CSS stilių galite redaguoti aukščiau esančiame kodo redaktoriuje. Daugiau informacijos ir pavyzdžių {examples_link}. Nereikia pridėti {code} (naudojama tik YAML režime). Taip pat galite pridėti {templates_link} (Jinja nepalaikoma).",
+      "title": "Pasirinktiniai stiliai ir šablonai",
+      "body1": "Pažengusiems naudotojams: šios kortelės CSS stilių galite redaguoti aukščiau esančiame kodo redaktoriuje. Daugiau informacijos ir pavyzdžių {examples_link}. Nereikia pridėti {code} (naudojama tik YAML režime). Taip pat galite pridėti {templates_link}.",
       "js_templates": "JS šablonų",
       "body2": "Apsilankykite mano {patreon_link}, kur rasite daugiau pasirinktinių stilių, šablonų ir modulių. Tai taip pat geriausias būdas parodyti palaikymą mano projektui.",
-      "error_title": "Klaida JS šablone",
+      "error_title": "Klaida šablone",
       "error_delayed": "JS šablonų klaidos modulių redaktoriuje kartais gali vėluoti."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Turite nurodyti kortelės tipą",
       "entity_required": "Turite nurodyti esybę",
+      "unquoted_template": "Įrašykite šabloną kabutėse, pavyzdžiui name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Turite nurodyti esybių sąrašą",
       "link_required": "Turite nurodyti {key}",
       "duplicate_link": "Negalite naudoti {value} du kartus",

@@ -233,11 +233,11 @@
       "thanks": "Go raibh maith agat as a bheith mar chuid den phobal iontach seo! Beannachtaí ón mBeilg! 🍻"
     },
     "styles": {
-      "title": "Stíleanna saincheaptha agus teimpléid JS",
-      "body1": "D'úsáideoirí ardleibhéil, is féidir leat stíl CSS an chárta seo a chur in eagar san eagarthóir cóid thuas. Tuilleadh eolais agus samplaí {examples_link}. Ní gá duit {code} a chur leis (ní úsáidtear é ach i mód YAML). Is féidir leat {templates_link} a chur leis freisin (ní thacaítear le Jinja).",
+      "title": "Stíleanna saincheaptha agus teimpléid",
+      "body1": "D'úsáideoirí ardleibhéil, is féidir leat stíl CSS an chárta seo a chur in eagar san eagarthóir cóid thuas. Tuilleadh eolais agus samplaí {examples_link}. Ní gá duit {code} a chur leis (ní úsáidtear é ach i mód YAML). Is féidir leat {templates_link} a chur leis freisin.",
       "js_templates": "teimpléid JS",
       "body2": "Féach ar mo {patreon_link} le haghaidh tuilleadh stíleanna saincheaptha, teimpléad agus modúl. Is é seo an bealach is fearr freisin chun do thacaíocht do mo thionscadal a thaispeáint.",
-      "error_title": "Earráid sa teimpléad JS",
+      "error_title": "Earráid sa teimpléad",
       "error_delayed": "Uaireanta bíonn moill ar earráidí teimpléid JS in eagarthóir na modúl."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Ní mór duit cineál cárta a shainiú",
       "entity_required": "Ní mór duit aonán a shainiú",
+      "unquoted_template": "Cuir an teimpléad idir comharthaí athfhriotail, mar shampla name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Ní mór duit liosta aonán a shainiú",
       "link_required": "Ní mór duit {key} a shainiú",
       "duplicate_link": "Ní féidir leat {value} a úsáid faoi dhó",

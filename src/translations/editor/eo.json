@@ -233,11 +233,11 @@
       "thanks": "Dankon pro tio, ke vi estas parto de ĉi tiu mirinda komunumo! Salutojn el Belgio! 🍻"
     },
     "styles": {
-      "title": "Propraj stiloj kaj JS-ŝablonoj",
-      "body1": "Por spertaj uzantoj: vi povas redakti la CSS-stilon de ĉi tiu karto en la supra kodredaktilo. Pliaj informoj kaj ekzemploj {examples_link}. Vi ne bezonas aldoni {code} (uzata nur en YAML-reĝimo). Vi ankaŭ povas aldoni {templates_link} (Jinja ne estas subtenata).",
+      "title": "Propraj stiloj kaj ŝablonoj",
+      "body1": "Por spertaj uzantoj: vi povas redakti la CSS-stilon de ĉi tiu karto en la supra kodredaktilo. Pliaj informoj kaj ekzemploj {examples_link}. Vi ne bezonas aldoni {code} (uzata nur en YAML-reĝimo). Vi ankaŭ povas aldoni {templates_link}.",
       "js_templates": "JS-ŝablonojn",
       "body2": "Rigardu mian {patreon_link} por pliaj propraj stiloj, ŝablonoj kaj moduloj. Tio ankaŭ estas la plej bona maniero montri vian subtenon al mia projekto.",
-      "error_title": "Eraro en JS-ŝablono",
+      "error_title": "Eraro en ŝablono",
       "error_delayed": "Eraroj de JS-ŝablonoj foje povas aperi malfrue en la modula redaktilo."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Vi devas difini tipon de karto",
       "entity_required": "Vi devas difini enton",
+      "unquoted_template": "Metu la ŝablonon inter citilojn, ekzemple name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Vi devas difini liston de entoj",
       "link_required": "Vi devas difini {key}",
       "duplicate_link": "Vi ne povas uzi {value} dufoje",

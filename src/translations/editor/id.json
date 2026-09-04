@@ -233,11 +233,11 @@
       "thanks": "Terima kasih telah menjadi bagian dari komunitas yang luar biasa ini! Salam dari Belgia! 🍻"
     },
     "styles": {
-      "title": "Gaya kustom & templat JS",
-      "body1": "Untuk pengguna tingkat lanjut, Anda dapat mengedit gaya CSS kartu ini di editor kode di atas. Informasi dan contoh lebih lanjut {examples_link}. Anda tidak perlu menambahkan {code} (hanya digunakan dalam mode YAML). Anda juga dapat menambahkan {templates_link} (Jinja tidak didukung).",
+      "title": "Gaya kustom & templat",
+      "body1": "Untuk pengguna tingkat lanjut, Anda dapat mengedit gaya CSS kartu ini di editor kode di atas. Informasi dan contoh lebih lanjut {examples_link}. Anda tidak perlu menambahkan {code} (hanya digunakan dalam mode YAML). Anda juga dapat menambahkan {templates_link}.",
       "js_templates": "templat JS",
       "body2": "Lihat {patreon_link} saya untuk lebih banyak gaya kustom, templat, dan modul. Ini juga cara terbaik untuk menunjukkan dukungan Anda terhadap proyek saya.",
-      "error_title": "Kesalahan pada templat JS",
+      "error_title": "Kesalahan pada templat",
       "error_delayed": "Kesalahan templat JS terkadang tertunda di Editor Modul."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Anda perlu menentukan jenis kartu",
       "entity_required": "Anda perlu menentukan entitas",
+      "unquoted_template": "Apit templat dengan tanda kutip, misalnya name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Anda perlu menentukan daftar entitas",
       "link_required": "Anda perlu menentukan {key}",
       "duplicate_link": "Anda tidak bisa menggunakan {value} dua kali",

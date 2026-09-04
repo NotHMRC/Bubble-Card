@@ -233,11 +233,11 @@
       "thanks": "Aitäh, et oled osa sellest ägedast kogukonnast! Tervitused Belgiast! 🍻"
     },
     "styles": {
-      "title": "Kohandatud stiilid ja JS-mallid",
-      "body1": "Edasijõudnud kasutajad saavad selle kaardi CSS-stiili ülalolevas koodiredaktoris muuta. Rohkem infot ja näiteid {examples_link}. {code} pole vaja lisada (kasutatakse ainult YAML-režiimis). Samuti saad lisada {templates_link} (Jinja ei ole toetatud).",
+      "title": "Kohandatud stiilid ja mallid",
+      "body1": "Edasijõudnud kasutajad saavad selle kaardi CSS-stiili ülalolevas koodiredaktoris muuta. Rohkem infot ja näiteid {examples_link}. {code} pole vaja lisada (kasutatakse ainult YAML-režiimis). Samuti saad lisada {templates_link}.",
       "js_templates": "JS-malle",
       "body2": "Vaata mu {patreon_link}, kust leiad rohkem kohandatud stiile, malle ja mooduleid. See on ühtlasi parim viis mu projekti toetada.",
-      "error_title": "Viga JS-mallis",
+      "error_title": "Viga mallis",
       "error_delayed": "JS-malli vead võivad moodulite redaktoris mõnikord viivitusega ilmuda."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Pead määrama kaardi tüübi",
       "entity_required": "Pead määrama olemi",
+      "unquoted_template": "Pane mall jutumärkidesse, näiteks name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Pead määrama olemite loendi",
       "link_required": "Pead määrama {key}",
       "duplicate_link": "Sa ei saa väärtust {value} kaks korda kasutada",

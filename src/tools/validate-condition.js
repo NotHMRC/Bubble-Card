@@ -90,7 +90,7 @@ function normalizeEntityIds(entityId) {
   return entityId ? [entityId] : [];
 }
 
-function checkStateNumericCondition(condition,hass) {
+function checkStateNumericCondition(condition, hass, owner) {
   const entityIds = normalizeEntityIds(condition.entity_id || condition.entity);
 
   if (!entityIds.length) {
@@ -122,11 +122,12 @@ function checkStateNumericCondition(condition,hass) {
       : entity.state;
 
     if (condition.value_template) {
+      // The state object is not one of the variables: it changes identity on
+      // every update, which would make every update a new subscription.
       const rendered = getRenderedTemplate(hass, condition.value_template, {
         value: state,
-        entity,
         entity_id: id,
-      });
+      }, owner);
       if (rendered !== undefined) {
         state = rendered;
       }
@@ -213,34 +214,48 @@ function checkViewColumnsCondition() {
   return true;
 }
 
-function checkAndCondition(condition, hass) {
+function checkAndCondition(condition, hass, owner) {
   if (!condition.conditions) return true;
-  return checkConditionsMet(condition.conditions, hass);
+  return checkConditionsMet(condition.conditions, hass, owner);
 }
 
-function checkOrCondition(condition, hass) {
+function checkOrCondition(condition, hass, owner) {
   if (!condition.conditions) return true;
-  return condition.conditions.some((c) => checkConditionsMet([c], hass));
+  return condition.conditions.some((c) => checkConditionsMet([c], hass, owner));
 }
 
 // Add NOT condition support: passes if all embedded conditions are not true.
-function checkNotCondition(condition, hass) {
+function checkNotCondition(condition, hass, owner) {
   if (!condition.conditions) return true;
-  return !condition.conditions.some((c) => checkConditionsMet([c], hass));
+  return !condition.conditions.some((c) => checkConditionsMet([c], hass, owner));
 }
 
-// Evaluate Jinja template condition using hass.renderTemplate when available
-function checkTemplateCondition(condition, hass) {
+// What Home Assistant itself reads as true from a rendered template: the
+// server hands back parsed values, so a number or a boolean arrives as such,
+// and the strings are the ones its boolean validator accepts.
+const TRUE_STRINGS = new Set(['1', 'true', 'yes', 'on', 'enable']);
+export function isTemplateResultTruthy(result) {
+  if (result === true) return true;
+  if (typeof result === 'number') return result !== 0;
+  if (typeof result === 'string') return TRUE_STRINGS.has(result.trim().toLowerCase());
+  return false;
+}
+
+// A template condition, rendered by the server. The owner is the card asking,
+// so it renders again when the result changes.
+function checkTemplateCondition(condition, hass, owner) {
   if (!condition.value_template) {
     return false;
   }
 
-  const result = getRenderedTemplate(hass, condition.value_template);
-  // Accept truthy/non-empty values as pass
-  return result === true || result === "true" || result === 1 || result === "1" || result === "True";
+  return isTemplateResultTruthy(getRenderedTemplate(hass, condition.value_template, undefined, owner));
 }
 
-export function checkConditionsMet(conditions,hass) {
+// `owner` is the card element evaluating the conditions. It is what a template
+// condition is subscribed on behalf of, so the card renders again when the
+// server answers. Callers without one still get the value, they just are not
+// told when it moves.
+export function checkConditionsMet(conditions, hass, owner = null) {
   return conditions.every((c) => {
     // Ignore disabled conditions, they behave as if removed
     if (c && c.enabled === false) {
@@ -261,15 +276,15 @@ export function checkConditionsMet(conditions,hass) {
         case "view_columns":
           return checkViewColumnsCondition();
         case "numeric_state":
-          return checkStateNumericCondition(c, hass);
+          return checkStateNumericCondition(c, hass, owner);
         case "template":
-          return checkTemplateCondition(c, hass);
+          return checkTemplateCondition(c, hass, owner);
         case "and":
-          return checkAndCondition(c, hass);
+          return checkAndCondition(c, hass, owner);
         case "or":
-          return checkOrCondition(c, hass);
+          return checkOrCondition(c, hass, owner);
         case "not":
-          return checkNotCondition(c, hass);
+          return checkNotCondition(c, hass, owner);
         default:
           return checkUnknownCondition(c, hass);
       }

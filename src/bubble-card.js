@@ -14,6 +14,7 @@ import { updatePreviewBadge } from './tools/preview-badge.js';
 import { getEntitySuggestion } from './modules/suggestions.js';
 import { registerPopupContext, shouldHoldDashboardHassUpdate } from './cards/pop-up/helpers.js';
 import { shouldSkipRender, noteRender, resetRenderGate } from './tools/render-gate.js';
+import { beginTemplateRender, sweepTemplates, releaseTemplates, refreshTemplateStyles, TEMPLATE_STYLE } from './tools/render-template.js';
 import { maybeShowMigrationNotice } from './cards/pop-up/migration.js';
 import { registerForIconRefresh, unregisterForIconRefresh } from './tools/icon.js';
 import { monotonicNow } from './tools/monotonic-time.js';
@@ -52,6 +53,27 @@ function isInsidePopupOpeningScope(element) {
   }
 
   return element.closest('.bubble-pop-up')?.dataset?.bubblePopupOpening === 'true';
+}
+
+// `name: {{ states('x') }}` without quotes is a YAML mapping, not a string,
+// and it would display as "[object Object]". Home Assistant's own cards reject
+// it at setConfig, so does this one, with a message that says what to do.
+function isTemplateShapedObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasUnquotedTemplate(config) {
+  if (isTemplateShapedObject(config.name) || isTemplateShapedObject(config.icon)) return true;
+  for (const key in config) {
+    if (/^\d+_(?:name|icon)$/.test(key) && isTemplateShapedObject(config[key])) return true;
+  }
+  const subButtons = config.sub_button;
+  const check = (list) => Array.isArray(list) && list.some((item) => item && (
+    isTemplateShapedObject(item.name) || isTemplateShapedObject(item.icon) || check(item.group)
+  ));
+  if (Array.isArray(subButtons)) return check(subButtons);
+  if (subButtons && typeof subButtons === 'object') return check(subButtons.main) || check(subButtons.bottom);
+  return false;
 }
 
 const handlers = {
@@ -199,14 +221,15 @@ class BubbleCard extends HTMLElement {
       runModuleTeardowns(this);
     } catch (e) {}
     try {
-      // Remove the template-change subscriber from the module-level Set, it
-      // would otherwise retain this element (and its last hass) forever.
-      if (this._templateChangeUnsubscribe) {
-        this._templateChangeUnsubscribe();
-        this._templateChangeUnsubscribe = null;
-        this._templateChangeHandler = null;
-      }
+      // The templates this card rendered outlive it for a while in the store,
+      // so a card Home Assistant merely moved in the DOM finds them again, but
+      // the store must not keep rendering into an element that is gone.
+      releaseTemplates(this);
     } catch (e) {}
+    if (this._templateHoldTimer) {
+      clearTimeout(this._templateHoldTimer);
+      this._templateHoldTimer = null;
+    }
     try {
       unregisterForIconRefresh(this);
     } catch (e) {}
@@ -373,6 +396,27 @@ class BubbleCard extends HTMLElement {
     }, hassRenderWindowMs - elapsed);
   }
 
+  // Called by the template store when a template this card holds has a new
+  // result. `kinds` says what the card read the changed templates for: a
+  // change that only concerns its styles costs a style pass, anything else a
+  // render. A card held behind an opening pop-up stays held, the drain of
+  // that gate renders it from the store afterwards.
+  onTemplateResults(kinds) {
+    this._templateResultVersion = (this._templateResultVersion || 0) + 1;
+    this.lastEvaluatedStyles = '';
+    if (this._bb_cache) this._bb_cache.lastStateSignature = '';
+    if (shouldHoldDashboardHassUpdate(this)) return;
+    if (kinds === TEMPLATE_STYLE && this.isConnected && this.card && this.config?.card_type !== 'pop-up') {
+      try {
+        if (refreshTemplateStyles(this)) return;
+      } catch (e) {
+        console.error('Bubble Card: Error while refreshing styles from a template', e);
+        return;
+      }
+    }
+    this.renderCoalesced();
+  }
+
   updateBubbleCard() {
     // The single answer to every entry point a preview has: hass, editMode, the
     // icon refresh and the connection itself all end up here.
@@ -386,6 +430,10 @@ class BubbleCard extends HTMLElement {
     // Kept below the guards above: a call that renders nothing must not start the
     // coalescing window, or the first real render would be made to wait.
     this._lastRenderAt = monotonicNow();
+    // Every template this render reads is stamped with this generation, and
+    // the ones it no longer reads are let go of below.
+    beginTemplateRender(this);
+    this._templatePending = false;
     const type = this.config.card_type;
     if (handlers[type]) {
       try {
@@ -394,6 +442,7 @@ class BubbleCard extends HTMLElement {
         console.error(`Bubble Card: Error in handler for card_type '${type}'`, e);
       }
     }
+    try { sweepTemplates(this); } catch (e) {}
     // Records the inputs this render was built from, which is what the next
     // tick is compared against.
     try { noteRender(this); } catch (e) {}
@@ -413,9 +462,13 @@ class BubbleCard extends HTMLElement {
     // A reconfigured card names different entities and its recorded reads
     // belong to the previous config.
     resetRenderGate(this);
+    // Its templates too: the next render subscribes to the ones it still uses,
+    // and the store keeps their values meanwhile.
+    releaseTemplates(this);
     const workingConfig = { ...config };
 
     if (!workingConfig.card_type) throw new Error(tGlobal('editor.errors.card_type_required'));
+    if (hasUnquotedTemplate(workingConfig)) throw new Error(tGlobal('editor.errors.unquoted_template'));
     if (workingConfig.grid_options?.rows !== undefined) {
       workingConfig.rows = workingConfig.grid_options.rows;
     }

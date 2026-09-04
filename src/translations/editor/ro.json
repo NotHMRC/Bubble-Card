@@ -233,11 +233,11 @@
       "thanks": "Vă mulțumesc că faceți parte din această comunitate minunată! Salutări din Belgia! 🍻"
     },
     "styles": {
-      "title": "Stiluri personalizate și șabloane JS",
-      "body1": "Pentru utilizatorii avansați: puteți edita stilul CSS al acestui card în editorul de cod de mai sus. Mai multe informații și exemple {examples_link}. Nu trebuie să adăugați {code} (folosit doar în modul YAML). Puteți adăuga și {templates_link} (Jinja nu este acceptat).",
+      "title": "Stiluri personalizate și șabloane",
+      "body1": "Pentru utilizatorii avansați: puteți edita stilul CSS al acestui card în editorul de cod de mai sus. Mai multe informații și exemple {examples_link}. Nu trebuie să adăugați {code} (folosit doar în modul YAML). Puteți adăuga și {templates_link}.",
       "js_templates": "șabloane JS",
       "body2": "Vizitați {patreon_link} pentru mai multe stiluri personalizate, șabloane și module. Este de asemenea cea mai bună modalitate de a vă arăta susținerea pentru proiectul meu.",
-      "error_title": "Eroare în șablonul JS",
+      "error_title": "Eroare în șablon",
       "error_delayed": "Erorile din șabloanele JS pot apărea uneori cu întârziere în editorul de module."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Trebuie să definiți un tip de card",
       "entity_required": "Trebuie să definiți o entitate",
+      "unquoted_template": "Puneți șablonul între ghilimele, de exemplu name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Trebuie să definiți o listă de entități",
       "link_required": "Trebuie să definiți {key}",
       "duplicate_link": "Nu puteți folosi {value} de două ori",

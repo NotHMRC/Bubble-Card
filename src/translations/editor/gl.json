@@ -233,11 +233,11 @@
       "thanks": "Grazas por formar parte desta comunidade incrible! Saúdos desde Bélxica! 🍻"
     },
     "styles": {
-      "title": "Estilos personalizados e modelos JS",
-      "body1": "Para usuarios avanzados: pode editar o estilo CSS desta tarxeta no editor de código de arriba. Máis información e exemplos {examples_link}. Non precisa engadir {code} (só se usa no modo YAML). Tamén pode engadir {templates_link} (Jinja non é compatible).",
+      "title": "Estilos personalizados e modelos",
+      "body1": "Para usuarios avanzados: pode editar o estilo CSS desta tarxeta no editor de código de arriba. Máis información e exemplos {examples_link}. Non precisa engadir {code} (só se usa no modo YAML). Tamén pode engadir {templates_link}.",
       "js_templates": "modelos JS",
       "body2": "Bótelle unha ollada ao meu {patreon_link} para máis estilos personalizados, modelos e módulos. Esta é tamén a mellor forma de mostrar o seu apoio ao meu proxecto.",
-      "error_title": "Erro no modelo JS",
+      "error_title": "Erro no modelo",
       "error_delayed": "Os erros dos modelos JS ás veces poden aparecer con atraso no editor de módulos."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Debe definir un tipo de tarxeta",
       "entity_required": "Debe definir unha entidade",
+      "unquoted_template": "Pon o modelo entre comiñas, por exemplo name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Debe definir unha lista de entidades",
       "link_required": "Debe definir {key}",
       "duplicate_link": "Non pode usar {value} dúas veces",

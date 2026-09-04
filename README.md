@@ -1651,7 +1651,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Conditions are evaluated in your browser, so the few of them that need the Home Assistant server cannot be exact: sunrise and sunset are read from the `sun.sun` entity instead of being recomputed, and a `for` duration is measured from the last state change, without the recorder history.
+> Conditions are evaluated in your browser, so the few of them that need the Home Assistant server cannot be exact: sunrise and sunset are read from the `sun.sun` entity instead of being recomputed, and a `for` duration is measured from the last state change, without the recorder history. The exception is `template`, rendered by the server like any other [Home Assistant template](#templates).
 >
 > `view_columns` is accepted but always passes, since Bubble Card is never the one laying out the columns of your view. A condition type that Bubble Card does not know reports itself once in your browser console instead of failing silently, so you can tell a typo from a missing feature.
 
@@ -2066,7 +2066,76 @@ styles: |
 
 ## Templates
 
-**Bubble Card doesn’t support Jinja templates** but advanced users can add templates in JS directly in their [custom styles](#styling). For example, this allows you to dynamically change an icon, the texts or the colors of an element, to show or hide an element conditionally (like a sub-button), or almost anything based on a state, an attribute and more.
+Bubble Card supports two kinds of templates:
+
+- **Home Assistant templates (Jinja)**, the ones you already write in your automations, in Mushroom or in card-mod. Put `{{ ... }}` or `{% ... %}` in a supported field and Home Assistant renders it for you, live.
+- **JavaScript templates**, `${ ... }` inside your [custom styles](#styling), for anything that needs to reach into the card itself.
+
+### Home Assistant templates (Jinja)
+
+Templates are rendered by your Home Assistant server and update by themselves when what they read changes. They work in these fields:
+
+| Field | Example |
+| --- | --- |
+| `name`, on every card (pop-up header and separator included) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, on every card (`icon_open`, `icon_close`, `icon_up` and `icon_down` of a cover too) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` and `icon` of a [sub-button](#sub-buttons) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `1_name`, `1_icon`... of an [horizontal buttons stack](#horizontal-buttons-stack) | `1_name: "{{ user }}"` |
+| `styles` of a card and the code of a [module](#modules), mixed with JavaScript templates | see below |
+| [Conditions](#conditions), with `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+> [!IMPORTANT]
+> Always put a template between quotes. Without them, `name: {{ states('x') }}` is read by YAML as a mapping rather than as text, and the card refuses it.
+
+Three variables are available on top of everything Home Assistant offers (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filters, the macros of your `custom_templates` folder...):
+
+- `entity` is the entity of the card, or of the sub-button for a sub-button field.
+- `config.entity` is the same value, for the templates you wrote for card-mod.
+- `user` is the name of the logged in user.
+
+Results are parsed by Home Assistant exactly like in the developer tools, so `21.50` shows as `21.5`. Add `| string` when the text must stay as it is.
+
+<details>
+
+<summary>Home Assistant templates in your custom styles</summary>
+
+<br>
+
+A template can hold a value or wrap whole CSS rules:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript templates and Home Assistant templates can share a block. Keep every `${ }` outside of a `{% if %} ... {% endif %}` block, each side is rendered by a different engine and a block cut in two cannot be rendered.
+
+Inside a JavaScript template, `renderTemplate("{{ ... }}")` gives you the rendered text of a Home Assistant template, which is the easiest way to write your own text in the state line:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+show_attribute: true
+styles: |
+  ${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Errors are shown in the editor, under the custom styles, and in your browser console.
+
+</details>
+
+### JavaScript templates
+
+Advanced users can add templates in JS directly in their [custom styles](#styling). For example, this allows you to dynamically change an icon, the texts or the colors of an element, to show or hide an element conditionally (like a sub-button), or almost anything based on a state, an attribute and more.
 
 > [!TIP]  
 > More information about JS templates [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). My advice is to **always take a look at your browser console** to be sure that everything is working correctly.
@@ -2132,6 +2201,7 @@ You have access to all the global JS functions, but you have also access to:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` returns `true` when a list of [conditions](#conditions) is met, for example `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` returns the text rendered by Home Assistant for a Jinja template, for example `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. The second argument is what the template sees as `entity`, your card's entity by default.
 - `hass.formatEntityState(state)` can be used to transtale a state (Can also be used to get a state unit, without the need to add it manually).
 - `hass.formatEntityAttributeValue(state, "attribute")` can be used to translate an attribute (Can also be used to get a state unit, without the need to add it manually).
 
@@ -2320,6 +2390,12 @@ styles: |
 
 
 If you want to template the state (`.bubble-state`) don't toggle `show_state: true` just toggle `show_attribute: true` without any attribute.
+
+The same with a Home Assistant template, which also gives you the translated state:
+```yaml
+styles: |
+  ${card.querySelector('.bubble-state').innerText = renderTemplate("It's currently {{ states('weather.home') | lower }}")}
+```
 
 </details>
 

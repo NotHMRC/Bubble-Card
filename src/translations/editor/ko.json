@@ -233,11 +233,11 @@
       "thanks": "이 멋진 커뮤니티의 일원이 되어 주셔서 감사해요! 벨기에에서 건배! 🍻"
     },
     "styles": {
-      "title": "사용자 지정 스타일 및 JS 템플릿",
-      "body1": "고급 사용자라면 위의 코드 편집기에서 이 카드의 CSS 스타일을 편집할 수 있어요. 더 많은 정보와 예시는 {examples_link}에서 확인하세요. {code}를 추가할 필요는 없어요(YAML 모드에서만 사용돼요). {templates_link}도 추가할 수 있어요(Jinja는 지원되지 않아요).",
+      "title": "사용자 지정 스타일 및 템플릿",
+      "body1": "고급 사용자라면 위의 코드 편집기에서 이 카드의 CSS 스타일을 편집할 수 있어요. 더 많은 정보와 예시는 {examples_link}에서 확인하세요. {code}를 추가할 필요는 없어요(YAML 모드에서만 사용돼요). {templates_link}도 추가할 수 있어요.",
       "js_templates": "JS 템플릿",
       "body2": "더 많은 사용자 지정 스타일, 템플릿, 모듈은 제 {patreon_link}에서 확인하세요. 제 프로젝트를 후원하는 가장 좋은 방법이기도 해요.",
-      "error_title": "JS 템플릿 오류",
+      "error_title": "템플릿 오류",
       "error_delayed": "모듈 편집기에서는 JS 템플릿 오류가 다소 늦게 표시될 수 있어요."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "카드 유형을 지정해야 해요",
       "entity_required": "엔티티를 지정해야 해요",
+      "unquoted_template": "템플릿을 따옴표로 감싸 주세요. 예를 들어 name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "엔티티 목록을 지정해야 해요",
       "link_required": "{key}을(를) 지정해야 해요",
       "duplicate_link": "{value}을(를) 두 번 사용할 수 없어요",

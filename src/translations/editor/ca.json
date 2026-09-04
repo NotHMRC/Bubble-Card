@@ -233,11 +233,11 @@
       "thanks": "Gràcies per formar part d'aquesta comunitat fantàstica! Salutacions des de Bèlgica! 🍻"
     },
     "styles": {
-      "title": "Estils personalitzats i plantilles JS",
-      "body1": "Per a usuaris avançats: podeu editar l'estil CSS d'aquesta targeta a l'editor de codi de dalt. Més informació i exemples {examples_link}. No cal que afegiu {code} (només s'utilitza en mode YAML). També podeu afegir {templates_link} (Jinja no és compatible).",
+      "title": "Estils personalitzats i plantilles",
+      "body1": "Per a usuaris avançats: podeu editar l'estil CSS d'aquesta targeta a l'editor de codi de dalt. Més informació i exemples {examples_link}. No cal que afegiu {code} (només s'utilitza en mode YAML). També podeu afegir {templates_link}.",
       "js_templates": "plantilles JS",
       "body2": "Feu una ullada al meu {patreon_link} per a més estils personalitzats, plantilles i mòduls. També és la millor manera de mostrar el vostre suport al meu projecte.",
-      "error_title": "Error a la plantilla JS",
+      "error_title": "Error a la plantilla",
       "error_delayed": "Els errors de les plantilles JS de vegades poden aparèixer amb retard a l'editor de mòduls."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Heu de definir un tipus de targeta",
       "entity_required": "Heu de definir una entitat",
+      "unquoted_template": "Poseu la plantilla entre cometes, per exemple name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Heu de definir una llista d'entitats",
       "link_required": "Heu de definir {key}",
       "duplicate_link": "No podeu utilitzar {value} dues vegades",

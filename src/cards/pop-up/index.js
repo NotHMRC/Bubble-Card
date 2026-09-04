@@ -5,6 +5,7 @@ import { initPopUpHashNavigationBridge, registerPopUpHash } from "./navigation-p
 import { cleanupPopUpCards, handlePopUpCards } from './cards/index.js';
 import { isStandalonePopUpConfig } from './migration.js';
 import { ensureArray, extractConditionEntityIds } from '../../tools/validate-condition.js';
+import { resolveTemplate } from '../../tools/render-template.js';
 
 initPopUpHashNavigationBridge();
 
@@ -163,11 +164,15 @@ function syncPopUpHashRegistration(context) {
     // the card editor has to stay out, or every pop-up would look duplicated by
     // its own preview.
     const isPreview = Boolean(context.inEditorPreview);
+    // Rendered, so the navigation picker labels a templated pop-up with what
+    // it shows rather than with the template text.
+    const name = resolveTemplate(context, context.config?.name);
+    const icon = resolveTemplate(context, context.config?.icon);
     const registrationKey = [
         location.pathname || '',
         context.config?.hash || '',
-        context.config?.name || '',
-        context.config?.icon || '',
+        name || '',
+        icon || '',
         isPreview ? 'preview' : 'card',
         context.isConnected ? '1' : '0',
     ].join('|');
@@ -178,8 +183,8 @@ function syncPopUpHashRegistration(context) {
 
     context._lastPopUpHashRegistrationKey = registrationKey;
     registerPopUpHash(context.config?.hash, {
-        name: context.config?.name,
-        icon: context.config?.icon,
+        name,
+        icon,
         isConnected: context.isConnected,
         element: isPreview ? null : context
     });
@@ -344,6 +349,9 @@ function shouldRefreshHeader(context) {
     const locale = context._hass?.locale;
     const unitSystem = context._hass?.config?.unit_system;
     const isEditing = !!(context.editor || context.detectedEditor);
+    // Bumped by the template store when a template this pop-up holds moves,
+    // which is how a templated header name or icon gets to update.
+    const templateVersion = context._templateResultVersion || 0;
 
     if (_headerNeedsUnconditionalRefresh(context.config)) {
         context._lastHeaderConfigRef = context.config;
@@ -351,6 +359,7 @@ function shouldRefreshHeader(context) {
         context._lastHeaderLocaleRef = locale;
         context._lastHeaderUnitSystemRef = unitSystem;
         context._lastHeaderEditMode = isEditing;
+        context._lastHeaderTemplateVersion = templateVersion;
         _snapshotSubButtonEntityRefs(context);
         return true;
     }
@@ -359,13 +368,15 @@ function shouldRefreshHeader(context) {
         context._lastHeaderStateRef !== entityState ||
         context._lastHeaderLocaleRef !== locale ||
         context._lastHeaderUnitSystemRef !== unitSystem ||
-        context._lastHeaderEditMode !== isEditing) {
+        context._lastHeaderEditMode !== isEditing ||
+        context._lastHeaderTemplateVersion !== templateVersion) {
 
         context._lastHeaderConfigRef = context.config;
         context._lastHeaderStateRef = entityState;
         context._lastHeaderLocaleRef = locale;
         context._lastHeaderUnitSystemRef = unitSystem;
         context._lastHeaderEditMode = isEditing;
+        context._lastHeaderTemplateVersion = templateVersion;
         _snapshotSubButtonEntityRefs(context);
         return true;
     }

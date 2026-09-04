@@ -233,11 +233,11 @@
       "thanks": "Obrigado por fazer parte desta comunidade incrível! Saudações da Bélgica! 🍻"
     },
     "styles": {
-      "title": "Estilos personalizados e modelos JS",
-      "body1": "Para usuários avançados: você pode editar o estilo CSS deste cartão no editor de código acima. Mais informações e exemplos {examples_link}. Você não precisa adicionar {code} (usado apenas no modo YAML). Você também pode adicionar {templates_link} (Jinja não é suportado).",
+      "title": "Estilos personalizados e modelos",
+      "body1": "Para usuários avançados: você pode editar o estilo CSS deste cartão no editor de código acima. Mais informações e exemplos {examples_link}. Você não precisa adicionar {code} (usado apenas no modo YAML). Você também pode adicionar {templates_link}.",
       "js_templates": "modelos JS",
       "body2": "Confira meu {patreon_link} para mais estilos personalizados, modelos e módulos. Esta também é a melhor forma de mostrar seu apoio ao meu projeto.",
-      "error_title": "Erro no modelo JS",
+      "error_title": "Erro no modelo",
       "error_delayed": "Os erros de modelos JS às vezes podem aparecer com atraso no editor de módulos."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Você precisa definir um tipo de cartão",
       "entity_required": "Você precisa definir uma entidade",
+      "unquoted_template": "Coloque o modelo entre aspas, por exemplo name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Você precisa definir uma lista de entidades",
       "link_required": "Você precisa definir {key}",
       "duplicate_link": "Você não pode usar {value} duas vezes",

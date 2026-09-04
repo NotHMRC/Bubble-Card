@@ -1,6 +1,8 @@
 import { getAttribute, isColorLight, isEntityType, adjustColor } from "./utils.js";
 import { isColorCloseToWhite } from "./style.js";
 import { monotonicNow } from "./monotonic-time.js";
+import { resolveTemplate } from "./render-template.js";
+import { isTemplate } from "./jinja.js";
 
 // Same budget as the pop-up open hass gate drain: short enough to leave room
 // for a transition frame, long enough to keep the batch cheap.
@@ -305,7 +307,9 @@ function ensurePlatformIcons(hass, entity) {
 export function getIcon(context, entity = context.config.entity, icon = context.config.icon) {
   const hass = context?._hass;
 
-  // Static config icon: return immediately, no resource loading needed.
+  // A configured icon wins. A template rendering nothing, or not rendered
+  // yet, falls through to the entity's own icon like an absent one would.
+  if (isTemplate(icon)) icon = resolveTemplate(context, icon, entity);
   if (icon) return icon;
 
   // Entity registry icon (set via HA UI)
@@ -400,7 +404,7 @@ export function getIconColor(context, entity = context.config.entity, brightness
 export function getImage(context, entity = context.config.entity, ignoreConfigIcon = false) {
     // Don't show entity picture if force_icon is set or if an icon is explicitly configured
     // Unless ignoreConfigIcon is true (e.g., for sub-buttons that should only check their own icon)
-    if (!ignoreConfigIcon && (context.config.force_icon || context.config.icon)) return '';
+    if (!ignoreConfigIcon && (context.config.force_icon || resolveTemplate(context, context.config.icon, entity))) return '';
 
     const entityPicture =
       getAttribute(context, "entity_picture_local", entity) ||

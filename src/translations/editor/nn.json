@@ -233,11 +233,11 @@
       "thanks": "Takk for at du er ein del av dette fantastiske fellesskapet! Skål frå Belgia! 🍻"
     },
     "styles": {
-      "title": "Eigendefinerte stilar & JS-malar",
-      "body1": "Avanserte brukarar kan redigere CSS-stilen til kortet i kodeeditoren ovanfor. Meir informasjon og døme {examples_link}. Du treng ikkje å leggje til {code} (blir berre brukt i YAML-modus). Du kan også leggje til {templates_link} (Jinja er ikkje støtta).",
+      "title": "Eigendefinerte stilar & malar",
+      "body1": "Avanserte brukarar kan redigere CSS-stilen til kortet i kodeeditoren ovanfor. Meir informasjon og døme {examples_link}. Du treng ikkje å leggje til {code} (blir berre brukt i YAML-modus). Du kan også leggje til {templates_link}.",
       "js_templates": "JS-malar",
       "body2": "Sjekk ut min {patreon_link} for fleire eigendefinerte stilar, malar og modular. Det er også den beste måten å vise støtta di til prosjektet mitt på.",
-      "error_title": "Feil i JS-mal",
+      "error_title": "Feil i malen",
       "error_delayed": "Feil i JS-malar kan nokre gonger vere forseinka i modulredigeraren."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Du må oppgi ein korttype",
       "entity_required": "Du må oppgi ein entitet",
+      "unquoted_template": "Set malen i hermeteikn, til dømes name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Du må oppgi ei entitetsliste",
       "link_required": "Du må oppgi {key}",
       "duplicate_link": "Du kan ikkje bruke {value} to gonger",

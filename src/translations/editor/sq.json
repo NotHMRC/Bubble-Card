@@ -233,11 +233,11 @@
       "thanks": "Faleminderit që jeni pjesë e këtij komuniteti të mrekullueshëm! Të fala nga Belgjika! 🍻"
     },
     "styles": {
-      "title": "Stile të personalizuara dhe shabllone JS",
-      "body1": "Për përdoruesit e avancuar, mund të modifikoni stilin CSS të kësaj karte në editorin e kodit më lart. Më shumë informacion dhe shembuj {examples_link}. Nuk keni nevojë të shtoni {code} (përdoret vetëm në modalitetin YAML). Mund të shtoni gjithashtu {templates_link} (Jinja nuk mbështetet).",
+      "title": "Stile të personalizuara dhe shabllone",
+      "body1": "Për përdoruesit e avancuar, mund të modifikoni stilin CSS të kësaj karte në editorin e kodit më lart. Më shumë informacion dhe shembuj {examples_link}. Nuk keni nevojë të shtoni {code} (përdoret vetëm në modalitetin YAML). Mund të shtoni gjithashtu {templates_link}.",
       "js_templates": "shabllone JS",
       "body2": "Shikoni {patreon_link} tim për më shumë stile, shabllone dhe module të personalizuara. Kjo është gjithashtu mënyra më e mirë për të treguar mbështetjen tuaj për projektin tim.",
-      "error_title": "Gabim në shabllonin JS",
+      "error_title": "Gabim në shabllon",
       "error_delayed": "Gabimet e shablloneve JS ndonjëherë mund të shfaqen me vonesë në Editorin e Moduleve."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Duhet të përcaktoni një lloj karte",
       "entity_required": "Duhet të përcaktoni një entitet",
+      "unquoted_template": "Vendoseni shabllonin në thonjëza, për shembull name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Duhet të përcaktoni një listë entitetesh",
       "link_required": "Duhet të përcaktoni {key}",
       "duplicate_link": "Nuk mund ta përdorni {value} dy herë",

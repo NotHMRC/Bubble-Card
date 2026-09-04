@@ -1,3 +1,5 @@
+import { resolveTemplate } from "../../../../tools/render-template.js";
+import { isTemplate } from "../../../../tools/jinja.js";
 import { createElement, isEntityType } from "../../../../tools/utils.js";
 import { normalizeNameToClass } from "../../create.js";
 import { createSliderStructure } from "../../../slider/index.js";
@@ -57,7 +59,7 @@ function applySliderIdentityClasses(sliderContainer, options) {
     delete sliderContainer.dataset.sliderIndexClass;
   }
 
-  const nameClass = normalizeNameToClass(options.subButton?.name);
+  const nameClass = isTemplate(options.subButton?.name) ? null : normalizeNameToClass(options.subButton?.name);
   const previousNameClass = sliderContainer.dataset?.sliderNameClass;
   if (previousNameClass && previousNameClass !== nameClass) {
     sliderContainer.classList.remove(previousNameClass);
@@ -572,13 +574,14 @@ export function handleSliderSubButton(context, element, options) {
   // For hue/saturation/white_temp: use explicit subButton.icon or color-specific default.
   // For brightness or undefined type: revert to previous behavior (use options.icon which may inherit entity icon).
   const sliderType = options.subButton?.light_slider_type ?? options.light_slider_type;
+  const configuredIcon = resolveTemplate(context, options.subButton?.icon, options.entity);
   let resolvedIcon;
   if (sliderType === 'hue') {
-    resolvedIcon = options.subButton?.icon || 'mdi:palette';
+    resolvedIcon = configuredIcon || 'mdi:palette';
   } else if (sliderType === 'saturation') {
-    resolvedIcon = options.subButton?.icon || 'mdi:contrast-circle';
+    resolvedIcon = configuredIcon || 'mdi:contrast-circle';
   } else if (sliderType === 'white_temp') {
-    resolvedIcon = options.subButton?.icon || 'mdi:thermometer';
+    resolvedIcon = configuredIcon || 'mdi:thermometer';
   } else {
     resolvedIcon = options.icon;
   }

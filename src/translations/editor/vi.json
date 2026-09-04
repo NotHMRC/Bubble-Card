@@ -233,11 +233,11 @@
       "thanks": "Cảm ơn bạn đã là một phần của cộng đồng tuyệt vời này! Lời chào từ Bỉ! 🍻"
     },
     "styles": {
-      "title": "Kiểu dáng tùy chỉnh & mẫu JS",
-      "body1": "Với người dùng nâng cao, bạn có thể chỉnh sửa kiểu CSS của thẻ này trong trình soạn mã ở trên. Thông tin và ví dụ thêm {examples_link}. Bạn không cần thêm {code} (chỉ dùng trong chế độ YAML). Bạn cũng có thể thêm {templates_link} (không hỗ trợ Jinja).",
+      "title": "Kiểu dáng tùy chỉnh & mẫu",
+      "body1": "Với người dùng nâng cao, bạn có thể chỉnh sửa kiểu CSS của thẻ này trong trình soạn mã ở trên. Thông tin và ví dụ thêm {examples_link}. Bạn không cần thêm {code} (chỉ dùng trong chế độ YAML). Bạn cũng có thể thêm {templates_link}.",
       "js_templates": "mẫu JS",
       "body2": "Hãy xem {patreon_link} của tôi để có thêm kiểu dáng tùy chỉnh, mẫu và mô-đun. Đây cũng là cách tốt nhất để thể hiện sự ủng hộ với dự án của tôi.",
-      "error_title": "Lỗi trong mẫu JS",
+      "error_title": "Lỗi trong mẫu",
       "error_delayed": "Lỗi mẫu JS đôi khi có thể hiển thị trễ trong Trình chỉnh sửa mô-đun."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Bạn cần xác định loại thẻ",
       "entity_required": "Bạn cần xác định một thực thể",
+      "unquoted_template": "Đặt mẫu trong dấu ngoặc kép, ví dụ name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Bạn cần xác định danh sách thực thể",
       "link_required": "Bạn cần xác định {key}",
       "duplicate_link": "Bạn không thể dùng {value} hai lần",

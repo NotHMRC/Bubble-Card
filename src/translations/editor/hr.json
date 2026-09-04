@@ -233,11 +233,11 @@
       "thanks": "Hvala što ste dio ove sjajne zajednice! Pozdrav iz Belgije! 🍻"
     },
     "styles": {
-      "title": "Prilagođeni stilovi i JS predlošci",
-      "body1": "Za napredne korisnike: CSS stil ove kartice možete uređivati u gornjem uređivaču koda. Više informacija i primjera {examples_link}. Ne trebate dodavati {code} (koristi se samo u YAML načinu). Možete dodati i {templates_link} (Jinja nije podržana).",
+      "title": "Prilagođeni stilovi i predlošci",
+      "body1": "Za napredne korisnike: CSS stil ove kartice možete uređivati u gornjem uređivaču koda. Više informacija i primjera {examples_link}. Ne trebate dodavati {code} (koristi se samo u YAML načinu). Možete dodati i {templates_link}.",
       "js_templates": "JS predloške",
       "body2": "Pogledajte moj {patreon_link} za više prilagođenih stilova, predložaka i modula. To je ujedno i najbolji način da podržite moj projekt.",
-      "error_title": "Greška u JS predlošku",
+      "error_title": "Greška u predlošku",
       "error_delayed": "Greške JS predložaka u uređivaču modula ponekad se mogu pojaviti s odgodom."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Morate definirati vrstu kartice",
       "entity_required": "Morate definirati entitet",
+      "unquoted_template": "Stavite predložak u navodnike, na primjer name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Morate definirati popis entiteta",
       "link_required": "Morate definirati {key}",
       "duplicate_link": "Ne možete koristiti {value} dvaput",

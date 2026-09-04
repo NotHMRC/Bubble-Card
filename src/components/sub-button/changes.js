@@ -7,6 +7,7 @@ import { handleDropdownSubButton } from "./types/dropdown/index.js";
 import { handleSliderSubButton } from "./types/slider/index.js";
 import { updateSlider } from "../slider/changes.js";
 import { scheduleSubButtonOutlines } from "./outline.js";
+import { isTemplate } from "../../tools/jinja.js";
 
 export function updateSubButtons(context, subButtons) {
   if (!subButtons) return;
@@ -48,7 +49,7 @@ export function updateSubButtons(context, subButtons) {
         let element = context.elements[options.index];
         if (!element) {
           const classes = [`bubble-sub-button`, `bubble-sub-button-${options.index}`];
-          if (subButton?.name) {
+          if (subButton?.name && !isTemplate(subButton.name)) {
             const nameClass = normalizeNameToClass(subButton.name);
             if (nameClass) {
               classes.push(nameClass);

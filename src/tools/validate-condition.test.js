@@ -3,8 +3,10 @@ import { afterEach, beforeEach, describe, expect, jest, test } from '@jest/globa
 import {
     checkConditionsMet,
     extractConditionEntityIds,
+    isTemplateResultTruthy,
     validateConditionalConfig,
 } from './validate-condition.js';
+import { _resetTemplateStore } from './render-template.js';
 import { PLATFORM_CONDITIONS } from './ha-conditions.js';
 
 function makeState(entityId, state, attributes = {}, extra = {}) {
@@ -617,5 +619,85 @@ describe('validateConditionalConfig', () => {
 
         expect(validateConditionalConfig(conditions)).toBe(true);
         expect(checkConditionsMet(conditions, hass)).toBe(true);
+    });
+});
+
+describe('checkConditionsMet - template conditions rendered by the server', () => {
+    function makeConnectedHass() {
+        const subscriptions = [];
+        const hass = makeHass({}, {
+            connection: {
+                subscribeMessage: jest.fn((callback, params) => {
+                    subscriptions.push({ callback, params });
+                    return Promise.resolve(() => {});
+                }),
+            },
+        });
+        return { hass, subscriptions };
+    }
+
+    afterEach(() => {
+        _resetTemplateStore();
+    });
+
+    test('isTemplateResultTruthy reads a parsed result the way Home Assistant does', () => {
+        expect(isTemplateResultTruthy(true)).toBe(true);
+        expect(isTemplateResultTruthy(1)).toBe(true);
+        expect(isTemplateResultTruthy(2.5)).toBe(true);
+        expect(isTemplateResultTruthy('True')).toBe(true);
+        expect(isTemplateResultTruthy(' yes ')).toBe(true);
+        expect(isTemplateResultTruthy('on')).toBe(true);
+        expect(isTemplateResultTruthy('1')).toBe(true);
+        expect(isTemplateResultTruthy(false)).toBe(false);
+        expect(isTemplateResultTruthy(0)).toBe(false);
+        expect(isTemplateResultTruthy('off')).toBe(false);
+        expect(isTemplateResultTruthy('')).toBe(false);
+        expect(isTemplateResultTruthy(undefined)).toBe(false);
+        expect(isTemplateResultTruthy(null)).toBe(false);
+    });
+
+    test('a template condition is subscribed on behalf of the card and follows the parsed result', async () => {
+        const { hass, subscriptions } = makeConnectedHass();
+        const owner = { config: { card_type: 'button', entity: 'light.a' }, onTemplateResults: jest.fn() };
+        const conditions = [{ condition: 'template', value_template: '{{ is_state("light.a", "on") }}' }];
+
+        expect(checkConditionsMet(conditions, hass, owner)).toBe(false);
+        await Promise.resolve();
+
+        expect(subscriptions).toHaveLength(1);
+        expect(subscriptions[0].params).toMatchObject({
+            type: 'render_template',
+            template: '{{ is_state("light.a", "on") }}',
+            strict: false,
+            report_errors: false,
+        });
+        expect(owner._templateKeys.size).toBe(1);
+
+        subscriptions[0].callback({ result: true });
+        expect(checkConditionsMet(conditions, hass, owner)).toBe(true);
+    });
+
+    test('a nested template condition is still subscribed for the card', async () => {
+        const { hass, subscriptions } = makeConnectedHass();
+        const owner = { config: {} };
+        checkConditionsMet([{ condition: 'or', conditions: [{ condition: 'template', value_template: '{{ 1 }}' }] }], hass, owner);
+        await Promise.resolve();
+        expect(subscriptions).toHaveLength(1);
+        expect(owner._templateKeys.size).toBe(1);
+    });
+
+    test('a numeric_state value_template gets the value and the entity id, not the state object', async () => {
+        const { hass, subscriptions } = makeConnectedHass();
+        hass.states['sensor.power'] = makeState('sensor.power', '120');
+        const condition = { condition: 'numeric_state', entity_id: 'sensor.power', value_template: '{{ value | float / 10 }}', above: 5 };
+
+        checkConditionsMet([condition], hass, { config: {} });
+        await Promise.resolve();
+
+        expect(subscriptions[0].params.variables).toEqual({ value: '120', entity_id: 'sensor.power' });
+
+        subscriptions[0].callback({ result: 12 });
+        expect(checkConditionsMet([condition], hass, { config: {} })).toBe(true);
+        expect(subscriptions).toHaveLength(1);
     });
 });

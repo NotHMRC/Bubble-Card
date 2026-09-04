@@ -233,11 +233,11 @@
       "thanks": "Tank datst diel útmakkest fan dizze geweldige mienskip! Proast út Belgje! 🍻"
     },
     "styles": {
-      "title": "Oanpaste stilen & JS-sjabloanen",
-      "body1": "Avansearre brûkers kinne de CSS-styl fan dizze kaart bewurkje yn de koadebewurker hjirboppe. Mear ynformaasje en foarbylden {examples_link}. Do hoechst {code} net ta te foegjen (allinnich brûkt yn YAML-modus). Do kinst ek {templates_link} tafoegje (Jinja wurdt net stipe).",
+      "title": "Oanpaste stilen & sjabloanen",
+      "body1": "Avansearre brûkers kinne de CSS-styl fan dizze kaart bewurkje yn de koadebewurker hjirboppe. Mear ynformaasje en foarbylden {examples_link}. Do hoechst {code} net ta te foegjen (allinnich brûkt yn YAML-modus). Do kinst ek {templates_link} tafoegje.",
       "js_templates": "JS-sjabloanen",
       "body2": "Sjoch op myn {patreon_link} foar mear oanpaste stilen, sjabloanen en modules. Dit is ek de bêste manier om dyn stipe oan myn projekt sjen te litten.",
-      "error_title": "Flater yn JS-sjabloan",
+      "error_title": "Flater yn sjabloan",
       "error_delayed": "Flaters yn JS-sjabloanen kinne yn de modulebewurker soms fertrage ferskine."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Do moatst in kaarttype opjaan",
       "entity_required": "Do moatst in entiteit opjaan",
+      "unquoted_template": "Set it sjabloan tusken oanhellingstekens, lykas name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Do moatst in entiteitelist opjaan",
       "link_required": "Do moatst {key} opjaan",
       "duplicate_link": "Do kinst {value} net twa kear brûke",

@@ -2,7 +2,8 @@ import { getState } from "./utils.js";
 import { getWeatherIcon } from "./icon.js";
 import { getSubButtonsStates } from "../components/sub-button/changes.js";
 import { checkConditionsMet } from './validate-condition.js';
-import { onTemplateChange } from './render-template.js';
+import { getTemplateResult, setStyleRefresher, TEMPLATE_STYLE } from './render-template.js';
+import { splitStyleTemplate, isTemplate, templateResultToText } from './jinja.js';
 import { yamlKeysMap } from '../modules/registry.js';
 import { isBCTAvailableSync } from '../modules/bct-provider.js';
 import { cleanCSS } from './clean-css.js';
@@ -66,20 +67,64 @@ function _detectedTemplateTypes(styles) {
   );
 }
 
-// A template with no ${} placeholder has nothing to interpolate, so it resolves
-// to the same CSS for every card, every hass and every state. Jinja cannot make
-// it vary either: a {{ }} template only reaches the styles through
-// checkConditionsMet, which is callable from inside a ${} expression and nowhere
-// else. Its cleaned output is therefore a constant of the template string, and
-// worth caching globally rather than per card: the fingerprint memo further down
-// keys on the identity of hass, which Home Assistant replaces on every state
-// change of the whole installation, so it misses for every card at once several
-// times per page load.
+// A template with no ${} placeholder and no Home Assistant template has nothing
+// to interpolate, so it resolves to the same CSS for every card, every hass and
+// every state. Its cleaned output is therefore a constant of the template
+// string, and worth caching globally rather than per card: the fingerprint memo
+// further down keys on the identity of hass, which Home Assistant replaces on
+// every state change of the whole installation, so it misses for every card at
+// once several times per page load.
 const _staticTemplateCache = new Map();
 function _isStaticTemplate(styles) {
-  return _memoByTemplate(_staticTemplateCache, styles, (s) => !s.includes("${"));
+  return _memoByTemplate(_staticTemplateCache, styles, (s) => !s.includes("${") && !isTemplate(s));
 }
 const _staticResultCache = new Map();
+
+// The Home Assistant templates of a styles block, taken out once per string
+// (see splitStyleTemplate), null for the common block that has none. A block
+// tag pair split by a `${ }` reaches the server in two halves, each of them a
+// syntax error, which is worth one line in the console rather than a silent
+// blank.
+const _segmentsCache = new Map();
+function _styleSegments(styles) {
+  return _memoByTemplate(_segmentsCache, styles, (s) => {
+    const split = splitStyleTemplate(s);
+    if (split && split.unbalanced.length > 0) {
+      console.warn('Bubble Card - A Jinja block ({% if %}, {% for %}...) cannot enclose a ${ } JavaScript template, move the ${ } out of the block:', split.segments[split.unbalanced[0]].substring(0, 80));
+    }
+    return split;
+  });
+}
+
+// The rendered value of every segment, read on every evaluation, memo hit or
+// not: reading is what tells the store this card still holds the template.
+// A value the server has not answered yet is empty for now, and the card is
+// told its styles are still on their way.
+function _resolveStyleSegments(context, split) {
+  const hass = context._hass;
+  const entity = context.config?.entity;
+  const segments = split.segments;
+  const values = new Array(segments.length);
+  for (let i = 0; i < segments.length; i++) {
+    const result = getTemplateResult(hass, segments[i], entity, context, TEMPLATE_STYLE);
+    if (result === undefined) {
+      context._stylesPending = true;
+      values[i] = '';
+    } else {
+      values[i] = templateResultToText(result);
+    }
+  }
+  return values;
+}
+
+// The templates a style template rendered through renderTemplate() on its
+// last execution, read again on a memo hit for the same reason as above.
+function _retainTemplateCalls(context, calls) {
+  const hass = context._hass;
+  for (let i = 0; i < calls.length; i++) {
+    getTemplateResult(hass, calls[i][0], calls[i][1], context, TEMPLATE_STYLE);
+  }
+}
 
 // Null-safe stub for DOM element references passed to user style templates.
 // Used when context.elements.icon is not yet initialized (e.g. a popup whose
@@ -273,28 +318,13 @@ export const handleCustomStyles = (context, element = context.card) => {
       handleCustomStyles(context, targetElement);
     };
 
-    // Light refresh for template result changes (no need to clear module caches)
-    const templateRefreshHandler = () => {
-      context.lastEvaluatedStyles = "";
-      // Increment template version counter for modules that track template changes
-      context._templateResultVersion = (context._templateResultVersion || 0) + 1;
-      // Invalidate bubble_badges module cache to force re-evaluation
-      if (context._bb_cache) {
-        context._bb_cache.lastStateSignature = '';
-      }
-      const targetElement = context.cardType === 'pop-up' && context.popUp ? context.popUp : context.card;
-      handleCustomStyles(context, targetElement);
-    };
-
+    // A template result change is not handled here: the store renders the
+    // cards that hold the template, through onTemplateResults on the element.
     window.addEventListener('bubble-card-modules-changed', refreshHandler);
     window.addEventListener('bubble-card-module-updated', refreshHandler);
-    // Subscribe to template changes, keeping the deleter: without it the
-    // module-level subscriber Set retains every card ever rendered.
-    context._templateChangeUnsubscribe = onTemplateChange(templateRefreshHandler);
     document.addEventListener('yaml-modules-updated', refreshHandler);
     context._moduleChangeListenerAdded = true;
     context._moduleChangeHandler = refreshHandler;
-    context._templateChangeHandler = templateRefreshHandler;
   }
 
   // Hide the card during the initial loading only
@@ -416,6 +446,9 @@ function _handleCustomStylesCore(context, parsedYamlModules, styleElementToInjec
     const cycleSubButtonStates = getSubButtonsStates(context);
     const cycleState = getState(context);
 
+    // Set again by any style whose Home Assistant template is still pending.
+    context._stylesPending = false;
+
     const stylesParts = [];
     if (modulesToApply.length > 0) {
       for (const moduleId of modulesToApply) {
@@ -481,15 +514,8 @@ function _handleCustomStylesCore(context, parsedYamlModules, styleElementToInjec
     // so a pass on the card takes the flag down and a pop-up pass still in
     // flight would skip its own un-hide, leaving the container hidden for good.
     if (loadHideTarget?.dataset?.bubbleStyleHideMode) {
-      if (loadHideTarget.dataset.bubbleStyleHideMode === 'visibility') {
-        loadHideTarget.style.visibility = '';
-      } else {
-        loadHideTarget.style.display = '';
-      }
-      delete loadHideTarget.dataset.bubbleStyleHideMode;
-      if (!isDirectStyleElement) { 
-        context.initialLoad = false;
-        context.cardLoaded = true;
+      if (!_holdForPendingTemplates(context, loadHideTarget, isDirectStyleElement, loadHideMode)) {
+        _revealLoadHideTarget(context, loadHideTarget, isDirectStyleElement);
       }
     }
   } catch (error) {
@@ -497,6 +523,52 @@ function _handleCustomStylesCore(context, parsedYamlModules, styleElementToInjec
     if (context.initialLoad && targetElementForDisplayLogic?.style) {
         targetElementForDisplayLogic.style.display = "";
     }
+  }
+}
+
+// A card whose styles wait on the server would paint unstyled for a round
+// trip, then jump. Its first reveal waits a little longer, with the box kept so
+// the layout around it does not move, and never past a short cap: a template
+// that never answers must not hide a card for good. A pop-up shell is left out,
+// its open sequence measures the geometry it keeps still, and so is an editor
+// preview, rebuilt on every keystroke.
+const templateHoldMs = 500;
+function _holdForPendingTemplates(context, target, isDirectStyleElement, loadHideMode) {
+  if (!context._stylesPending || isDirectStyleElement || loadHideMode === 'visibility'
+    || context._templateHoldExpired || context.inEditorPreview) {
+    return false;
+  }
+  if (target.dataset.bubbleStyleHideMode === 'display') {
+    target.style.display = '';
+    target.style.visibility = 'hidden';
+    target.dataset.bubbleStyleHideMode = 'visibility';
+  }
+  if (!context._templateHoldTimer) {
+    context._templateHoldTimer = setTimeout(() => {
+      context._templateHoldTimer = null;
+      context._templateHoldExpired = true;
+      if (target.dataset?.bubbleStyleHideMode) {
+        _revealLoadHideTarget(context, target, isDirectStyleElement);
+      }
+    }, templateHoldMs);
+  }
+  return true;
+}
+
+function _revealLoadHideTarget(context, target, isDirectStyleElement) {
+  if (context._templateHoldTimer) {
+    clearTimeout(context._templateHoldTimer);
+    context._templateHoldTimer = null;
+  }
+  if (target.dataset.bubbleStyleHideMode === 'visibility') {
+    target.style.visibility = '';
+  } else {
+    target.style.display = '';
+  }
+  delete target.dataset.bubbleStyleHideMode;
+  if (!isDirectStyleElement) {
+    context.initialLoad = false;
+    context.cardLoaded = true;
   }
 }
 
@@ -529,6 +601,11 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
     if (_staticCached !== undefined) return _staticCached;
   }
 
+  // The Home Assistant templates of the block, read before the memo below so
+  // the store knows this card still holds them, whether or not it executes.
+  const _split = _styleSegments(styles);
+  const _jinja = _split ? _resolveStyleSegments(context, _split) : null;
+
   // Input-fingerprint memoization: skip executing the compiled template entirely
   // when the inputs that templates can depend on are unchanged.
   // In Home Assistant the whole `hass` object is replaced on any state change, so an
@@ -552,6 +629,7 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
     && _fpCached.stateKey === _cachedState
     && _fpCached.subKey === _subButtonKey
     && _fpCached.templateVersion === (context._templateResultVersion || 0)) {
+    if (_fpCached.templateCalls) _retainTemplateCalls(context, _fpCached.templateCalls);
     return _fpCached.cleaned;
   }
 
@@ -570,7 +648,9 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
         "checkConditionsMet",
         "onTeardown",
         "hasChanged",
-        `return \`${s}\`;`
+        "__jinja",
+        "renderTemplate",
+        `return \`${_split ? _split.source : s}\`;`
       )
     );
 
@@ -581,6 +661,21 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
     }
 
     const card = _safeRef(context.config.card_type === 'pop-up' ? context.popUp : context.card);
+
+    // Renders a Home Assistant template from inside a style template, the way
+    // a text field would, for the text a template writes into the card. What
+    // it rendered is kept so a memo hit can read the templates again.
+    context._templateCalls = null;
+    const renderTemplate = (template, entity = context.config?.entity) => {
+      if (!isTemplate(template)) return template ?? '';
+      const result = getTemplateResult(context._hass, template, entity, context, TEMPLATE_STYLE);
+      (context._templateCalls || (context._templateCalls = [])).push([template, entity]);
+      if (result === undefined) {
+        context._stylesPending = true;
+        return '';
+      }
+      return templateResultToText(result);
+    };
 
     // Execute the compiled function to get the raw string result
     const rawResult = compiledFunction.apply(context, [
@@ -595,13 +690,17 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
       getWeatherIcon,
       card,
       card.name,
-      checkConditionsMet,
+      // Bound to the card, so a template condition it evaluates renders the
+      // card again when the server answers.
+      context._checkConditionsMet || (context._checkConditionsMet = (conditions, hass) => checkConditionsMet(conditions, hass, context)),
       // Keyed by the source being evaluated, so a module that registers on each
       // of its passes replaces its own entry rather than stacking one per pass.
       (fn) => registerModuleTeardown(context, teardownKey(sourceInfo), fn),
       // Same keying as the teardown: per module and per card, plus the module's
       // own label, so one module can gate several independent pieces of work.
       (label, ...values) => hasChanged(context, `${teardownKey(sourceInfo)}::${label}`, values),
+      _jinja,
+      renderTemplate,
     ]);
 
     // Optimization: Local cache to avoid re-cleaning CSS if the raw output hasn't changed.
@@ -627,6 +726,7 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
       stateKey: _cachedState,
       subKey: _subButtonKey,
       templateVersion: context._templateResultVersion || 0,
+      templateCalls: context._templateCalls,
     });
 
     return cleanedResult;
@@ -657,7 +757,8 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
       // Create error context object for filtering
       const errorContext = {
         cardType: cardType,
-        entityId: entityId,
+        entityId: context.config?.entity,
+        hash: context.config?.hash,
         sourceType: sourceInfo.type,
         moduleId: sourceInfo.id
       };
@@ -695,3 +796,6 @@ function emitEditorError(message, errorContext) {
     }
   }));
 }
+
+// A template result that only concerns styles refreshes them without a render.
+setStyleRefresher((context) => handleCustomStyles(context, context.card));

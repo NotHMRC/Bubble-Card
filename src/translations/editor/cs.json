@@ -233,11 +233,11 @@
       "thanks": "Děkuji, že jste součástí této skvělé komunity! Zdravím z Belgie! 🍻"
     },
     "styles": {
-      "title": "Vlastní styly a šablony JS",
-      "body1": "Pokročilí uživatelé mohou ve výše uvedeném editoru kódu upravit CSS styl této karty. Více informací a příkladů {examples_link}. Není třeba přidávat {code} (používá se pouze v režimu YAML). Můžete také přidat {templates_link} (Jinja není podporována).",
+      "title": "Vlastní styly a šablony",
+      "body1": "Pokročilí uživatelé mohou ve výše uvedeném editoru kódu upravit CSS styl této karty. Více informací a příkladů {examples_link}. Není třeba přidávat {code} (používá se pouze v režimu YAML). Můžete také přidat {templates_link}.",
       "js_templates": "šablony JS",
       "body2": "Podívejte se na můj {patreon_link} s dalšími vlastními styly, šablonami a moduly. Je to také nejlepší způsob, jak podpořit můj projekt.",
-      "error_title": "Chyba v šabloně JS",
+      "error_title": "Chyba v šabloně",
       "error_delayed": "Chyby šablon JS se v editoru modulů mohou někdy projevit se zpožděním."
     },
     "popup": {
@@ -653,6 +653,7 @@
     "errors": {
       "card_type_required": "Musíte definovat typ karty",
       "entity_required": "Musíte definovat entitu",
+      "unquoted_template": "Uzavřete šablonu do uvozovek, například name: \"{{ states('sensor.x') }}\"",
       "entity_list_required": "Musíte definovat seznam entit",
       "link_required": "Musíte definovat {key}",
       "duplicate_link": "Nemůžete použít {value} dvakrát",
