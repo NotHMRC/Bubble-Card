@@ -726,7 +726,8 @@ class BubbleCardEditor extends LitElement {
         // One field for the whole line, the same picker Home Assistant uses on
         // its tile card. Without a key the picker shows what the card shows by
         // default, and clearing it writes an empty list where that default
-        // would otherwise come back.
+        // would otherwise come back. The line describes an entity, so a card
+        // without one, a pop-up header for instance, is not asked about it.
         const stateContentKind = isSubButton ? 'sub_button' : 'card';
         const stateContentDefault = defaultStateContent(context, stateContentKind, entity);
         const stateContentValue = context?.state_content ?? stateContentDefault ?? undefined;
@@ -843,7 +844,7 @@ class BubbleCardEditor extends LitElement {
                     <label class="mdc-label">${t('editor.show.name')}</label>
                 </div>
             </ha-formfield>
-            ${this._renderConditionalContent(!nameButton || isSubButton, html`
+            ${this._renderConditionalContent(isSubButton || (!nameButton && !noEntity), html`
                 <ha-form
                     .hass=${this._hassRender}
                     .data=${{ state_content: stateContentValue }}
@@ -855,7 +856,6 @@ class BubbleCardEditor extends LitElement {
                             }
                         }
                     }]}
-                    .disabled=${noEntity && !isSubButton}
                     .computeLabel=${() => t('editor.show.state_content')}
                     @value-changed=${onStateContentChanged}
                 ></ha-form>
