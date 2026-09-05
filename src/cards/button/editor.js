@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { isEntityType } from "../../tools/utils.js";
+import { hasClassicHeader } from "../pop-up/style.js";
 import setupTranslation from '../../tools/localize.js';
 import { tTemplate } from '../../editor/utils.js';
 import { makeButtonSliderPanel } from '../../components/slider/editor.js';
@@ -39,10 +40,14 @@ export function renderButtonEditor(editor){
 
     let button_action = editor._config.button_action || '';
 
-    const isClassicStyle = editor._config.popup_style === 'classic';
+    // The classic and the Home Assistant styles both wear the header of the more
+    // info dialog, which is never a switch nor a slider, so neither of them
+    // offers the button type or its actions. The config is left alone, going
+    // back to the Bubble style hands the user their own value back.
+    const classicHeader = isPopUp && hasClassicHeader(editor._config);
 
     let button_type;
-    if (isClassicStyle) {
+    if (classicHeader) {
         button_type = 'switch';
     } else {
         if (!editor._config.button_type) {
@@ -50,7 +55,7 @@ export function renderButtonEditor(editor){
         }
         button_type = editor._config.button_type;
     }
-    const buttonTypeDropdown = !isClassicStyle
+    const buttonTypeDropdown = !classicHeader
         ? editor.makeDropdown(t('editor.common.button_type'), "button_type", getButtonList(t))
         : '';
 
@@ -85,12 +90,12 @@ export function renderButtonEditor(editor){
                         .data=${editor._config}
                         .schema=${[
                                     { name: "entity",
-                                    label: isClassicStyle ? editor._optionalLabel(t('editor.common.entity')) : (button_type !== 'slider' ? t('editor.button.entity_toggle') : t('editor.button.entity_slider')),
+                                    label: classicHeader ? editor._optionalLabel(t('editor.common.entity')) : (button_type !== 'slider' ? t('editor.button.entity_toggle') : t('editor.button.entity_slider')),
                                     selector: { entity: entityList },
                                     },
                                 ]}
                         .computeLabel=${editor._computeLabelCallback}
-                        .disabled="${editor._config.button_type === 'name'}"
+                        .disabled="${button_type === 'name'}"
                         @value-changed=${editor._valueChanged}
                     ></ha-form>` : ''}
                     <ha-form
@@ -113,7 +118,7 @@ export function renderButtonEditor(editor){
                 </div>
             </ha-expansion-panel>
             ${makeButtonSliderPanel(editor)}
-            ${!isClassicStyle ? html`
+            ${!classicHeader ? html`
             <ha-expansion-panel outlined>
                 <h4 slot="header">
                 <ha-icon icon="mdi:gesture-tap"></ha-icon>
