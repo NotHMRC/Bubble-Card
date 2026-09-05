@@ -412,7 +412,7 @@ Ova kartica je veoma svestrana. Može se koristiti kao **prekidač**, **klizač*
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaše dugme, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Samo za svetla.** Koristi akcentnu boju teme umesto boje svetla.                         |
-| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#šabloni) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
@@ -547,7 +547,7 @@ Ova kartica vam omogućava da kontrolišete entitet medija plejera.
 | `name` | string | Optional | Any string | Naziv vašeg medija plejera, ako nije definisan biće prikazan naziv entiteta |
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaš medija plejer, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#šabloni) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
@@ -663,7 +663,7 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `cover`.
 | `entity` | string | **Required** | Any cover | Roletna koja se kontroliše |
 | `name` | string | Optional | Any string | Naziv vaše roletne, ako nije definisan biće prikazan naziv entiteta |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#šabloni) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
@@ -753,7 +753,7 @@ Ova kartica vam omogućava da dodate padajući meni za vaše entitete `input_sel
 | `name` | string | Optional | Any string | Naziv vašeg izbora, ako nije definisan biće prikazan naziv entiteta |
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaš izbor, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#šabloni) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikaži pozadinu za vaše pod-dugme, boja će se menjati u zavisnosti od stanja entiteta |
 | `state_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju stanja kada je entitet `on` |
 | `light_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju svetla za pozadinu kada je dostupna |
-| `state_content` | string ili list | Opciono | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
+| `state_content` | string ili list | Opciono | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#šabloni) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži ili sakrij naziv |
 | `show_icon` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikaži ili sakrij ikonicu |
 | `select_attribute` | string | Opciono | Lista atributa vašeg `entity` (pogledajte podržane opcije gore) | Ova lista atributa otvoriće padajući meni kada se klikne (npr. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Uslovi se vrednuju u vašem pregledaču, pa onih nekoliko kojima je potreban server Home Assistant-a ne mogu biti tačni: izlazak i zalazak sunca se čitaju iz entiteta `sun.sun` umesto da se ponovo izračunaju, a trajanje `for` se meri od poslednje promene stanja, bez istorije iz recorder-a.
+> Uslovi se vrednuju u vašem pregledaču, pa onih nekoliko kojima je potreban server Home Assistant-a ne mogu biti tačni: izlazak i zalazak sunca se čitaju iz entiteta `sun.sun` umesto da se ponovo izračunaju, a trajanje `for` se meri od poslednje promene stanja, bez istorije iz recorder-a. Izuzetak je `template`, koji server renderuje kao i svaki drugi [Home Assistant šablon](#šabloni).
 >
 > `view_columns` se prihvata ali uvek prolazi, pošto Bubble Card nikada ne raspoređuje kolone vašeg prikaza. Tip uslova koji Bubble Card ne poznaje jednom se prijavi u konzoli vašeg pregledača umesto da tiho zakaže, tako da možete razlikovati grešku u kucanju od funkcije koja nedostaje.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Šabloni
 
-**Bubble Card ne podržava Jinja šablone**, ali napredni korisnici mogu dodati šablone u JS-u direktno u svoje [prilagođene stilove](#stilizovanje). Ovo, na primer, omogućava da dinamički promenite ikonu, tekstove ili boje elementa, da prikažete ili sakrijete element uslovno (kao pod-dugme), ili gotovo bilo šta na osnovu stanja, atributa i drugog.
+Bubble Card podržava dve vrste šablona:
+
+- **Home Assistant šabloni (Jinja)**, oni koje već pišete u svojim automatizacijama, u Mushroom-u ili u card-mod-u. Stavite `{{ ... }}` ili `{% ... %}` u podržano polje i Home Assistant ga renderuje za vas, uživo.
+- **JavaScript šabloni**, `${ ... }` unutar vaših [prilagođenih stilova](#stilizovanje), za sve što mora da dosegne samu karticu.
+
+### Home Assistant šabloni (Jinja)
+
+Šablone renderuje vaš Home Assistant server i sami se ažuriraju kada se promeni ono što čitaju. Rade u ovim poljima:
+
+<details>
+
+<summary><b>Podržana polja (sa primerima)</b></summary>
+
+| Polje | Primer |
+| --- | --- |
+| `name`, na svakoj kartici (uključujući zaglavlje iskačućeg prozora i razdvajač) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, na svakoj kartici (takođe `icon_open`, `icon_close`, `icon_up` i `icon_down` roletne) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` i `icon` [pod-dugmeta](#pod-dugmad) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, na kartici ili pod-dugmetu, pored `state` i naziva atributa | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [horizontalnog niza dugmadi](#horizontalni-niz-dugmadi) | `1_name: "{{ user }}"` |
+| `styles` kartice i kod [modula](#moduli), pomešani sa JavaScript šablonima | vidite ispod |
+| [Uslovi](#uslovi), sa `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Šablon uvek stavite pod navodnike. Bez njih YAML čita `name: {{ states('x') }}` kao mapu umesto kao tekst, a kartica ga odbija.
+
+Tri promenljive su dostupne pored svega što Home Assistant nudi (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filteri, makroi iz vašeg foldera `custom_templates`...):
+
+- `entity` je entitet kartice, ili pod-dugmeta kada je reč o polju pod-dugmeta.
+- `config.entity` je ista vrednost, za šablone koje ste napisali za card-mod.
+- `user` je ime prijavljenog korisnika.
+
+Rezultate Home Assistant parsira tačno kao u alatkama za programere, pa se `21.50` prikazuje kao `21.5`. Dodajte `| string` kada tekst mora da ostane takav kakav je.
+
+<details>
+
+<summary>Home Assistant šabloni u vašim prilagođenim stilovima</summary>
+
+<br>
+
+Šablon može da sadrži vrednost ili da obuhvati cela CSS pravila:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript šabloni i Home Assistant šabloni mogu da dele isti blok. Svako `${ }` držite izvan bloka `{% if %} ... {% endif %}`, svaku stranu renderuje drugi mehanizam i blok presečen na dva dela ne može da se renderuje.
+
+Vašem tekstu u redu stanja ne trebaju nikakvi stilovi, `state_content` prima šablon kao jednu od svojih stavki:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Unutar JavaScript šablona, `renderTemplate("{{ ... }}")` vam daje renderovani tekst Home Assistant šablona, za mesta do kojih šablon sam ne može da dosegne:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Greške se prikazuju u editoru, ispod prilagođenih stilova, i u konzoli vašeg pregledača.
+
+</details>
+
+### JavaScript šabloni
+
+Napredni korisnici mogu dodati šablone u JS-u direktno u svoje [prilagođene stilove](#stilizovanje). Ovo, na primer, omogućava da dinamički promenite ikonu, tekstove ili boje elementa, da prikažete ili sakrijete element uslovno (kao pod-dugme), ili gotovo bilo šta na osnovu stanja, atributa i drugog.
 
 > [!TIP]  
 > Više informacija o JS šablonima [ovde](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Moj savet je da **uvek pogledate konzolu svog pregledača** kako biste bili sigurni da sve funkcioniše ispravno.
@@ -2095,6 +2176,7 @@ Imate pristup svim globalnim JS funkcijama, ali imate pristup i sledećem:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` vraća `true` kada je lista [uslova](#uslovi) ispunjena, na primer `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` vraća tekst koji Home Assistant renderuje za Jinja šablon, na primer `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Drugi argument je ono što šablon vidi kao `entity`, podrazumevano entitet vaše kartice.
 - `hass.formatEntityState(state)` može se koristiti za prevod stanja (Takođe se može koristiti za dobijanje jedinice stanja, bez potrebe da je ručno dodajete).
 - `hass.formatEntityAttributeValue(state, "attribute")` može se koristiti za prevod atributa (Takođe se može koristiti za dobijanje jedinice stanja, bez potrebe da je ručno dodajete).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Ako želite da šablonirate stanje (`.bubble-state`) iz svojih stilova, red se pojavljuje na ekranu čim šablon upiše nešto u njega, bez obzira na to šta kaže `state_content`.
+
+Isto bez ikakvih stilova, sa Home Assistant šablonom u `state_content`, što vam daje i prevedeno stanje:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

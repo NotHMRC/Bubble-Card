@@ -412,7 +412,7 @@ Ta kartica je zelo vsestranska. Uporabite jo lahko kot **stikalo**, **drsnik**, 
 | `icon` | niz | Neobvezno | Katera koli ikona `mdi:` | Ikona za gumb, če ni določena, se prikaže ikona entitete ali `entity-picture` |
 | `force_icon` | boolean | Neobvezno | `true` ali `false` (privzeto) | Daje prednost ikoni namesto `entity-picture` |
 | `use_accent_color` | boolean | Neobvezno (privzeto `false`) | **Samo za luči.** Uporabi poudarjeno barvo teme namesto barve luči.                         |
-| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#templates) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
+| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#predloge) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
 | `show_name` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ime |
 | `show_icon` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ikono |
 | `scrolling_effect` | boolean | Neobvezno | `true` (privzeto) ali `false` | Omogoči drsenje besedila, kadar vsebina presega velikost svojega vsebnika |
@@ -547,7 +547,7 @@ Ta kartica omogoča upravljanje entitete predvajalnika medijev.
 | `name` | niz | Neobvezno | Kateri koli niz | Ime za predvajalnik medijev, če ni določeno, se prikaže ime entitete |
 | `icon` | niz | Neobvezno | Katera koli ikona `mdi:` | Ikona za predvajalnik medijev, če ni določena, se prikaže ikona entitete ali `entity-picture` |
 | `force_icon` | boolean | Neobvezno | `true` ali `false` (privzeto) | Daje prednost ikoni namesto `entity-picture` |
-| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#templates) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
+| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#predloge) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
 | `show_name` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ime |
 | `show_icon` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ikono |
 | `scrolling_effect` | boolean | Neobvezno | `true` (privzeto) ali `false` | Omogoči drsenje besedila, kadar vsebina presega velikost svojega vsebnika |
@@ -663,7 +663,7 @@ Ta kartica omogoča upravljanje entitet `cover`.
 | `entity` | niz | **Obvezno** | Katero koli senčilo | Senčilo za upravljanje |
 | `name` | niz | Neobvezno | Kateri koli niz | Ime za senčilo, če ni določeno, se prikaže ime entitete |
 | `force_icon` | boolean | Neobvezno | `true` ali `false` (privzeto) | Daje prednost ikoni namesto `entity-picture` |
-| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#templates) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
+| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#predloge) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
 | `show_name` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ime |
 | `show_icon` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ikono |
 | `scrolling_effect` | boolean | Neobvezno | `true` (privzeto) ali `false` | Omogoči drsenje besedila, kadar vsebina presega velikost svojega vsebnika |
@@ -753,7 +753,7 @@ Ta kartica omogoča dodajanje spustnega menija za entitete `input_select` / `sel
 | `name` | niz | Neobvezno | Kateri koli niz | Ime za select, če ni določeno, se prikaže ime entitete |
 | `icon` | niz | Neobvezno | Katera koli ikona `mdi:` | Ikona za select, če ni določena, se prikaže ikona entitete ali `entity-picture` |
 | `force_icon` | boolean | Neobvezno | `true` ali `false` (privzeto) | Daje prednost ikoni namesto `entity-picture` |
-| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#templates) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
+| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#predloge) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
 | `show_name` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ime |
 | `show_icon` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaže ali skrije ikono |
 | `scrolling_effect` | boolean | Neobvezno | `true` (privzeto) ali `false` | Omogoči drsenje besedila, kadar vsebina presega velikost svojega vsebnika |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaži ozadje za podgumb, njegova barva se bo spreminjala glede na stanje entitete |
 | `state_background` | boolean | Neobvezno | `true` (privzeto) ali `false` | Uporabi barvo stanja, kadar je entiteta `on` |
 | `light_background` | boolean | Neobvezno | `true` (privzeto) ali `false` | Uporabi barvo luči za ozadje, kadar je na voljo |
-| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#templates) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
+| `state_content` | niz ali list | Neobvezno | `state`, `last-changed`, `last-updated`, `last-triggered`, ime atributa, kot je `brightness` ali `forecast[0].temperature`, ali [predloga](#predloge) | Kaj prikazuje vrstica pod imenom, v tem vrstnem redu. Brez nje gumb `button_type: state` prikazuje to, kar za entiteto prikazuje Home Assistant (njeno stanje, poleg tega pa še trenutno temperaturo klimatske naprave, položaj senčila, svetlost luči). Stari ključi `show_state`, `show_attribute`, `attribute`, `show_last_changed` in `show_last_updated` še vedno delujejo in se ob odprtju urejevalnika prepišejo v `state_content`. |
 | `show_name` | boolean | Neobvezno | `true` ali `false` (privzeto) | Prikaži ali skrij ime |
 | `show_icon` | boolean | Neobvezno | `true` (privzeto) ali `false` | Prikaži ali skrij ikono |
 | `select_attribute` | string | Neobvezno | Seznam atributov iz vaše `entity` (glejte podprte možnosti zgoraj) | Ta seznam atributov ob kliku odpre spustni seznam (na primer `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Pogoji se ovrednotijo v vašem brskalniku, zato tistih nekaj, ki potrebujejo strežnik Home Assistant, ne more biti povsem natančnih: sončni vzhod in zahod se bereta iz entitete `sun.sun`, namesto da bi se preračunala, trajanje `for` pa se meri od zadnje spremembe stanja, brez zgodovine iz recorder.
+> Pogoji se ovrednotijo v vašem brskalniku, zato tistih nekaj, ki potrebujejo strežnik Home Assistant, ne more biti povsem natančnih: sončni vzhod in zahod se bereta iz entitete `sun.sun`, namesto da bi se preračunala, trajanje `for` pa se meri od zadnje spremembe stanja, brez zgodovine iz recorder. Izjema je `template`, ki ga upodobi strežnik kot vsako drugo [predlogo Home Assistant](#predloge).
 >
 > `view_columns` je sprejet, vendar vedno uspe, saj stolpcev vašega pogleda nikoli ne razporeja Bubble Card. Vrsta pogoja, ki je Bubble Card ne pozna, se enkrat javi v konzoli vašega brskalnika, namesto da bi tiho odpovedala, tako da lahko ločite tipkarsko napako od manjkajoče funkcije.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Predloge
 
-**Bubble Card ne podpira predlog Jinja**, vendar lahko napredni uporabniki dodajo predloge v JS neposredno v svojih [lastnih slogih](#oblikovanje). To na primer omogoča dinamično spreminjanje ikone, besedila ali barv elementa, pogojno prikazovanje ali skrivanje elementa (kot je podgumb), ali skoraj karkoli na podlagi stanja, atributa in več.
+Bubble Card podpira dve vrsti predlog:
+
+- **Predloge Home Assistant (Jinja)**, tiste, ki jih že pišete v svojih avtomatizacijah, v Mushroom ali v card-mod. Vstavite `{{ ... }}` ali `{% ... %}` v podprto polje in Home Assistant jo upodobi za vas, v živo.
+- **Predloge JavaScript**, `${ ... }` v vaših [lastnih slogih](#oblikovanje), za vse, kar mora poseči v samo kartico.
+
+### Predloge Home Assistant (Jinja)
+
+Predloge upodobi vaš strežnik Home Assistant in se samodejno posodobijo, ko se spremeni to, kar berejo. Delujejo v teh poljih:
+
+<details>
+
+<summary><b>Podprta polja (s primeri)</b></summary>
+
+| Polje | Primer |
+| --- | --- |
+| `name`, na vsaki kartici (vključno z glavo pojavnega okna in ločilom) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, na vsaki kartici (tudi `icon_open`, `icon_close`, `icon_up` in `icon_down` senčila) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` in `icon` [podgumba](#podgumbi) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, na kartici ali podgumbu, poleg `state` in imen atributov | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [vodoravnega sklada gumbov](#vodoravni-sklad-gumbov) | `1_name: "{{ user }}"` |
+| `styles` kartice in koda [modula](#moduli), pomešano s predlogami JavaScript | glejte spodaj |
+| [Pogoji](#pogoji), s `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Predlogo vedno dajte med narekovaje. Brez njih YAML prebere `name: {{ states('x') }}` kot preslikavo in ne kot besedilo, kartica pa jo zavrne.
+
+Poleg vsega, kar ponuja Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtri, makri iz vaše mape `custom_templates`...), so na voljo tri spremenljivke:
+
+- `entity` je entiteta kartice ali podgumba, kadar gre za polje podgumba.
+- `config.entity` je ista vrednost, za predloge, ki ste jih napisali za card-mod.
+- `user` je ime prijavljenega uporabnika.
+
+Rezultate Home Assistant razčleni natanko tako kot v razvijalskih orodjih, zato se `21.50` prikaže kot `21.5`. Dodajte `| string`, kadar mora besedilo ostati takšno, kot je.
+
+<details>
+
+<summary>Predloge Home Assistant v vaših lastnih slogih</summary>
+
+<br>
+
+Predloga lahko vsebuje vrednost ali ovije cela pravila CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Predloge JavaScript in predloge Home Assistant si lahko delijo isti blok. Vsak `${ }` naj ostane zunaj bloka `{% if %} ... {% endif %}`, vsako stran upodobi drug pogon in bloka, prerezanega na dvoje, ni mogoče upodobiti.
+
+Za lastno besedilo v vrstici stanja ne potrebujete nobenih slogov, `state_content` sprejme predlogo kot enega od svojih elementov:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Znotraj predloge JavaScript vam `renderTemplate("{{ ... }}")` vrne upodobljeno besedilo predloge Home Assistant, za mesta, ki jih predloga sama ne doseže:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Napake so prikazane v urejevalniku, pod lastnimi slogi, in v konzoli vašega brskalnika.
+
+</details>
+
+### Predloge JavaScript
+
+Napredni uporabniki lahko dodajo predloge v JS neposredno v svojih [lastnih slogih](#oblikovanje). To na primer omogoča dinamično spreminjanje ikone, besedila ali barv elementa, pogojno prikazovanje ali skrivanje elementa (kot je podgumb), ali skoraj karkoli na podlagi stanja, atributa in več.
 
 > [!TIP]  
 > Več informacij o JS predlogah [tukaj](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Moj nasvet je, da **vedno preverite konzolo brskalnika**, da se prepričate, da vse deluje pravilno.
@@ -2095,6 +2176,7 @@ Imate dostop do vseh globalnih JS funkcij, poleg tega pa tudi do:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` vrne `true`, ko je seznam [pogojev](#pogoji) izpolnjen, na primer `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` vrne besedilo, ki ga Home Assistant upodobi za predlogo Jinja, na primer `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Drugi argument je tisto, kar predloga vidi kot `entity`, privzeto entiteta vaše kartice.
 - `hass.formatEntityState(state)` lahko uporabite za prevod stanja (lahko se uporabi tudi za pridobitev enote stanja, brez ročnega dodajanja).
 - `hass.formatEntityAttributeValue(state, "attribute")` lahko uporabite za prevod atributa (lahko se uporabi tudi za pridobitev enote stanja, brez ročnega dodajanja).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Če želite predlogo za stanje (`.bubble-state`) iz svojih stilov, se vrstica prikaže na zaslonu takoj, ko vanjo kaj zapiše predloga, ne glede na to, kaj pravi `state_content`.
+
+Enako brez kakršnih koli slogov, s predlogo Home Assistant v `state_content`, ki vam da tudi prevedeno stanje:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Bedingungen werden in deinem Browser ausgewertet, deshalb können die wenigen, die den Home Assistant-Server brauchen, nicht exakt sein: Sonnenaufgang und Sonnenuntergang werden aus der Entität `sun.sun` gelesen, statt neu berechnet zu werden, und eine `for`-Dauer wird ab der letzten Zustandsänderung gemessen, ohne die Historie des Recorders.
+> Bedingungen werden in deinem Browser ausgewertet, deshalb können die wenigen, die den Home Assistant-Server brauchen, nicht exakt sein: Sonnenaufgang und Sonnenuntergang werden aus der Entität `sun.sun` gelesen, statt neu berechnet zu werden, und eine `for`-Dauer wird ab der letzten Zustandsänderung gemessen, ohne die Historie des Recorders. Die Ausnahme ist `template`, das vom Server wie jedes andere [Home Assistant-Template](#templates) gerendert wird.
 >
 > `view_columns` wird akzeptiert, ist aber immer erfüllt, denn Bubble Card ist nie diejenige, die die Spalten deiner Ansicht anordnet. Ein Bedingungstyp, den Bubble Card nicht kennt, meldet sich einmal in deiner Browser-Konsole, statt still zu scheitern, so erkennst du einen Tippfehler von einer fehlenden Funktion.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Templates
 
-**Bubble Card unterstützt keine Jinja-Templates**, aber fortgeschrittene Nutzer können Templates in JS direkt in ihren [benutzerdefinierten Styles](#styling) hinzufügen. So kannst du zum Beispiel ein Icon, die Texte oder die Farben eines Elements dynamisch ändern, ein Element bedingt ein- oder ausblenden (wie einen Sub-Button) oder fast alles auf Basis eines Zustands, eines Attributs und mehr steuern.
+Bubble Card unterstützt zwei Arten von Templates:
+
+- **Home Assistant-Templates (Jinja)**, die du bereits in deinen Automatisierungen, in Mushroom oder in card-mod schreibst. Setze `{{ ... }}` oder `{% ... %}` in ein unterstütztes Feld, und Home Assistant rendert es für dich, live.
+- **JavaScript-Templates**, `${ ... }` in deinen [benutzerdefinierten Styles](#styling), für alles, was in die Karte selbst hineingreifen muss.
+
+### Home Assistant-Templates (Jinja)
+
+Templates werden von deinem Home Assistant-Server gerendert und aktualisieren sich von selbst, wenn sich ändert, was sie lesen. Sie funktionieren in diesen Feldern:
+
+<details>
+
+<summary><b>Unterstützte Felder (mit Beispielen)</b></summary>
+
+| Feld | Beispiel |
+| --- | --- |
+| `name`, auf jeder Karte (Pop-up-Kopfzeile und Trennlinie eingeschlossen) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, auf jeder Karte (auch `icon_open`, `icon_close`, `icon_up` und `icon_down` einer Abdeckung) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` und `icon` von einem [Sub-Button](#sub-buttons) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, auf einer Karte oder einem Sub-Button, neben `state` und Attributnamen | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... in einem [horizontalen Button-Stapel](#horizontaler-button-stapel) | `1_name: "{{ user }}"` |
+| `styles` einer Karte und der Code eines [Moduls](#module), gemischt mit JavaScript-Templates | siehe unten |
+| [Bedingungen](#bedingungen), mit `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Setze ein Template immer in Anführungszeichen. Ohne sie liest YAML `name: {{ states('x') }}` als Mapping statt als Text, und die Karte lehnt es ab.
+
+Drei Variablen stehen zusätzlich zu allem bereit, was Home Assistant bietet (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, Filter, die Makros deines Ordners `custom_templates`...):
+
+- `entity` ist die Entität der Karte, oder die des Sub-Buttons bei einem Sub-Button-Feld.
+- `config.entity` ist derselbe Wert, für die Templates, die du für card-mod geschrieben hast.
+- `user` ist der Name des angemeldeten Benutzers.
+
+Ergebnisse werden von Home Assistant genau wie in den Entwicklerwerkzeugen interpretiert, `21.50` wird also als `21.5` angezeigt. Füge `| string` hinzu, wenn der Text so bleiben muss, wie er ist.
+
+<details>
+
+<summary>Home Assistant-Templates in deinen benutzerdefinierten Styles</summary>
+
+<br>
+
+Ein Template kann einen Wert enthalten oder ganze CSS-Regeln umschließen:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-Templates und Home Assistant-Templates können sich einen Block teilen. Halte jedes `${ }` außerhalb eines `{% if %} ... {% endif %}`-Blocks, jede Seite wird von einer anderen Engine gerendert, und ein in zwei Teile geschnittener Block kann nicht gerendert werden.
+
+Dein eigener Text in der Zustandszeile braucht gar keine Styles, `state_content` nimmt ein Template als eines seiner Elemente:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Innerhalb eines JavaScript-Templates liefert dir `renderTemplate("{{ ... }}")` den gerenderten Text eines Home Assistant-Templates, für die Stellen, die ein Template allein nicht erreichen kann:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Fehler werden im Editor, unter den benutzerdefinierten Styles, und in deiner Browser-Konsole angezeigt.
+
+</details>
+
+### JavaScript-Templates
+
+Fortgeschrittene Nutzer können Templates in JS direkt in ihren [benutzerdefinierten Styles](#styling) hinzufügen. So kannst du zum Beispiel ein Icon, die Texte oder die Farben eines Elements dynamisch ändern, ein Element bedingt ein- oder ausblenden (wie einen Sub-Button) oder fast alles auf Basis eines Zustands, eines Attributs und mehr steuern.
 
 > [!TIP]  
 > Weitere Informationen zu JS-Templates findest du [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mein Rat: **Wirf immer einen Blick in deine Browser-Konsole**, um sicherzugehen, dass alles korrekt funktioniert.
@@ -2095,6 +2176,7 @@ Du hast Zugriff auf alle globalen JS-Funktionen, aber zusätzlich auch auf:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` gibt `true` zurück, wenn eine Liste von [Bedingungen](#bedingungen) erfüllt ist, zum Beispiel `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` gibt den Text zurück, den Home Assistant für ein Jinja-Template gerendert hat, zum Beispiel `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Das zweite Argument ist das, was das Template als `entity` sieht, standardmäßig die Entität deiner Karte.
 - `hass.formatEntityState(state)` kann verwendet werden, um einen Zustand zu übersetzen (kann auch verwendet werden, um die Einheit eines Zustands zu erhalten, ohne sie manuell hinzufügen zu müssen).
 - `hass.formatEntityAttributeValue(state, "attribute")` kann verwendet werden, um ein Attribut zu übersetzen (kann auch verwendet werden, um die Einheit eines Zustands zu erhalten, ohne sie manuell hinzufügen zu müssen).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Wenn du den Zustand (`.bubble-state`) über deine Styles per Template ändern möchtest, erscheint die Zeile auf dem Bildschirm, sobald ein Template etwas hineinschreibt, egal, was `state_content` sagt.
+
+Dasselbe ganz ohne Styles, mit einem Home Assistant-Template in `state_content`, das dir auch den übersetzten Zustand liefert:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

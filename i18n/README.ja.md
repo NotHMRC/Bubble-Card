@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | 任意 | 任意の `mdi:` アイコン | ボタンのアイコン。未指定の場合はエンティティのアイコンまたは `entity-picture` を表示します |
 | `force_icon` | boolean | 任意 | `true` または `false`（デフォルト） | `entity-picture` の代わりにアイコンを優先します |
 | `use_accent_color` | boolean | 任意（デフォルト `false`） | **照明専用。** 照明の色の代わりにテーマのアクセントカラーを使用します。                         |
-| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#テンプレート) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`（デフォルト） または `false` | 名前を表示または非表示 |
 | `show_icon` | boolean | 任意 | `true`（デフォルト） または `false` | アイコンを表示または非表示 |
 | `scrolling_effect` | boolean | 任意 | `true`（デフォルト） または `false` | コンテンツがコンテナのサイズを超えた場合にテキストをスクロールさせる |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | 任意 | 任意の文字列 | メディアプレーヤーの名前。未指定の場合はエンティティ名を表示します |
 | `icon` | string | 任意 | 任意の `mdi:` アイコン | メディアプレーヤーのアイコン。未指定の場合はエンティティのアイコンまたは `entity-picture` を表示します |
 | `force_icon` | boolean | 任意 | `true` または `false`（デフォルト） | `entity-picture` の代わりにアイコンを優先します |
-| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#テンプレート) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`（デフォルト） または `false` | 名前を表示または非表示 |
 | `show_icon` | boolean | 任意 | `true`（デフォルト） または `false` | アイコンを表示または非表示 |
 | `scrolling_effect` | boolean | 任意 | `true`（デフォルト） または `false` | コンテンツがコンテナのサイズを超えた場合にテキストをスクロールさせる |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **必須** | 任意のカバー | 制御するカバー |
 | `name` | string | 任意 | 任意の文字列 | カバーの名前。指定しない場合はエンティティ名が表示されます |
 | `force_icon` | boolean | 任意 | `true` または `false` (デフォルト) | `entity-picture`よりアイコンを優先します |
-| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#テンプレート) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true` (デフォルト) または `false` | 名前を表示または非表示にします |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または `false` | アイコンを表示または非表示にします |
 | `scrolling_effect` | boolean | 任意 | `true` (デフォルト) または `false` | コンテンツがコンテナのサイズを超えたときにテキストをスクロールさせます |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 任意 | 任意の文字列 | セレクトの名前。指定しない場合はエンティティ名が表示されます |
 | `icon` | string | 任意 | 任意の`mdi:`アイコン | セレクトのアイコン。指定しない場合はエンティティのアイコンまたは`entity-picture`が表示されます |
 | `force_icon` | boolean | 任意 | `true` または `false` (デフォルト) | `entity-picture`よりアイコンを優先します |
-| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#テンプレート) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true` (デフォルト) または `false` | 名前を表示または非表示にします |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または `false` | アイコンを表示または非表示にします |
 | `scrolling_effect` | boolean | 任意 | `true` (デフォルト) または `false` | コンテンツがコンテナのサイズを超えたときにテキストをスクロールさせます |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | 任意 | `true` (デフォルト) または`false` | サブボタンの背景を表示する。エンティティの状態に応じて色が変わる |
 | `state_background` | boolean | 任意 | `true` (デフォルト) または`false` | エンティティが`on`のときに状態の色を使用する |
 | `light_background` | boolean | 任意 | `true` (デフォルト) または`false` | 可能な場合、背景に照明の色を使用する |
-| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#テンプレート) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`または`false` (デフォルト) | 名前を表示または非表示にする |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または`false` | アイコンを表示または非表示にする |
 | `select_attribute` | string | 任意 | `entity`の属性リスト (上記のサポートされている値を参照) | この属性リストは、クリックするとドロップダウンを開く (例: `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> 条件はブラウザー内で評価されるため、Home Assistant サーバーを必要とするごく一部の条件は厳密にはなりません。日の出と日の入りは再計算されるのではなく `sun.sun` エンティティから読み取られ、`for` の継続時間は recorder の履歴なしに、最後の状態変化からの経過で測られます。
+> 条件はブラウザー内で評価されるため、Home Assistant サーバーを必要とするごく一部の条件は厳密にはなりません。日の出と日の入りは再計算されるのではなく `sun.sun` エンティティから読み取られ、`for` の継続時間は recorder の履歴なしに、最後の状態変化からの経過で測られます。例外は `template` で、他の [Home Assistant テンプレート](#テンプレート)と同じようにサーバーでレンダリングされます。
 >
 > `view_columns` は受け付けられますが常に成立します。ビューの列を配置しているのは Bubble Card ではないからです。Bubble Card が知らない条件タイプは、黙って失敗する代わりにブラウザーのコンソールに一度だけ報告されるので、入力ミスと未対応の機能を見分けられます。
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## テンプレート
 
-**Bubble CardはJinjaテンプレートをサポートしていません**が、上級者は[カスタムスタイル](#スタイル)内に直接JSでテンプレートを追加できます。例えば、アイコン、テキスト、要素の色を動的に変更したり、状態や属性などに基づいて要素(サブボタンなど)を条件付きで表示/非表示にしたり、ほぼ何でも実現できます。
+Bubble Card は 2 種類のテンプレートに対応しています:
+
+- **Home Assistant テンプレート (Jinja)**、オートメーションや Mushroom、card-mod ですでに書いているものです。対応しているフィールドに `{{ ... }}` または `{% ... %}` を書くと、Home Assistant がリアルタイムにレンダリングします。
+- **JavaScript テンプレート**、[カスタムスタイル](#スタイル)内の `${ ... }` で、カード自体にアクセスする必要があるあらゆる用途向けです。
+
+### Home Assistant テンプレート (Jinja)
+
+テンプレートは Home Assistant サーバーでレンダリングされ、参照しているものが変わると自動的に更新されます。次のフィールドで使えます:
+
+<details>
+
+<summary><b>対応しているフィールド (例付き)</b></summary>
+
+| フィールド | 例 |
+| --- | --- |
+| すべてのカードの `name` (ポップアップのヘッダーとセパレーターを含む) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| すべてのカードの `icon` (カバーの `icon_open`、`icon_close`、`icon_up`、`icon_down` も) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [サブボタン](#サブボタン)の `name` と `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| カードまたはサブボタンの `state_content`、`state` や属性名と並べて | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [水平ボタンスタック](#水平ボタンスタック)の `1_name`、`1_icon`... | `1_name: "{{ user }}"` |
+| カードの `styles` と[モジュール](#モジュール)のコード、JavaScript テンプレートと混在可 | 下記を参照 |
+| [条件](#条件)、`condition: template` で | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> テンプレートは必ず引用符で囲んでください。引用符がないと、`name: {{ states('x') }}` は YAML にテキストではなくマッピングとして読み取られ、カードはそれを受け付けません。
+
+Home Assistant が提供するすべてのもの (`states()`、`state_attr()`、`is_state()`、`area_entities()`、`expand()`、フィルター、`custom_templates` フォルダーのマクロなど) に加えて、3 つの変数が使えます:
+
+- `entity` はカードのエンティティ、サブボタンのフィールドではサブボタンのエンティティです。
+- `config.entity` は同じ値で、card-mod 向けに書いたテンプレートのためのものです。
+- `user` はログイン中のユーザーの名前です。
+
+結果は開発者ツールとまったく同じように Home Assistant によって解釈されるため、`21.50` は `21.5` と表示されます。テキストをそのまま残したいときは `| string` を追加してください。
+
+<details>
+
+<summary>カスタムスタイル内の Home Assistant テンプレート</summary>
+
+<br>
+
+テンプレートは値を持つことも、CSS ルール全体を包むこともできます:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript テンプレートと Home Assistant テンプレートは同じブロックで併用できます。ただし、各 `${ }` は `{% if %} ... {% endif %}` ブロックの外に置いてください。それぞれ別のエンジンでレンダリングされるため、途中で分断されたブロックはレンダリングできません。
+
+状態の行に独自のテキストを表示するのにスタイルはまったく不要で、`state_content` はその項目のひとつとしてテンプレートを受け付けます:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript テンプレートの中では、`renderTemplate("{{ ... }}")` で Home Assistant テンプレートのレンダリング結果のテキストを取得できます。テンプレート単体では届かない場所向けです:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+エラーはエディターのカスタムスタイルの下と、ブラウザーのコンソールに表示されます。
+
+</details>
+
+### JavaScript テンプレート
+
+上級者は[カスタムスタイル](#スタイル)内に直接JSでテンプレートを追加できます。例えば、アイコン、テキスト、要素の色を動的に変更したり、状態や属性などに基づいて要素(サブボタンなど)を条件付きで表示/非表示にしたり、ほぼ何でも実現できます。
 
 > [!TIP]  
 > JSテンプレートについての詳しい情報は[こちら](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)。私からのアドバイスとして、正しく動作しているか確認するために**必ずブラウザのコンソールを確認する**ようにしてください。
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` は[条件](#条件)のリストが満たされたときに `true` を返します。例えば `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}` のように使います。
+- `renderTemplate(template, entity)` は Jinja テンプレートを Home Assistant がレンダリングしたテキストを返します。例えば `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}` のように使います。2 番目の引数はテンプレートが `entity` として見る値で、デフォルトではカードのエンティティです。
 - `hass.formatEntityState(state)` は状態を翻訳するために使用できます(手動で単位を追加する必要なく、状態の単位を取得する場合にも使用できます)。
 - `hass.formatEntityAttributeValue(state, "attribute")` は属性を翻訳するために使用できます(手動で単位を追加する必要なく、状態の単位を取得する場合にも使用できます)。
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 スタイルから状態(`.bubble-state`)をテンプレート化したい場合は、`state_content`の指定が何であれ、テンプレートがそこに書き込むとすぐにその行が画面に表示されます。
+
+スタイルを一切使わず、`state_content` に Home Assistant テンプレートを書いた同じ例です。翻訳された状態も得られます:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

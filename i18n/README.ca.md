@@ -412,7 +412,7 @@ Aquesta targeta és molt versàtil. Es pot utilitzar com a botó d'**interruptor
 | `icon` | string | Opcional | Qualsevol icona `mdi:` | Una icona per al vostre botó; si no es defineix, es mostrarà la icona de l'entitat o l'`entity-picture` |
 | `force_icon` | boolean | Opcional | `true` o `false` (per defecte) | Dona prioritat a la icona en lloc de l'`entity-picture` |
 | `use_accent_color` | boolean | Opcional (`false` per defecte) | **Només per a llums.** Utilitza el color d'èmfasi del tema en lloc del color del llum.                         |
-| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#templates) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
+| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#plantilles) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
 | `show_name` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta el nom |
 | `show_icon` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta la icona |
 | `scrolling_effect` | boolean | Opcional | `true` (per defecte) o `false` | Permet que el text es desplaci quan el contingut supera la mida del seu contenidor |
@@ -547,7 +547,7 @@ Aquesta targeta us permet controlar una entitat de reproductor multimèdia.
 | `name` | string | Opcional | Qualsevol cadena de text | Un nom per al vostre reproductor multimèdia; si no es defineix, es mostrarà el nom de l'entitat |
 | `icon` | string | Opcional | Qualsevol icona `mdi:` | Una icona per al vostre reproductor multimèdia; si no es defineix, es mostrarà la icona de l'entitat o l'`entity-picture` |
 | `force_icon` | boolean | Opcional | `true` o `false` (per defecte) | Dona prioritat a la icona en lloc de l'`entity-picture` |
-| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#templates) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
+| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#plantilles) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
 | `show_name` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta el nom |
 | `show_icon` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta la icona |
 | `scrolling_effect` | boolean | Opcional | `true` (per defecte) o `false` | Permet que el text es desplaci quan el contingut supera la mida del seu contenidor |
@@ -663,7 +663,7 @@ Aquesta targeta us permet controlar les vostres entitats `cover`.
 | `entity` | string | **Obligatori** | Qualsevol coberta | Una coberta a controlar |
 | `name` | string | Opcional | Qualsevol text | Un nom per a la vostra coberta; si no es defineix, es mostrarà el nom de l'entitat |
 | `force_icon` | boolean | Opcional | `true` o `false` (per defecte) | Prioritza la icona per sobre de l'`entity-picture` |
-| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#templates) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
+| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#plantilles) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
 | `show_name` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta el nom |
 | `show_icon` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta la icona |
 | `scrolling_effect` | boolean | Opcional | `true` (per defecte) o `false` | Permet que el text es desplaci quan el contingut supera la mida del seu contenidor |
@@ -753,7 +753,7 @@ Aquesta targeta us permet afegir un menú desplegable per a les vostres entitats
 | `name` | string | Opcional | Qualsevol text | Un nom per a la vostra selecció; si no es defineix, es mostrarà el nom de l'entitat |
 | `icon` | string | Opcional | Qualsevol icona `mdi:` | Una icona per a la vostra selecció; si no es defineix, es mostrarà la icona de l'entitat o l'`entity-picture` |
 | `force_icon` | boolean | Opcional | `true` o `false` (per defecte) | Prioritza la icona per sobre de l'`entity-picture` |
-| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#templates) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
+| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#plantilles) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
 | `show_name` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta el nom |
 | `show_icon` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta la icona |
 | `scrolling_effect` | boolean | Opcional | `true` (per defecte) o `false` | Permet que el text es desplaci quan el contingut supera la mida del seu contenidor |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opcional | `true` (per defecte) o `false` | Mostra un fons per al vostre subbotó, que canviarà de color segons l'estat de la vostra entitat |
 | `state_background` | boolean | Opcional | `true` (per defecte) o `false` | Utilitza el color de l'estat quan l'entitat està `on` |
 | `light_background` | boolean | Opcional | `true` (per defecte) o `false` | Utilitza el color del llum per al fons quan estigui disponible |
-| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#templates) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
+| `state_content` | string o list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, el nom d'un atribut com `brightness` o `forecast[0].temperature`, o una [plantilla](#plantilles) | Què mostra la línia sota el nom, en aquest ordre. Sense aquesta opció, un botó `button_type: state` mostra el que Home Assistant mostra per a l'entitat (el seu estat, més la temperatura actual d'una climatització, la posició d'una coberta, la brillantor d'un llum). Les claus antigues `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` encara funcionen i es reescriuen com a `state_content` quan obriu l'editor. |
 | `show_name` | boolean | Opcional | `true` o `false` (per defecte) | Mostra o oculta el nom |
 | `show_icon` | boolean | Opcional | `true` (per defecte) o `false` | Mostra o oculta la icona |
 | `select_attribute` | string | Opcional | Una llista d'atributs de la vostra `entity` (vegeu les opcions admeses més amunt) | Aquesta llista d'atributs obrirà un menú desplegable en fer-hi clic (p. ex. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Les condicions s'avaluen al vostre navegador, així que les poques que necessiten el servidor de Home Assistant no poden ser exactes: la sortida i la posta del sol es llegeixen de l'entitat `sun.sun` en lloc de recalcular-se, i una durada `for` es mesura des de l'últim canvi d'estat, sense l'historial del recorder.
+> Les condicions s'avaluen al vostre navegador, així que les poques que necessiten el servidor de Home Assistant no poden ser exactes: la sortida i la posta del sol es llegeixen de l'entitat `sun.sun` en lloc de recalcular-se, i una durada `for` es mesura des de l'últim canvi d'estat, sense l'historial del recorder. L'excepció és `template`, que el servidor renderitza com qualsevol altra [plantilla de Home Assistant](#plantilles).
 >
 > `view_columns` s'accepta però sempre es compleix, ja que Bubble Card mai no és qui disposa les columnes de la vostra vista. Un tipus de condició que Bubble Card no coneix s'anuncia un cop a la consola del navegador en lloc de fallar en silenci, així podeu distingir una errada d'escriptura d'una funció que falta.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Plantilles
 
-**Bubble Card no admet plantilles Jinja**, però els usuaris avançats poden afegir plantilles en JS directament als seus [estils personalitzats](#estils). Per exemple, això us permet canviar dinàmicament una icona, els textos o els colors d'un element, mostrar o amagar un element de manera condicional (com un subbotó), o gairebé qualsevol cosa basant-vos en un estat, un atribut i més.
+Bubble Card admet dos tipus de plantilles:
+
+- **Plantilles de Home Assistant (Jinja)**, les que ja escriviu a les vostres automatitzacions, a Mushroom o a card-mod. Poseu `{{ ... }}` o `{% ... %}` en un camp compatible i Home Assistant la renderitza per vosaltres, en directe.
+- **Plantilles JavaScript**, `${ ... }` dins dels vostres [estils personalitzats](#estils), per a tot allò que necessiti accedir a la targeta mateixa.
+
+### Plantilles de Home Assistant (Jinja)
+
+Les plantilles les renderitza el vostre servidor de Home Assistant i s'actualitzen soles quan canvia el que llegeixen. Funcionen en aquests camps:
+
+<details>
+
+<summary><b>Camps compatibles (amb exemples)</b></summary>
+
+| Camp | Exemple |
+| --- | --- |
+| `name`, a totes les targetes (capçalera del pop-up i separador inclosos) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, a totes les targetes (també `icon_open`, `icon_close`, `icon_up` i `icon_down` d'una coberta) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` i `icon` d'un [subbotó](#subbotons) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, en una targeta o un subbotó, al costat de `state` i dels noms d'atributs | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... d'una [pila de botons horitzontal](#pila-de-botons-horitzontal) | `1_name: "{{ user }}"` |
+| `styles` d'una targeta i el codi d'un [mòdul](#mòduls), barrejats amb plantilles JavaScript | vegeu més avall |
+| [Condicions](#condicions), amb `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Poseu sempre una plantilla entre cometes. Sense elles, YAML llegeix `name: {{ states('x') }}` com un mapa en lloc de com a text, i la targeta la rebutja.
+
+Hi ha tres variables disponibles a més de tot el que ofereix Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtres, les macros de la vostra carpeta `custom_templates`...):
+
+- `entity` és l'entitat de la targeta, o la del subbotó per a un camp de subbotó.
+- `config.entity` és el mateix valor, per a les plantilles que vau escriure per a card-mod.
+- `user` és el nom de l'usuari que ha iniciat sessió.
+
+Home Assistant analitza els resultats exactament com a les eines per a desenvolupadors, així que `21.50` es mostra com a `21.5`. Afegiu `| string` quan el text hagi de quedar tal com és.
+
+<details>
+
+<summary>Plantilles de Home Assistant als vostres estils personalitzats</summary>
+
+<br>
+
+Una plantilla pot contenir un valor o englobar regles CSS senceres:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Les plantilles JavaScript i les plantilles de Home Assistant poden compartir un bloc. Manteniu cada `${ }` fora d'un bloc `{% if %} ... {% endif %}`, cada costat el renderitza un motor diferent i un bloc tallat en dos no es pot renderitzar.
+
+El vostre propi text a la línia d'estat no necessita cap estil, `state_content` accepta una plantilla com un dels seus elements:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Dins d'una plantilla JavaScript, `renderTemplate("{{ ... }}")` us dona el text renderitzat d'una plantilla de Home Assistant, per als llocs on una plantilla no pot arribar sola:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Els errors es mostren a l'editor, sota els estils personalitzats, i a la consola del navegador.
+
+</details>
+
+### Plantilles JavaScript
+
+Els usuaris avançats poden afegir plantilles en JS directament als seus [estils personalitzats](#estils). Per exemple, això us permet canviar dinàmicament una icona, els textos o els colors d'un element, mostrar o amagar un element de manera condicional (com un subbotó), o gairebé qualsevol cosa basant-vos en un estat, un atribut i més.
 
 > [!TIP]  
 > Trobareu més informació sobre les plantilles JS [aquí](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). El meu consell és que **feu sempre una ullada a la consola del navegador** per assegurar-vos que tot funciona correctament.
@@ -2095,6 +2176,7 @@ Teniu accés a totes les funcions globals de JS, però també teniu accés a:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` retorna `true` quan es compleix una llista de [condicions](#condicions), per exemple `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` retorna el text renderitzat per Home Assistant per a una plantilla Jinja, per exemple `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. El segon argument és el que la plantilla veu com a `entity`, l'entitat de la vostra targeta per defecte.
 - `hass.formatEntityState(state)` es pot utilitzar per traduir un estat (també es pot utilitzar per obtenir la unitat d'un estat, sense haver d'afegir-la manualment).
 - `hass.formatEntityAttributeValue(state, "attribute")` es pot utilitzar per traduir un atribut (també es pot utilitzar per obtenir la unitat d'un estat, sense haver d'afegir-la manualment).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Si voleu aplicar una plantilla a l'estat (`.bubble-state`) des dels vostres estils, la línia apareix a la pantalla tan bon punt una plantilla hi escriu, digui el que digui `state_content`.
+
+El mateix sense cap estil, amb una plantilla de Home Assistant a `state_content`, que també us dona l'estat traduït:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

@@ -412,7 +412,7 @@ Este cartão é muito versátil. Pode ser usado como **interruptor**, **slider**
 | `icon` | string | Opcional | Qualquer ícone `mdi:` | Um ícone para o seu botão, se não for definido mostrará o ícone da entidade ou a `entity-picture` |
 | `force_icon` | boolean | Opcional | `true` ou `false` (padrão) | Dá prioridade ao ícone em vez da `entity-picture` |
 | `use_accent_color` | boolean | Opcional (padrão `false`) | **Apenas para luzes.** Usa a cor de destaque do tema em vez da cor da luz.                         |
-| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#templates) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
+| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#modelos) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
 | `show_name` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o nome |
 | `show_icon` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o ícone |
 | `scrolling_effect` | boolean | Opcional | `true` (padrão) ou `false` | Permite que o texto deslize quando o conteúdo excede o tamanho do seu contentor |
@@ -547,7 +547,7 @@ Este cartão permite controlar uma entidade de leitor multimédia.
 | `name` | string | Opcional | Qualquer string | Um nome para o seu leitor multimédia, se não for definido mostrará o nome da entidade |
 | `icon` | string | Opcional | Qualquer ícone `mdi:` | Um ícone para o seu leitor multimédia, se não for definido mostrará o ícone da entidade ou a `entity-picture` |
 | `force_icon` | boolean | Opcional | `true` ou `false` (padrão) | Dá prioridade ao ícone em vez da `entity-picture` |
-| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#templates) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
+| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#modelos) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
 | `show_name` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o nome |
 | `show_icon` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o ícone |
 | `scrolling_effect` | boolean | Opcional | `true` (padrão) ou `false` | Permite que o texto deslize quando o conteúdo excede o tamanho do seu contentor |
@@ -663,7 +663,7 @@ Este cartão permite controlar as suas entidades `cover`.
 | `entity` | string | **Obrigatório** | Qualquer estore | Um estore a controlar |
 | `name` | string | Opcional | Qualquer string | Um nome para o seu estore, se não for definido mostrará o nome da entidade |
 | `force_icon` | boolean | Opcional | `true` ou `false` (padrão) | Dá prioridade ao ícone em vez da `entity-picture` |
-| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#templates) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
+| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#modelos) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
 | `show_name` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o nome |
 | `show_icon` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o ícone |
 | `scrolling_effect` | boolean | Opcional | `true` (padrão) ou `false` | Permite que o texto deslize quando o conteúdo excede o tamanho do seu contentor |
@@ -753,7 +753,7 @@ Este cartão permite adicionar um menu suspenso para as suas entidades `input_se
 | `name` | string | Opcional | Qualquer string | Um nome para a sua seleção, se não for definido mostrará o nome da entidade |
 | `icon` | string | Opcional | Qualquer ícone `mdi:` | Um ícone para a sua seleção, se não for definido mostrará o ícone da entidade ou a `entity-picture` |
 | `force_icon` | boolean | Opcional | `true` ou `false` (padrão) | Dá prioridade ao ícone em vez da `entity-picture` |
-| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#templates) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
+| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#modelos) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
 | `show_name` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o nome |
 | `show_icon` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o ícone |
 | `scrolling_effect` | boolean | Opcional | `true` (padrão) ou `false` | Permite que o texto deslize quando o conteúdo excede o tamanho do seu contentor |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opcional | `true` (padrão) ou `false` | Mostra um fundo para o seu sub-botão, mudará de cor consoante o estado da sua entidade |
 | `state_background` | boolean | Opcional | `true` (padrão) ou `false` | Usa a cor do estado quando a entidade está `on` |
 | `light_background` | boolean | Opcional | `true` (padrão) ou `false` | Usa a cor da luz para o fundo quando disponível |
-| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#templates) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
+| `state_content` | string ou list | Opcional | `state`, `last-changed`, `last-updated`, `last-triggered`, o nome de um atributo como `brightness` ou `forecast[0].temperature`, ou um [modelo](#modelos) | O que a linha abaixo do nome mostra, por esta ordem. Sem esta opção, um botão `button_type: state` mostra o que o Home Assistant mostra para a entidade (o seu estado, mais a temperatura atual de uma entidade de climatização, a posição de um estore, o brilho de uma luz). As antigas chaves `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` continuam a funcionar e são reescritas como `state_content` quando abre o editor. |
 | `show_name` | boolean | Opcional | `true` ou `false` (padrão) | Mostra ou oculta o nome |
 | `show_icon` | boolean | Opcional | `true` (padrão) ou `false` | Mostra ou oculta o ícone |
 | `select_attribute` | string | Opcional | Uma lista de atributos da sua `entity` (ver opções suportadas acima) | Esta lista de atributos abrirá um menu suspenso se clicada (por exemplo, `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> As condições são avaliadas no seu navegador, pelo que as poucas que precisam do servidor do Home Assistant não podem ser exatas: o nascer e o pôr do sol são lidos da entidade `sun.sun` em vez de recalculados, e uma duração `for` é medida desde a última mudança de estado, sem o histórico do recorder.
+> As condições são avaliadas no seu navegador, pelo que as poucas que precisam do servidor do Home Assistant não podem ser exatas: o nascer e o pôr do sol são lidos da entidade `sun.sun` em vez de recalculados, e uma duração `for` é medida desde a última mudança de estado, sem o histórico do recorder. A exceção é `template`, renderizado pelo servidor como qualquer outro [modelo do Home Assistant](#modelos).
 >
 > `view_columns` é aceite mas passa sempre, já que o Bubble Card nunca é quem dispõe as colunas da sua vista. Um tipo de condição que o Bubble Card não conhece assinala-se uma vez na consola do seu navegador em vez de falhar em silêncio, para que possa distinguir um erro de escrita de uma funcionalidade em falta.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Modelos
 
-**O Bubble Card não suporta modelos Jinja**, mas os utilizadores avançados podem adicionar modelos em JS diretamente nos seus [estilos personalizados](#estilo). Por exemplo, isto permite alterar dinamicamente um ícone, os textos ou as cores de um elemento, mostrar ou ocultar um elemento condicionalmente (como um sub-botão), ou praticamente qualquer coisa com base num estado, num atributo e muito mais.
+O Bubble Card suporta dois tipos de modelos:
+
+- **Modelos do Home Assistant (Jinja)**, os que já escreve nas suas automatizações, no Mushroom ou no card-mod. Coloque `{{ ... }}` ou `{% ... %}` num campo suportado e o Home Assistant renderiza-o por si, em direto.
+- **Modelos JavaScript**, `${ ... }` dentro dos seus [estilos personalizados](#estilo), para tudo o que precisa de chegar ao próprio cartão.
+
+### Modelos do Home Assistant (Jinja)
+
+Os modelos são renderizados pelo seu servidor do Home Assistant e atualizam-se sozinhos quando o que leem muda. Funcionam nestes campos:
+
+<details>
+
+<summary><b>Campos suportados (com exemplos)</b></summary>
+
+| Campo | Exemplo |
+| --- | --- |
+| `name`, em todos os cartões (cabeçalho do pop-up e separador incluídos) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, em todos os cartões (`icon_open`, `icon_close`, `icon_up` e `icon_down` de um estore também) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` e `icon` de um [sub-botão](#sub-botões) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, num cartão ou num sub-botão, ao lado de `state` e dos nomes de atributos | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... de uma [pilha de botões horizontal](#pilha-de-botões-horizontal) | `1_name: "{{ user }}"` |
+| `styles` de um cartão e o código de um [módulo](#módulos), misturados com modelos JavaScript | ver abaixo |
+| [Condições](#condições), com `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Coloque sempre um modelo entre aspas. Sem elas, `name: {{ states('x') }}` é lido pelo YAML como um mapeamento em vez de texto, e o cartão recusa-o.
+
+Três variáveis estão disponíveis além de tudo o que o Home Assistant oferece (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtros, as macros da sua pasta `custom_templates`...):
+
+- `entity` é a entidade do cartão, ou do sub-botão para um campo de sub-botão.
+- `config.entity` é o mesmo valor, para os modelos que escreveu para o card-mod.
+- `user` é o nome do utilizador com sessão iniciada.
+
+Os resultados são interpretados pelo Home Assistant exatamente como nas ferramentas de programador, por isso `21.50` aparece como `21.5`. Adicione `| string` quando o texto deve ficar tal como está.
+
+<details>
+
+<summary>Modelos do Home Assistant nos seus estilos personalizados</summary>
+
+<br>
+
+Um modelo pode conter um valor ou envolver regras CSS inteiras:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Os modelos JavaScript e os modelos do Home Assistant podem partilhar um bloco. Mantenha cada `${ }` fora de um bloco `{% if %} ... {% endif %}`, cada lado é renderizado por um motor diferente e um bloco cortado em dois não pode ser renderizado.
+
+O seu próprio texto na linha de estado não precisa de estilos nenhuns, `state_content` aceita um modelo como um dos seus itens:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Dentro de um modelo JavaScript, `renderTemplate("{{ ... }}")` dá-lhe o texto renderizado de um modelo do Home Assistant, para os sítios onde um modelo não consegue chegar sozinho:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Os erros são mostrados no editor, por baixo dos estilos personalizados, e na consola do seu navegador.
+
+</details>
+
+### Modelos JavaScript
+
+Os utilizadores avançados podem adicionar modelos em JS diretamente nos seus [estilos personalizados](#estilo). Por exemplo, isto permite alterar dinamicamente um ícone, os textos ou as cores de um elemento, mostrar ou ocultar um elemento condicionalmente (como um sub-botão), ou praticamente qualquer coisa com base num estado, num atributo e muito mais.
 
 > [!TIP]  
 > Mais informação sobre modelos JS [aqui](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). O meu conselho é **verificar sempre a consola do navegador** para garantir que tudo está a funcionar corretamente.
@@ -2095,6 +2176,7 @@ Tem acesso a todas as funções JS globais, mas também tem acesso a:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` devolve `true` quando uma lista de [condições](#condições) é cumprida, por exemplo `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` devolve o texto renderizado pelo Home Assistant para um modelo Jinja, por exemplo `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. O segundo argumento é o que o modelo vê como `entity`, por predefinição a entidade do seu cartão.
 - `hass.formatEntityState(state)` pode ser usado para traduzir um estado (também pode ser usado para obter a unidade de um estado, sem precisar de a adicionar manualmente).
 - `hass.formatEntityAttributeValue(state, "attribute")` pode ser usado para traduzir um atributo (também pode ser usado para obter a unidade de um estado, sem precisar de a adicionar manualmente).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Se quiser modelar o estado (`.bubble-state`) a partir dos seus estilos, a linha aparece no ecrã assim que um modelo escreve nela, independentemente do que `state_content` diga.
+
+O mesmo sem quaisquer estilos, com um modelo do Home Assistant em `state_content`, que também lhe dá o estado traduzido:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

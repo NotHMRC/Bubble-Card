@@ -412,7 +412,7 @@ Tämä kortti on hyvin monikäyttöinen. Sitä voi käyttää **kytkimenä**, **
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Painikkeen kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
 | `use_accent_color` | boolean | Valinnainen (`false` oletus) | **Vain valoille.** Käytä teeman korostusväriä valon värin sijaan.                         |
-| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#mallit) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
@@ -547,7 +547,7 @@ Tämän kortin avulla voit ohjata mediasoitinentiteettiä.
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Mediasoittimen nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Mediasoittimen kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#mallit) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
@@ -663,7 +663,7 @@ Tämän kortin avulla voit ohjata `cover` entiteettejäsi.
 | `entity` | string | **Pakollinen** | Mikä tahansa kaihdin | Ohjattava kaihdin |
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Kaihtimen nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#mallit) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
@@ -753,7 +753,7 @@ Tämän kortin avulla voit lisätä pudotusvalikon `input_select` / `select` ent
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Valinnan nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Valinnan kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#mallit) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä alipainikkeelle tausta, se muuttaa väriään entiteetin tilan mukaan |
 | `state_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Käytä tilan väriä, kun entiteetti on `on` |
 | `light_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Käytä valon väriä taustana, kun se on saatavilla |
-| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#mallit) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
 | `select_attribute` | string | Valinnainen | Attribuuttilista `entity`-entiteetiltäsi (katso tuetut arvot yllä) | Tämä attribuuttilista avaa pudotusvalikon, kun sitä napautetaan (esim. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Ehdot arvioidaan selaimessasi, joten ne harvat jotka tarvitsevat Home Assistant -palvelinta eivät voi olla tarkkoja: auringonnousu ja auringonlasku luetaan `sun.sun`-entiteetistä sen sijaan että ne laskettaisiin uudelleen, ja `for`-kesto mitataan viimeisimmästä tilanmuutoksesta, ilman recorderin historiaa.
+> Ehdot arvioidaan selaimessasi, joten ne harvat jotka tarvitsevat Home Assistant -palvelinta eivät voi olla tarkkoja: auringonnousu ja auringonlasku luetaan `sun.sun`-entiteetistä sen sijaan että ne laskettaisiin uudelleen, ja `for`-kesto mitataan viimeisimmästä tilanmuutoksesta, ilman recorderin historiaa. Poikkeus on `template`, jonka palvelin renderöi kuten minkä tahansa muun [Home Assistant -mallin](#mallit).
 >
 > `view_columns` hyväksytään mutta se läpäisee aina, koska Bubble Card ei koskaan ole se joka asettelee näkymäsi sarakkeet. Ehtotyyppi jota Bubble Card ei tunne ilmoittaa itsestään kerran selaimesi konsolissa sen sijaan että epäonnistuisi hiljaa, joten erotat kirjoitusvirheen puuttuvasta ominaisuudesta.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Mallit
 
-**Bubble Card ei tue Jinja-malleja**, mutta edistyneet käyttäjät voivat lisätä malleja JS:ssä suoraan [mukautettuihin tyyleihinsä](#tyylit). Tämä mahdollistaa esimerkiksi kuvakkeen, tekstien tai elementin värien dynaamisen muuttamisen, elementin (kuten alipainikkeen) ehdollisen näyttämisen tai piilottamisen, tai lähes mitä tahansa tilan, attribuutin ja muun perusteella.
+Bubble Card tukee kahdenlaisia malleja:
+
+- **Home Assistant -mallit (Jinja)**, ne jotka kirjoitat jo automaatioissasi, Mushroomissa tai card-modissa. Laita `{{ ... }}` tai `{% ... %}` tuettuun kenttään, ja Home Assistant renderöi sen puolestasi, reaaliajassa.
+- **JavaScript-mallit**, `${ ... }` [mukautetuissa tyyleissäsi](#tyylit), kaikkeen mikä tarvitsee pääsyn itse korttiin.
+
+### Home Assistant -mallit (Jinja)
+
+Mallit renderöidään Home Assistant -palvelimellasi, ja ne päivittyvät itsestään kun se mitä ne lukevat muuttuu. Ne toimivat näissä kentissä:
+
+<details>
+
+<summary><b>Tuetut kentät (esimerkkeineen)</b></summary>
+
+| Kenttä | Esimerkki |
+| --- | --- |
+| `name`, jokaisessa kortissa (ponnahdusikkunan otsikko ja erotin mukaan lukien) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, jokaisessa kortissa (myös kaihtimen `icon_open`, `icon_close`, `icon_up` ja `icon_down`) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [Alipainikkeen](#alipainikkeet) `name` ja `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, kortissa tai alipainikkeessa, `state`:n ja attribuuttien nimien rinnalla | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [Vaakasuoran painikepinon](#vaakasuora-painikepino) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| Kortin `styles` ja [moduulin](#moduulit) koodi, sekoitettuna JavaScript-malleihin | katso alla |
+| [Ehdot](#ehdot), kun `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Laita malli aina lainausmerkkeihin. Ilman niitä YAML lukee `name: {{ states('x') }}` tekstin sijaan sanakirjana, ja kortti hylkää sen.
+
+Kolme muuttujaa on käytettävissä kaiken sen lisäksi mitä Home Assistant tarjoaa (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, suodattimet, `custom_templates`-kansiosi makrot...):
+
+- `entity` on kortin entiteetti, tai alipainikkeen entiteetti alipainikkeen kentässä.
+- `config.entity` on sama arvo, card-modille kirjoittamiasi malleja varten.
+- `user` on kirjautuneen käyttäjän nimi.
+
+Home Assistant jäsentää tulokset täsmälleen kuten kehittäjän työkaluissa, joten `21.50` näkyy muodossa `21.5`. Lisää `| string` kun tekstin täytyy pysyä sellaisenaan.
+
+<details>
+
+<summary>Home Assistant -mallit mukautetuissa tyyleissäsi</summary>
+
+<br>
+
+Malli voi sisältää arvon tai ympäröidä kokonaisia CSS-sääntöjä:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-mallit ja Home Assistant -mallit voivat jakaa saman lohkon. Pidä jokainen `${ }` `{% if %} ... {% endif %}` -lohkon ulkopuolella, kummankin puolen renderöi eri moottori, eikä kahtia leikattua lohkoa voi renderöidä.
+
+Oma tekstisi tilarivillä ei tarvitse lainkaan tyylejä, `state_content` ottaa mallin yhdeksi kohdakseen:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript-mallin sisällä `renderTemplate("{{ ... }}")` antaa sinulle Home Assistant -mallin renderöidyn tekstin, niihin paikkoihin joihin malli ei yksinään yllä:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Virheet näytetään editorissa, mukautettujen tyylien alla, ja selaimesi konsolissa.
+
+</details>
+
+### JavaScript-mallit
+
+Edistyneet käyttäjät voivat lisätä malleja JS:ssä suoraan [mukautettuihin tyyleihinsä](#tyylit). Tämä mahdollistaa esimerkiksi kuvakkeen, tekstien tai elementin värien dynaamisen muuttamisen, elementin (kuten alipainikkeen) ehdollisen näyttämisen tai piilottamisen, tai lähes mitä tahansa tilan, attribuutin ja muun perusteella.
 
 > [!TIP]  
 > Lisätietoja JS-malleista [täältä](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Neuvoni on **katsoa aina selaimesi konsolia**, jotta olet varma että kaikki toimii oikein.
@@ -2095,6 +2176,7 @@ Sinulla on pääsy kaikkiin globaaleihin JS-funktioihin, mutta myös näihin:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` palauttaa `true` kun [ehtojen](#ehdot) luettelo täyttyy, esimerkiksi `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` palauttaa Home Assistantin Jinja-mallista renderöimän tekstin, esimerkiksi `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Toinen argumentti on se, minkä malli näkee muuttujana `entity`, oletuksena korttisi entiteetti.
 - `hass.formatEntityState(state)` voidaan käyttää kääntämään tila (voidaan käyttää myös hakemaan tilan yksikkö ilman että se täytyy lisätä manuaalisesti).
 - `hass.formatEntityAttributeValue(state, "attribute")` voidaan käyttää kääntämään attribuutti (voidaan käyttää myös hakemaan tilan yksikkö ilman että se täytyy lisätä manuaalisesti).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Jos haluat mallintaa tilan (`.bubble-state`) tyyleistäsi, rivi ilmestyy näytölle heti, kun malli kirjoittaa siihen, riippumatta siitä, mitä `state_content` sanoo.
+
+Sama ilman mitään tyylejä, Home Assistant -mallilla `state_content`-kentässä, joka antaa sinulle myös käännetyn tilan:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

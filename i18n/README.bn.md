@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | ঐচ্ছিক | যেকোনো `mdi:` আইকন | আপনার বাটনের একটি আইকন, নির্ধারিত না থাকলে এনটিটির আইকন বা `entity-picture` দেখানো হবে |
 | `force_icon` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | `entity-picture`-এর বদলে আইকনকে অগ্রাধিকার দেয় |
 | `use_accent_color` | boolean | ঐচ্ছিক (`false` ডিফল্ট) | **শুধু লাইটের জন্য।** লাইটের রঙের বদলে থিমের অ্যাকসেন্ট রং ব্যবহার করে।                         |
-| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#templates) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
+| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#টেমপ্লেট) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
 | `show_name` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | নাম দেখায় বা লুকায় |
 | `show_icon` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আইকন দেখায় বা লুকায় |
 | `scrolling_effect` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | কনটেন্ট তার কনটেইনারের আকার ছাড়িয়ে গেলে টেক্সট স্ক্রল করতে দেয় |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | ঐচ্ছিক | যেকোনো টেক্সট | আপনার মিডিয়া প্লেয়ারের একটি নাম, নির্ধারিত না থাকলে এনটিটির নাম দেখানো হবে |
 | `icon` | string | ঐচ্ছিক | যেকোনো `mdi:` আইকন | আপনার মিডিয়া প্লেয়ারের একটি আইকন, নির্ধারিত না থাকলে এনটিটির আইকন বা `entity-picture` দেখানো হবে |
 | `force_icon` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | `entity-picture`-এর বদলে আইকনকে অগ্রাধিকার দেয় |
-| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#templates) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
+| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#টেমপ্লেট) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
 | `show_name` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | নাম দেখায় বা লুকায় |
 | `show_icon` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আইকন দেখায় বা লুকায় |
 | `scrolling_effect` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | কনটেন্ট তার কনটেইনারের আকার ছাড়িয়ে গেলে টেক্সট স্ক্রল করতে দেয় |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **আবশ্যক** | যেকোনো কভার | নিয়ন্ত্রণের জন্য একটি কভার |
 | `name` | string | ঐচ্ছিক | যেকোনো স্ট্রিং | আপনার কভারের জন্য একটি নাম, নির্ধারিত না থাকলে এনটিটির নাম দেখানো হবে |
 | `force_icon` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | `entity-picture`-এর বদলে আইকনকে অগ্রাধিকার দিন |
-| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#templates) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
+| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#টেমপ্লেট) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
 | `show_name` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | নাম দেখান বা লুকান |
 | `show_icon` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আইকন দেখান বা লুকান |
 | `scrolling_effect` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | কনটেন্ট কনটেইনারের আকার ছাড়িয়ে গেলে টেক্সট স্ক্রল করতে দিন |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | ঐচ্ছিক | যেকোনো স্ট্রিং | আপনার সিলেক্টের জন্য একটি নাম, নির্ধারিত না থাকলে এনটিটির নাম দেখানো হবে |
 | `icon` | string | ঐচ্ছিক | যেকোনো `mdi:` আইকন | আপনার সিলেক্টের জন্য একটি আইকন, নির্ধারিত না থাকলে এনটিটির আইকন বা `entity-picture` দেখানো হবে |
 | `force_icon` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | `entity-picture`-এর বদলে আইকনকে অগ্রাধিকার দিন |
-| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#templates) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
+| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#টেমপ্লেট) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
 | `show_name` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | নাম দেখান বা লুকান |
 | `show_icon` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আইকন দেখান বা লুকান |
 | `scrolling_effect` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | কনটেন্ট কনটেইনারের আকার ছাড়িয়ে গেলে টেক্সট স্ক্রল করতে দিন |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আপনার সাব-বাটনের জন্য একটি ব্যাকগ্রাউন্ড দেখান, এনটিটির অবস্থার ভিত্তিতে এর রং পরিবর্তিত হবে |
 | `state_background` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | এনটিটি `on` থাকলে অবস্থার রং ব্যবহার করুন |
 | `light_background` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | উপলব্ধ থাকলে ব্যাকগ্রাউন্ডের জন্য লাইটের রং ব্যবহার করুন |
-| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#templates) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
+| `state_content` | string বা list | ঐচ্ছিক | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` বা `forecast[0].temperature`-এর মতো কোনো অ্যাট্রিবিউটের নাম, অথবা একটি [টেমপ্লেট](#টেমপ্লেট) | নামের নিচের লাইনে কী দেখানো হবে, এই ক্রমে। এটি ছাড়া একটি `button_type: state` বাটন সেটাই দেখায় যা Home Assistant এনটিটির জন্য দেখায় (এর অবস্থা, সাথে ক্লাইমেটের বর্তমান তাপমাত্রা, কভারের অবস্থান, লাইটের উজ্জ্বলতা)। পুরোনো `show_state`, `show_attribute`, `attribute`, `show_last_changed` ও `show_last_updated` কী-গুলো এখনও কাজ করে এবং আপনি এডিটর খুললে সেগুলো `state_content` হিসেবে নতুন করে লেখা হয়। |
 | `show_name` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | নাম দেখান বা লুকান |
 | `show_icon` | boolean | ঐচ্ছিক | `true` (ডিফল্ট) বা `false` | আইকন দেখান বা লুকান |
 | `select_attribute` | string | ঐচ্ছিক | আপনার `entity`-র একটি অ্যাট্রিবিউট তালিকা (উপরের সাপোর্টেড অপশন দেখুন) | ক্লিক করলে এই অ্যাট্রিবিউট তালিকা একটি ড্রপডাউন খুলবে (যেমন `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> শর্তগুলো আপনার ব্রাউজারেই মূল্যায়ন হয়, তাই যে অল্প কয়েকটির জন্য Home Assistant সার্ভার দরকার সেগুলো নিখুঁত হতে পারে না: সূর্যোদয় ও সূর্যাস্ত নতুন করে হিসাব না করে `sun.sun` এনটিটি থেকে পড়া হয়, আর `for` সময়কাল সর্বশেষ অবস্থা পরিবর্তনের সময় থেকে মাপা হয়, recorder ইতিহাস ছাড়াই।
+> শর্তগুলো আপনার ব্রাউজারেই মূল্যায়ন হয়, তাই যে অল্প কয়েকটির জন্য Home Assistant সার্ভার দরকার সেগুলো নিখুঁত হতে পারে না: সূর্যোদয় ও সূর্যাস্ত নতুন করে হিসাব না করে `sun.sun` এনটিটি থেকে পড়া হয়, আর `for` সময়কাল সর্বশেষ অবস্থা পরিবর্তনের সময় থেকে মাপা হয়, recorder ইতিহাস ছাড়াই। ব্যতিক্রম হলো `template`, যা অন্য যেকোনো [Home Assistant টেমপ্লেটের](#টেমপ্লেট) মতোই সার্ভারে রেন্ডার হয়।
 >
 > `view_columns` গ্রহণ করা হয় কিন্তু সবসময় সফল হয়, কারণ আপনার ভিউয়ের কলাম সাজানোর কাজটি Bubble Card কখনোই করে না। Bubble Card যে শর্তের ধরন চেনে না সেটি নীরবে ব্যর্থ না হয়ে ব্রাউজার কনসোলে একবার নিজের কথা জানায়, ফলে টাইপো আর অনুপস্থিত ফিচারের পার্থক্য বোঝা যায়।
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## টেমপ্লেট
 
-**Bubble Card Jinja টেমপ্লেট সাপোর্ট করে না**, তবে অ্যাডভান্সড ব্যবহারকারীরা তাদের [কাস্টম স্টাইলে](#স্টাইলিং) সরাসরি JS দিয়ে টেমপ্লেট যোগ করতে পারেন। উদাহরণস্বরূপ, এর মাধ্যমে আপনি কোনো আইকন, টেক্সট বা কোনো এলিমেন্টের রং ডাইনামিকভাবে বদলাতে পারেন, কোনো এলিমেন্ট শর্তসাপেক্ষে দেখাতে বা লুকাতে পারেন (যেমন একটি সাব-বাটন), অথবা কোনো অবস্থা, অ্যাট্রিবিউট ও আরও অনেক কিছুর ভিত্তিতে প্রায় যেকোনো কিছু করতে পারেন।
+Bubble Card দুই ধরনের টেমপ্লেট সাপোর্ট করে:
+
+- **Home Assistant টেমপ্লেট (Jinja)**, যেগুলো আপনি ইতিমধ্যে আপনার অটোমেশনে, Mushroom-এ বা card-mod-এ লেখেন। কোনো সাপোর্টেড ফিল্ডে `{{ ... }}` বা `{% ... %}` বসান, Home Assistant সেটি আপনার জন্য লাইভ রেন্ডার করে দেয়।
+- **JavaScript টেমপ্লেট**, আপনার [কাস্টম স্টাইলের](#স্টাইলিং) ভিতরে `${ ... }`, এমন যেকোনো কিছুর জন্য যাকে কার্ডের ভিতরে পৌঁছাতে হয়।
+
+### Home Assistant টেমপ্লেট (Jinja)
+
+টেমপ্লেট আপনার Home Assistant সার্ভারে রেন্ডার হয় এবং যা পড়ে তা বদলালে নিজে থেকেই আপডেট হয়। এগুলো এই ফিল্ডগুলোতে কাজ করে:
+
+<details>
+
+<summary><b>সাপোর্টেড ফিল্ড (উদাহরণসহ)</b></summary>
+
+| ফিল্ড | উদাহরণ |
+| --- | --- |
+| `name`, প্রতিটি কার্ডে (পপ-আপের হেডার ও বিভাজকসহ) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, প্রতিটি কার্ডে (কভারের `icon_open`, `icon_close`, `icon_up` ও `icon_down`-ও) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| একটি [সাব-বাটনের](#সাব-বাটন) `name` ও `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, কোনো কার্ড বা সাব-বাটনে, `state` ও অ্যাট্রিবিউটের নামের পাশে | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| একটি [অনুভূমিক বাটন স্ট্যাকের](#অনুভূমিক-বাটন-স্ট্যাক) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| কোনো কার্ডের `styles` ও কোনো [মডিউলের](#মডিউল) কোড, JavaScript টেমপ্লেটের সাথে মিশিয়ে | নিচে দেখুন |
+| [শর্ত](#শর্ত), `condition: template` দিয়ে | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> টেমপ্লেট সবসময় উদ্ধৃতি চিহ্নের মধ্যে রাখুন। সেটি ছাড়া YAML `name: {{ states('x') }}`-কে টেক্সট নয়, একটি ম্যাপিং হিসেবে পড়ে, আর কার্ড সেটি গ্রহণ করে না।
+
+Home Assistant যা কিছু দেয় (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, ফিল্টার, আপনার `custom_templates` ফোল্ডারের ম্যাক্রো...) তার উপরে তিনটি ভ্যারিয়েবল পাওয়া যায়:
+
+- `entity` হলো কার্ডের এনটিটি, অথবা সাব-বাটনের কোনো ফিল্ডের ক্ষেত্রে সাব-বাটনের এনটিটি।
+- `config.entity` একই মান, card-mod-এর জন্য লেখা আপনার টেমপ্লেটগুলোর জন্য।
+- `user` হলো লগইন করা ব্যবহারকারীর নাম।
+
+ফলাফল Home Assistant ঠিক ডেভেলপার টুলসের মতো করে পার্স করে, তাই `21.50` দেখায় `21.5` হিসেবে। টেক্সট যেমন আছে তেমন রাখতে হলে `| string` যোগ করুন।
+
+<details>
+
+<summary>আপনার কাস্টম স্টাইলে Home Assistant টেমপ্লেট</summary>
+
+<br>
+
+একটি টেমপ্লেট একটি মান ধরে রাখতে পারে বা পুরো CSS রুল ঘিরে রাখতে পারে:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript টেমপ্লেট ও Home Assistant টেমপ্লেট একই ব্লক ভাগ করে নিতে পারে। প্রতিটি `${ }` কোনো `{% if %} ... {% endif %}` ব্লকের বাইরে রাখুন, দুই পাশ দুটি আলাদা ইঞ্জিনে রেন্ডার হয় আর দুই টুকরো হয়ে যাওয়া ব্লক রেন্ডার করা যায় না।
+
+অবস্থার লাইনে আপনার নিজের টেক্সটের জন্য কোনো স্টাইলই লাগে না, `state_content` তার আইটেমগুলোর একটি হিসেবে টেমপ্লেট নেয়:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+কোনো JavaScript টেমপ্লেটের ভিতরে `renderTemplate("{{ ... }}")` আপনাকে একটি Home Assistant টেমপ্লেটের রেন্ডার করা টেক্সট দেয়, যেসব জায়গায় টেমপ্লেট নিজে থেকে পৌঁছাতে পারে না সেগুলোর জন্য:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+ত্রুটিগুলো এডিটরে, কাস্টম স্টাইলের নিচে, এবং আপনার ব্রাউজার কনসোলে দেখানো হয়।
+
+</details>
+
+### JavaScript টেমপ্লেট
+
+অ্যাডভান্সড ব্যবহারকারীরা তাদের [কাস্টম স্টাইলে](#স্টাইলিং) সরাসরি JS দিয়ে টেমপ্লেট যোগ করতে পারেন। উদাহরণস্বরূপ, এর মাধ্যমে আপনি কোনো আইকন, টেক্সট বা কোনো এলিমেন্টের রং ডাইনামিকভাবে বদলাতে পারেন, কোনো এলিমেন্ট শর্তসাপেক্ষে দেখাতে বা লুকাতে পারেন (যেমন একটি সাব-বাটন), অথবা কোনো অবস্থা, অ্যাট্রিবিউট ও আরও অনেক কিছুর ভিত্তিতে প্রায় যেকোনো কিছু করতে পারেন।
 
 > [!TIP]  
 > JS টেমপ্লেট সম্পর্কে আরও তথ্য পাবেন [এখানে](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)। আমার পরামর্শ হলো **সবসময় আপনার ব্রাউজার কনসোলে একবার চোখ বুলিয়ে নিন**, যাতে নিশ্চিত হতে পারেন সবকিছু ঠিকঠাক কাজ করছে।
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` একটি [শর্তের](#শর্ত) তালিকা পূরণ হলে `true` ফেরত দেয়, যেমন `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`।
+- `renderTemplate(template, entity)` কোনো Jinja টেমপ্লেটের জন্য Home Assistant যে টেক্সট রেন্ডার করে সেটি ফেরত দেয়, যেমন `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`। দ্বিতীয় আর্গুমেন্টটি হলো টেমপ্লেট যাকে `entity` হিসেবে দেখে, ডিফল্টভাবে আপনার কার্ডের এনটিটি।
 - `hass.formatEntityState(state)` কোনো অবস্থা অনুবাদ করতে ব্যবহার করা যায় (অবস্থার একক পেতেও ব্যবহার করা যায়, আলাদাভাবে যোগ করার প্রয়োজন ছাড়াই)।
 - `hass.formatEntityAttributeValue(state, "attribute")` কোনো অ্যাট্রিবিউট অনুবাদ করতে ব্যবহার করা যায় (অবস্থার একক পেতেও ব্যবহার করা যায়, আলাদাভাবে যোগ করার প্রয়োজন ছাড়াই)।
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 আপনি যদি আপনার স্টাইল থেকে অবস্থা (`.bubble-state`) টেমপ্লেট করতে চান, তাহলে কোনো টেমপ্লেট তাতে লেখার সাথে সাথেই লাইনটি স্ক্রিনে চলে আসে, `state_content` যা-ই বলুক না কেন।
+
+কোনো স্টাইল ছাড়াই একই জিনিস, `state_content`-এ একটি Home Assistant টেমপ্লেট দিয়ে, যা আপনাকে অনূদিত অবস্থাও দেয়:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

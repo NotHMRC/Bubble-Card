@@ -412,7 +412,7 @@ Ez a kártya rendkívül sokoldalú. Használható **kapcsolóként**, **csúszk
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A gomb ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
 | `use_accent_color` | boolean | Opcionális (alapértelmezett `false`) | **Csak lámpákhoz.** A téma kiemelő színét használja a lámpa színe helyett.                         |
-| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#sablonok) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
@@ -547,7 +547,7 @@ Ez a kártya lehetővé teszi egy médialejátszó entitás vezérlését.
 | `name` | string | Opcionális | Bármely string | A médialejátszó neve, ha nincs megadva, az entitás neve jelenik meg |
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A médialejátszó ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#sablonok) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
@@ -663,7 +663,7 @@ Ez a kártya lehetővé teszi a `cover` entitásaid vezérlését.
 | `entity` | string | **Kötelező** | Bármely árnyékoló | Vezérelendő árnyékoló |
 | `name` | string | Opcionális | Bármely string | Az árnyékoló neve, ha nincs megadva, az entitás neve jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#sablonok) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
@@ -753,7 +753,7 @@ Ez a kártya lehetővé teszi egy legördülő menü hozzáadását az `input_se
 | `name` | string | Opcionális | Bármely string | A választó neve, ha nincs megadva, az entitás neve jelenik meg |
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A választó ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#sablonok) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Háttér megjelenítése az algombhoz, amely az entitás állapota szerint változtatja a színét |
 | `state_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az állapotszín használata, amikor az entitás `on` |
 | `light_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A világítás színének használata a háttérhez, ha elérhető |
-| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#sablonok) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
 | `select_attribute` | string | Opcionális | Az `entity` egyik attribútum listája (lásd a fenti támogatott értékeket) | Ez az attribútumlista kattintásra egy legördülő menüt nyit meg (pl. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> A feltételek a böngésződben értékelődnek ki, így az a néhány, amelyiknek a Home Assistant kiszolgálójára lenne szüksége, nem lehet pontos: a napkelte és a napnyugta a `sun.sun` entitásból olvasódik ki ahelyett, hogy újraszámolódna, és a `for` időtartam az utolsó állapotváltozástól mérődik, a recorder előzményei nélkül.
+> A feltételek a böngésződben értékelődnek ki, így az a néhány, amelyiknek a Home Assistant kiszolgálójára lenne szüksége, nem lehet pontos: a napkelte és a napnyugta a `sun.sun` entitásból olvasódik ki ahelyett, hogy újraszámolódna, és a `for` időtartam az utolsó állapotváltozástól mérődik, a recorder előzményei nélkül. A kivétel a `template`, amelyet a kiszolgáló ugyanúgy renderel, mint bármely más [Home Assistant sablont](#sablonok).
 >
 > A `view_columns` elfogadott, de mindig teljesül, hiszen soha nem a Bubble Card rendezi el a nézeted oszlopait. Az olyan feltételtípus, amelyet a Bubble Card nem ismer, egyszer jelentkezik a böngésződ konzoljában ahelyett, hogy némán elbukna, így meg tudod különböztetni az elgépelést a hiányzó funkciótól.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Sablonok
 
-**A Bubble Card nem támogatja a Jinja sablonokat**, de a haladó felhasználók közvetlenül JS-ben adhatnak hozzá sablonokat az [egyéni stílusaikban](#stílus). Ez például lehetővé teszi egy ikon, egy szöveg vagy egy elem színének dinamikus megváltoztatását, egy elem feltételes megjelenítését vagy elrejtését (mint egy algomb), vagy szinte bármit egy állapot, egy attribútum és egyebek alapján.
+A Bubble Card kétféle sablont támogat:
+
+- **Home Assistant sablonok (Jinja)**, azok, amelyeket már most is írsz az automatizálásaidban, a Mushroomban vagy a card-modban. Írj egy `{{ ... }}` vagy `{% ... %}` kifejezést egy támogatott mezőbe, és a Home Assistant élőben rendereli neked.
+- **JavaScript sablonok**, `${ ... }` az [egyéni stílusaidban](#stílus), mindenhez, aminek magához a kártyához kell hozzáférnie.
+
+### Home Assistant sablonok (Jinja)
+
+A sablonokat a Home Assistant kiszolgálód rendereli, és maguktól frissülnek, amikor változik, amit olvasnak. Ezekben a mezőkben működnek:
+
+<details>
+
+<summary><b>Támogatott mezők (példákkal)</b></summary>
+
+| Mező | Példa |
+| --- | --- |
+| `name`, minden kártyán (a pop-up fejlécét és az elválasztót is beleértve) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, minden kártyán (egy árnyékoló `icon_open`, `icon_close`, `icon_up` és `icon_down` mezője is) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| Egy [algomb](#algombok) `name` és `icon` mezője | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, egy kártyán vagy egy algombon, a `state` és az attribútumnevek mellett | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| Egy [vízszintes gombsor](#vízszintes-gombsor) `1_name`, `1_icon`... mezője | `1_name: "{{ user }}"` |
+| Egy kártya `styles` mezője és egy [modul](#modulok) kódja, JavaScript sablonokkal keverve | lásd lentebb |
+| [Feltételek](#feltételek), `condition: template` esetén | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> A sablont mindig tedd idézőjelek közé. Nélkülük a `name: {{ states('x') }}` sort a YAML nem szövegként, hanem leképezésként olvassa, és a kártya visszautasítja.
+
+Mindazon felül, amit a Home Assistant kínál (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, szűrők, a `custom_templates` mappád makrói...), három változó érhető el:
+
+- az `entity` a kártya entitása, algomb mező esetén pedig az algombé.
+- a `config.entity` ugyanez az érték, a card-modhoz írt sablonjaid számára.
+- a `user` a bejelentkezett felhasználó neve.
+
+Az eredményeket a Home Assistant pontosan úgy értelmezi, mint a fejlesztői eszközökben, így a `21.50` `21.5`-ként jelenik meg. Adj hozzá `| string` szűrőt, ha a szövegnek úgy kell maradnia, ahogy van.
+
+<details>
+
+<summary>Home Assistant sablonok az egyéni stílusaidban</summary>
+
+<br>
+
+Egy sablon tartalmazhat egy értéket, vagy körbefoghat egész CSS szabályokat:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+A JavaScript sablonok és a Home Assistant sablonok osztozhatnak egy blokkon. Minden `${ }` maradjon egy `{% if %} ... {% endif %}` blokkon kívül, a két oldalt más-más motor rendereli, és egy kettévágott blokk nem renderelhető.
+
+A saját szövegedhez az állapotsorban egyáltalán nincs szükség stílusokra, a `state_content` egyik elemeként sablont is elfogad:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Egy JavaScript sablonon belül a `renderTemplate("{{ ... }}")` adja meg egy Home Assistant sablon renderelt szövegét, azokra a helyekre, ahová egy sablon önmagában nem ér el:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+A hibák a szerkesztőben, az egyéni stílusok alatt, és a böngésződ konzoljában jelennek meg.
+
+</details>
+
+### JavaScript sablonok
+
+A haladó felhasználók közvetlenül JS-ben adhatnak hozzá sablonokat az [egyéni stílusaikban](#stílus). Ez például lehetővé teszi egy ikon, egy szöveg vagy egy elem színének dinamikus megváltoztatását, egy elem feltételes megjelenítését vagy elrejtését (mint egy algomb), vagy szinte bármit egy állapot, egy attribútum és egyebek alapján.
 
 > [!TIP]  
 > A JS sablonokról bővebb információ [itt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) található. Az a tanácsom, hogy **mindig nézd meg a böngésződ konzolját**, hogy megbizonyosodj róla, minden megfelelően működik.
@@ -2095,6 +2176,7 @@ Az összes globális JS függvényhez hozzáférsz, de emellett ezekhez is:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - a `checkConditionsMet(conditions, hass)` `true` értéket ad vissza, ha egy [feltétel](#feltételek) lista teljesül, például `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- a `renderTemplate(template, entity)` a Home Assistant által egy Jinja sablonból renderelt szöveget adja vissza, például `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. A második argumentum az, amit a sablon `entity`-ként lát, alapértelmezés szerint a kártyád entitása.
 - a `hass.formatEntityState(state)` egy állapot lefordítására használható (arra is használható, hogy egy állapot mértékegységét megkapd, anélkül, hogy kézzel kellene hozzáadnod).
 - a `hass.formatEntityAttributeValue(state, "attribute")` egy attribútum lefordítására használható (arra is használható, hogy egy állapot mértékegységét megkapd, anélkül, hogy kézzel kellene hozzáadnod).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Ha az állapotot (`.bubble-state`) a stílusaidból szeretnéd sablonozni, a sor megjelenik a képernyőn, amint egy sablon beleír, bármit is mond a `state_content`.
+
+Ugyanez stílusok nélkül, egy Home Assistant sablonnal a `state_content` mezőben, ami a lefordított állapotot is megadja:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

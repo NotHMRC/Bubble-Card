@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> D Bedingige werde i dim Browser uusgwertet, drum chönd die weneg, wo de Home Assistant-Server bruuched, nöd exakt si: Sunnenufgang und Sunnenuntergang werde us de Entität `sun.sun` gläse statt neu brechnet, und e `for`-Duur wird ab de letschte Zuestandsänderig gmässe, ohni d Gschicht vom recorder.
+> D Bedingige werde i dim Browser uusgwertet, drum chönd die weneg, wo de Home Assistant-Server bruuched, nöd exakt si: Sunnenufgang und Sunnenuntergang werde us de Entität `sun.sun` gläse statt neu brechnet, und e `for`-Duur wird ab de letschte Zuestandsänderig gmässe, ohni d Gschicht vom recorder. D Usnahm isch `template`, wo vom Server grenderet wird wie jedes anderi [Home Assistant-Template](#templates).
 >
 > `view_columns` wird akzeptiert, gaht aber immer duure, wil Bubble Card nie die isch, wo d Spalte vo dinere Aasicht aaordnet. En Bedingigstyp, wo Bubble Card nöd kennt, meldet sich eimal i de Konsole vo dim Browser, statt lutlos z scheitere, so chasch en Tippfähler vo re fählende Funktion underscheide.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Templates
 
-**Bubble Card unterstützt kei Jinja-Templates**, aber fortgschrittni Nutzer chönd Templates direkt in JS in ihre [eigene Styles](#styling) hinzuefüege. Zum Bispiel erlaubt das, dynamisch en Icon, d'Texte oder d'Farbe vomene Element z'ändere, es Element bedingt z'zeige oder z'verstecke (wie en Sub-Button), oder fasch alles basierend uf eme Zuestand, emene Attribut und meh.
+Bubble Card unterstützt zwei Arte vo Templates:
+
+- **Home Assistant-Templates (Jinja)**, die, wo du scho i dine Automatisierige, in Mushroom oder in card-mod schriibsch. Setz `{{ ... }}` oder `{% ... %}` in es unterstützts Fäld und Home Assistant renderet's für dich, live.
+- **JavaScript-Templates**, `${ ... }` i dine [eigene Styles](#styling), für alles, wo i d Charte sälber ine muess.
+
+### Home Assistant-Templates (Jinja)
+
+Templates werde vo dim Home Assistant-Server grenderet und aktualisiere sich vo sälber, wenn sich das ändert, wo si läse. Si funktioniere i dene Fälder:
+
+<details>
+
+<summary><b>Unterstützti Fälder (mit Bispil)</b></summary>
+
+| Fäld | Bispil |
+| --- | --- |
+| `name`, uf jedere Charte (Pop-up-Chopfziile und Trännlinie inklusive) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, uf jedere Charte (`icon_open`, `icon_close`, `icon_up` und `icon_down` vonere Store au) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` und `icon` vomene [Sub-Button](#sub-buttons) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, uf ere Charte oder eme Sub-Button, näbe `state` und Attributnäme | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... vomene [horizontale Button-Stapel](#horizontale-button-stapel) | `1_name: "{{ user }}"` |
+| `styles` vonere Charte und dr Code vomene [Modul](#module), gmischt mit JavaScript-Templates | lueg unte |
+| [Bedingige](#bedingige), mit `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Setz es Template immer zwüsche Aafüehrigszeiche. Ohni die list YAML `name: {{ states('x') }}` als Mapping statt als Text, und d Charte lehnt's ab.
+
+Drei Variable sind zuesätzlich zu allem verfüegbar, wo Home Assistant bietet (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, Filter, d Makros us dim `custom_templates`-Ordner...):
+
+- `entity` isch d Entität vo de Charte, oder vom Sub-Button bimene Sub-Button-Fäld.
+- `config.entity` isch dr gliich Wert, für d Templates, wo du für card-mod gschribe hesch.
+- `user` isch dr Name vom aagmäldete Nutzer.
+
+D Resultat werde vo Home Assistant genau so parsed wie i de Entwicklerwerkzüüg, drum wird `21.50` als `21.5` aazeigt. Füeg `| string` dezue, wenn dr Text so bliibe muess, wie er isch.
+
+<details>
+
+<summary>Home Assistant-Templates i dine eigene Styles</summary>
+
+<br>
+
+Es Template cha en Wert enthalte oder ganzi CSS-Regle umschliesse:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-Templates und Home Assistant-Templates chönd sich en Block teile. Lass jedes `${ }` usserhalb vomene `{% if %} ... {% endif %}`-Block, jedi Siite wird vomene andere Engine grenderet und en Block, wo in zwei gschnitte isch, cha nöd grenderet werde.
+
+Din eigene Text i de Zuestandszile bruucht gar kei Styles, `state_content` nimmt es Template als eis vo sine Elemänt:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Innerhalb vomene JavaScript-Template git dr `renderTemplate("{{ ... }}")` dr grenderet Text vomene Home Assistant-Template, für die Stelle, wo es Template vo sälber nöd ane chunnt:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Fehler werde im Editor aazeigt, under de eigene Styles, und i dinere Browser-Konsole.
+
+</details>
+
+### JavaScript-Templates
+
+Fortgschrittni Nutzer chönd Templates direkt in JS in ihre [eigene Styles](#styling) hinzuefüege. Zum Bispiel erlaubt das, dynamisch en Icon, d'Texte oder d'Farbe vomene Element z'ändere, es Element bedingt z'zeige oder z'verstecke (wie en Sub-Button), oder fasch alles basierend uf eme Zuestand, emene Attribut und meh.
 
 > [!TIP]  
 > Meh Informatione zu de JS-Templates [da](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mis Rat: **lueg immer in dr Browser-Konsole nache**, um sicher z'sii, dass alles korrekt funktioniert.
@@ -2095,6 +2176,7 @@ Du hesch Zuegriff uf alli globale JS-Funktione, aber au uf:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` git `true` zrugg, wenn e Lischte vo [Bedingige](#bedingige) erfüllt isch, zum Bispil `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` git dr Text zrugg, wo Home Assistant für es Jinja-Template renderet, zum Bispil `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. S zweite Argument isch das, wo s Template als `entity` gseht, standardmässig d Entität vo dinere Charte.
 - `hass.formatEntityState(state)` cha bruucht werde, um en Zuestand z'übersetze (cha au bruucht werde, um en Zuestandseinheit z'übercho, ohni sie manuell hinzuefüege z'müesse).
 - `hass.formatEntityAttributeValue(state, "attribute")` cha bruucht werde, um es Attribut z'übersetze (cha au bruucht werde, um en Zuestandseinheit z'übercho, ohni sie manuell hinzuefüege z'müesse).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Wenn du dr Zuestand (`.bubble-state`) us dine Styles templiere wottsch, erschiint d Zile uf em Bildschirm, sobald es Template dri schriibt, egal was `state_content` seit.
+
+S Gliiche ganz ohni Styles, mit eme Home Assistant-Template in `state_content`, wo dir au no dr übersetzt Zuestand git:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

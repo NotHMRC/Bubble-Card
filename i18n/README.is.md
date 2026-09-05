@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir hnappinn, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Only for lights.** Nota áherslulit þemans í stað lits ljóssins.                         |
-| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#sniðmát) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Optional | Any string | Nafn fyrir spilarann, ef ekki skilgreint birtist nafn eindarinnar |
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir spilarann, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#sniðmát) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Gluggatjald til að stjórna |
 | `name` | string | Optional | Any string | Nafn fyrir gluggatjaldið, ef ekki skilgreint birtist nafn eindarinnar |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#sniðmát) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Nafn fyrir valið, ef ekki skilgreint birtist nafn eindarinnar |
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir valið, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#sniðmát) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Sýndu bakgrunn fyrir undirhnappinn, liturinn breytist eftir stöðu eindarinnar |
 | `state_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Notaðu litinn á stöðunni þegar eindin er `on` |
 | `light_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Notaðu ljóslitinn fyrir bakgrunninn þegar hann er tiltækur |
-| `state_content` | strengur eða listi | Valfrjálst | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
+| `state_content` | strengur eða listi | Valfrjálst | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#sniðmát) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýna eða fela nafnið |
 | `show_icon` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Sýna eða fela táknmyndina |
 | `select_attribute` | strengur | Valfrjálst | Eiginleikalisti úr eindinni þinni (`entity`) (sjá studda valkosti hér að ofan) | Þessi eiginleikalisti opnar fellilista við smell (t.d. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Skilyrðin eru metin í vafranum þínum, svo þau fáu sem þurfa Home Assistant þjóninn geta ekki verið nákvæm: sólarupprás og sólsetur eru lesin úr einingunni `sun.sun` í stað þess að vera reiknuð upp á nýtt, og `for` tímalengd er mæld frá síðustu stöðubreytingu, án ferilskrár recorder.
+> Skilyrðin eru metin í vafranum þínum, svo þau fáu sem þurfa Home Assistant þjóninn geta ekki verið nákvæm: sólarupprás og sólsetur eru lesin úr einingunni `sun.sun` í stað þess að vera reiknuð upp á nýtt, og `for` tímalengd er mæld frá síðustu stöðubreytingu, án ferilskrár recorder. Undantekningin er `template`, sem þjónninn birtir eins og hvert annað [Home Assistant sniðmát](#sniðmát).
 >
 > `view_columns` er tekið gilt en stenst alltaf, því Bubble Card er aldrei það sem raðar dálkunum í sýninni þinni. Skilyrðategund sem Bubble Card þekkir ekki lætur vita af sér einu sinni í vafrakerfisskránni þinni í stað þess að bregðast hljóðlaust, svo þú getir greint innsláttarvillu frá eiginleika sem vantar.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Sniðmát
 
-**Bubble Card styður ekki Jinja sniðmát** en lengra komnir notendur geta bætt sniðmátum við í JS beint í [sérsniðnu stílunum sínum](#stílun). Þetta gerir til dæmis kleift að breyta táknmynd, textum eða litum á sviðsbundinn (dynamic) hátt, sýna eða fela hlut skilyrt (eins og undirhnapp), eða nánast hvað sem er byggt á stöðu, eigind (attribute) og fleiru.
+Bubble Card styður tvenns konar sniðmát:
+
+- **Home Assistant sniðmát (Jinja)**, þau sem þú skrifar nú þegar í sjálfvirkni þinni, í Mushroom eða í card-mod. Settu `{{ ... }}` eða `{% ... %}` í studdan reit og Home Assistant birtir það fyrir þig, í beinni.
+- **JavaScript sniðmát**, `${ ... }` inni í [sérsniðnu stílunum þínum](#stílun), fyrir allt sem þarf að komast inn í kortið sjálft.
+
+### Home Assistant sniðmát (Jinja)
+
+Sniðmátin eru birt af Home Assistant þjóninum þínum og uppfærast sjálfkrafa þegar það sem þau lesa breytist. Þau virka í þessum reitum:
+
+<details>
+
+<summary><b>Studdir reitir (með dæmum)</b></summary>
+
+| Reitur | Dæmi |
+| --- | --- |
+| `name`, á öllum kortum (haus sprettiglugga og skil meðtalin) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, á öllum kortum (`icon_open`, `icon_close`, `icon_up` og `icon_down` gluggatjalda líka) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` og `icon` [undirhnapps](#undirhnappar) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, á korti eða undirhnappi, við hlið `state` og heita eiginda | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [láréttrar hnapparaðar](#lárétt-hnapparöð) | `1_name: "{{ user }}"` |
+| `styles` korts og kóði [einingar](#einingar), blandað saman við JavaScript sniðmát | sjá hér að neðan |
+| [Skilyrði](#skilyrði), með `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Settu sniðmát alltaf innan gæsalappa. Án þeirra les YAML `name: {{ states('x') }}` sem vörpun frekar en sem texta, og kortið hafnar því.
+
+Þrjár breytur eru tiltækar ofan á allt sem Home Assistant býður (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, síur, fjölvarnir úr `custom_templates` möppunni þinni...):
+
+- `entity` er eind kortsins, eða eind undirhnappsins fyrir reit undirhnapps.
+- `config.entity` er sama gildið, fyrir sniðmátin sem þú skrifaðir fyrir card-mod.
+- `user` er nafn innskráðs notanda.
+
+Niðurstöður eru þáttaðar af Home Assistant nákvæmlega eins og í þróunartólunum, svo `21.50` birtist sem `21.5`. Bættu `| string` við þegar textinn verður að haldast óbreyttur.
+
+<details>
+
+<summary>Home Assistant sniðmát í sérsniðnu stílunum þínum</summary>
+
+<br>
+
+Sniðmát getur geymt gildi eða umlukið heilar CSS reglur:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript sniðmát og Home Assistant sniðmát geta deilt blokk. Hafðu hvert `${ }` fyrir utan `{% if %} ... {% endif %}` blokk, hver hlið er birt af ólíkri vél og blokk sem er klofin í tvennt getur ekki verið birt.
+
+Þinn eigin texti í stöðulínunni þarf enga stíla, `state_content` tekur sniðmát sem eitt af atriðum sínum:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Inni í JavaScript sniðmáti gefur `renderTemplate("{{ ... }}")` þér birtan texta Home Assistant sniðmáts, fyrir þá staði sem sniðmát nær ekki til af sjálfu sér:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Villur eru sýndar í ritlinum, undir sérsniðnu stílunum, og í vafraskilaboðunum þínum (browser console).
+
+</details>
+
+### JavaScript sniðmát
+
+Lengra komnir notendur geta bætt sniðmátum við í JS beint í [sérsniðnu stílunum sínum](#stílun). Þetta gerir til dæmis kleift að breyta táknmynd, textum eða litum á sviðsbundinn (dynamic) hátt, sýna eða fela hlut skilyrt (eins og undirhnapp), eða nánast hvað sem er byggt á stöðu, eigind (attribute) og fleiru.
 
 > [!TIP]  
 > Nánari upplýsingar um JS sniðmát [hér](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Ráðið mitt er að **skoða alltaf vafraskilaboðin (browser console)** til að vera viss um að allt virki rétt.
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` skilar `true` þegar listi af [skilyrðum](#skilyrði) er uppfylltur, til dæmis `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` skilar textanum sem Home Assistant birtir fyrir Jinja sniðmát, til dæmis `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Annað viðfangið er það sem sniðmátið sér sem `entity`, sjálfgefið eind kortsins þíns.
 - `hass.formatEntityState(state)` má nota til að þýða stöðu (má einnig nota til að fá einingu stöðu, án þess að þurfa að bæta henni handvirkt við).
 - `hass.formatEntityAttributeValue(state, "attribute")` má nota til að þýða eigind (má einnig nota til að fá einingu stöðu, án þess að þurfa að bæta henni handvirkt við).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Ef þú vilt sniðmáta stöðuna (`.bubble-state`) úr stílunum þínum birtist línan á skjánum um leið og sniðmát skrifar í hana, sama hvað `state_content` segir.
+
+Það sama án nokkurra stíla, með Home Assistant sniðmáti í `state_content`, sem gefur þér líka þýdda stöðuna:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

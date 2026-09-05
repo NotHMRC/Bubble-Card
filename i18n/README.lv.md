@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Pogas ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Tikai gaismām.** Izmantot motīva akcenta krāsu, nevis gaismas krāsu.                         |
-| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#veidnes) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Optional | Any string | Multivides atskaņotāja nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `icon` | string | Optional | Any `mdi:` icon | Multivides atskaņotāja ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#veidnes) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Vadāmais aizsegs |
 | `name` | string | Optional | Any string | Aizsega nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#veidnes) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Izvēles nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `icon` | string | Optional | Any `mdi:` icon | Izvēles ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#veidnes) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Rādīt papildpogas fonu, tas mainīs krāsu atkarībā no jūsu entītijas stāvokļa |
 | `state_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Izmantot stāvokļa krāsu, kad entītija ir `on` |
 | `light_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Izmantot gaismas krāsu fonam, ja tā pieejama |
-| `state_content` | string vai list | Neobligāta | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
+| `state_content` | string vai list | Neobligāta | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#veidnes) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Rādīt vai slēpt ikonu |
 | `select_attribute` | string | Neobligāta | Atribūtu saraksts no jūsu `entity` (skatiet iepriekš atbalstītās opcijas) | Šis atribūtu saraksts atvērs nolaižamo izvēlni, ja tiks noklikšķināts (piemēram, `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Nosacījumi tiek izvērtēti jūsu pārlūkā, tāpēc tie nedaudzie, kuriem vajadzīgs Home Assistant serveris, nevar būt precīzi: saullēkts un saulriets tiek nolasīti no entītijas `sun.sun`, nevis pārrēķināti, un `for` ilgums tiek mērīts no pēdējās stāvokļa maiņas, bez recorder vēstures.
+> Nosacījumi tiek izvērtēti jūsu pārlūkā, tāpēc tie nedaudzie, kuriem vajadzīgs Home Assistant serveris, nevar būt precīzi: saullēkts un saulriets tiek nolasīti no entītijas `sun.sun`, nevis pārrēķināti, un `for` ilgums tiek mērīts no pēdējās stāvokļa maiņas, bez recorder vēstures. Izņēmums ir `template`, ko serveris atveido tāpat kā jebkuru citu [Home Assistant veidni](#veidnes).
 >
 > `view_columns` tiek pieņemts, bet vienmēr izpildās, jo Bubble Card nekad nav tā, kas izkārto jūsu skata kolonnas. Nosacījuma veids, ko Bubble Card nepazīst, vienu reizi paziņo par sevi jūsu pārlūka konsolē, nevis klusi neizdodas, tāpēc varat atšķirt drukas kļūdu no trūkstošas iespējas.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Veidnes
 
-**Bubble Card neatbalsta Jinja veidnes**, taču pieredzējuši lietotāji var pievienot veidnes JS tieši savos [pielāgotajos stilos](#stils). Piemēram, tas ļauj dinamiski mainīt ikonu, tekstus vai elementa krāsas, nosacīti rādīt vai slēpt elementu (piemēram, papildpogu), vai gandrīz jebko, balstoties uz stāvokli, atribūtu un vēl vairāk.
+Bubble Card atbalsta divu veidu veidnes:
+
+- **Home Assistant veidnes (Jinja)**, tās, kuras jūs jau rakstāt savās automatizācijās, Mushroom vai card-mod. Ievietojiet `{{ ... }}` vai `{% ... %}` atbalstītā laukā, un Home Assistant to atveido jūsu vietā, reāllaikā.
+- **JavaScript veidnes**, `${ ... }` jūsu [pielāgotajos stilos](#stils), visam, kam nepieciešams piekļūt pašai kartītei.
+
+### Home Assistant veidnes (Jinja)
+
+Veidnes atveido jūsu Home Assistant serveris, un tās atjaunojas pašas, kad mainās tas, ko tās nolasa. Tās darbojas šajos laukos:
+
+<details>
+
+<summary><b>Atbalstītie lauki (ar piemēriem)</b></summary>
+
+| Lauks | Piemērs |
+| --- | --- |
+| `name`, uz katras kartītes (ieskaitot uznirstošā loga galveni un atdalītāju) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, uz katras kartītes (arī aizsega `icon_open`, `icon_close`, `icon_up` un `icon_down`) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [papildpogas](#papildpogas) `name` un `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, uz kartītes vai papildpogas, līdzās `state` un atribūtu nosaukumiem | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [horizontālās pogu joslas](#horizontāla-pogu-josla) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| kartītes `styles` un [moduļa](#moduļi) kods, sajaukti ar JavaScript veidnēm | skatiet zemāk |
+| [Nosacījumi](#nosacījumi), ar `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Vienmēr lieciet veidni pēdiņās. Bez tām YAML nolasa `name: {{ states('x') }}` kā kartējumu, nevis kā tekstu, un kartīte to noraida.
+
+Papildus visam, ko piedāvā Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtri, jūsu `custom_templates` mapes makro...), ir pieejami trīs mainīgie:
+
+- `entity` ir kartītes entītija vai papildpogas entītija papildpogas laukā.
+- `config.entity` ir tā pati vērtība, veidnēm, kuras jūs rakstījāt card-mod.
+- `user` ir pieteikušā lietotāja vārds.
+
+Rezultātus Home Assistant parsē tieši tāpat kā izstrādātāju rīkos, tāpēc `21.50` tiek parādīts kā `21.5`. Pievienojiet `| string`, kad tekstam jāpaliek tādam, kāds tas ir.
+
+<details>
+
+<summary>Home Assistant veidnes jūsu pielāgotajos stilos</summary>
+
+<br>
+
+Veidne var saturēt vērtību vai ietvert veselus CSS noteikumus:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript veidnes un Home Assistant veidnes var dalīt vienu bloku. Turiet katru `${ }` ārpus `{% if %} ... {% endif %}` bloka, katru pusi atveido cits dzinējs, un uz pusēm sagrieztu bloku nevar atveidot.
+
+Jūsu pašu tekstam stāvokļa rindā nav vajadzīgi nekādi stili, `state_content` pieņem veidni kā vienu no saviem elementiem:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript veidnes iekšienē `renderTemplate("{{ ... }}")` sniedz jums Home Assistant veidnes atveidoto tekstu, vietām, kuras veidne pati nevar sasniegt:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Kļūdas tiek parādītas redaktorā, zem pielāgotajiem stiliem, un jūsu pārlūkprogrammas konsolē.
+
+</details>
+
+### JavaScript veidnes
+
+Pieredzējuši lietotāji var pievienot veidnes JS tieši savos [pielāgotajos stilos](#stils). Piemēram, tas ļauj dinamiski mainīt ikonu, tekstus vai elementa krāsas, nosacīti rādīt vai slēpt elementu (piemēram, papildpogu), vai gandrīz jebko, balstoties uz stāvokli, atribūtu un vēl vairāk.
 
 > [!TIP]  
 > Vairāk informācijas par JS veidnēm [šeit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mans padoms ir **vienmēr aplūkot pārlūkprogrammas konsoli**, lai pārliecinātos, ka viss darbojas pareizi.
@@ -2095,6 +2176,7 @@ Jums ir pieejamas visas globālās JS funkcijas, taču ir pieejamas arī:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` atgriež `true`, kad [nosacījumu](#nosacījumi) saraksts ir izpildīts, piemēram `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` atgriež tekstu, ko Home Assistant atveidojis Jinja veidnei, piemēram `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Otrais arguments ir tas, ko veidne redz kā `entity`, pēc noklusējuma jūsu kartītes entītija.
 - `hass.formatEntityState(state)` var izmantot, lai tulkotu stāvokli (var arī izmantot, lai iegūtu stāvokļa mērvienību, bez nepieciešamības to pievienot manuāli).
 - `hass.formatEntityAttributeValue(state, "attribute")` var izmantot, lai tulkotu atribūtu (var arī izmantot, lai iegūtu stāvokļa mērvienību, bez nepieciešamības to pievienot manuāli).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Ja vēlaties veidot stāvokli (`.bubble-state`) pēc veidnes no saviem stiliem, rinda parādās ekrānā, tiklīdz veidne tajā kaut ko ieraksta, neatkarīgi no tā, ko norāda `state_content`.
+
+Tas pats bez jebkādiem stiliem, ar Home Assistant veidni `state_content` laukā, kas jums sniedz arī tulkoto stāvokli:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

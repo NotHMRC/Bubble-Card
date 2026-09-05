@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր կոճակի պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
 | `use_accent_color` | boolean | Optional (`false` default) | **Միայն լույսերի համար:** Օգտագործել թեմայի շեշտադրման գույնը լույսի գույնի փոխարեն:                         |
-| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#ձևանմուշներ) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Optional | Any string | Ձեր մեդիա նվագարկիչի անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր մեդիա նվագարկիչի պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#ձևանմուշներ) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Կառավարվող ծածկոց |
 | `name` | string | Optional | Any string | Ձեր ծածկոցի անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#ձևանմուշներ) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Ձեր ընտրության անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր ընտրության պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#ձևանմուշներ) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Ցուցադրել ֆոն ձեր ենթակոճակի համար, այն կփոխի իր գույնը՝ ելնելով ձեր entity-ի վիճակից |
 | `state_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Օգտագործել վիճակի գույնը, երբ entity-ն `on` է |
 | `light_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Օգտագործել լույսի գույնը ֆոնի համար, երբ հասանելի է |
-| `state_content` | string կամ list | Ընտրովի | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
+| `state_content` | string կամ list | Ընտրովի | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#ձևանմուշներ) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Ցուցադրել կամ թաքցնել պատկերակը |
 | `select_attribute` | string | Ընտրովի | Ատրիբուտների ցանկ ձեր `entity`-ից (տես վերևի աջակցվող ընտրանքները) | Այս ատրիբուտների ցանկը կբացի բացվող ցանկ սեղմելիս (օրինակ՝ `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Պայմանները գնահատվում են ձեր դիտարկիչում, ուստի դրանցից այն սակավաթիվները, որոնց պետք է Home Assistant-ի սերվերը, չեն կարող ճշգրիտ լինել. արևածագն ու մայրամուտը կարդացվում են `sun.sun` էությունից՝ նորից հաշվարկվելու փոխարեն, իսկ `for` տևողությունը չափվում է վերջին վիճակի փոփոխությունից՝ առանց recorder-ի պատմության:
+> Պայմանները գնահատվում են ձեր դիտարկիչում, ուստի դրանցից այն սակավաթիվները, որոնց պետք է Home Assistant-ի սերվերը, չեն կարող ճշգրիտ լինել. արևածագն ու մայրամուտը կարդացվում են `sun.sun` էությունից՝ նորից հաշվարկվելու փոխարեն, իսկ `for` տևողությունը չափվում է վերջին վիճակի փոփոխությունից՝ առանց recorder-ի պատմության: Բացառությունը `template`-ն է, որը սերվերը մշակում է ինչպես ցանկացած այլ [Home Assistant ձևանմուշ](#ձևանմուշներ):
 >
 > `view_columns`-ն ընդունվում է, բայց միշտ բավարարվում է, քանի որ ձեր տեսքի սյունակները երբեք Bubble Card-ը չէ, որ դասավորում է: Պայմանի տեսակը, որը Bubble Card-ը չգիտի, լուռ ձախողվելու փոխարեն մեկ անգամ հայտնում է իր մասին ձեր դիտարկիչի կոնսոլում, որպեսզի կարողանաք տառասխալը տարբերել բացակայող հնարավորությունից:
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Ձևանմուշներ
 
-**Bubble Card-ը չի աջակցում Jinja ձևանմուշները**, բայց առաջադեմ օգտագործողները կարող են ավելացնել JS ձևանմուշներ ուղղակիորեն իրենց [հատուկ ոճերում](#ոճավորում): Օրինակ, սա թույլ է տալիս դինամիկորեն փոխել պատկերակը, տեքստերը կամ տարրի գույները, ցուցադրել կամ թաքցնել տարրը պայմանականորեն (օրինակ, ենթակոճակը), կամ գրեթե ամեն ինչ՝ հիմնված վիճակի, հատկանիշի և այլնի վրա:
+Bubble Card-ը աջակցում է երկու տեսակի ձևանմուշներ.
+
+- **Home Assistant ձևանմուշներ (Jinja)**, նրանք, որոնք արդեն գրում եք ձեր ավտոմատացումներում, Mushroom-ում կամ card-mod-ում: Տեղադրեք `{{ ... }}` կամ `{% ... %}` աջակցվող դաշտում, և Home Assistant-ը մշակում է այն ձեզ համար՝ իրական ժամանակում:
+- **JavaScript ձևանմուշներ**, `${ ... }` ձեր [հատուկ ոճերում](#ոճավորում), այն ամենի համար, ինչին պետք է հասնել հենց քարտի ներսում:
+
+### Home Assistant ձևանմուշներ (Jinja)
+
+Ձևանմուշները մշակվում են ձեր Home Assistant սերվերի կողմից և ինքնուրույն թարմացվում են, երբ փոխվում է այն, ինչ նրանք կարդում են: Դրանք աշխատում են հետևյալ դաշտերում.
+
+<details>
+
+<summary><b>Աջակցվող դաշտեր (օրինակներով)</b></summary>
+
+| Դաշտ | Օրինակ |
+| --- | --- |
+| `name`, բոլոր քարտերում (ներառյալ պոպ-ապի վերնագիրը և բաժանարարը) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, բոլոր քարտերում (ծածկոցի `icon_open`, `icon_close`, `icon_up` և `icon_down` նույնպես) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [ենթակոճակի](#ենթակոճակներ) `name` և `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, քարտի կամ ենթակոճակի վրա, `state`-ի և հատկանիշների անունների կողքին | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [կոճակների հորիզոնական սթեքի](#կոճակների-հորիզոնական-սթեք) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| քարտի `styles` և [մոդուլի](#մոդուլներ) կոդը, JavaScript ձևանմուշների հետ խառնված | տես ստորև |
+| [Պայմաններ](#պայմաններ), `condition: template`-ով | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Ձևանմուշը միշտ դրեք չակերտների մեջ: Առանց դրանց YAML-ը `name: {{ states('x') }}`-ը կարդում է որպես mapping, այլ ոչ թե որպես տեքստ, և քարտը մերժում է այն:
+
+Այն ամենից բացի, ինչ Home Assistant-ը առաջարկում է (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, ֆիլտրեր, ձեր `custom_templates` թղթապանակի մակրոները...), հասանելի են երեք փոփոխականներ.
+
+- `entity`-ն քարտի էությունն է, կամ ենթակոճակի էությունը՝ ենթակոճակի դաշտի համար:
+- `config.entity`-ն նույն արժեքն է, card-mod-ի համար գրված ձեր ձևանմուշների համար:
+- `user`-ը մուտք գործած օգտագործողի անունն է:
+
+Արդյունքները Home Assistant-ը վերլուծում է ճիշտ այնպես, ինչպես մշակողի գործիքներում, ուստի `21.50`-ը ցուցադրվում է որպես `21.5`: Ավելացրեք `| string`, երբ տեքստը պետք է մնա այնպես, ինչպես կա:
+
+<details>
+
+<summary>Home Assistant ձևանմուշներ ձեր հատուկ ոճերում</summary>
+
+<br>
+
+Ձևանմուշը կարող է պարունակել արժեք կամ ընդգրկել ամբողջական CSS կանոններ.
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript ձևանմուշները և Home Assistant ձևանմուշները կարող են կիսել նույն բլոկը: Յուրաքանչյուր `${ }` պահեք `{% if %} ... {% endif %}` բլոկից դուրս, յուրաքանչյուր կողմը մշակվում է տարբեր շարժիչով, և երկու մասի կտրված բլոկը չի կարող մշակվել:
+
+Վիճակի տողում ձեր սեփական տեքստի համար ոճեր ընդհանրապես պետք չեն, `state_content`-ը ձևանմուշն ընդունում է որպես իր տարրերից մեկը.
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript ձևանմուշի ներսում `renderTemplate("{{ ... }}")`-ը տալիս է Home Assistant ձևանմուշի մշակված տեքստը՝ այն տեղերի համար, որտեղ ձևանմուշը ինքնուրույն չի կարող հասնել.
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Սխալները ցուցադրվում են խմբագրիչում՝ հատուկ ոճերի ներքևում, և ձեր բրաուզերի կոնսոլում:
+
+</details>
+
+### JavaScript ձևանմուշներ
+
+Առաջադեմ օգտագործողները կարող են ավելացնել JS ձևանմուշներ ուղղակիորեն իրենց [հատուկ ոճերում](#ոճավորում): Օրինակ, սա թույլ է տալիս դինամիկորեն փոխել պատկերակը, տեքստերը կամ տարրի գույները, ցուցադրել կամ թաքցնել տարրը պայմանականորեն (օրինակ, ենթակոճակը), կամ գրեթե ամեն ինչ՝ հիմնված վիճակի, հատկանիշի և այլնի վրա:
 
 > [!TIP]  
 > Ավելի շատ տեղեկություններ JS ձևանմուշների մասին [այստեղ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals): Իմ խորհուրդն է **միշտ դիտել ձեր բրաուզերի կոնսոլը**, որպեսզի համոզվեք, որ ամեն ինչ ճիշտ է աշխատում:
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)`-ը վերադարձնում է `true`, երբ [պայմանների](#պայմաններ) ցանկը բավարարվում է, օրինակ՝ `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`:
+- `renderTemplate(template, entity)`-ը վերադարձնում է Home Assistant-ի կողմից Jinja ձևանմուշի համար մշակված տեքստը, օրինակ՝ `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`: Երկրորդ արգումենտն այն է, ինչ ձևանմուշը տեսնում է որպես `entity`, լռելյայն՝ ձեր քարտի էությունը:
 - `hass.formatEntityState(state)`-ը կարող է օգտագործվել վիճակը թարգմանելու համար (կարող է նաև օգտագործվել վիճակի միավորը ստանալու համար առանց ձեռքով ավելացնելու):
 - `hass.formatEntityAttributeValue(state, "attribute")`-ը կարող է օգտագործվել հատկանիշը թարգմանելու համար (կարող է նաև օգտագործվել վիճակի միավորը ստանալու համար առանց ձեռքով ավելացնելու):
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Եթե ցանկանում եք ձեր ոճերից ձևանմուշավորել վիճակը (`.bubble-state`), տողը հայտնվում է էկրանին, հենց որ որևէ ձևանմուշ գրում է դրա մեջ, անկախ նրանից, թե ինչ է ասում `state_content`-ը:
+
+Նույնը առանց որևէ ոճի, `state_content`-ում Home Assistant ձևանմուշով, որը ձեզ տալիս է նաև թարգմանված վիճակը:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

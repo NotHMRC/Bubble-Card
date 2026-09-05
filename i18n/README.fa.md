@@ -414,7 +414,7 @@ auto_order: true
 | `icon` | string | اختیاری | هر آیکن `mdi:` | آیکنی برای دکمه شما؛ در صورت تعریف‌نشدن، آیکن موجودیت یا `entity-picture` نمایش داده می‌شود |
 | `force_icon` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | اولویت را به آیکن به‌جای `entity-picture` می‌دهد |
 | `use_accent_color` | boolean | اختیاری (پیش‌فرض `false`) | **فقط برای چراغ‌ها.** به‌جای رنگ چراغ، از رنگ تاکیدی پوسته استفاده می‌کند.                         |
-| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#templates) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
+| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#قالبها) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
 | `show_name` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی نام |
 | `show_icon` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی آیکن |
 | `scrolling_effect` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | اجازه لغزش متن هنگامی که محتوا از اندازه ظرفش بزرگ‌تر باشد |
@@ -549,7 +549,7 @@ sub_button:
 | `name` | string | اختیاری | هر رشته‌ای | نامی برای پخش‌کننده رسانه شما؛ در صورت تعریف‌نشدن، نام موجودیت نمایش داده می‌شود |
 | `icon` | string | اختیاری | هر آیکن `mdi:` | آیکنی برای پخش‌کننده رسانه شما؛ در صورت تعریف‌نشدن، آیکن موجودیت یا `entity-picture` نمایش داده می‌شود |
 | `force_icon` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | اولویت را به آیکن به‌جای `entity-picture` می‌دهد |
-| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#templates) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
+| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#قالبها) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
 | `show_name` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی نام |
 | `show_icon` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی آیکن |
 | `scrolling_effect` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | اجازه لغزش متن هنگامی که محتوا از اندازه ظرفش بزرگ‌تر باشد |
@@ -665,7 +665,7 @@ sub_button:
 | `entity` | string | **الزامی** | هر پرده‌ای | پرده‌ای برای کنترل |
 | `name` | string | اختیاری | هر رشته‌ای | نامی برای پرده شما؛ در صورت تعریف‌نشدن، نام موجودیت نمایش داده می‌شود |
 | `force_icon` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | اولویت را به آیکن به‌جای `entity-picture` می‌دهد |
-| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#templates) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
+| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#قالبها) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
 | `show_name` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی نام |
 | `show_icon` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی آیکن |
 | `scrolling_effect` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | اجازه لغزش متن هنگامی که محتوا از اندازه ظرفش بزرگ‌تر باشد |
@@ -755,7 +755,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | اختیاری | هر رشته‌ای | نامی برای انتخاب شما؛ در صورت تعریف‌نشدن، نام موجودیت نمایش داده می‌شود |
 | `icon` | string | اختیاری | هر آیکن `mdi:` | آیکنی برای انتخاب شما؛ در صورت تعریف‌نشدن، آیکن موجودیت یا `entity-picture` نمایش داده می‌شود |
 | `force_icon` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | اولویت را به آیکن به‌جای `entity-picture` می‌دهد |
-| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#templates) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
+| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#قالبها) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
 | `show_name` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی نام |
 | `show_icon` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان‌سازی آیکن |
 | `scrolling_effect` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | اجازه لغزش متن هنگامی که محتوا از اندازه ظرفش بزرگ‌تر باشد |
@@ -1276,7 +1276,7 @@ sub_button:
 | `show_background` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش پس‌زمینه برای زیردکمه شما، رنگ آن بر اساس وضعیت موجودیت شما تغییر می‌کند |
 | `state_background` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | استفاده از رنگ وضعیت زمانی که موجودیت `on` است |
 | `light_background` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | استفاده از رنگ نور برای پس‌زمینه در صورت موجود بودن |
-| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#templates) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
+| `state_content` | string or list | اختیاری | `state`، `last-changed`، `last-updated`، `last-triggered`، نام یک ویژگی مانند `brightness` یا `forecast[0].temperature`، یا یک [قالب](#قالبها) | آنچه خط زیر نام نمایش می‌دهد، به همین ترتیب. بدون آن، دکمه‌ای با `button_type: state` همان چیزی را نمایش می‌دهد که Home Assistant برای موجودیت نمایش می‌دهد (وضعیت آن، به‌علاوه دمای فعلی یک دستگاه سرمایش و گرمایش، موقعیت یک پرده، روشنایی یک چراغ). کلیدهای قدیمی `show_state`، `show_attribute`، `attribute`، `show_last_changed` و `show_last_updated` همچنان کار می‌کنند و وقتی ویرایشگر را باز می‌کنید به `state_content` بازنویسی می‌شوند. |
 | `show_name` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | نمایش یا پنهان کردن نام |
 | `show_icon` | boolean | اختیاری | `true` (پیش‌فرض) یا `false` | نمایش یا پنهان کردن آیکون |
 | `select_attribute` | string | اختیاری | فهرست ویژگی‌های `entity` شما (به گزینه‌های پشتیبانی‌شده بالا مراجعه کنید) | این فهرست ویژگی با کلیک یک کشویی باز می‌کند (مثلاً `effect_list`) |
@@ -1616,7 +1616,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> شرط‌ها در مرورگر شما ارزیابی می‌شوند، بنابراین آن معدود شرط‌هایی که به سرور Home Assistant نیاز دارند نمی‌توانند دقیق باشند: طلوع و غروب به‌جای محاسبه دوباره از موجودیت `sun.sun` خوانده می‌شوند، و مدت `for` از آخرین تغییر وضعیت اندازه‌گیری می‌شود، بدون تاریخچه recorder.
+> شرط‌ها در مرورگر شما ارزیابی می‌شوند، بنابراین آن معدود شرط‌هایی که به سرور Home Assistant نیاز دارند نمی‌توانند دقیق باشند: طلوع و غروب به‌جای محاسبه دوباره از موجودیت `sun.sun` خوانده می‌شوند، و مدت `for` از آخرین تغییر وضعیت اندازه‌گیری می‌شود، بدون تاریخچه recorder. استثنا `template` است که مانند هر [قالب Home Assistant](#قالبها) دیگری توسط سرور رندر می‌شود.
 >
 > `view_columns` پذیرفته می‌شود اما همیشه برقرار است، چون هرگز Bubble Card نیست که ستون‌های نمای شما را می‌چیند. نوعی از شرط که Bubble Card نمی‌شناسد به‌جای شکست خاموش یک بار در کنسول مرورگر شما گزارش می‌شود، تا بتوانید غلط تایپی را از قابلیتی که وجود ندارد تشخیص دهید.
 
@@ -2031,7 +2031,88 @@ styles: |
 
 ## قالب‌ها
 
-**Bubble Card از قالب‌های Jinja پشتیبانی نمی‌کند**، اما کاربران پیشرفته می‌توانند قالب‌هایی به زبان JS مستقیماً در [استایل‌های سفارشی](#استایلها) خود اضافه کنند. برای مثال، این کار امکان تغییر پویای یک آیکون، متن‌ها یا رنگ‌های یک عنصر را فراهم می‌کند، یا نمایش یا پنهان‌سازی شرطی یک عنصر (مانند یک زیردکمه)، یا تقریباً هر چیز دیگری بر اساس یک وضعیت، یک ویژگی و موارد دیگر.
+Bubble Card از دو نوع قالب پشتیبانی می‌کند:
+
+- **قالب‌های Home Assistant (Jinja)**، همان‌هایی که از قبل در اتوماسیون‌های خود، در Mushroom یا در card-mod می‌نویسید. `{{ ... }}` یا `{% ... %}` را در یک فیلد پشتیبانی‌شده قرار دهید تا Home Assistant آن را به‌صورت زنده برای شما رندر کند.
+- **قالب‌های JavaScript**، `${ ... }` داخل [استایل‌های سفارشی](#استایلها) شما، برای هر چیزی که باید به خود کارت دسترسی داشته باشد.
+
+### قالب‌های Home Assistant (Jinja)
+
+قالب‌ها توسط سرور Home Assistant شما رندر می‌شوند و هر وقت چیزی که می‌خوانند تغییر کند، خودشان به‌روز می‌شوند. آن‌ها در این فیلدها کار می‌کنند:
+
+<details>
+
+<summary><b>فیلدهای پشتیبانی‌شده (با مثال)</b></summary>
+
+| فیلد | مثال |
+| --- | --- |
+| `name`، در هر کارتی (شامل هدر پاپ‌آپ و جداکننده) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`، در هر کارتی (`icon_open`، `icon_close`، `icon_up` و `icon_down` یک پرده هم) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` و `icon` یک [زیردکمه](#زیردکمهها) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`، در یک کارت یا یک زیردکمه، در کنار `state` و نام ویژگی‌ها | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`، `1_icon`... یک [پشته دکمه‌های افقی](#پشته-دکمههای-افقی) | `1_name: "{{ user }}"` |
+| `styles` یک کارت و کد یک [ماژول](#ماژولها)، در ترکیب با قالب‌های JavaScript | به پایین مراجعه کنید |
+| [شرط‌ها](#شرطها)، با `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> همیشه قالب را بین گیومه قرار دهید. بدون آن‌ها، `name: {{ states('x') }}` توسط YAML به‌جای متن به‌عنوان یک نگاشت خوانده می‌شود و کارت آن را رد می‌کند.
+
+سه متغیر علاوه بر همه چیزهایی که Home Assistant ارائه می‌دهد در دسترس هستند (`states()`، `state_attr()`، `is_state()`، `area_entities()`، `expand()`، فیلترها، ماکروهای پوشه `custom_templates` شما...):
+
+- `entity` موجودیت کارت است، یا موجودیت زیردکمه برای یک فیلد زیردکمه.
+- `config.entity` همان مقدار است، برای قالب‌هایی که برای card-mod نوشته‌اید.
+- `user` نام کاربری است که وارد شده است.
+
+نتیجه‌ها توسط Home Assistant دقیقاً مانند ابزارهای توسعه‌دهنده تجزیه می‌شوند، بنابراین `21.50` به‌صورت `21.5` نمایش داده می‌شود. وقتی متن باید همان‌طور که هست بماند، `| string` را اضافه کنید.
+
+<details>
+
+<summary>قالب‌های Home Assistant در استایل‌های سفارشی شما</summary>
+
+<br>
+
+یک قالب می‌تواند یک مقدار را در خود داشته باشد یا قوانین کامل CSS را در بر بگیرد:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+قالب‌های JavaScript و قالب‌های Home Assistant می‌توانند در یک بلوک مشترک باشند. هر `${ }` را بیرون از یک بلوک `{% if %} ... {% endif %}` نگه دارید، هر طرف توسط یک موتور متفاوت رندر می‌شود و بلوکی که به دو نیم شده باشد قابل رندر نیست.
+
+متن خودتان در خط وضعیت به هیچ استایلی نیاز ندارد، `state_content` یک قالب را به‌عنوان یکی از آیتم‌هایش می‌پذیرد:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+داخل یک قالب JavaScript، `renderTemplate("{{ ... }}")` متن رندرشده یک قالب Home Assistant را به شما می‌دهد، برای جاهایی که یک قالب به‌تنهایی به آن‌ها دسترسی ندارد:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+خطاها در ویرایشگر، زیر استایل‌های سفارشی، و در کنسول مرورگر شما نمایش داده می‌شوند.
+
+</details>
+
+### قالب‌های JavaScript
+
+کاربران پیشرفته می‌توانند قالب‌هایی به زبان JS مستقیماً در [استایل‌های سفارشی](#استایلها) خود اضافه کنند. برای مثال، این کار امکان تغییر پویای یک آیکون، متن‌ها یا رنگ‌های یک عنصر را فراهم می‌کند، یا نمایش یا پنهان‌سازی شرطی یک عنصر (مانند یک زیردکمه)، یا تقریباً هر چیز دیگری بر اساس یک وضعیت، یک ویژگی و موارد دیگر.
 
 > [!TIP]  
 > اطلاعات بیشتر درباره قالب‌های JS [اینجا](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). توصیه من این است که **همیشه به کنسول مرورگر خود نگاهی بیندازید** تا مطمئن شوید همه چیز درست کار می‌کند.
@@ -2097,6 +2178,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` وقتی فهرستی از [شرط‌ها](#شرطها) برقرار باشد `true` برمی‌گرداند، برای مثال `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` متنی را که Home Assistant برای یک قالب Jinja رندر کرده برمی‌گرداند، برای مثال `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. آرگومان دوم چیزی است که قالب به‌عنوان `entity` می‌بیند، به‌طور پیش‌فرض موجودیت کارت شما.
 - `hass.formatEntityState(state)` را می‌توان برای ترجمه یک وضعیت استفاده کرد (همچنین می‌توان از آن برای دریافت واحد یک وضعیت استفاده کرد، بدون نیاز به افزودن دستی آن).
 - `hass.formatEntityAttributeValue(state, "attribute")` را می‌توان برای ترجمه یک ویژگی استفاده کرد (همچنین می‌توان از آن برای دریافت واحد یک وضعیت استفاده کرد، بدون نیاز به افزودن دستی آن).
 
@@ -2285,6 +2367,11 @@ styles: |
 
 
 اگر می‌خواهید وضعیت (`.bubble-state`) را از استایل‌های خود قالب‌بندی کنید، این خط به محض اینکه قالبی در آن بنویسد روی صفحه ظاهر می‌شود، صرف‌نظر از آنچه `state_content` می‌گوید.
+
+همین کار بدون هیچ استایلی، با یک قالب Home Assistant در `state_content`، که وضعیت ترجمه‌شده را هم به شما می‌دهد:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

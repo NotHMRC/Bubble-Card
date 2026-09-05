@@ -412,7 +412,7 @@ Tá an cárta seo an-ildánach. Is féidir é a úsáid mar **lasc**, mar **shle
 | `icon` | string | Optional | Any `mdi:` icon | Deilbhín do do chnaipe, mura sonraítear é taispeánfar deilbhín an eintitis nó an `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Tabhair tosaíocht don deilbhín seachas don `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **For lights only.** Úsáid dath aicinte an téama seachas dath an tsolais.                         |
-| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#templates) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
+| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#teimpléid) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an t-ainm |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an deilbhín |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lig don téacs scrollú nuair a shárálann an t-ábhar méid a choimeádáin |
@@ -547,7 +547,7 @@ Ligeann an cárta seo duit eintiteas seinnteora meán a rialú.
 | `name` | string | Optional | Any string | Ainm do do sheinnteoir meán, mura sonraítear é taispeánfar ainm an eintitis |
 | `icon` | string | Optional | Any `mdi:` icon | Deilbhín do do sheinnteoir meán, mura sonraítear é taispeánfar deilbhín an eintitis nó an `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Tabhair tosaíocht don deilbhín seachas don `entity-picture` |
-| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#templates) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
+| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#teimpléid) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an t-ainm |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an deilbhín |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lig don téacs scrollú nuair a shárálann an t-ábhar méid a choimeádáin |
@@ -663,7 +663,7 @@ Ligeann an cárta seo duit d'eintitis `cover` a rialú.
 | `entity` | string | **Required** | Any cover | Clúdach atá le rialú |
 | `name` | string | Optional | Any string | Ainm do do chlúdach, mura sonraítear é taispeánfar ainm an eintitis |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Tabhair tosaíocht don deilbhín seachas don `entity-picture` |
-| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#templates) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
+| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#teimpléid) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an t-ainm |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an deilbhín |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lig don téacs scrollú nuair a shárálann an t-ábhar méid a choimeádáin |
@@ -753,7 +753,7 @@ Ligeann an cárta seo duit roghchlár anuas a chur le d'eintitis `input_select` 
 | `name` | string | Optional | Any string | Ainm do do roghnú, mura sonraítear é taispeánfar ainm an eintitis |
 | `icon` | string | Optional | Any `mdi:` icon | Deilbhín do do roghnú, mura sonraítear é taispeánfar deilbhín an eintitis nó an `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Tabhair tosaíocht don deilbhín seachas don `entity-picture` |
-| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#templates) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
+| `state_content` | string nó list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#teimpléid) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an t-ainm |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Taispeáin nó folaigh an deilbhín |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lig don téacs scrollú nuair a shárálann an t-ábhar méid a choimeádáin |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Roghnach | `true` (réamhshocrú) nó `false` | Taispeáin cúlra do d'fhochnaipe, athróidh sé a dhath bunaithe ar staid d'aonáin |
 | `state_background` | boolean | Roghnach | `true` (réamhshocrú) nó `false` | Bain úsáid as dath na staide nuair atá an t-aonán `on` |
 | `light_background` | boolean | Roghnach | `true` (réamhshocrú) nó `false` | Bain úsáid as dath an tsolais don chúlra nuair atá sé ar fáil |
-| `state_content` | string nó list | Roghnach | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#templates) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
+| `state_content` | string nó list | Roghnach | `state`, `last-changed`, `last-updated`, `last-triggered`, ainm airí cosúil le `brightness` nó `forecast[0].temperature`, nó [teimpléad](#teimpléid) | An méid a thaispeánann an líne faoin ainm, san ord seo. Gan é, taispeánann cnaipe `button_type: state` an méid a thaispeánann Home Assistant don aonán (a staid, chomh maith le teocht reatha aeráide, suíomh clúdaigh, gile solais). Oibríonn na seaneochracha `show_state`, `show_attribute`, `attribute`, `show_last_changed` agus `show_last_updated` i gcónaí agus athscríobhtar iad mar `state_content` nuair a osclaíonn tú an t-eagarthóir. |
 | `show_name` | boolean | Roghnach | `true` nó `false` (réamhshocrú) | Taispeáin nó folaigh an t-ainm |
 | `show_icon` | boolean | Roghnach | `true` (réamhshocrú) nó `false` | Taispeáin nó folaigh an deilbhín |
 | `select_attribute` | string | Roghnach | Liosta airíonna de d'aonán (féach na roghanna a dtacaítear leo thuas) | Osclóidh an liosta airíonna seo anuas má chliceáiltear air (m.sh. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Meastar na coinníollacha i do bhrabhsálaí, mar sin ní féidir leis an mbeagán acu a bhfuil freastalaí Home Assistant de dhíth orthu a bheith beacht: léitear éirí agus luí na gréine ón aonán `sun.sun` in ionad iad a atomhas, agus tomhaistear ré `for` ón athrú staide deireanach, gan stair an recorder.
+> Meastar na coinníollacha i do bhrabhsálaí, mar sin ní féidir leis an mbeagán acu a bhfuil freastalaí Home Assistant de dhíth orthu a bheith beacht: léitear éirí agus luí na gréine ón aonán `sun.sun` in ionad iad a atomhas, agus tomhaistear ré `for` ón athrú staide deireanach, gan stair an recorder. Is é `template` an eisceacht, a rindreálann an freastalaí cosúil le haon [teimpléad Home Assistant](#teimpléid) eile.
 >
 > Glactar le `view_columns` ach éiríonn leis i gcónaí, ós rud é nach é Bubble Card a leagann amach colúin do radhairc riamh. Cineál coinníll nach bhfuil aithne ag Bubble Card air, tuairiscíonn sé é féin uair amháin i gconsól do bhrabhsálaí in ionad teip go ciúin, ionas gur féidir leat botún cló a aithint thar ghné atá ar iarraidh.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Teimpléid
 
-**Ní thacaíonn Bubble Card le teimpléid Jinja** ach is féidir le húsáideoirí ardleibhéil teimpléid a chur leis i JS go díreach ina [stíleanna saincheaptha](#stíliú). Mar shampla, ligeann sé seo duit deilbhín a athrú go dinimiciúil, na téacsanna nó dathanna eiliminte a athrú, eilimint a thaispeáint nó a fholú go coinníollach (cosúil le fochnaipe), nó nach mór aon rud eile bunaithe ar staid, ar aitreabúid agus níos mó.
+Tacaíonn Bubble Card le dhá chineál teimpléad:
+
+- **Teimpléid Home Assistant (Jinja)**, na cinn a scríobhann tú cheana féin i d'uathoibrithe, i Mushroom nó i card-mod. Cuir `{{ ... }}` nó `{% ... %}` i réimse a dtacaítear leis agus rindreálann Home Assistant é duit, beo.
+- **Teimpléid JavaScript**, `${ ... }` laistigh de do [stíleanna saincheaptha](#stíliú), le haghaidh aon rud a chaithfidh dul isteach sa chárta féin.
+
+### Teimpléid Home Assistant (Jinja)
+
+Rindreálann do fhreastalaí Home Assistant na teimpléid agus nuashonraíonn siad iad féin nuair a athraíonn an méid a léann siad. Oibríonn siad sna réimsí seo:
+
+<details>
+
+<summary><b>Réimsí a dtacaítear leo (le samplaí)</b></summary>
+
+| Réimse | Sampla |
+| --- | --- |
+| `name`, ar gach cárta (ceanntásc na preabfhuinneoige agus an deighilteoir san áireamh) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, ar gach cárta (`icon_open`, `icon_close`, `icon_up` agus `icon_down` clúdaigh freisin) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` agus `icon` [fochnaipe](#fochnaipí) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, ar chárta nó ar fhochnaipe, in aice le `state` agus ainmneacha aitreabúidí | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... i [gcruach chothrománach cnaipí](#cruach-chothrománach-cnaipí) | `1_name: "{{ user }}"` |
+| `styles` cárta agus cód [modúil](#modúil), measctha le teimpléid JavaScript | féach thíos |
+| [Coinníollacha](#coinníollacha), le `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Cuir teimpléad idir comharthaí athfhriotail i gcónaí. Gan iad, léann YAML `name: {{ states('x') }}` mar mhapáil seachas mar théacs, agus diúltaíonn an cárta dó.
+
+Tá trí athróg ar fáil sa bhreis ar gach rud a chuireann Home Assistant ar fáil (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, scagairí, macraí d'fhillteáin `custom_templates`...):
+
+- Is é `entity` aonán an chárta, nó aonán na fochnaipe i réimse fochnaipe.
+- Is é `config.entity` an luach céanna, do na teimpléid a scríobh tú do card-mod.
+- Is é `user` ainm an úsáideora atá logáilte isteach.
+
+Parsálann Home Assistant na torthaí díreach mar a dhéanann sé sna huirlisí forbróra, mar sin taispeántar `21.50` mar `21.5`. Cuir `| string` leis nuair is gá don téacs fanacht mar atá.
+
+<details>
+
+<summary>Teimpléid Home Assistant i do stíleanna saincheaptha</summary>
+
+<br>
+
+Is féidir le teimpléad luach a choinneáil nó rialacha CSS iomlána a chlúdach:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Is féidir le teimpléid JavaScript agus teimpléid Home Assistant bloc a roinnt. Coinnigh gach `${ }` lasmuigh de bhloc `{% if %} ... {% endif %}`, rindreálann inneall difriúil gach taobh agus ní féidir bloc atá gearrtha ina dhá chuid a rindreáil.
+
+Ní gá stíleanna ar bith do do théacs féin i líne na staide, glacann `state_content` le teimpléad mar cheann dá mhíreanna:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Laistigh de theimpléad JavaScript, tugann `renderTemplate("{{ ... }}")` téacs rindreáilte teimpléid Home Assistant duit, do na háiteanna nach féidir le teimpléad a shroicheadh leis féin:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Taispeántar earráidí san eagarthóir, faoi na stíleanna saincheaptha, agus i gconsól do bhrabhsálaí.
+
+</details>
+
+### Teimpléid JavaScript
+
+Is féidir le húsáideoirí ardleibhéil teimpléid a chur leis i JS go díreach ina [stíleanna saincheaptha](#stíliú). Mar shampla, ligeann sé seo duit deilbhín a athrú go dinimiciúil, na téacsanna nó dathanna eiliminte a athrú, eilimint a thaispeáint nó a fholú go coinníollach (cosúil le fochnaipe), nó nach mór aon rud eile bunaithe ar staid, ar aitreabúid agus níos mó.
 
 > [!TIP]  
 > Tuilleadh eolais faoi theimpléid JS [anseo](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Is é mo chomhairle ná **súil a choinneáil i gcónaí ar chonsól do bhrabhsálaí** lena chinntiú go bhfuil gach rud ag obair i gceart.
@@ -2095,6 +2176,7 @@ Tá rochtain agat ar gach feidhm dhomhanda JS, ach tá rochtain agat freisin ar:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - Tugann `checkConditionsMet(conditions, hass)` `true` ar ais nuair a chomhlíontar liosta [coinníollacha](#coinníollacha), mar shampla `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- Tugann `renderTemplate(template, entity)` an téacs a rindreálann Home Assistant do theimpléad Jinja ar ais, mar shampla `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Is é an dara hargóint an rud a fheiceann an teimpléad mar `entity`, aonán do chárta de réir réamhshocraithe.
 - Is féidir `hass.formatEntityState(state)` a úsáid chun staid a aistriú (Is féidir é a úsáid freisin chun aonad staide a fháil, gan gá é a chur leis de láimh).
 - Is féidir `hass.formatEntityAttributeValue(state, "attribute")` a úsáid chun aitreabúid a aistriú (Is féidir é a úsáid freisin chun aonad staide a fháil, gan gá é a chur leis de láimh).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Más mian leat an staid a theimpléadú (`.bubble-state`) ó do stíleanna, tagann an líne ar an scáileán a luaithe a scríobhann teimpléad isteach inti, is cuma cad a deir `state_content`.
+
+An rud céanna gan stíleanna ar bith, le teimpléad Home Assistant in `state_content`, a thugann an staid aistrithe duit freisin:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

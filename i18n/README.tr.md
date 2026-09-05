@@ -412,7 +412,7 @@ Bu kart oldukça çok yönlüdür. Bir **anahtar**, bir **kaydırıcı**, bir **
 | `icon` | string | Optional | Any `mdi:` icon | Düğmeniz için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
 | `use_accent_color` | boolean | Optional (`false` default) | **Yalnızca ışıklar için.** Işığın rengi yerine temanın vurgu rengini kullanın.                         |
-| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#şablonlar) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
@@ -547,7 +547,7 @@ Bu kart, bir medya oynatıcı varlığını kontrol etmenizi sağlar.
 | `name` | string | Optional | Any string | Medya oynatıcınız için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `icon` | string | Optional | Any `mdi:` icon | Medya oynatıcınız için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#şablonlar) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
@@ -663,7 +663,7 @@ Bu kart, `cover` varlıklarınızı kontrol etmenizi sağlar.
 | `entity` | string | **Required** | Any cover | Kontrol edilecek bir panjur |
 | `name` | string | Optional | Any string | Panjurunuz için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#şablonlar) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
@@ -753,7 +753,7 @@ Bu kart, `input_select` / `select` varlıklarınız için bir açılır menü ek
 | `name` | string | Optional | Any string | Seçiminiz için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `icon` | string | Optional | Any `mdi:` icon | Seçiminiz için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#şablonlar) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Alt düğmeniz için bir arka plan göster, varlık durumunuza göre rengi değişir |
 | `state_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Varlık `on` olduğunda durum rengini kullan |
 | `light_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Mevcut olduğunda arka plan için ışık rengini kullan |
-| `state_content` | string veya list | İsteğe bağlı | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
+| `state_content` | string veya list | İsteğe bağlı | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#şablonlar) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | Adı göster veya gizle |
 | `show_icon` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Simgeyi göster veya gizle |
 | `select_attribute` | string | İsteğe bağlı | `entity` varlığınızdan bir öznitelik listesi (yukarıdaki desteklenen seçeneklere bakın) | Bu öznitelik listesi tıklanınca bir açılır liste açar (örn. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Koşullar tarayıcınızda değerlendirilir, bu yüzden Home Assistant sunucusuna ihtiyaç duyan birkaç tanesi tam olarak kesin olamaz: gün doğumu ve gün batımı yeniden hesaplanmak yerine `sun.sun` varlığından okunur ve bir `for` süresi, recorder geçmişi olmadan son durum değişikliğinden itibaren ölçülür.
+> Koşullar tarayıcınızda değerlendirilir, bu yüzden Home Assistant sunucusuna ihtiyaç duyan birkaç tanesi tam olarak kesin olamaz: gün doğumu ve gün batımı yeniden hesaplanmak yerine `sun.sun` varlığından okunur ve bir `for` süresi, recorder geçmişi olmadan son durum değişikliğinden itibaren ölçülür. Bunun istisnası `template` koşuludur, o da diğer her [Home Assistant şablonu](#şablonlar) gibi sunucu tarafından işlenir.
 >
 > `view_columns` kabul edilir ama her zaman geçer, çünkü görünümünüzün sütunlarını yerleştiren hiçbir zaman Bubble Card değildir. Bubble Card'ın bilmediği bir koşul türü, sessizce başarısız olmak yerine tarayıcı konsolunuzda kendini bir kez bildirir, böylece bir yazım hatasını eksik bir özellikten ayırt edebilirsiniz.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Şablonlar
 
-**Bubble Card, Jinja şablonlarını desteklemez** ama ileri düzey kullanıcılar [özel stillerine](#stil) doğrudan JS içinde şablonlar ekleyebilir. Örneğin bu, bir simgeyi, metinleri veya bir öğenin renklerini dinamik olarak değiştirmenizi, bir durum, bir öznitelik veya başka bir şeye göre bir öğeyi (bir alt düğme gibi) koşullu olarak göstermenizi veya gizlemenizi ya da hemen hemen her şeyi yapmanızı sağlar.
+Bubble Card iki tür şablonu destekler:
+
+- **Home Assistant şablonları (Jinja)**, otomasyonlarınızda, Mushroom'da veya card-mod'da zaten yazdıklarınız. Desteklenen bir alana `{{ ... }}` veya `{% ... %}` koyun, Home Assistant onu sizin için canlı olarak işler.
+- **JavaScript şablonları**, [özel stillerinizin](#stil) içindeki `${ ... }`, kartın kendisine erişmesi gereken her şey için.
+
+### Home Assistant şablonları (Jinja)
+
+Şablonlar Home Assistant sunucunuz tarafından işlenir ve okudukları şey değiştiğinde kendiliğinden güncellenir. Şu alanlarda çalışırlar:
+
+<details>
+
+<summary><b>Desteklenen alanlar (örneklerle)</b></summary>
+
+| Alan | Örnek |
+| --- | --- |
+| `name`, her kartta (pop-up başlığı ve ayırıcı dahil) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, her kartta (bir panjurun `icon_open`, `icon_close`, `icon_up` ve `icon_down` alanları da) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| Bir [alt düğmenin](#alt-düğmeler) `name` ve `icon` alanları | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, bir kartta veya bir alt düğmede, `state` ve öznitelik adlarının yanında | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| Bir [yatay düğme yığınının](#yatay-düğme-yığını) `1_name`, `1_icon`... alanları | `1_name: "{{ user }}"` |
+| Bir kartın `styles` alanı ve bir [modülün](#modüller) kodu, JavaScript şablonlarıyla karışık | aşağıya bakın |
+| [Koşullar](#koşullar), `condition: template` ile | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Bir şablonu her zaman tırnak içine alın. Tırnak olmadan `name: {{ states('x') }}` YAML tarafından metin yerine bir eşleme olarak okunur ve kart bunu reddeder.
+
+Home Assistant'ın sunduğu her şeye (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtreler, `custom_templates` klasörünüzdeki makrolar...) ek olarak üç değişken kullanılabilir:
+
+- `entity`, kartın varlığıdır veya bir alt düğme alanı için alt düğmenin varlığıdır.
+- `config.entity` aynı değerdir, card-mod için yazdığınız şablonlar için.
+- `user`, giriş yapmış kullanıcının adıdır.
+
+Sonuçlar Home Assistant tarafından tam olarak geliştirici araçlarındaki gibi ayrıştırılır, bu yüzden `21.50` değeri `21.5` olarak görünür. Metnin olduğu gibi kalması gerektiğinde `| string` ekleyin.
+
+<details>
+
+<summary>Özel stillerinizde Home Assistant şablonları</summary>
+
+<br>
+
+Bir şablon bir değer tutabilir veya bütün CSS kurallarını sarabilir:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript şablonları ve Home Assistant şablonları aynı bloğu paylaşabilir. Her `${ }` ifadesini bir `{% if %} ... {% endif %}` bloğunun dışında tutun, her iki taraf farklı bir motor tarafından işlenir ve ikiye bölünmüş bir blok işlenemez.
+
+Durum satırındaki kendi metniniz için hiç stil gerekmez, `state_content` öğelerinden biri olarak bir şablon alır:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Bir JavaScript şablonunun içinde `renderTemplate("{{ ... }}")`, bir şablonun kendi başına ulaşamadığı yerler için size bir Home Assistant şablonunun işlenmiş metnini verir:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Hatalar editörde, özel stillerin altında ve tarayıcı konsolunuzda gösterilir.
+
+</details>
+
+### JavaScript şablonları
+
+İleri düzey kullanıcılar [özel stillerine](#stil) doğrudan JS içinde şablonlar ekleyebilir. Örneğin bu, bir simgeyi, metinleri veya bir öğenin renklerini dinamik olarak değiştirmenizi, bir durum, bir öznitelik veya başka bir şeye göre bir öğeyi (bir alt düğme gibi) koşullu olarak göstermenizi veya gizlemenizi ya da hemen hemen her şeyi yapmanızı sağlar.
 
 > [!TIP]  
 > JS şablonları hakkında daha fazla bilgiyi [burada](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) bulabilirsiniz. Tavsiyem, her şeyin doğru çalıştığından emin olmak için **her zaman tarayıcı konsolunuza bakmanızdır**.
@@ -2095,6 +2176,7 @@ Tüm genel JS fonksiyonlarına erişiminiz vardır, ama ayrıca şunlara da eri�
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)`, bir [koşullar](#koşullar) listesi sağlandığında `true` döndürür, örneğin `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)`, bir Jinja şablonu için Home Assistant'ın işlediği metni döndürür, örneğin `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. İkinci argüman, şablonun `entity` olarak gördüğü değerdir, varsayılan olarak kartınızın varlığı.
 - `hass.formatEntityState(state)`, bir durumu çevirmek için kullanılabilir (manuel olarak eklemenize gerek kalmadan bir durum birimi almak için de kullanılabilir).
 - `hass.formatEntityAttributeValue(state, "attribute")`, bir özniteliği çevirmek için kullanılabilir (manuel olarak eklemenize gerek kalmadan bir durum birimi almak için de kullanılabilir).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Durumu (`.bubble-state`) stillerinizden şablonlaştırmak istiyorsanız, `state_content` ne derse desin, bir şablon satıra yazar yazmaz satır ekranda görünür.
+
+Aynısı hiçbir stil olmadan, `state_content` içinde bir Home Assistant şablonuyla, bu size çevrilmiş durumu da verir:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

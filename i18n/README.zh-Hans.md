@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 按钮的图标，如果未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
 | `use_accent_color` | boolean | 可选 (默认 `false`) | **仅适用于灯光。** 使用主题的强调色而非灯光的颜色。                         |
-| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#模板) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | 可选 | 任意字符串 | 媒体播放器的名称，如果未定义则显示实体名称 |
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 媒体播放器的图标，如果未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#模板) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **必填** | 任意 cover | 要控制的卷帘 |
 | `name` | string | 可选 | 任意字符串 | 卷帘的名称，若未定义则显示实体名称 |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#模板) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 可选 | 任意字符串 | 选择卡片的名称，若未定义则显示实体名称 |
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 选择卡片的图标，若未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#模板) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | 可选 | `true` (默认) 或 `false` | 为子按钮显示背景，其颜色会根据实体状态变化 |
 | `state_background` | boolean | 可选 | `true` (默认) 或 `false` | 当实体状态为 `on` 时使用状态颜色 |
 | `light_background` | boolean | 可选 | `true` (默认) 或 `false` | 在可用的情况下，为背景使用灯光颜色 |
-| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#模板) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
 | `select_attribute` | string | 可选 | `entity` 的属性列表 (见上方支持的选项) | 该属性列表会在点击时打开一个下拉菜单 (例如 `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> 条件是在你的浏览器中求值的，因此少数需要 Home Assistant 服务器的条件无法做到精确：日出和日落是从 `sun.sun` 实体读取的，而不是重新计算，`for` 的持续时间则从最后一次状态变化开始计量，没有 recorder 的历史记录。
+> 条件是在你的浏览器中求值的，因此少数需要 Home Assistant 服务器的条件无法做到精确：日出和日落是从 `sun.sun` 实体读取的，而不是重新计算，`for` 的持续时间则从最后一次状态变化开始计量，没有 recorder 的历史记录。唯一的例外是 `template`，它和其他任何 [Home Assistant 模板](#模板)一样，由服务器渲染。
 >
 > `view_columns` 会被接受但始终通过，因为为你的视图排布列的从来都不是 Bubble Card。Bubble Card 不认识的条件类型会在你的浏览器控制台里报告一次，而不是悄无声息地失败，这样你就能分辨出是拼写错误还是缺少的功能。
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## 模板
 
-**Bubble Card 不支持 Jinja 模板**，但高级用户可以直接在 [自定义样式](#样式) 中用 JS 添加模板。举例来说，这可以让你动态更改元素的图标、文本或颜色，根据条件显示或隐藏某个元素 (比如子按钮)，或者几乎任何基于状态、属性等的操作。
+Bubble Card 支持两种模板：
+
+- **Home Assistant 模板 (Jinja)**，也就是你已经在自动化、Mushroom 或 card-mod 中写过的那种模板。把 `{{ ... }}` 或 `{% ... %}` 放进一个受支持的字段，Home Assistant 就会为你实时渲染它。
+- **JavaScript 模板**，也就是 [自定义样式](#样式) 中的 `${ ... }`，用于任何需要直接操作卡片本身的场合。
+
+### Home Assistant 模板 (Jinja)
+
+模板由你的 Home Assistant 服务器渲染，并且会在它们读取的内容发生变化时自动更新。它们可以用在以下字段中：
+
+<details>
+
+<summary><b>支持的字段 (附示例)</b></summary>
+
+| 字段 | 示例 |
+| --- | --- |
+| `name`，在每张卡片上 (包括弹窗头部和分隔线) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`，在每张卡片上 (卷帘的 `icon_open`、`icon_close`、`icon_up` 和 `icon_down` 也可以) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [子按钮](#子按钮)的 `name` 和 `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`，在卡片或子按钮上，与 `state` 和属性名并列 | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [水平按钮堆叠](#水平按钮堆叠)的 `1_name`、`1_icon`…… | `1_name: "{{ user }}"` |
+| 卡片的 `styles` 和[模块](#模块)的代码，可与 JavaScript 模板混用 | 见下方 |
+| [条件](#条件)，使用 `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> 请务必用引号包住模板。没有引号时，`name: {{ states('x') }}` 会被 YAML 读作一个映射而不是文本，卡片会拒绝它。
+
+除了 Home Assistant 提供的一切 (`states()`、`state_attr()`、`is_state()`、`area_entities()`、`expand()`、过滤器、你 `custom_templates` 文件夹中的宏……) 之外，还有三个变量可用：
+
+- `entity` 是卡片的实体，在子按钮的字段中则是该子按钮的实体。
+- `config.entity` 是同一个值，供你为 card-mod 编写的模板使用。
+- `user` 是已登录用户的名称。
+
+结果由 Home Assistant 解析，方式与开发者工具中完全一样，因此 `21.50` 会显示为 `21.5`。当文本必须保持原样时，请加上 `| string`。
+
+<details>
+
+<summary>自定义样式中的 Home Assistant 模板</summary>
+
+<br>
+
+一个模板可以承载一个值，也可以包住整条 CSS 规则：
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript 模板和 Home Assistant 模板可以共用同一个区块。请把每个 `${ }` 都放在 `{% if %} ... {% endif %}` 区块之外，两边分别由不同的引擎渲染，被切成两半的区块是无法渲染的。
+
+要在状态行中显示你自己的文本，完全不需要样式，`state_content` 可以把一个模板作为它的其中一项：
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+在 JavaScript 模板内部，`renderTemplate("{{ ... }}")` 会给你一个 Home Assistant 模板渲染后的文本，用于模板自己无法到达的地方：
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+错误会显示在编辑器中的自定义样式下方，以及你的浏览器控制台中。
+
+</details>
+
+### JavaScript 模板
+
+高级用户可以直接在 [自定义样式](#样式) 中用 JS 添加模板。举例来说，这可以让你动态更改元素的图标、文本或颜色，根据条件显示或隐藏某个元素 (比如子按钮)，或者几乎任何基于状态、属性等的操作。
 
 > [!TIP]  
 > 关于 JS 模板的更多信息请看[这里](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)。我的建议是**始终查看一下浏览器控制台**，确保一切正常运行。
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` 会在一组[条件](#条件)满足时返回 `true`，例如 `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`。
+- `renderTemplate(template, entity)` 会返回 Home Assistant 为一个 Jinja 模板渲染出的文本，例如 `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`。第二个参数是模板中 `entity` 所代表的内容，默认为你的卡片的实体。
 - `hass.formatEntityState(state)` 可用于翻译一个状态 (也可以用来获取状态单位，而无需手动添加)。
 - `hass.formatEntityAttributeValue(state, "attribute")` 可用于翻译一个属性 (也可以用来获取状态单位，而无需手动添加)。
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 如果你想从你的样式中为状态 (`.bubble-state`) 添加模板，只要有模板写入这一行，它就会立刻显示在屏幕上，无论 `state_content` 是什么。
+
+不用任何样式也能做到同样的效果，在 `state_content` 中放一个 Home Assistant 模板即可，这样还能得到翻译后的状态：
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

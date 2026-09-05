@@ -412,7 +412,7 @@ Dizze kaart is tige fleksibel. Hy kin brûkt wurde as in **skeakel**, in **skúf
 | `icon` | string | Opsjoneel | Elk `mdi:` ikoan | In ikoan foar jo knop, as dizze net definiearre is wurdt it ikoan fan de entiteit as de `entity-picture` toand |
 | `force_icon` | boolean | Opsjoneel | `true` of `false` (standert) | Jou it ikoan foarrang boppe de `entity-picture` |
 | `use_accent_color` | boolean | Opsjoneel (`false` standert) | **Allinnich foar ljochten.** Brûk de aksintkleur fan it tema ynstee fan de kleur fan it ljocht.                         |
-| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#templates) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
+| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#sjabloanen) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
 | `show_name` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje de namme |
 | `show_icon` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje it ikoan |
 | `scrolling_effect` | boolean | Opsjoneel | `true` (standert) of `false` | Lit tekst skowe as de ynhâld grutter is as de kontener |
@@ -547,7 +547,7 @@ Mei dizze kaart kinne jo in mediaspilerentiteit betsjinje.
 | `name` | string | Opsjoneel | Elke tekststring | In namme foar jo mediaspiler, as dizze net definiearre is wurdt de namme fan de entiteit toand |
 | `icon` | string | Opsjoneel | Elk `mdi:` ikoan | In ikoan foar jo mediaspiler, as dizze net definiearre is wurdt it ikoan fan de entiteit as de `entity-picture` toand |
 | `force_icon` | boolean | Opsjoneel | `true` of `false` (standert) | Jou it ikoan foarrang boppe de `entity-picture` |
-| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#templates) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
+| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#sjabloanen) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
 | `show_name` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje de namme |
 | `show_icon` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje it ikoan |
 | `scrolling_effect` | boolean | Opsjoneel | `true` (standert) of `false` | Lit tekst skowe as de ynhâld grutter is as de kontener |
@@ -663,7 +663,7 @@ Mei dizze kaart kinne jo jo `cover`-entiteiten betsjinje.
 | `entity` | string | **Fereaske** | Elk sinneskerm | In sinneskerm om te betsjinjen |
 | `name` | string | Opsjoneel | Elke tekststring | In namme foar jo sinneskerm, as dizze net definiearre is wurdt de namme fan de entiteit toand |
 | `force_icon` | boolean | Opsjoneel | `true` of `false` (standert) | Jou it ikoan foarrang boppe de `entity-picture` |
-| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#templates) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
+| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#sjabloanen) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
 | `show_name` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje de namme |
 | `show_icon` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje it ikoan |
 | `scrolling_effect` | boolean | Opsjoneel | `true` (standert) of `false` | Lit tekst skowe as de ynhâld grutter is as de kontener |
@@ -753,7 +753,7 @@ Mei dizze kaart kinne jo in útklapmenu foar jo `input_select`/`select`-entiteit
 | `name` | string | Opsjoneel | Elke tekststring | In namme foar jo seleksje, as dizze net definiearre is wurdt de namme fan de entiteit toand |
 | `icon` | string | Opsjoneel | Elk `mdi:` ikoan | In ikoan foar jo seleksje, as dizze net definiearre is wurdt it ikoan fan de entiteit as de `entity-picture` toand |
 | `force_icon` | boolean | Opsjoneel | `true` of `false` (standert) | Jou it ikoan foarrang boppe de `entity-picture` |
-| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#templates) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
+| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#sjabloanen) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
 | `show_name` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje de namme |
 | `show_icon` | boolean | Opsjoneel | `true` (standert) of `false` | Toan of ferstopje it ikoan |
 | `scrolling_effect` | boolean | Opsjoneel | `true` (standert) of `false` | Lit tekst skowe as de ynhâld grutter is as de kontener |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opsjoneel | `true` (standert) of `false` | Lit in eftergrûn foar jo subknop sjen, de kleur feroaret op basis fan de steat fan jo entiteit |
 | `state_background` | boolean | Opsjoneel | `true` (standert) of `false` | Brûk de steatkleur as de entiteit `on` is |
 | `light_background` | boolean | Opsjoneel | `true` (standert) of `false` | Brûk de ljochtkleur foar de eftergrûn as dizze beskikber is |
-| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#templates) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
+| `state_content` | string of list | Opsjoneel | `state`, `last-changed`, `last-updated`, `last-triggered`, in attribútnamme lykas `brightness` of `forecast[0].temperature`, of in [sjabloan](#sjabloanen) | Wat de rigel ûnder de namme toant, yn dizze folchoarder. Sûnder dat toant in `button_type: state` knop wat Home Assistant foar de entiteit toant (de steat, plus de aktuele temperatuer fan in klimaatentiteit, de posysje fan in sinneskerm, de helderheid fan in ljocht). De âlde kaaien `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` wurkje noch altyd en wurde werskreaun as `state_content` as jo de editor iepenje. |
 | `show_name` | boolean | Opsjoneel | `true` of `false` (standert) | Lit de namme sjen of ferstopje dizze |
 | `show_icon` | boolean | Opsjoneel | `true` (standert) of `false` | Lit it ikoan sjen of ferstopje it |
 | `select_attribute` | string | Opsjoneel | In attribútlist fan jo `entity` (sjoch de stipe opsjes hjirboppe) | Dizze attribútlist iepenet in dropdown by in klik (bygelyks `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Betingsten wurde yn dyn browser evaluearre, dus dy pear dy't de Home Assistant-server nedich hawwe kinne net krekt wêze: sinneopgong en sinne-ûndergong wurde út de entiteit `sun.sun` lêzen ynstee fan opnij berekkene te wurden, en in `for`-doer wurdt fanôf de lêste steatswiziging metten, sûnder de skiednis fan de recorder.
+> Betingsten wurde yn dyn browser evaluearre, dus dy pear dy't de Home Assistant-server nedich hawwe kinne net krekt wêze: sinneopgong en sinne-ûndergong wurde út de entiteit `sun.sun` lêzen ynstee fan opnij berekkene te wurden, en in `for`-doer wurdt fanôf de lêste steatswiziging metten, sûnder de skiednis fan de recorder. De útsûndering is `template`, dy't troch de server rendere wurdt lykas elk oar [Home Assistant-sjabloan](#sjabloanen).
 >
 > `view_columns` wurdt akseptearre mar slagget altyd, om't Bubble Card noait dejinge is dy't de kolommen fan dyn werjefte yndielt. In betingsttype dat Bubble Card net ken meldt himsels ien kear yn de konsole fan dyn browser ynstee fan stil te mislearjen, sadat dû in typflater fan in ûntbrekkende funksje ûnderskiede kinst.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Sjabloanen
 
-**Bubble Card stipet gjin Jinja2-sjabloanen**, mar avansearre brûkers kinne sjabloanen tafoegje yn JS, direkt yn har [oanpaste stilen](#styling). Dit makket it bygelyks mooglik om dynamysk in ikoan, de teksten of de kleuren fan in elemint te wizigjen, om in elemint (lykas in subknop) betingst te toanen of te ferbergjen, of hast alles basearre op in steat, in attribút en mear.
+Bubble Card stipet twa soarten sjabloanen:
+
+- **Home Assistant-sjabloanen (Jinja)**, dejingen dy't jo al skriuwe yn jo automatisearringen, yn Mushroom of yn card-mod. Set `{{ ... }}` of `{% ... %}` yn in stipe fjild en Home Assistant rendert it foar jo, live.
+- **JavaScript-sjabloanen**, `${ ... }` yn jo [oanpaste stilen](#styling), foar alles wat by de kaart sels komme moat.
+
+### Home Assistant-sjabloanen (Jinja)
+
+Sjabloanen wurde rendere troch jo Home Assistant-server en wurkje harsels by as wat se lêze feroaret. Se wurkje yn dizze fjilden:
+
+<details>
+
+<summary><b>Stipe fjilden (mei foarbylden)</b></summary>
+
+| Fjild | Foarbyld |
+| --- | --- |
+| `name`, op elke kaart (header fan de pop-up en skiedingsline ynbegrepen) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, op elke kaart (`icon_open`, `icon_close`, `icon_up` en `icon_down` fan in sinneskerm ek) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` en `icon` fan in [subknop](#subknoppen) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, op in kaart of in subknop, neist `state` en attribútnammen | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... fan in [horizontale knoppenstack](#horizontale-knoppenstack) | `1_name: "{{ user }}"` |
+| `styles` fan in kaart en de koade fan in [module](#modules), mongen mei JavaScript-sjabloanen | sjoch hjirûnder |
+| [Betingsten](#betingsten), mei `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Set in sjabloan altyd tusken oanhellingstekens. Sûnder dy wurdt `name: {{ states('x') }}` troch YAML lêzen as in mapping ynstee fan as tekst, en de kaart wegeret it.
+
+Trije fariabelen binne beskikber boppe-op alles wat Home Assistant biedt (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filters, de makro's fan jo map `custom_templates`...):
+
+- `entity` is de entiteit fan de kaart, of fan de subknop foar in subknopfjild.
+- `config.entity` is deselde wearde, foar de sjabloanen dy't jo foar card-mod skreaun hawwe.
+- `user` is de namme fan de oanmelde brûker.
+
+Resultaten wurde troch Home Assistant krekt sa ferwurke as yn de ûntwikkelderark, dus `21.50` wurdt toand as `21.5`. Foegje `| string` ta as de tekst bliuwe moat sa't er is.
+
+<details>
+
+<summary>Home Assistant-sjabloanen yn jo oanpaste stilen</summary>
+
+<br>
+
+In sjabloan kin in wearde befetsje of hiele CSS-regels omslute:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-sjabloanen en Home Assistant-sjabloanen kinne in blok diele. Hâld elke `${ }` bûten in `{% if %} ... {% endif %}` blok, elke kant wurdt troch in oare motor rendere en in blok dat yn twaen snien is kin net rendere wurde.
+
+Jo eigen tekst op de steatrigel hat hielendal gjin stilen nedich, `state_content` nimt in sjabloan as ien fan syn items:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Binnen in JavaScript-sjabloan jout `renderTemplate("{{ ... }}")` jo de renderde tekst fan in Home Assistant-sjabloan, foar de plakken dêr't in sjabloan sels net by kin:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Flaters wurde toand yn de editor, ûnder de oanpaste stilen, en yn de konsole fan jo browser.
+
+</details>
+
+### JavaScript-sjabloanen
+
+Avansearre brûkers kinne sjabloanen tafoegje yn JS, direkt yn har [oanpaste stilen](#styling). Dit makket it bygelyks mooglik om dynamysk in ikoan, de teksten of de kleuren fan in elemint te wizigjen, om in elemint (lykas in subknop) betingst te toanen of te ferbergjen, of hast alles basearre op in steat, in attribút en mear.
 
 > [!TIP]  
 > Mear ynformaasje oer JS-sjabloanen [hjir](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Myn advys is om **altyd de konsole fan jo browser te besjen** om wis te wêzen dat alles goed wurket.
@@ -2095,6 +2176,7 @@ Jo hawwe tagong ta alle globale JS-funksjes, mar ek ta:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` jout `true` werom as oan in list mei [betingsten](#betingsten) foldien is, bygelyks `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` jout de tekst werom dy't Home Assistant foar in Jinja-sjabloan rendere hat, bygelyks `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. It twadde argumint is wat it sjabloan sjocht as `entity`, standert de entiteit fan jo kaart.
 - `hass.formatEntityState(state)` kin brûkt wurde om in steat te oersetten (kin ek brûkt wurde om in stateenheid te krijen, sûnder dy hânmjittich ta te foegjen).
 - `hass.formatEntityAttributeValue(state, "attribute")` kin brûkt wurde om in attribút te oersetten (kin ek brûkt wurde om in stateenheid te krijen, sûnder dy hânmjittich ta te foegjen).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 As jo de steat (`.bubble-state`) fanút jo stilen sjablonearje wolle, ferskynt de rigel op it skerm sa gau't in sjabloan deryn skriuwt, wat `state_content` ek seit.
+
+Itselde sûnder stilen, mei in Home Assistant-sjabloan yn `state_content`, dat jo ek de oersette steat jout:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

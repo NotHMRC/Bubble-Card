@@ -412,7 +412,7 @@ Mae'r cerdyn hwn yn amryddawn iawn. Gellir ei ddefnyddio fel **switsh**, **llith
 | `icon` | string | Dewisol | Unrhyw eicon `mdi:` | Eicon ar gyfer eich botwm, os na chaiff ei ddiffinio bydd yn dangos eicon yr endid neu'r `entity-picture` |
 | `force_icon` | boolean | Dewisol | `true` neu `false` (rhagosodedig) | Rhoi blaenoriaeth i'r eicon yn hytrach na'r `entity-picture` |
 | `use_accent_color` | boolean | Dewisol (`false` yn ddiofyn) | **Ar gyfer goleuadau yn unig.** Defnyddio lliw acen y thema yn lle lliw'r golau.                         |
-| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templates) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
+| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templedi) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
 | `show_name` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r enw |
 | `show_icon` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r eicon |
 | `scrolling_effect` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Caniatáu i destun sgrolio pan fydd y cynnwys yn fwy na maint eu cynhwysydd |
@@ -547,7 +547,7 @@ Mae'r cerdyn hwn yn eich galluogi i reoli endid chwaraeydd cyfryngau.
 | `name` | string | Dewisol | Unrhyw linyn | Enw ar gyfer eich chwaraeydd cyfryngau, os na chaiff ei ddiffinio bydd yn dangos enw'r endid |
 | `icon` | string | Dewisol | Unrhyw eicon `mdi:` | Eicon ar gyfer eich chwaraeydd cyfryngau, os na chaiff ei ddiffinio bydd yn dangos eicon yr endid neu'r `entity-picture` |
 | `force_icon` | boolean | Dewisol | `true` neu `false` (rhagosodedig) | Rhoi blaenoriaeth i'r eicon yn hytrach na'r `entity-picture` |
-| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templates) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
+| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templedi) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
 | `show_name` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r enw |
 | `show_icon` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r eicon |
 | `scrolling_effect` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Caniatáu i destun sgrolio pan fydd y cynnwys yn fwy na maint eu cynhwysydd |
@@ -663,7 +663,7 @@ Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `cover`.
 | `entity` | string | **Angenrheidiol** | Unrhyw orchudd | Gorchudd i'w reoli |
 | `name` | string | Dewisol | Unrhyw linyn | Enw ar gyfer eich gorchudd, os na chaiff ei ddiffinio bydd yn dangos enw'r endid |
 | `force_icon` | boolean | Dewisol | `true` neu `false` (rhagosodedig) | Rhoi blaenoriaeth i'r eicon yn hytrach na'r `entity-picture` |
-| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templates) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
+| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templedi) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
 | `show_name` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r enw |
 | `show_icon` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r eicon |
 | `scrolling_effect` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Caniatáu i destun sgrolio pan fydd y cynnwys yn fwy na maint eu cynhwysydd |
@@ -753,7 +753,7 @@ Mae'r cerdyn hwn yn eich galluogi i ychwanegu dewislen ollwng ar gyfer eich endi
 | `name` | string | Dewisol | Unrhyw linyn | Enw ar gyfer eich dewis, os na chaiff ei ddiffinio bydd yn dangos enw'r endid |
 | `icon` | string | Dewisol | Unrhyw eicon `mdi:` | Eicon ar gyfer eich dewis, os na chaiff ei ddiffinio bydd yn dangos eicon yr endid neu'r `entity-picture` |
 | `force_icon` | boolean | Dewisol | `true` neu `false` (rhagosodedig) | Rhoi blaenoriaeth i'r eicon yn hytrach na'r `entity-picture` |
-| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templates) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
+| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templedi) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
 | `show_name` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r enw |
 | `show_icon` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Dangos neu guddio'r eicon |
 | `scrolling_effect` | boolean | Dewisol | `true` (rhagosodedig) neu `false` | Caniatáu i destun sgrolio pan fydd y cynnwys yn fwy na maint eu cynhwysydd |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Dewisol | `true` (rhagosodiad) neu `false` | Dangos cefndir ar gyfer eich is-fotwm, bydd yn newid ei liw yn seiliedig ar gyflwr eich endid |
 | `state_background` | boolean | Dewisol | `true` (rhagosodiad) neu `false` | Defnyddio lliw'r cyflwr pan fo'r endid yn `on` |
 | `light_background` | boolean | Dewisol | `true` (rhagosodiad) neu `false` | Defnyddio lliw'r golau ar gyfer y cefndir pan fo ar gael |
-| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templates) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
+| `state_content` | string neu list | Dewisol | `state`, `last-changed`, `last-updated`, `last-triggered`, enw priodoledd fel `brightness` neu `forecast[0].temperature`, neu [templed](#templedi) | Yr hyn y mae'r llinell o dan yr enw yn ei ddangos, yn y drefn hon. Hebddo mae botwm `button_type: state` yn dangos yr hyn y mae Home Assistant yn ei ddangos ar gyfer yr endid (ei gyflwr, ynghyd â thymheredd cyfredol endid hinsawdd, safle gorchudd, disgleirdeb golau). Mae'r hen allweddi `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` yn dal i weithio ac yn cael eu hailysgrifennu fel `state_content` pan fyddwch yn agor y golygydd. |
 | `show_name` | boolean | Dewisol | `true` neu `false` (rhagosodiad) | Dangos neu guddio'r enw |
 | `show_icon` | boolean | Dewisol | `true` (rhagosodiad) neu `false` | Dangos neu guddio'r eicon |
 | `select_attribute` | string | Dewisol | Rhestr briodweddau o'ch `entity` (gweler yr opsiynau a gefnogir uchod) | Bydd y rhestr briodweddau hon yn agor gollwng i lawr os caiff ei glicio (e.e. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Gwerthusir amodau yn eich porwr, felly ni all yr ychydig ohonynt sydd angen gweinydd Home Assistant fod yn union: darllenir codiad a machlud haul o'r endid `sun.sun` yn lle cael eu hailgyfrifo, ac mae hyd `for` yn cael ei fesur o'r newid stad diwethaf, heb hanes y recorder.
+> Gwerthusir amodau yn eich porwr, felly ni all yr ychydig ohonynt sydd angen gweinydd Home Assistant fod yn union: darllenir codiad a machlud haul o'r endid `sun.sun` yn lle cael eu hailgyfrifo, ac mae hyd `for` yn cael ei fesur o'r newid stad diwethaf, heb hanes y recorder. Yr eithriad yw `template`, a gaiff ei rendro gan y gweinydd fel pob [templed Home Assistant](#templedi) arall.
 >
 > Derbynnir `view_columns` ond mae bob amser yn pasio, gan nad Bubble Card sy'n gosod colofnau eich golwg byth. Mae math o amod nad yw Bubble Card yn ei adnabod yn adrodd amdano'i hun unwaith yng nghonsol eich porwr yn lle methu'n dawel, felly gallwch wahaniaethu rhwng gwall teipio a nodwedd goll.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Templedi
 
-**Nid yw Bubble Card yn cefnogi templedi Jinja** ond gall defnyddwyr uwch ychwanegu templedi mewn JS yn uniongyrchol yn eu [harddulliau addasiedig](#arddull). Er enghraifft, mae hyn yn caniatáu newid eicon, testunau neu liwiau elfen yn ddeinamig, dangos neu guddio elfen yn amodol (fel is-fotwm), neu bron unrhyw beth yn seiliedig ar stad, priodoledd a mwy.
+Mae Bubble Card yn cefnogi dau fath o dempledi:
+
+- **Templedi Home Assistant (Jinja)**, y rhai rydych chi eisoes yn eu hysgrifennu yn eich awtomeiddiadau, yn Mushroom neu yn card-mod. Rhowch `{{ ... }}` neu `{% ... %}` mewn maes a gefnogir ac mae Home Assistant yn ei rendro ar eich cyfer, yn fyw.
+- **Templedi JavaScript**, `${ ... }` y tu mewn i'ch [arddulliau addasiedig](#arddull), ar gyfer unrhyw beth sydd angen cyrraedd y cerdyn ei hun.
+
+### Templedi Home Assistant (Jinja)
+
+Caiff templedi eu rendro gan eich gweinydd Home Assistant ac maent yn diweddaru eu hunain pan fydd yr hyn y maent yn ei ddarllen yn newid. Maent yn gweithio yn y meysydd hyn:
+
+<details>
+
+<summary><b>Meysydd a gefnogir (gydag enghreifftiau)</b></summary>
+
+| Maes | Enghraifft |
+| --- | --- |
+| `name`, ar bob cerdyn (gan gynnwys pennawd y naidlen a'r gwahanydd) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, ar bob cerdyn (`icon_open`, `icon_close`, `icon_up` ac `icon_down` gorchudd hefyd) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` ac `icon` [is-fotwm](#is-fotymau) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, ar gerdyn neu is-fotwm, wrth ymyl `state` ac enwau priodoleddau | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [pentwr botymau llorweddol](#pentwr-botymau-llorweddol) | `1_name: "{{ user }}"` |
+| `styles` cerdyn a chod [modiwl](#modiwlau), wedi'u cymysgu â thempledi JavaScript | gweler isod |
+| [Amodau](#amodau), gyda `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Rhowch dempled rhwng dyfynodau bob amser. Hebddynt, mae YAML yn darllen `name: {{ states('x') }}` fel mapio yn hytrach na thestun, ac mae'r cerdyn yn ei wrthod.
+
+Mae tri newidyn ar gael ar ben popeth y mae Home Assistant yn ei gynnig (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, hidlyddion, macros eich ffolder `custom_templates`...):
+
+- `entity` yw endid y cerdyn, neu'r is-fotwm ar gyfer maes is-fotwm.
+- `config.entity` yw'r un gwerth, ar gyfer y templedi a ysgrifennoch ar gyfer card-mod.
+- `user` yw enw'r defnyddiwr sydd wedi mewngofnodi.
+
+Caiff canlyniadau eu dosrannu gan Home Assistant yn union fel yn yr offer datblygwyr, felly mae `21.50` yn ymddangos fel `21.5`. Ychwanegwch `| string` pan fo'n rhaid i'r testun aros fel y mae.
+
+<details>
+
+<summary>Templedi Home Assistant yn eich arddulliau addasiedig</summary>
+
+<br>
+
+Gall templed ddal gwerth neu amgáu rheolau CSS cyfan:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Gall templedi JavaScript a thempledi Home Assistant rannu bloc. Cadwch bob `${ }` y tu allan i floc `{% if %} ... {% endif %}`, caiff pob ochr ei rendro gan beiriant gwahanol ac ni ellir rendro bloc wedi'i dorri'n ddau.
+
+Nid oes angen arddulliau o gwbl ar eich testun eich hun yn llinell y stad, mae `state_content` yn derbyn templed fel un o'i eitemau:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Y tu mewn i dempled JavaScript, mae `renderTemplate("{{ ... }}")` yn rhoi testun wedi'i rendro templed Home Assistant i chi, ar gyfer y mannau na all templed eu cyrraedd ar ei ben ei hun:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Dangosir gwallau yn y golygydd, o dan yr arddulliau addasiedig, ac yng nghonsol eich porwr.
+
+</details>
+
+### Templedi JavaScript
+
+Gall defnyddwyr uwch ychwanegu templedi mewn JS yn uniongyrchol yn eu [harddulliau addasiedig](#arddull). Er enghraifft, mae hyn yn caniatáu newid eicon, testunau neu liwiau elfen yn ddeinamig, dangos neu guddio elfen yn amodol (fel is-fotwm), neu bron unrhyw beth yn seiliedig ar stad, priodoledd a mwy.
 
 > [!TIP]  
 > Mwy o wybodaeth am dempledi JS [yma](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Fy nghyngor i yw **edrych bob amser ar gonsol eich porwr** i sicrhau bod popeth yn gweithio'n gywir.
@@ -2095,6 +2176,7 @@ Mae gennych fynediad at bob ffwythiant JS byd-eang, ond mae gennych fynediad hef
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - Mae `checkConditionsMet(conditions, hass)` yn dychwelyd `true` pan fodlonir rhestr o [amodau](#amodau), er enghraifft `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- Mae `renderTemplate(template, entity)` yn dychwelyd y testun a rendrwyd gan Home Assistant ar gyfer templed Jinja, er enghraifft `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Yr ail baramedr yw'r hyn y mae'r templed yn ei weld fel `entity`, endid eich cerdyn yn ddiofyn.
 - Gellir defnyddio `hass.formatEntityState(state)` i gyfieithu stad (gellir ei ddefnyddio hefyd i gael uned stad, heb fod angen ei hychwanegu â llaw).
 - Gellir defnyddio `hass.formatEntityAttributeValue(state, "attribute")` i gyfieithu priodoledd (gellir ei ddefnyddio hefyd i gael uned stad, heb fod angen ei hychwanegu â llaw).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Os ydych chi am dempledu'r stad (`.bubble-state`) o'ch arddulliau, mae'r llinell yn ymddangos ar y sgrin cyn gynted ag y bydd templed yn ysgrifennu iddi, beth bynnag mae `state_content` yn ei ddweud.
+
+Yr un peth heb unrhyw arddulliau, gyda thempled Home Assistant yn `state_content`, sydd hefyd yn rhoi'r stad wedi'i chyfieithu i chi:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

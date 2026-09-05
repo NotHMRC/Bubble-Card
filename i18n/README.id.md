@@ -412,7 +412,7 @@ Kartu ini sangat serbaguna. Kartu ini bisa digunakan sebagai **switch**, **slide
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk tombol Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Hanya untuk lampu.** Gunakan warna aksen tema, bukan warna lampu.                         |
-| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templat) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
@@ -547,7 +547,7 @@ Kartu ini memungkinkan Anda mengontrol entitas media player.
 | `name` | string | Optional | Any string | Nama untuk media player Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk media player Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templat) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
@@ -663,7 +663,7 @@ Kartu ini memungkinkan Anda mengontrol entitas `cover` Anda.
 | `entity` | string | **Required** | Any cover | Cover yang akan dikontrol |
 | `name` | string | Optional | Any string | Nama untuk cover Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templat) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
@@ -753,7 +753,7 @@ Kartu ini memungkinkan Anda menambahkan menu dropdown untuk entitas `input_selec
 | `name` | string | Optional | Any string | Nama untuk select Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk select Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templat) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opsional | `true` (default) atau `false` | Tampilkan latar belakang untuk subtombol Anda, warnanya akan berubah berdasarkan status entitas Anda |
 | `state_background` | boolean | Opsional | `true` (default) atau `false` | Gunakan warna status ketika entitas dalam kondisi `on` |
 | `light_background` | boolean | Opsional | `true` (default) atau `false` | Gunakan warna lampu untuk latar belakang jika tersedia |
-| `state_content` | string atau list | Opsional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
+| `state_content` | string atau list | Opsional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templat) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Opsional | `true` atau `false` (default) | Tampilkan atau sembunyikan nama |
 | `show_icon` | boolean | Opsional | `true` (default) atau `false` | Tampilkan atau sembunyikan ikon |
 | `select_attribute` | string | Opsional | Daftar atribut dari `entity` Anda (lihat opsi yang didukung di atas) | Daftar atribut ini akan membuka dropdown jika diklik (misalnya `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Kondisi dievaluasi di peramban Anda, jadi beberapa di antaranya yang memerlukan server Home Assistant tidak bisa tepat: matahari terbit dan terbenam dibaca dari entitas `sun.sun` alih-alih dihitung ulang, dan durasi `for` diukur dari perubahan status terakhir, tanpa riwayat recorder.
+> Kondisi dievaluasi di peramban Anda, jadi beberapa di antaranya yang memerlukan server Home Assistant tidak bisa tepat: matahari terbit dan terbenam dibaca dari entitas `sun.sun` alih-alih dihitung ulang, dan durasi `for` diukur dari perubahan status terakhir, tanpa riwayat recorder. Pengecualiannya adalah `template`, yang dirender oleh server seperti [templat Home Assistant](#templat) lainnya.
 >
 > `view_columns` diterima tetapi selalu lolos, karena Bubble Card tidak pernah menjadi pihak yang menata kolom tampilan Anda. Jenis kondisi yang tidak dikenal Bubble Card melaporkan dirinya sekali di konsol peramban Anda alih-alih gagal diam-diam, sehingga Anda bisa membedakan salah ketik dari fitur yang belum ada.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Templat
 
-**Bubble Card tidak mendukung templat Jinja**, tetapi pengguna lanjutan dapat menambahkan templat dalam JS langsung di [gaya khusus](#gaya) mereka. Misalnya, ini memungkinkan Anda mengubah ikon, teks, atau warna elemen secara dinamis, menampilkan atau menyembunyikan elemen secara kondisional (seperti subtombol), atau hampir apa pun berdasarkan status, atribut, dan lainnya.
+Bubble Card mendukung dua jenis templat:
+
+- **Templat Home Assistant (Jinja)**, yang sudah Anda tulis di otomasi Anda, di Mushroom, atau di card-mod. Letakkan `{{ ... }}` atau `{% ... %}` di bidang yang didukung dan Home Assistant merendernya untuk Anda secara langsung.
+- **Templat JavaScript**, `${ ... }` di dalam [gaya khusus](#gaya) Anda, untuk apa pun yang perlu menjangkau ke dalam kartu itu sendiri.
+
+### Templat Home Assistant (Jinja)
+
+Templat dirender oleh server Home Assistant Anda dan diperbarui sendiri saat apa yang dibacanya berubah. Templat berfungsi di bidang-bidang berikut:
+
+<details>
+
+<summary><b>Bidang yang didukung (dengan contoh)</b></summary>
+
+| Bidang | Contoh |
+| --- | --- |
+| `name`, pada setiap kartu (termasuk header pop-up dan pemisah) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, pada setiap kartu (juga `icon_open`, `icon_close`, `icon_up`, dan `icon_down` pada cover) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` dan `icon` sebuah [subtombol](#subtombol) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, pada kartu atau subtombol, di samping `state` dan nama atribut | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... dari sebuah [tumpukan tombol horizontal](#tumpukan-tombol-horizontal) | `1_name: "{{ user }}"` |
+| `styles` sebuah kartu dan kode sebuah [modul](#modul), dicampur dengan templat JavaScript | lihat di bawah |
+| [Kondisi](#kondisi), dengan `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Selalu letakkan templat di antara tanda kutip. Tanpa tanda kutip, `name: {{ states('x') }}` dibaca oleh YAML sebagai pemetaan, bukan sebagai teks, dan kartu menolaknya.
+
+Tiga variabel tersedia di samping semua yang ditawarkan Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filter, makro dari folder `custom_templates` Anda...):
+
+- `entity` adalah entitas kartu, atau entitas subtombol untuk bidang subtombol.
+- `config.entity` adalah nilai yang sama, untuk templat yang Anda tulis untuk card-mod.
+- `user` adalah nama pengguna yang sedang masuk.
+
+Hasilnya diurai oleh Home Assistant persis seperti di alat pengembang, jadi `21.50` ditampilkan sebagai `21.5`. Tambahkan `| string` saat teks harus tetap apa adanya.
+
+<details>
+
+<summary>Templat Home Assistant di gaya khusus Anda</summary>
+
+<br>
+
+Sebuah templat dapat berisi sebuah nilai atau membungkus seluruh aturan CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Templat JavaScript dan templat Home Assistant dapat berbagi satu blok. Jaga setiap `${ }` di luar blok `{% if %} ... {% endif %}`, karena tiap sisi dirender oleh mesin yang berbeda dan blok yang terpotong dua tidak dapat dirender.
+
+Teks Anda sendiri di baris status tidak memerlukan gaya sama sekali, `state_content` menerima templat sebagai salah satu itemnya:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Di dalam templat JavaScript, `renderTemplate("{{ ... }}")` memberi Anda teks hasil render dari sebuah templat Home Assistant, untuk tempat-tempat yang tidak bisa dijangkau templat dengan sendirinya:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Kesalahan ditampilkan di editor, di bawah gaya khusus, dan di konsol peramban Anda.
+
+</details>
+
+### Templat JavaScript
+
+Pengguna lanjutan dapat menambahkan templat dalam JS langsung di [gaya khusus](#gaya) mereka. Misalnya, ini memungkinkan Anda mengubah ikon, teks, atau warna elemen secara dinamis, menampilkan atau menyembunyikan elemen secara kondisional (seperti subtombol), atau hampir apa pun berdasarkan status, atribut, dan lainnya.
 
 > [!TIP]  
 > Informasi lebih lengkap tentang templat JS [di sini](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Saran saya, **selalu periksa konsol peramban Anda** untuk memastikan semuanya berfungsi dengan benar.
@@ -2095,6 +2176,7 @@ Anda memiliki akses ke semua fungsi JS global, tetapi Anda juga memiliki akses k
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` mengembalikan `true` ketika sebuah daftar [kondisi](#kondisi) terpenuhi, misalnya `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` mengembalikan teks yang dirender oleh Home Assistant untuk sebuah templat Jinja, misalnya `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Argumen kedua adalah apa yang dilihat templat sebagai `entity`, secara default entitas kartu Anda.
 - `hass.formatEntityState(state)` dapat digunakan untuk menerjemahkan status (juga bisa digunakan untuk mendapatkan satuan status, tanpa perlu menambahkannya secara manual).
 - `hass.formatEntityAttributeValue(state, "attribute")` dapat digunakan untuk menerjemahkan atribut (juga bisa digunakan untuk mendapatkan satuan status, tanpa perlu menambahkannya secara manual).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Jika Anda ingin membuat templat status (`.bubble-state`) dari gaya Anda, baris tersebut muncul di layar begitu sebuah templat menulis ke dalamnya, apa pun yang dikatakan `state_content`.
+
+Hal yang sama tanpa gaya apa pun, dengan templat Home Assistant di `state_content`, yang juga memberi Anda status yang sudah diterjemahkan:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

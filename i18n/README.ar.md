@@ -414,7 +414,7 @@ auto_order: true
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لزرّك، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضي) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
 | `use_accent_color` | boolean | اختياري (`false` افتراضيًا) | **للإضاءة فقط.** استخدام لون التمييز الخاص بالسمة بدلًا من لون الإضاءة.                         |
-| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#القوالب) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضي) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
@@ -549,7 +549,7 @@ sub_button:
 | `name` | string | اختياري | أي نص | اسم لمشغل الوسائط الخاص بك، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لمشغل الوسائط الخاص بك، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضي) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#القوالب) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضي) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
@@ -665,7 +665,7 @@ sub_button:
 | `entity` | string | **إلزامي** | أي ستارة | ستارة للتحكم فيها |
 | `name` | string | اختياري | أي نص | اسم لستارتك، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضيًا) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#القوالب) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الأيقونة |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضيًا) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
@@ -755,7 +755,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | اختياري | أي نص | اسم لبطاقة الاختيار، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لبطاقة الاختيار، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضيًا) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#القوالب) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الأيقونة |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضيًا) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
@@ -1276,7 +1276,7 @@ sub_button:
 | `show_background` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض خلفية لزرك الفرعي، سيتغير لونها بناءً على حالة الكيان الخاص بك |
 | `state_background` | boolean | اختياري | `true` (افتراضي) أو `false` | استخدام لون الحالة عندما يكون الكيان `on` |
 | `light_background` | boolean | اختياري | `true` (افتراضي) أو `false` | استخدام لون الإضاءة للخلفية عند توفره |
-| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#القوالب) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
 | `select_attribute` | string | اختياري | قائمة سمات من `entity` الخاص بك (راجع الخيارات المدعومة أعلاه) | ستفتح قائمة السمات هذه قائمة منسدلة عند النقر عليها (مثلًا `effect_list`) |
@@ -1616,7 +1616,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> تُقيَّم الشروط في متصفحك، لذا فإن القليل منها الذي يحتاج إلى خادم Home Assistant لا يمكن أن يكون دقيقًا: تُقرأ أوقات الشروق والغروب من الكيان `sun.sun` بدل إعادة حسابها، وتُقاس مدة `for` من آخر تغيّر في الحالة، دون سجل recorder.
+> تُقيَّم الشروط في متصفحك، لذا فإن القليل منها الذي يحتاج إلى خادم Home Assistant لا يمكن أن يكون دقيقًا: تُقرأ أوقات الشروق والغروب من الكيان `sun.sun` بدل إعادة حسابها، وتُقاس مدة `for` من آخر تغيّر في الحالة، دون سجل recorder. الاستثناء هو `template`، الذي يعرضه الخادم مثل أي [قالب Home Assistant](#القوالب) آخر.
 >
 > يُقبل `view_columns` لكنه ينجح دائمًا، لأن Bubble Card ليست هي من ينظّم أعمدة العرض لديك. وأي نوع شرط لا تعرفه Bubble Card يُبلّغ عن نفسه مرة واحدة في وحدة تحكم المتصفح بدل الفشل بصمت، فتستطيع تمييز الخطأ المطبعي عن ميزة غير موجودة.
 
@@ -2031,7 +2031,88 @@ styles: |
 
 ## القوالب
 
-**Bubble Card لا يدعم قوالب Jinja** لكن يمكن للمستخدمين المتقدمين إضافة قوالب بلغة JS مباشرة في [تنسيقاتهم المخصصة](#التنسيق). على سبيل المثال، يتيح لك ذلك تغيير أيقونة عنصر أو نصوصه أو ألوانه بشكل ديناميكي، أو إظهار عنصر أو إخفاؤه بشكل شرطي (مثل زر فرعي)، أو ما يقارب أي شيء بناءً على حالة أو سمة والمزيد.
+يدعم Bubble Card نوعين من القوالب:
+
+- **قوالب Home Assistant (Jinja)**، وهي التي تكتبها أصلًا في أتمتتك أو في Mushroom أو في card-mod. ضع `{{ ... }}` أو `{% ... %}` في حقل مدعوم وسيعرضه لك Home Assistant مباشرة.
+- **قوالب JavaScript**، `${ ... }` داخل [تنسيقاتك المخصصة](#التنسيق)، لكل ما يحتاج إلى الوصول إلى البطاقة نفسها.
+
+### قوالب Home Assistant (Jinja)
+
+تُعرض القوالب بواسطة خادم Home Assistant لديك وتُحدَّث من تلقاء نفسها عندما يتغير ما تقرأه. وهي تعمل في هذه الحقول:
+
+<details>
+
+<summary><b>الحقول المدعومة (مع أمثلة)</b></summary>
+
+| الحقل | المثال |
+| --- | --- |
+| `name`، على كل بطاقة (بما في ذلك ترويسة النافذة المنبثقة والفاصل) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`، على كل بطاقة (وكذلك `icon_open` و`icon_close` و`icon_up` و`icon_down` للستارة) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` و`icon` في [زر فرعي](#الأزرار-الفرعية) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`، على بطاقة أو زر فرعي، إلى جانب `state` وأسماء السمات | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name` و`1_icon`... في [تكديس الأزرار الأفقي](#تكديس-الأزرار-الأفقي) | `1_name: "{{ user }}"` |
+| `styles` الخاصة ببطاقة وكود [وحدة](#modules)، ممزوجة بقوالب JavaScript | انظر أدناه |
+| [الشروط](#الشروط)، مع `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> ضع القالب دائمًا بين علامتي اقتباس. من دونهما يقرأ YAML `name: {{ states('x') }}` على أنه mapping لا نصًا، وترفضه البطاقة.
+
+تتوفر ثلاثة متغيرات إضافة إلى كل ما يقدمه Home Assistant (`states()` و`state_attr()` و`is_state()` و`area_entities()` و`expand()`، والمرشحات، ووحدات الماكرو في مجلد `custom_templates` لديك...):
+
+- `entity` هو كيان البطاقة، أو كيان الزر الفرعي في حقل زر فرعي.
+- `config.entity` هو القيمة نفسها، للقوالب التي كتبتها لأجل card-mod.
+- `user` هو اسم المستخدم المسجّل دخوله.
+
+تُحلَّل النتائج بواسطة Home Assistant تمامًا كما في أدوات المطورين، لذا يظهر `21.50` على شكل `21.5`. أضف `| string` عندما يجب أن يبقى النص كما هو.
+
+<details>
+
+<summary>قوالب Home Assistant في تنسيقاتك المخصصة</summary>
+
+<br>
+
+يمكن للقالب أن يحمل قيمة أو أن يحيط بقواعد CSS كاملة:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+يمكن لقوالب JavaScript وقوالب Home Assistant أن تتشارك الكتلة نفسها. أبقِ كل `${ }` خارج كتلة `{% if %} ... {% endif %}`، فكل طرف يُعرض بمحرك مختلف، والكتلة المقطوعة إلى نصفين لا يمكن عرضها.
+
+نصك الخاص في سطر الحالة لا يحتاج إلى أي تنسيقات على الإطلاق، إذ يقبل `state_content` قالبًا كأحد عناصره:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+داخل قالب JavaScript، تمنحك `renderTemplate("{{ ... }}")` النص المعروض لقالب Home Assistant، للمواضع التي لا يستطيع القالب الوصول إليها بمفرده:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+تُعرض الأخطاء في المحرر، أسفل التنسيقات المخصصة، وفي وحدة تحكم المتصفح.
+
+</details>
+
+### قوالب JavaScript
+
+يمكن للمستخدمين المتقدمين إضافة قوالب بلغة JS مباشرة في [تنسيقاتهم المخصصة](#التنسيق). على سبيل المثال، يتيح لك ذلك تغيير أيقونة عنصر أو نصوصه أو ألوانه بشكل ديناميكي، أو إظهار عنصر أو إخفاؤه بشكل شرطي (مثل زر فرعي)، أو ما يقارب أي شيء بناءً على حالة أو سمة والمزيد.
 
 > [!TIP]  
 > مزيد من المعلومات حول قوالب JS [هنا](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). نصيحتي هي أن **تلقي دائمًا نظرة على وحدة تحكم المتصفح** للتأكد من أن كل شيء يعمل بشكل صحيح.
@@ -2097,6 +2178,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` تُعيد `true` عند تحقق قائمة من [الشروط](#الشروط)، مثلًا `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` تُعيد النص الذي يعرضه Home Assistant لقالب Jinja، مثلًا `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. الوسيط الثاني هو ما يراه القالب على أنه `entity`، وهو كيان بطاقتك افتراضيًا.
 - `hass.formatEntityState(state)` يمكن استخدامها لترجمة حالة (يمكن استخدامها أيضًا للحصول على وحدة قياس الحالة، دون الحاجة إلى إضافتها يدويًا).
 - `hass.formatEntityAttributeValue(state, "attribute")` يمكن استخدامها لترجمة سمة (يمكن استخدامها أيضًا للحصول على وحدة قياس الحالة، دون الحاجة إلى إضافتها يدويًا).
 
@@ -2285,6 +2367,11 @@ styles: |
 
 
 إذا أردت استخدام قالب للحالة (`.bubble-state`) من أنماطك، فسيظهر السطر على الشاشة بمجرد أن يكتب فيه قالب، مهما كان ما يقوله `state_content`.
+
+الأمر نفسه دون أي تنسيقات، بقالب Home Assistant في `state_content`، وهو ما يمنحك أيضًا الحالة المترجمة:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

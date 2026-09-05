@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το κουμπί σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Μόνο για φωτιστικά.** Χρησιμοποιεί το χρώμα έμφασης του θέματος αντί για το χρώμα του φωτιστικού.                         |
-| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#πρότυπα) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Optional | Any string | Ένα όνομα για το media player σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το media player σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#πρότυπα) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Ένα ρολό προς έλεγχο |
 | `name` | string | Optional | Any string | Ένα όνομα για το ρολό σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#πρότυπα) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Ένα όνομα για την επιλογή σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για την επιλογή σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#πρότυπα) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Εμφανίστε ένα φόντο για το υπο-κουμπί σας, θα αλλάξει χρώμα ανάλογα με την κατάσταση της οντότητάς σας |
 | `state_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Χρησιμοποιήστε το χρώμα κατάστασης όταν η οντότητα είναι `on` |
 | `light_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Χρησιμοποιήστε το χρώμα του φωτός για το φόντο όταν είναι διαθέσιμο |
-| `state_content` | string or list | Προαιρετικό | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
+| `state_content` | string or list | Προαιρετικό | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#πρότυπα) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση ή απόκρυψη του ονόματος |
 | `show_icon` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Εμφάνιση ή απόκρυψη του εικονιδίου |
 | `select_attribute` | string | Προαιρετικό | Μια λίστα χαρακτηριστικών από την `entity` σας (δείτε τις υποστηριζόμενες επιλογές παραπάνω) | Αυτή η λίστα χαρακτηριστικών θα ανοίξει ένα dropdown αν πατηθεί (π.χ. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Οι συνθήκες αξιολογούνται στο πρόγραμμα περιήγησής σας, οπότε οι λίγες που χρειάζονται τον διακομιστή του Home Assistant δεν μπορούν να είναι ακριβείς: η ανατολή και η δύση διαβάζονται από την οντότητα `sun.sun` αντί να υπολογίζονται ξανά, και μια διάρκεια `for` μετριέται από την τελευταία αλλαγή κατάστασης, χωρίς το ιστορικό του recorder.
+> Οι συνθήκες αξιολογούνται στο πρόγραμμα περιήγησής σας, οπότε οι λίγες που χρειάζονται τον διακομιστή του Home Assistant δεν μπορούν να είναι ακριβείς: η ανατολή και η δύση διαβάζονται από την οντότητα `sun.sun` αντί να υπολογίζονται ξανά, και μια διάρκεια `for` μετριέται από την τελευταία αλλαγή κατάστασης, χωρίς το ιστορικό του recorder. Η εξαίρεση είναι το `template`, που αποδίδεται από τον διακομιστή όπως κάθε άλλο [πρότυπο Home Assistant](#πρότυπα).
 >
 > Το `view_columns` γίνεται δεκτό αλλά πληρούται πάντα, καθώς το Bubble Card δεν είναι ποτέ αυτό που διατάσσει τις στήλες της προβολής σας. Ένας τύπος συνθήκης που δεν γνωρίζει το Bubble Card αναφέρεται μία φορά στην κονσόλα του προγράμματος περιήγησής σας αντί να αποτυγχάνει σιωπηλά, ώστε να ξεχωρίζετε ένα τυπογραφικό λάθος από μια λειτουργία που λείπει.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Πρότυπα
 
-**Το Bubble Card δεν υποστηρίζει πρότυπα Jinja**, αλλά οι προχωρημένοι χρήστες μπορούν να προσθέσουν πρότυπα σε JS απευθείας στα [προσαρμοσμένα στυλ](#στυλ) τους. Για παράδειγμα, αυτό επιτρέπει δυναμική αλλαγή ενός εικονιδίου, των κειμένων ή των χρωμάτων ενός στοιχείου, την εμφάνιση ή απόκρυψη ενός στοιχείου υπό όρους (όπως ένα υπο-κουμπί), ή σχεδόν οτιδήποτε με βάση μια κατάσταση, ένα χαρακτηριστικό και άλλα.
+Το Bubble Card υποστηρίζει δύο είδη προτύπων:
+
+- **Πρότυπα Home Assistant (Jinja)**, αυτά που γράφετε ήδη στους αυτοματισμούς σας, στο Mushroom ή στο card-mod. Βάλτε `{{ ... }}` ή `{% ... %}` σε ένα υποστηριζόμενο πεδίο και το Home Assistant το αποδίδει για εσάς, ζωντανά.
+- **Πρότυπα JavaScript**, `${ ... }` μέσα στα [προσαρμοσμένα στυλ](#στυλ) σας, για οτιδήποτε χρειάζεται να φτάσει μέσα στην ίδια την κάρτα.
+
+### Πρότυπα Home Assistant (Jinja)
+
+Τα πρότυπα αποδίδονται από τον διακομιστή του Home Assistant σας και ενημερώνονται από μόνα τους όταν αλλάζει αυτό που διαβάζουν. Λειτουργούν στα εξής πεδία:
+
+<details>
+
+<summary><b>Υποστηριζόμενα πεδία (με παραδείγματα)</b></summary>
+
+| Πεδίο | Παράδειγμα |
+| --- | --- |
+| `name`, σε κάθε κάρτα (συμπεριλαμβανομένης της κεφαλίδας του pop-up και του διαχωριστικού) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, σε κάθε κάρτα (και τα `icon_open`, `icon_close`, `icon_up` και `icon_down` ενός ρολού) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` και `icon` σε ένα [υπο-κουμπί](#υπο-κουμπιά) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, σε μια κάρτα ή ένα υπο-κουμπί, δίπλα στο `state` και σε ονόματα χαρακτηριστικών | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... σε μια [οριζόντια στοίβα κουμπιών](#οριζόντια-στοίβα-κουμπιών) | `1_name: "{{ user }}"` |
+| `styles` μιας κάρτας και ο κώδικας ενός [module](#modules), αναμεμειγμένα με πρότυπα JavaScript | δείτε παρακάτω |
+| [Συνθήκες](#συνθήκες), με `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Βάζετε πάντα ένα πρότυπο σε εισαγωγικά. Χωρίς αυτά, το `name: {{ states('x') }}` διαβάζεται από το YAML ως αντιστοίχιση (mapping) αντί για κείμενο, και η κάρτα το απορρίπτει.
+
+Τρεις μεταβλητές είναι διαθέσιμες επιπλέον όλων όσων προσφέρει το Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, φίλτρα, οι μακροεντολές του φακέλου `custom_templates` σας...):
+
+- Το `entity` είναι η οντότητα της κάρτας, ή του υπο-κουμπιού για ένα πεδίο υπο-κουμπιού.
+- Το `config.entity` είναι η ίδια τιμή, για τα πρότυπα που γράψατε για το card-mod.
+- Το `user` είναι το όνομα του συνδεδεμένου χρήστη.
+
+Τα αποτελέσματα ερμηνεύονται από το Home Assistant ακριβώς όπως στα εργαλεία προγραμματιστή, οπότε το `21.50` εμφανίζεται ως `21.5`. Προσθέστε `| string` όταν το κείμενο πρέπει να μείνει όπως είναι.
+
+<details>
+
+<summary>Πρότυπα Home Assistant στα προσαρμοσμένα στυλ σας</summary>
+
+<br>
+
+Ένα πρότυπο μπορεί να περιέχει μια τιμή ή να περικλείει ολόκληρους κανόνες CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Τα πρότυπα JavaScript και τα πρότυπα Home Assistant μπορούν να μοιράζονται ένα μπλοκ. Κρατήστε κάθε `${ }` έξω από ένα μπλοκ `{% if %} ... {% endif %}`, κάθε πλευρά αποδίδεται από διαφορετική μηχανή και ένα μπλοκ κομμένο στα δύο δεν μπορεί να αποδοθεί.
+
+Το δικό σας κείμενο στη γραμμή κατάστασης δεν χρειάζεται καθόλου στυλ, το `state_content` δέχεται ένα πρότυπο ως ένα από τα στοιχεία του:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Μέσα σε ένα πρότυπο JavaScript, το `renderTemplate("{{ ... }}")` σας δίνει το αποδοθέν κείμενο ενός προτύπου Home Assistant, για τα σημεία όπου ένα πρότυπο δεν μπορεί να φτάσει από μόνο του:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Τα σφάλματα εμφανίζονται στον επεξεργαστή, κάτω από τα προσαρμοσμένα στυλ, και στην κονσόλα του προγράμματος περιήγησής σας.
+
+</details>
+
+### Πρότυπα JavaScript
+
+Οι προχωρημένοι χρήστες μπορούν να προσθέσουν πρότυπα σε JS απευθείας στα [προσαρμοσμένα στυλ](#στυλ) τους. Για παράδειγμα, αυτό επιτρέπει δυναμική αλλαγή ενός εικονιδίου, των κειμένων ή των χρωμάτων ενός στοιχείου, την εμφάνιση ή απόκρυψη ενός στοιχείου υπό όρους (όπως ένα υπο-κουμπί), ή σχεδόν οτιδήποτε με βάση μια κατάσταση, ένα χαρακτηριστικό και άλλα.
 
 > [!TIP]  
 > Περισσότερες πληροφορίες σχετικά με τα πρότυπα JS [εδώ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Η συμβουλή μου είναι να **ρίχνετε πάντα μια ματιά στην κονσόλα του προγράμματος περιήγησής σας** για να βεβαιωθείτε ότι όλα λειτουργούν σωστά.
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - Το `checkConditionsMet(conditions, hass)` επιστρέφει `true` όταν πληρούται μια λίστα [συνθηκών](#συνθήκες), για παράδειγμα `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- Το `renderTemplate(template, entity)` επιστρέφει το κείμενο που απέδωσε το Home Assistant για ένα πρότυπο Jinja, για παράδειγμα `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Το δεύτερο όρισμα είναι αυτό που βλέπει το πρότυπο ως `entity`, από προεπιλογή η οντότητα της κάρτας σας.
 - `hass.formatEntityState(state)` μπορεί να χρησιμοποιηθεί για τη μετάφραση μιας κατάστασης (μπορεί επίσης να χρησιμοποιηθεί για να πάρετε τη μονάδα μιας κατάστασης, χωρίς να χρειάζεται να την προσθέσετε χειροκίνητα).
 - `hass.formatEntityAttributeValue(state, "attribute")` μπορεί να χρησιμοποιηθεί για τη μετάφραση ενός χαρακτηριστικού (μπορεί επίσης να χρησιμοποιηθεί για να πάρετε τη μονάδα μιας κατάστασης, χωρίς να χρειάζεται να την προσθέσετε χειροκίνητα).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Αν θέλετε να δημιουργήσετε πρότυπο για την κατάσταση (`.bubble-state`) από τα στυλ σας, η γραμμή εμφανίζεται στην οθόνη μόλις ένα πρότυπο γράψει σε αυτήν, ανεξάρτητα από το τι λέει το `state_content`.
+
+Το ίδιο χωρίς καθόλου στυλ, με ένα πρότυπο Home Assistant στο `state_content`, που σας δίνει επίσης τη μεταφρασμένη κατάσταση:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

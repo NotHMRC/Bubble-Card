@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Jūsų mygtuko ikona, jei nenustatyta, bus rodoma entiteto ikona arba `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Suteikti pirmenybę ikonai, o ne `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Tik šviestuvams.** Naudoti temos akcentinę spalvą vietoj šviestuvo spalvos.                         |
-| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#templates) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
+| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#šablonai) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti pavadinimą |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti ikoną |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leisti tekstui slinkti, kai turinys viršija konteinerio dydį |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Optional | Any string | Jūsų medijos leistuvo pavadinimas, jei nenustatytas, bus rodomas entiteto pavadinimas |
 | `icon` | string | Optional | Any `mdi:` icon | Jūsų medijos leistuvo ikona, jei nenustatyta, bus rodoma entiteto ikona arba `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Suteikti pirmenybę ikonai, o ne `entity-picture` |
-| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#templates) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
+| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#šablonai) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti pavadinimą |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti ikoną |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leisti tekstui slinkti, kai turinys viršija konteinerio dydį |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Uždanga, kurią valdyti |
 | `name` | string | Optional | Any string | Jūsų uždangos pavadinimas, jei nenustatytas, bus rodomas entiteto pavadinimas |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Suteikti pirmenybę ikonai, o ne `entity-picture` |
-| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#templates) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
+| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#šablonai) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti pavadinimą |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti ikoną |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leisti tekstui slinkti, kai turinys viršija konteinerio dydį |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Jūsų pasirinkimo pavadinimas, jei nenustatytas, bus rodomas entiteto pavadinimas |
 | `icon` | string | Optional | Any `mdi:` icon | Jūsų pasirinkimo ikona, jei nenustatyta, bus rodoma entiteto ikona arba `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Suteikti pirmenybę ikonai, o ne `entity-picture` |
-| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#templates) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
+| `state_content` | string arba list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#šablonai) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti pavadinimą |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rodyti arba slėpti ikoną |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leisti tekstui slinkti, kai turinys viršija konteinerio dydį |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Neprivaloma | `true` (numatytoji) arba `false` | Rodo papildomo mygtuko foną, jo spalva keisis pagal esybės būseną |
 | `state_background` | boolean | Neprivaloma | `true` (numatytoji) arba `false` | Naudoja būsenos spalvą, kai esybė yra `on` |
 | `light_background` | boolean | Neprivaloma | `true` (numatytoji) arba `false` | Naudoja šviestuvo spalvą fonui, kai ji prieinama |
-| `state_content` | string arba list | Neprivaloma | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#templates) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
+| `state_content` | string arba list | Neprivaloma | `state`, `last-changed`, `last-updated`, `last-triggered`, atributo pavadinimas, pavyzdžiui `brightness` arba `forecast[0].temperature`, arba [šablonas](#šablonai) | Ką rodo eilutė po pavadinimu, šia tvarka. Be šios parinkties `button_type: state` mygtukas rodo tai, ką Home Assistant rodo entitetui (jo būseną, taip pat dabartinę klimato temperatūrą, uždangos padėtį, šviestuvo ryškumą). Seni raktai `show_state`, `show_attribute`, `attribute`, `show_last_changed` ir `show_last_updated` vis dar veikia ir atidarius redaktorių perrašomi į `state_content`. |
 | `show_name` | boolean | Neprivaloma | `true` arba `false` (numatytoji) | Rodo arba slepia pavadinimą |
 | `show_icon` | boolean | Neprivaloma | `true` (numatytoji) arba `false` | Rodo arba slepia piktogramą |
 | `select_attribute` | string | Neprivaloma | Jūsų `entity` atributų sąrašas (žr. aukščiau palaikomas parinktis) | Šis atributų sąrašas atvers išskleidžiamąjį meniu, jei bus paspaustas (pvz., `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Sąlygos vertinamos jūsų naršyklėje, tad tos kelios, kurioms reikia Home Assistant serverio, negali būti tikslios: saulėtekis ir saulėlydis skaitomi iš esybės `sun.sun`, o ne perskaičiuojami, o `for` trukmė matuojama nuo paskutinio būsenos pasikeitimo, be recorder istorijos.
+> Sąlygos vertinamos jūsų naršyklėje, tad tos kelios, kurioms reikia Home Assistant serverio, negali būti tikslios: saulėtekis ir saulėlydis skaitomi iš esybės `sun.sun`, o ne perskaičiuojami, o `for` trukmė matuojama nuo paskutinio būsenos pasikeitimo, be recorder istorijos. Išimtis yra `template`, kurį serveris apdoroja kaip bet kurį kitą [Home Assistant šabloną](#šablonai).
 >
 > `view_columns` priimamas, bet visada praeina, nes ne Bubble Card išdėsto jūsų rodinio stulpelius. Sąlygos tipas, kurio Bubble Card nežino, vieną kartą praneša apie save jūsų naršyklės konsolėje, užuot tyliai nuvylęs, tad galite atskirti rašybos klaidą nuo trūkstamos funkcijos.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Šablonai
 
-**Bubble Card nepalaiko Jinja šablonų**, bet pažengę naudotojai gali pridėti šablonus JS kalba tiesiogiai savo [individualiuose stiliuose](#stilius). Tai leidžia, pavyzdžiui, dinamiškai keisti piktogramą, elemento tekstus ar spalvas, sąlygiškai rodyti arba slėpti elementą (pavyzdžiui, papildomą mygtuką), ar beveik bet ką, remiantis būsena, atributu ir dar daugiau.
+Bubble Card palaiko dviejų rūšių šablonus:
+
+- **Home Assistant šablonai (Jinja)**, tie patys, kuriuos jau rašote savo automatizacijose, Mushroom ar card-mod. Įrašykite `{{ ... }}` arba `{% ... %}` į palaikomą lauką ir Home Assistant juos apdoros už jus, realiuoju laiku.
+- **JavaScript šablonai**, `${ ... }` jūsų [individualiuose stiliuose](#stilius), viskam, kam reikia pasiekti pačią kortelę.
+
+### Home Assistant šablonai (Jinja)
+
+Šablonus apdoroja jūsų Home Assistant serveris ir jie patys atsinaujina, kai pasikeičia tai, ką jie skaito. Jie veikia šiuose laukuose:
+
+<details>
+
+<summary><b>Palaikomi laukai (su pavyzdžiais)</b></summary>
+
+| Laukas | Pavyzdys |
+| --- | --- |
+| `name`, kiekvienoje kortelėje (įskaitant iškylančiojo lango antraštę ir skirtuką) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, kiekvienoje kortelėje (taip pat uždangos `icon_open`, `icon_close`, `icon_up` ir `icon_down`) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [papildomo mygtuko](#papildomi-mygtukai) `name` ir `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, kortelėje ar papildomame mygtuke, šalia `state` ir atributų pavadinimų | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [horizontalios mygtukų juostos](#horizontali-mygtukų-juosta) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| kortelės `styles` ir [modulio](#moduliai) kodas, sumaišyti su JavaScript šablonais | žr. žemiau |
+| [Sąlygos](#sąlygos), su `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Šabloną visada rašykite kabutėse. Be jų YAML skaito `name: {{ states('x') }}` kaip susiejimą (mapping), o ne kaip tekstą, ir kortelė jį atmeta.
+
+Be visko, ką siūlo Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtrai, jūsų `custom_templates` aplanko makrokomandos...), galimi trys kintamieji:
+
+- `entity` yra kortelės esybė arba, papildomo mygtuko lauke, papildomo mygtuko esybė.
+- `config.entity` yra ta pati reikšmė, skirta šablonams, kuriuos parašėte card-mod.
+- `user` yra prisijungusio naudotojo vardas.
+
+Rezultatus Home Assistant išanalizuoja lygiai taip pat kaip kūrėjo įrankiuose, tad `21.50` rodomas kaip `21.5`. Pridėkite `| string`, kai tekstas turi likti toks, koks yra.
+
+<details>
+
+<summary>Home Assistant šablonai jūsų individualiuose stiliuose</summary>
+
+<br>
+
+Šablonas gali laikyti reikšmę arba apgaubti ištisas CSS taisykles:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript šablonai ir Home Assistant šablonai gali dalytis vienu bloku. Kiekvieną `${ }` laikykite už `{% if %} ... {% endif %}` bloko, kiekvieną pusę apdoroja skirtingas variklis, o perpus perkirsto bloko apdoroti neįmanoma.
+
+Jūsų pačių tekstui būsenos eilutėje stilių visai nereikia, `state_content` priima šabloną kaip vieną iš savo elementų:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript šablono viduje `renderTemplate("{{ ... }}")` pateikia apdorotą Home Assistant šablono tekstą, toms vietoms, kurių šablonas pats pasiekti negali:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Klaidos rodomos redaktoriuje, po individualiais stiliais, ir jūsų naršyklės konsolėje.
+
+</details>
+
+### JavaScript šablonai
+
+Pažengę naudotojai gali pridėti šablonus JS kalba tiesiogiai savo [individualiuose stiliuose](#stilius). Tai leidžia, pavyzdžiui, dinamiškai keisti piktogramą, elemento tekstus ar spalvas, sąlygiškai rodyti arba slėpti elementą (pavyzdžiui, papildomą mygtuką), ar beveik bet ką, remiantis būsena, atributu ir dar daugiau.
 
 > [!TIP]  
 > Daugiau informacijos apie JS šablonus [čia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mano patarimas: **visada pasitikrinkite naršyklės konsolę**, kad įsitikintumėte, jog viskas veikia teisingai.
@@ -2095,6 +2176,7 @@ Turite prieigą prie visų globalių JS funkcijų, bet taip pat turite prieigą 
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` grąžina `true`, kai [sąlygų](#sąlygos) sąrašas įvykdytas, pavyzdžiui `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` grąžina tekstą, kurį Home Assistant apdorojo Jinja šablonui, pavyzdžiui `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Antrasis argumentas yra tai, ką šablonas mato kaip `entity`, pagal numatytuosius nustatymus jūsų kortelės esybė.
 - `hass.formatEntityState(state)` galima naudoti norint išversti būseną (taip pat galima naudoti gauti būsenos vienetą, nereikalaujant jo pridėti rankiniu būdu).
 - `hass.formatEntityAttributeValue(state, "attribute")` galima naudoti norint išversti atributą (taip pat galima naudoti gauti būsenos vienetą, nereikalaujant jo pridėti rankiniu būdu).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Jei norite šablonizuoti būseną (`.bubble-state`) iš savo stilių, eilutė ekrane pasirodo vos tik šablonas į ją ką nors įrašo, kad ir ką nurodytų `state_content`.
+
+Tas pats be jokių stilių, su Home Assistant šablonu `state_content` lauke, kuris jums duoda ir išverstą būseną:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

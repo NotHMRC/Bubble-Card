@@ -412,7 +412,7 @@ Kjo kartë është shumë e gjithanshme. Mund të përdoret si **çelës (switch
 | `icon` | string | Optional | Any `mdi:` icon | Një ikonë për butonin tuaj, nëse nuk përcaktohet do të shfaqet ikona e entitetit ose `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | I jep përparësi ikonës në vend të `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Vetëm për dritat.** Përdor ngjyrën e theksit (accent) të temës në vend të ngjyrës së dritës.                         |
-| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#templates) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
+| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#shabllonet) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh emrin |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh ikonën |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lejon lëvizjen e tekstit kur përmbajtja tejkalon madhësinë e kontejnerit të tij |
@@ -547,7 +547,7 @@ Kjo kartë ju lejon të kontrolloni një entitet luajtësi multimedial.
 | `name` | string | Optional | Any string | Një emër për luajtësin tuaj multimedial, nëse nuk përcaktohet do të shfaqet emri i entitetit |
 | `icon` | string | Optional | Any `mdi:` icon | Një ikonë për luajtësin tuaj multimedial, nëse nuk përcaktohet do të shfaqet ikona e entitetit ose `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | I jep përparësi ikonës në vend të `entity-picture` |
-| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#templates) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
+| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#shabllonet) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh emrin |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh ikonën |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lejon lëvizjen e tekstit kur përmbajtja tejkalon madhësinë e kontejnerit të tij |
@@ -663,7 +663,7 @@ Kjo kartë ju lejon të kontrolloni entitetet tuaja `cover`.
 | `entity` | string | **Required** | Any cover | Një grilë për t'u kontrolluar |
 | `name` | string | Optional | Any string | Një emër për grilën tuaj, nëse nuk përcaktohet do të shfaqet emri i entitetit |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | I jep përparësi ikonës në vend të `entity-picture` |
-| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#templates) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
+| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#shabllonet) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh emrin |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh ikonën |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lejon lëvizjen e tekstit kur përmbajtja tejkalon madhësinë e kontejnerit të tij |
@@ -753,7 +753,7 @@ Kjo kartë ju lejon të shtoni një menu rënëse (dropdown) për entitetet tuaj
 | `name` | string | Optional | Any string | Një emër për përzgjedhjen tuaj, nëse nuk përcaktohet do të shfaqet emri i entitetit |
 | `icon` | string | Optional | Any `mdi:` icon | Një ikonë për përzgjedhjen tuaj, nëse nuk përcaktohet do të shfaqet ikona e entitetit ose `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | I jep përparësi ikonës në vend të `entity-picture` |
-| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#templates) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
+| `state_content` | string ose list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#shabllonet) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh emrin |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Shfaq ose fsheh ikonën |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Lejon lëvizjen e tekstit kur përmbajtja tejkalon madhësinë e kontejnerit të tij |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opsionale | `true` (parazgjedhje) ose `false` | Shfaq një sfond për nën-butonin tuaj, i cili ndryshon ngjyrë sipas gjendjes së entitetit |
 | `state_background` | boolean | Opsionale | `true` (parazgjedhje) ose `false` | Përdor ngjyrën e gjendjes kur entiteti është `on` |
 | `light_background` | boolean | Opsionale | `true` (parazgjedhje) ose `false` | Përdor ngjyrën e dritës për sfondin kur është e disponueshme |
-| `state_content` | string ose list | Opsionale | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#templates) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
+| `state_content` | string ose list | Opsionale | `state`, `last-changed`, `last-updated`, `last-triggered`, emri i një atributi si `brightness` ose `forecast[0].temperature`, ose një [shabllon](#shabllonet) | Çfarë shfaq rreshti nën emrin, në këtë renditje. Pa të, një buton `button_type: state` shfaq atë që Home Assistant shfaq për entitetin (gjendjen e tij, si dhe temperaturën aktuale të një klime, pozicionin e një grile, ndriçimin e një drite). Çelësat e vjetër `show_state`, `show_attribute`, `attribute`, `show_last_changed` dhe `show_last_updated` funksionojnë ende dhe rishkruhen si `state_content` kur hapni editorin. |
 | `show_name` | boolean | Opsionale | `true` ose `false` (parazgjedhje) | Shfaq ose fsheh emrin |
 | `show_icon` | boolean | Opsionale | `true` (parazgjedhje) ose `false` | Shfaq ose fsheh ikonën |
 | `select_attribute` | string | Opsionale | Një listë atributesh nga `entity`-i juaj (shihni opsionet e mbështetura më sipër) | Kjo listë atributesh do të hapë një menu rënëse nëse klikohet (p.sh. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Kushtet vlerësohen në shfletuesin tuaj, prandaj ato pak që kanë nevojë për serverin e Home Assistant nuk mund të jenë të sakta: lindja dhe perëndimi i diellit lexohen nga entiteti `sun.sun` në vend që të rillogariten, dhe një kohëzgjatje `for` matet nga ndryshimi i fundit i gjendjes, pa historikun e recorder.
+> Kushtet vlerësohen në shfletuesin tuaj, prandaj ato pak që kanë nevojë për serverin e Home Assistant nuk mund të jenë të sakta: lindja dhe perëndimi i diellit lexohen nga entiteti `sun.sun` në vend që të rillogariten, dhe një kohëzgjatje `for` matet nga ndryshimi i fundit i gjendjes, pa historikun e recorder. Përjashtim është `template`, që përpunohet nga serveri si çdo [shabllon tjetër i Home Assistant](#shabllonet).
 >
 > `view_columns` pranohet por kalon gjithmonë, meqë Bubble Card nuk është kurrë ai që rregullon kolonat e pamjes suaj. Një lloj kushti që Bubble Card nuk e njeh raportohet një herë në konsolën e shfletuesit tuaj në vend që të dështojë në heshtje, kështu që mund të dalloni një gabim shtypi nga një funksion që mungon.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Shabllonet
 
-**Bubble Card nuk mbështet shabllonet Jinja** por përdoruesit e avancuar mund të shtojnë shabllone JS drejtpërdrejt në [stilet e tyre të personalizuara](#stili). Për shembull, kjo lejon ndryshimin dinamik të një ikone, teksteve ose ngjyrave të një elementi, të shfaqësh ose fshehësh një element në mënyrë kushtore (si një nën-buton), ose pothuajse çdo gjë bazuar në një gjendje, një atribut e më shumë.
+Bubble Card mbështet dy lloje shabllonesh:
+
+- **Shabllonet e Home Assistant (Jinja)**, ato që tashmë i shkruani në automatizimet tuaja, në Mushroom ose në card-mod. Vendosni `{{ ... }}` ose `{% ... %}` në një fushë të mbështetur dhe Home Assistant e përpunon për ju, në kohë reale.
+- **Shabllonet JavaScript**, `${ ... }` brenda [stileve tuaja të personalizuara](#stili), për gjithçka që duhet të arrijë brenda vetë kartës.
+
+### Shabllonet e Home Assistant (Jinja)
+
+Shabllonet përpunohen nga serveri juaj i Home Assistant dhe përditësohen vetë kur ndryshon ajo që lexojnë. Ato funksionojnë në këto fusha:
+
+<details>
+
+<summary><b>Fushat e mbështetura (me shembuj)</b></summary>
+
+| Fusha | Shembull |
+| --- | --- |
+| `name`, në çdo kartë (përfshirë kokën e pop-up-it dhe ndarësin) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, në çdo kartë (edhe `icon_open`, `icon_close`, `icon_up` dhe `icon_down` të një grile) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` dhe `icon` të një [nën-butoni](#nën-butonat) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, në një kartë ose një nën-buton, krahas `state` dhe emrave të atributeve | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... të një [rreshti horizontal butonash](#rresht-horizontal-butonash) | `1_name: "{{ user }}"` |
+| `styles` të një karte dhe kodi i një [moduli](#modulet), të përziera me shabllone JavaScript | shihni më poshtë |
+| [Kushtet](#kushtet), me `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Vendoseni gjithmonë shabllonin në thonjëza. Pa ato, `name: {{ states('x') }}` lexohet nga YAML si një hartë dhe jo si tekst, dhe karta e refuzon.
+
+Tri variabla janë të disponueshme përveç gjithçkaje që ofron Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtrat, makrot e dosjes suaj `custom_templates`...):
+
+- `entity` është entiteti i kartës, ose i nën-butonit për një fushë të nën-butonit.
+- `config.entity` është e njëjta vlerë, për shabllonet që keni shkruar për card-mod.
+- `user` është emri i përdoruesit të identifikuar.
+
+Rezultatet analizohen nga Home Assistant saktësisht si në mjetet e zhvilluesit, kështu që `21.50` shfaqet si `21.5`. Shtoni `| string` kur teksti duhet të mbetet siç është.
+
+<details>
+
+<summary>Shabllonet e Home Assistant në stilet tuaja të personalizuara</summary>
+
+<br>
+
+Një shabllon mund të mbajë një vlerë ose të mbështjellë rregulla të tëra CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Shabllonet JavaScript dhe shabllonet e Home Assistant mund të ndajnë të njëjtin bllok. Mbani çdo `${ }` jashtë një blloku `{% if %} ... {% endif %}`, secila anë përpunohet nga një motor i ndryshëm dhe një bllok i ndarë në dysh nuk mund të përpunohet.
+
+Teksti juaj në rreshtin e gjendjes nuk ka nevojë fare për stile, `state_content` pranon një shabllon si një nga elementet e tij:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Brenda një shablloni JavaScript, `renderTemplate("{{ ... }}")` ju jep tekstin e përpunuar të një shablloni të Home Assistant, për vendet ku një shabllon nuk mund të arrijë vetë:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Gabimet shfaqen në editor, poshtë stileve të personalizuara, dhe në konsolën e shfletuesit tuaj.
+
+</details>
+
+### Shabllonet JavaScript
+
+Përdoruesit e avancuar mund të shtojnë shabllone JS drejtpërdrejt në [stilet e tyre të personalizuara](#stili). Për shembull, kjo lejon ndryshimin dinamik të një ikone, teksteve ose ngjyrave të një elementi, të shfaqësh ose fshehësh një element në mënyrë kushtore (si një nën-buton), ose pothuajse çdo gjë bazuar në një gjendje, një atribut e më shumë.
 
 > [!TIP]  
 > Më shumë informacion rreth shabllonave JS [këtu](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Këshilla ime është që **gjithmonë të hidhni një sy te konsola e shfletuesit tuaj** për t'u siguruar që gjithçka po funksionon si duhet.
@@ -2095,6 +2176,7 @@ Keni akses te të gjitha funksionet globale JS, por gjithashtu keni akses te:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` kthen `true` kur një listë [kushtesh](#kushtet) plotësohet, për shembull `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` kthen tekstin e përpunuar nga Home Assistant për një shabllon Jinja, për shembull `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Argumenti i dytë është ajo që shablloni sheh si `entity`, si parazgjedhje entiteti i kartës suaj.
 - `hass.formatEntityState(state)` mund të përdoret për të përkthyer një gjendje (mund të përdoret gjithashtu për të marrë njësinë e një gjendje, pa nevojën për ta shtuar manualisht).
 - `hass.formatEntityAttributeValue(state, "attribute")` mund të përdoret për të përkthyer një atribut (mund të përdoret gjithashtu për të marrë njësinë e një gjendje, pa nevojën për ta shtuar manualisht).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Nëse doni të shabllonizoni gjendjen (`.bubble-state`) nga stilet tuaja, rreshti shfaqet në ekran sapo një shabllon shkruan në të, pavarësisht se çfarë thotë `state_content`.
+
+E njëjta gjë pa asnjë stil, me një shabllon të Home Assistant në `state_content`, që ju jep edhe gjendjen e përkthyer:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

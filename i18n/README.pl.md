@@ -412,7 +412,7 @@ Ta karta jest bardzo wszechstronna. Może służyć jako **przełącznik**, **su
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona Twojego przycisku, jeśli nie zdefiniowana, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Daje priorytet ikonie zamiast `entity-picture` |
 | `use_accent_color` | boolean | Opcjonalne (domyślnie `false`) | **Tylko dla świateł.** Używa koloru akcentu motywu zamiast koloru światła.                         |
-| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#szablony) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa ikonę |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar swojego kontenera |
@@ -547,7 +547,7 @@ Ta karta pozwala sterować encją odtwarzacza mediów.
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojego odtwarzacza mediów, jeśli nie zdefiniowana, wyświetlana będzie nazwa encji |
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona Twojego odtwarzacza mediów, jeśli nie zdefiniowana, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Daje priorytet ikonie zamiast `entity-picture` |
-| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#szablony) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa ikonę |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar swojego kontenera |
@@ -663,7 +663,7 @@ Ta karta pozwala sterować Twoimi encjami `cover`.
 | `entity` | string | **Wymagane** | Dowolna roleta | Roleta do sterowania |
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojej rolety, jeśli nie zdefiniowano, wyświetlana będzie nazwa encji |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Nadaje priorytet ikonie zamiast `entity-picture` |
-| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#szablony) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar kontenera |
@@ -753,7 +753,7 @@ Ta karta pozwala dodać menu rozwijane dla Twoich encji `input_select` / `select
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojej karty select, jeśli nie zdefiniowano, wyświetlana będzie nazwa encji |
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona dla Twojej karty select, jeśli nie zdefiniowano, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Nadaje priorytet ikonie zamiast `entity-picture` |
-| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#szablony) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar kontenera |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż tło podprzycisku, jego kolor zmieni się w zależności od stanu encji |
 | `state_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Użyj koloru stanu, gdy encja jest `on` |
 | `light_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Użyj koloru światła jako tła, gdy jest dostępny |
-| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#szablony) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
 | `select_attribute` | string | Opcjonalne | Lista atrybutów z `entity` (zobacz obsługiwane opcje powyżej) | Ta lista atrybutów otworzy listę rozwijaną po kliknięciu (np. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Warunki są oceniane w twojej przeglądarce, więc te nieliczne, które potrzebują serwera Home Assistant, nie mogą być dokładne: wschód i zachód słońca są odczytywane z encji `sun.sun` zamiast być przeliczane, a czas trwania `for` jest mierzony od ostatniej zmiany stanu, bez historii recordera.
+> Warunki są oceniane w twojej przeglądarce, więc te nieliczne, które potrzebują serwera Home Assistant, nie mogą być dokładne: wschód i zachód słońca są odczytywane z encji `sun.sun` zamiast być przeliczane, a czas trwania `for` jest mierzony od ostatniej zmiany stanu, bez historii recordera. Wyjątkiem jest `template`, renderowany przez serwer jak każdy inny [szablon Home Assistant](#szablony).
 >
 > `view_columns` jest przyjmowany, ale zawsze przechodzi, ponieważ to nigdy nie Bubble Card rozkłada kolumny twojego widoku. Typ warunku, którego Bubble Card nie zna, zgłasza się raz w konsoli przeglądarki, zamiast po cichu zawieść, dzięki czemu odróżnisz literówkę od brakującej funkcji.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Szablony
 
-**Bubble Card nie obsługuje szablonów Jinja**, ale zaawansowani użytkownicy mogą dodawać szablony JS bezpośrednio w swoich [niestandardowych stylach](#stylizacja). Pozwala to na przykład dynamicznie zmieniać ikonę, teksty lub kolory elementu, warunkowo pokazywać lub ukrywać element (na przykład podprzycisk), albo niemal dowolnie reagować na stan, atrybut i wiele więcej.
+Bubble Card obsługuje dwa rodzaje szablonów:
+
+- **Szablony Home Assistant (Jinja)**, te, które już piszesz w swoich automatyzacjach, w Mushroom lub w card-mod. Umieść `{{ ... }}` lub `{% ... %}` w obsługiwanym polu, a Home Assistant wyrenderuje go dla ciebie, na żywo.
+- **Szablony JavaScript**, `${ ... }` w twoich [niestandardowych stylach](#stylizacja), do wszystkiego, co musi sięgnąć do samej karty.
+
+### Szablony Home Assistant (Jinja)
+
+Szablony są renderowane przez twój serwer Home Assistant i same się aktualizują, gdy zmienia się to, co odczytują. Działają w tych polach:
+
+<details>
+
+<summary><b>Obsługiwane pola (z przykładami)</b></summary>
+
+| Pole | Przykład |
+| --- | --- |
+| `name`, na każdej karcie (łącznie z nagłówkiem pop-upu i separatorem) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, na każdej karcie (także `icon_open`, `icon_close`, `icon_up` i `icon_down` rolety) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` i `icon` [podprzycisku](#podprzyciski) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, na karcie lub podprzycisku, obok `state` i nazw atrybutów | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [poziomego stosu przycisków](#poziomy-stos-przycisków) | `1_name: "{{ user }}"` |
+| `styles` karty i kod [modułu](#moduły), zmieszane z szablonami JavaScript | patrz niżej |
+| [Warunki](#warunki), z `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Zawsze umieszczaj szablon w cudzysłowie. Bez niego YAML odczytuje `name: {{ states('x') }}` jako mapowanie, a nie jako tekst, i karta go odrzuca.
+
+Trzy zmienne są dostępne oprócz wszystkiego, co oferuje Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtry, makra z twojego folderu `custom_templates`...):
+
+- `entity` to encja karty, lub podprzycisku w przypadku pola podprzycisku.
+- `config.entity` to ta sama wartość, dla szablonów napisanych dla card-mod.
+- `user` to nazwa zalogowanego użytkownika.
+
+Wyniki są parsowane przez Home Assistant dokładnie tak jak w narzędziach deweloperskich, więc `21.50` wyświetla się jako `21.5`. Dodaj `| string`, gdy tekst ma pozostać bez zmian.
+
+<details>
+
+<summary>Szablony Home Assistant w twoich niestandardowych stylach</summary>
+
+<br>
+
+Szablon może zawierać wartość lub obejmować całe reguły CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Szablony JavaScript i szablony Home Assistant mogą dzielić jeden blok. Trzymaj każde `${ }` poza blokiem `{% if %} ... {% endif %}`, każda strona jest renderowana przez inny silnik, a blok przecięty na pół nie może zostać wyrenderowany.
+
+Twój własny tekst w wierszu stanu nie potrzebuje żadnych stylów, `state_content` przyjmuje szablon jako jeden ze swoich elementów:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Wewnątrz szablonu JavaScript `renderTemplate("{{ ... }}")` daje ci wyrenderowany tekst szablonu Home Assistant, dla miejsc, do których szablon sam nie może dotrzeć:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Błędy są pokazywane w edytorze, pod niestandardowymi stylami, oraz w konsoli przeglądarki.
+
+</details>
+
+### Szablony JavaScript
+
+Zaawansowani użytkownicy mogą dodawać szablony JS bezpośrednio w swoich [niestandardowych stylach](#stylizacja). Pozwala to na przykład dynamicznie zmieniać ikonę, teksty lub kolory elementu, warunkowo pokazywać lub ukrywać element (na przykład podprzycisk), albo niemal dowolnie reagować na stan, atrybut i wiele więcej.
 
 > [!TIP]  
 > Więcej informacji o szablonach JS [tutaj](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Moja rada: **zawsze zaglądaj do konsoli przeglądarki**, aby upewnić się, że wszystko działa poprawnie.
@@ -2095,6 +2176,7 @@ Masz dostęp do wszystkich globalnych funkcji JS, a dodatkowo do:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` zwraca `true`, gdy lista [warunków](#warunki) jest spełniona, na przykład `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` zwraca tekst wyrenderowany przez Home Assistant dla szablonu Jinja, na przykład `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Drugi argument to to, co szablon widzi jako `entity`, domyślnie encja twojej karty.
 - `hass.formatEntityState(state)` możesz użyć do przetłumaczenia stanu (może też posłużyć do pobrania jednostki stanu, bez potrzeby dodawania jej ręcznie).
 - `hass.formatEntityAttributeValue(state, "attribute")` możesz użyć do przetłumaczenia atrybutu (może też posłużyć do pobrania jednostki stanu, bez potrzeby dodawania jej ręcznie).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Jeśli chcesz szablonować stan (`.bubble-state`) ze swoich stylów, wiersz pojawia się na ekranie, gdy tylko szablon coś do niego wpisze, niezależnie od tego, co mówi `state_content`.
+
+To samo bez żadnych stylów, z szablonem Home Assistant w `state_content`, który daje ci też przetłumaczony stan:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

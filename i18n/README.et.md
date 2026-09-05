@@ -412,7 +412,7 @@ See kaart on väga mitmekülgne. Seda saab kasutada **lülitina**, **liuguritina
 | `icon` | string | Optional | Any `mdi:` icon | Nupu ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
 | `use_accent_color` | boolean | Optional (`false` default) | **Ainult valgustitele.** Kasuta valgusti värvi asemel teema aktsendivärvi.                         |
-| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#mallid) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
@@ -547,7 +547,7 @@ See kaart võimaldab juhtida meediumipleieri olemit.
 | `name` | string | Optional | Any string | Meediumipleieri nimi, kui pole määratud, kuvatakse olemi nimi |
 | `icon` | string | Optional | Any `mdi:` icon | Meediumipleieri ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#mallid) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
@@ -663,7 +663,7 @@ See kaart võimaldab juhtida `cover` olemeid.
 | `entity` | string | **Required** | Any cover | Juhitav kate |
 | `name` | string | Optional | Any string | Katte nimi, kui pole määratud, kuvatakse olemi nimi |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#mallid) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
@@ -753,7 +753,7 @@ See kaart võimaldab lisada rippmenüü `input_select` / `select` olemitele. See
 | `name` | string | Optional | Any string | Valiku nimi, kui pole määratud, kuvatakse olemi nimi |
 | `icon` | string | Optional | Any `mdi:` icon | Valiku ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#mallid) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kuva alamnupu taust, mis muudab värvi vastavalt olemi olekule |
 | `state_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kasuta oleku värvi, kui olem on olekus `on` |
 | `light_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kasuta taustal valguse värvi, kui see on saadaval |
-| `state_content` | string või list | Valikuline | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
+| `state_content` | string või list | Valikuline | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#mallid) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva või peida nimi |
 | `show_icon` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kuva või peida ikoon |
 | `select_attribute` | string | Valikuline | Atribuutide loend sinu `entity` olemist (vaata toetatud valikuid eespool) | See atribuutide loend avab klõpsamisel rippmenüü (nt `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Tingimusi hinnatakse sinu brauseris, seega need vähesed, mis vajavad Home Assistanti serverit, ei saa olla täpsed: päikesetõus ja päikeseloojang loetakse olemist `sun.sun`, selle asemel et neid uuesti arvutada, ja `for` kestust mõõdetakse viimasest oleku muutusest, ilma recorderi ajaloota.
+> Tingimusi hinnatakse sinu brauseris, seega need vähesed, mis vajavad Home Assistanti serverit, ei saa olla täpsed: päikesetõus ja päikeseloojang loetakse olemist `sun.sun`, selle asemel et neid uuesti arvutada, ja `for` kestust mõõdetakse viimasest oleku muutusest, ilma recorderi ajaloota. Erand on `template`, mille renderdab server nagu iga teise [Home Assistanti malli](#mallid).
 >
 > `view_columns` võetakse vastu, aga läbib alati, sest Bubble Card ei ole kunagi see, kes sinu vaate veerge paigutab. Tingimusetüüp, mida Bubble Card ei tunne, annab endast brauseri konsoolis ühe korra teada, selle asemel et vaikselt ebaõnnestuda, nii et eristad kirjavea puuduvast võimalusest.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Mallid
 
-**Bubble Card ei toeta Jinja malle**, kuid kogenud kasutajad saavad lisada JS-mallid otse oma [kohandatud stiilidesse](#stiilimine). See võimaldab näiteks dünaamiliselt muuta ikooni, teksti või elemendi värve, näidata või peita elementi tingimuslikult (nagu alamnuppu) või peaaegu kõike muud, mis põhineb olekul, atribuudil ja muul.
+Bubble Card toetab kaht liiki malle:
+
+- **Home Assistanti mallid (Jinja)**, need, mida sa juba kirjutad oma automatiseeringutes, Mushroomis või card-modis. Pane `{{ ... }}` või `{% ... %}` toetatud väljale ja Home Assistant renderdab selle sinu eest, reaalajas.
+- **JavaScript-mallid**, `${ ... }` sinu [kohandatud stiilides](#stiilimine), kõige jaoks, mis peab pääsema kaardi enda sisse.
+
+### Home Assistanti mallid (Jinja)
+
+Malle renderdab sinu Home Assistanti server ja need uuenevad iseenesest, kui see, mida nad loevad, muutub. Need töötavad järgmistel väljadel:
+
+<details>
+
+<summary><b>Toetatud väljad (koos näidetega)</b></summary>
+
+| Väli | Näide |
+| --- | --- |
+| `name`, igal kaardil (hüpikakna päis ja eraldaja kaasa arvatud) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, igal kaardil (ka katte `icon_open`, `icon_close`, `icon_up` ja `icon_down`) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [alamnupu](#alamnupud) `name` ja `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, kaardil või alamnupul, `state` ja atribuutide nimede kõrval | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [horisontaalse nuppude virna](#horisontaalne-nuppude-virn) `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| kaardi `styles` ja [mooduli](#moodulid) kood, segamini JavaScript-mallidega | vaata allpool |
+| [Tingimused](#tingimused), tüübiga `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Pane mall alati jutumärkidesse. Ilma nendeta loeb YAML `name: {{ states('x') }}` teksti asemel vastendusena ja kaart keeldub sellest.
+
+Lisaks kõigele, mida Home Assistant pakub (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtrid, sinu `custom_templates` kausta makrod...), on saadaval kolm muutujat:
+
+- `entity` on kaardi olem või alamnupu välja puhul alamnupu olem.
+- `config.entity` on sama väärtus, mallide jaoks, mille sa kirjutasid card-modi tarbeks.
+- `user` on sisse loginud kasutaja nimi.
+
+Home Assistant parsib tulemused täpselt nagu arendaja tööriistades, seega `21.50` kuvatakse kui `21.5`. Lisa `| string`, kui tekst peab jääma täpselt selliseks, nagu see on.
+
+<details>
+
+<summary>Home Assistanti mallid sinu kohandatud stiilides</summary>
+
+<br>
+
+Mall võib sisaldada väärtust või ümbritseda terveid CSS-reegleid:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-mallid ja Home Assistanti mallid võivad jagada sama plokki. Hoia iga `${ }` väljaspool `{% if %} ... {% endif %}` plokki, kumbagi poolt renderdab erinev mootor ja pooleks lõigatud plokki ei saa renderdada.
+
+Sinu enda tekst olekureal ei vaja üldse stiile, `state_content` võtab malli ühe oma elemendina:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript-malli sees annab `renderTemplate("{{ ... }}")` sulle Home Assistanti malli renderdatud teksti, kohtade jaoks, kuhu mall omal jõul ei ulatu:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Vead kuvatakse redaktoris, kohandatud stiilide all, ja sinu brauseri konsoolis.
+
+</details>
+
+### JavaScript-mallid
+
+Kogenud kasutajad saavad lisada JS-mallid otse oma [kohandatud stiilidesse](#stiilimine). See võimaldab näiteks dünaamiliselt muuta ikooni, teksti või elemendi värve, näidata või peita elementi tingimuslikult (nagu alamnuppu) või peaaegu kõike muud, mis põhineb olekul, atribuudil ja muul.
 
 > [!TIP]  
 > Rohkem infot JS-mallide kohta [siit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Minu soovitus on **alati vaadata oma brauseri konsooli**, et veenduda, kas kõik töötab korrektselt.
@@ -2095,6 +2176,7 @@ Sul on ligipääs kõigile globaalsetele JS funktsioonidele, kuid samuti:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` tagastab `true`, kui [tingimuste](#tingimused) loend on täidetud, näiteks `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` tagastab teksti, mille Home Assistant Jinja malli jaoks renderdab, näiteks `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Teine argument on see, mida mall näeb kui `entity`, vaikimisi sinu kaardi olem.
 - `hass.formatEntityState(state)` võimaldab tõlkida olekut (võib kasutada ka oleku ühiku saamiseks, ilma et peaksid seda käsitsi lisama).
 - `hass.formatEntityAttributeValue(state, "attribute")` võimaldab tõlkida atribuuti (võib kasutada ka oleku ühiku saamiseks, ilma et peaksid seda käsitsi lisama).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Kui soovid olekut (`.bubble-state`) oma stiilidest mallida, ilmub rida ekraanile kohe, kui mall sinna midagi kirjutab, olenemata sellest, mida `state_content` ütleb.
+
+Sama ilma stiilideta, Home Assistanti malliga väljal `state_content`, mis annab sulle ühtlasi tõlgitud oleku:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

@@ -412,7 +412,7 @@ Ce thẻ này rất linh hoạt. Nó có thể được dùng như một **công
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho nút, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Chỉ dành cho đèn.** Dùng màu nhấn của giao diện thay vì màu của đèn.                         |
-| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#mẫu) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
@@ -547,7 +547,7 @@ Thẻ này cho phép bạn điều khiển một thực thể trình phát đa p
 | `name` | string | Optional | Any string | Tên cho trình phát đa phương tiện, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho trình phát đa phương tiện, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#mẫu) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
@@ -663,7 +663,7 @@ Thẻ này cho phép bạn điều khiển các thực thể `cover` của bạn
 | `entity` | string | **Required** | Any cover | Một rèm cửa để điều khiển |
 | `name` | string | Optional | Any string | Tên cho rèm cửa, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#mẫu) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
@@ -753,7 +753,7 @@ Thẻ này cho phép bạn thêm một menu thả xuống cho các thực thể 
 | `name` | string | Optional | Any string | Tên cho lựa chọn, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho lựa chọn, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#mẫu) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Hiển thị nền cho nút phụ của bạn, màu sẽ thay đổi theo trạng thái entity |
 | `state_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Dùng màu trạng thái khi entity ở `on` |
 | `light_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Dùng màu đèn cho nền khi có sẵn |
-| `state_content` | string hoặc list | Không bắt buộc | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
+| `state_content` | string hoặc list | Không bắt buộc | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#mẫu) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị hoặc ẩn tên |
 | `show_icon` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Hiển thị hoặc ẩn icon |
 | `select_attribute` | string | Không bắt buộc | Một danh sách thuộc tính từ `entity` của bạn (xem các tùy chọn hỗ trợ ở trên) | Danh sách thuộc tính này sẽ mở một menu thả xuống khi nhấp (ví dụ `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Điều kiện được đánh giá trong trình duyệt của bạn, nên số ít điều kiện cần đến máy chủ Home Assistant không thể chính xác tuyệt đối: giờ mặt trời mọc và lặn được đọc từ thực thể `sun.sun` thay vì được tính lại, và khoảng thời gian `for` được đo từ lần đổi trạng thái gần nhất, không có lịch sử của recorder.
+> Điều kiện được đánh giá trong trình duyệt của bạn, nên số ít điều kiện cần đến máy chủ Home Assistant không thể chính xác tuyệt đối: giờ mặt trời mọc và lặn được đọc từ thực thể `sun.sun` thay vì được tính lại, và khoảng thời gian `for` được đo từ lần đổi trạng thái gần nhất, không có lịch sử của recorder. Ngoại lệ là `template`, được máy chủ kết xuất như mọi [mẫu Home Assistant](#mẫu) khác.
 >
 > `view_columns` được chấp nhận nhưng luôn thỏa mãn, vì Bubble Card không bao giờ là thứ sắp xếp các cột trong chế độ xem của bạn. Một loại điều kiện mà Bubble Card không biết sẽ tự báo một lần trong bảng điều khiển trình duyệt thay vì âm thầm thất bại, nên bạn phân biệt được lỗi gõ sai với một tính năng còn thiếu.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Mẫu
 
-**Bubble Card không hỗ trợ mẫu Jinja** nhưng người dùng nâng cao có thể thêm mẫu bằng JS trực tiếp trong [kiểu tùy chỉnh](#giao-diện) của họ. Ví dụ, điều này cho phép thay đổi động một biểu tượng, các đoạn văn bản hoặc màu sắc của một phần tử, hiển thị hoặc ẩn một phần tử có điều kiện (như một nút phụ), hay gần như mọi thứ dựa trên trạng thái, một thuộc tính và nhiều hơn nữa.
+Bubble Card hỗ trợ hai loại mẫu:
+
+- **Mẫu Home Assistant (Jinja)**, những mẫu bạn đã viết trong các tự động hóa của mình, trong Mushroom hoặc trong card-mod. Đặt `{{ ... }}` hoặc `{% ... %}` vào một trường được hỗ trợ và Home Assistant sẽ kết xuất nó cho bạn, theo thời gian thực.
+- **Mẫu JavaScript**, `${ ... }` bên trong [kiểu tùy chỉnh](#giao-diện) của bạn, cho bất cứ điều gì cần chạm tới chính thẻ.
+
+### Mẫu Home Assistant (Jinja)
+
+Mẫu được máy chủ Home Assistant của bạn kết xuất và tự cập nhật khi những gì chúng đọc thay đổi. Chúng hoạt động trong các trường sau:
+
+<details>
+
+<summary><b>Các trường được hỗ trợ (kèm ví dụ)</b></summary>
+
+| Trường | Ví dụ |
+| --- | --- |
+| `name`, trên mọi thẻ (bao gồm header của pop-up và dấu phân cách) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, trên mọi thẻ (cả `icon_open`, `icon_close`, `icon_up` và `icon_down` của một rèm cửa) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` và `icon` của một [nút phụ](#nút-phụ) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, trên một thẻ hoặc một nút phụ, bên cạnh `state` và tên các thuộc tính | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... của một [ngăn xếp nút ngang](#ngăn-xếp-nút-ngang) | `1_name: "{{ user }}"` |
+| `styles` của một thẻ và mã của một [mô-đun](#mô-đun), trộn với mẫu JavaScript | xem bên dưới |
+| [Điều kiện](#điều-kiện), với `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Luôn đặt mẫu trong dấu ngoặc kép. Không có chúng, `name: {{ states('x') }}` sẽ được YAML đọc như một ánh xạ thay vì văn bản, và thẻ sẽ từ chối nó.
+
+Ba biến có sẵn bên cạnh mọi thứ Home Assistant cung cấp (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, các bộ lọc, các macro trong thư mục `custom_templates` của bạn...):
+
+- `entity` là thực thể của thẻ, hoặc của nút phụ đối với một trường của nút phụ.
+- `config.entity` là cùng giá trị đó, dành cho các mẫu bạn đã viết cho card-mod.
+- `user` là tên của người dùng đã đăng nhập.
+
+Kết quả được Home Assistant phân tích y hệt như trong công cụ nhà phát triển, nên `21.50` hiển thị thành `21.5`. Thêm `| string` khi văn bản phải giữ nguyên như vậy.
+
+<details>
+
+<summary>Mẫu Home Assistant trong kiểu tùy chỉnh của bạn</summary>
+
+<br>
+
+Một mẫu có thể chứa một giá trị hoặc bao trọn các quy tắc CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Mẫu JavaScript và mẫu Home Assistant có thể dùng chung một khối. Giữ mọi `${ }` bên ngoài khối `{% if %} ... {% endif %}`, mỗi bên được một bộ máy khác nhau kết xuất và một khối bị cắt làm đôi không thể kết xuất được.
+
+Văn bản riêng của bạn trên dòng trạng thái không cần kiểu nào cả, `state_content` nhận một mẫu làm một trong các mục của nó:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Bên trong một mẫu JavaScript, `renderTemplate("{{ ... }}")` cho bạn văn bản đã kết xuất của một mẫu Home Assistant, dành cho những nơi mà một mẫu tự nó không thể chạm tới:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Lỗi được hiển thị trong trình chỉnh sửa, bên dưới kiểu tùy chỉnh, và trong console trình duyệt của bạn.
+
+</details>
+
+### Mẫu JavaScript
+
+Người dùng nâng cao có thể thêm mẫu bằng JS trực tiếp trong [kiểu tùy chỉnh](#giao-diện) của họ. Ví dụ, điều này cho phép thay đổi động một biểu tượng, các đoạn văn bản hoặc màu sắc của một phần tử, hiển thị hoặc ẩn một phần tử có điều kiện (như một nút phụ), hay gần như mọi thứ dựa trên trạng thái, một thuộc tính và nhiều hơn nữa.
 
 > [!TIP]  
 > Thêm thông tin về mẫu JS [tại đây](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Lời khuyên của tôi là **luôn kiểm tra console trình duyệt** để chắc chắn rằng mọi thứ đang hoạt động chính xác.
@@ -2095,6 +2176,7 @@ Bạn có quyền truy cập tất cả các hàm JS toàn cục, nhưng bạn c
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` trả về `true` khi một danh sách [điều kiện](#điều-kiện) được đáp ứng, ví dụ `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` trả về văn bản mà Home Assistant đã kết xuất cho một mẫu Jinja, ví dụ `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Đối số thứ hai là những gì mẫu nhìn thấy dưới dạng `entity`, mặc định là thực thể của thẻ của bạn.
 - `hass.formatEntityState(state)` có thể được dùng để dịch một trạng thái (cũng có thể dùng để lấy đơn vị của trạng thái, mà không cần thêm thủ công).
 - `hass.formatEntityAttributeValue(state, "attribute")` có thể được dùng để dịch một thuộc tính (cũng có thể dùng để lấy đơn vị của trạng thái, mà không cần thêm thủ công).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Nếu bạn muốn tạo mẫu cho trạng thái (`.bubble-state`) từ kiểu tùy chỉnh của bạn, dòng này sẽ hiện trên màn hình ngay khi một mẫu ghi vào nó, bất kể `state_content` nói gì.
+
+Tương tự mà không cần bất kỳ kiểu nào, với một mẫu Home Assistant trong `state_content`, cách này cũng cho bạn trạng thái đã được dịch:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

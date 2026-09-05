@@ -412,7 +412,7 @@ Dette kortet er svært allsidig. Det kan brukes som en **bryter**, en **glidebry
 | `icon` | string | Valgfritt | Et hvilket som helst `mdi:`-ikon | Et ikon for knappen din, hvis ikke definert vises entitetsikonet eller `entity-picture` |
 | `force_icon` | boolean | Valgfritt | `true` eller `false` (standard) | Gi prioritet til ikonet fremfor `entity-picture` |
 | `use_accent_color` | boolean | Valgfritt (`false` standard) | **Kun for lys.** Bruk temaets aksentfarge i stedet for lysets farge.                         |
-| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#templates) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
+| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#maler) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
 | `show_name` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul ikonet |
 | `scrolling_effect` | boolean | Valgfritt | `true` (standard) eller `false` | Tillat at tekst ruller når innholdet overskrider størrelsen på beholderen deres |
@@ -547,7 +547,7 @@ Dette kortet lar deg styre en mediespillerentitet.
 | `name` | string | Valgfritt | Hvilken som helst streng | Et navn for mediespilleren din, hvis ikke definert vises entitetsnavnet |
 | `icon` | string | Valgfritt | Et hvilket som helst `mdi:`-ikon | Et ikon for mediespilleren din, hvis ikke definert vises entitetsikonet eller `entity-picture` |
 | `force_icon` | boolean | Valgfritt | `true` eller `false` (standard) | Gi prioritet til ikonet fremfor `entity-picture` |
-| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#templates) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
+| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#maler) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
 | `show_name` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul ikonet |
 | `scrolling_effect` | boolean | Valgfritt | `true` (standard) eller `false` | Tillat at tekst ruller når innholdet overskrider størrelsen på beholderen deres |
@@ -663,7 +663,7 @@ Dette kortet lar deg styre `cover`-entitetene dine.
 | `entity` | string | **Obligatorisk** | Enhver gardin | En gardin å styre |
 | `name` | string | Valgfritt | Enhver streng | Et navn for gardinen din, hvis ikke definert vises entitetsnavnet |
 | `force_icon` | boolean | Valgfritt | `true` eller `false` (standard) | Prioriterer ikonet fremfor `entity-picture` |
-| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#templates) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
+| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#maler) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
 | `show_name` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul ikonet |
 | `scrolling_effect` | boolean | Valgfritt | `true` (standard) eller `false` | Lar teksten rulle når innholdet overskrider størrelsen på beholderen |
@@ -753,7 +753,7 @@ Dette kortet lar deg legge til en nedtrekksmeny for `input_select`- / `select`-e
 | `name` | string | Valgfritt | Enhver streng | Et navn for valget ditt, hvis ikke definert vises entitetsnavnet |
 | `icon` | string | Valgfritt | Ethvert `mdi:`-ikon | Et ikon for valget ditt, hvis ikke definert vises entitetsikonet eller `entity-picture` |
 | `force_icon` | boolean | Valgfritt | `true` eller `false` (standard) | Prioriterer ikonet fremfor `entity-picture` |
-| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#templates) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
+| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#maler) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
 | `show_name` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfritt | `true` (standard) eller `false` | Vis eller skjul ikonet |
 | `scrolling_effect` | boolean | Valgfritt | `true` (standard) eller `false` | Lar teksten rulle når innholdet overskrider størrelsen på beholderen |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolsk | Valgfritt | `true` (standard) eller `false` | Vis en bakgrunn for underknappen din, den vil endre farge basert på entitetens tilstand |
 | `state_background` | boolsk | Valgfritt | `true` (standard) eller `false` | Bruk tilstandsfargen når entiteten er `on` |
 | `light_background` | boolsk | Valgfritt | `true` (standard) eller `false` | Bruk lysfargen for bakgrunnen når tilgjengelig |
-| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#templates) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
+| `state_content` | string eller liste | Valgfritt | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributtnavn som `brightness` eller `forecast[0].temperature`, eller en [mal](#maler) | Hva linjen under navnet viser, i denne rekkefølgen. Uten dette valget viser en `button_type: state`-knapp det Home Assistant viser for entiteten (tilstanden dens, pluss gjeldende temperatur for en klimaentitet, posisjonen til en gardin, lysstyrken til et lys). De gamle nøklene `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` fungerer fortsatt og skrives om til `state_content` når du åpner editoren. |
 | `show_name` | boolsk | Valgfritt | `true` eller `false` (standard) | Vis eller skjul navnet |
 | `show_icon` | boolsk | Valgfritt | `true` (standard) eller `false` | Vis eller skjul ikonet |
 | `select_attribute` | streng | Valgfritt | En attributtliste fra `entity` (se støttede valg over) | Denne attributtlisten åpner en nedtrekksmeny hvis den trykkes på (f.eks. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Betingelser evalueres i nettleseren din, så de få som trenger Home Assistant-serveren kan ikke være eksakte: soloppgang og solnedgang leses fra entiteten `sun.sun` i stedet for å regnes ut på nytt, og en `for`-varighet måles fra siste tilstandsendring, uten historikken til recorder.
+> Betingelser evalueres i nettleseren din, så de få som trenger Home Assistant-serveren kan ikke være eksakte: soloppgang og solnedgang leses fra entiteten `sun.sun` i stedet for å regnes ut på nytt, og en `for`-varighet måles fra siste tilstandsendring, uten historikken til recorder. Unntaket er `template`, som rendres av serveren som en hvilken som helst annen [Home Assistant-mal](#maler).
 >
 > `view_columns` godtas, men går alltid gjennom, siden Bubble Card aldri er den som legger ut kolonnene i visningen din. En betingelsestype som Bubble Card ikke kjenner, melder fra om seg selv én gang i nettleserkonsollen i stedet for å feile stille, slik at du kan skille en skrivefeil fra en manglende funksjon.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Maler
 
-**Bubble Card støtter ikke Jinja-maler**, men avanserte brukere kan legge til maler i JS direkte i [egendefinerte stiler](#styling). Dette gjør det for eksempel mulig å dynamisk endre et ikon, tekstene eller fargene til et element, vise eller skjule et element betinget (som en underknapp), eller nesten hva som helst basert på en tilstand, et attributt og mer.
+Bubble Card støtter to typer maler:
+
+- **Home Assistant-maler (Jinja)**, de du allerede skriver i automasjonene dine, i Mushroom eller i card-mod. Sett `{{ ... }}` eller `{% ... %}` i et støttet felt, og Home Assistant rendrer det for deg, i sanntid.
+- **JavaScript-maler**, `${ ... }` i dine [egendefinerte stiler](#styling), for alt som må nå inn i selve kortet.
+
+### Home Assistant-maler (Jinja)
+
+Maler rendres av Home Assistant-serveren din og oppdaterer seg selv når det de leser endres. De fungerer i disse feltene:
+
+<details>
+
+<summary><b>Støttede felt (med eksempler)</b></summary>
+
+| Felt | Eksempel |
+| --- | --- |
+| `name`, på alle kort (pop-up-toppteksten og skilletegnet inkludert) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, på alle kort (`icon_open`, `icon_close`, `icon_up` og `icon_down` på en gardin også) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` og `icon` på en [underknapp](#underknapper) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, på et kort eller en underknapp, ved siden av `state` og attributtnavn | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... i en [horisontal knapperad](#horisontal-knapperad) | `1_name: "{{ user }}"` |
+| `styles` på et kort og koden til en [modul](#moduler), blandet med JavaScript-maler | se nedenfor |
+| [Betingelser](#betingelser), med `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Sett alltid en mal mellom anførselstegn. Uten dem leses `name: {{ states('x') }}` av YAML som en mapping i stedet for som tekst, og kortet avviser den.
+
+Tre variabler er tilgjengelige i tillegg til alt Home Assistant tilbyr (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtre, makroene i `custom_templates`-mappen din...):
+
+- `entity` er entiteten til kortet, eller til underknappen for et underknappfelt.
+- `config.entity` er samme verdi, for malene du skrev for card-mod.
+- `user` er navnet på den innloggede brukeren.
+
+Resultatene tolkes av Home Assistant nøyaktig som i utviklerverktøyene, så `21.50` vises som `21.5`. Legg til `| string` når teksten må forbli som den er.
+
+<details>
+
+<summary>Home Assistant-maler i de egendefinerte stilene dine</summary>
+
+<br>
+
+En mal kan inneholde en verdi eller omslutte hele CSS-regler:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-maler og Home Assistant-maler kan dele en blokk. Hold hver `${ }` utenfor en `{% if %} ... {% endif %}`-blokk, hver side rendres av en annen motor, og en blokk som er delt i to kan ikke rendres.
+
+Din egen tekst i tilstandslinjen trenger ingen stiler i det hele tatt, `state_content` tar en mal som ett av elementene sine:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Inne i en JavaScript-mal gir `renderTemplate("{{ ... }}")` deg den rendrede teksten til en Home Assistant-mal, for de stedene en mal ikke kan nå på egen hånd:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Feil vises i redigereren, under de egendefinerte stilene, og i nettleserkonsollen din.
+
+</details>
+
+### JavaScript-maler
+
+Avanserte brukere kan legge til maler i JS direkte i [egendefinerte stiler](#styling). Dette gjør det for eksempel mulig å dynamisk endre et ikon, tekstene eller fargene til et element, vise eller skjule et element betinget (som en underknapp), eller nesten hva som helst basert på en tilstand, et attributt og mer.
 
 > [!TIP]  
 > Mer informasjon om JS-maler finner du [her](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mitt råd er å **alltid sjekke nettleserkonsollen** for å være sikker på at alt fungerer som det skal.
@@ -2095,6 +2176,7 @@ Du har tilgang til alle globale JS-funksjoner, men du har også tilgang til:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` returnerer `true` når en liste med [betingelser](#betingelser) er oppfylt, for eksempel `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` returnerer teksten Home Assistant har rendret for en Jinja-mal, for eksempel `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Det andre argumentet er det malen ser som `entity`, kortets entitet som standard.
 - `hass.formatEntityState(state)` kan brukes til å oversette en tilstand (kan også brukes til å hente en tilstandsenhet, uten at du trenger å legge den til manuelt).
 - `hass.formatEntityAttributeValue(state, "attribute")` kan brukes til å oversette et attributt (kan også brukes til å hente en tilstandsenhet, uten at du trenger å legge den til manuelt).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Hvis du vil lage en mal for tilstanden (`.bubble-state`) fra stilene dine, vises linjen på skjermen så snart en mal skriver til den, uansett hva `state_content` sier.
+
+Det samme uten noen stiler, med en Home Assistant-mal i `state_content`, som også gir deg den oversatte tilstanden:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

@@ -412,7 +412,7 @@ Txartel hau oso malgua da. **etengailu**, **graduatzaile**, **egoera** edo **ize
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure botoiaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
 | `use_accent_color` | boolean | Aukerakoa (`false` lehenetsia) | **Argientzat soilik.** Erabili gaiaren nabarmentze-kolorea argiaren kolorearen ordez.                         |
-| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#txantiloiak) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
@@ -547,7 +547,7 @@ Txartel honek multimedia-erreproduzigailu entitate bat kontrolatzeko aukera emat
 | `name` | string | Aukerakoa | Edozein testu | Zure multimedia-erreproduzigailuaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure multimedia-erreproduzigailuaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#txantiloiak) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
@@ -663,7 +663,7 @@ Txartel honek zure `cover` entitateak kontrolatzeko aukera ematen dizu.
 | `entity` | string | **Beharrezkoa** | Edozein estalki | Kontrolatzeko estalki bat |
 | `name` | string | Aukerakoa | Edozein testu | Zure estalkiaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#txantiloiak) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
@@ -753,7 +753,7 @@ Txartel honek zure `input_select` / `select` entitateentzako hedapen-menu bat ge
 | `name` | string | Aukerakoa | Edozein testu | Zure hautaketaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure hautaketaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#txantiloiak) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi zure azpibotoiaren atzeko planoa, entitatearen egoeraren arabera koloreztatuko da |
 | `state_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erabili egoeraren kolorea entitatea `on` dagoenean |
 | `light_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erabili argiaren kolorea atzeko planorako, eskuragarri dagoenean |
-| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#txantiloiak) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
 | `select_attribute` | string | Aukerakoa | Zure `entity`-aren atributu-zerrenda bat (ikusi goiko aukera onartuak) | Atributu-zerrenda honek goitibeherako bat irekiko du sakatzean (adibidez `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Baldintzak zure nabigatzailean ebaluatzen dira, beraz Home Assistanten zerbitzaria behar duten gutxi horiek ezin dira zehatzak izan: eguzki-irteera eta eguzki-sarrera `sun.sun` entitatetik irakurtzen dira, berriro kalkulatu ordez, eta `for` iraupena azken egoera-aldaketatik neurtzen da, recorderren historiarik gabe.
+> Baldintzak zure nabigatzailean ebaluatzen dira, beraz Home Assistanten zerbitzaria behar duten gutxi horiek ezin dira zehatzak izan: eguzki-irteera eta eguzki-sarrera `sun.sun` entitatetik irakurtzen dira, berriro kalkulatu ordez, eta `for` iraupena azken egoera-aldaketatik neurtzen da, recorderren historiarik gabe. Salbuespena `template` da, zerbitzariak errendatzen duena beste edozein [Home Assistanten txantiloi](#txantiloiak) bezala.
 >
 > `view_columns` onartzen da baina beti betetzen da, Bubble Card ez baita inoiz zure ikuspegiaren zutabeak antolatzen dituena. Bubble Cardek ezagutzen ez duen baldintza mota batek behin ematen du bere berri zure nabigatzailearen kontsolan, isilean huts egin ordez, hala tekleatze-akats bat falta den funtzio batetik bereiz dezakezu.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Txantiloiak
 
-**Bubble Card-ek ez du Jinja txantiloirik onartzen**, baina erabiltzaile aurreratuek JS txantiloiak zuzenean beren [estilo pertsonalizatuetan](#estiloa) gehi ditzakete. Honek, adibidez, ikono bat, testuak edo elementu baten koloreak dinamikoki aldatzea ahalbidetzen du, elementu bat baldintzapean erakustea edo ezkutatzea (azpibotoi bat bezala), edo ia edozer, egoera batean, atributu batean eta gehiagotan oinarrituta.
+Bubble Card-ek bi txantiloi mota onartzen ditu:
+
+- **Home Assistanten txantiloiak (Jinja)**, zure automatizazioetan, Mushroom-en edo card-mod-en dagoeneko idazten dituzunak. Jarri `{{ ... }}` edo `{% ... %}` onartutako eremu batean eta Home Assistantek zuretzat errendatzen du, denbora errealean.
+- **JavaScript txantiloiak**, `${ ... }` zure [estilo pertsonalizatuetan](#estiloa), txartelaren barrura iritsi behar duen edozertarako.
+
+### Home Assistanten txantiloiak (Jinja)
+
+Txantiloiak zure Home Assistant zerbitzariak errendatzen ditu eta beren kabuz eguneratzen dira irakurtzen dutena aldatzen denean. Eremu hauetan funtzionatzen dute:
+
+<details>
+
+<summary><b>Onartutako eremuak (adibideekin)</b></summary>
+
+| Eremua | Adibidea |
+| --- | --- |
+| `name`, txartel guztietan (laster-leihoaren goiburua eta bereizlea barne) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, txartel guztietan (estalki baten `icon_open`, `icon_close`, `icon_up` eta `icon_down` ere bai) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| [azpibotoi](#azpibotoiak) baten `name` eta `icon` | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, txartel batean edo azpibotoi batean, `state` eta atributu-izenen ondoan | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| [botoi-pila horizontal](#botoi-pila-horizontala) baten `1_name`, `1_icon`... | `1_name: "{{ user }}"` |
+| txartel baten `styles` eta [modulu](#moduluak) baten kodea, JavaScript txantiloiekin nahasita | ikusi behean |
+| [Baldintzak](#baldintzak), `condition: template` erabiliz | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Jarri beti txantiloia komatxo artean. Haiek gabe, YAMLek `name: {{ states('x') }}` mapaketa gisa irakurtzen du testu gisa irakurri ordez, eta txartelak ez du onartzen.
+
+Home Assistantek eskaintzen duen guztiaz gain (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, iragazkiak, zure `custom_templates` karpetako makroak...), hiru aldagai daude erabilgarri:
+
+- `entity` txartelaren entitatea da, edo azpibotoiarena azpibotoi baten eremu batean.
+- `config.entity` balio bera da, card-mod-erako idatzi zenituen txantiloietarako.
+- `user` saioa hasi duen erabiltzailearen izena da.
+
+Home Assistantek emaitzak garatzaile-tresnetan bezalaxe analizatzen ditu, beraz `21.50` `21.5` gisa erakusten da. Gehitu `| string` testuak dagoen bezala geratu behar duenean.
+
+<details>
+
+<summary>Home Assistanten txantiloiak zure estilo pertsonalizatuetan</summary>
+
+<br>
+
+Txantiloi batek balio bat eduki dezake edo CSS arau osoak bil ditzake:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript txantiloiek eta Home Assistanten txantiloiek bloke bera parteka dezakete. Mantendu `${ }` bakoitza `{% if %} ... {% endif %}` bloke batetik kanpo, alde bakoitza motor ezberdin batek errendatzen du eta bitan moztutako bloke bat ezin da errendatu.
+
+Egoera-lerroko zure testuak ez du estilorik behar, `state_content`-ek txantiloi bat onartzen du bere elementuetako bat gisa:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+JavaScript txantiloi baten barruan, `renderTemplate("{{ ... }}")` funtzioak Home Assistanten txantiloi baten testu errendatua ematen dizu, txantiloi bat bere kabuz iritsi ezin den lekuetarako:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Erroreak editorean erakusten dira, estilo pertsonalizatuen azpian, eta zure nabigatzailearen kontsolan.
+
+</details>
+
+### JavaScript txantiloiak
+
+Erabiltzaile aurreratuek JS txantiloiak zuzenean beren [estilo pertsonalizatuetan](#estiloa) gehi ditzakete. Honek, adibidez, ikono bat, testuak edo elementu baten koloreak dinamikoki aldatzea ahalbidetzen du, elementu bat baldintzapean erakustea edo ezkutatzea (azpibotoi bat bezala), edo ia edozer, egoera batean, atributu batean eta gehiagotan oinarrituta.
 
 > [!TIP]  
 > JS txantiloiei buruzko informazio gehiago [hemen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Nire aholkua da **beti begiratzea zure nabigatzailearen kontsolan**, dena behar bezala funtzionatzen ari dela ziurtatzeko.
@@ -2095,6 +2176,7 @@ JS funtzio global guztietara sarbidea duzu, baina honakoetara ere bai:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` funtzioak `true` itzultzen du [baldintza](#baldintzak) zerrenda bat betetzen denean, adibidez `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` funtzioak Home Assistantek Jinja txantiloi baterako errendatutako testua itzultzen du, adibidez `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Bigarren argumentua txantiloiak `entity` gisa ikusten duena da, lehenespenez zure txartelaren entitatea.
 - `hass.formatEntityState(state)` egoera bat itzultzeko erabil daiteke (egoera baten unitatea eskuratzeko ere erabil daiteke, eskuz gehitu beharrik gabe).
 - `hass.formatEntityAttributeValue(state, "attribute")` atributu bat itzultzeko erabil daiteke (egoera baten unitatea eskuratzeko ere erabil daiteke, eskuz gehitu beharrik gabe).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Egoera (`.bubble-state`) zure estiloetatik txantiloitu nahi baduzu, lerroa pantailan agertzen da txantiloi batek bertan idatzi bezain laster, `state_content`-ek dioena dioela.
+
+Gauza bera estilorik gabe, Home Assistanten txantiloi bat `state_content`-en jarrita, egoera itzulia ere ematen dizuna:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

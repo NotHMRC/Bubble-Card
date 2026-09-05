@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | ไม่บังคับ | ไอคอน `mdi:` ใด ๆ | ไอคอนของปุ่ม ถ้าไม่กำหนดจะแสดงไอคอนของเอนทิตีหรือ `entity-picture` |
 | `force_icon` | boolean | ไม่บังคับ | `true` หรือ `false` (ค่าเริ่มต้น) | ให้ความสำคัญกับไอคอนแทนที่จะเป็น `entity-picture` |
 | `use_accent_color` | boolean | ไม่บังคับ (ค่าเริ่มต้น `false`) | **สำหรับไฟเท่านั้น** ใช้สี accent ของธีมแทนสีของไฟ                         |
-| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#templates) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
+| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#เทมเพลต) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
 | `show_name` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนชื่อ |
 | `show_icon` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนไอคอน |
 | `scrolling_effect` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ให้ข้อความเลื่อนได้เมื่อเนื้อหาเกินขนาดของคอนเทนเนอร์ |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | ไม่บังคับ | ข้อความใด ๆ | ชื่อของเครื่องเล่นสื่อ ถ้าไม่กำหนดจะแสดงชื่อเอนทิตี |
 | `icon` | string | ไม่บังคับ | ไอคอน `mdi:` ใด ๆ | ไอคอนของเครื่องเล่นสื่อ ถ้าไม่กำหนดจะแสดงไอคอนของเอนทิตีหรือ `entity-picture` |
 | `force_icon` | boolean | ไม่บังคับ | `true` หรือ `false` (ค่าเริ่มต้น) | ให้ความสำคัญกับไอคอนแทนที่จะเป็น `entity-picture` |
-| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#templates) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
+| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#เทมเพลต) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
 | `show_name` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนชื่อ |
 | `show_icon` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนไอคอน |
 | `scrolling_effect` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ให้ข้อความเลื่อนได้เมื่อเนื้อหาเกินขนาดของคอนเทนเนอร์ |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **จำเป็น** | ม่าน/ประตูใด ๆ | ม่าน/ประตูที่จะควบคุม |
 | `name` | string | ไม่บังคับ | ข้อความใด ๆ | ชื่อของม่าน/ประตู ถ้าไม่กำหนดจะแสดงชื่อเอนทิตี |
 | `force_icon` | boolean | ไม่บังคับ | `true` หรือ `false` (ค่าเริ่มต้น) | ให้ความสำคัญกับไอคอนแทนที่จะเป็น `entity-picture` |
-| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#templates) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
+| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#เทมเพลต) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
 | `show_name` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนชื่อ |
 | `show_icon` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนไอคอน |
 | `scrolling_effect` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ให้ข้อความเลื่อนได้เมื่อเนื้อหาเกินขนาดของคอนเทนเนอร์ |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | ไม่บังคับ | ข้อความใด ๆ | ชื่อของตัวเลือก ถ้าไม่กำหนดจะแสดงชื่อเอนทิตี |
 | `icon` | string | ไม่บังคับ | ไอคอน `mdi:` ใด ๆ | ไอคอนของตัวเลือก ถ้าไม่กำหนดจะแสดงไอคอนของเอนทิตีหรือ `entity-picture` |
 | `force_icon` | boolean | ไม่บังคับ | `true` หรือ `false` (ค่าเริ่มต้น) | ให้ความสำคัญกับไอคอนแทนที่จะเป็น `entity-picture` |
-| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#templates) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
+| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#เทมเพลต) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
 | `show_name` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนชื่อ |
 | `show_icon` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนไอคอน |
 | `scrolling_effect` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ให้ข้อความเลื่อนได้เมื่อเนื้อหาเกินขนาดของคอนเทนเนอร์ |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงพื้นหลังสำหรับปุ่มย่อยของคุณ โดยจะเปลี่ยนสีตามสถานะของเอนทิตี |
 | `state_background` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ใช้สีของสถานะเมื่อเอนทิตีเป็น `on` |
 | `light_background` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | ใช้สีของไฟสำหรับพื้นหลังเมื่อมีให้ใช้งาน |
-| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#templates) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
+| `state_content` | string หรือ list | ไม่บังคับ | `state`, `last-changed`, `last-updated`, `last-triggered`, ชื่อแอตทริบิวต์ เช่น `brightness` หรือ `forecast[0].temperature` หรือ [เทมเพลต](#เทมเพลต) | สิ่งที่บรรทัดใต้ชื่อจะแสดง ตามลำดับนี้ หากไม่กำหนด ปุ่มแบบ `button_type: state` จะแสดงสิ่งที่ Home Assistant แสดงสำหรับเอนทิตีนั้น (สถานะของมัน รวมถึงอุณหภูมิปัจจุบันของเอนทิตีปรับอากาศ ตำแหน่งของม่าน/ประตู และความสว่างของไฟ) คีย์เก่า `show_state`, `show_attribute`, `attribute`, `show_last_changed` และ `show_last_updated` ยังใช้ได้อยู่ และจะถูกเขียนใหม่เป็น `state_content` เมื่อคุณเปิดตัวแก้ไข |
 | `show_name` | boolean | ไม่บังคับ | `true` หรือ `false` (ค่าเริ่มต้น) | แสดงหรือซ่อนชื่อ |
 | `show_icon` | boolean | ไม่บังคับ | `true` (ค่าเริ่มต้น) หรือ `false` | แสดงหรือซ่อนไอคอน |
 | `select_attribute` | string | ไม่บังคับ | รายการแอตทริบิวต์จาก `entity` ของคุณ (ดูตัวเลือกที่รองรับด้านบน) | รายการแอตทริบิวต์นี้จะเปิดดรอปดาวน์เมื่อคลิก (เช่น `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> เงื่อนไขถูกประเมินผลในเบราว์เซอร์ของคุณ ดังนั้นเงื่อนไขไม่กี่ข้อที่ต้องใช้เซิร์ฟเวอร์ Home Assistant จึงไม่สามารถแม่นยำได้ พระอาทิตย์ขึ้นและพระอาทิตย์ตกถูกอ่านจากเอนทิตี `sun.sun` แทนที่จะคำนวณใหม่ และระยะเวลา `for` วัดจากการเปลี่ยนสถานะครั้งล่าสุด โดยไม่มีประวัติจาก recorder
+> เงื่อนไขถูกประเมินผลในเบราว์เซอร์ของคุณ ดังนั้นเงื่อนไขไม่กี่ข้อที่ต้องใช้เซิร์ฟเวอร์ Home Assistant จึงไม่สามารถแม่นยำได้ พระอาทิตย์ขึ้นและพระอาทิตย์ตกถูกอ่านจากเอนทิตี `sun.sun` แทนที่จะคำนวณใหม่ และระยะเวลา `for` วัดจากการเปลี่ยนสถานะครั้งล่าสุด โดยไม่มีประวัติจาก recorder ข้อยกเว้นคือ `template` ซึ่งถูกเรนเดอร์โดยเซิร์ฟเวอร์เหมือนกับ[เทมเพลต Home Assistant](#เทมเพลต)อื่น ๆ
 >
 > `view_columns` ถูกยอมรับแต่ผ่านเสมอ เพราะ Bubble Card ไม่เคยเป็นตัวจัดวางคอลัมน์ของมุมมองของคุณ ประเภทเงื่อนไขที่ Bubble Card ไม่รู้จักจะรายงานตัวเองหนึ่งครั้งในคอนโซลของเบราว์เซอร์แทนที่จะล้มเหลวอย่างเงียบ ๆ คุณจึงแยกความต่างระหว่างการพิมพ์ผิดกับฟีเจอร์ที่ยังไม่มีได้
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## เทมเพลต
 
-**Bubble Card ไม่รองรับเทมเพลต Jinja** แต่ผู้ใช้ขั้นสูงสามารถเพิ่มเทมเพลตแบบ JS ได้โดยตรงใน[สไตล์กำหนดเอง](#การจัดสไตล์) ของตน ตัวอย่างเช่น วิธีนี้ช่วยให้เปลี่ยนไอคอน ข้อความ หรือสีขององค์ประกอบได้แบบไดนามิก แสดงหรือซ่อนองค์ประกอบตามเงื่อนไข (เช่น ปุ่มย่อย) หรือแทบทุกอย่างที่ขึ้นอยู่กับสถานะ แอตทริบิวต์ และอื่น ๆ
+Bubble Card รองรับเทมเพลตสองแบบ:
+
+- **เทมเพลต Home Assistant (Jinja)** แบบเดียวกับที่คุณเขียนอยู่แล้วในระบบอัตโนมัติ ใน Mushroom หรือใน card-mod ใส่ `{{ ... }}` หรือ `{% ... %}` ในฟิลด์ที่รองรับ แล้ว Home Assistant จะเรนเดอร์ให้คุณแบบสด
+- **เทมเพลต JavaScript** คือ `${ ... }` ภายใน[สไตล์กำหนดเอง](#การจัดสไตล์)ของคุณ สำหรับทุกอย่างที่ต้องเข้าถึงตัวการ์ดเอง
+
+### เทมเพลต Home Assistant (Jinja)
+
+เทมเพลตถูกเรนเดอร์โดยเซิร์ฟเวอร์ Home Assistant ของคุณ และอัปเดตด้วยตัวเองเมื่อสิ่งที่มันอ่านเปลี่ยนไป เทมเพลตใช้งานได้ในฟิลด์เหล่านี้:
+
+<details>
+
+<summary><b>ฟิลด์ที่รองรับ (พร้อมตัวอย่าง)</b></summary>
+
+| ฟิลด์ | ตัวอย่าง |
+| --- | --- |
+| `name` บนทุกการ์ด (รวมถึงส่วนหัวของป๊อปอัปและตัวคั่น) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon` บนทุกการ์ด (รวมถึง `icon_open`, `icon_close`, `icon_up` และ `icon_down` ของม่าน/ประตูด้วย) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` และ `icon` ของ[ปุ่มย่อย](#ปุ่มย่อย) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content` บนการ์ดหรือปุ่มย่อย ควบคู่กับ `state` และชื่อแอตทริบิวต์ | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... ของ[แถวปุ่มแนวนอน](#แถวปุ่มแนวนอน) | `1_name: "{{ user }}"` |
+| `styles` ของการ์ดและโค้ดของ[โมดูล](#โมดูล) ผสมกับเทมเพลต JavaScript | ดูด้านล่าง |
+| [เงื่อนไข](#เงื่อนไข) ที่ใช้ `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> ใส่เทมเพลตไว้ในเครื่องหมายคำพูดเสมอ หากไม่มี YAML จะอ่าน `name: {{ states('x') }}` เป็น mapping แทนที่จะเป็นข้อความ และการ์ดจะปฏิเสธมัน
+
+มีตัวแปรสามตัวให้ใช้เพิ่มเติมจากทุกสิ่งที่ Home Assistant มีให้ (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, ฟิลเตอร์ มาโครในโฟลเดอร์ `custom_templates` ของคุณ...):
+
+- `entity` คือเอนทิตีของการ์ด หรือของปุ่มย่อยสำหรับฟิลด์ของปุ่มย่อย
+- `config.entity` คือค่าเดียวกัน สำหรับเทมเพลตที่คุณเขียนไว้สำหรับ card-mod
+- `user` คือชื่อของผู้ใช้ที่เข้าสู่ระบบอยู่
+
+ผลลัพธ์ถูกแยกวิเคราะห์โดย Home Assistant เหมือนกับในเครื่องมือสำหรับนักพัฒนาทุกประการ ดังนั้น `21.50` จะแสดงเป็น `21.5` เพิ่ม `| string` เมื่อข้อความต้องคงไว้ตามเดิม
+
+<details>
+
+<summary>เทมเพลต Home Assistant ในสไตล์กำหนดเองของคุณ</summary>
+
+<br>
+
+เทมเพลตสามารถเก็บค่าหนึ่งค่า หรือครอบกฎ CSS ทั้งชุดก็ได้:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+เทมเพลต JavaScript และเทมเพลต Home Assistant สามารถอยู่ในบล็อกเดียวกันได้ ให้ `${ }` ทุกตัวอยู่นอกบล็อก `{% if %} ... {% endif %}` เพราะแต่ละฝั่งถูกเรนเดอร์โดยเอนจินคนละตัว และบล็อกที่ถูกตัดออกเป็นสองส่วนจะเรนเดอร์ไม่ได้
+
+ข้อความของคุณเองในบรรทัดสถานะไม่ต้องใช้สไตล์ใด ๆ เลย `state_content` รับเทมเพลตเป็นหนึ่งในรายการของมันได้:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+ภายในเทมเพลต JavaScript `renderTemplate("{{ ... }}")` จะให้ข้อความที่เรนเดอร์แล้วของเทมเพลต Home Assistant สำหรับตำแหน่งที่เทมเพลตเข้าถึงเองไม่ได้:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+ข้อผิดพลาดจะแสดงในตัวแก้ไข ใต้สไตล์กำหนดเอง และในคอนโซลของเบราว์เซอร์
+
+</details>
+
+### เทมเพลต JavaScript
+
+ผู้ใช้ขั้นสูงสามารถเพิ่มเทมเพลตแบบ JS ได้โดยตรงใน[สไตล์กำหนดเอง](#การจัดสไตล์) ของตน ตัวอย่างเช่น วิธีนี้ช่วยให้เปลี่ยนไอคอน ข้อความ หรือสีขององค์ประกอบได้แบบไดนามิก แสดงหรือซ่อนองค์ประกอบตามเงื่อนไข (เช่น ปุ่มย่อย) หรือแทบทุกอย่างที่ขึ้นอยู่กับสถานะ แอตทริบิวต์ และอื่น ๆ
 
 > [!TIP]  
 > ข้อมูลเพิ่มเติมเกี่ยวกับเทมเพลต JS อยู่ [ที่นี่](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) คำแนะนำของฉันคือ **ให้ตรวจสอบคอนโซลของเบราว์เซอร์เสมอ** เพื่อให้แน่ใจว่าทุกอย่างทำงานได้อย่างถูกต้อง
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` คืนค่า `true` เมื่อรายการ[เงื่อนไข](#เงื่อนไข)เป็นจริง เช่น `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`
+- `renderTemplate(template, entity)` คืนค่าข้อความที่ Home Assistant เรนเดอร์สำหรับเทมเพลต Jinja เช่น `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}` อาร์กิวเมนต์ที่สองคือสิ่งที่เทมเพลตมองเห็นเป็น `entity` ซึ่งโดยค่าเริ่มต้นคือเอนทิตีของการ์ดของคุณ
 - `hass.formatEntityState(state)` สามารถใช้เพื่อแปลสถานะ (ยังใช้เพื่อดึงหน่วยของสถานะได้โดยไม่ต้องเพิ่มเองด้วยตนเอง)
 - `hass.formatEntityAttributeValue(state, "attribute")` สามารถใช้เพื่อแปลแอตทริบิวต์ (ยังใช้เพื่อดึงหน่วยของสถานะได้โดยไม่ต้องเพิ่มเองด้วยตนเอง)
 
@@ -2284,6 +2366,11 @@ styles: |
 
 
 หากต้องการทำเทมเพลตของสถานะ (`.bubble-state`) จากสไตล์ของคุณ บรรทัดนั้นจะแสดงบนหน้าจอทันทีที่มีเทมเพลตเขียนลงไป ไม่ว่า `state_content` จะระบุว่าอย่างไรก็ตาม
+
+แบบเดียวกันโดยไม่ใช้สไตล์ใด ๆ ด้วยเทมเพลต Home Assistant ใน `state_content` ซึ่งยังให้สถานะที่แปลแล้วแก่คุณด้วย:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

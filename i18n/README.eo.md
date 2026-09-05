@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via butono, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
 | `use_accent_color` | boolean | Nedeviga (`false` defaŭlta) | **Nur por lumoj.** Uzi la akcentan koloron de la etoso anstataŭ la koloron de la lumo.                         |
-| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#ŝablonoj) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Nedeviga | Ajna string | Nomo por via plurmedia ludilo, se ne difinita ĝi montros la nomon de la ero |
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via plurmedia ludilo, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#ŝablonoj) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Deviga** | Ajna kovrilo | Kovrilo por kontroli |
 | `name` | string | Nedeviga | Ajna string | Nomo por via kovrilo, se ne difinita ĝi montros la nomon de la ero |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#ŝablonoj) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Nedeviga | Ajna string | Nomo por via elektilo, se ne difinita ĝi montros la nomon de la ero |
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via elektilo, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#ŝablonoj) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri fonon por via subbutono, ĝi ŝanĝos sian koloron laŭ la stato de via ento |
 | `state_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Uzi la statan koloron kiam la ento estas `on` |
 | `light_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Uzi la lumkoloron por la fono, kiam havebla |
-| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#ŝablonoj) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la piktogramon |
 | `select_attribute` | string | Nedeviga | Atributa listo de via `entity` (vidu subtenatajn opciojn supre) | Ĉi tiu atributa listo malfermos falmenuon se alklakita (ekz. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Kondiĉoj estas taksataj en via retumilo, do la malmultaj el ili kiuj bezonas la servilon de Home Assistant ne povas esti ekzaktaj: sunleviĝo kaj sunsubiro estas legataj el la ento `sun.sun` anstataŭ esti rekalkulataj, kaj daŭro `for` estas mezurata de la lasta ŝanĝo de stato, sen la historio de recorder.
+> Kondiĉoj estas taksataj en via retumilo, do la malmultaj el ili kiuj bezonas la servilon de Home Assistant ne povas esti ekzaktaj: sunleviĝo kaj sunsubiro estas legataj el la ento `sun.sun` anstataŭ esti rekalkulataj, kaj daŭro `for` estas mezurata de la lasta ŝanĝo de stato, sen la historio de recorder. La escepto estas `template`, bildigata de la servilo kiel ĉiu alia [Home Assistant-ŝablono](#ŝablonoj).
 >
 > `view_columns` estas akceptata sed ĉiam sukcesas, ĉar Bubble Card neniam estas tiu, kiu aranĝas la kolumnojn de via vido. Kondiĉotipo, kiun Bubble Card ne konas, anoncas sin unufoje en via retumila konzolo anstataŭ silente malsukcesi, do vi povas distingi tajperaron de mankanta funkcio.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Ŝablonoj
 
-**Bubble Card ne subtenas Jinja-ŝablonojn**, sed spertaj uzantoj povas aldoni ŝablonojn en JS rekte en siaj [propraj stiloj](#stiligo). Ekzemple, tio ebligas dinamike ŝanĝi piktogramon, la tekstojn aŭ la kolorojn de elemento, montri aŭ kaŝi elementon laŭkondiĉe (kiel subbutonon), aŭ preskaŭ ion ajn bazitan sur stato, atributo kaj pli.
+Bubble Card subtenas du specojn de ŝablonoj:
+
+- **Home Assistant-ŝablonoj (Jinja)**, tiuj, kiujn vi jam skribas en viaj aŭtomatigoj, en Mushroom aŭ en card-mod. Metu `{{ ... }}` aŭ `{% ... %}` en subtenatan kampon, kaj Home Assistant bildigas ĝin por vi, tuj.
+- **JavaScript-ŝablonoj**, `${ ... }` ene de viaj [propraj stiloj](#stiligo), por ĉio, kio devas atingi la karton mem.
+
+### Home Assistant-ŝablonoj (Jinja)
+
+Ŝablonoj estas bildigataj de via Home Assistant-servilo kaj ĝisdatiĝas per si mem, kiam ŝanĝiĝas tio, kion ili legas. Ili funkcias en ĉi tiuj kampoj:
+
+<details>
+
+<summary><b>Subtenataj kampoj (kun ekzemploj)</b></summary>
+
+| Kampo | Ekzemplo |
+| --- | --- |
+| `name`, sur ĉiu karto (inkluzive de la kapo de la ŝprucfenestro kaj la apartigilo) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, sur ĉiu karto (ankaŭ `icon_open`, `icon_close`, `icon_up` kaj `icon_down` de kovrilo) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` kaj `icon` de [subbutono](#subbutonoj) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, sur karto aŭ subbutono, apud `state` kaj atributnomoj | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... de [horizontala stako de butonoj](#horizontala-stako-de-butonoj) | `1_name: "{{ user }}"` |
+| `styles` de karto kaj la kodo de [modulo](#moduloj), miksitaj kun JavaScript-ŝablonoj | vidu sube |
+| [Kondiĉoj](#kondiĉoj), kun `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Ĉiam metu ŝablonon inter citilojn. Sen ili, YAML legas `name: {{ states('x') }}` kiel mapon anstataŭ kiel tekston, kaj la karto rifuzas ĝin.
+
+Tri variabloj estas disponeblaj aldone al ĉio, kion Home Assistant proponas (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtriloj, la makrooj de via dosierujo `custom_templates`...):
+
+- `entity` estas la ento de la karto, aŭ de la subbutono por kampo de subbutono.
+- `config.entity` estas la sama valoro, por la ŝablonoj, kiujn vi skribis por card-mod.
+- `user` estas la nomo de la ensalutinta uzanto.
+
+Rezultoj estas analizataj de Home Assistant ĝuste kiel en la programistaj iloj, do `21.50` montriĝas kiel `21.5`. Aldonu `| string`, kiam la teksto devas resti tia, kia ĝi estas.
+
+<details>
+
+<summary>Home Assistant-ŝablonoj en viaj propraj stiloj</summary>
+
+<br>
+
+Ŝablono povas enhavi valoron aŭ ĉirkaŭi tutajn CSS-regulojn:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-ŝablonoj kaj Home Assistant-ŝablonoj povas kunhavi blokon. Tenu ĉiun `${ }` ekster bloko `{% if %} ... {% endif %}`, ĉiu flanko estas bildigata de alia motoro, kaj bloko tranĉita en du ne povas esti bildigata.
+
+Via propra teksto en la stata linio tute ne bezonas stilojn, `state_content` akceptas ŝablonon kiel unu el siaj eroj:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Ene de JavaScript-ŝablono, `renderTemplate("{{ ... }}")` donas al vi la bildigitan tekston de Home Assistant-ŝablono, por la lokoj, kiujn ŝablono ne povas atingi per si mem:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Eraroj montriĝas en la redaktilo, sub la propraj stiloj, kaj en la konzolo de via retumilo.
+
+</details>
+
+### JavaScript-ŝablonoj
+
+Spertaj uzantoj povas aldoni ŝablonojn en JS rekte en siaj [propraj stiloj](#stiligo). Ekzemple, tio ebligas dinamike ŝanĝi piktogramon, la tekstojn aŭ la kolorojn de elemento, montri aŭ kaŝi elementon laŭkondiĉe (kiel subbutonon), aŭ preskaŭ ion ajn bazitan sur stato, atributo kaj pli.
 
 > [!TIP]  
 > Pli da informoj pri JS-ŝablonoj [ĉi tie](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mia konsilo estas **ĉiam rigardi la konzolon de via retumilo** por certiĝi, ke ĉio funkcias ĝuste.
@@ -2095,6 +2176,7 @@ Vi havas aliron al ĉiuj tutmondaj JS-funkcioj, sed vi ankaŭ havas aliron al:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` redonas `true` kiam listo de [kondiĉoj](#kondiĉoj) estas plenumita, ekzemple `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` redonas la tekston bildigitan de Home Assistant por Jinja-ŝablono, ekzemple `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. La dua argumento estas tio, kion la ŝablono vidas kiel `entity`, defaŭlte la ento de via karto.
 - `hass.formatEntityState(state)` uzeblas por traduki staton (ankaŭ uzeblas por ricevi la unuon de stato, sen bezono aldoni ĝin permane).
 - `hass.formatEntityAttributeValue(state, "attribute")` uzeblas por traduki atributon (ankaŭ uzeblas por ricevi la unuon de stato, sen bezono aldoni ĝin permane).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Se vi volas ŝablonigi la staton (`.bubble-state`) el viaj stiloj, la linio aperas sur la ekrano tuj kiam ŝablono skribas en ĝin, kion ajn diras `state_content`.
+
+La samo sen iuj ajn stiloj, kun Home Assistant-ŝablono en `state_content`, kiu ankaŭ donas al vi la tradukitan staton:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

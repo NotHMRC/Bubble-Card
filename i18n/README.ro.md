@@ -412,7 +412,7 @@ Acest card este foarte versatil. Poate fi folosit ca un **comutator**, un **curs
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru butonul tău, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
 | `use_accent_color` | boolean | Opțional (implicit `false`) | **Doar pentru lumini.** Folosește culoarea de accent a temei în locul culorii luminii.                         |
-| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#șabloane) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
@@ -547,7 +547,7 @@ Acest card îți permite să controlezi o entitate player media.
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru playerul tău media, dacă nu este definit va afișa numele entității |
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru playerul tău media, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#șabloane) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
@@ -663,7 +663,7 @@ Acest card îți permite să controlezi entitățile tale `cover`.
 | `entity` | string | **Obligatoriu** | Orice rulou | Un rulou de controlat |
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru ruloul tău, dacă nu este definit va afișa numele entității |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#șabloane) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
@@ -753,7 +753,7 @@ Acest card îți permite să adaugi un meniu derulant pentru entitățile tale `
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru selecția ta, dacă nu este definit va afișa numele entității |
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru selecția ta, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#șabloane) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Opțional | `true` (implicit) sau `false` | Afișează un fundal pentru sub-buton, culoarea acestuia se va schimba în funcție de starea entității |
 | `state_background` | boolean | Opțional | `true` (implicit) sau `false` | Folosește culoarea stării atunci când entitatea este `on` |
 | `light_background` | boolean | Opțional | `true` (implicit) sau `false` | Folosește culoarea luminii pentru fundal, atunci când este disponibilă |
-| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#șabloane) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` sau `false` (implicit) | Afișează sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Afișează sau ascunde pictograma |
 | `select_attribute` | string | Opțional | O listă de atribute a entității `entity` (vezi opțiunile acceptate mai sus) | Această listă de atribute va deschide un meniu derulant la clic (de exemplu, `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Condițiile sunt evaluate în browserul tău, așa că acele câteva care au nevoie de serverul Home Assistant nu pot fi exacte: răsăritul și apusul sunt citite din entitatea `sun.sun` în loc să fie recalculate, iar o durată `for` este măsurată de la ultima schimbare de stare, fără istoricul din recorder.
+> Condițiile sunt evaluate în browserul tău, așa că acele câteva care au nevoie de serverul Home Assistant nu pot fi exacte: răsăritul și apusul sunt citite din entitatea `sun.sun` în loc să fie recalculate, iar o durată `for` este măsurată de la ultima schimbare de stare, fără istoricul din recorder. Excepția este `template`, randat de server ca orice alt [șablon Home Assistant](#șabloane).
 >
 > `view_columns` este acceptat, dar trece întotdeauna, deoarece Bubble Card nu este niciodată cel care aranjează coloanele vizualizării tale. Un tip de condiție pe care Bubble Card nu îl cunoaște se semnalează o dată în consola browserului în loc să eșueze în tăcere, ca să deosebești o greșeală de scriere de o funcție lipsă.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Șabloane
 
-**Bubble Card nu suportă șabloane Jinja**, dar utilizatorii avansați pot adăuga șabloane în JS direct în [stilurile personalizate](#stiluri). De exemplu, acest lucru permite schimbarea dinamică a unei iconițe, a textelor sau a culorilor unui element, afișarea sau ascunderea condiționată a unui element (cum ar fi un sub-buton), sau aproape orice altceva bazat pe o stare, un atribut și multe altele.
+Bubble Card suportă două tipuri de șabloane:
+
+- **Șabloane Home Assistant (Jinja)**, cele pe care le scrii deja în automatizările tale, în Mushroom sau în card-mod. Pune `{{ ... }}` sau `{% ... %}` într-un câmp suportat și Home Assistant îl randează pentru tine, în timp real.
+- **Șabloane JavaScript**, `${ ... }` în [stilurile personalizate](#stiluri), pentru orice are nevoie să ajungă în cardul însuși.
+
+### Șabloane Home Assistant (Jinja)
+
+Șabloanele sunt randate de serverul tău Home Assistant și se actualizează de la sine când se schimbă ceea ce citesc. Funcționează în aceste câmpuri:
+
+<details>
+
+<summary><b>Câmpuri suportate (cu exemple)</b></summary>
+
+| Câmp | Exemplu |
+| --- | --- |
+| `name`, pe fiecare card (antetul pop-up-ului și separatorul incluse) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, pe fiecare card (`icon_open`, `icon_close`, `icon_up` și `icon_down` ale unui rulou de asemenea) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` și `icon` ale unui [sub-buton](#sub-butoane) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, pe un card sau un sub-buton, alături de `state` și de numele atributelor | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... ale unei [stive orizontale de butoane](#stivă-orizontală-de-butoane) | `1_name: "{{ user }}"` |
+| `styles` ale unui card și codul unui [modul](#module), amestecate cu șabloane JavaScript | vezi mai jos |
+| [Condiții](#condiții), cu `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Pune întotdeauna un șablon între ghilimele. Fără ele, `name: {{ states('x') }}` este citit de YAML ca o mapare și nu ca text, iar cardul îl refuză.
+
+Trei variabile sunt disponibile pe lângă tot ce oferă Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtre, macrourile din folderul tău `custom_templates`...):
+
+- `entity` este entitatea cardului, sau a sub-butonului pentru un câmp de sub-buton.
+- `config.entity` este aceeași valoare, pentru șabloanele pe care le-ai scris pentru card-mod.
+- `user` este numele utilizatorului conectat.
+
+Rezultatele sunt interpretate de Home Assistant exact ca în instrumentele pentru dezvoltatori, așa că `21.50` apare ca `21.5`. Adaugă `| string` când textul trebuie să rămână așa cum este.
+
+<details>
+
+<summary>Șabloane Home Assistant în stilurile tale personalizate</summary>
+
+<br>
+
+Un șablon poate conține o valoare sau poate încadra reguli CSS întregi:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Șabloanele JavaScript și șabloanele Home Assistant pot împărți același bloc. Păstrează fiecare `${ }` în afara unui bloc `{% if %} ... {% endif %}`, fiecare parte este randată de un motor diferit și un bloc tăiat în două nu poate fi randat.
+
+Textul tău propriu de pe linia de stare nu are nevoie de niciun stil, `state_content` acceptă un șablon ca unul dintre elementele sale:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Într-un șablon JavaScript, `renderTemplate("{{ ... }}")` îți dă textul randat al unui șablon Home Assistant, pentru locurile la care un șablon nu poate ajunge singur:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Erorile sunt afișate în editor, sub stilurile personalizate, și în consola browserului.
+
+</details>
+
+### Șabloane JavaScript
+
+Utilizatorii avansați pot adăuga șabloane în JS direct în [stilurile personalizate](#stiluri). De exemplu, acest lucru permite schimbarea dinamică a unei iconițe, a textelor sau a culorilor unui element, afișarea sau ascunderea condiționată a unui element (cum ar fi un sub-buton), sau aproape orice altceva bazat pe o stare, un atribut și multe altele.
 
 > [!TIP]  
 > Mai multe informații despre șabloanele JS [aici](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Sfatul meu este să **te uiți mereu în consola browserului** pentru a fi sigur că totul funcționează corect.
@@ -2095,6 +2176,7 @@ Ai acces la toate funcțiile JS globale, dar ai acces și la:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` returnează `true` când o listă de [condiții](#condiții) este îndeplinită, de exemplu `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` returnează textul randat de Home Assistant pentru un șablon Jinja, de exemplu `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Al doilea argument este ceea ce șablonul vede ca `entity`, entitatea cardului tău în mod implicit.
 - `hass.formatEntityState(state)` poate fi folosit pentru a traduce o stare (poate fi folosit și pentru a obține unitatea unei stări, fără a fi nevoie să o adaugi manual).
 - `hass.formatEntityAttributeValue(state, "attribute")` poate fi folosit pentru a traduce un atribut (poate fi folosit și pentru a obține unitatea unei stări, fără a fi nevoie să o adaugi manual).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Dacă vrei să șablonizezi starea (`.bubble-state`) din stilurile tale, linia apare pe ecran de îndată ce un șablon scrie în ea, indiferent ce spune `state_content`.
+
+Același lucru fără niciun stil, cu un șablon Home Assistant în `state_content`, care îți dă și starea tradusă:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

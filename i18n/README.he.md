@@ -414,7 +414,7 @@ auto_order: true
 | `icon` | string | אופציונלי | כל אייקון `mdi:` | אייקון לכפתור שלך, אם לא מוגדר יוצג אייקון הישות או ה-`entity-picture` |
 | `force_icon` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | תן עדיפות לאייקון במקום ל-`entity-picture` |
 | `use_accent_color` | boolean | אופציונלי (ברירת מחדל `false`) | **לאורות בלבד.** השתמש בצבע ההדגשה של הערכת הנושא במקום בצבע האור.                         |
-| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#templates) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
+| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#תבניות) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
 | `show_name` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את השם |
 | `show_icon` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את האייקון |
 | `scrolling_effect` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | אפשר לטקסט לגלול כאשר התוכן חורג מגודל המכולה שלו |
@@ -549,7 +549,7 @@ sub_button:
 | `name` | string | אופציונלי | כל מחרוזת | שם לנגן המדיה שלך, אם לא מוגדר יוצג שם הישות |
 | `icon` | string | אופציונלי | כל אייקון `mdi:` | אייקון לנגן המדיה שלך, אם לא מוגדר יוצג אייקון הישות או ה-`entity-picture` |
 | `force_icon` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | תן עדיפות לאייקון במקום ל-`entity-picture` |
-| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#templates) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
+| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#תבניות) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
 | `show_name` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את השם |
 | `show_icon` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את האייקון |
 | `scrolling_effect` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | אפשר לטקסט לגלול כאשר התוכן חורג מגודל המכולה שלו |
@@ -665,7 +665,7 @@ sub_button:
 | `entity` | string | **נדרש** | כל תריס | תריס לשליטה |
 | `name` | string | אופציונלי | כל מחרוזת | שם לתריס שלך, אם לא מוגדר יוצג שם הישות |
 | `force_icon` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | תן עדיפות לאייקון במקום ל-`entity-picture` |
-| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#templates) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
+| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#תבניות) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
 | `show_name` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את השם |
 | `show_icon` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את האייקון |
 | `scrolling_effect` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | אפשר לטקסט לגלול כאשר התוכן חורג מגודל המכולה שלו |
@@ -755,7 +755,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | אופציונלי | כל מחרוזת | שם לבחירה שלך, אם לא מוגדר יוצג שם הישות |
 | `icon` | string | אופציונלי | כל אייקון `mdi:` | אייקון לבחירה שלך, אם לא מוגדר יוצג אייקון הישות או ה-`entity-picture` |
 | `force_icon` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | תן עדיפות לאייקון במקום ל-`entity-picture` |
-| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#templates) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
+| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#תבניות) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
 | `show_name` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את השם |
 | `show_icon` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצג או הסתר את האייקון |
 | `scrolling_effect` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | אפשר לטקסט לגלול כאשר התוכן חורג מגודל המכולה שלו |
@@ -1276,7 +1276,7 @@ sub_button:
 | `show_background` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצגת רקע עבור כפתור המשנה שלכם, צבעו ישתנה בהתאם למצב הישות שלכם |
 | `state_background` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | שימוש בצבע המצב כאשר הישות היא `on` |
 | `light_background` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | שימוש בצבע התאורה עבור הרקע כאשר זמין |
-| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#templates) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
+| `state_content` | string or list | אופציונלי | `state`, `last-changed`, `last-updated`, `last-triggered`, שם מאפיין כמו `brightness` או `forecast[0].temperature`, או [תבנית](#תבניות) | מה מציגה השורה שמתחת לשם, לפי הסדר הזה. בלעדיו כפתור `button_type: state` מציג את מה ש-Home Assistant מציג עבור הישות (המצב שלה, וגם הטמפרטורה הנוכחית של מיזוג אקלים, המיקום של תריס, הבהירות של תאורה). המפתחות הישנים `show_state`, `show_attribute`, `attribute`, `show_last_changed` ו-`show_last_updated` עדיין עובדים ונכתבים מחדש כ-`state_content` בעת פתיחת העורך. |
 | `show_name` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | הצגה או הסתרה של השם |
 | `show_icon` | boolean | אופציונלי | `true` (ברירת מחדל) או `false` | הצגה או הסתרה של האייקון |
 | `select_attribute` | string | אופציונלי | רשימת מאפיינים מה-`entity` שלכם (ראו אפשרויות נתמכות למעלה) | רשימת מאפיינים זו תפתח רשימה נפתחת בלחיצה (למשל `effect_list`) |
@@ -1616,7 +1616,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> התנאים מוערכים בדפדפן שלכם, ולכן המעטים מביניהם שזקוקים לשרת Home Assistant אינם יכולים להיות מדויקים: הזריחה והשקיעה נקראות מהישות `sun.sun` במקום להיות מחושבות מחדש, ומשך `for` נמדד מהשינוי האחרון במצב, ללא היסטוריית ה-recorder.
+> התנאים מוערכים בדפדפן שלכם, ולכן המעטים מביניהם שזקוקים לשרת Home Assistant אינם יכולים להיות מדויקים: הזריחה והשקיעה נקראות מהישות `sun.sun` במקום להיות מחושבות מחדש, ומשך `for` נמדד מהשינוי האחרון במצב, ללא היסטוריית ה-recorder. היוצא מן הכלל הוא `template`, שמעובד על ידי השרת כמו כל [תבנית Home Assistant](#תבניות) אחרת.
 >
 > `view_columns` מתקבל אך תמיד עובר, מכיוון ש-Bubble Card לעולם אינה זו שמסדרת את העמודות של התצוגה שלכם. סוג תנאי ש-Bubble Card אינה מכירה מדווח על עצמו פעם אחת בקונסולת הדפדפן שלכם במקום להיכשל בשקט, כך שתוכלו להבחין בין שגיאת הקלדה לבין יכולת חסרה.
 
@@ -2031,7 +2031,88 @@ styles: |
 
 ## תבניות
 
-**Bubble Card לא תומך בתבניות Jinja**, אך משתמשים מתקדמים יכולים להוסיף תבניות ב-JS ישירות ב[עיצובים המותאמים אישית](#עיצוב) שלהם. לדוגמה, זה מאפשר לשנות באופן דינמי אייקון, טקסטים או צבעים של אלמנט, להציג או להסתיר אלמנט בתנאי (כמו כפתור משנה), או כמעט כל דבר בהתבסס על מצב, תכונה ועוד.
+Bubble Card תומך בשני סוגים של תבניות:
+
+- **תבניות Home Assistant (Jinja)**, אלו שאתם כבר כותבים באוטומציות שלכם, ב-Mushroom או ב-card-mod. שימו `{{ ... }}` או `{% ... %}` בשדה נתמך ו-Home Assistant מעבד אותה עבורכם, בזמן אמת.
+- **תבניות JavaScript**, `${ ... }` בתוך ה[עיצובים המותאמים אישית](#עיצוב) שלכם, לכל דבר שצריך להגיע אל הכרטיס עצמו.
+
+### תבניות Home Assistant (Jinja)
+
+התבניות מעובדות על ידי שרת Home Assistant שלכם ומתעדכנות מעצמן כאשר מה שהן קוראות משתנה. הן עובדות בשדות הבאים:
+
+<details>
+
+<summary><b>שדות נתמכים (עם דוגמאות)</b></summary>
+
+| שדה | דוגמה |
+| --- | --- |
+| `name`, בכל כרטיס (כולל כותרת החלון הקופץ והמפריד) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, בכל כרטיס (וגם `icon_open`, `icon_close`, `icon_up` ו-`icon_down` של תריס) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` ו-`icon` של [כפתור משנה](#כפתורי-משנה) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, בכרטיס או בכפתור משנה, לצד `state` ושמות מאפיינים | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... של [ערימת הכפתורים האופקית](#ערימת-כפתורים-אופקית) | `1_name: "{{ user }}"` |
+| `styles` של כרטיס והקוד של [מודול](#מודולים), בשילוב עם תבניות JavaScript | ראו למטה |
+| [תנאים](#תנאים), עם `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> תמיד שימו תבנית בין מירכאות. בלעדיהן, YAML קורא את `name: {{ states('x') }}` כמיפוי ולא כטקסט, והכרטיס דוחה אותה.
+
+שלושה משתנים זמינים בנוסף לכל מה ש-Home Assistant מציע (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, מסננים, המאקרו מתיקיית `custom_templates` שלכם...):
+
+- `entity` היא הישות של הכרטיס, או של כפתור המשנה בשדה של כפתור משנה.
+- `config.entity` הוא אותו ערך, עבור התבניות שכתבתם ל-card-mod.
+- `user` הוא שם המשתמש המחובר.
+
+התוצאות מנותחות על ידי Home Assistant בדיוק כמו בכלי המפתחים, ולכן `21.50` מוצג כ-`21.5`. הוסיפו `| string` כאשר הטקסט חייב להישאר כמו שהוא.
+
+<details>
+
+<summary>תבניות Home Assistant בעיצובים המותאמים אישית שלכם</summary>
+
+<br>
+
+תבנית יכולה להכיל ערך או לעטוף כללי CSS שלמים:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+תבניות JavaScript ותבניות Home Assistant יכולות לחלוק בלוק. השאירו כל `${ }` מחוץ לבלוק `{% if %} ... {% endif %}`, כל צד מעובד על ידי מנוע אחר ובלוק שנחתך לשניים לא ניתן לעיבוד.
+
+הטקסט שלכם בשורת המצב לא צריך עיצובים כלל, `state_content` מקבל תבנית כאחד מהפריטים שלו:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+בתוך תבנית JavaScript, `renderTemplate("{{ ... }}")` נותנת לכם את הטקסט המעובד של תבנית Home Assistant, למקומות שתבנית לא יכולה להגיע אליהם בעצמה:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+שגיאות מוצגות בעורך, מתחת לעיצובים המותאמים אישית, ובקונסולת הדפדפן שלכם.
+
+</details>
+
+### תבניות JavaScript
+
+משתמשים מתקדמים יכולים להוסיף תבניות ב-JS ישירות ב[עיצובים המותאמים אישית](#עיצוב) שלהם. לדוגמה, זה מאפשר לשנות באופן דינמי אייקון, טקסטים או צבעים של אלמנט, להציג או להסתיר אלמנט בתנאי (כמו כפתור משנה), או כמעט כל דבר בהתבסס על מצב, תכונה ועוד.
 
 > [!TIP]  
 > מידע נוסף על תבניות JS [כאן](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). העצה שלי היא **תמיד להציץ בקונסולת הדפדפן שלכם** כדי לוודא שהכול עובד כשורה.
@@ -2097,6 +2178,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` מחזירה `true` כאשר רשימת [תנאים](#תנאים) מתקיימת, לדוגמה `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` מחזירה את הטקסט ש-Home Assistant עיבד עבור תבנית Jinja, לדוגמה `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. הארגומנט השני הוא מה שהתבנית רואה כ-`entity`, הישות של הכרטיס שלכם כברירת מחדל.
 - `hass.formatEntityState(state)` ניתן להשתמש בה כדי לתרגם מצב (ניתן גם להשתמש בה כדי לקבל את יחידת המצב, בלי צורך להוסיף אותה ידנית).
 - `hass.formatEntityAttributeValue(state, "attribute")` ניתן להשתמש בה כדי לתרגם תכונה (ניתן גם להשתמש בה כדי לקבל את יחידת המצב, בלי צורך להוסיף אותה ידנית).
 
@@ -2285,6 +2367,11 @@ styles: |
 
 
 אם אתם רוצים ליצור תבנית למצב (`.bubble-state`) מתוך הסגנונות שלכם, השורה מופיעה על המסך ברגע שתבנית כותבת לתוכה, לא משנה מה `state_content` אומר.
+
+אותו הדבר ללא עיצובים כלל, עם תבנית Home Assistant ב-`state_content`, שגם נותנת לכם את המצב המתורגם:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

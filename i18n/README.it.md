@@ -412,7 +412,7 @@ Questa scheda è molto versatile. Può essere usata come **interruttore**, **cur
 | `icon` | string | Opzionale | Qualsiasi icona `mdi:` | Un'icona per il tuo pulsante, se non definita verrà mostrata l'icona dell'entità o l'`entity-picture` |
 | `force_icon` | boolean | Opzionale | `true` o `false` (predefinito) | Dai priorità all'icona invece dell'`entity-picture` |
 | `use_accent_color` | boolean | Opzionale (`false` predefinito) | **Solo per le luci.** Usa il colore di accento del tema invece del colore della luce.                         |
-| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#templates) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
+| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#template) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
 | `show_name` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi il nome |
 | `show_icon` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi l'icona |
 | `scrolling_effect` | boolean | Opzionale | `true` (predefinito) o `false` | Permette al testo di scorrere quando il contenuto supera le dimensioni del suo contenitore |
@@ -547,7 +547,7 @@ Questa scheda ti permette di controllare un'entità lettore multimediale.
 | `name` | string | Opzionale | Qualsiasi stringa | Un nome per il tuo lettore multimediale, se non definito verrà mostrato il nome dell'entità |
 | `icon` | string | Opzionale | Qualsiasi icona `mdi:` | Un'icona per il tuo lettore multimediale, se non definita verrà mostrata l'icona dell'entità o l'`entity-picture` |
 | `force_icon` | boolean | Opzionale | `true` o `false` (predefinito) | Dai priorità all'icona invece dell'`entity-picture` |
-| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#templates) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
+| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#template) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
 | `show_name` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi il nome |
 | `show_icon` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi l'icona |
 | `scrolling_effect` | boolean | Opzionale | `true` (predefinito) o `false` | Permette al testo di scorrere quando il contenuto supera le dimensioni del suo contenitore |
@@ -663,7 +663,7 @@ Questa scheda ti permette di controllare le tue entità `cover`.
 | `entity` | string | **Obbligatorio** | Qualsiasi tapparella | Una tapparella da controllare |
 | `name` | string | Opzionale | Qualsiasi stringa | Un nome per la tua tapparella, se non definito verrà mostrato il nome dell'entità |
 | `force_icon` | boolean | Opzionale | `true` o `false` (predefinito) | Dai priorità all'icona invece dell'`entity-picture` |
-| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#templates) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
+| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#template) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
 | `show_name` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi il nome |
 | `show_icon` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi l'icona |
 | `scrolling_effect` | boolean | Opzionale | `true` (predefinito) o `false` | Permette al testo di scorrere quando il contenuto supera le dimensioni del suo contenitore |
@@ -753,7 +753,7 @@ Questa scheda ti permette di aggiungere un menu a tendina per le tue entità `in
 | `name` | string | Opzionale | Qualsiasi stringa | Un nome per il tuo selettore, se non definito verrà mostrato il nome dell'entità |
 | `icon` | string | Opzionale | Qualsiasi icona `mdi:` | Un'icona per il tuo selettore, se non definita verrà mostrata l'icona dell'entità o l'`entity-picture` |
 | `force_icon` | boolean | Opzionale | `true` o `false` (predefinito) | Dai priorità all'icona invece dell'`entity-picture` |
-| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#templates) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
+| `state_content` | string or list | Opzionale | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#template) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
 | `show_name` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi il nome |
 | `show_icon` | boolean | Opzionale | `true` (predefinito) o `false` | Mostra o nascondi l'icona |
 | `scrolling_effect` | boolean | Opzionale | `true` (predefinito) o `false` | Permette al testo di scorrere quando il contenuto supera le dimensioni del suo contenitore |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Facoltativo | `true` (predefinito) o `false` | Mostra uno sfondo per il tuo sotto-pulsante, cambierà colore in base allo stato della tua entità |
 | `state_background` | boolean | Facoltativo | `true` (predefinito) o `false` | Usa il colore dello stato quando l'entità è `on` |
 | `light_background` | boolean | Facoltativo | `true` (predefinito) o `false` | Usa il colore della luce per lo sfondo quando disponibile |
-| `state_content` | string or list | Facoltativo | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#templates) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
+| `state_content` | string or list | Facoltativo | `state`, `last-changed`, `last-updated`, `last-triggered`, il nome di un attributo come `brightness` o `forecast[0].temperature`, oppure un [template](#template) | Cosa mostra la riga sotto il nome, in questo ordine. Senza di essa un pulsante `button_type: state` mostra quello che Home Assistant mostra per l'entità (il suo stato, più la temperatura attuale di un clima, la posizione di una tapparella, la luminosità di una luce). Le vecchie chiavi `show_state`, `show_attribute`, `attribute`, `show_last_changed` e `show_last_updated` funzionano ancora e vengono riscritte come `state_content` quando apri l'editor. |
 | `show_name` | boolean | Facoltativo | `true` o `false` (predefinito) | Mostra o nascondi il nome |
 | `show_icon` | boolean | Facoltativo | `true` (predefinito) o `false` | Mostra o nascondi l'icona |
 | `select_attribute` | string | Facoltativo | Una lista di attributi della tua `entity` (vedi le opzioni supportate sopra) | Questa lista di attributi aprirà un menu a tendina se cliccata (es. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Le condizioni vengono valutate nel tuo browser, quindi quelle poche che hanno bisogno del server Home Assistant non possono essere esatte: alba e tramonto sono letti dall'entità `sun.sun` invece di essere ricalcolati, e una durata `for` è misurata dall'ultimo cambio di stato, senza lo storico del recorder.
+> Le condizioni vengono valutate nel tuo browser, quindi quelle poche che hanno bisogno del server Home Assistant non possono essere esatte: alba e tramonto sono letti dall'entità `sun.sun` invece di essere ricalcolati, e una durata `for` è misurata dall'ultimo cambio di stato, senza lo storico del recorder. L'eccezione è `template`, renderizzato dal server come qualsiasi altro [template di Home Assistant](#template).
 >
 > `view_columns` è accettato ma passa sempre, dato che non è mai Bubble Card a disporre le colonne della tua vista. Un tipo di condizione che Bubble Card non conosce si segnala una volta nella console del tuo browser invece di fallire in silenzio, così puoi distinguere un errore di battitura da una funzionalità mancante.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Template
 
-**Bubble Card non supporta i template Jinja**, ma gli utenti avanzati possono aggiungere template JS direttamente nei loro [stili personalizzati](#stile). Ad esempio, questo permette di cambiare dinamicamente un'icona, i testi o i colori di un elemento, di mostrare o nascondere un elemento in modo condizionale (come un sotto-pulsante), o praticamente qualsiasi cosa in base a uno stato, un attributo e altro ancora.
+Bubble Card supporta due tipi di template:
+
+- **Template di Home Assistant (Jinja)**, quelli che scrivi già nelle tue automazioni, in Mushroom o in card-mod. Metti `{{ ... }}` o `{% ... %}` in un campo supportato e Home Assistant lo renderizza per te, in tempo reale.
+- **Template JavaScript**, `${ ... }` dentro i tuoi [stili personalizzati](#stile), per tutto ciò che ha bisogno di accedere alla scheda stessa.
+
+### Template di Home Assistant (Jinja)
+
+I template vengono renderizzati dal tuo server Home Assistant e si aggiornano da soli quando cambia ciò che leggono. Funzionano in questi campi:
+
+<details>
+
+<summary><b>Campi supportati (con esempi)</b></summary>
+
+| Campo | Esempio |
+| --- | --- |
+| `name`, su ogni scheda (intestazione del pop-up e separatore inclusi) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, su ogni scheda (anche `icon_open`, `icon_close`, `icon_up` e `icon_down` di una tapparella) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` e `icon` di un [sotto-pulsante](#sotto-pulsanti) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, su una scheda o un sotto-pulsante, accanto a `state` e ai nomi degli attributi | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... di una [pila di pulsanti orizzontale](#pila-di-pulsanti-orizzontale) | `1_name: "{{ user }}"` |
+| `styles` di una scheda e il codice di un [modulo](#moduli), mescolati a template JavaScript | vedi sotto |
+| [Condizioni](#condizioni), con `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Metti sempre un template tra virgolette. Senza, `name: {{ states('x') }}` viene letto da YAML come una mappa invece che come testo, e la scheda lo rifiuta.
+
+Tre variabili sono disponibili oltre a tutto ciò che offre Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, i filtri, le macro della tua cartella `custom_templates`...):
+
+- `entity` è l'entità della scheda, o quella del sotto-pulsante per un campo di un sotto-pulsante.
+- `config.entity` è lo stesso valore, per i template che hai scritto per card-mod.
+- `user` è il nome dell'utente connesso.
+
+I risultati vengono interpretati da Home Assistant esattamente come negli strumenti per sviluppatori, quindi `21.50` viene mostrato come `21.5`. Aggiungi `| string` quando il testo deve restare com'è.
+
+<details>
+
+<summary>Template di Home Assistant nei tuoi stili personalizzati</summary>
+
+<br>
+
+Un template può contenere un valore o racchiudere intere regole CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+I template JavaScript e i template di Home Assistant possono condividere un blocco. Tieni ogni `${ }` fuori da un blocco `{% if %} ... {% endif %}`, ogni lato è renderizzato da un motore diverso e un blocco tagliato in due non può essere renderizzato.
+
+Il tuo testo nella riga dello stato non ha bisogno di alcuno stile, `state_content` accetta un template come uno dei suoi elementi:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Dentro un template JavaScript, `renderTemplate("{{ ... }}")` ti dà il testo renderizzato di un template di Home Assistant, per i punti che un template non può raggiungere da solo:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Gli errori vengono mostrati nell'editor, sotto gli stili personalizzati, e nella console del tuo browser.
+
+</details>
+
+### Template JavaScript
+
+Gli utenti avanzati possono aggiungere template JS direttamente nei loro [stili personalizzati](#stile). Ad esempio, questo permette di cambiare dinamicamente un'icona, i testi o i colori di un elemento, di mostrare o nascondere un elemento in modo condizionale (come un sotto-pulsante), o praticamente qualsiasi cosa in base a uno stato, un attributo e altro ancora.
 
 > [!TIP]  
 > Maggiori informazioni sui template JS [qui](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Il mio consiglio è di **dare sempre un'occhiata alla console del tuo browser** per essere sicuro che tutto funzioni correttamente.
@@ -2095,6 +2176,7 @@ Hai accesso a tutte le funzioni JS globali, ma hai anche accesso a:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` restituisce `true` quando un elenco di [condizioni](#condizioni) è soddisfatto, ad esempio `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` restituisce il testo renderizzato da Home Assistant per un template Jinja, ad esempio `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Il secondo argomento è ciò che il template vede come `entity`, per impostazione predefinita l'entità della tua scheda.
 - `hass.formatEntityState(state)` può essere usata per tradurre uno stato (può anche essere usata per ottenere l'unità di uno stato, senza doverla aggiungere manualmente).
 - `hass.formatEntityAttributeValue(state, "attribute")` può essere usata per tradurre un attributo (può anche essere usata per ottenere l'unità di uno stato, senza doverla aggiungere manualmente).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Se vuoi creare un template per lo stato (`.bubble-state`) dai tuoi stili, la riga compare sullo schermo non appena un template ci scrive dentro, qualunque cosa dica `state_content`.
+
+Lo stesso senza alcuno stile, con un template di Home Assistant in `state_content`, che ti dà anche lo stato tradotto:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

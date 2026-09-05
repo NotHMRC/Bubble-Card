@@ -412,7 +412,7 @@ Deze kaart is erg veelzijdig. Je kunt hem gebruiken als **schakelaar**, **slider
 | `icon` | string | Optioneel | Elk `mdi:` pictogram | Een pictogram voor je knop, indien niet gedefinieerd wordt het pictogram van de entiteit of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft het pictogram voorrang boven de `entity-picture` |
 | `use_accent_color` | boolean | Optioneel (`false` standaard) | **Alleen voor lampen.** Gebruikt de accentkleur van het thema in plaats van de kleur van de lamp.                         |
-| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#sjablonen) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt het pictogram |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan hun container |
@@ -547,7 +547,7 @@ Met deze kaart kun je een mediaspelerentiteit bedienen.
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je mediaspeler, indien niet gedefinieerd wordt de naam van de entiteit weergegeven |
 | `icon` | string | Optioneel | Elk `mdi:` pictogram | Een pictogram voor je mediaspeler, indien niet gedefinieerd wordt het pictogram van de entiteit of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft het pictogram voorrang boven de `entity-picture` |
-| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#sjablonen) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt het pictogram |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan hun container |
@@ -663,7 +663,7 @@ Met deze kaart bedien je je `cover`-entiteiten.
 | `entity` | string | **Verplicht** | Elke cover | Een cover om te bedienen |
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je zonwering, indien niet gedefinieerd wordt de entiteitsnaam weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft voorrang aan het pictogram in plaats van de `entity-picture` |
-| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#sjablonen) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan de container |
@@ -753,7 +753,7 @@ Met deze kaart voeg je een dropdownmenu toe voor je `input_select`- / `select`-e
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je select, indien niet gedefinieerd wordt de entiteitsnaam weergegeven |
 | `icon` | string | Optioneel | Elk `mdi:`-pictogram | Een pictogram voor je select, indien niet gedefinieerd wordt het entiteitspictogram of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft voorrang aan het pictogram in plaats van de `entity-picture` |
-| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#sjablonen) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan de container |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Optioneel | `true` (standaard) of `false` | Toon een achtergrond voor je subknop, deze verandert van kleur op basis van de status van je entiteit |
 | `state_background` | boolean | Optioneel | `true` (standaard) of `false` | Gebruik de statuskleur wanneer de entiteit `on` is |
 | `light_background` | boolean | Optioneel | `true` (standaard) of `false` | Gebruik de lichtkleur voor de achtergrond indien beschikbaar |
-| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#sjablonen) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` of `false` (standaard) | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
 | `select_attribute` | string | Optioneel | Een attributenlijst van je `entity` (zie ondersteunde opties hierboven) | Deze attributenlijst opent een dropdown bij een klik (bijv. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Voorwaarden worden in je browser geëvalueerd, dus de enkele die de Home Assistant-server nodig hebben kunnen niet exact zijn: zonsopgang en zonsondergang worden uit de entiteit `sun.sun` gelezen in plaats van opnieuw berekend, en een `for`-duur wordt gemeten vanaf de laatste statuswijziging, zonder de geschiedenis van recorder.
+> Voorwaarden worden in je browser geëvalueerd, dus de enkele die de Home Assistant-server nodig hebben kunnen niet exact zijn: zonsopgang en zonsondergang worden uit de entiteit `sun.sun` gelezen in plaats van opnieuw berekend, en een `for`-duur wordt gemeten vanaf de laatste statuswijziging, zonder de geschiedenis van recorder. De uitzondering is `template`, dat door de server wordt gerenderd zoals elk ander [Home Assistant-sjabloon](#sjablonen).
 >
 > `view_columns` wordt aanvaard maar slaagt altijd, aangezien Bubble Card nooit degene is die de kolommen van je weergave indeelt. Een voorwaardetype dat Bubble Card niet kent, meldt zichzelf één keer in je browserconsole in plaats van stilletjes te mislukken, zodat je een typfout kunt onderscheiden van een ontbrekende functie.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Sjablonen
 
-**Bubble Card ondersteunt geen Jinja-sjablonen**, maar gevorderde gebruikers kunnen sjablonen in JS rechtstreeks toevoegen in hun [aangepaste stijlen](#stijl). Zo kun je bijvoorbeeld dynamisch een pictogram, de teksten of de kleuren van een element wijzigen, een element voorwaardelijk tonen of verbergen (zoals een subknop), of bijna alles op basis van een status, een attribuut en meer.
+Bubble Card ondersteunt twee soorten sjablonen:
+
+- **Home Assistant-sjablonen (Jinja)**, die je al schrijft in je automatiseringen, in Mushroom of in card-mod. Zet `{{ ... }}` of `{% ... %}` in een ondersteund veld en Home Assistant rendert het live voor je.
+- **JavaScript-sjablonen**, `${ ... }` in je [aangepaste stijlen](#stijl), voor alles wat in de kaart zelf moet reiken.
+
+### Home Assistant-sjablonen (Jinja)
+
+Sjablonen worden gerenderd door je Home Assistant-server en werken zichzelf bij wanneer wat ze lezen verandert. Ze werken in deze velden:
+
+<details>
+
+<summary><b>Ondersteunde velden (met voorbeelden)</b></summary>
+
+| Veld | Voorbeeld |
+| --- | --- |
+| `name`, op elke kaart (koptekst van de pop-up en scheidingslijn inbegrepen) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, op elke kaart (`icon_open`, `icon_close`, `icon_up` en `icon_down` van een zonwering ook) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` en `icon` van een [subknop](#subknoppen) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, op een kaart of een subknop, naast `state` en attribuutnamen | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... van een [horizontale knoppenstack](#horizontale-knoppenstack) | `1_name: "{{ user }}"` |
+| `styles` van een kaart en de code van een [module](#modules), gemengd met JavaScript-sjablonen | zie hieronder |
+| [Voorwaarden](#voorwaarden), met `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Zet een sjabloon altijd tussen aanhalingstekens. Zonder aanhalingstekens leest YAML `name: {{ states('x') }}` als een mapping in plaats van als tekst, en weigert de kaart het.
+
+Drie variabelen zijn beschikbaar bovenop alles wat Home Assistant biedt (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filters, de macro's van je map `custom_templates`...):
+
+- `entity` is de entiteit van de kaart, of van de subknop voor een subknopveld.
+- `config.entity` is dezelfde waarde, voor de sjablonen die je voor card-mod hebt geschreven.
+- `user` is de naam van de ingelogde gebruiker.
+
+Resultaten worden door Home Assistant precies zo geparseerd als in de ontwikkelhulpmiddelen, dus `21.50` wordt getoond als `21.5`. Voeg `| string` toe wanneer de tekst moet blijven zoals hij is.
+
+<details>
+
+<summary>Home Assistant-sjablonen in je aangepaste stijlen</summary>
+
+<br>
+
+Een sjabloon kan een waarde bevatten of hele CSS-regels omsluiten:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+JavaScript-sjablonen en Home Assistant-sjablonen kunnen een blok delen. Houd elke `${ }` buiten een `{% if %} ... {% endif %}`-blok, elke kant wordt door een andere engine gerenderd en een in tweeën geknipt blok kan niet gerenderd worden.
+
+Je eigen tekst in de statusregel heeft helemaal geen stijlen nodig, `state_content` neemt een sjabloon als een van zijn items:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Binnen een JavaScript-sjabloon geeft `renderTemplate("{{ ... }}")` je de gerenderde tekst van een Home Assistant-sjabloon, voor de plekken waar een sjabloon niet zelf kan komen:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Fouten worden getoond in de editor, onder de aangepaste stijlen, en in je browserconsole.
+
+</details>
+
+### JavaScript-sjablonen
+
+Gevorderde gebruikers kunnen sjablonen in JS rechtstreeks toevoegen in hun [aangepaste stijlen](#stijl). Zo kun je bijvoorbeeld dynamisch een pictogram, de teksten of de kleuren van een element wijzigen, een element voorwaardelijk tonen of verbergen (zoals een subknop), of bijna alles op basis van een status, een attribuut en meer.
 
 > [!TIP]  
 > Meer informatie over JS-sjablonen [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Mijn advies is om **altijd een blik te werpen op je browserconsole** om er zeker van te zijn dat alles correct werkt.
@@ -2095,6 +2176,7 @@ Je hebt toegang tot alle globale JS-functies, maar ook tot:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` geeft `true` terug wanneer aan een lijst met [voorwaarden](#voorwaarden) is voldaan, bijvoorbeeld `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` geeft de tekst terug die Home Assistant voor een Jinja-sjabloon rendert, bijvoorbeeld `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Het tweede argument is wat het sjabloon als `entity` ziet, standaard de entiteit van je kaart.
 - `hass.formatEntityState(state)` kan gebruikt worden om een status te vertalen (kan ook gebruikt worden om een eenheid van een status te krijgen, zonder deze handmatig te moeten toevoegen).
 - `hass.formatEntityAttributeValue(state, "attribute")` kan gebruikt worden om een attribuut te vertalen (kan ook gebruikt worden om een eenheid van een status te krijgen, zonder deze handmatig te moeten toevoegen).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Als je de status (`.bubble-state`) vanuit je stijlen wilt sjabloneren, verschijnt de regel op het scherm zodra een sjabloon erin schrijft, wat `state_content` ook zegt.
+
+Hetzelfde zonder enige stijlen, met een Home Assistant-sjabloon in `state_content`, wat je ook de vertaalde status geeft:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

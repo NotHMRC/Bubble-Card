@@ -412,7 +412,7 @@ auto_order: true
 | `icon` | string | Необов'язково | Будь-яка іконка `mdi:` | Іконка кнопки, якщо не задано, буде показано іконку сутності або `entity-picture` |
 | `force_icon` | boolean | Необов'язково | `true` або `false` (за замовчуванням) | Надати пріоритет іконці замість `entity-picture` |
 | `use_accent_color` | boolean | Необов'язково (за замовчуванням `false`) | **Лише для світла.** Використати акцентний колір теми замість кольору світла.                         |
-| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#templates) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
+| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#шаблони) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
 | `show_name` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати назву |
 | `show_icon` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати іконку |
 | `scrolling_effect` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Дозволити прокручування тексту, якщо вміст перевищує розмір контейнера |
@@ -547,7 +547,7 @@ sub_button:
 | `name` | string | Необов'язково | Будь-який рядок | Назва вашого медіаплеєра, якщо не задано, буде показано назву сутності |
 | `icon` | string | Необов'язково | Будь-яка іконка `mdi:` | Іконка вашого медіаплеєра, якщо не задано, буде показано іконку сутності або `entity-picture` |
 | `force_icon` | boolean | Необов'язково | `true` або `false` (за замовчуванням) | Надати пріоритет іконці замість `entity-picture` |
-| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#templates) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
+| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#шаблони) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
 | `show_name` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати назву |
 | `show_icon` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати іконку |
 | `scrolling_effect` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Дозволити прокручування тексту, якщо вміст перевищує розмір контейнера |
@@ -663,7 +663,7 @@ sub_button:
 | `entity` | string | **Обов'язково** | Будь-які жалюзі | Жалюзі для керування |
 | `name` | string | Необов'язково | Будь-який рядок | Назва ваших жалюзі, якщо не задано, буде показано назву сутності |
 | `force_icon` | boolean | Необов'язково | `true` або `false` (за замовчуванням) | Надати пріоритет іконці замість `entity-picture` |
-| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#templates) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
+| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#шаблони) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
 | `show_name` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати назву |
 | `show_icon` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати іконку |
 | `scrolling_effect` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Дозволити прокручування тексту, якщо вміст перевищує розмір контейнера |
@@ -753,7 +753,7 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Необов'язково | Будь-який рядок | Назва вашого вибору, якщо не задано, буде показано назву сутності |
 | `icon` | string | Необов'язково | Будь-яка іконка `mdi:` | Іконка вашого вибору, якщо не задано, буде показано іконку сутності або `entity-picture` |
 | `force_icon` | boolean | Необов'язково | `true` або `false` (за замовчуванням) | Надати пріоритет іконці замість `entity-picture` |
-| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#templates) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
+| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#шаблони) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
 | `show_name` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати назву |
 | `show_icon` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Показати або приховати іконку |
 | `scrolling_effect` | boolean | Необов'язково | `true` (за замовчуванням) або `false` | Дозволити прокручування тексту, якщо вміст перевищує розмір контейнера |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Необов'язково | `true` (типово) або `false` | Показати фон додаткової кнопки, він змінить колір залежно від стану вашої сутності |
 | `state_background` | boolean | Необов'язково | `true` (типово) або `false` | Використовувати колір стану, коли сутність `on` |
 | `light_background` | boolean | Необов'язково | `true` (типово) або `false` | Використовувати колір світла для фону, коли доступно |
-| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#templates) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
+| `state_content` | string або list | Необов'язково | `state`, `last-changed`, `last-updated`, `last-triggered`, назва атрибута, наприклад `brightness` або `forecast[0].temperature`, або [шаблон](#шаблони) | Що показує рядок під назвою, у цьому порядку. Без нього кнопка `button_type: state` показує те, що Home Assistant показує для сутності (її стан, а також поточну температуру кліматичної сутності, позицію жалюзі, яскравість світла). Старі ключі `show_state`, `show_attribute`, `attribute`, `show_last_changed` і `show_last_updated` досі працюють і переписуються як `state_content`, коли ви відкриваєте редактор. |
 | `show_name` | boolean | Необов'язково | `true` або `false` (типово) | Показати або приховати назву |
 | `show_icon` | boolean | Необов'язково | `true` (типово) або `false` | Показати або приховати іконку |
 | `select_attribute` | string | Необов'язково | Список атрибутів вашої `entity` (див. підтримувані значення вище) | Цей список атрибутів відкриє випадаючий список при натисканні (наприклад, `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Умови обчислюються у вашому браузері, тож ті нечисленні з них, яким потрібен сервер Home Assistant, не можуть бути точними: схід і захід сонця зчитуються з сутності `sun.sun`, а не обчислюються заново, а тривалість `for` вимірюється від останньої зміни стану, без історії recorder.
+> Умови обчислюються у вашому браузері, тож ті нечисленні з них, яким потрібен сервер Home Assistant, не можуть бути точними: схід і захід сонця зчитуються з сутності `sun.sun`, а не обчислюються заново, а тривалість `for` вимірюється від останньої зміни стану, без історії recorder. Виняток становить `template`, який сервер обробляє, як і будь-який інший [шаблон Home Assistant](#шаблони).
 >
 > `view_columns` приймається, але завжди виконується, адже не Bubble Card розкладає стовпці вашого подання. Тип умови, якого Bubble Card не знає, один раз повідомляє про себе в консолі вашого браузера, замість того щоб тихо не спрацювати, тож ви можете відрізнити помилку в написанні від відсутньої можливості.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Шаблони
 
-**Bubble Card не підтримує шаблони Jinja**, але досвідчені користувачі можуть додавати шаблони на JS прямо у своїх [власних стилях](#оформлення). Наприклад, це дозволяє динамічно змінювати іконку, тексти чи кольори елемента, показувати або приховувати елемент за умовою (наприклад, додаткову кнопку), або майже все, що завгодно, на основі стану, атрибута тощо.
+Bubble Card підтримує два види шаблонів:
+
+- **Шаблони Home Assistant (Jinja)**, ті, які ви вже пишете у своїх автоматизаціях, у Mushroom чи в card-mod. Поставте `{{ ... }}` або `{% ... %}` у підтримуване поле, і Home Assistant обробить його для вас, наживо.
+- **Шаблони JavaScript**, `${ ... }` у ваших [власних стилях](#оформлення), для всього, що має дістатися до самої картки.
+
+### Шаблони Home Assistant (Jinja)
+
+Шаблони обробляються вашим сервером Home Assistant і оновлюються самі, коли змінюється те, що вони читають. Вони працюють у таких полях:
+
+<details>
+
+<summary><b>Підтримувані поля (з прикладами)</b></summary>
+
+| Поле | Приклад |
+| --- | --- |
+| `name`, на кожній картці (заголовок спливного вікна та розділювач включно) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, на кожній картці (`icon_open`, `icon_close`, `icon_up` і `icon_down` жалюзі теж) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` та `icon` [додаткової кнопки](#додаткові-кнопки) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, на картці або додатковій кнопці, поряд зі `state` та назвами атрибутів | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [горизонтального стеку кнопок](#горизонтальний-стек-кнопок) | `1_name: "{{ user }}"` |
+| `styles` картки та код [модуля](#модулі), упереміш із шаблонами JavaScript | див. нижче |
+| [Умови](#умови), з `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Завжди беріть шаблон у лапки. Без них `name: {{ states('x') }}` YAML читає як мапу, а не як текст, і картка його відхиляє.
+
+Три змінні доступні на додачу до всього, що пропонує Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, фільтри, макроси з вашої папки `custom_templates`...):
+
+- `entity` це сутність картки або додаткової кнопки для поля додаткової кнопки.
+- `config.entity` це те саме значення, для шаблонів, які ви писали для card-mod.
+- `user` це ім'я користувача, який увійшов.
+
+Результати Home Assistant інтерпретує точно так само, як в інструментах розробника, тож `21.50` показується як `21.5`. Додайте `| string`, коли текст має залишитися як є.
+
+<details>
+
+<summary>Шаблони Home Assistant у ваших власних стилях</summary>
+
+<br>
+
+Шаблон може містити значення або обгортати цілі правила CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Шаблони JavaScript і шаблони Home Assistant можуть ділити один блок. Тримайте кожен `${ }` поза блоком `{% if %} ... {% endif %}`, кожну сторону обробляє інший рушій, а розрізаний надвоє блок обробити неможливо.
+
+Вашому власному тексту в рядку стану стилі взагалі не потрібні, `state_content` приймає шаблон як один зі своїх елементів:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Усередині шаблону JavaScript `renderTemplate("{{ ... }}")` дає вам оброблений текст шаблону Home Assistant, для місць, куди шаблон сам дістатися не може:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Помилки показуються в редакторі, під власними стилями, і в консолі вашого браузера.
+
+</details>
+
+### Шаблони JavaScript
+
+Досвідчені користувачі можуть додавати шаблони на JS прямо у своїх [власних стилях](#оформлення). Наприклад, це дозволяє динамічно змінювати іконку, тексти чи кольори елемента, показувати або приховувати елемент за умовою (наприклад, додаткову кнопку), або майже все, що завгодно, на основі стану, атрибута тощо.
 
 > [!TIP]  
 > Більше інформації про шаблони JS [тут](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Моя порада: **завжди перевіряйте консоль браузера**, щоб переконатися, що все працює правильно.
@@ -2095,6 +2176,7 @@ styles: |
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` повертає `true`, коли список [умов](#умови) виконано, наприклад `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` повертає текст, який Home Assistant обробив для шаблону Jinja, наприклад `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Другий аргумент це те, що шаблон бачить як `entity`, за замовчуванням сутність вашої картки.
 - `hass.formatEntityState(state)` можна використати, щоб перекласти стан (також можна використати, щоб отримати одиницю виміру стану без потреби додавати її вручну).
 - `hass.formatEntityAttributeValue(state, "attribute")` можна використати, щоб перекласти атрибут (також можна використати, щоб отримати одиницю виміру стану без потреби додавати її вручну).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Якщо ви хочете шаблонувати стан (`.bubble-state`) зі своїх стилів, рядок з'являється на екрані, щойно шаблон щось у нього записує, незалежно від того, що каже `state_content`.
+
+Те саме без жодних стилів, із шаблоном Home Assistant у `state_content`, що також дає вам перекладений стан:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 

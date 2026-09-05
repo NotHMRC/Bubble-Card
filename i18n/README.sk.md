@@ -412,7 +412,7 @@ Táto karta je veľmi univerzálna. Dá sa použiť ako **prepínač**, **posuvn
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre vaše tlačidlo, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Iba pre svetlá.** Použije zvýrazňovaciu farbu témy namiesto farby svetla.                         |
-| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#šablóny) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
@@ -547,7 +547,7 @@ Táto karta vám umožňuje ovládať entitu prehrávača médií.
 | `name` | string | Optional | Any string | Názov vášho prehrávača médií, ak nie je definovaný, zobrazí sa názov entity |
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre váš prehrávač médií, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#šablóny) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
@@ -663,7 +663,7 @@ Táto karta vám umožňuje ovládať vaše entity `cover`.
 | `entity` | string | **Required** | Any cover | Roleta na ovládanie |
 | `name` | string | Optional | Any string | Názov vašej rolety, ak nie je definovaný, zobrazí sa názov entity |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#šablóny) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
@@ -753,7 +753,7 @@ Táto karta vám umožňuje pridať rozbaľovaciu ponuku pre vaše entity `input
 | `name` | string | Optional | Any string | Názov vášho select, ak nie je definovaný, zobrazí sa názov entity |
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre váš select, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#šablóny) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
@@ -1274,7 +1274,7 @@ sub_button:
 | `show_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Zobrazí pozadie podtlačidla, jeho farba sa mení podľa stavu entity |
 | `state_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Použije farbu stavu, keď je entita `on` |
 | `light_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Použije farbu svetla pre pozadie, ak je k dispozícii |
-| `state_content` | string alebo list | Voliteľné | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
+| `state_content` | string alebo list | Voliteľné | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#šablóny) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Zobrazí alebo skryje ikonu |
 | `select_attribute` | string | Voliteľné | Zoznam atribútov z vašej `entity` (pozri podporované možnosti vyššie) | Tento zoznam atribútov po kliknutí otvorí rozbaľovací zoznam (napr. `effect_list`) |
@@ -1614,7 +1614,7 @@ sub_button:
 </details>
 
 > [!NOTE]
-> Podmienky sa vyhodnocujú vo vašom prehliadači, takže tých pár, ktoré potrebujú server Home Assistant, nemôže byť presných: východ a západ slnka sa čítajú z entity `sun.sun` namiesto toho, aby sa prepočítavali, a trvanie `for` sa meria od poslednej zmeny stavu, bez histórie z recorder.
+> Podmienky sa vyhodnocujú vo vašom prehliadači, takže tých pár, ktoré potrebujú server Home Assistant, nemôže byť presných: východ a západ slnka sa čítajú z entity `sun.sun` namiesto toho, aby sa prepočítavali, a trvanie `for` sa meria od poslednej zmeny stavu, bez histórie z recorder. Výnimkou je `template`, ktorú vykresľuje server ako každú inú [šablónu Home Assistant](#šablóny).
 >
 > `view_columns` sa prijíma, ale vždy prejde, pretože stĺpce vášho zobrazenia nikdy nerozmiestňuje Bubble Card. Typ podmienky, ktorý Bubble Card nepozná, sa raz ohlási v konzole vášho prehliadača namiesto toho, aby zlyhal potichu, takže rozoznáte preklep od chýbajúcej funkcie.
 
@@ -2029,7 +2029,88 @@ styles: |
 
 ## Šablóny
 
-**Bubble Card nepodporuje šablóny Jinja**, ale pokročilí používatelia môžu pridávať šablóny v JS priamo do svojich [vlastných štýlov](#štýly). Toto napríklad umožňuje dynamicky meniť ikonu, texty alebo farby prvku, podmienene zobraziť či skryť prvok (napríklad podtlačidlo), alebo takmer čokoľvek na základe stavu, atribútu a podobne.
+Bubble Card podporuje dva druhy šablón:
+
+- **Šablóny Home Assistant (Jinja)**, tie, ktoré už píšete vo svojich automatizáciách, v Mushroom alebo v card-mod. Vložte `{{ ... }}` alebo `{% ... %}` do podporovaného poľa a Home Assistant ho pre vás vykreslí, naživo.
+- **Šablóny JavaScript**, `${ ... }` vo vašich [vlastných štýloch](#štýly), pre všetko, čo potrebuje siahnuť do samotnej karty.
+
+### Šablóny Home Assistant (Jinja)
+
+Šablóny vykresľuje váš server Home Assistant a aktualizujú sa samy, keď sa zmení to, čo čítajú. Fungujú v týchto poliach:
+
+<details>
+
+<summary><b>Podporované polia (s príkladmi)</b></summary>
+
+| Pole | Príklad |
+| --- | --- |
+| `name`, na každej karte (vrátane hlavičky pop-upu a oddeľovača) | `name: "{{ states('sensor.living_temp') }} °C"` |
+| `icon`, na každej karte (aj `icon_open`, `icon_close`, `icon_up` a `icon_down` rolety) | `icon: "{{ 'mdi:window-open' if is_state('binary_sensor.window', 'on') else 'mdi:window-closed' }}"` |
+| `name` a `icon` [podtlačidla](#podtlačidlá) | `name: "{{ 'Wet' if states(entity) \| float > 60 else 'Dry' }}"` |
+| `state_content`, na karte alebo podtlačidle, popri `state` a názvoch atribútov | `state_content: [state, "{{ states('sensor.humidity') }} %"]` |
+| `1_name`, `1_icon`... [horizontálneho zásobníka tlačidiel](#horizontálny-zásobník-tlačidiel) | `1_name: "{{ user }}"` |
+| `styles` karty a kód [modulu](#moduly), zmiešané so šablónami JavaScript | pozri nižšie |
+| [Podmienky](#podmienky), s `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
+
+> [!IMPORTANT]
+> Šablónu vždy dajte do úvodzoviek. Bez nich YAML prečíta `name: {{ states('x') }}` ako mapovanie a nie ako text, a karta ju odmietne.
+
+Popri všetkom, čo ponúka Home Assistant (`states()`, `state_attr()`, `is_state()`, `area_entities()`, `expand()`, filtre, makrá z vášho priečinka `custom_templates`...), sú k dispozícii tri premenné:
+
+- `entity` je entita karty, alebo podtlačidla pri poli podtlačidla.
+- `config.entity` je tá istá hodnota, pre šablóny, ktoré ste napísali pre card-mod.
+- `user` je meno prihláseného používateľa.
+
+Výsledky Home Assistant spracúva presne tak ako vo vývojárskych nástrojoch, takže `21.50` sa zobrazí ako `21.5`. Pridajte `| string`, keď má text zostať tak, ako je.
+
+<details>
+
+<summary>Šablóny Home Assistant vo vašich vlastných štýloch</summary>
+
+<br>
+
+Šablóna môže obsahovať hodnotu alebo obaliť celé pravidlá CSS:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: light.kitchen
+styles: |
+  .bubble-icon {
+    color: {{ 'orange' if is_state(entity, 'on') else 'grey' }};
+  }
+  {% if is_state('input_boolean.night_mode', 'on') %}
+  .bubble-name { opacity: 0.5; }
+  {% endif %}
+```
+
+Šablóny JavaScript a šablóny Home Assistant môžu zdieľať jeden blok. Každé `${ }` nechajte mimo bloku `{% if %} ... {% endif %}`, každú stranu vykresľuje iný engine a blok rozdelený na dve časti sa vykresliť nedá.
+
+Váš vlastný text v riadku stavu nepotrebuje žiadne štýly, `state_content` prijme šablónu ako jednu zo svojich položiek:
+
+```yaml
+type: custom:bubble-card
+card_type: button
+entity: sensor.humidity
+state_content: "{{ states('sensor.humidity') }} % of humidity"
+```
+
+Vo vnútri šablóny JavaScript vám `renderTemplate("{{ ... }}")` dá vykreslený text šablóny Home Assistant, pre miesta, kam šablóna sama nedosiahne:
+
+```yaml
+styles: |
+  ${card.querySelector('.bubble-name').innerText = renderTemplate("{{ states('sensor.humidity') }} % of humidity")}
+```
+
+Chyby sa zobrazujú v editore, pod vlastnými štýlmi, a v konzole vášho prehliadača.
+
+</details>
+
+### Šablóny JavaScript
+
+Pokročilí používatelia môžu pridávať šablóny v JS priamo do svojich [vlastných štýlov](#štýly). Toto napríklad umožňuje dynamicky meniť ikonu, texty alebo farby prvku, podmienene zobraziť či skryť prvok (napríklad podtlačidlo), alebo takmer čokoľvek na základe stavu, atribútu a podobne.
 
 > [!TIP]  
 > Viac informácií o JS šablónach [tu](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Moja rada je **vždy skontrolovať konzolu prehliadača**, aby ste sa uistili, že všetko funguje správne.
@@ -2095,6 +2176,7 @@ Máte prístup ku všetkým globálnym JS funkciám, ale aj k:
             forecast: "{{ daily['weather.home'].forecast }}"
   ```
 - `checkConditionsMet(conditions, hass)` vráti `true`, keď je splnený zoznam [podmienok](#podmienky), napríklad `${checkConditionsMet([{condition: 'sun.is_set'}], hass) ? 'block' : 'none'}`.
+- `renderTemplate(template, entity)` vráti text, ktorý Home Assistant vykreslil pre šablónu Jinja, napríklad `${card.querySelector('.bubble-state').innerText = renderTemplate("{{ states('sensor.humidity') }} %")}`. Druhý argument je to, čo šablóna vidí ako `entity`, predvolene entita vašej karty.
 - `hass.formatEntityState(state)` možno použiť na preklad stavu (možno použiť aj na získanie jednotky stavu bez potreby ju pridávať manuálne).
 - `hass.formatEntityAttributeValue(state, "attribute")` možno použiť na preklad atribútu (možno použiť aj na získanie jednotky stavu bez potreby ju pridávať manuálne).
 
@@ -2283,6 +2365,11 @@ styles: |
 
 
 Ak chcete šablónovať stav (`.bubble-state`) zo svojich štýlov, riadok sa zobrazí na obrazovke hneď, ako doň šablóna niečo zapíše, bez ohľadu na to, čo hovorí `state_content`.
+
+To isté bez akýchkoľvek štýlov, so šablónou Home Assistant v `state_content`, ktorá vám dá aj preložený stav:
+```yaml
+state_content: "It's currently {{ states('weather.home') | lower }}"
+```
 
 </details>
 
