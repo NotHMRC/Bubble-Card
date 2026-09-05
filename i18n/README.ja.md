@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | 任意 | 任意の `mdi:` アイコン | ボタンのアイコン。未指定の場合はエンティティのアイコンまたは `entity-picture` を表示します |
 | `force_icon` | boolean | 任意 | `true` または `false`（デフォルト） | `entity-picture` の代わりにアイコンを優先します |
 | `use_accent_color` | boolean | 任意（デフォルト `false`） | **照明専用。** 照明の色の代わりにテーマのアクセントカラーを使用します。                         |
-| `show_state` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の状態を表示または非表示 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`（デフォルト） または `false` | 名前を表示または非表示 |
 | `show_icon` | boolean | 任意 | `true`（デフォルト） または `false` | アイコンを表示または非表示 |
-| `show_last_changed` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の最終変更時刻を表示 |
-| `show_last_updated` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の最終更新時刻を表示 |
-| `show_attribute` | boolean | 任意 | `true` または `false`（デフォルト） | `name` の下に `entity` の属性を表示 |
-| `attribute` | string | 任意（`show_attribute` が `true` の場合は必須） | `entity` の属性 | 表示する属性（例：`brightness`） |
 | `scrolling_effect` | boolean | 任意 | `true`（デフォルト） または `false` | コンテンツがコンテナのサイズを超えた場合にテキストをスクロールさせる |
 | `button_action` | object | 任意 | `tap_action`、`double_tap_action`、`hold_action`（下記参照） | ボタンクリック時のデフォルトアクションを変更できます。 |
 | `tap_action` | object | 任意 | [アクション](#タップダブルタップ長押しのアクション)を参照 | アイコンクリック時のアクションの種類を定義。未定義の場合は `more-info` が使用されます |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | 任意 | 任意の文字列 | メディアプレーヤーの名前。未指定の場合はエンティティ名を表示します |
 | `icon` | string | 任意 | 任意の `mdi:` アイコン | メディアプレーヤーのアイコン。未指定の場合はエンティティのアイコンまたは `entity-picture` を表示します |
 | `force_icon` | boolean | 任意 | `true` または `false`（デフォルト） | `entity-picture` の代わりにアイコンを優先します |
-| `show_state` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の状態を表示または非表示 |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`（デフォルト） または `false` | 名前を表示または非表示 |
 | `show_icon` | boolean | 任意 | `true`（デフォルト） または `false` | アイコンを表示または非表示 |
-| `show_last_changed` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の最終変更時刻を表示 |
-| `show_last_updated` | boolean | 任意 | `true` または `false`（デフォルト） | `entity` の最終更新時刻を表示 |
-| `show_attribute` | boolean | 任意 | `true` または `false`（デフォルト） | `name` の下に `entity` の属性を表示 |
-| `attribute` | string | 任意（`show_attribute` が `true` の場合は必須） | `entity` の属性 | 表示する属性（例：`brightness`） |
 | `scrolling_effect` | boolean | 任意 | `true`（デフォルト） または `false` | コンテンツがコンテナのサイズを超えた場合にテキストをスクロールさせる |
 | `min_volume` | number | 任意 | 任意の数値 | 音量スライダーの最小値。 |
 | `max_volume` | number | 任意 | 任意の数値 | 音量スライダーの最大値。 |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **必須** | 任意のカバー | 制御するカバー |
 | `name` | string | 任意 | 任意の文字列 | カバーの名前。指定しない場合はエンティティ名が表示されます |
 | `force_icon` | boolean | 任意 | `true` または `false` (デフォルト) | `entity-picture`よりアイコンを優先します |
-| `show_state` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の状態を表示または非表示にします |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true` (デフォルト) または `false` | 名前を表示または非表示にします |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または `false` | アイコンを表示または非表示にします |
-| `show_last_changed` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の最終変更時刻を表示します |
-| `show_last_updated` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の最終更新時刻を表示します |
-| `show_attribute` | boolean | 任意 | `true` または `false` (デフォルト) | `name`の下に`entity`の属性を表示します |
-| `attribute` | string | 任意 (`show_attribute`が`true`の場合は必須) | `entity`の属性 | 表示する属性 (例: `brightness`) |
 | `scrolling_effect` | boolean | 任意 | `true` (デフォルト) または `false` | コンテンツがコンテナのサイズを超えたときにテキストをスクロールさせます |
 | `icon_open` | string | 任意 | 任意の`mdi:`アイコン | 開いた状態のカバー用アイコン。指定しない場合はデフォルトの開いたカバーアイコンが表示されます |
 | `icon_close` | string | 任意 | 任意の`mdi:`アイコン | 閉じた状態のカバー用アイコン。指定しない場合はデフォルトの閉じたカバーアイコンが表示されます |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 任意 | 任意の文字列 | セレクトの名前。指定しない場合はエンティティ名が表示されます |
 | `icon` | string | 任意 | 任意の`mdi:`アイコン | セレクトのアイコン。指定しない場合はエンティティのアイコンまたは`entity-picture`が表示されます |
 | `force_icon` | boolean | 任意 | `true` または `false` (デフォルト) | `entity-picture`よりアイコンを優先します |
-| `show_state` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の状態を表示または非表示にします |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true` (デフォルト) または `false` | 名前を表示または非表示にします |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または `false` | アイコンを表示または非表示にします |
-| `show_last_changed` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の最終変更時刻を表示します |
-| `show_last_updated` | boolean | 任意 | `true` または `false` (デフォルト) | `entity`の最終更新時刻を表示します |
-| `show_attribute` | boolean | 任意 | `true` または `false` (デフォルト) | `name`の下に`entity`の属性を表示します |
-| `attribute` | string | 任意 (`show_attribute`が`true`の場合は必須) | `entity`の属性 | 表示する属性 (例: `brightness`) |
 | `scrolling_effect` | boolean | 任意 | `true` (デフォルト) または `false` | コンテンツがコンテナのサイズを超えたときにテキストをスクロールさせます |
 | `tap_action` | object | 任意 | [アクション](#タップダブルタップ長押しのアクション)を参照 | アイコンクリック時のアクションタイプを定義します。未定義の場合は`more-info`が使用されます。 |
 | `double_tap_action` | object | 任意 | [アクション](#タップダブルタップ長押しのアクション)を参照 | アイコンをダブルクリックしたときのアクションタイプを定義します。未定義の場合は`none`が使用されます。 |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | 任意                            | 任意の文字列                                       | カードのカスタム名。指定しない場合はエンティティ名が表示されます。                                                    |
 | `icon`                  | string  | 任意                            | 任意の`mdi:`アイコン                                  | カードのカスタムアイコン。指定しない場合はエンティティのアイコンまたは`entity-picture`が使用されます。                   |
 | `force_icon`            | boolean | 任意                            | `true` または `false` (デフォルト)                     | `entity-picture`よりアイコンを優先します。                                                           |
-| `show_state`            | boolean | 任意                            | `true` または `false` (デフォルト)                     | `entity`の現在の状態を表示または非表示にします。                                                                 |
+| `state_content`         | string または list | 任意 | `state`、属性名、テンプレート | 名前の下の行に表示する内容です。ボタンのオプションを参照してください。従来の `show_state` キーも引き続き使えます。 |
 | `show_name`             | boolean | 任意                            | `true` (デフォルト) または `false`                     | エンティティの名前を表示または非表示にします。                                                                            |
 | `show_icon`             | boolean | 任意                            | `true` (デフォルト) または `false`                     | アイコンを表示または非表示にします。                                                                                          |
 | `hide_target_temp_low`  | boolean | 任意 (`target_temp_low`に対応するエンティティのみ) | `true` または `false` (デフォルト) | `entity`が対応している場合、下限目標温度のコントロールを非表示にします。                                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | 任意 | `true` (デフォルト) または`false` | サブボタンの背景を表示する。エンティティの状態に応じて色が変わる |
 | `state_background` | boolean | 任意 | `true` (デフォルト) または`false` | エンティティが`on`のときに状態の色を使用する |
 | `light_background` | boolean | 任意 | `true` (デフォルト) または`false` | 可能な場合、背景に照明の色を使用する |
-| `show_state` | boolean | 任意 | `true`または`false` (デフォルト) | `entity`の状態を表示または非表示にする |
+| `state_content` | string または list | 任意 | `state`、`last-changed`、`last-updated`、`last-triggered`、`brightness` や `forecast[0].temperature` のような属性名、または[テンプレート](#templates) | 名前の下の行に表示する内容を、この順序で指定します。指定しない場合、`button_type: state` のボタンには Home Assistant がそのエンティティに表示するのと同じ内容が表示されます（状態に加えて、空調なら現在の温度、カバーなら位置、ライトなら明るさ）。従来の `show_state`、`show_attribute`、`attribute`、`show_last_changed`、`show_last_updated` の各キーも引き続き使えます。エディターを開くと `state_content` に書き換えられます。 |
 | `show_name` | boolean | 任意 | `true`または`false` (デフォルト) | 名前を表示または非表示にする |
 | `show_icon` | boolean | 任意 | `true` (デフォルト) または`false` | アイコンを表示または非表示にする |
-| `show_last_changed` | boolean | 任意 | `true`または`false` (デフォルト) | `entity`の最終変更時刻を表示する |
-| `show_last_updated` | boolean | 任意 | `true`または`false` (デフォルト) | `entity`の最終更新時刻を表示する |
-| `show_attribute` | boolean | 任意 | `true`または`false` (デフォルト) | `entity`の属性を`name`の下に表示する |
-| `attribute` | string | 任意 (`show_attribute`が`true`の場合は必須) | `entity`の属性 | 表示する属性 (例: `brightness`) |
 | `select_attribute` | string | 任意 | `entity`の属性リスト (上記のサポートされている値を参照) | この属性リストは、クリックするとドロップダウンを開く (例: `effect_list`) |
 | `show_arrow` | boolean | 任意 | `true` (デフォルト) または`false` | セレクトサブボタンのドロップダウン矢印を表示または非表示にする |
 | `scrolling_effect` | boolean | 任意 | `true` (デフォルト) または`false` | コンテンツがコンテナのサイズを超えた場合にテキストをスクロールさせる |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

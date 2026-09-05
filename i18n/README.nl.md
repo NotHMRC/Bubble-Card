@@ -412,13 +412,9 @@ Deze kaart is erg veelzijdig. Je kunt hem gebruiken als **schakelaar**, **slider
 | `icon` | string | Optioneel | Elk `mdi:` pictogram | Een pictogram voor je knop, indien niet gedefinieerd wordt het pictogram van de entiteit of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft het pictogram voorrang boven de `entity-picture` |
 | `use_accent_color` | boolean | Optioneel (`false` standaard) | **Alleen voor lampen.** Gebruikt de accentkleur van het thema in plaats van de kleur van de lamp.                         |
-| `show_state` | boolean | Optioneel | `true` of `false` (standaard) | Toont of verbergt de status van je `entity` |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt het pictogram |
-| `show_last_changed` | boolean | Optioneel | `true` of `false` (standaard) | Toont het tijdstip van de laatste wijziging van je `entity` |
-| `show_last_updated` | boolean | Optioneel | `true` of `false` (standaard) | Toont het tijdstip van de laatste update van je `entity` |
-| `show_attribute` | boolean | Optioneel | `true` of `false` (standaard) | Toont een attribuut van je `entity` onder de `name` |
-| `attribute` | string | Optioneel (verplicht als `show_attribute` op `true` staat) | Een attribuut van je `entity` | Het te tonen attribuut (bijv. `brightness`) |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan hun container |
 | `button_action` | object | Optioneel | `tap_action`, `double_tap_action` of `hold_action`, zie hieronder | Hiermee kun je de standaardacties bij het klikken op de knop wijzigen. |
 | `tap_action` | object | Optioneel | Zie [acties](#tik--dubbeltik--en-vasthoudacties) | Definieert het type actie bij het klikken op het pictogram, indien niet gedefinieerd wordt `more-info` gebruikt |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Met deze kaart kun je een mediaspelerentiteit bedienen.
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je mediaspeler, indien niet gedefinieerd wordt de naam van de entiteit weergegeven |
 | `icon` | string | Optioneel | Elk `mdi:` pictogram | Een pictogram voor je mediaspeler, indien niet gedefinieerd wordt het pictogram van de entiteit of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft het pictogram voorrang boven de `entity-picture` |
-| `show_state` | boolean | Optioneel | `true` of `false` (standaard) | Toont of verbergt de status van je `entity` |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toont of verbergt het pictogram |
-| `show_last_changed` | boolean | Optioneel | `true` of `false` (standaard) | Toont het tijdstip van de laatste wijziging van je `entity` |
-| `show_last_updated` | boolean | Optioneel | `true` of `false` (standaard) | Toont het tijdstip van de laatste update van je `entity` |
-| `show_attribute` | boolean | Optioneel | `true` of `false` (standaard) | Toont een attribuut van je `entity` onder de `name` |
-| `attribute` | string | Optioneel (verplicht als `show_attribute` op `true` staat) | Een attribuut van je `entity` | Het te tonen attribuut (bijv. `brightness`) |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan hun container |
 | `min_volume` | number | Optioneel | Elk getal | De minimumwaarde van de volumeslider. |
 | `max_volume` | number | Optioneel | Elk getal | De maximumwaarde van de volumeslider. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Met deze kaart bedien je je `cover`-entiteiten.
 | `entity` | string | **Verplicht** | Elke cover | Een cover om te bedienen |
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je zonwering, indien niet gedefinieerd wordt de entiteitsnaam weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft voorrang aan het pictogram in plaats van de `entity-picture` |
-| `show_state` | boolean | Optioneel | `true` of `false` (standaard) | Toon of verberg de status van je `entity` |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
-| `show_last_changed` | boolean | Optioneel | `true` of `false` (standaard) | Toon het tijdstip van de laatste wijziging van je `entity` |
-| `show_last_updated` | boolean | Optioneel | `true` of `false` (standaard) | Toon het tijdstip van de laatste update van je `entity` |
-| `show_attribute` | boolean | Optioneel | `true` of `false` (standaard) | Toon een attribuut van je `entity` onder de `name` |
-| `attribute` | string | Optioneel (verplicht als `show_attribute` op `true` staat) | Een attribuut van je `entity` | Het te tonen attribuut (bijv. `brightness`) |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan de container |
 | `icon_open` | string | Optioneel | Elk `mdi:`-pictogram | Een pictogram voor je geopende zonwering, indien niet gedefinieerd wordt het standaard pictogram voor geopende zonwering weergegeven |
 | `icon_close` | string | Optioneel | Elk `mdi:`-pictogram | Een pictogram voor je gesloten zonwering, indien niet gedefinieerd wordt het standaard pictogram voor gesloten zonwering weergegeven |
@@ -778,13 +753,9 @@ Met deze kaart voeg je een dropdownmenu toe voor je `input_select`- / `select`-e
 | `name` | string | Optioneel | Elke tekenreeks | Een naam voor je select, indien niet gedefinieerd wordt de entiteitsnaam weergegeven |
 | `icon` | string | Optioneel | Elk `mdi:`-pictogram | Een pictogram voor je select, indien niet gedefinieerd wordt het entiteitspictogram of de `entity-picture` weergegeven |
 | `force_icon` | boolean | Optioneel | `true` of `false` (standaard) | Geeft voorrang aan het pictogram in plaats van de `entity-picture` |
-| `show_state` | boolean | Optioneel | `true` of `false` (standaard) | Toon of verberg de status van je `entity` |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
-| `show_last_changed` | boolean | Optioneel | `true` of `false` (standaard) | Toon het tijdstip van de laatste wijziging van je `entity` |
-| `show_last_updated` | boolean | Optioneel | `true` of `false` (standaard) | Toon het tijdstip van de laatste update van je `entity` |
-| `show_attribute` | boolean | Optioneel | `true` of `false` (standaard) | Toon een attribuut van je `entity` onder de `name` |
-| `attribute` | string | Optioneel (verplicht als `show_attribute` op `true` staat) | Een attribuut van je `entity` | Het te tonen attribuut (bijv. `brightness`) |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan de container |
 | `tap_action` | object | Optioneel | Zie [acties](#tik--dubbeltik--en-vasthoudacties) | Definieer het type actie bij het klikken op het pictogram, indien niet gedefinieerd wordt `more-info` gebruikt. |
 | `double_tap_action` | object | Optioneel | Zie [acties](#tik--dubbeltik--en-vasthoudacties) | Definieer het type actie bij het dubbelklikken op het pictogram, indien niet gedefinieerd wordt `none` gebruikt. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Met deze kaart bedien je je `climate`-entiteiten.
 | `name`                  | string  | Optioneel                            | Elke tekenreeks                                       | Een aangepaste naam voor de kaart. Indien niet gedefinieerd wordt de entiteitsnaam weergegeven.                                    |
 | `icon`                  | string  | Optioneel                            | Elk `mdi:`-pictogram                                  | Een aangepast pictogram voor de kaart. Indien niet gedefinieerd wordt het entiteitspictogram of de `entity-picture` gebruikt.                   |
 | `force_icon`            | boolean | Optioneel                            | `true` of `false` (standaard)                     | Geeft voorrang aan het pictogram in plaats van de `entity-picture`.                                                           |
-| `show_state`            | boolean | Optioneel                            | `true` of `false` (standaard)                     | Toon of verberg de huidige status van de `entity`.                                                                 |
+| `state_content`         | string of list | Optioneel | `state`, een attribuutnaam, een sjabloon | Wat de regel onder de naam toont, zie de opties van de knop. De oude sleutel `show_state` werkt nog steeds. |
 | `show_name`             | boolean | Optioneel                            | `true` (standaard) of `false`                     | Toon of verberg de naam van de entiteit.                                                                            |
 | `show_icon`             | boolean | Optioneel                            | `true` (standaard) of `false`                     | Toon of verberg het pictogram.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optioneel (alleen voor entiteiten die `target_temp_low` ondersteunen) | `true` of `false` (standaard) | Verbergt de bediening voor de lage doeltemperatuur indien ondersteund door de `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Optioneel | `true` (standaard) of `false` | Toon een achtergrond voor je subknop, deze verandert van kleur op basis van de status van je entiteit |
 | `state_background` | boolean | Optioneel | `true` (standaard) of `false` | Gebruik de statuskleur wanneer de entiteit `on` is |
 | `light_background` | boolean | Optioneel | `true` (standaard) of `false` | Gebruik de lichtkleur voor de achtergrond indien beschikbaar |
-| `show_state` | boolean | Optioneel | `true` of `false` (standaard) | Toon of verberg de status van je `entity` |
+| `state_content` | string of list | Optioneel | `state`, `last-changed`, `last-updated`, `last-triggered`, een attribuutnaam zoals `brightness` of `forecast[0].temperature`, of een [sjabloon](#templates) | Wat de regel onder de naam toont, in deze volgorde. Zonder deze optie toont een knop met `button_type: state` wat Home Assistant voor de entiteit toont (de status, plus de huidige temperatuur van een klimaatentiteit, de positie van een zonwering, de helderheid van een lamp). De oude sleutels `show_state`, `show_attribute`, `attribute`, `show_last_changed` en `show_last_updated` werken nog steeds en worden herschreven naar `state_content` wanneer je de editor opent. |
 | `show_name` | boolean | Optioneel | `true` of `false` (standaard) | Toon of verberg de naam |
 | `show_icon` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg het pictogram |
-| `show_last_changed` | boolean | Optioneel | `true` of `false` (standaard) | Toon de tijd van de laatste wijziging van je `entity` |
-| `show_last_updated` | boolean | Optioneel | `true` of `false` (standaard) | Toon de tijd van de laatste update van je `entity` |
-| `show_attribute` | boolean | Optioneel | `true` of `false` (standaard) | Toon een attribuut van je `entity` onder de `name` |
-| `attribute` | string | Optioneel (vereist als `show_attribute` op `true` staat) | Een attribuut van je `entity` | Het te tonen attribuut (bijv. `brightness`) |
 | `select_attribute` | string | Optioneel | Een attributenlijst van je `entity` (zie ondersteunde opties hierboven) | Deze attributenlijst opent een dropdown bij een klik (bijv. `effect_list`) |
 | `show_arrow` | boolean | Optioneel | `true` (standaard) of `false` | Toon of verberg de dropdownpijl voor select-subknoppen |
 | `scrolling_effect` | boolean | Optioneel | `true` (standaard) of `false` | Laat tekst scrollen wanneer de inhoud groter is dan de container |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

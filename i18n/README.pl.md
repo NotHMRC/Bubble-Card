@@ -412,13 +412,9 @@ Ta karta jest bardzo wszechstronna. Może służyć jako **przełącznik**, **su
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona Twojego przycisku, jeśli nie zdefiniowana, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Daje priorytet ikonie zamiast `entity-picture` |
 | `use_accent_color` | boolean | Opcjonalne (domyślnie `false`) | **Tylko dla świateł.** Używa koloru akcentu motywu zamiast koloru światła.                         |
-| `show_state` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje lub ukrywa stan Twojej `entity` |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa ikonę |
-| `show_last_changed` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje czas ostatniej zmiany Twojej `entity` |
-| `show_last_updated` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje czas ostatniej aktualizacji Twojej `entity` |
-| `show_attribute` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje atrybut Twojej `entity` pod jej `name` |
-| `attribute` | string | Opcjonalne (wymagane, jeśli `show_attribute` jest ustawione na `true`) | Atrybut z Twojej `entity` | Atrybut do pokazania (np. `brightness`) |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar swojego kontenera |
 | `button_action` | object | Opcjonalne | `tap_action`, `double_tap_action` lub `hold_action`, patrz poniżej | Pozwala zmienić domyślne akcje po kliknięciu przycisku. |
 | `tap_action` | object | Opcjonalne | Patrz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Definiuje typ akcji przy kliknięciu ikony, jeśli niezdefiniowane, użyte zostanie `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Ta karta pozwala sterować encją odtwarzacza mediów.
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojego odtwarzacza mediów, jeśli nie zdefiniowana, wyświetlana będzie nazwa encji |
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona Twojego odtwarzacza mediów, jeśli nie zdefiniowana, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Daje priorytet ikonie zamiast `entity-picture` |
-| `show_state` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje lub ukrywa stan Twojej `entity` |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokazuje lub ukrywa ikonę |
-| `show_last_changed` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje czas ostatniej zmiany Twojej `entity` |
-| `show_last_updated` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje czas ostatniej aktualizacji Twojej `entity` |
-| `show_attribute` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokazuje atrybut Twojej `entity` pod jej `name` |
-| `attribute` | string | Opcjonalne (wymagane, jeśli `show_attribute` jest ustawione na `true`) | Atrybut z Twojej `entity` | Atrybut do pokazania (np. `brightness`) |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar swojego kontenera |
 | `min_volume` | number | Opcjonalne | Dowolna liczba | Minimalna wartość suwaka głośności. |
 | `max_volume` | number | Opcjonalne | Dowolna liczba | Maksymalna wartość suwaka głośności. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Ta karta pozwala sterować Twoimi encjami `cover`.
 | `entity` | string | **Wymagane** | Dowolna roleta | Roleta do sterowania |
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojej rolety, jeśli nie zdefiniowano, wyświetlana będzie nazwa encji |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Nadaje priorytet ikonie zamiast `entity-picture` |
-| `show_state` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż lub ukryj stan Twojej `entity` |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
-| `show_last_changed` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej zmiany Twojej `entity` |
-| `show_last_updated` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej aktualizacji Twojej `entity` |
-| `show_attribute` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż atrybut Twojej `entity` pod jej `name` |
-| `attribute` | string | Opcjonalne (wymagane, jeśli `show_attribute` ustawiono na `true`) | Atrybut Twojej `entity` | Atrybut do wyświetlenia (np. `brightness`) |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar kontenera |
 | `icon_open` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona dla otwartej rolety, jeśli nie zdefiniowano, wyświetlana będzie domyślna ikona otwartej rolety |
 | `icon_close` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona dla zamkniętej rolety, jeśli nie zdefiniowano, wyświetlana będzie domyślna ikona zamkniętej rolety |
@@ -778,13 +753,9 @@ Ta karta pozwala dodać menu rozwijane dla Twoich encji `input_select` / `select
 | `name` | string | Opcjonalne | Dowolny ciąg znaków | Nazwa Twojej karty select, jeśli nie zdefiniowano, wyświetlana będzie nazwa encji |
 | `icon` | string | Opcjonalne | Dowolna ikona `mdi:` | Ikona dla Twojej karty select, jeśli nie zdefiniowano, wyświetlana będzie ikona encji lub `entity-picture` |
 | `force_icon` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Nadaje priorytet ikonie zamiast `entity-picture` |
-| `show_state` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż lub ukryj stan Twojej `entity` |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
-| `show_last_changed` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej zmiany Twojej `entity` |
-| `show_last_updated` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej aktualizacji Twojej `entity` |
-| `show_attribute` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż atrybut Twojej `entity` pod jej `name` |
-| `attribute` | string | Opcjonalne (wymagane, jeśli `show_attribute` ustawiono na `true`) | Atrybut Twojej `entity` | Atrybut do wyświetlenia (np. `brightness`) |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwala tekstowi przewijać się, gdy zawartość przekracza rozmiar kontenera |
 | `tap_action` | object | Opcjonalne | Zobacz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Określa typ akcji po dotknięciu ikony, jeśli nie zdefiniowano, użyta zostanie `more-info`. |
 | `double_tap_action` | object | Opcjonalne | Zobacz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Określa typ akcji po podwójnym dotknięciu ikony, jeśli nie zdefiniowano, użyta zostanie `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Ta karta pozwala sterować Twoimi encjami `climate`.
 | `name`                  | string  | Opcjonalne                            | Dowolny ciąg znaków                                       | Niestandardowa nazwa karty. Jeśli nie zdefiniowano, wyświetlana będzie nazwa encji.                                    |
 | `icon`                  | string  | Opcjonalne                            | Dowolna ikona `mdi:`                                  | Niestandardowa ikona karty. Jeśli nie zdefiniowano, użyta zostanie ikona encji lub `entity-picture`.                   |
 | `force_icon`            | boolean | Opcjonalne                            | `true` lub `false` (domyślnie)                     | Nadaje priorytet ikonie zamiast `entity-picture`.                                                           |
-| `show_state`            | boolean | Opcjonalne                            | `true` lub `false` (domyślnie)                     | Pokaż lub ukryj aktualny stan `entity`.                                                                 |
+| `state_content`         | string lub list | Opcjonalne | `state`, nazwa atrybutu, szablon | To, co pokazuje wiersz pod nazwą, patrz opcje przycisku. Stary klucz `show_state` nadal działa. |
 | `show_name`             | boolean | Opcjonalne                            | `true` (domyślnie) lub `false`                     | Pokaż lub ukryj nazwę encji.                                                                            |
 | `show_icon`             | boolean | Opcjonalne                            | `true` (domyślnie) lub `false`                     | Pokaż lub ukryj ikonę.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opcjonalne (tylko dla encji obsługujących `target_temp_low`) | `true` lub `false` (domyślnie) | Ukrywa sterowanie dolną temperaturą docelową, jeśli obsługiwane przez `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż tło podprzycisku, jego kolor zmieni się w zależności od stanu encji |
 | `state_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Użyj koloru stanu, gdy encja jest `on` |
 | `light_background` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Użyj koloru światła jako tła, gdy jest dostępny |
-| `show_state` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż lub ukryj stan `entity` |
+| `state_content` | string lub list | Opcjonalne | `state`, `last-changed`, `last-updated`, `last-triggered`, nazwa atrybutu, taka jak `brightness` lub `forecast[0].temperature`, albo [szablon](#templates) | To, co pokazuje wiersz pod nazwą, w tej kolejności. Bez tej opcji przycisk `button_type: state` pokazuje to, co Home Assistant pokazuje dla encji (jej stan, a do tego bieżącą temperaturę encji klimatyzacji, pozycję rolety, jasność światła). Stare klucze `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` nadal działają i są przepisywane na `state_content`, gdy otworzysz edytor. |
 | `show_name` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż lub ukryj nazwę |
 | `show_icon` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj ikonę |
-| `show_last_changed` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej zmiany `entity` |
-| `show_last_updated` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż czas ostatniej aktualizacji `entity` |
-| `show_attribute` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Pokaż atrybut `entity` pod jej `name` |
-| `attribute` | string | Opcjonalne (wymagane, jeśli `show_attribute` ma wartość `true`) | Atrybut z `entity` | Atrybut do wyświetlenia (np. `brightness`) |
 | `select_attribute` | string | Opcjonalne | Lista atrybutów z `entity` (zobacz obsługiwane opcje powyżej) | Ta lista atrybutów otworzy listę rozwijaną po kliknięciu (np. `effect_list`) |
 | `show_arrow` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pokaż lub ukryj strzałkę listy rozwijanej dla podprzycisków typu select |
 | `scrolling_effect` | boolean | Opcjonalne | `true` (domyślnie) lub `false` | Pozwól tekstowi przewijać się, gdy treść przekracza rozmiar kontenera |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

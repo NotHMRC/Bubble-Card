@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Pogas ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Tikai gaismām.** Izmantot motīva akcenta krāsu, nevis gaismas krāsu.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Rādīt vai slēpt `entity` stāvokli |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās izmaiņas laiku |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās atjaunināšanas laiku |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` atribūtu zem tā `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Rādāmais atribūts (piemēram, `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Ļauj mainīt noklusējuma darbības, klikšķinot uz pogas. |
 | `tap_action` | object | Optional | See [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Definē darbības veidu, klikšķinot uz ikonas, ja nav definēts, tiks izmantots `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Optional | Any string | Multivides atskaņotāja nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `icon` | string | Optional | Any `mdi:` icon | Multivides atskaņotāja ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Rādīt vai slēpt `entity` stāvokli |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās izmaiņas laiku |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās atjaunināšanas laiku |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` atribūtu zem tā `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Rādāmais atribūts (piemēram, `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
 | `min_volume` | number | Optional | Any number | Skaļuma slīdņa minimālā vērtība. |
 | `max_volume` | number | Optional | Any number | Skaļuma slīdņa maksimālā vērtība. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Vadāmais aizsegs |
 | `name` | string | Optional | Any string | Aizsega nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Rādīt vai slēpt `entity` stāvokli |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās izmaiņas laiku |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās atjaunināšanas laiku |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` atribūtu zem tā `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Rādāmais atribūts (piemēram, `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ikona atvērtam aizsegam, ja nav definēta, tiks parādīta noklusējuma atvērta aizsega ikona |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ikona aizvērtam aizsegam, ja nav definēta, tiks parādīta noklusējuma aizvērta aizsega ikona |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Izvēles nosaukums, ja nav definēts, tiks parādīts entītijas nosaukums |
 | `icon` | string | Optional | Any `mdi:` icon | Izvēles ikona, ja nav definēta, tiks parādīta entītijas ikona vai `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Piešķirt prioritāti ikonai, nevis `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Rādīt vai slēpt `entity` stāvokli |
+| `state_content` | string vai list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Rādīt vai slēpt ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās izmaiņas laiku |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` pēdējās atjaunināšanas laiku |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Rādīt `entity` atribūtu zem tā `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Rādāmais atribūts (piemēram, `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Ļauj tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
 | `tap_action` | object | Optional | See [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Definē darbības veidu, klikšķinot uz ikonas, ja nav definēts, tiks izmantots `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Definē darbības veidu, veicot dubultklikšķi uz ikonas, ja nav definēts, tiks izmantots `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Optional                            | Any string                                       | Pielāgots kartītes nosaukums. Ja nav definēts, tiks parādīts entītijas nosaukums.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Pielāgota kartītes ikona. Ja nav definēta, tiks izmantota entītijas ikona vai `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Piešķir prioritāti ikonai, nevis `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Rādīt vai slēpt `entity` pašreizējo stāvokli.                                                                 |
+| `state_content`         | string vai list | Optional | `state`, atribūta nosaukums, veidne | Ko rāda rinda zem nosaukuma, skatiet pogas opcijas. Vecā atslēga `show_state` joprojām darbojas. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Rādīt vai slēpt entītijas nosaukumu.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Rādīt vai slēpt ikonu.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Slēpj zemākās mērķa temperatūras vadību, ja to atbalsta `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Rādīt papildpogas fonu, tas mainīs krāsu atkarībā no jūsu entītijas stāvokļa |
 | `state_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Izmantot stāvokļa krāsu, kad entītija ir `on` |
 | `light_background` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Izmantot gaismas krāsu fonam, ja tā pieejama |
-| `show_state` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt vai slēpt jūsu `entity` stāvokli |
+| `state_content` | string vai list | Neobligāta | `state`, `last-changed`, `last-updated`, `last-triggered`, atribūta nosaukums, piemēram `brightness` vai `forecast[0].temperature`, vai [veidne](#templates) | Ko rāda rinda zem nosaukuma, šādā secībā. Bez šīs opcijas `button_type: state` poga rāda to, ko Home Assistant rāda entītijai (tās stāvokli, kā arī klimata pašreizējo temperatūru, aizsega pozīciju, gaismas spilgtumu). Vecās atslēgas `show_state`, `show_attribute`, `attribute`, `show_last_changed` un `show_last_updated` joprojām darbojas un, atverot redaktoru, tiek pārrakstītas kā `state_content`. |
 | `show_name` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt vai slēpt nosaukumu |
 | `show_icon` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Rādīt vai slēpt ikonu |
-| `show_last_changed` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt jūsu `entity` pēdējās izmaiņas laiku |
-| `show_last_updated` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt jūsu `entity` pēdējās atjaunināšanas laiku |
-| `show_attribute` | boolean | Neobligāta | `true` vai `false` (noklusējums) | Rādīt jūsu `entity` atribūtu zem tā `name` |
-| `attribute` | string | Neobligāta (obligāta, ja `show_attribute` ir iestatīts uz `true`) | Atribūts no jūsu `entity` | Rādāmais atribūts (piemēram, `brightness`) |
 | `select_attribute` | string | Neobligāta | Atribūtu saraksts no jūsu `entity` (skatiet iepriekš atbalstītās opcijas) | Šis atribūtu saraksts atvērs nolaižamo izvēlni, ja tiks noklikšķināts (piemēram, `effect_list`) |
 | `show_arrow` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Rādīt vai slēpt nolaižamās izvēlnes bultiņu izvēles papildpogām |
 | `scrolling_effect` | boolean | Neobligāta | `true` (noklusējums) vai `false` | Ļaut tekstam ritināties, ja saturs pārsniedz konteinera izmēru |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

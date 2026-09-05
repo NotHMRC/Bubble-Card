@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το κουμπί σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Μόνο για φωτιστικά.** Χρησιμοποιεί το χρώμα έμφασης του θέματος αντί για το χρώμα του φωτιστικού.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ή αποκρύπτει την κατάσταση της `entity` σας |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας αλλαγής της `entity` σας |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας ενημέρωσης της `entity` σας |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ένα χαρακτηριστικό της `entity` σας κάτω από το `name` της |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Το χαρακτηριστικό προς εμφάνιση (π.χ. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Επιτρέπει την αλλαγή των προεπιλεγμένων ενεργειών κατά το πάτημα του κουμπιού. |
 | `tap_action` | object | Optional | See [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Ορίζει τον τύπο ενέργειας κατά το πάτημα του εικονιδίου, αν δεν οριστεί, θα χρησιμοποιηθεί το `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Optional | Any string | Ένα όνομα για το media player σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το media player σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ή αποκρύπτει την κατάσταση της `entity` σας |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας αλλαγής της `entity` σας |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας ενημέρωσης της `entity` σας |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ένα χαρακτηριστικό της `entity` σας κάτω από το `name` της |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Το χαρακτηριστικό προς εμφάνιση (π.χ. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
 | `min_volume` | number | Optional | Any number | Η ελάχιστη τιμή του ρυθμιστικού έντασης. |
 | `max_volume` | number | Optional | Any number | Η μέγιστη τιμή του ρυθμιστικού έντασης. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Ένα ρολό προς έλεγχο |
 | `name` | string | Optional | Any string | Ένα όνομα για το ρολό σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ή αποκρύπτει την κατάσταση της `entity` σας |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας αλλαγής της `entity` σας |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας ενημέρωσης της `entity` σας |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ένα χαρακτηριστικό της `entity` σας κάτω από το `name` της |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Το χαρακτηριστικό προς εμφάνιση (π.χ. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το ανοιχτό ρολό σας, αν δεν οριστεί θα εμφανιστεί το προεπιλεγμένο εικονίδιο ανοιχτού ρολού |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για το κλειστό ρολό σας, αν δεν οριστεί θα εμφανιστεί το προεπιλεγμένο εικονίδιο κλειστού ρολού |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Ένα όνομα για την επιλογή σας, αν δεν οριστεί θα εμφανιστεί το όνομα της οντότητας |
 | `icon` | string | Optional | Any `mdi:` icon | Ένα εικονίδιο για την επιλογή σας, αν δεν οριστεί θα εμφανιστεί το εικονίδιο της οντότητας ή το `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Δίνει προτεραιότητα στο εικονίδιο αντί για το `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ή αποκρύπτει την κατάσταση της `entity` σας |
+| `state_content` | string or list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το όνομα |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Εμφανίζει ή αποκρύπτει το εικονίδιο |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας αλλαγής της `entity` σας |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Εμφανίζει την ώρα της τελευταίας ενημέρωσης της `entity` σας |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Εμφανίζει ένα χαρακτηριστικό της `entity` σας κάτω από το `name` της |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Το χαρακτηριστικό προς εμφάνιση (π.χ. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Επιτρέπει την κύλιση κειμένου όταν το περιεχόμενο υπερβαίνει το μέγεθος του περιέκτη του |
 | `tap_action` | object | Optional | See [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Ορίζει τον τύπο ενέργειας κατά το πάτημα του εικονιδίου, αν δεν οριστεί, θα χρησιμοποιηθεί το `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Ορίζει τον τύπο ενέργειας κατά το διπλό πάτημα του εικονιδίου, αν δεν οριστεί, θα χρησιμοποιηθεί το `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Optional                            | Any string                                       | Ένα προσαρμοσμένο όνομα για την κάρτα. Αν δεν οριστεί, θα εμφανιστεί το όνομα της οντότητας.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Ένα προσαρμοσμένο εικονίδιο για την κάρτα. Αν δεν οριστεί, θα χρησιμοποιηθεί το εικονίδιο της οντότητας ή το `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Δίνει προτεραιότητα στο εικονίδιο έναντι του `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Εμφανίζει ή αποκρύπτει την τρέχουσα κατάσταση της `entity`.                                                                 |
+| `state_content`         | string or list | Optional | `state`, ένα όνομα χαρακτηριστικού, ένα πρότυπο | Τι εμφανίζει η γραμμή κάτω από το όνομα, δείτε τις επιλογές του κουμπιού. Το παλαιό κλειδί `show_state` εξακολουθεί να λειτουργεί. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Εμφανίζει ή αποκρύπτει το όνομα της οντότητας.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Εμφανίζει ή αποκρύπτει το εικονίδιο.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Αποκρύπτει το χειριστήριο χαμηλής θερμοκρασίας στόχου αν υποστηρίζεται από την `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Εμφανίστε ένα φόντο για το υπο-κουμπί σας, θα αλλάξει χρώμα ανάλογα με την κατάσταση της οντότητάς σας |
 | `state_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Χρησιμοποιήστε το χρώμα κατάστασης όταν η οντότητα είναι `on` |
 | `light_background` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Χρησιμοποιήστε το χρώμα του φωτός για το φόντο όταν είναι διαθέσιμο |
-| `show_state` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση ή απόκρυψη της κατάστασης της `entity` σας |
+| `state_content` | string or list | Προαιρετικό | `state`, `last-changed`, `last-updated`, `last-triggered`, ένα όνομα χαρακτηριστικού όπως `brightness` ή `forecast[0].temperature`, ή ένα [πρότυπο](#templates) | Τι εμφανίζει η γραμμή κάτω από το όνομα, με αυτή τη σειρά. Χωρίς αυτό, ένα κουμπί `button_type: state` εμφανίζει ό,τι εμφανίζει το Home Assistant για την οντότητα (την κατάστασή της, μαζί με την τρέχουσα θερμοκρασία ενός κλιματισμού, τη θέση ενός ρολού, τη φωτεινότητα ενός φωτιστικού). Τα παλαιά κλειδιά `show_state`, `show_attribute`, `attribute`, `show_last_changed` και `show_last_updated` εξακολουθούν να λειτουργούν και ξαναγράφονται ως `state_content` όταν ανοίγετε τον επεξεργαστή. |
 | `show_name` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση ή απόκρυψη του ονόματος |
 | `show_icon` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Εμφάνιση ή απόκρυψη του εικονιδίου |
-| `show_last_changed` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση της τελευταίας ώρας αλλαγής της `entity` σας |
-| `show_last_updated` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση της τελευταίας ώρας ενημέρωσης της `entity` σας |
-| `show_attribute` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Εμφάνιση ενός χαρακτηριστικού της `entity` σας κάτω από το `name` της |
-| `attribute` | string | Προαιρετικό (απαιτείται αν το `show_attribute` έχει οριστεί σε `true`) | Ένα χαρακτηριστικό από την `entity` σας | Το χαρακτηριστικό προς εμφάνιση (π.χ. `brightness`) |
 | `select_attribute` | string | Προαιρετικό | Μια λίστα χαρακτηριστικών από την `entity` σας (δείτε τις υποστηριζόμενες επιλογές παραπάνω) | Αυτή η λίστα χαρακτηριστικών θα ανοίξει ένα dropdown αν πατηθεί (π.χ. `effect_list`) |
 | `show_arrow` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Εμφάνιση ή απόκρυψη του βέλους dropdown για τα υπο-κουμπιά επιλογής |
 | `scrolling_effect` | boolean | Προαιρετικό | `true` (προεπιλογή) ή `false` | Επιτρέψτε στο κείμενο να κάνει κύλιση όταν το περιεχόμενο υπερβαίνει το μέγεθος του κοντέινερ |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | 選用 | 任何 `mdi:` 圖示 | 按鈕的圖示,若未定義則顯示實體圖示或 `entity-picture` |
 | `force_icon` | boolean | 選用 | `true` 或 `false`(預設) | 讓圖示優先於 `entity-picture` 顯示 |
 | `use_accent_color` | boolean | 選用(預設 `false`) | **僅適用於燈光。** 使用主題的強調色,而非燈光本身的顏色。                         |
-| `show_state` | boolean | 選用 | `true` 或 `false`(預設) | 顯示或隱藏 `entity` 的狀態 |
+| `state_content` | string 或 list | 選用 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 這樣的屬性名稱，或是一個[範本](#templates) | 名稱下方那一行顯示的內容，依此順序。未設定時，`button_type: state` 按鈕會顯示 Home Assistant 為該實體顯示的內容(它的狀態，以及空調的目前溫度、窗簾的位置、燈光的亮度)。舊的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 鍵仍然可用，開啟編輯器時會被改寫為 `state_content`。 |
 | `show_name` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏名稱 |
 | `show_icon` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏圖示 |
-| `show_last_changed` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後變更的時間 |
-| `show_last_updated` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後更新的時間 |
-| `show_attribute` | boolean | 選用 | `true` 或 `false`(預設) | 在名稱下方顯示 `entity` 的一項屬性 |
-| `attribute` | string | 選用(若 `show_attribute` 設為 `true` 則為必要) | `entity` 的一項屬性 | 要顯示的屬性(例如 `brightness`) |
 | `scrolling_effect` | boolean | 選用 | `true`(預設)或 `false` | 當內容超出容器大小時允許文字捲動 |
 | `button_action` | object | 選用 | `tap_action`、`double_tap_action` 或 `hold_action`,見下方 | 允許變更按鈕點擊的預設動作 |
 | `tap_action` | object | 選用 | 見[動作](#點擊雙擊與長按動作) | 定義點擊圖示時的動作類型,若未定義則使用 `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | 選用 | 任何字串 | 媒體播放器的名稱,若未定義則顯示實體名稱 |
 | `icon` | string | 選用 | 任何 `mdi:` 圖示 | 媒體播放器的圖示,若未定義則顯示實體圖示或 `entity-picture` |
 | `force_icon` | boolean | 選用 | `true` 或 `false`(預設) | 讓圖示優先於 `entity-picture` 顯示 |
-| `show_state` | boolean | 選用 | `true` 或 `false`(預設) | 顯示或隱藏 `entity` 的狀態 |
+| `state_content` | string 或 list | 選用 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 這樣的屬性名稱，或是一個[範本](#templates) | 名稱下方那一行顯示的內容，依此順序。未設定時，`button_type: state` 按鈕會顯示 Home Assistant 為該實體顯示的內容(它的狀態，以及空調的目前溫度、窗簾的位置、燈光的亮度)。舊的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 鍵仍然可用，開啟編輯器時會被改寫為 `state_content`。 |
 | `show_name` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏名稱 |
 | `show_icon` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏圖示 |
-| `show_last_changed` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後變更的時間 |
-| `show_last_updated` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後更新的時間 |
-| `show_attribute` | boolean | 選用 | `true` 或 `false`(預設) | 在名稱下方顯示 `entity` 的一項屬性 |
-| `attribute` | string | 選用(若 `show_attribute` 設為 `true` 則為必要) | `entity` 的一項屬性 | 要顯示的屬性(例如 `brightness`) |
 | `scrolling_effect` | boolean | 選用 | `true`(預設)或 `false` | 當內容超出容器大小時允許文字捲動 |
 | `min_volume` | number | 選用 | 任何數字 | 音量滑桿的最小值。 |
 | `max_volume` | number | 選用 | 任何數字 | 音量滑桿的最大值。 |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **必要** | 任何窗簾 | 要控制的窗簾 |
 | `name` | string | 選用 | 任何字串 | 窗簾的名稱,若未定義則顯示實體名稱 |
 | `force_icon` | boolean | 選用 | `true` 或 `false`(預設) | 讓圖示優先於 `entity-picture` 顯示 |
-| `show_state` | boolean | 選用 | `true` 或 `false`(預設) | 顯示或隱藏 `entity` 的狀態 |
+| `state_content` | string 或 list | 選用 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 這樣的屬性名稱，或是一個[範本](#templates) | 名稱下方那一行顯示的內容，依此順序。未設定時，`button_type: state` 按鈕會顯示 Home Assistant 為該實體顯示的內容(它的狀態，以及空調的目前溫度、窗簾的位置、燈光的亮度)。舊的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 鍵仍然可用，開啟編輯器時會被改寫為 `state_content`。 |
 | `show_name` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏名稱 |
 | `show_icon` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏圖示 |
-| `show_last_changed` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後變更的時間 |
-| `show_last_updated` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後更新的時間 |
-| `show_attribute` | boolean | 選用 | `true` 或 `false`(預設) | 在名稱下方顯示 `entity` 的一項屬性 |
-| `attribute` | string | 選用(若 `show_attribute` 設為 `true` 則為必要) | `entity` 的一項屬性 | 要顯示的屬性(例如 `brightness`) |
 | `scrolling_effect` | boolean | 選用 | `true`(預設)或 `false` | 當內容超出容器大小時允許文字捲動 |
 | `icon_open` | string | 選用 | 任何 `mdi:` 圖示 | 窗簾開啟時的圖示,若未定義則顯示預設的開啟圖示 |
 | `icon_close` | string | 選用 | 任何 `mdi:` 圖示 | 窗簾關閉時的圖示,若未定義則顯示預設的關閉圖示 |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 選用 | 任何字串 | 選擇卡片的名稱,若未定義則顯示實體名稱 |
 | `icon` | string | 選用 | 任何 `mdi:` 圖示 | 選擇卡片的圖示,若未定義則顯示實體圖示或 `entity-picture` |
 | `force_icon` | boolean | 選用 | `true` 或 `false`(預設) | 讓圖示優先於 `entity-picture` 顯示 |
-| `show_state` | boolean | 選用 | `true` 或 `false`(預設) | 顯示或隱藏 `entity` 的狀態 |
+| `state_content` | string 或 list | 選用 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 這樣的屬性名稱，或是一個[範本](#templates) | 名稱下方那一行顯示的內容，依此順序。未設定時，`button_type: state` 按鈕會顯示 Home Assistant 為該實體顯示的內容(它的狀態，以及空調的目前溫度、窗簾的位置、燈光的亮度)。舊的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 鍵仍然可用，開啟編輯器時會被改寫為 `state_content`。 |
 | `show_name` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏名稱 |
 | `show_icon` | boolean | 選用 | `true`(預設)或 `false` | 顯示或隱藏圖示 |
-| `show_last_changed` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後變更的時間 |
-| `show_last_updated` | boolean | 選用 | `true` 或 `false`(預設) | 顯示 `entity` 最後更新的時間 |
-| `show_attribute` | boolean | 選用 | `true` 或 `false`(預設) | 在名稱下方顯示 `entity` 的一項屬性 |
-| `attribute` | string | 選用(若 `show_attribute` 設為 `true` 則為必要) | `entity` 的一項屬性 | 要顯示的屬性(例如 `brightness`) |
 | `scrolling_effect` | boolean | 選用 | `true`(預設)或 `false` | 當內容超出容器大小時允許文字捲動 |
 | `tap_action` | object | 選用 | 見[動作](#點擊雙擊與長按動作) | 定義點擊圖示時的動作類型,若未定義則使用 `more-info`。 |
 | `double_tap_action` | object | 選用 | 見[動作](#點擊雙擊與長按動作) | 定義雙擊圖示時的動作類型,若未定義則使用 `none`。 |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | 選用                            | 任何字串                                       | 卡片的自訂名稱,若未定義則顯示實體名稱。                                    |
 | `icon`                  | string  | 選用                            | 任何 `mdi:` 圖示                                  | 卡片的自訂圖示,若未定義則使用實體圖示或 `entity-picture`。                   |
 | `force_icon`            | boolean | 選用                            | `true` 或 `false`(預設)                     | 讓圖示優先於 `entity-picture` 顯示。                                                           |
-| `show_state`            | boolean | 選用                            | `true` 或 `false`(預設)                     | 顯示或隱藏 `entity` 目前的狀態。                                                                 |
+| `state_content`         | string 或 list | 選用 | `state`、屬性名稱、範本 | 名稱下方那一行顯示的內容，參見按鈕選項。舊的 `show_state` 鍵仍然可用。 |
 | `show_name`             | boolean | 選用                            | `true`(預設)或 `false`                     | 顯示或隱藏實體名稱。                                                                            |
 | `show_icon`             | boolean | 選用                            | `true`(預設)或 `false`                     | 顯示或隱藏圖示。                                                                                          |
 | `hide_target_temp_low`  | boolean | 選用(僅適用於支援 `target_temp_low` 的實體) | `true` 或 `false`(預設) | 隱藏低溫目標控制(若 `entity` 支援此功能)。                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | 選填 | `true`(預設)或 `false` | 顯示子按鈕的背景,會根據實體狀態改變顏色 |
 | `state_background` | boolean | 選填 | `true`(預設)或 `false` | 當實體為 `on` 時使用狀態顏色 |
 | `light_background` | boolean | 選填 | `true`(預設)或 `false` | 若有可用的燈光顏色,則將其用作背景顏色 |
-| `show_state` | boolean | 選填 | `true` 或 `false`(預設) | 顯示或隱藏 `entity` 的狀態 |
+| `state_content` | string 或 list | 選填 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 這樣的屬性名稱，或是一個[範本](#templates) | 名稱下方那一行顯示的內容，依此順序。未設定時，`button_type: state` 按鈕會顯示 Home Assistant 為該實體顯示的內容(它的狀態，以及空調的目前溫度、窗簾的位置、燈光的亮度)。舊的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 鍵仍然可用，開啟編輯器時會被改寫為 `state_content`。 |
 | `show_name` | boolean | 選填 | `true` 或 `false`(預設) | 顯示或隱藏名稱 |
 | `show_icon` | boolean | 選填 | `true`(預設)或 `false` | 顯示或隱藏圖示 |
-| `show_last_changed` | boolean | 選填 | `true` 或 `false`(預設) | 顯示 `entity` 最後一次變更的時間 |
-| `show_last_updated` | boolean | 選填 | `true` 或 `false`(預設) | 顯示 `entity` 最後一次更新的時間 |
-| `show_attribute` | boolean | 選填 | `true` 或 `false`(預設) | 在 `name` 下方顯示 `entity` 的屬性 |
-| `attribute` | string | 選填(若 `show_attribute` 設為 `true` 則必填) | `entity` 的其中一個屬性 | 要顯示的屬性(例如 `brightness`) |
 | `select_attribute` | string | 選填 | `entity` 的屬性清單(參見上方支援的選項) | 點擊此屬性清單會開啟下拉選單(例如 `effect_list`) |
 | `show_arrow` | boolean | 選填 | `true`(預設)或 `false` | 顯示或隱藏選擇型子按鈕的下拉箭頭 |
 | `scrolling_effect` | boolean | 選填 | `true`(預設)或 `false` | 當內容超出容器大小時允許文字捲動 |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

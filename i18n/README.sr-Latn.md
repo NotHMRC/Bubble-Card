@@ -412,13 +412,9 @@ Ova kartica je veoma svestrana. Može se koristiti kao **prekidač**, **klizač*
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaše dugme, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Samo za svetla.** Koristi akcentnu boju teme umesto boje svetla.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Prikazuje ili sakriva stanje vašeg `entity` |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednje promene vašeg `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednjeg ažuriranja vašeg `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Prikazuje atribut vašeg `entity` ispod njegovog `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut koji se prikazuje (npr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Omogućava promenu podrazumevanih akcija pri kliku na dugme. |
 | `tap_action` | object | Optional | See [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Definiše tip akcije pri kliku na ikonicu, ako nije definisano, koristiće se `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Ova kartica vam omogućava da kontrolišete entitet medija plejera.
 | `name` | string | Optional | Any string | Naziv vašeg medija plejera, ako nije definisan biće prikazan naziv entiteta |
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaš medija plejer, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Prikazuje ili sakriva stanje vašeg `entity` |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednje promene vašeg `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednjeg ažuriranja vašeg `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Prikazuje atribut vašeg `entity` ispod njegovog `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut koji se prikazuje (npr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
 | `min_volume` | number | Optional | Any number | Minimalna vrednost klizača jačine zvuka. |
 | `max_volume` | number | Optional | Any number | Maksimalna vrednost klizača jačine zvuka. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `cover`.
 | `entity` | string | **Required** | Any cover | Roletna koja se kontroliše |
 | `name` | string | Optional | Any string | Naziv vaše roletne, ako nije definisan biće prikazan naziv entiteta |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Prikazuje ili sakriva stanje vašeg `entity` |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednje promene vašeg `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednjeg ažuriranja vašeg `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Prikazuje atribut vašeg `entity` ispod njegovog `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut koji se prikazuje (npr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ikonica za otvorenu roletnu, ako nije definisana biće prikazana podrazumevana ikonica otvorene roletne |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ikonica za zatvorenu roletnu, ako nije definisana biće prikazana podrazumevana ikonica zatvorene roletne |
@@ -778,13 +753,9 @@ Ova kartica vam omogućava da dodate padajući meni za vaše entitete `input_sel
 | `name` | string | Optional | Any string | Naziv vašeg izbora, ako nije definisan biće prikazan naziv entiteta |
 | `icon` | string | Optional | Any `mdi:` icon | Ikonica za vaš izbor, ako nije definisana biće prikazana ikonica entiteta ili `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Daje prioritet ikonici umesto `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Prikazuje ili sakriva stanje vašeg `entity` |
+| `state_content` | string ili list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva naziv |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Prikazuje ili sakriva ikonicu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednje promene vašeg `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Prikazuje vreme poslednjeg ažuriranja vašeg `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Prikazuje atribut vašeg `entity` ispod njegovog `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut koji se prikazuje (npr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Omogućava klizanje teksta kada sadržaj prevazilazi veličinu njegovog kontejnera |
 | `tap_action` | object | Optional | See [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Definiše tip akcije pri kliku na ikonicu, ako nije definisano, koristiće se `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Definiše tip akcije pri dvostrukom kliku na ikonicu, ako nije definisano, koristiće se `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `climate`.
 | `name`                  | string  | Optional                            | Any string                                       | Prilagođen naziv za karticu. Ako nije definisan, biće prikazan naziv entiteta.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Prilagođena ikonica za karticu. Ako nije definisana, koristiće se ikonica entiteta ili `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Daje prioritet ikonici u odnosu na `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Prikazuje ili sakriva trenutno stanje entiteta `entity`.                                                                 |
+| `state_content`         | string ili list | Optional | `state`, naziv atributa, šablon | Šta prikazuje red ispod naziva, pogledajte opcije dugmeta. Stari ključ `show_state` i dalje radi. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Prikazuje ili sakriva naziv entiteta.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Prikazuje ili sakriva ikonicu.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Sakriva kontrolu niže ciljne temperature ako je entitet `entity` podržava.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikaži pozadinu za vaše pod-dugme, boja će se menjati u zavisnosti od stanja entiteta |
 | `state_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju stanja kada je entitet `on` |
 | `light_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju svetla za pozadinu kada je dostupna |
-| `show_state` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži ili sakrij stanje vašeg `entity` |
+| `state_content` | string ili list | Opciono | `state`, `last-changed`, `last-updated`, `last-triggered`, naziv atributa kao `brightness` ili `forecast[0].temperature`, ili [šablon](#templates) | Šta prikazuje red ispod naziva, ovim redosledom. Bez njega dugme `button_type: state` prikazuje ono što Home Assistant prikazuje za entitet (njegovo stanje, uz to i trenutnu temperaturu klime, poziciju roletne, osvetljenje svetla). Stari ključevi `show_state`, `show_attribute`, `attribute`, `show_last_changed` i `show_last_updated` i dalje rade i prepisuju se u `state_content` kada otvorite editor. |
 | `show_name` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži ili sakrij naziv |
 | `show_icon` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikaži ili sakrij ikonicu |
-| `show_last_changed` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži vreme poslednje promene vašeg `entity` |
-| `show_last_updated` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži vreme poslednjeg ažuriranja vašeg `entity` |
-| `show_attribute` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikaži atribut vašeg `entity` ispod njegovog `name` |
-| `attribute` | string | Opciono (obavezno ako je `show_attribute` postavljeno na `true`) | Atribut vašeg `entity` | Atribut koji treba prikazati (npr. `brightness`) |
 | `select_attribute` | string | Opciono | Lista atributa vašeg `entity` (pogledajte podržane opcije gore) | Ova lista atributa otvoriće padajući meni kada se klikne (npr. `effect_list`) |
 | `show_arrow` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikaži ili sakrij strelicu padajućeg menija za pod-dugmad tipa izbor |
 | `scrolling_effect` | boolean | Opciono | `true` (podrazumevano) ili `false` | Dozvoli klizanje teksta kada sadržaj prevazilazi veličinu kontejnera |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

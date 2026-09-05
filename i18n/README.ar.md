@@ -414,13 +414,9 @@ auto_order: true
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لزرّك، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضي) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
 | `use_accent_color` | boolean | اختياري (`false` افتراضيًا) | **للإضاءة فقط.** استخدام لون التمييز الخاص بالسمة بدلًا من لون الإضاءة.                         |
-| `show_state` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض أو إخفاء حالة `entity` الخاص بك |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
-| `show_last_changed` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تغيير لـ `entity` الخاص بك |
-| `show_last_updated` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تحديث لـ `entity` الخاص بك |
-| `show_attribute` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض سمة من `entity` الخاص بك أسفل `name` الخاص به |
-| `attribute` | string | اختياري (إلزامي إذا كان `show_attribute` مضبوطًا على `true`) | سمة من `entity` الخاص بك | السمة المراد عرضها (مثل `brightness`) |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضي) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
 | `button_action` | object | اختياري | `tap_action` أو `double_tap_action` أو `hold_action`، انظر أدناه | السماح بتغيير الإجراءات الافتراضية عند النقر على الزر. |
 | `tap_action` | object | اختياري | انظر [الإجراءات](#إجراءات-النقر-والنقر-المزدوج-والضغط-المطول) | تحديد نوع الإجراء عند النقر على الأيقونة، إذا لم يُحدد فسيُستخدم `more-info` |
@@ -510,11 +506,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -525,9 +517,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -559,13 +549,9 @@ sub_button:
 | `name` | string | اختياري | أي نص | اسم لمشغل الوسائط الخاص بك، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لمشغل الوسائط الخاص بك، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضي) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `show_state` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض أو إخفاء حالة `entity` الخاص بك |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
-| `show_last_changed` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تغيير لـ `entity` الخاص بك |
-| `show_last_updated` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تحديث لـ `entity` الخاص بك |
-| `show_attribute` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض سمة من `entity` الخاص بك أسفل `name` الخاص به |
-| `attribute` | string | اختياري (إلزامي إذا كان `show_attribute` مضبوطًا على `true`) | سمة من `entity` الخاص بك | السمة المراد عرضها (مثل `brightness`) |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضي) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
 | `min_volume` | number | اختياري | أي رقم | القيمة الدنيا لشريط تمرير مستوى الصوت. |
 | `max_volume` | number | اختياري | أي رقم | القيمة القصوى لشريط تمرير مستوى الصوت. |
@@ -624,16 +610,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -654,11 +636,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -686,13 +665,9 @@ sub_button:
 | `entity` | string | **إلزامي** | أي ستارة | ستارة للتحكم فيها |
 | `name` | string | اختياري | أي نص | اسم لستارتك، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضيًا) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `show_state` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض أو إخفاء حالة `entity` الخاص بك |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الأيقونة |
-| `show_last_changed` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض وقت آخر تغيير لـ `entity` الخاص بك |
-| `show_last_updated` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض وقت آخر تحديث لـ `entity` الخاص بك |
-| `show_attribute` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض سمة من سمات `entity` الخاص بك أسفل `name` |
-| `attribute` | string | اختياري (إلزامي إذا كان `show_attribute` مضبوطًا على `true`) | سمة من سمات `entity` الخاص بك | السمة المراد عرضها (مثل `brightness`) |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضيًا) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
 | `icon_open` | string | اختياري | أي أيقونة `mdi:` | أيقونة لستارتك المفتوحة، إذا لم تُحدد فستُعرض أيقونة الستارة المفتوحة الافتراضية |
 | `icon_close` | string | اختياري | أي أيقونة `mdi:` | أيقونة لستارتك المغلقة، إذا لم تُحدد فستُعرض أيقونة الستارة المغلقة الافتراضية |
@@ -780,13 +755,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | اختياري | أي نص | اسم لبطاقة الاختيار، إذا لم يُحدد فسيُعرض اسم الكيان |
 | `icon` | string | اختياري | أي أيقونة `mdi:` | أيقونة لبطاقة الاختيار، إذا لم تُحدد فستُعرض أيقونة الكيان أو `entity-picture` |
 | `force_icon` | boolean | اختياري | `true` أو `false` (افتراضيًا) | إعطاء الأولوية للأيقونة بدلًا من `entity-picture` |
-| `show_state` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض أو إخفاء حالة `entity` الخاص بك |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضيًا) أو `false` | عرض أو إخفاء الأيقونة |
-| `show_last_changed` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض وقت آخر تغيير لـ `entity` الخاص بك |
-| `show_last_updated` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض وقت آخر تحديث لـ `entity` الخاص بك |
-| `show_attribute` | boolean | اختياري | `true` أو `false` (افتراضيًا) | عرض سمة من سمات `entity` الخاص بك أسفل `name` |
-| `attribute` | string | اختياري (إلزامي إذا كان `show_attribute` مضبوطًا على `true`) | سمة من سمات `entity` الخاص بك | السمة المراد عرضها (مثل `brightness`) |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضيًا) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم حاويته |
 | `tap_action` | object | اختياري | انظر [الإجراءات](#إجراءات-النقر-والنقر-المزدوج-والضغط-المطول) | تحديد نوع الإجراء عند النقر على الأيقونة، إذا لم يُحدد فسيُستخدم `more-info`. |
 | `double_tap_action` | object | اختياري | انظر [الإجراءات](#إجراءات-النقر-والنقر-المزدوج-والضغط-المطول) | تحديد نوع الإجراء عند النقر المزدوج على الأيقونة، إذا لم يُحدد فسيُستخدم `none`. |
@@ -833,7 +804,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -865,7 +836,7 @@ show_state: true
 | `name`                  | string  | اختياري                            | أي نص                                       | اسم مخصص للبطاقة. إذا لم يُحدد، فسيُعرض اسم الكيان.                                    |
 | `icon`                  | string  | اختياري                            | أي أيقونة `mdi:`                                  | أيقونة مخصصة للبطاقة. إذا لم تُحدد، فستُستخدم أيقونة الكيان أو `entity-picture`.                   |
 | `force_icon`            | boolean | اختياري                            | `true` أو `false` (افتراضيًا)                     | إعطاء الأولوية للأيقونة بدلًا من `entity-picture`.                                                           |
-| `show_state`            | boolean | اختياري                            | `true` أو `false` (افتراضيًا)                     | عرض أو إخفاء الحالة الحالية لـ `entity`.                                                                 |
+| `state_content`         | string أو list | اختياري | `state`، اسم سمة، قالب | ما يعرضه السطر الموجود أسفل الاسم، انظر خيارات الزر. المفتاح القديم `show_state` لا يزال يعمل. |
 | `show_name`             | boolean | اختياري                            | `true` (افتراضيًا) أو `false`                     | عرض أو إخفاء اسم الكيان.                                                                            |
 | `show_icon`             | boolean | اختياري                            | `true` (افتراضيًا) أو `false`                     | عرض أو إخفاء الأيقونة.                                                                                          |
 | `hide_target_temp_low`  | boolean | اختياري (فقط للكيانات التي تدعم `target_temp_low`) | `true` أو `false` (افتراضيًا) | إخفاء التحكم في درجة الحرارة المستهدفة الدنيا إذا كان `entity` يدعمها.                                          |
@@ -1189,14 +1160,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1263,10 +1234,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1305,13 +1276,9 @@ sub_button:
 | `show_background` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض خلفية لزرك الفرعي، سيتغير لونها بناءً على حالة الكيان الخاص بك |
 | `state_background` | boolean | اختياري | `true` (افتراضي) أو `false` | استخدام لون الحالة عندما يكون الكيان `on` |
 | `light_background` | boolean | اختياري | `true` (افتراضي) أو `false` | استخدام لون الإضاءة للخلفية عند توفره |
-| `show_state` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض أو إخفاء حالة `entity` الخاص بك |
+| `state_content` | string أو list | اختياري | `state`، `last-changed`، `last-updated`، `last-triggered`، اسم سمة مثل `brightness` أو `forecast[0].temperature`، أو [قالب](#templates) | ما يعرضه السطر الموجود أسفل الاسم، بهذا الترتيب. من دونه يعرض زر `button_type: state` ما يعرضه Home Assistant للكيان (حالته، إضافة إلى درجة الحرارة الحالية لكيان التكييف، وموضع الستارة، وسطوع المصباح). المفاتيح القديمة `show_state` و `show_attribute` و `attribute` و `show_last_changed` و `show_last_updated` لا تزال تعمل وتُعاد كتابتها على شكل `state_content` عند فتح المحرر. |
 | `show_name` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض أو إخفاء الاسم |
 | `show_icon` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء الأيقونة |
-| `show_last_changed` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تغيير لـ `entity` الخاص بك |
-| `show_last_updated` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض وقت آخر تحديث لـ `entity` الخاص بك |
-| `show_attribute` | boolean | اختياري | `true` أو `false` (افتراضي) | عرض سمة من `entity` الخاص بك أسفل الاسم `name` |
-| `attribute` | string | اختياري (مطلوب إذا كان `show_attribute` مضبوطًا على `true`) | سمة من `entity` الخاص بك | السمة المراد عرضها (مثلًا `brightness`) |
 | `select_attribute` | string | اختياري | قائمة سمات من `entity` الخاص بك (راجع الخيارات المدعومة أعلاه) | ستفتح قائمة السمات هذه قائمة منسدلة عند النقر عليها (مثلًا `effect_list`) |
 | `show_arrow` | boolean | اختياري | `true` (افتراضي) أو `false` | عرض أو إخفاء سهم القائمة المنسدلة للأزرار الفرعية من نوع الاختيار |
 | `scrolling_effect` | boolean | اختياري | `true` (افتراضي) أو `false` | السماح بتمرير النص عندما يتجاوز المحتوى حجم الحاوية |
@@ -1373,8 +1340,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1386,8 +1352,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1435,14 +1400,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1467,29 +1431,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1542,7 +1506,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1551,17 +1515,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2359,7 +2323,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

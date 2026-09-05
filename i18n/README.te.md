@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | ఐచ్ఛికం | ఏదైనా `mdi:` ఐకాన్ | మీ బటన్ కోసం ఒక ఐకాన్, నిర్వచించకపోతే అది ఎంటిటీ ఐకాన్ లేదా `entity-picture`ను ప్రదర్శిస్తుంది |
 | `force_icon` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | `entity-picture`కు బదులుగా ఐకాన్‌కు ప్రాధాన్యత ఇవ్వండి |
 | `use_accent_color` | boolean | ఐచ్ఛికం (`false` డిఫాల్ట్) | **లైట్ల కోసం మాత్రమే.** లైట్ రంగుకు బదులుగా థీమ్ యొక్క ఏక్సెంట్ రంగును ఉపయోగించండి.                         |
-| `show_state` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క స్థితిని చూపించండి లేదా దాచండి |
+| `state_content` | string లేదా list | ఐచ్ఛికం | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` లేదా `forecast[0].temperature` వంటి ఒక అట్రిబ్యూట్ పేరు, లేదా ఒక [టెంప్లేట్](#templates) | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, ఈ క్రమంలో. ఇది లేకుండా, ఒక `button_type: state` బటన్ ఆ ఎంటిటీ కోసం Home Assistant చూపించేదాన్నే చూపిస్తుంది (దాని స్థితి, దానితో పాటు ఒక క్లైమేట్ యొక్క ప్రస్తుత ఉష్ణోగ్రత, ఒక కవర్ యొక్క పొజిషన్, ఒక లైట్ యొక్క బ్రైట్‌నెస్). పాత `show_state`, `show_attribute`, `attribute`, `show_last_changed` మరియు `show_last_updated` కీలు ఇప్పటికీ పనిచేస్తాయి, మీరు ఎడిటర్‌ను తెరిచినప్పుడు అవి `state_content`గా తిరిగి రాయబడతాయి. |
 | `show_name` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | పేరును చూపించండి లేదా దాచండి |
 | `show_icon` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఐకాన్‌ను చూపించండి లేదా దాచండి |
-| `show_last_changed` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి మార్చిన సమయాన్ని చూపించండి |
-| `show_last_updated` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి నవీకరించిన సమయాన్ని చూపించండి |
-| `show_attribute` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క ఒక అట్రిబ్యూట్‌ను దాని `name` కింద చూపించండి |
-| `attribute` | string | ఐచ్ఛికం (`show_attribute` `true`గా సెట్ చేసి ఉంటే అవసరం) | మీ `entity` నుండి ఒక అట్రిబ్యూట్ | చూపించాల్సిన అట్రిబ్యూట్ (ఉదా. `brightness`) |
 | `scrolling_effect` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | కంటెంట్ వాటి కంటైనర్ పరిమాణాన్ని మించినప్పుడు టెక్స్ట్ స్క్రోల్ కావడానికి అనుమతించండి |
 | `button_action` | object | ఐచ్ఛికం | `tap_action`, `double_tap_action` లేదా `hold_action`, క్రింద చూడండి | బటన్ క్లిక్‌పై డిఫాల్ట్ చర్యలను మార్చడానికి అనుమతించండి. |
 | `tap_action` | object | ఐచ్ఛికం | [చర్యలు](#నొక్కడం-రెండుసార్లు-నొక్కడం-మరియు-నొక్కి-పట్టుకోవడం-చర్యలు) చూడండి | ఐకాన్ క్లిక్‌పై చర్య రకాన్ని నిర్వచించండి, నిర్వచించకపోతే `more-info` ఉపయోగించబడుతుంది |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | ఐచ్ఛికం | ఏదైనా స్ట్రింగ్ | మీ మీడియా ప్లేయర్ కోసం ఒక పేరు, నిర్వచించకపోతే అది ఎంటిటీ పేరును ప్రదర్శిస్తుంది |
 | `icon` | string | ఐచ్ఛికం | ఏదైనా `mdi:` ఐకాన్ | మీ మీడియా ప్లేయర్ కోసం ఒక ఐకాన్, నిర్వచించకపోతే అది ఎంటిటీ ఐకాన్ లేదా `entity-picture`ను ప్రదర్శిస్తుంది |
 | `force_icon` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | `entity-picture`కు బదులుగా ఐకాన్‌కు ప్రాధాన్యత ఇవ్వండి |
-| `show_state` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క స్థితిని చూపించండి లేదా దాచండి |
+| `state_content` | string లేదా list | ఐచ్ఛికం | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` లేదా `forecast[0].temperature` వంటి ఒక అట్రిబ్యూట్ పేరు, లేదా ఒక [టెంప్లేట్](#templates) | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, ఈ క్రమంలో. ఇది లేకుండా, ఒక `button_type: state` బటన్ ఆ ఎంటిటీ కోసం Home Assistant చూపించేదాన్నే చూపిస్తుంది (దాని స్థితి, దానితో పాటు ఒక క్లైమేట్ యొక్క ప్రస్తుత ఉష్ణోగ్రత, ఒక కవర్ యొక్క పొజిషన్, ఒక లైట్ యొక్క బ్రైట్‌నెస్). పాత `show_state`, `show_attribute`, `attribute`, `show_last_changed` మరియు `show_last_updated` కీలు ఇప్పటికీ పనిచేస్తాయి, మీరు ఎడిటర్‌ను తెరిచినప్పుడు అవి `state_content`గా తిరిగి రాయబడతాయి. |
 | `show_name` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | పేరును చూపించండి లేదా దాచండి |
 | `show_icon` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఐకాన్‌ను చూపించండి లేదా దాచండి |
-| `show_last_changed` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి మార్చిన సమయాన్ని చూపించండి |
-| `show_last_updated` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి నవీకరించిన సమయాన్ని చూపించండి |
-| `show_attribute` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క ఒక అట్రిబ్యూట్‌ను దాని `name` కింద చూపించండి |
-| `attribute` | string | ఐచ్ఛికం (`show_attribute` `true`గా సెట్ చేసి ఉంటే అవసరం) | మీ `entity` నుండి ఒక అట్రిబ్యూట్ | చూపించాల్సిన అట్రిబ్యూట్ (ఉదా. `brightness`) |
 | `scrolling_effect` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | కంటెంట్ వాటి కంటైనర్ పరిమాణాన్ని మించినప్పుడు టెక్స్ట్ స్క్రోల్ కావడానికి అనుమతించండి |
 | `min_volume` | number | ఐచ్ఛికం | ఏదైనా సంఖ్య | వాల్యూమ్ స్లయిడర్ యొక్క కనీస విలువ. |
 | `max_volume` | number | ఐచ్ఛికం | ఏదైనా సంఖ్య | వాల్యూమ్ స్లయిడర్ యొక్క గరిష్ట విలువ. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **అవసరం** | ఏదైనా కవర్ | నియంత్రించడానికి ఒక కవర్ |
 | `name` | string | ఐచ్ఛికం | ఏదైనా స్ట్రింగ్ | మీ కవర్ కోసం ఒక పేరు, నిర్వచించకపోతే అది ఎంటిటీ పేరును ప్రదర్శిస్తుంది |
 | `force_icon` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | `entity-picture`కు బదులుగా ఐకాన్‌కు ప్రాధాన్యత ఇవ్వండి |
-| `show_state` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క స్థితిని చూపించండి లేదా దాచండి |
+| `state_content` | string లేదా list | ఐచ్ఛికం | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` లేదా `forecast[0].temperature` వంటి ఒక అట్రిబ్యూట్ పేరు, లేదా ఒక [టెంప్లేట్](#templates) | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, ఈ క్రమంలో. ఇది లేకుండా, ఒక `button_type: state` బటన్ ఆ ఎంటిటీ కోసం Home Assistant చూపించేదాన్నే చూపిస్తుంది (దాని స్థితి, దానితో పాటు ఒక క్లైమేట్ యొక్క ప్రస్తుత ఉష్ణోగ్రత, ఒక కవర్ యొక్క పొజిషన్, ఒక లైట్ యొక్క బ్రైట్‌నెస్). పాత `show_state`, `show_attribute`, `attribute`, `show_last_changed` మరియు `show_last_updated` కీలు ఇప్పటికీ పనిచేస్తాయి, మీరు ఎడిటర్‌ను తెరిచినప్పుడు అవి `state_content`గా తిరిగి రాయబడతాయి. |
 | `show_name` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | పేరును చూపించండి లేదా దాచండి |
 | `show_icon` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఐకాన్‌ను చూపించండి లేదా దాచండి |
-| `show_last_changed` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి మార్చిన సమయాన్ని చూపించండి |
-| `show_last_updated` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి నవీకరించిన సమయాన్ని చూపించండి |
-| `show_attribute` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క ఒక అట్రిబ్యూట్‌ను దాని `name` కింద చూపించండి |
-| `attribute` | string | ఐచ్ఛికం (`show_attribute` `true`గా సెట్ చేసి ఉంటే అవసరం) | మీ `entity` నుండి ఒక అట్రిబ్యూట్ | చూపించాల్సిన అట్రిబ్యూట్ (ఉదా. `brightness`) |
 | `scrolling_effect` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | కంటెంట్ వాటి కంటైనర్ పరిమాణాన్ని మించినప్పుడు టెక్స్ట్ స్క్రోల్ కావడానికి అనుమతించండి |
 | `icon_open` | string | ఐచ్ఛికం | ఏదైనా `mdi:` ఐకాన్ | మీ తెరిచిన కవర్ కోసం ఒక ఐకాన్, నిర్వచించకపోతే అది డిఫాల్ట్ ఓపెన్ కవర్ ఐకాన్‌ను ప్రదర్శిస్తుంది |
 | `icon_close` | string | ఐచ్ఛికం | ఏదైనా `mdi:` ఐకాన్ | మీ మూసిన కవర్ కోసం ఒక ఐకాన్, నిర్వచించకపోతే అది డిఫాల్ట్ క్లోజ్డ్ కవర్ ఐకాన్‌ను ప్రదర్శిస్తుంది |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | ఐచ్ఛికం | ఏదైనా స్ట్రింగ్ | మీ సెలెక్ట్ కోసం ఒక పేరు, నిర్వచించకపోతే అది ఎంటిటీ పేరును ప్రదర్శిస్తుంది |
 | `icon` | string | ఐచ్ఛికం | ఏదైనా `mdi:` ఐకాన్ | మీ సెలెక్ట్ కోసం ఒక ఐకాన్, నిర్వచించకపోతే అది ఎంటిటీ ఐకాన్ లేదా `entity-picture`ను ప్రదర్శిస్తుంది |
 | `force_icon` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | `entity-picture`కు బదులుగా ఐకాన్‌కు ప్రాధాన్యత ఇవ్వండి |
-| `show_state` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క స్థితిని చూపించండి లేదా దాచండి |
+| `state_content` | string లేదా list | ఐచ్ఛికం | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` లేదా `forecast[0].temperature` వంటి ఒక అట్రిబ్యూట్ పేరు, లేదా ఒక [టెంప్లేట్](#templates) | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, ఈ క్రమంలో. ఇది లేకుండా, ఒక `button_type: state` బటన్ ఆ ఎంటిటీ కోసం Home Assistant చూపించేదాన్నే చూపిస్తుంది (దాని స్థితి, దానితో పాటు ఒక క్లైమేట్ యొక్క ప్రస్తుత ఉష్ణోగ్రత, ఒక కవర్ యొక్క పొజిషన్, ఒక లైట్ యొక్క బ్రైట్‌నెస్). పాత `show_state`, `show_attribute`, `attribute`, `show_last_changed` మరియు `show_last_updated` కీలు ఇప్పటికీ పనిచేస్తాయి, మీరు ఎడిటర్‌ను తెరిచినప్పుడు అవి `state_content`గా తిరిగి రాయబడతాయి. |
 | `show_name` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | పేరును చూపించండి లేదా దాచండి |
 | `show_icon` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఐకాన్‌ను చూపించండి లేదా దాచండి |
-| `show_last_changed` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి మార్చిన సమయాన్ని చూపించండి |
-| `show_last_updated` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిసారి నవీకరించిన సమయాన్ని చూపించండి |
-| `show_attribute` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క ఒక అట్రిబ్యూట్‌ను దాని `name` కింద చూపించండి |
-| `attribute` | string | ఐచ్ఛికం (`show_attribute` `true`గా సెట్ చేసి ఉంటే అవసరం) | మీ `entity` నుండి ఒక అట్రిబ్యూట్ | చూపించాల్సిన అట్రిబ్యూట్ (ఉదా. `brightness`) |
 | `scrolling_effect` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | కంటెంట్ వాటి కంటైనర్ పరిమాణాన్ని మించినప్పుడు టెక్స్ట్ స్క్రోల్ కావడానికి అనుమతించండి |
 | `tap_action` | object | ఐచ్ఛికం | [చర్యలు](#నొక్కడం-రెండుసార్లు-నొక్కడం-మరియు-నొక్కి-పట్టుకోవడం-చర్యలు) చూడండి | ఐకాన్ క్లిక్‌పై చర్య రకాన్ని నిర్వచించండి, నిర్వచించకపోతే `more-info` ఉపయోగించబడుతుంది. |
 | `double_tap_action` | object | ఐచ్ఛికం | [చర్యలు](#నొక్కడం-రెండుసార్లు-నొక్కడం-మరియు-నొక్కి-పట్టుకోవడం-చర్యలు) చూడండి | ఐకాన్ డబుల్ క్లిక్‌పై చర్య రకాన్ని నిర్వచించండి, నిర్వచించకపోతే `none` ఉపయోగించబడుతుంది. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | ఐచ్ఛికం                            | ఏదైనా స్ట్రింగ్                                       | కార్డ్ కోసం ఒక అనుకూల పేరు. నిర్వచించకపోతే, అది ఎంటిటీ పేరును ప్రదర్శిస్తుంది.                                    |
 | `icon`                  | string  | ఐచ్ఛికం                            | ఏదైనా `mdi:` ఐకాన్                                  | కార్డ్ కోసం ఒక అనుకూల ఐకాన్. నిర్వచించకపోతే, ఎంటిటీ ఐకాన్ లేదా `entity-picture` ఉపయోగించబడుతుంది.                   |
 | `force_icon`            | boolean | ఐచ్ఛికం                            | `true` లేదా `false` (డిఫాల్ట్)                     | `entity-picture` కంటే ఐకాన్‌కు ప్రాధాన్యత ఇస్తుంది.                                                           |
-| `show_state`            | boolean | ఐచ్ఛికం                            | `true` లేదా `false` (డిఫాల్ట్)                     | `entity` యొక్క ప్రస్తుత స్థితిని చూపించండి లేదా దాచండి.                                                                 |
+| `state_content`         | string లేదా list | ఐచ్ఛికం | `state`, ఒక అట్రిబ్యూట్ పేరు, ఒక టెంప్లేట్ | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, బటన్ ఎంపికలను చూడండి. పాత `show_state` కీ ఇప్పటికీ పనిచేస్తుంది. |
 | `show_name`             | boolean | ఐచ్ఛికం                            | `true` (డిఫాల్ట్) లేదా `false`                     | ఎంటిటీ పేరును చూపించండి లేదా దాచండి.                                                                            |
 | `show_icon`             | boolean | ఐచ్ఛికం                            | `true` (డిఫాల్ట్) లేదా `false`                     | ఐకాన్‌ను చూపించండి లేదా దాచండి.                                                                                          |
 | `hide_target_temp_low`  | boolean | ఐచ్ఛికం (`target_temp_low`కు మద్దతు ఇచ్చే ఎంటిటీలకు మాత్రమే) | `true` లేదా `false` (డిఫాల్ట్) | `entity` మద్దతు ఇస్తే తక్కువ లక్ష్య ఉష్ణోగ్రత నియంత్రణను దాచుతుంది.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | మీ సబ్-బటన్ కోసం ఒక బ్యాక్‌గ్రౌండ్‌ను చూపించండి, ఇది మీ ఎంటిటీ స్థితి ఆధారంగా దాని రంగును మారుస్తుంది |
 | `state_background` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఎంటిటీ `on` గా ఉన్నప్పుడు స్థితి రంగును ఉపయోగించండి |
 | `light_background` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | అందుబాటులో ఉన్నప్పుడు బ్యాక్‌గ్రౌండ్ కోసం లైట్ రంగును ఉపయోగించండి |
-| `show_state` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క స్థితిని చూపించండి లేదా దాచండి |
+| `state_content` | string లేదా list | ఐచ్ఛికం | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` లేదా `forecast[0].temperature` వంటి ఒక అట్రిబ్యూట్ పేరు, లేదా ఒక [టెంప్లేట్](#templates) | పేరు కింద ఉన్న లైన్ ఏమి చూపిస్తుందో, ఈ క్రమంలో. ఇది లేకుండా, ఒక `button_type: state` బటన్ ఆ ఎంటిటీ కోసం Home Assistant చూపించేదాన్నే చూపిస్తుంది (దాని స్థితి, దానితో పాటు ఒక క్లైమేట్ యొక్క ప్రస్తుత ఉష్ణోగ్రత, ఒక కవర్ యొక్క పొజిషన్, ఒక లైట్ యొక్క బ్రైట్‌నెస్). పాత `show_state`, `show_attribute`, `attribute`, `show_last_changed` మరియు `show_last_updated` కీలు ఇప్పటికీ పనిచేస్తాయి, మీరు ఎడిటర్‌ను తెరిచినప్పుడు అవి `state_content`గా తిరిగి రాయబడతాయి. |
 | `show_name` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | పేరును చూపించండి లేదా దాచండి |
 | `show_icon` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | ఐకాన్‌ను చూపించండి లేదా దాచండి |
-| `show_last_changed` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిగా మార్చిన సమయాన్ని చూపించండి |
-| `show_last_updated` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క చివరిగా అప్‌డేట్ చేసిన సమయాన్ని చూపించండి |
-| `show_attribute` | boolean | ఐచ్ఛికం | `true` లేదా `false` (డిఫాల్ట్) | మీ `entity` యొక్క `name` కింద ఒక అట్రిబ్యూట్‌ను చూపించండి |
-| `attribute` | string | ఐచ్ఛికం (`show_attribute` అనేది `true` గా సెట్ చేస్తే అవసరం) | మీ `entity` నుండి ఒక అట్రిబ్యూట్ | చూపించాల్సిన అట్రిబ్యూట్ (ఉదా: `brightness`) |
 | `select_attribute` | string | ఐచ్ఛికం | మీ `entity` నుండి ఒక అట్రిబ్యూట్ జాబితా (పైన మద్దతు ఉన్న ఎంపికలు చూడండి) | క్లిక్ చేస్తే ఈ అట్రిబ్యూట్ జాబితా ఒక డ్రాప్‌డౌన్‌ను తెరుస్తుంది (ఉదా: `effect_list`) |
 | `show_arrow` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | సెలెక్ట్ సబ్-బటన్‌ల కోసం డ్రాప్‌డౌన్ యారోను చూపించండి లేదా దాచండి |
 | `scrolling_effect` | boolean | ఐచ్ఛికం | `true` (డిఫాల్ట్) లేదా `false` | కంటెంట్ కంటైనర్ పరిమాణాన్ని మించితే టెక్స్ట్‌ను స్క్రోల్ చేయడానికి అనుమతించండి |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

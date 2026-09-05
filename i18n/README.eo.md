@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via butono, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
 | `use_accent_color` | boolean | Nedeviga (`false` defaŭlta) | **Nur por lumoj.** Uzi la akcentan koloron de la etoso anstataŭ la koloron de la lumo.                         |
-| `show_state` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la staton de via `entity` |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
-| `show_last_changed` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ŝanĝan tempon de via `entity` |
-| `show_last_updated` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ĝisdatigan tempon de via `entity` |
-| `show_attribute` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri atributon de via `entity` sub ĝia `name` |
-| `attribute` | string | Nedeviga (deviga se `show_attribute` estas agordita al `true`) | Atributo de via `entity` | La atributo por montri (ekz. `brightness`) |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
 | `button_action` | object | Nedeviga | `tap_action`, `double_tap_action` aŭ `hold_action`, vidu sube | Permesi ŝanĝi la defaŭltajn agojn ĉe klako sur la butono. |
 | `tap_action` | object | Nedeviga | Vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Difini la tipon de ago ĉe klako sur la ikono, se nedifinita, `more-info` estos uzata |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Nedeviga | Ajna string | Nomo por via plurmedia ludilo, se ne difinita ĝi montros la nomon de la ero |
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via plurmedia ludilo, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `show_state` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la staton de via `entity` |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
-| `show_last_changed` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ŝanĝan tempon de via `entity` |
-| `show_last_updated` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ĝisdatigan tempon de via `entity` |
-| `show_attribute` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri atributon de via `entity` sub ĝia `name` |
-| `attribute` | string | Nedeviga (deviga se `show_attribute` estas agordita al `true`) | Atributo de via `entity` | La atributo por montri (ekz. `brightness`) |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
 | `min_volume` | number | Nedeviga | Ajna nombro | La minimuma valoro de la laŭteca glitilo. |
 | `max_volume` | number | Nedeviga | Ajna nombro | La maksimuma valoro de la laŭteca glitilo. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Deviga** | Ajna kovrilo | Kovrilo por kontroli |
 | `name` | string | Nedeviga | Ajna string | Nomo por via kovrilo, se ne difinita ĝi montros la nomon de la ero |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `show_state` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la staton de via `entity` |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
-| `show_last_changed` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ŝanĝan tempon de via `entity` |
-| `show_last_updated` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ĝisdatigan tempon de via `entity` |
-| `show_attribute` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri atributon de via `entity` sub ĝia `name` |
-| `attribute` | string | Nedeviga (deviga se `show_attribute` estas agordita al `true`) | Atributo de via `entity` | La atributo por montri (ekz. `brightness`) |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
 | `icon_open` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via malfermita kovrilo, se ne difinita ĝi montros la defaŭltan ikonon de malfermita kovrilo |
 | `icon_close` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via fermita kovrilo, se ne difinita ĝi montros la defaŭltan ikonon de fermita kovrilo |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Nedeviga | Ajna string | Nomo por via elektilo, se ne difinita ĝi montros la nomon de la ero |
 | `icon` | string | Nedeviga | Ajna `mdi:`-ikono | Ikono por via elektilo, se ne difinita ĝi montros la ikonon de la ero aŭ la `entity-picture` |
 | `force_icon` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Doni prioritaton al la ikono anstataŭ la `entity-picture` |
-| `show_state` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la staton de via `entity` |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la ikonon |
-| `show_last_changed` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ŝanĝan tempon de via `entity` |
-| `show_last_updated` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la lastan ĝisdatigan tempon de via `entity` |
-| `show_attribute` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri atributon de via `entity` sub ĝia `name` |
-| `attribute` | string | Nedeviga (deviga se `show_attribute` estas agordita al `true`) | Atributo de via `entity` | La atributo por montri (ekz. `brightness`) |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruli kiam la enhavo superas la grandon de sia ujo |
 | `tap_action` | object | Nedeviga | Vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Difini la tipon de ago ĉe klako sur la ikono, se nedifinita, `more-info` estos uzata. |
 | `double_tap_action` | object | Nedeviga | Vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Difini la tipon de ago ĉe duobla klako sur la ikono, se nedifinita, `none` estos uzata. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Nedeviga                            | Ajna string                                       | Personigita nomo por la karto. Se ne difinita, ĝi montros la nomon de la ero.                                    |
 | `icon`                  | string  | Nedeviga                            | Ajna `mdi:`-ikono                                  | Personigita ikono por la karto. Se ne difinita, la ikono de la ero aŭ la `entity-picture` estos uzata.                   |
 | `force_icon`            | boolean | Nedeviga                            | `true` aŭ `false` (defaŭlta)                     | Donas prioritaton al la ikono anstataŭ la `entity-picture`.                                                           |
-| `show_state`            | boolean | Nedeviga                            | `true` aŭ `false` (defaŭlta)                     | Montri aŭ kaŝi la nunan staton de la `entity`.                                                                 |
+| `state_content`         | string aŭ list | Nedeviga | `state`, atributnomo, ŝablono | Kion montras la linio sub la nomo, vidu la opciojn de la butono. La malnova ŝlosilo `show_state` ankoraŭ funkcias. |
 | `show_name`             | boolean | Nedeviga                            | `true` (defaŭlta) aŭ `false`                     | Montri aŭ kaŝi la nomon de la ero.                                                                            |
 | `show_icon`             | boolean | Nedeviga                            | `true` (defaŭlta) aŭ `false`                     | Montri aŭ kaŝi la ikonon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Nedeviga (nur por eroj subtenantaj `target_temp_low`) | `true` aŭ `false` (defaŭlta) | Kaŝas la malaltan celtemperaturan kontrolilon se subtenata de la `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri fonon por via subbutono, ĝi ŝanĝos sian koloron laŭ la stato de via ento |
 | `state_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Uzi la statan koloron kiam la ento estas `on` |
 | `light_background` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Uzi la lumkoloron por la fono, kiam havebla |
-| `show_state` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la staton de via `entity` |
+| `state_content` | string aŭ list | Nedeviga | `state`, `last-changed`, `last-updated`, `last-triggered`, atributnomo kiel `brightness` aŭ `forecast[0].temperature`, aŭ [ŝablono](#templates) | Kion montras la linio sub la nomo, en ĉi tiu ordo. Sen ĝi, butono `button_type: state` montras tion, kion Home Assistant montras por la ento (ĝian staton, plus la nunan temperaturon de klimatizilo, la pozicion de kovrilo, la helecon de lumo). La malnovaj ŝlosiloj `show_state`, `show_attribute`, `attribute`, `show_last_changed` kaj `show_last_updated` ankoraŭ funkcias kaj estas reskribitaj kiel `state_content` kiam vi malfermas la redaktilon. |
 | `show_name` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri aŭ kaŝi la nomon |
 | `show_icon` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la piktogramon |
-| `show_last_changed` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la tempon de lasta ŝanĝo de via `entity` |
-| `show_last_updated` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri la tempon de lasta ĝisdatigo de via `entity` |
-| `show_attribute` | boolean | Nedeviga | `true` aŭ `false` (defaŭlta) | Montri atributon de via `entity` sub ĝia `name` |
-| `attribute` | string | Nedeviga (deviga se `show_attribute` estas `true`) | Atributo de via `entity` | La atributo montrenda (ekz. `brightness`) |
 | `select_attribute` | string | Nedeviga | Atributa listo de via `entity` (vidu subtenatajn opciojn supre) | Ĉi tiu atributa listo malfermos falmenuon se alklakita (ekz. `effect_list`) |
 | `show_arrow` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Montri aŭ kaŝi la falmenuan sagon por elektaj subbutonoj |
 | `scrolling_effect` | boolean | Nedeviga | `true` (defaŭlta) aŭ `false` | Permesi al teksto ruliĝi kiam la enhavo superas la grandon de la ujo |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

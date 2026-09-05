@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 按钮的图标，如果未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
 | `use_accent_color` | boolean | 可选 (默认 `false`) | **仅适用于灯光。** 使用主题的强调色而非灯光的颜色。                         |
-| `show_state` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏 `entity` 的状态 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
-| `show_last_changed` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后变化时间 |
-| `show_last_updated` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后更新时间 |
-| `show_attribute` | boolean | 可选 | `true` 或 `false` (默认) | 在 `name` 下方显示 `entity` 的一个属性 |
-| `attribute` | string | 可选 (当 `show_attribute` 设为 `true` 时必填) | `entity` 的一个属性 | 要显示的属性 (例如 `brightness`) |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
 | `button_action` | object | 可选 | `tap_action`、`double_tap_action` 或 `hold_action`，见下方 | 允许更改按钮点击时的默认动作。 |
 | `tap_action` | object | 可选 | 见[动作](#点击双击和长按动作) | 定义点击图标时的动作类型，如未定义，将使用 `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | 可选 | 任意字符串 | 媒体播放器的名称，如果未定义则显示实体名称 |
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 媒体播放器的图标，如果未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `show_state` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏 `entity` 的状态 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
-| `show_last_changed` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后变化时间 |
-| `show_last_updated` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后更新时间 |
-| `show_attribute` | boolean | 可选 | `true` 或 `false` (默认) | 在 `name` 下方显示 `entity` 的一个属性 |
-| `attribute` | string | 可选 (当 `show_attribute` 设为 `true` 时必填) | `entity` 的一个属性 | 要显示的属性 (例如 `brightness`) |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
 | `min_volume` | number | 可选 | 任意数字 | 音量滑块的最小值。 |
 | `max_volume` | number | 可选 | 任意数字 | 音量滑块的最大值。 |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **必填** | 任意 cover | 要控制的卷帘 |
 | `name` | string | 可选 | 任意字符串 | 卷帘的名称，若未定义则显示实体名称 |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `show_state` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏 `entity` 的状态 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
-| `show_last_changed` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后变化时间 |
-| `show_last_updated` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后更新时间 |
-| `show_attribute` | boolean | 可选 | `true` 或 `false` (默认) | 在 `entity` 的 `name` 下方显示一个属性 |
-| `attribute` | string | 可选 (若 `show_attribute` 设为 `true` 则必填) | `entity` 的一个属性 | 要显示的属性 (例如 `brightness`) |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
 | `icon_open` | string | 可选 | 任意 `mdi:` 图标 | 卷帘打开状态的图标，若未定义则显示默认的打开状态图标 |
 | `icon_close` | string | 可选 | 任意 `mdi:` 图标 | 卷帘关闭状态的图标，若未定义则显示默认的关闭状态图标 |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 可选 | 任意字符串 | 选择卡片的名称，若未定义则显示实体名称 |
 | `icon` | string | 可选 | 任意 `mdi:` 图标 | 选择卡片的图标，若未定义则显示实体图标或 `entity-picture` |
 | `force_icon` | boolean | 可选 | `true` 或 `false` (默认) | 优先显示图标而非 `entity-picture` |
-| `show_state` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏 `entity` 的状态 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
-| `show_last_changed` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后变化时间 |
-| `show_last_updated` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后更新时间 |
-| `show_attribute` | boolean | 可选 | `true` 或 `false` (默认) | 在 `entity` 的 `name` 下方显示一个属性 |
-| `attribute` | string | 可选 (若 `show_attribute` 设为 `true` 则必填) | `entity` 的一个属性 | 要显示的属性 (例如 `brightness`) |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器大小时允许文字滚动 |
 | `tap_action` | object | 可选 | 参见[动作](#点击双击和长按动作) | 定义点击图标时的动作类型，若未定义则使用 `more-info`。 |
 | `double_tap_action` | object | 可选 | 参见[动作](#点击双击和长按动作) | 定义双击图标时的动作类型，若未定义则使用 `none`。 |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | 可选                            | 任意字符串                                       | 卡片的自定义名称。若未定义，则显示实体名称。                                                    |
 | `icon`                  | string  | 可选                            | 任意 `mdi:` 图标                                  | 卡片的自定义图标。若未定义，则使用实体图标或 `entity-picture`。                   |
 | `force_icon`            | boolean | 可选                            | `true` 或 `false` (默认)                     | 优先显示图标而非 `entity-picture`。                                                           |
-| `show_state`            | boolean | 可选                            | `true` 或 `false` (默认)                     | 显示或隐藏 `entity` 的当前状态。                                                                 |
+| `state_content`         | string 或 list | 可选 | `state`、属性名、模板 | 名称下方那一行显示的内容，见按钮选项。旧的 `show_state` 键仍然可用。 |
 | `show_name`             | boolean | 可选                            | `true` (默认) 或 `false`                     | 显示或隐藏实体的名称。                                                                            |
 | `show_icon`             | boolean | 可选                            | `true` (默认) 或 `false`                     | 显示或隐藏图标。                                                                                          |
 | `hide_target_temp_low`  | boolean | 可选 (仅适用于支持 `target_temp_low` 的实体) | `true` 或 `false` (默认) | 若 `entity` 支持，则隐藏目标温度下限控制。                                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | 可选 | `true` (默认) 或 `false` | 为子按钮显示背景，其颜色会根据实体状态变化 |
 | `state_background` | boolean | 可选 | `true` (默认) 或 `false` | 当实体状态为 `on` 时使用状态颜色 |
 | `light_background` | boolean | 可选 | `true` (默认) 或 `false` | 在可用的情况下，为背景使用灯光颜色 |
-| `show_state` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏 `entity` 的状态 |
+| `state_content` | string 或 list | 可选 | `state`、`last-changed`、`last-updated`、`last-triggered`、像 `brightness` 或 `forecast[0].temperature` 这样的属性名，或者一个[模板](#templates) | 名称下方那一行显示的内容，按此顺序。未设置时，`button_type: state` 按钮会显示 Home Assistant 为该实体显示的内容 (它的状态，以及空调的当前温度、卷帘的位置、灯光的亮度)。旧的 `show_state`、`show_attribute`、`attribute`、`show_last_changed` 和 `show_last_updated` 键仍然可用，打开编辑器时会被改写为 `state_content`。 |
 | `show_name` | boolean | 可选 | `true` 或 `false` (默认) | 显示或隐藏名称 |
 | `show_icon` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏图标 |
-| `show_last_changed` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后变化时间 |
-| `show_last_updated` | boolean | 可选 | `true` 或 `false` (默认) | 显示 `entity` 的最后更新时间 |
-| `show_attribute` | boolean | 可选 | `true` 或 `false` (默认) | 在 `name` 下方显示 `entity` 的一个属性 |
-| `attribute` | string | 可选 (`show_attribute` 设为 `true` 时必填) | `entity` 的一个属性 | 要显示的属性 (例如 `brightness`) |
 | `select_attribute` | string | 可选 | `entity` 的属性列表 (见上方支持的选项) | 该属性列表会在点击时打开一个下拉菜单 (例如 `effect_list`) |
 | `show_arrow` | boolean | 可选 | `true` (默认) 或 `false` | 显示或隐藏选择类子按钮的下拉箭头 |
 | `scrolling_effect` | boolean | 可选 | `true` (默认) 或 `false` | 当内容超出容器尺寸时允许文字滚动 |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

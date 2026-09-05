@@ -412,13 +412,9 @@ Táto karta je veľmi univerzálna. Dá sa použiť ako **prepínač**, **posuvn
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre vaše tlačidlo, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Iba pre svetlá.** Použije zvýrazňovaciu farbu témy namiesto farby svetla.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Zobrazí alebo skryje stav vašej `entity` |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej zmeny vašej `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej aktualizácie vašej `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Zobrazí atribút vašej `entity` pod jej `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribút, ktorý sa má zobraziť (napr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Umožňuje zmeniť predvolené akcie po kliknutí na tlačidlo. |
 | `tap_action` | object | Optional | See [actions](#akcie-ťuknutia-dvojitého-ťuknutia-a-podržania) | Definuje typ akcie po kliknutí na ikonu, ak nie je definovaná, použije sa `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Táto karta vám umožňuje ovládať entitu prehrávača médií.
 | `name` | string | Optional | Any string | Názov vášho prehrávača médií, ak nie je definovaný, zobrazí sa názov entity |
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre váš prehrávač médií, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Zobrazí alebo skryje stav vašej `entity` |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej zmeny vašej `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej aktualizácie vašej `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Zobrazí atribút vašej `entity` pod jej `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribút, ktorý sa má zobraziť (napr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
 | `min_volume` | number | Optional | Any number | Minimálna hodnota posuvníka hlasitosti. |
 | `max_volume` | number | Optional | Any number | Maximálna hodnota posuvníka hlasitosti. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Táto karta vám umožňuje ovládať vaše entity `cover`.
 | `entity` | string | **Required** | Any cover | Roleta na ovládanie |
 | `name` | string | Optional | Any string | Názov vašej rolety, ak nie je definovaný, zobrazí sa názov entity |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Zobrazí alebo skryje stav vašej `entity` |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej zmeny vašej `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej aktualizácie vašej `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Zobrazí atribút vašej `entity` pod jej `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribút, ktorý sa má zobraziť (napr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ikona pre otvorenú roletu, ak nie je definovaná, zobrazí sa predvolená ikona otvorenej rolety |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ikona pre zatvorenú roletu, ak nie je definovaná, zobrazí sa predvolená ikona zatvorenej rolety |
@@ -778,13 +753,9 @@ Táto karta vám umožňuje pridať rozbaľovaciu ponuku pre vaše entity `input
 | `name` | string | Optional | Any string | Názov vášho select, ak nie je definovaný, zobrazí sa názov entity |
 | `icon` | string | Optional | Any `mdi:` icon | Ikona pre váš select, ak nie je definovaná, zobrazí sa ikona entity alebo `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Uprednostní ikonu pred `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Zobrazí alebo skryje stav vašej `entity` |
+| `state_content` | string alebo list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Zobrazí alebo skryje ikonu |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej zmeny vašej `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Zobrazí čas poslednej aktualizácie vašej `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Zobrazí atribút vašej `entity` pod jej `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribút, ktorý sa má zobraziť (napr. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Umožní posúvanie textu, keď obsah presiahne veľkosť kontajnera |
 | `tap_action` | object | Optional | See [actions](#akcie-ťuknutia-dvojitého-ťuknutia-a-podržania) | Definuje typ akcie po kliknutí na ikonu, ak nie je definovaná, použije sa `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#akcie-ťuknutia-dvojitého-ťuknutia-a-podržania) | Definuje typ akcie po dvojitom kliknutí na ikonu, ak nie je definovaná, použije sa `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Táto karta vám umožňuje ovládať vaše entity `climate`.
 | `name`                  | string  | Optional                            | Any string                                       | Vlastný názov karty. Ak nie je definovaný, zobrazí sa názov entity.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Vlastná ikona karty. Ak nie je definovaná, použije sa ikona entity alebo `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Uprednostní ikonu pred `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Zobrazí alebo skryje aktuálny stav `entity`.                                                                 |
+| `state_content`         | string alebo list | Optional | `state`, názov atribútu, šablóna | Čo zobrazuje riadok pod názvom, pozrite si možnosti tlačidla. Starý kľúč `show_state` stále funguje. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Zobrazí alebo skryje názov entity.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Zobrazí alebo skryje ikonu.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Skryje ovládanie dolnej cieľovej teploty, ak ho `entity` podporuje.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Zobrazí pozadie podtlačidla, jeho farba sa mení podľa stavu entity |
 | `state_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Použije farbu stavu, keď je entita `on` |
 | `light_background` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Použije farbu svetla pre pozadie, ak je k dispozícii |
-| `show_state` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí alebo skryje stav vašej `entity` |
+| `state_content` | string alebo list | Voliteľné | `state`, `last-changed`, `last-updated`, `last-triggered`, názov atribútu ako `brightness` alebo `forecast[0].temperature`, alebo [šablóna](#templates) | Čo zobrazuje riadok pod názvom, v tomto poradí. Bez neho tlačidlo `button_type: state` zobrazuje to, čo pre entitu zobrazuje Home Assistant (jej stav a k tomu aktuálnu teplotu klimatizácie, polohu rolety, jas svetla). Staré kľúče `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` stále fungujú a po otvorení editora sa prepíšu na `state_content`. |
 | `show_name` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí alebo skryje názov |
 | `show_icon` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Zobrazí alebo skryje ikonu |
-| `show_last_changed` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí čas poslednej zmeny vašej `entity` |
-| `show_last_updated` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí čas poslednej aktualizácie vašej `entity` |
-| `show_attribute` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Zobrazí atribút vašej `entity` pod jej `name` |
-| `attribute` | string | Voliteľné (povinné, ak je `show_attribute` nastavené na `true`) | Atribút z vašej `entity` | Atribút na zobrazenie (napr. `brightness`) |
 | `select_attribute` | string | Voliteľné | Zoznam atribútov z vašej `entity` (pozri podporované možnosti vyššie) | Tento zoznam atribútov po kliknutí otvorí rozbaľovací zoznam (napr. `effect_list`) |
 | `show_arrow` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Zobrazí alebo skryje šípku rozbaľovacieho zoznamu pri podtlačidlách typu select |
 | `scrolling_effect` | boolean | Voliteľné | `true` (predvolené) alebo `false` | Umožní posúvanie textu, ak obsah presahuje veľkosť kontajnera |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

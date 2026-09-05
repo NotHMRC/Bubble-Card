@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր կոճակի պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
 | `use_accent_color` | boolean | Optional (`false` default) | **Միայն լույսերի համար:** Օգտագործել թեմայի շեշտադրման գույնը լույսի գույնի փոխարեն:                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Ցուցադրել կամ թաքցնել ձեր `entity`-ի վիճակը |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին փոփոխման ժամանակը |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին թարմացման ժամանակը |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի ատրիբուտը՝ նրա `name`-ի ներքևում |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Ցուցադրվող ատրիբուտը (օրինակ` brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Թույլ է տալիս փոխել լռելյայն գործողությունները կոճակի սեղմման ժամանակ: |
 | `tap_action` | object | Optional | See [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Սահմանել գործողության տեսակը պատկերակի սեղմման ժամանակ, եթե սահմանված չէ, կօգտագործվի `more-info`-ն |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Optional | Any string | Ձեր մեդիա նվագարկիչի անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր մեդիա նվագարկիչի պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Ցուցադրել կամ թաքցնել ձեր `entity`-ի վիճակը |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին փոփոխման ժամանակը |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին թարմացման ժամանակը |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի ատրիբուտը՝ նրա `name`-ի ներքևում |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Ցուցադրվող ատրիբուտը (օրինակ` brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
 | `min_volume` | number | Optional | Any number | Ձայնի սահիչի նվազագույն արժեքը: |
 | `max_volume` | number | Optional | Any number | Ձայնի սահիչի առավելագույն արժեքը: |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Կառավարվող ծածկոց |
 | `name` | string | Optional | Any string | Ձեր ծածկոցի անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Ցուցադրել կամ թաքցնել ձեր `entity`-ի վիճակը |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին փոփոխման ժամանակը |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին թարմացման ժամանակը |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի ատրիբուտը՝ նրա `name`-ի ներքևում |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Ցուցադրվող ատրիբուտը (օրինակ` brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ձեր բացված ծածկոցի պատկերակը, եթե սահմանված չէ, կցուցադրվի բացված ծածկոցի լռելյայն պատկերակը |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ձեր փակված ծածկոցի պատկերակը, եթե սահմանված չէ, կցուցադրվի փակված ծածկոցի լռելյայն պատկերակը |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Ձեր ընտրության անունը, եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը |
 | `icon` | string | Optional | Any `mdi:` icon | Ձեր ընտրության պատկերակը, եթե սահմանված չէ, կցուցադրվի էնթիթիի պատկերակը կամ `entity-picture`-ը |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Առաջնահերթություն տալ պատկերակին՝ `entity-picture`-ի փոխարեն |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Ցուցադրել կամ թաքցնել ձեր `entity`-ի վիճակը |
+| `state_content` | string կամ list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Ցուցադրել կամ թաքցնել պատկերակը |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին փոփոխման ժամանակը |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի վերջին թարմացման ժամանակը |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Ցուցադրել ձեր `entity`-ի ատրիբուտը՝ նրա `name`-ի ներքևում |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Ցուցադրվող ատրիբուտը (օրինակ` brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Թույլ տալ տեքստի ոլորումը, երբ բովանդակությունը գերազանցում է իր տարայի չափը |
 | `tap_action` | object | Optional | See [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Սահմանել գործողության տեսակը պատկերակի սեղմման ժամանակ, եթե սահմանված չէ, կօգտագործվի `more-info`-ն: |
 | `double_tap_action` | object | Optional | See [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Սահմանել գործողության տեսակը պատկերակի կրկնակի սեղմման ժամանակ, եթե սահմանված չէ, կօգտագործվի `none`-ը: |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Optional                            | Any string                                       | Քարտի հարմարեցված անուն: Եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը:                                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Քարտի հարմարեցված պատկերակ: Եթե սահմանված չէ, կօգտագործվի էնթիթիի պատկերակը կամ `entity-picture`-ը:                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Առաջնահերթություն է տալիս պատկերակին՝ `entity-picture`-ի փոխարեն:                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Ցուցադրել կամ թաքցնել `entity`-ի ընթացիկ վիճակը:                                                                 |
+| `state_content`         | string կամ list | Optional | `state`, ատրիբուտի անուն, ձևանմուշ | Թե ինչ է ցուցադրում անվան տակի տողը, տես կոճակի ընտրանքները։ Հին `show_state` բանալին դեռ աշխատում է։ |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Ցուցադրել կամ թաքցնել էնթիթիի անունը:                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Ցուցադրել կամ թաքցնել պատկերակը:                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Թաքցնում է ցածր թիրախային ջերմաստիճանի կառավարումը, եթե `entity`-ն այն աջակցում է:                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Ցուցադրել ֆոն ձեր ենթակոճակի համար, այն կփոխի իր գույնը՝ ելնելով ձեր entity-ի վիճակից |
 | `state_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Օգտագործել վիճակի գույնը, երբ entity-ն `on` է |
 | `light_background` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Օգտագործել լույսի գույնը ֆոնի համար, երբ հասանելի է |
-| `show_state` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել կամ թաքցնել ձեր `entity`-ի վիճակը |
+| `state_content` | string կամ list | Ընտրովի | `state`, `last-changed`, `last-updated`, `last-triggered`, ատրիբուտի անուն, օրինակ `brightness` կամ `forecast[0].temperature`, կամ [ձևանմուշ](#templates) | Թե ինչ է ցուցադրում անվան տակի տողը, այս հերթականությամբ։ Առանց դրա `button_type: state` կոճակը ցուցադրում է այն, ինչ Home Assistant-ը ցուցադրում է էնթիթիի համար (նրա վիճակը, ինչպես նաև կլիմայի ընթացիկ ջերմաստիճանը, ծածկոցի դիրքը, լույսի պայծառությունը)։ Հին `show_state`, `show_attribute`, `attribute`, `show_last_changed` և `show_last_updated` բանալիները դեռ աշխատում են և վերագրվում են որպես `state_content`, երբ բացում եք խմբագրիչը։ |
 | `show_name` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել կամ թաքցնել անունը |
 | `show_icon` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Ցուցադրել կամ թաքցնել պատկերակը |
-| `show_last_changed` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել ձեր `entity`-ի վերջին փոփոխման ժամանակը |
-| `show_last_updated` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել ձեր `entity`-ի վերջին թարմացման ժամանակը |
-| `show_attribute` | boolean | Ընտրովի | `true` կամ `false` (լռելյայն) | Ցուցադրել ձեր `entity`-ի ատրիբուտը `name`-ի տակ |
-| `attribute` | string | Ընտրովի (պարտադիր, եթե `show_attribute`-ը `true` է) | Ատրիբուտ ձեր `entity`-ից | Ցուցադրվող ատրիբուտը (օրինակ՝ `brightness`) |
 | `select_attribute` | string | Ընտրովի | Ատրիբուտների ցանկ ձեր `entity`-ից (տես վերևի աջակցվող ընտրանքները) | Այս ատրիբուտների ցանկը կբացի բացվող ցանկ սեղմելիս (օրինակ՝ `effect_list`) |
 | `show_arrow` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Ցուցադրել կամ թաքցնել select ենթակոճակների բացվող ցանկի սլաքը |
 | `scrolling_effect` | boolean | Ընտրովի | `true` (լռելյայն) կամ `false` | Թույլատրել տեքստի ոլորումը, երբ պարունակությունը գերազանցում է կոնտեյների չափը |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

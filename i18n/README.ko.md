@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | 선택 | 모든 `mdi:` 아이콘 | 버튼 아이콘, 정의하지 않으면 엔티티 아이콘 또는 `entity-picture`가 표시됩니다 |
 | `force_icon` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity-picture` 대신 아이콘을 우선 사용합니다 |
 | `use_accent_color` | boolean | 선택 (`false` 기본값) | **조명 전용.** 조명 색상 대신 테마의 강조 색상을 사용합니다.                         |
-| `show_state` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 상태를 표시하거나 숨깁니다 |
+| `state_content` | string 또는 list | 선택 | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness`나 `forecast[0].temperature` 같은 속성 이름, 또는 [템플릿](#templates) | 이름 아래 줄에 표시할 내용을 이 순서대로 지정합니다. 지정하지 않으면 `button_type: state` 버튼은 Home Assistant가 해당 엔티티에 표시하는 것과 같은 내용을 표시합니다 (상태와 함께 냉난방이면 현재 온도, 커버이면 위치, 조명이면 밝기). 기존 `show_state`, `show_attribute`, `attribute`, `show_last_changed`, `show_last_updated` 키도 계속 작동하며, 편집기를 열면 `state_content`로 다시 작성됩니다. |
 | `show_name` | boolean | 선택 | `true` (기본값) 또는 `false` | 이름을 표시하거나 숨깁니다 |
 | `show_icon` | boolean | 선택 | `true` (기본값) 또는 `false` | 아이콘을 표시하거나 숨깁니다 |
-| `show_last_changed` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 변경 시각을 표시합니다 |
-| `show_last_updated` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 업데이트 시각을 표시합니다 |
-| `show_attribute` | boolean | 선택 | `true` 또는 `false` (기본값) | `name` 아래에 `entity`의 속성을 표시합니다 |
-| `attribute` | string | 선택 (`show_attribute`가 `true`이면 필수) | `entity`의 속성 | 표시할 속성 (예: `brightness`) |
 | `scrolling_effect` | boolean | 선택 | `true` (기본값) 또는 `false` | 내용이 컨테이너 크기를 초과할 때 텍스트가 스크롤되도록 허용합니다 |
 | `button_action` | object | 선택 | `tap_action`, `double_tap_action` 또는 `hold_action`, 아래 참조 | 버튼 클릭 시 기본 동작을 변경할 수 있습니다. |
 | `tap_action` | object | 선택 | [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 아이콘 클릭 시 동작 유형을 정의합니다. 정의하지 않으면 `more-info`가 사용됩니다 |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | 선택 | 모든 문자열 | 미디어 플레이어 이름, 정의하지 않으면 엔티티 이름이 표시됩니다 |
 | `icon` | string | 선택 | 모든 `mdi:` 아이콘 | 미디어 플레이어 아이콘, 정의하지 않으면 엔티티 아이콘 또는 `entity-picture`가 표시됩니다 |
 | `force_icon` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity-picture` 대신 아이콘을 우선 사용합니다 |
-| `show_state` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 상태를 표시하거나 숨깁니다 |
+| `state_content` | string 또는 list | 선택 | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness`나 `forecast[0].temperature` 같은 속성 이름, 또는 [템플릿](#templates) | 이름 아래 줄에 표시할 내용을 이 순서대로 지정합니다. 지정하지 않으면 `button_type: state` 버튼은 Home Assistant가 해당 엔티티에 표시하는 것과 같은 내용을 표시합니다 (상태와 함께 냉난방이면 현재 온도, 커버이면 위치, 조명이면 밝기). 기존 `show_state`, `show_attribute`, `attribute`, `show_last_changed`, `show_last_updated` 키도 계속 작동하며, 편집기를 열면 `state_content`로 다시 작성됩니다. |
 | `show_name` | boolean | 선택 | `true` (기본값) 또는 `false` | 이름을 표시하거나 숨깁니다 |
 | `show_icon` | boolean | 선택 | `true` (기본값) 또는 `false` | 아이콘을 표시하거나 숨깁니다 |
-| `show_last_changed` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 변경 시각을 표시합니다 |
-| `show_last_updated` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 업데이트 시각을 표시합니다 |
-| `show_attribute` | boolean | 선택 | `true` 또는 `false` (기본값) | `name` 아래에 `entity`의 속성을 표시합니다 |
-| `attribute` | string | 선택 (`show_attribute`가 `true`이면 필수) | `entity`의 속성 | 표시할 속성 (예: `brightness`) |
 | `scrolling_effect` | boolean | 선택 | `true` (기본값) 또는 `false` | 내용이 컨테이너 크기를 초과할 때 텍스트가 스크롤되도록 허용합니다 |
 | `min_volume` | number | 선택 | 모든 숫자 | 볼륨 슬라이더의 최솟값입니다. |
 | `max_volume` | number | 선택 | 모든 숫자 | 볼륨 슬라이더의 최댓값입니다. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **필수** | 모든 커버 | 제어할 커버 |
 | `name` | string | 선택 | 모든 문자열 | 커버 이름, 정의하지 않으면 엔티티 이름이 표시됩니다 |
 | `force_icon` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity-picture` 대신 아이콘을 우선 사용합니다 |
-| `show_state` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 상태를 표시하거나 숨깁니다 |
+| `state_content` | string 또는 list | 선택 | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness`나 `forecast[0].temperature` 같은 속성 이름, 또는 [템플릿](#templates) | 이름 아래 줄에 표시할 내용을 이 순서대로 지정합니다. 지정하지 않으면 `button_type: state` 버튼은 Home Assistant가 해당 엔티티에 표시하는 것과 같은 내용을 표시합니다 (상태와 함께 냉난방이면 현재 온도, 커버이면 위치, 조명이면 밝기). 기존 `show_state`, `show_attribute`, `attribute`, `show_last_changed`, `show_last_updated` 키도 계속 작동하며, 편집기를 열면 `state_content`로 다시 작성됩니다. |
 | `show_name` | boolean | 선택 | `true` (기본값) 또는 `false` | 이름을 표시하거나 숨깁니다 |
 | `show_icon` | boolean | 선택 | `true` (기본값) 또는 `false` | 아이콘을 표시하거나 숨깁니다 |
-| `show_last_changed` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 변경 시각을 표시합니다 |
-| `show_last_updated` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 업데이트 시각을 표시합니다 |
-| `show_attribute` | boolean | 선택 | `true` 또는 `false` (기본값) | `name` 아래에 `entity`의 속성을 표시합니다 |
-| `attribute` | string | 선택 (`show_attribute`가 `true`이면 필수) | `entity`의 속성 | 표시할 속성 (예: `brightness`) |
 | `scrolling_effect` | boolean | 선택 | `true` (기본값) 또는 `false` | 내용이 컨테이너 크기를 초과할 때 텍스트가 스크롤되도록 허용합니다 |
 | `icon_open` | string | 선택 | 모든 `mdi:` 아이콘 | 열린 커버의 아이콘, 정의하지 않으면 기본 열림 아이콘이 표시됩니다 |
 | `icon_close` | string | 선택 | 모든 `mdi:` 아이콘 | 닫힌 커버의 아이콘, 정의하지 않으면 기본 닫힘 아이콘이 표시됩니다 |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | 선택 | 모든 문자열 | 선택 카드 이름, 정의하지 않으면 엔티티 이름이 표시됩니다 |
 | `icon` | string | 선택 | 모든 `mdi:` 아이콘 | 선택 카드 아이콘, 정의하지 않으면 엔티티 아이콘 또는 `entity-picture`가 표시됩니다 |
 | `force_icon` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity-picture` 대신 아이콘을 우선 사용합니다 |
-| `show_state` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 상태를 표시하거나 숨깁니다 |
+| `state_content` | string 또는 list | 선택 | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness`나 `forecast[0].temperature` 같은 속성 이름, 또는 [템플릿](#templates) | 이름 아래 줄에 표시할 내용을 이 순서대로 지정합니다. 지정하지 않으면 `button_type: state` 버튼은 Home Assistant가 해당 엔티티에 표시하는 것과 같은 내용을 표시합니다 (상태와 함께 냉난방이면 현재 온도, 커버이면 위치, 조명이면 밝기). 기존 `show_state`, `show_attribute`, `attribute`, `show_last_changed`, `show_last_updated` 키도 계속 작동하며, 편집기를 열면 `state_content`로 다시 작성됩니다. |
 | `show_name` | boolean | 선택 | `true` (기본값) 또는 `false` | 이름을 표시하거나 숨깁니다 |
 | `show_icon` | boolean | 선택 | `true` (기본값) 또는 `false` | 아이콘을 표시하거나 숨깁니다 |
-| `show_last_changed` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 변경 시각을 표시합니다 |
-| `show_last_updated` | boolean | 선택 | `true` 또는 `false` (기본값) | `entity`의 마지막 업데이트 시각을 표시합니다 |
-| `show_attribute` | boolean | 선택 | `true` 또는 `false` (기본값) | `name` 아래에 `entity`의 속성을 표시합니다 |
-| `attribute` | string | 선택 (`show_attribute`가 `true`이면 필수) | `entity`의 속성 | 표시할 속성 (예: `brightness`) |
 | `scrolling_effect` | boolean | 선택 | `true` (기본값) 또는 `false` | 내용이 컨테이너 크기를 초과할 때 텍스트가 스크롤되도록 허용합니다 |
 | `tap_action` | object | 선택 | [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 아이콘 클릭 시 동작 유형을 정의합니다. 정의하지 않으면 `more-info`가 사용됩니다. |
 | `double_tap_action` | object | 선택 | [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 아이콘 더블 클릭 시 동작 유형을 정의합니다. 정의하지 않으면 `none`이 사용됩니다. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | 선택                            | 모든 문자열                                       | 카드의 커스텀 이름입니다. 정의하지 않으면 엔티티 이름이 표시됩니다.                                    |
 | `icon`                  | string  | 선택                            | 모든 `mdi:` 아이콘                                  | 카드의 커스텀 아이콘입니다. 정의하지 않으면 엔티티 아이콘 또는 `entity-picture`가 사용됩니다.                   |
 | `force_icon`            | boolean | 선택                            | `true` 또는 `false` (기본값)                     | `entity-picture` 대신 아이콘을 우선 사용합니다.                                                           |
-| `show_state`            | boolean | 선택                            | `true` 또는 `false` (기본값)                     | `entity`의 현재 상태를 표시하거나 숨깁니다.                                                                 |
+| `state_content`         | string 또는 list | 선택 | `state`, 속성 이름, 템플릿 | 이름 아래 줄에 표시할 내용입니다. 버튼 옵션을 참고하세요. 기존 `show_state` 키도 계속 작동합니다. |
 | `show_name`             | boolean | 선택                            | `true` (기본값) 또는 `false`                     | 엔티티 이름을 표시하거나 숨깁니다.                                                                            |
 | `show_icon`             | boolean | 선택                            | `true` (기본값) 또는 `false`                     | 아이콘을 표시하거나 숨깁니다.                                                                                          |
 | `hide_target_temp_low`  | boolean | 선택 (`target_temp_low`를 지원하는 엔티티에만 해당) | `true` 또는 `false` (기본값) | `entity`가 지원하는 경우 낮은 목표 온도 컨트롤을 숨깁니다.                                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | 서브 버튼의 배경을 표시하며, 엔티티 상태에 따라 색이 바뀜 |
 | `state_background` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | 엔티티가 `on`일 때 상태 색상을 사용 |
 | `light_background` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | 사용 가능한 경우 조명 색상을 배경에 사용 |
-| `show_state` | boolean | 선택 사항 | `true` 또는 `false`(기본값) | `entity`의 상태를 표시하거나 숨김 |
+| `state_content` | string 또는 list | 선택 사항 | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness`나 `forecast[0].temperature` 같은 속성 이름, 또는 [템플릿](#templates) | 이름 아래 줄에 표시할 내용을 이 순서대로 지정합니다. 지정하지 않으면 `button_type: state` 버튼은 Home Assistant가 해당 엔티티에 표시하는 것과 같은 내용을 표시합니다 (상태와 함께 냉난방이면 현재 온도, 커버이면 위치, 조명이면 밝기). 기존 `show_state`, `show_attribute`, `attribute`, `show_last_changed`, `show_last_updated` 키도 계속 작동하며, 편집기를 열면 `state_content`로 다시 작성됩니다. |
 | `show_name` | boolean | 선택 사항 | `true` 또는 `false`(기본값) | 이름을 표시하거나 숨김 |
 | `show_icon` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | 아이콘을 표시하거나 숨김 |
-| `show_last_changed` | boolean | 선택 사항 | `true` 또는 `false`(기본값) | `entity`의 마지막 변경 시간을 표시 |
-| `show_last_updated` | boolean | 선택 사항 | `true` 또는 `false`(기본값) | `entity`의 마지막 업데이트 시간을 표시 |
-| `show_attribute` | boolean | 선택 사항 | `true` 또는 `false`(기본값) | `name` 아래에 `entity`의 속성을 표시 |
-| `attribute` | string | 선택 사항(`show_attribute`가 `true`이면 필수) | `entity`의 속성 | 표시할 속성(예: `brightness`) |
 | `select_attribute` | string | 선택 사항 | `entity`의 속성 목록(위 지원 옵션 참고) | 클릭하면 이 속성 목록이 드롭다운으로 열림(예: `effect_list`) |
 | `show_arrow` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | select 서브 버튼의 드롭다운 화살표를 표시하거나 숨김 |
 | `scrolling_effect` | boolean | 선택 사항 | `true`(기본값) 또는 `false` | 내용이 컨테이너 크기를 초과할 때 텍스트가 스크롤되도록 허용 |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

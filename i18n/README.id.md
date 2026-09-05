@@ -412,13 +412,9 @@ Kartu ini sangat serbaguna. Kartu ini bisa digunakan sebagai **switch**, **slide
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk tombol Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Hanya untuk lampu.** Gunakan warna aksen tema, bukan warna lampu.                         |
-| `show_state` | boolean | Optional | `true` atau `false` (default) | Menampilkan atau menyembunyikan state `entity` Anda |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
-| `show_last_changed` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu perubahan terakhir `entity` Anda |
-| `show_last_updated` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu pembaruan terakhir `entity` Anda |
-| `show_attribute` | boolean | Optional | `true` atau `false` (default) | Menampilkan atribut `entity` Anda di bawah `name`-nya |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut yang akan ditampilkan (misalnya `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` atau `hold_action`, lihat di bawah | Memungkinkan mengubah aksi bawaan saat tombol diklik. |
 | `tap_action` | object | Optional | See [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Menentukan jenis aksi saat ikon diklik, jika tidak ditentukan, `more-info` akan digunakan |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Kartu ini memungkinkan Anda mengontrol entitas media player.
 | `name` | string | Optional | Any string | Nama untuk media player Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk media player Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `show_state` | boolean | Optional | `true` atau `false` (default) | Menampilkan atau menyembunyikan state `entity` Anda |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
-| `show_last_changed` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu perubahan terakhir `entity` Anda |
-| `show_last_updated` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu pembaruan terakhir `entity` Anda |
-| `show_attribute` | boolean | Optional | `true` atau `false` (default) | Menampilkan atribut `entity` Anda di bawah `name`-nya |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut yang akan ditampilkan (misalnya `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
 | `min_volume` | number | Optional | Any number | Nilai minimum slider volume. |
 | `max_volume` | number | Optional | Any number | Nilai maksimum slider volume. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Kartu ini memungkinkan Anda mengontrol entitas `cover` Anda.
 | `entity` | string | **Required** | Any cover | Cover yang akan dikontrol |
 | `name` | string | Optional | Any string | Nama untuk cover Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `show_state` | boolean | Optional | `true` atau `false` (default) | Menampilkan atau menyembunyikan state `entity` Anda |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
-| `show_last_changed` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu perubahan terakhir `entity` Anda |
-| `show_last_updated` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu pembaruan terakhir `entity` Anda |
-| `show_attribute` | boolean | Optional | `true` atau `false` (default) | Menampilkan atribut `entity` Anda di bawah `name`-nya |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut yang akan ditampilkan (misalnya `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
 | `icon_open` | string | Optional | Any `mdi:` icon | Ikon untuk cover terbuka Anda, jika tidak ditentukan akan menampilkan ikon cover terbuka bawaan |
 | `icon_close` | string | Optional | Any `mdi:` icon | Ikon untuk cover tertutup Anda, jika tidak ditentukan akan menampilkan ikon cover tertutup bawaan |
@@ -778,13 +753,9 @@ Kartu ini memungkinkan Anda menambahkan menu dropdown untuk entitas `input_selec
 | `name` | string | Optional | Any string | Nama untuk select Anda, jika tidak ditentukan akan menampilkan nama entitas |
 | `icon` | string | Optional | Any `mdi:` icon | Ikon untuk select Anda, jika tidak ditentukan akan menampilkan ikon entitas atau `entity-picture` |
 | `force_icon` | boolean | Optional | `true` atau `false` (default) | Memberi prioritas pada ikon dibanding `entity-picture` |
-| `show_state` | boolean | Optional | `true` atau `false` (default) | Menampilkan atau menyembunyikan state `entity` Anda |
+| `state_content` | string atau list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan nama |
 | `show_icon` | boolean | Optional | `true` (default) atau `false` | Menampilkan atau menyembunyikan ikon |
-| `show_last_changed` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu perubahan terakhir `entity` Anda |
-| `show_last_updated` | boolean | Optional | `true` atau `false` (default) | Menampilkan waktu pembaruan terakhir `entity` Anda |
-| `show_attribute` | boolean | Optional | `true` atau `false` (default) | Menampilkan atribut `entity` Anda di bawah `name`-nya |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Atribut yang akan ditampilkan (misalnya `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) atau `false` | Memungkinkan teks bergulir saat kontennya melebihi ukuran kontainernya |
 | `tap_action` | object | Optional | See [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Menentukan jenis aksi saat ikon diklik, jika tidak ditentukan, `more-info` akan digunakan. |
 | `double_tap_action` | object | Optional | See [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Menentukan jenis aksi saat ikon diklik dua kali, jika tidak ditentukan, `none` akan digunakan. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Kartu ini memungkinkan Anda mengontrol entitas `climate` Anda.
 | `name`                  | string  | Optional                            | Any string                                       | Nama kustom untuk kartu. Jika tidak ditentukan, akan menampilkan nama entitas.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Ikon kustom untuk kartu. Jika tidak ditentukan, ikon entitas atau `entity-picture` akan digunakan.                   |
 | `force_icon`            | boolean | Optional                            | `true` atau `false` (default)                     | Memberi prioritas pada ikon dibanding `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` atau `false` (default)                     | Menampilkan atau menyembunyikan state terkini dari `entity`.                                                                 |
+| `state_content`         | string atau list | Optional | `state`, nama atribut, sebuah templat | Apa yang ditampilkan baris di bawah nama, lihat opsi tombol. Kunci lama `show_state` masih berfungsi. |
 | `show_name`             | boolean | Optional                            | `true` (default) atau `false`                     | Menampilkan atau menyembunyikan nama entitas.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) atau `false`                     | Menampilkan atau menyembunyikan ikon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` atau `false` (default) | Menyembunyikan kontrol suhu target rendah jika didukung oleh `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Opsional | `true` (default) atau `false` | Tampilkan latar belakang untuk subtombol Anda, warnanya akan berubah berdasarkan status entitas Anda |
 | `state_background` | boolean | Opsional | `true` (default) atau `false` | Gunakan warna status ketika entitas dalam kondisi `on` |
 | `light_background` | boolean | Opsional | `true` (default) atau `false` | Gunakan warna lampu untuk latar belakang jika tersedia |
-| `show_state` | boolean | Opsional | `true` atau `false` (default) | Tampilkan atau sembunyikan status `entity` Anda |
+| `state_content` | string atau list | Opsional | `state`, `last-changed`, `last-updated`, `last-triggered`, nama atribut seperti `brightness` atau `forecast[0].temperature`, atau sebuah [templat](#templates) | Apa yang ditampilkan baris di bawah nama, dalam urutan ini. Tanpanya, tombol `button_type: state` menampilkan apa yang ditampilkan Home Assistant untuk entitas tersebut (state-nya, ditambah suhu saat ini dari entitas iklim, posisi cover, kecerahan lampu). Kunci lama `show_state`, `show_attribute`, `attribute`, `show_last_changed` dan `show_last_updated` masih berfungsi dan ditulis ulang sebagai `state_content` saat Anda membuka editor. |
 | `show_name` | boolean | Opsional | `true` atau `false` (default) | Tampilkan atau sembunyikan nama |
 | `show_icon` | boolean | Opsional | `true` (default) atau `false` | Tampilkan atau sembunyikan ikon |
-| `show_last_changed` | boolean | Opsional | `true` atau `false` (default) | Tampilkan waktu perubahan terakhir `entity` Anda |
-| `show_last_updated` | boolean | Opsional | `true` atau `false` (default) | Tampilkan waktu pembaruan terakhir `entity` Anda |
-| `show_attribute` | boolean | Opsional | `true` atau `false` (default) | Tampilkan atribut `entity` Anda di bawah `name`-nya |
-| `attribute` | string | Opsional (wajib jika `show_attribute` diatur ke `true`) | Atribut dari `entity` Anda | Atribut yang akan ditampilkan (misalnya `brightness`) |
 | `select_attribute` | string | Opsional | Daftar atribut dari `entity` Anda (lihat opsi yang didukung di atas) | Daftar atribut ini akan membuka dropdown jika diklik (misalnya `effect_list`) |
 | `show_arrow` | boolean | Opsional | `true` (default) atau `false` | Tampilkan atau sembunyikan panah dropdown untuk subtombol select |
 | `scrolling_effect` | boolean | Opsional | `true` (default) atau `false` | Izinkan teks bergulir ketika konten melebihi ukuran kontainer |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

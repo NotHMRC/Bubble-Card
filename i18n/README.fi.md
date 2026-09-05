@@ -412,13 +412,9 @@ Tämä kortti on hyvin monikäyttöinen. Sitä voi käyttää **kytkimenä**, **
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Painikkeen kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
 | `use_accent_color` | boolean | Valinnainen (`false` oletus) | **Vain valoille.** Käytä teeman korostusväriä valon värin sijaan.                         |
-| `show_state` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota `entity` tila |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
-| `show_last_changed` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän muutoksen aika |
-| `show_last_updated` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän päivityksen aika |
-| `show_attribute` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` attribuutti sen `name` alla |
-| `attribute` | string | Valinnainen (pakollinen, jos `show_attribute` on `true`) | Attribuutti `entity` kentästä | Näytettävä attribuutti (esim. `brightness`) |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
 | `button_action` | object | Valinnainen | `tap_action`, `double_tap_action` tai `hold_action`, katso alla | Salli oletustoimintojen muuttaminen painikkeen napautuksessa. |
 | `tap_action` | object | Valinnainen | Katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Määritä kuvakkeen napautuksen toiminto, jos määrittelemätön, käytetään `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Tämän kortin avulla voit ohjata mediasoitinentiteettiä.
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Mediasoittimen nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Mediasoittimen kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `show_state` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota `entity` tila |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
-| `show_last_changed` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän muutoksen aika |
-| `show_last_updated` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän päivityksen aika |
-| `show_attribute` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` attribuutti sen `name` alla |
-| `attribute` | string | Valinnainen (pakollinen, jos `show_attribute` on `true`) | Attribuutti `entity` kentästä | Näytettävä attribuutti (esim. `brightness`) |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
 | `min_volume` | number | Valinnainen | Mikä tahansa luku | Äänenvoimakkuuden liukusäätimen minimiarvo. |
 | `max_volume` | number | Valinnainen | Mikä tahansa luku | Äänenvoimakkuuden liukusäätimen maksimiarvo. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Tämän kortin avulla voit ohjata `cover` entiteettejäsi.
 | `entity` | string | **Pakollinen** | Mikä tahansa kaihdin | Ohjattava kaihdin |
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Kaihtimen nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `show_state` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota `entity` tila |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
-| `show_last_changed` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän muutoksen aika |
-| `show_last_updated` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän päivityksen aika |
-| `show_attribute` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` attribuutti sen `name` alla |
-| `attribute` | string | Valinnainen (pakollinen, jos `show_attribute` on `true`) | Attribuutti `entity` kentästä | Näytettävä attribuutti (esim. `brightness`) |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
 | `icon_open` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Avoimen kaihtimen kuvake, jos ei määritetty, näytetään oletuskuvake |
 | `icon_close` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Suljetun kaihtimen kuvake, jos ei määritetty, näytetään oletuskuvake |
@@ -778,13 +753,9 @@ Tämän kortin avulla voit lisätä pudotusvalikon `input_select` / `select` ent
 | `name` | string | Valinnainen | Mikä tahansa merkkijono | Valinnan nimi, jos ei määritetty, näytetään entiteetin nimi |
 | `icon` | string | Valinnainen | Mikä tahansa `mdi:` kuvake | Valinnan kuvake, jos ei määritetty, näytetään entiteetin kuvake tai `entity-picture` |
 | `force_icon` | boolean | Valinnainen | `true` tai `false` (oletus) | Anna kuvakkeelle etusija `entity-picture` kentän sijaan |
-| `show_state` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota `entity` tila |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
-| `show_last_changed` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän muutoksen aika |
-| `show_last_updated` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` viimeisimmän päivityksen aika |
-| `show_attribute` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity` attribuutti sen `name` alla |
-| `attribute` | string | Valinnainen (pakollinen, jos `show_attribute` on `true`) | Attribuutti `entity` kentästä | Näytettävä attribuutti (esim. `brightness`) |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliönsä koon |
 | `tap_action` | object | Valinnainen | Katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Määritä kuvakkeen napautuksen toiminto, jos määrittelemätön, käytetään `more-info`. |
 | `double_tap_action` | object | Valinnainen | Katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Määritä kuvakkeen kaksoisnapautuksen toiminto, jos määrittelemätön, käytetään `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Tämän kortin avulla voit ohjata `climate` entiteettejäsi.
 | `name`                  | string  | Valinnainen                            | Mikä tahansa merkkijono                                       | Kortin mukautettu nimi. Jos ei määritetty, näytetään entiteetin nimi.                                    |
 | `icon`                  | string  | Valinnainen                            | Mikä tahansa `mdi:` kuvake                                  | Kortin mukautettu kuvake. Jos ei määritetty, käytetään entiteetin kuvaketta tai `entity-picture`.                   |
 | `force_icon`            | boolean | Valinnainen                            | `true` tai `false` (oletus)                     | Antaa kuvakkeelle etusijan `entity-picture` kentän sijaan.                                                           |
-| `show_state`            | boolean | Valinnainen                            | `true` tai `false` (oletus)                     | Näytä tai piilota `entity` nykyinen tila.                                                                 |
+| `state_content`         | string tai list | Valinnainen | `state`, attribuutin nimi, malli | Mitä nimen alla oleva rivi näyttää, katso painikkeen asetukset. Vanha avain `show_state` toimii edelleen. |
 | `show_name`             | boolean | Valinnainen                            | `true` (oletus) tai `false`                     | Näytä tai piilota entiteetin nimi.                                                                            |
 | `show_icon`             | boolean | Valinnainen                            | `true` (oletus) tai `false`                     | Näytä tai piilota kuvake.                                                                                          |
 | `hide_target_temp_low`  | boolean | Valinnainen (vain entiteeteille, jotka tukevat `target_temp_low` kenttää) | `true` tai `false` (oletus) | Piilottaa alarajan tavoitelämpötilan säätimen, jos `entity` tukee sitä.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä alipainikkeelle tausta, se muuttaa väriään entiteetin tilan mukaan |
 | `state_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Käytä tilan väriä, kun entiteetti on `on` |
 | `light_background` | boolean | Valinnainen | `true` (oletus) tai `false` | Käytä valon väriä taustana, kun se on saatavilla |
-| `show_state` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota `entity`-entiteetin tila |
+| `state_content` | string tai list | Valinnainen | `state`, `last-changed`, `last-updated`, `last-triggered`, attribuutin nimi kuten `brightness` tai `forecast[0].temperature`, tai [malli](#templates) | Mitä nimen alla oleva rivi näyttää, tässä järjestyksessä. Ilman sitä `button_type: state` -painike näyttää sen, mitä Home Assistant näyttää entiteetille (sen tilan sekä ilmastoinnin nykyisen lämpötilan, kaihtimen sijainnin ja valon kirkkauden). Vanhat avaimet `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` toimivat edelleen, ja ne kirjoitetaan uudelleen muotoon `state_content`, kun editori avataan. |
 | `show_name` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä tai piilota nimi |
 | `show_icon` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota kuvake |
-| `show_last_changed` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity`-entiteetin viimeisin muutosaika |
-| `show_last_updated` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity`-entiteetin viimeisin päivitysaika |
-| `show_attribute` | boolean | Valinnainen | `true` tai `false` (oletus) | Näytä `entity`-entiteetin attribuutti sen `name`-arvon alla |
-| `attribute` | string | Valinnainen (pakollinen, jos `show_attribute` on `true`) | Attribuutti `entity`-entiteetiltäsi | Näytettävä attribuutti (esim. `brightness`) |
 | `select_attribute` | string | Valinnainen | Attribuuttilista `entity`-entiteetiltäsi (katso tuetut arvot yllä) | Tämä attribuuttilista avaa pudotusvalikon, kun sitä napautetaan (esim. `effect_list`) |
 | `show_arrow` | boolean | Valinnainen | `true` (oletus) tai `false` | Näytä tai piilota pudotusvalikon nuoli valinta-alipainikkeille |
 | `scrolling_effect` | boolean | Valinnainen | `true` (oletus) tai `false` | Salli tekstin vieriminen, kun sisältö ylittää säiliön koon |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

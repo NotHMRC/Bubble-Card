@@ -412,13 +412,9 @@ Ce thẻ này rất linh hoạt. Nó có thể được dùng như một **công
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho nút, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Chỉ dành cho đèn.** Dùng màu nhấn của giao diện thay vì màu của đèn.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Hiện hoặc ẩn trạng thái của `entity` |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Hiện thời gian thay đổi gần nhất của `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Hiện thời gian cập nhật gần nhất của `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Hiện một thuộc tính của `entity` bên dưới `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Thuộc tính cần hiện (ví dụ: `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Cho phép thay đổi hành động mặc định khi nhấn nút. |
 | `tap_action` | object | Optional | See [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Định nghĩa loại hành động khi nhấn biểu tượng, nếu không định nghĩa, `more-info` sẽ được dùng |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Thẻ này cho phép bạn điều khiển một thực thể trình phát đa p
 | `name` | string | Optional | Any string | Tên cho trình phát đa phương tiện, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho trình phát đa phương tiện, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Hiện hoặc ẩn trạng thái của `entity` |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Hiện thời gian thay đổi gần nhất của `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Hiện thời gian cập nhật gần nhất của `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Hiện một thuộc tính của `entity` bên dưới `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Thuộc tính cần hiện (ví dụ: `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
 | `min_volume` | number | Optional | Any number | Giá trị tối thiểu của thanh trượt âm lượng. |
 | `max_volume` | number | Optional | Any number | Giá trị tối đa của thanh trượt âm lượng. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Thẻ này cho phép bạn điều khiển các thực thể `cover` của bạn
 | `entity` | string | **Required** | Any cover | Một rèm cửa để điều khiển |
 | `name` | string | Optional | Any string | Tên cho rèm cửa, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Hiện hoặc ẩn trạng thái của `entity` |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Hiện thời gian thay đổi gần nhất của `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Hiện thời gian cập nhật gần nhất của `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Hiện một thuộc tính của `entity` bên dưới `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Thuộc tính cần hiện (ví dụ: `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
 | `icon_open` | string | Optional | Any `mdi:` icon | Biểu tượng cho rèm cửa mở, nếu không được định nghĩa nó sẽ hiển thị biểu tượng rèm mở mặc định |
 | `icon_close` | string | Optional | Any `mdi:` icon | Biểu tượng cho rèm cửa đóng, nếu không được định nghĩa nó sẽ hiển thị biểu tượng rèm đóng mặc định |
@@ -778,13 +753,9 @@ Thẻ này cho phép bạn thêm một menu thả xuống cho các thực thể 
 | `name` | string | Optional | Any string | Tên cho lựa chọn, nếu không được định nghĩa nó sẽ hiển thị tên thực thể |
 | `icon` | string | Optional | Any `mdi:` icon | Biểu tượng cho lựa chọn, nếu không được định nghĩa nó sẽ hiển thị biểu tượng thực thể hoặc `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Ưu tiên biểu tượng thay vì `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Hiện hoặc ẩn trạng thái của `entity` |
+| `state_content` | string hoặc list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn tên |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Hiện hoặc ẩn biểu tượng |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Hiện thời gian thay đổi gần nhất của `entity` |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Hiện thời gian cập nhật gần nhất của `entity` |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Hiện một thuộc tính của `entity` bên dưới `name` |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Thuộc tính cần hiện (ví dụ: `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Cho phép văn bản cuộn khi nội dung vượt quá kích thước của vùng chứa |
 | `tap_action` | object | Optional | See [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Định nghĩa loại hành động khi nhấn biểu tượng, nếu không định nghĩa, `more-info` sẽ được dùng. |
 | `double_tap_action` | object | Optional | See [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Định nghĩa loại hành động khi nhấn đúp biểu tượng, nếu không định nghĩa, `none` sẽ được dùng. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Thẻ này cho phép bạn điều khiển các thực thể `climate` của b�
 | `name`                  | string  | Optional                            | Any string                                       | Tên tùy chỉnh cho thẻ. Nếu không được định nghĩa, nó sẽ hiển thị tên thực thể.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Biểu tượng tùy chỉnh cho thẻ. Nếu không được định nghĩa, biểu tượng thực thể hoặc `entity-picture` sẽ được dùng.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Ưu tiên biểu tượng thay vì `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Hiện hoặc ẩn trạng thái hiện tại của `entity`.                                                                 |
+| `state_content`         | string hoặc list | Optional | `state`, tên một thuộc tính, một mẫu | Nội dung mà dòng bên dưới tên hiển thị, xem các tùy chọn của nút. Khóa cũ `show_state` vẫn hoạt động. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Hiện hoặc ẩn tên của thực thể.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Hiện hoặc ẩn biểu tượng.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Ẩn điều khiển nhiệt độ mục tiêu thấp nếu được `entity` hỗ trợ.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Hiển thị nền cho nút phụ của bạn, màu sẽ thay đổi theo trạng thái entity |
 | `state_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Dùng màu trạng thái khi entity ở `on` |
 | `light_background` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Dùng màu đèn cho nền khi có sẵn |
-| `show_state` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị hoặc ẩn trạng thái của `entity` |
+| `state_content` | string hoặc list | Không bắt buộc | `state`, `last-changed`, `last-updated`, `last-triggered`, tên một thuộc tính như `brightness` hoặc `forecast[0].temperature`, hoặc một [mẫu](#templates) | Nội dung mà dòng bên dưới tên hiển thị, theo thứ tự này. Nếu không có, một nút `button_type: state` sẽ hiện những gì Home Assistant hiện cho thực thể (trạng thái của nó, cùng với nhiệt độ hiện tại của một thực thể điều hòa, vị trí của một rèm cửa, độ sáng của một đèn). Các khóa cũ `show_state`, `show_attribute`, `attribute`, `show_last_changed` và `show_last_updated` vẫn hoạt động và được ghi lại thành `state_content` khi bạn mở trình chỉnh sửa. |
 | `show_name` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị hoặc ẩn tên |
 | `show_icon` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Hiển thị hoặc ẩn icon |
-| `show_last_changed` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị thời gian thay đổi cuối cùng của `entity` |
-| `show_last_updated` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị thời gian cập nhật cuối cùng của `entity` |
-| `show_attribute` | boolean | Không bắt buộc | `true` hoặc `false` (mặc định) | Hiển thị một thuộc tính của `entity` bên dưới `name` |
-| `attribute` | string | Không bắt buộc (bắt buộc nếu `show_attribute` là `true`) | Một thuộc tính từ `entity` của bạn | Thuộc tính cần hiển thị (ví dụ `brightness`) |
 | `select_attribute` | string | Không bắt buộc | Một danh sách thuộc tính từ `entity` của bạn (xem các tùy chọn hỗ trợ ở trên) | Danh sách thuộc tính này sẽ mở một menu thả xuống khi nhấp (ví dụ `effect_list`) |
 | `show_arrow` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Hiển thị hoặc ẩn mũi tên thả xuống cho nút phụ dạng select |
 | `scrolling_effect` | boolean | Không bắt buộc | `true` (mặc định) hoặc `false` | Cho phép cuộn văn bản khi nội dung vượt quá kích thước của vùng chứa |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

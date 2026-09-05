@@ -412,13 +412,9 @@ Ez a kártya rendkívül sokoldalú. Használható **kapcsolóként**, **csúszk
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A gomb ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
 | `use_accent_color` | boolean | Opcionális (alapértelmezett `false`) | **Csak lámpákhoz.** A téma kiemelő színét használja a lámpa színe helyett.                         |
-| `show_state` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` állapotának megjelenítése vagy elrejtése |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
-| `show_last_changed` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó változásának időpontjának megjelenítése |
-| `show_last_updated` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó frissítésének időpontjának megjelenítése |
-| `show_attribute` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` egy attribútumának megjelenítése a `name` alatt |
-| `attribute` | string | Opcionális (kötelező, ha a `show_attribute` értéke `true`) | Az `entity` egyik attribútuma | A megjelenítendő attribútum (pl. `brightness`) |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
 | `button_action` | object | Opcionális | `tap_action`, `double_tap_action` vagy `hold_action`, lásd lent | Lehetővé teszi az alapértelmezett műveletek módosítását gombkattintáskor. |
 | `tap_action` | object | Opcionális | Lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Meghatározza az ikonra koppintáskor végrehajtott műveletet, ha nincs megadva, a `more-info` lesz használva |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Ez a kártya lehetővé teszi egy médialejátszó entitás vezérlését.
 | `name` | string | Opcionális | Bármely string | A médialejátszó neve, ha nincs megadva, az entitás neve jelenik meg |
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A médialejátszó ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `show_state` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` állapotának megjelenítése vagy elrejtése |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
-| `show_last_changed` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó változásának időpontjának megjelenítése |
-| `show_last_updated` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó frissítésének időpontjának megjelenítése |
-| `show_attribute` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` egy attribútumának megjelenítése a `name` alatt |
-| `attribute` | string | Opcionális (kötelező, ha a `show_attribute` értéke `true`) | Az `entity` egyik attribútuma | A megjelenítendő attribútum (pl. `brightness`) |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
 | `min_volume` | number | Opcionális | Bármely szám | A hangerőcsúszka minimális értéke. |
 | `max_volume` | number | Opcionális | Bármely szám | A hangerőcsúszka maximális értéke. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Ez a kártya lehetővé teszi a `cover` entitásaid vezérlését.
 | `entity` | string | **Kötelező** | Bármely árnyékoló | Vezérelendő árnyékoló |
 | `name` | string | Opcionális | Bármely string | Az árnyékoló neve, ha nincs megadva, az entitás neve jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `show_state` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` állapotának megjelenítése vagy elrejtése |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
-| `show_last_changed` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó változásának időpontjának megjelenítése |
-| `show_last_updated` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó frissítésének időpontjának megjelenítése |
-| `show_attribute` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` egy attribútumának megjelenítése a `name` alatt |
-| `attribute` | string | Opcionális (kötelező, ha a `show_attribute` értéke `true`) | Az `entity` egyik attribútuma | A megjelenítendő attribútum (pl. `brightness`) |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
 | `icon_open` | string | Opcionális | Bármely `mdi:` ikon | A nyitott árnyékoló ikonja, ha nincs megadva, az alapértelmezett nyitott árnyékoló ikon jelenik meg |
 | `icon_close` | string | Opcionális | Bármely `mdi:` ikon | A zárt árnyékoló ikonja, ha nincs megadva, az alapértelmezett zárt árnyékoló ikon jelenik meg |
@@ -778,13 +753,9 @@ Ez a kártya lehetővé teszi egy legördülő menü hozzáadását az `input_se
 | `name` | string | Opcionális | Bármely string | A választó neve, ha nincs megadva, az entitás neve jelenik meg |
 | `icon` | string | Opcionális | Bármely `mdi:` ikon | A választó ikonja, ha nincs megadva, az entitás ikonja vagy az `entity-picture` jelenik meg |
 | `force_icon` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az ikonnak ad elsőbbséget az `entity-picture` helyett |
-| `show_state` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` állapotának megjelenítése vagy elrejtése |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
-| `show_last_changed` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó változásának időpontjának megjelenítése |
-| `show_last_updated` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó frissítésének időpontjának megjelenítése |
-| `show_attribute` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` egy attribútumának megjelenítése a `name` alatt |
-| `attribute` | string | Opcionális (kötelező, ha a `show_attribute` értéke `true`) | Az `entity` egyik attribútuma | A megjelenítendő attribútum (pl. `brightness`) |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Engedélyezi a szöveg görgetését, ha a tartalom meghaladja a konténer méretét |
 | `tap_action` | object | Opcionális | Lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Meghatározza az ikonra koppintáskor végrehajtott műveletet, ha nincs megadva, a `more-info` lesz használva. |
 | `double_tap_action` | object | Opcionális | Lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Meghatározza az ikonra dupla koppintáskor végrehajtott műveletet, ha nincs megadva, a `none` lesz használva. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Ez a kártya lehetővé teszi a `climate` entitásaid vezérlését.
 | `name`                  | string  | Opcionális                            | Bármely string                                       | A kártya egyéni neve. Ha nincs megadva, az entitás neve jelenik meg.                                    |
 | `icon`                  | string  | Opcionális                            | Bármely `mdi:` ikon                                  | A kártya egyéni ikonja. Ha nincs megadva, az entitás ikonja vagy az `entity-picture` lesz használva.                   |
 | `force_icon`            | boolean | Opcionális                            | `true` vagy `false` (alapértelmezett)                     | Elsőbbséget ad az ikonnak az `entity-picture` helyett.                                                           |
-| `show_state`            | boolean | Opcionális                            | `true` vagy `false` (alapértelmezett)                     | Az `entity` aktuális állapotának megjelenítése vagy elrejtése.                                                                 |
+| `state_content`         | string vagy list | Opcionális | `state`, egy attribútum neve, egy sablon | Mit mutat a név alatti sor, lásd a gomb beállításait. A régi `show_state` kulcs továbbra is működik. |
 | `show_name`             | boolean | Opcionális                            | `true` (alapértelmezett) vagy `false`                     | Az entitás nevének megjelenítése vagy elrejtése.                                                                            |
 | `show_icon`             | boolean | Opcionális                            | `true` (alapértelmezett) vagy `false`                     | Az ikon megjelenítése vagy elrejtése.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opcionális (csak `target_temp_low`-t támogató entitásokhoz) | `true` vagy `false` (alapértelmezett) | Elrejti az alsó célhőmérséklet vezérlőjét, ha az `entity` támogatja.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Háttér megjelenítése az algombhoz, amely az entitás állapota szerint változtatja a színét |
 | `state_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az állapotszín használata, amikor az entitás `on` |
 | `light_background` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A világítás színének használata a háttérhez, ha elérhető |
-| `show_state` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` állapotának megjelenítése vagy elrejtése |
+| `state_content` | string vagy list | Opcionális | `state`, `last-changed`, `last-updated`, `last-triggered`, egy attribútum neve, például `brightness` vagy `forecast[0].temperature`, vagy egy [sablon](#templates) | Mit mutat a név alatti sor, ebben a sorrendben. Enélkül egy `button_type: state` gomb azt mutatja, amit a Home Assistant mutat az entitáshoz (az állapotát, valamint egy klíma aktuális hőmérsékletét, egy árnyékoló helyzetét, egy lámpa fényerejét). A régi `show_state`, `show_attribute`, `attribute`, `show_last_changed` és `show_last_updated` kulcsok továbbra is működnek, és `state_content` kulcsra íródnak át, amikor megnyitod a szerkesztőt. |
 | `show_name` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | A név megjelenítése vagy elrejtése |
 | `show_icon` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | Az ikon megjelenítése vagy elrejtése |
-| `show_last_changed` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó változásának idejének megjelenítése |
-| `show_last_updated` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` utolsó frissítésének idejének megjelenítése |
-| `show_attribute` | boolean | Opcionális | `true` vagy `false` (alapértelmezett) | Az `entity` egy attribútumának megjelenítése a `name` alatt |
-| `attribute` | string | Opcionális (kötelező, ha a `show_attribute` értéke `true`) | Az `entity` egyik attribútuma | A megjelenítendő attribútum (pl. `brightness`) |
 | `select_attribute` | string | Opcionális | Az `entity` egyik attribútum listája (lásd a fenti támogatott értékeket) | Ez az attribútumlista kattintásra egy legördülő menüt nyit meg (pl. `effect_list`) |
 | `show_arrow` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A legördülő nyíl megjelenítése vagy elrejtése a választó típusú algomboknál |
 | `scrolling_effect` | boolean | Opcionális | `true` (alapértelmezett) vagy `false` | A szöveg görgetésének engedélyezése, amikor a tartalom meghaladja a konténer méretét |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

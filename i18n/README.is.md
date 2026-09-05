@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir hnappinn, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` default) | **Only for lights.** Nota áherslulit þemans í stað lits ljóssins.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Sýna eða fela stöðu eindarinnar |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Sýna síðasta breytingartíma eindarinnar |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Sýna síðasta uppfærslutíma eindarinnar |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Sýna eiginleika eindarinnar fyrir neðan nafn hennar |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Eiginleikinn sem birtist (t.d. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Gerir kleift að breyta sjálfgefnum aðgerðum við smell á hnappinn. |
 | `tap_action` | object | Optional | See [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Skilgreinir tegund aðgerðar við smell á táknmyndina, ef ekki skilgreint er `more-info` notað |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Optional | Any string | Nafn fyrir spilarann, ef ekki skilgreint birtist nafn eindarinnar |
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir spilarann, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Sýna eða fela stöðu eindarinnar |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Sýna síðasta breytingartíma eindarinnar |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Sýna síðasta uppfærslutíma eindarinnar |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Sýna eiginleika eindarinnar fyrir neðan nafn hennar |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Eiginleikinn sem birtist (t.d. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
 | `min_volume` | number | Optional | Any number | Lágmarksgildi hljóðstyrkssleðans. |
 | `max_volume` | number | Optional | Any number | Hámarksgildi hljóðstyrkssleðans. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Required** | Any cover | Gluggatjald til að stjórna |
 | `name` | string | Optional | Any string | Nafn fyrir gluggatjaldið, ef ekki skilgreint birtist nafn eindarinnar |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Sýna eða fela stöðu eindarinnar |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Sýna síðasta breytingartíma eindarinnar |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Sýna síðasta uppfærslutíma eindarinnar |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Sýna eiginleika eindarinnar fyrir neðan nafn hennar |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Eiginleikinn sem birtist (t.d. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
 | `icon_open` | string | Optional | Any `mdi:` icon | Táknmynd fyrir opið gluggatjald, ef ekki skilgreint birtist sjálfgefna táknmyndin fyrir opið gluggatjald |
 | `icon_close` | string | Optional | Any `mdi:` icon | Táknmynd fyrir lokað gluggatjald, ef ekki skilgreint birtist sjálfgefna táknmyndin fyrir lokað gluggatjald |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | Nafn fyrir valið, ef ekki skilgreint birtist nafn eindarinnar |
 | `icon` | string | Optional | Any `mdi:` icon | Táknmynd fyrir valið, ef ekki skilgreint birtist táknmynd eindarinnar eða `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Gefa táknmynd forgang fram yfir `entity-picture` |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Sýna eða fela stöðu eindarinnar |
+| `state_content` | strengur eða listi | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Sýna eða fela nafnið |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Sýna eða fela táknmyndina |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Sýna síðasta breytingartíma eindarinnar |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Sýna síðasta uppfærslutíma eindarinnar |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Sýna eiginleika eindarinnar fyrir neðan nafn hennar |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Eiginleikinn sem birtist (t.d. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Leyfa texta að renna þegar innihaldið er stærra en umlykjandi svæði |
 | `tap_action` | object | Optional | See [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Skilgreinir tegund aðgerðar við smell á táknmyndina, ef ekki skilgreint er `more-info` notað. |
 | `double_tap_action` | object | Optional | See [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Skilgreinir tegund aðgerðar við tvísmell á táknmyndina, ef ekki skilgreint er `none` notað. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Optional                            | Any string                                       | Sérsniðið nafn fyrir kortið. Ef ekki skilgreint birtist nafn eindarinnar.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Sérsniðin táknmynd fyrir kortið. Ef ekki skilgreint verður táknmynd eindarinnar eða `entity-picture` notuð.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Gefur táknmyndinni forgang fram yfir `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Sýna eða fela núverandi stöðu eindarinnar.                                                                 |
+| `state_content`         | strengur eða listi | Optional | `state`, nafn eiginleika, sniðmát | Hvað línan undir nafninu sýnir, sjá valkosti hnappsins. Gamli lykillinn `show_state` virkar enn. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Sýna eða fela nafn eindarinnar.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Sýna eða fela táknmyndina.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Felur lágmarkshitastigsstillinguna ef eindin styður hana.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Sýndu bakgrunn fyrir undirhnappinn, liturinn breytist eftir stöðu eindarinnar |
 | `state_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Notaðu litinn á stöðunni þegar eindin er `on` |
 | `light_background` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Notaðu ljóslitinn fyrir bakgrunninn þegar hann er tiltækur |
-| `show_state` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýna eða fela stöðu eindarinnar þinnar (`entity`) |
+| `state_content` | strengur eða listi | Valfrjálst | `state`, `last-changed`, `last-updated`, `last-triggered`, nafn eiginleika eins og `brightness` eða `forecast[0].temperature`, eða [sniðmát](#templates) | Hvað línan undir nafninu sýnir, í þessari röð. Án þess sýnir `button_type: state` hnappur það sem Home Assistant sýnir fyrir eindina (stöðu hennar, ásamt núverandi hitastigi loftslagseindar, staðsetningu gluggatjalds, birtu ljóss). Gömlu lyklarnir `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virka enn og eru endurskrifaðir sem `state_content` þegar þú opnar ritilinn. |
 | `show_name` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýna eða fela nafnið |
 | `show_icon` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Sýna eða fela táknmyndina |
-| `show_last_changed` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýndu síðasta breytingartíma eindarinnar þinnar (`entity`) |
-| `show_last_updated` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýndu síðasta uppfærslutíma eindarinnar þinnar (`entity`) |
-| `show_attribute` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Sýndu eiginleika eindarinnar þinnar (`entity`) fyrir neðan nafnið (`name`) |
-| `attribute` | strengur | Valfrjálst (krafist ef `show_attribute` er `true`) | Eiginleiki úr eindinni þinni (`entity`) | Eiginleikinn sem á að sýna (t.d. `brightness`) |
 | `select_attribute` | strengur | Valfrjálst | Eiginleikalisti úr eindinni þinni (`entity`) (sjá studda valkosti hér að ofan) | Þessi eiginleikalisti opnar fellilista við smell (t.d. `effect_list`) |
 | `show_arrow` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Sýna eða fela fellilistaörina fyrir select undirhnappa |
 | `scrolling_effect` | boolean | Valfrjálst | `true` (sjálfgefið) eða `false` | Leyfðu texta að skruna þegar innihaldið er stærra en ílátið |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

@@ -412,13 +412,9 @@ Dette kort er meget alsidigt. Det kan bruges som en **kontakt**, en **skyder**, 
 | `icon` | string | Valgfri | Ethvert `mdi:`-ikon | Et ikon til din knap, hvis det ikke er angivet, vises entitetens ikon eller `entity-picture` |
 | `force_icon` | boolean | Valgfri | `true` eller `false` (standard) | Giv prioritet til ikonet frem for `entity-picture` |
 | `use_accent_color` | boolean | Valgfri (`false` standard) | **Kun for lys.** Brug temaets accentfarve i stedet for lysets farve.                         |
-| `show_state` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul tilstanden for din `entity` |
+| `state_content` | string eller list | Valgfri | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributnavn som `brightness` eller `forecast[0].temperature`, eller en [skabelon](#templates) | Hvad linjen under navnet viser, i denne rækkefølge. Uden den viser en `button_type: state`-knap det, som Home Assistant viser for entiteten (dens tilstand, plus den aktuelle temperatur for en klimaentitet, positionen for et gardin, lysstyrken for et lys). De gamle nøgler `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virker stadig og omskrives til `state_content`, når du åbner editoren. |
 | `show_name` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul ikonet |
-| `show_last_changed` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for den seneste ændring af din `entity` |
-| `show_last_updated` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for den seneste opdatering af din `entity` |
-| `show_attribute` | boolean | Valgfri | `true` eller `false` (standard) | Vis en attribut fra din `entity` under dens `name` |
-| `attribute` | string | Valgfri (påkrævet hvis `show_attribute` er sat til `true`) | En attribut fra din `entity` | Attributten der skal vises (f.eks. `brightness`) |
 | `scrolling_effect` | boolean | Valgfri | `true` (standard) eller `false` | Tillad tekst at rulle, når indholdet overstiger containerens størrelse |
 | `button_action` | object | Valgfri | `tap_action`, `double_tap_action` eller `hold_action`, se nedenfor | Tillader at ændre standardhandlingerne ved klik på knappen. |
 | `tap_action` | object | Valgfri | Se [handlinger](#tryk--dobbelttryk--og-holdehandlinger) | Definer typen af handling ved klik på ikonet, hvis udefineret bruges `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Dette kort giver dig mulighed for at styre en medieafspillerentitet.
 | `name` | string | Valgfri | Enhver streng | Et navn til din medieafspiller, hvis det ikke er angivet, vises entitetens navn |
 | `icon` | string | Valgfri | Ethvert `mdi:`-ikon | Et ikon til din medieafspiller, hvis det ikke er angivet, vises entitetens ikon eller `entity-picture` |
 | `force_icon` | boolean | Valgfri | `true` eller `false` (standard) | Giv prioritet til ikonet frem for `entity-picture` |
-| `show_state` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul tilstanden for din `entity` |
+| `state_content` | string eller list | Valgfri | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributnavn som `brightness` eller `forecast[0].temperature`, eller en [skabelon](#templates) | Hvad linjen under navnet viser, i denne rækkefølge. Uden den viser en `button_type: state`-knap det, som Home Assistant viser for entiteten (dens tilstand, plus den aktuelle temperatur for en klimaentitet, positionen for et gardin, lysstyrken for et lys). De gamle nøgler `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virker stadig og omskrives til `state_content`, når du åbner editoren. |
 | `show_name` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul ikonet |
-| `show_last_changed` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for den seneste ændring af din `entity` |
-| `show_last_updated` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for den seneste opdatering af din `entity` |
-| `show_attribute` | boolean | Valgfri | `true` eller `false` (standard) | Vis en attribut fra din `entity` under dens `name` |
-| `attribute` | string | Valgfri (påkrævet hvis `show_attribute` er sat til `true`) | En attribut fra din `entity` | Attributten der skal vises (f.eks. `brightness`) |
 | `scrolling_effect` | boolean | Valgfri | `true` (standard) eller `false` | Tillad tekst at rulle, når indholdet overstiger containerens størrelse |
 | `min_volume` | number | Valgfri | Ethvert tal | Lydstyrkeskyderens minimumsværdi. |
 | `max_volume` | number | Valgfri | Ethvert tal | Lydstyrkeskyderens maksimumsværdi. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Dette kort lader dig styre dine `cover`-entiteter.
 | `entity` | string | **Påkrævet** | Ethvert gardin | Et gardin, der skal styres |
 | `name` | string | Valgfri | Enhver tekst | Et navn til dit gardin, hvis det ikke er angivet, vises entitetsnavnet |
 | `force_icon` | boolean | Valgfri | `true` eller `false` (standard) | Prioriter ikonet frem for `entity-picture` |
-| `show_state` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul tilstanden for din `entity` |
+| `state_content` | string eller list | Valgfri | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributnavn som `brightness` eller `forecast[0].temperature`, eller en [skabelon](#templates) | Hvad linjen under navnet viser, i denne rækkefølge. Uden den viser en `button_type: state`-knap det, som Home Assistant viser for entiteten (dens tilstand, plus den aktuelle temperatur for en klimaentitet, positionen for et gardin, lysstyrken for et lys). De gamle nøgler `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virker stadig og omskrives til `state_content`, når du åbner editoren. |
 | `show_name` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul ikonet |
-| `show_last_changed` | boolean | Valgfri | `true` eller `false` (standard) | Vis, hvornår din `entity` senest blev ændret |
-| `show_last_updated` | boolean | Valgfri | `true` eller `false` (standard) | Vis, hvornår din `entity` senest blev opdateret |
-| `show_attribute` | boolean | Valgfri | `true` eller `false` (standard) | Vis en attribut fra din `entity` under dens `name` |
-| `attribute` | string | Valgfri (påkrævet hvis `show_attribute` er sat til `true`) | En attribut fra din `entity` | Attributten, der skal vises (f.eks. `brightness`) |
 | `scrolling_effect` | boolean | Valgfri | `true` (standard) eller `false` | Tillad teksten at rulle, når indholdet overstiger størrelsen på dens container |
 | `icon_open` | string | Valgfri | Ethvert `mdi:`-ikon | Et ikon til dit åbne gardin, hvis det ikke er angivet, vises standardikonet for åbent gardin |
 | `icon_close` | string | Valgfri | Ethvert `mdi:`-ikon | Et ikon til dit lukkede gardin, hvis det ikke er angivet, vises standardikonet for lukket gardin |
@@ -778,13 +753,9 @@ Dette kort lader dig tilføje en rullemenu til dine `input_select`/`select`-enti
 | `name` | string | Valgfri | Enhver tekst | Et navn til dit vælg-kort, hvis det ikke er angivet, vises entitetsnavnet |
 | `icon` | string | Valgfri | Ethvert `mdi:`-ikon | Et ikon til dit vælg-kort, hvis det ikke er angivet, vises entitetens ikon eller `entity-picture` |
 | `force_icon` | boolean | Valgfri | `true` eller `false` (standard) | Prioriter ikonet frem for `entity-picture` |
-| `show_state` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul tilstanden for din `entity` |
+| `state_content` | string eller list | Valgfri | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributnavn som `brightness` eller `forecast[0].temperature`, eller en [skabelon](#templates) | Hvad linjen under navnet viser, i denne rækkefølge. Uden den viser en `button_type: state`-knap det, som Home Assistant viser for entiteten (dens tilstand, plus den aktuelle temperatur for en klimaentitet, positionen for et gardin, lysstyrken for et lys). De gamle nøgler `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virker stadig og omskrives til `state_content`, når du åbner editoren. |
 | `show_name` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul ikonet |
-| `show_last_changed` | boolean | Valgfri | `true` eller `false` (standard) | Vis, hvornår din `entity` senest blev ændret |
-| `show_last_updated` | boolean | Valgfri | `true` eller `false` (standard) | Vis, hvornår din `entity` senest blev opdateret |
-| `show_attribute` | boolean | Valgfri | `true` eller `false` (standard) | Vis en attribut fra din `entity` under dens `name` |
-| `attribute` | string | Valgfri (påkrævet hvis `show_attribute` er sat til `true`) | En attribut fra din `entity` | Attributten, der skal vises (f.eks. `brightness`) |
 | `scrolling_effect` | boolean | Valgfri | `true` (standard) eller `false` | Tillad teksten at rulle, når indholdet overstiger størrelsen på dens container |
 | `tap_action` | object | Valgfri | Se [handlinger](#tryk--dobbelttryk--og-holdehandlinger) | Definer handlingstypen ved klik på ikonet, hvis den ikke er angivet, bruges `more-info`. |
 | `double_tap_action` | object | Valgfri | Se [handlinger](#tryk--dobbelttryk--og-holdehandlinger) | Definer handlingstypen ved dobbeltklik på ikonet, hvis den ikke er angivet, bruges `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Dette kort lader dig styre dine `climate`-entiteter.
 | `name`                  | string  | Valgfri                            | Enhver tekst                                       | Et brugerdefineret navn til kortet. Hvis det ikke er angivet, vises entitetsnavnet.                                    |
 | `icon`                  | string  | Valgfri                            | Ethvert `mdi:`-ikon                                  | Et brugerdefineret ikon til kortet. Hvis det ikke er angivet, bruges entitetens ikon eller `entity-picture`.                   |
 | `force_icon`            | boolean | Valgfri                            | `true` eller `false` (standard)                     | Prioriterer ikonet frem for `entity-picture`.                                                           |
-| `show_state`            | boolean | Valgfri                            | `true` eller `false` (standard)                     | Vis eller skjul den aktuelle tilstand for `entity`.                                                                 |
+| `state_content`         | string eller list | Valgfri | `state`, et attributnavn, en skabelon | Hvad linjen under navnet viser, se knapindstillingerne. Den gamle nøgle `show_state` virker stadig. |
 | `show_name`             | boolean | Valgfri                            | `true` (standard) eller `false`                     | Vis eller skjul entitetens navn.                                                                            |
 | `show_icon`             | boolean | Valgfri                            | `true` (standard) eller `false`                     | Vis eller skjul ikonet.                                                                                          |
 | `hide_target_temp_low`  | boolean | Valgfri (kun for entiteter der understøtter `target_temp_low`) | `true` eller `false` (standard) | Skjuler kontrollen for lav måltemperatur, hvis det understøttes af `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Valgfri | `true` (standard) eller `false` | Vis en baggrund til din underknap, den skifter farve baseret på din entitets tilstand |
 | `state_background` | boolean | Valgfri | `true` (standard) eller `false` | Brug tilstandsfarven, når entiteten er `on` |
 | `light_background` | boolean | Valgfri | `true` (standard) eller `false` | Brug lysets farve til baggrunden, når det er muligt |
-| `show_state` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul tilstanden for din `entity` |
+| `state_content` | string eller list | Valgfri | `state`, `last-changed`, `last-updated`, `last-triggered`, et attributnavn som `brightness` eller `forecast[0].temperature`, eller en [skabelon](#templates) | Hvad linjen under navnet viser, i denne rækkefølge. Uden den viser en `button_type: state`-knap det, som Home Assistant viser for entiteten (dens tilstand, plus den aktuelle temperatur for en klimaentitet, positionen for et gardin, lysstyrken for et lys). De gamle nøgler `show_state`, `show_attribute`, `attribute`, `show_last_changed` og `show_last_updated` virker stadig og omskrives til `state_content`, når du åbner editoren. |
 | `show_name` | boolean | Valgfri | `true` eller `false` (standard) | Vis eller skjul navnet |
 | `show_icon` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul ikonet |
-| `show_last_changed` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for seneste ændring for din `entity` |
-| `show_last_updated` | boolean | Valgfri | `true` eller `false` (standard) | Vis tidspunktet for seneste opdatering for din `entity` |
-| `show_attribute` | boolean | Valgfri | `true` eller `false` (standard) | Vis en attribut for din `entity` under dens `name` |
-| `attribute` | string | Valgfri (påkrævet hvis `show_attribute` er sat til `true`) | En attribut fra din `entity` | Attributten, der skal vises (f.eks. `brightness`) |
 | `select_attribute` | string | Valgfri | En attributliste fra din `entity` (se understøttede muligheder ovenfor) | Denne attributliste åbner en rullemenu, hvis der klikkes (f.eks. `effect_list`) |
 | `show_arrow` | boolean | Valgfri | `true` (standard) eller `false` | Vis eller skjul rullemenu-pilen for select-underknapper |
 | `scrolling_effect` | boolean | Valgfri | `true` (standard) eller `false` | Tillad tekst at rulle, når indholdet overstiger containerens størrelse |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

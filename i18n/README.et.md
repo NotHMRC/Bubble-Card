@@ -412,13 +412,9 @@ See kaart on väga mitmekülgne. Seda saab kasutada **lülitina**, **liuguritina
 | `icon` | string | Optional | Any `mdi:` icon | Nupu ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
 | `use_accent_color` | boolean | Optional (`false` default) | **Ainult valgustitele.** Kasuta valgusti värvi asemel teema aktsendivärvi.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Näita või peida oma `entity` olek |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase muutumise aega |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase uuendamise aega |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` atribuuti nime all |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Näidatav atribuut (nt `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Võimaldab muuta nupu klõpsu vaikimisi toiminguid. |
 | `tap_action` | object | Optional | See [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Määra ikooni klõpsu toimingu tüüp, kui pole määratud, kasutatakse `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ See kaart võimaldab juhtida meediumipleieri olemit.
 | `name` | string | Optional | Any string | Meediumipleieri nimi, kui pole määratud, kuvatakse olemi nimi |
 | `icon` | string | Optional | Any `mdi:` icon | Meediumipleieri ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Näita või peida oma `entity` olek |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase muutumise aega |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase uuendamise aega |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` atribuuti nime all |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Näidatav atribuut (nt `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
 | `min_volume` | number | Optional | Any number | Helitugevuse liuguri minimaalne väärtus. |
 | `max_volume` | number | Optional | Any number | Helitugevuse liuguri maksimaalne väärtus. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ See kaart võimaldab juhtida `cover` olemeid.
 | `entity` | string | **Required** | Any cover | Juhitav kate |
 | `name` | string | Optional | Any string | Katte nimi, kui pole määratud, kuvatakse olemi nimi |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Näita või peida oma `entity` olek |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase muutumise aega |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase uuendamise aega |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` atribuuti nime all |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Näidatav atribuut (nt `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
 | `icon_open` | string | Optional | Any `mdi:` icon | Avatud katte ikoon, kui pole määratud, kuvatakse vaikimisi avatud katte ikoon |
 | `icon_close` | string | Optional | Any `mdi:` icon | Suletud katte ikoon, kui pole määratud, kuvatakse vaikimisi suletud katte ikoon |
@@ -778,13 +753,9 @@ See kaart võimaldab lisada rippmenüü `input_select` / `select` olemitele. See
 | `name` | string | Optional | Any string | Valiku nimi, kui pole määratud, kuvatakse olemi nimi |
 | `icon` | string | Optional | Any `mdi:` icon | Valiku ikoon, kui pole määratud, kuvatakse olemi ikoon või `entity-picture` |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | Anna ikoonile eelistus `entity-picture` asemel |
-| `show_state` | boolean | Optional | `true` or `false` (default) | Näita või peida oma `entity` olek |
+| `state_content` | string või list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | Näita või peida nimi |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Näita või peida ikoon |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase muutumise aega |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` viimase uuendamise aega |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | Näita oma `entity` atribuuti nime all |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Näidatav atribuut (nt `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | Luba teksti kerimine, kui sisu ületab konteineri suuruse |
 | `tap_action` | object | Optional | See [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Määra ikooni klõpsu toimingu tüüp, kui pole määratud, kasutatakse `more-info`. |
 | `double_tap_action` | object | Optional | See [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Määra ikooni topeltklõpsu toimingu tüüp, kui pole määratud, kasutatakse `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ See kaart võimaldab juhtida `climate` olemeid.
 | `name`                  | string  | Optional                            | Any string                                       | Kaardi kohandatud nimi. Kui pole määratud, kuvatakse olemi nimi.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Kaardi kohandatud ikoon. Kui pole määratud, kasutatakse olemi ikooni või `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Annab ikoonile eelistuse `entity-picture` ees.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | Näita või peida `entity` praegune olek.                                                                 |
+| `state_content`         | string või list | Optional | `state`, atribuudi nimi, mall | Mida näitab nime all olev rida, vaata nupu valikuid. Vana võti `show_state` töötab endiselt. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Näita või peida olemi nimi.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Näita või peida ikoon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Peida madala sihttemperatuuri juhtelement, kui `entity` seda toetab.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kuva alamnupu taust, mis muudab värvi vastavalt olemi olekule |
 | `state_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kasuta oleku värvi, kui olem on olekus `on` |
 | `light_background` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kasuta taustal valguse värvi, kui see on saadaval |
-| `show_state` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva või peida `entity` olek |
+| `state_content` | string või list | Valikuline | `state`, `last-changed`, `last-updated`, `last-triggered`, atribuudi nimi nagu `brightness` või `forecast[0].temperature`, või [mall](#templates) | Mida näitab nime all olev rida, selles järjekorras. Ilma selleta näitab `button_type: state` nupp seda, mida Home Assistant olemi kohta näitab (selle olekut, lisaks kliimaseadme praegust temperatuuri, katte asendit, valgusti heledust). Vanad võtmed `show_state`, `show_attribute`, `attribute`, `show_last_changed` ja `show_last_updated` töötavad endiselt ja kirjutatakse ümber võtmeks `state_content`, kui avad redaktori. |
 | `show_name` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva või peida nimi |
 | `show_icon` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kuva või peida ikoon |
-| `show_last_changed` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva `entity` viimase muutumise aeg |
-| `show_last_updated` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva `entity` viimase uuendamise aeg |
-| `show_attribute` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kuva `entity` atribuut selle `name` all |
-| `attribute` | string | Valikuline (kohustuslik, kui `show_attribute` on määratud väärtusega `true`) | Atribuut sinu `entity` olemist | Kuvatav atribuut (nt `brightness`) |
 | `select_attribute` | string | Valikuline | Atribuutide loend sinu `entity` olemist (vaata toetatud valikuid eespool) | See atribuutide loend avab klõpsamisel rippmenüü (nt `effect_list`) |
 | `show_arrow` | boolean | Valikuline | `true` (vaikimisi) või `false` | Kuva või peida valikualamnuppude rippmenüü nool |
 | `scrolling_effect` | boolean | Valikuline | `true` (vaikimisi) või `false` | Luba teksti kerimine, kui sisu ületab konteineri suurust |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

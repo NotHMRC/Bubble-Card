@@ -412,13 +412,9 @@ Die Charte isch sehr vielsitig. Si cha als **Schalter**, als **Schieberegler**, 
 | `icon` | string | Optional | Jedes `mdi:`-Icon | En Icon für dis Button, wenn nöd definiert wird s Entity-Icon oder s `entity-picture` azeigt |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Git em Icon d Priorität anstatt em `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` Standard) | **Nur für Lichter.** Bruucht d Akzentfarb vom Theme anstatt de Lichtfarb.                         |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Zeig oder verstecke de Zuestand vo dere `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributname wie `brightness` oder `forecast[0].temperature`, oder es [Template](#templates) | Was d Zile unter em Name zeigt, i dere Reihefolg. Ohni das zeigt en `button_type: state` Button das, wo Home Assistant für d Entität zeigt (de Zuestand, plus d aktuelli Temperatur vomene Klima, d Position vonere Store, d Helligkeit vomene Liecht). Di alte Schlüssel `show_state`, `show_attribute`, `attribute`, `show_last_changed` und `show_last_updated` funktioniere immer no und werde als `state_content` umgschribe, wenn du de Editor öffnisch. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke de Name |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke s Icon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Änderigszit vo dere `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Aktualisierigszit vo dere `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Zeig es Attribut vo dere `entity` unter em `name` |
-| `attribute` | string | Optional (erforderlich wenn `show_attribute` uf `true` gsetzt isch) | Es Attribut vo dere `entity` | S Attribut zum Azeige (z. B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaubt em Text z scrolle, wenn de Inhalt grösser isch als de Container |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` oder `hold_action`, gseh unte | Erlaubt d Standardaktione bim Button-Klick z ändere. |
 | `tap_action` | object | Optional | Gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Definiert d Art vo de Aktion bim Icon-Klick, wenn nöd definiert wird `more-info` bruucht |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Die Charte erlaubt dir, e Mediaplayer-Entity z stüüre.
 | `name` | string | Optional | Jede String | En Name für din Mediaplayer, wenn nöd definiert wird de Entity-Name azeigt |
 | `icon` | string | Optional | Jedes `mdi:`-Icon | En Icon für din Mediaplayer, wenn nöd definiert wird s Entity-Icon oder s `entity-picture` azeigt |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Git em Icon d Priorität anstatt em `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Zeig oder verstecke de Zuestand vo dere `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributname wie `brightness` oder `forecast[0].temperature`, oder es [Template](#templates) | Was d Zile unter em Name zeigt, i dere Reihefolg. Ohni das zeigt en `button_type: state` Button das, wo Home Assistant für d Entität zeigt (de Zuestand, plus d aktuelli Temperatur vomene Klima, d Position vonere Store, d Helligkeit vomene Liecht). Di alte Schlüssel `show_state`, `show_attribute`, `attribute`, `show_last_changed` und `show_last_updated` funktioniere immer no und werde als `state_content` umgschribe, wenn du de Editor öffnisch. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke de Name |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke s Icon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Änderigszit vo dere `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Aktualisierigszit vo dere `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Zeig es Attribut vo dere `entity` unter em `name` |
-| `attribute` | string | Optional (erforderlich wenn `show_attribute` uf `true` gsetzt isch) | Es Attribut vo dere `entity` | S Attribut zum Azeige (z. B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaubt em Text z scrolle, wenn de Inhalt grösser isch als de Container |
 | `min_volume` | number | Optional | Jedi Zahl | De Minimalwert vom Lautstärke-Schieberegler. |
 | `max_volume` | number | Optional | Jedi Zahl | De Maximalwert vom Lautstärke-Schieberegler. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Die Charte erlaubt dir, dini `cover`-Entities z stüüre.
 | `entity` | string | **Erforderlich** | Jedi Store | E Store zum Stüüre |
 | `name` | string | Optional | Jede String | En Name für dini Store, wenn nöd definiert wird de Entity-Name azeigt |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Git em Icon d Priorität anstatt em `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Zeig oder verstecke de Zuestand vo dere `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributname wie `brightness` oder `forecast[0].temperature`, oder es [Template](#templates) | Was d Zile unter em Name zeigt, i dere Reihefolg. Ohni das zeigt en `button_type: state` Button das, wo Home Assistant für d Entität zeigt (de Zuestand, plus d aktuelli Temperatur vomene Klima, d Position vonere Store, d Helligkeit vomene Liecht). Di alte Schlüssel `show_state`, `show_attribute`, `attribute`, `show_last_changed` und `show_last_updated` funktioniere immer no und werde als `state_content` umgschribe, wenn du de Editor öffnisch. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke de Name |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke s Icon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Änderigszit vo dere `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Aktualisierigszit vo dere `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Zeig es Attribut vo dere `entity` unter em `name` |
-| `attribute` | string | Optional (erforderlich wenn `show_attribute` uf `true` gsetzt isch) | Es Attribut vo dere `entity` | S Attribut zum Azeige (z. B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaubt em Text z scrolle, wenn de Inhalt grösser isch als de Container |
 | `icon_open` | string | Optional | Jedes `mdi:`-Icon | En Icon für dini offeni Store, wenn nöd definiert wird s Standard-Icon für offeni Store azeigt |
 | `icon_close` | string | Optional | Jedes `mdi:`-Icon | En Icon für dini gschlosseni Store, wenn nöd definiert wird s Standard-Icon für gschlosseni Store azeigt |
@@ -778,13 +753,9 @@ Die Charte erlaubt dir, es Dropdown-Menü für dini `input_select` / `select`-En
 | `name` | string | Optional | Jede String | En Name für dini Uswahl, wenn nöd definiert wird de Entity-Name azeigt |
 | `icon` | string | Optional | Jedes `mdi:`-Icon | En Icon für dini Uswahl, wenn nöd definiert wird s Entity-Icon oder s `entity-picture` azeigt |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Git em Icon d Priorität anstatt em `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Zeig oder verstecke de Zuestand vo dere `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributname wie `brightness` oder `forecast[0].temperature`, oder es [Template](#templates) | Was d Zile unter em Name zeigt, i dere Reihefolg. Ohni das zeigt en `button_type: state` Button das, wo Home Assistant für d Entität zeigt (de Zuestand, plus d aktuelli Temperatur vomene Klima, d Position vonere Store, d Helligkeit vomene Liecht). Di alte Schlüssel `show_state`, `show_attribute`, `attribute`, `show_last_changed` und `show_last_updated` funktioniere immer no und werde als `state_content` umgschribe, wenn du de Editor öffnisch. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke de Name |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Zeig oder verstecke s Icon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Änderigszit vo dere `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Zeig d letscht Aktualisierigszit vo dere `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Zeig es Attribut vo dere `entity` unter em `name` |
-| `attribute` | string | Optional (erforderlich wenn `show_attribute` uf `true` gsetzt isch) | Es Attribut vo dere `entity` | S Attribut zum Azeige (z. B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaubt em Text z scrolle, wenn de Inhalt grösser isch als de Container |
 | `tap_action` | object | Optional | Gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Definiert d Art vo de Aktion bim Icon-Klick, wenn nöd definiert wird `more-info` bruucht. |
 | `double_tap_action` | object | Optional | Gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Definiert d Art vo de Aktion bim Icon-Doppelklick, wenn nöd definiert wird `none` bruucht. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Die Charte erlaubt dir, dini `climate`-Entities z stüüre.
 | `name`                  | string  | Optional                            | Jede String                                       | En eigete Name für d Charte. Wenn nöd definiert, wird de Entity-Name azeigt.                                    |
 | `icon`                  | string  | Optional                            | Jedes `mdi:`-Icon                                  | En eigete Icon für d Charte. Wenn nöd definiert, wird s Entity-Icon oder `entity-picture` bruucht.                   |
 | `force_icon`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Git em Icon d Priorität anstatt em `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Zeig oder verstecke de aktuelle Zuestand vo de `entity`.                                                                 |
+| `state_content`         | string oder list | Optional | `state`, en Attributname, es Template | Was d Zile unter em Name zeigt, gseh d Button-Optione. De alt Schlüssel `show_state` funktioniert immer no. |
 | `show_name`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Zeig oder verstecke de Name vo de Entity.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Zeig oder verstecke s Icon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (nur für Entities, wo `target_temp_low` unterstütze) | `true` oder `false` (Standard) | Verstecked d Stüürig vo de tiefe Zieltemperatur, wenn vo de `entity` unterstützt.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Optional | `true` (Standard) oder `false` | Zeigt en Hintergrund für din Sub-Button, ändert d'Farb je nach Entity-Status |
 | `state_background` | boolean | Optional | `true` (Standard) oder `false` | Bruucht d'Status-Farb, wenn d'Entity `on` isch |
 | `light_background` | boolean | Optional | `true` (Standard) oder `false` | Bruucht d'Liecht-Farb für de Hintergrund, wenn verfüegbar |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Zeigt oder verstecklet de Status vo dere `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributname wie `brightness` oder `forecast[0].temperature`, oder es [Template](#templates) | Was d Zile unter em Name zeigt, i dere Reihefolg. Ohni das zeigt en `button_type: state` Button das, wo Home Assistant für d Entität zeigt (de Zuestand, plus d aktuelli Temperatur vomene Klima, d Position vonere Store, d Helligkeit vomene Liecht). Di alte Schlüssel `show_state`, `show_attribute`, `attribute`, `show_last_changed` und `show_last_updated` funktioniere immer no und werde als `state_content` umgschribe, wenn du de Editor öffnisch. |
 | `show_name` | boolean | Optional | `true` oder `false` (Standard) | Zeigt oder verstecklet de Name |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Zeigt oder verstecklet s'Icon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Zeigt d'letschti Änderigszit vo dere `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Zeigt d'letschti Aktualisierigszit vo dere `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Zeigt es Attribut vo dere `entity` under em `name` |
-| `attribute` | string | Optional (erforderlich, wenn `show_attribute` uf `true` gsetzt isch) | Es Attribut vo dere `entity` | S'Attribut, wo aazeigt wird (z.B. `brightness`) |
 | `select_attribute` | string | Optional | E Attribut-Lischte vo dere `entity` (gsehsch d'unterstützte Optione obe) | Die Attribut-Lischte macht bim Klick es Dropdown uf (z.B. `effect_list`) |
 | `show_arrow` | boolean | Optional | `true` (Standard) oder `false` | Zeigt oder verstecklet de Dropdown-Pfil für Uswahl-Sub-Buttons |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaubt em Text z'scrolle, wenn de Inhalt grösser als de Container isch |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

@@ -412,13 +412,9 @@ Acest card este foarte versatil. Poate fi folosit ca un **comutator**, un **curs
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru butonul tău, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
 | `use_accent_color` | boolean | Opțional (implicit `false`) | **Doar pentru lumini.** Folosește culoarea de accent a temei în locul culorii luminii.                         |
-| `show_state` | boolean | Opțional | `true` sau `false` (implicit) | Arată sau ascunde starea entității tale `entity` |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
-| `show_last_changed` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei schimbări a entității tale `entity` |
-| `show_last_updated` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei actualizări a entității tale `entity` |
-| `show_attribute` | boolean | Opțional | `true` sau `false` (implicit) | Arată un atribut al entității tale `entity` sub numele său `name` |
-| `attribute` | string | Opțional (obligatoriu dacă `show_attribute` este setat pe `true`) | Un atribut al entității tale `entity` | Atributul de afișat (de exemplu, `brightness`) |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
 | `button_action` | object | Opțional | `tap_action`, `double_tap_action` sau `hold_action`, vezi mai jos | Permite schimbarea acțiunilor implicite la clic pe buton. |
 | `tap_action` | object | Opțional | Vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Definește tipul de acțiune la clic pe pictogramă, dacă nu este definit, se va folosi `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Acest card îți permite să controlezi o entitate player media.
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru playerul tău media, dacă nu este definit va afișa numele entității |
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru playerul tău media, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `show_state` | boolean | Opțional | `true` sau `false` (implicit) | Arată sau ascunde starea entității tale `entity` |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
-| `show_last_changed` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei schimbări a entității tale `entity` |
-| `show_last_updated` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei actualizări a entității tale `entity` |
-| `show_attribute` | boolean | Opțional | `true` sau `false` (implicit) | Arată un atribut al entității tale `entity` sub numele său `name` |
-| `attribute` | string | Opțional (obligatoriu dacă `show_attribute` este setat pe `true`) | Un atribut al entității tale `entity` | Atributul de afișat (de exemplu, `brightness`) |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
 | `min_volume` | number | Opțional | Orice număr | Valoarea minimă a cursorului de volum. |
 | `max_volume` | number | Opțional | Orice număr | Valoarea maximă a cursorului de volum. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Acest card îți permite să controlezi entitățile tale `cover`.
 | `entity` | string | **Obligatoriu** | Orice rulou | Un rulou de controlat |
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru ruloul tău, dacă nu este definit va afișa numele entității |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `show_state` | boolean | Opțional | `true` sau `false` (implicit) | Arată sau ascunde starea entității tale `entity` |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
-| `show_last_changed` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei schimbări a entității tale `entity` |
-| `show_last_updated` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei actualizări a entității tale `entity` |
-| `show_attribute` | boolean | Opțional | `true` sau `false` (implicit) | Arată un atribut al entității tale `entity` sub numele său `name` |
-| `attribute` | string | Opțional (obligatoriu dacă `show_attribute` este setat pe `true`) | Un atribut al entității tale `entity` | Atributul de afișat (de exemplu, `brightness`) |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
 | `icon_open` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru ruloul tău deschis, dacă nu este definită va afișa pictograma implicită de rulou deschis |
 | `icon_close` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru ruloul tău închis, dacă nu este definită va afișa pictograma implicită de rulou închis |
@@ -778,13 +753,9 @@ Acest card îți permite să adaugi un meniu derulant pentru entitățile tale `
 | `name` | string | Opțional | Orice șir de caractere | Un nume pentru selecția ta, dacă nu este definit va afișa numele entității |
 | `icon` | string | Opțional | Orice pictogramă `mdi:` | O pictogramă pentru selecția ta, dacă nu este definită va afișa pictograma entității sau `entity-picture` |
 | `force_icon` | boolean | Opțional | `true` sau `false` (implicit) | Acordă prioritate pictogramei în locul `entity-picture` |
-| `show_state` | boolean | Opțional | `true` sau `false` (implicit) | Arată sau ascunde starea entității tale `entity` |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Arată sau ascunde pictograma |
-| `show_last_changed` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei schimbări a entității tale `entity` |
-| `show_last_updated` | boolean | Opțional | `true` sau `false` (implicit) | Arată ora ultimei actualizări a entității tale `entity` |
-| `show_attribute` | boolean | Opțional | `true` sau `false` (implicit) | Arată un atribut al entității tale `entity` sub numele său `name` |
-| `attribute` | string | Opțional (obligatoriu dacă `show_attribute` este setat pe `true`) | Un atribut al entității tale `entity` | Atributul de afișat (de exemplu, `brightness`) |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să deruleze atunci când conținutul depășește dimensiunea containerului lor |
 | `tap_action` | object | Opțional | Vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Definește tipul de acțiune la clic pe pictogramă, dacă nu este definit, se va folosi `more-info`. |
 | `double_tap_action` | object | Opțional | Vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Definește tipul de acțiune la dublu clic pe pictogramă, dacă nu este definit, se va folosi `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Acest card îți permite să controlezi entitățile tale `climate`.
 | `name`                  | string  | Opțional                            | Orice șir de caractere                                       | Un nume personalizat pentru card. Dacă nu este definit, va afișa numele entității.                                    |
 | `icon`                  | string  | Opțional                            | Orice pictogramă `mdi:`                                  | O pictogramă personalizată pentru card. Dacă nu este definită, se va folosi pictograma entității sau `entity-picture`.                   |
 | `force_icon`            | boolean | Opțional                            | `true` sau `false` (implicit)                     | Acordă prioritate pictogramei în locul `entity-picture`.                                                           |
-| `show_state`            | boolean | Opțional                            | `true` sau `false` (implicit)                     | Arată sau ascunde starea curentă a entității `entity`.                                                                 |
+| `state_content`         | string sau list | Opțional | `state`, numele unui atribut, un șablon | Ce arată linia de sub nume, vezi opțiunile butonului. Vechea cheie `show_state` funcționează în continuare. |
 | `show_name`             | boolean | Opțional                            | `true` (implicit) sau `false`                     | Arată sau ascunde numele entității.                                                                            |
 | `show_icon`             | boolean | Opțional                            | `true` (implicit) sau `false`                     | Arată sau ascunde pictograma.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opțional (doar pentru entitățile care acceptă `target_temp_low`) | `true` sau `false` (implicit) | Ascunde controlul temperaturii țintă scăzute dacă este acceptat de entitatea `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Opțional | `true` (implicit) sau `false` | Afișează un fundal pentru sub-buton, culoarea acestuia se va schimba în funcție de starea entității |
 | `state_background` | boolean | Opțional | `true` (implicit) sau `false` | Folosește culoarea stării atunci când entitatea este `on` |
 | `light_background` | boolean | Opțional | `true` (implicit) sau `false` | Folosește culoarea luminii pentru fundal, atunci când este disponibilă |
-| `show_state` | boolean | Opțional | `true` sau `false` (implicit) | Afișează sau ascunde starea entității `entity` |
+| `state_content` | string sau list | Opțional | `state`, `last-changed`, `last-updated`, `last-triggered`, numele unui atribut precum `brightness` sau `forecast[0].temperature`, sau un [șablon](#templates) | Ce arată linia de sub nume, în această ordine. Fără această opțiune, un buton `button_type: state` arată ce arată Home Assistant pentru entitate (starea sa, plus temperatura curentă a unei entități de climatizare, poziția unui rulou, luminozitatea unei lumini). Vechile chei `show_state`, `show_attribute`, `attribute`, `show_last_changed` și `show_last_updated` funcționează în continuare și sunt rescrise ca `state_content` când deschizi editorul. |
 | `show_name` | boolean | Opțional | `true` sau `false` (implicit) | Afișează sau ascunde numele |
 | `show_icon` | boolean | Opțional | `true` (implicit) sau `false` | Afișează sau ascunde pictograma |
-| `show_last_changed` | boolean | Opțional | `true` sau `false` (implicit) | Afișează ora ultimei modificări a entității `entity` |
-| `show_last_updated` | boolean | Opțional | `true` sau `false` (implicit) | Afișează ora ultimei actualizări a entității `entity` |
-| `show_attribute` | boolean | Opțional | `true` sau `false` (implicit) | Afișează un atribut al entității `entity` sub numele acesteia (`name`) |
-| `attribute` | string | Opțional (obligatoriu dacă `show_attribute` este setat pe `true`) | Un atribut al entității `entity` | Atributul de afișat (de exemplu, `brightness`) |
 | `select_attribute` | string | Opțional | O listă de atribute a entității `entity` (vezi opțiunile acceptate mai sus) | Această listă de atribute va deschide un meniu derulant la clic (de exemplu, `effect_list`) |
 | `show_arrow` | boolean | Opțional | `true` (implicit) sau `false` | Afișează sau ascunde săgeata meniului derulant pentru sub-butoanele de tip selecție |
 | `scrolling_effect` | boolean | Opțional | `true` (implicit) sau `false` | Permite textului să se deruleze atunci când conținutul depășește dimensiunea containerului |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

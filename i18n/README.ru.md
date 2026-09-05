@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Опционально | Любой значок `mdi:` | Значок для вашей кнопки, если не задан, будет отображаться значок сущности или `entity-picture` |
 | `force_icon` | boolean | Опционально | `true` или `false` (по умолчанию) | Отдать приоритет значку вместо `entity-picture` |
 | `use_accent_color` | boolean | Опционально (по умолчанию `false`) | **Только для света.** Использовать акцентный цвет темы вместо цвета света.                         |
-| `show_state` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать или скрыть состояние вашей `entity` |
+| `state_content` | string or list | Опционально | `state`, `last-changed`, `last-updated`, `last-triggered`, имя атрибута, например `brightness` или `forecast[0].temperature`, или [шаблон](#templates) | Что показывает строка под именем, в этом порядке. Без этой настройки кнопка `button_type: state` показывает то, что Home Assistant показывает для сущности (её состояние, а также текущую температуру сущности климата, положение шторы, яркость света). Старые ключи `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` по-прежнему работают и переписываются в `state_content`, когда вы открываете редактор. |
 | `show_name` | boolean | Опционально | `true` (по умолчанию) или `false` | Показать или скрыть имя |
 | `show_icon` | boolean | Опционально | `true` (по умолчанию) или `false` | Показать или скрыть значок |
-| `show_last_changed` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать время последнего изменения вашей `entity` |
-| `show_last_updated` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать время последнего обновления вашей `entity` |
-| `show_attribute` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать атрибут вашей `entity` под её `name` |
-| `attribute` | string | Опционально (обязательно, если `show_attribute` установлен в `true`) | Атрибут вашей `entity` | Отображаемый атрибут (например, `brightness`) |
 | `scrolling_effect` | boolean | Опционально | `true` (по умолчанию) или `false` | Позволяет тексту прокручиваться, когда содержимое превышает размер контейнера |
 | `button_action` | object | Опционально | `tap_action`, `double_tap_action` или `hold_action`, см. ниже | Позволяет изменить действия по умолчанию при нажатии на кнопку. |
 | `tap_action` | object | Опционально | См. [действия](#действия-при-нажатии-двойном-нажатии-и-удержании) | Определяет тип действия при нажатии на значок, если не задано, будет использовано `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Опционально | Любая строка | Имя для вашего медиаплеера, если не задано, будет отображаться имя сущности |
 | `icon` | string | Опционально | Любой значок `mdi:` | Значок для вашего медиаплеера, если не задан, будет отображаться значок сущности или `entity-picture` |
 | `force_icon` | boolean | Опционально | `true` или `false` (по умолчанию) | Отдать приоритет значку вместо `entity-picture` |
-| `show_state` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать или скрыть состояние вашей `entity` |
+| `state_content` | string or list | Опционально | `state`, `last-changed`, `last-updated`, `last-triggered`, имя атрибута, например `brightness` или `forecast[0].temperature`, или [шаблон](#templates) | Что показывает строка под именем, в этом порядке. Без этой настройки кнопка `button_type: state` показывает то, что Home Assistant показывает для сущности (её состояние, а также текущую температуру сущности климата, положение шторы, яркость света). Старые ключи `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` по-прежнему работают и переписываются в `state_content`, когда вы открываете редактор. |
 | `show_name` | boolean | Опционально | `true` (по умолчанию) или `false` | Показать или скрыть имя |
 | `show_icon` | boolean | Опционально | `true` (по умолчанию) или `false` | Показать или скрыть значок |
-| `show_last_changed` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать время последнего изменения вашей `entity` |
-| `show_last_updated` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать время последнего обновления вашей `entity` |
-| `show_attribute` | boolean | Опционально | `true` или `false` (по умолчанию) | Показать атрибут вашей `entity` под её `name` |
-| `attribute` | string | Опционально (обязательно, если `show_attribute` установлен в `true`) | Атрибут вашей `entity` | Отображаемый атрибут (например, `brightness`) |
 | `scrolling_effect` | boolean | Опционально | `true` (по умолчанию) или `false` | Позволяет тексту прокручиваться, когда содержимое превышает размер контейнера |
 | `min_volume` | number | Опционально | Любое число | Минимальное значение ползунка громкости. |
 | `max_volume` | number | Опционально | Любое число | Максимальное значение ползунка громкости. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Обязательно** | Любые шторы | Шторы для управления |
 | `name` | string | Необязательно | Любая строка | Имя для ваших штор, если не задано, будет отображаться имя сущности |
 | `force_icon` | boolean | Необязательно | `true` или `false` (по умолчанию) | Отдать приоритет значку вместо `entity-picture` |
-| `show_state` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать или скрыть состояние вашей `entity` |
+| `state_content` | string or list | Необязательно | `state`, `last-changed`, `last-updated`, `last-triggered`, имя атрибута, например `brightness` или `forecast[0].temperature`, или [шаблон](#templates) | Что показывает строка под именем, в этом порядке. Без этой настройки кнопка `button_type: state` показывает то, что Home Assistant показывает для сущности (её состояние, а также текущую температуру сущности климата, положение шторы, яркость света). Старые ключи `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` по-прежнему работают и переписываются в `state_content`, когда вы открываете редактор. |
 | `show_name` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показать или скрыть имя |
 | `show_icon` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показать или скрыть значок |
-| `show_last_changed` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать время последнего изменения вашей `entity` |
-| `show_last_updated` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать время последнего обновления вашей `entity` |
-| `show_attribute` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать атрибут вашей `entity` под её `name` |
-| `attribute` | string | Необязательно (обязательно, если `show_attribute` установлено в `true`) | Атрибут вашей `entity` | Атрибут для отображения (например, `brightness`) |
 | `scrolling_effect` | boolean | Необязательно | `true` (по умолчанию) или `false` | Разрешить прокрутку текста, когда содержимое превышает размер контейнера |
 | `icon_open` | string | Необязательно | Любой значок `mdi:` | Значок для открытых штор, если не задан, будет отображаться значок открытых штор по умолчанию |
 | `icon_close` | string | Необязательно | Любой значок `mdi:` | Значок для закрытых штор, если не задан, будет отображаться значок закрытых штор по умолчанию |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Необязательно | Любая строка | Имя для вашей карточки выбора, если не задано, будет отображаться имя сущности |
 | `icon` | string | Необязательно | Любой значок `mdi:` | Значок для вашей карточки выбора, если не задан, будет отображаться значок сущности или `entity-picture` |
 | `force_icon` | boolean | Необязательно | `true` или `false` (по умолчанию) | Отдать приоритет значку вместо `entity-picture` |
-| `show_state` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать или скрыть состояние вашей `entity` |
+| `state_content` | string or list | Необязательно | `state`, `last-changed`, `last-updated`, `last-triggered`, имя атрибута, например `brightness` или `forecast[0].temperature`, или [шаблон](#templates) | Что показывает строка под именем, в этом порядке. Без этой настройки кнопка `button_type: state` показывает то, что Home Assistant показывает для сущности (её состояние, а также текущую температуру сущности климата, положение шторы, яркость света). Старые ключи `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` по-прежнему работают и переписываются в `state_content`, когда вы открываете редактор. |
 | `show_name` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показать или скрыть имя |
 | `show_icon` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показать или скрыть значок |
-| `show_last_changed` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать время последнего изменения вашей `entity` |
-| `show_last_updated` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать время последнего обновления вашей `entity` |
-| `show_attribute` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показать атрибут вашей `entity` под её `name` |
-| `attribute` | string | Необязательно (обязательно, если `show_attribute` установлено в `true`) | Атрибут вашей `entity` | Атрибут для отображения (например, `brightness`) |
 | `scrolling_effect` | boolean | Необязательно | `true` (по умолчанию) или `false` | Разрешить прокрутку текста, когда содержимое превышает размер контейнера |
 | `tap_action` | object | Необязательно | См. [действия](#действия-при-нажатии-двойном-нажатии-и-удержании) | Определяет тип действия при нажатии на значок, если не задано, будет использовано `more-info`. |
 | `double_tap_action` | object | Необязательно | См. [действия](#действия-при-нажатии-двойном-нажатии-и-удержании) | Определяет тип действия при двойном нажатии на значок, если не задано, будет использовано `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Необязательно                            | Любая строка                                       | Пользовательское имя для карточки. Если не задано, будет отображаться имя сущности.                                    |
 | `icon`                  | string  | Необязательно                            | Любой значок `mdi:`                                  | Пользовательский значок для карточки. Если не задан, будет использован значок сущности или `entity-picture`.                   |
 | `force_icon`            | boolean | Необязательно                            | `true` или `false` (по умолчанию)                     | Отдаёт приоритет значку вместо `entity-picture`.                                                           |
-| `show_state`            | boolean | Необязательно                            | `true` или `false` (по умолчанию)                     | Показать или скрыть текущее состояние `entity`.                                                                 |
+| `state_content`         | string or list | Необязательно | `state`, имя атрибута, шаблон | Что показывает строка под именем, см. настройки кнопки. Старый ключ `show_state` по-прежнему работает. |
 | `show_name`             | boolean | Необязательно                            | `true` (по умолчанию) или `false`                     | Показать или скрыть имя сущности.                                                                            |
 | `show_icon`             | boolean | Необязательно                            | `true` (по умолчанию) или `false`                     | Показать или скрыть значок.                                                                                          |
 | `hide_target_temp_low`  | boolean | Необязательно (только для сущностей, поддерживающих `target_temp_low`) | `true` или `false` (по умолчанию) | Скрывает управление нижней целевой температурой, если оно поддерживается `entity`.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показывать фон дополнительной кнопки, его цвет будет меняться в зависимости от состояния сущности |
 | `state_background` | boolean | Необязательно | `true` (по умолчанию) или `false` | Использовать цвет состояния, когда сущность `on` |
 | `light_background` | boolean | Необязательно | `true` (по умолчанию) или `false` | Использовать цвет света для фона, когда он доступен |
-| `show_state` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показывать или скрывать состояние вашей `entity` |
+| `state_content` | string or list | Необязательно | `state`, `last-changed`, `last-updated`, `last-triggered`, имя атрибута, например `brightness` или `forecast[0].temperature`, или [шаблон](#templates) | Что показывает строка под именем, в этом порядке. Без этой настройки кнопка `button_type: state` показывает то, что Home Assistant показывает для сущности (её состояние, а также текущую температуру сущности климата, положение шторы, яркость света). Старые ключи `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` по-прежнему работают и переписываются в `state_content`, когда вы открываете редактор. |
 | `show_name` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показывать или скрывать имя |
 | `show_icon` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показывать или скрывать значок |
-| `show_last_changed` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показывать время последнего изменения вашей `entity` |
-| `show_last_updated` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показывать время последнего обновления вашей `entity` |
-| `show_attribute` | boolean | Необязательно | `true` или `false` (по умолчанию) | Показывать атрибут вашей `entity` под её `name` |
-| `attribute` | string | Необязательно (обязательно, если `show_attribute` установлено в `true`) | Атрибут вашей `entity` | Атрибут для отображения (например, `brightness`) |
 | `select_attribute` | string | Необязательно | Список атрибутов вашей `entity` (см. поддерживаемые значения выше) | Этот список атрибутов откроет выпадающий список при нажатии (например, `effect_list`) |
 | `show_arrow` | boolean | Необязательно | `true` (по умолчанию) или `false` | Показывать или скрывать стрелку выпадающего списка для дополнительных кнопок типа select |
 | `scrolling_effect` | boolean | Необязательно | `true` (по умолчанию) или `false` | Разрешить прокрутку текста, когда содержимое превышает размер контейнера |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

@@ -412,13 +412,9 @@ Dës Kaart ass ganz villsäiteg. Si kann als **Schalter**, als **Slider**, als *
 | `icon` | string | Optional | Egal wéi eng `mdi:` Ikon | Eng Ikon fir Äre Knäppchen, wann net definéiert gëtt d'Ikon vun der Entitéit oder d'`entity-picture` ugewisen |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Gëtt der Ikon de Virrang virun der `entity-picture` |
 | `use_accent_color` | boolean | Optional (`false` Standard) | **Nëmme fir Luuchten.** Benotzt d'Akzentfaarf vum Theme amplaz vun der Faarf vum Luucht. |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt de Zoustand vun Ärer `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributnumm wéi `brightness` oder `forecast[0].temperature`, oder en [Template](#templates) | Wat d'Linn ënner dem Numm weist, an dëser Reiefolleg. Ouni dës Optioun weist e `button_type: state` Knäppchen dat, wat Home Assistant fir d'Entitéit weist (hiren Zoustand, plus déi aktuell Temperatur vun engem Klima, d'Positioun vun enger Stouer, d'Hellegkeet vun enger Luucht). Déi al Schlësselen `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` funktionéieren nach ëmmer a ginn als `state_content` ëmgeschriwwen, wann Dir den Editor opmaacht. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt den Numm |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt d'Ikon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Ännerung vun Ärer `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Aktualiséierung vun Ärer `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Weist en Attribut vun Ärer `entity` ënner dem `name` |
-| `attribute` | string | Optional (obligatoresch wann `show_attribute` op `true` gesat ass) | En Attribut vun Ärer `entity` | Den Attribut deen ugewise gëtt (z.B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaabt dem Text ze scrollen wann den Inhalt d'Gréisst vum Container iwwerschreift |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` oder `hold_action`, kuckt hei ënnendrënner | Erlaabt d'Standardaktiounen beim Klick op de Knäppchen z'änneren. |
 | `tap_action` | object | Optional | Kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Definéiert den Typ vun der Aktioun beim Klick op d'Ikon, wann net definéiert gëtt `more-info` benotzt |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Dës Kaart erlaabt Iech eng Mediaspiller-Entitéit ze kontrolléieren.
 | `name` | string | Optional | Egal wéi ee String | En Numm fir Äre Mediaspiller, wann net definéiert gëtt den Numm vun der Entitéit ugewisen |
 | `icon` | string | Optional | Egal wéi eng `mdi:` Ikon | Eng Ikon fir Äre Mediaspiller, wann net definéiert gëtt d'Ikon vun der Entitéit oder d'`entity-picture` ugewisen |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Gëtt der Ikon de Virrang virun der `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt de Zoustand vun Ärer `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributnumm wéi `brightness` oder `forecast[0].temperature`, oder en [Template](#templates) | Wat d'Linn ënner dem Numm weist, an dëser Reiefolleg. Ouni dës Optioun weist e `button_type: state` Knäppchen dat, wat Home Assistant fir d'Entitéit weist (hiren Zoustand, plus déi aktuell Temperatur vun engem Klima, d'Positioun vun enger Stouer, d'Hellegkeet vun enger Luucht). Déi al Schlësselen `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` funktionéieren nach ëmmer a ginn als `state_content` ëmgeschriwwen, wann Dir den Editor opmaacht. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt den Numm |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt d'Ikon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Ännerung vun Ärer `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Aktualiséierung vun Ärer `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Weist en Attribut vun Ärer `entity` ënner dem `name` |
-| `attribute` | string | Optional (obligatoresch wann `show_attribute` op `true` gesat ass) | En Attribut vun Ärer `entity` | Den Attribut deen ugewise gëtt (z.B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaabt dem Text ze scrollen wann den Inhalt d'Gréisst vum Container iwwerschreift |
 | `min_volume` | number | Optional | Egal wéi eng Zuel | De Minimumwäert vum Volumm-Slider. |
 | `max_volume` | number | Optional | Egal wéi eng Zuel | De Maximumwäert vum Volumm-Slider. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Dës Kaart erlaabt Iech Är `cover`-Entitéiten ze kontrolléieren.
 | `entity` | string | **Obligatoresch** | Egal wéi eng Stouer | Eng Stouer fir ze kontrolléieren |
 | `name` | string | Optional | Egal wéi ee String | En Numm fir Är Stouer, wann net definéiert gëtt den Numm vun der Entitéit ugewisen |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Gëtt der Ikon de Virrang virun der `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt de Zoustand vun Ärer `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributnumm wéi `brightness` oder `forecast[0].temperature`, oder en [Template](#templates) | Wat d'Linn ënner dem Numm weist, an dëser Reiefolleg. Ouni dës Optioun weist e `button_type: state` Knäppchen dat, wat Home Assistant fir d'Entitéit weist (hiren Zoustand, plus déi aktuell Temperatur vun engem Klima, d'Positioun vun enger Stouer, d'Hellegkeet vun enger Luucht). Déi al Schlësselen `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` funktionéieren nach ëmmer a ginn als `state_content` ëmgeschriwwen, wann Dir den Editor opmaacht. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt den Numm |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt d'Ikon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Ännerung vun Ärer `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Aktualiséierung vun Ärer `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Weist en Attribut vun Ärer `entity` ënner dem `name` |
-| `attribute` | string | Optional (obligatoresch wann `show_attribute` op `true` gesat ass) | En Attribut vun Ärer `entity` | Den Attribut deen ugewise gëtt (z.B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaabt dem Text ze scrollen wann den Inhalt d'Gréisst vum Container iwwerschreift |
 | `icon_open` | string | Optional | Egal wéi eng `mdi:` Ikon | Eng Ikon fir Är oppe Stouer, wann net definéiert gëtt d'Standard-Ikon fir oppe Stoueren ugewisen |
 | `icon_close` | string | Optional | Egal wéi eng `mdi:` Ikon | Eng Ikon fir Är zou Stouer, wann net definéiert gëtt d'Standard-Ikon fir zou Stoueren ugewisen |
@@ -778,13 +753,9 @@ Dës Kaart erlaabt Iech e Dropdown-Menü fir Är `input_select`/`select`-Entité
 | `name` | string | Optional | Egal wéi ee String | En Numm fir Är Auswiel, wann net definéiert gëtt den Numm vun der Entitéit ugewisen |
 | `icon` | string | Optional | Egal wéi eng `mdi:` Ikon | Eng Ikon fir Är Auswiel, wann net definéiert gëtt d'Ikon vun der Entitéit oder d'`entity-picture` ugewisen |
 | `force_icon` | boolean | Optional | `true` oder `false` (Standard) | Gëtt der Ikon de Virrang virun der `entity-picture` |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt de Zoustand vun Ärer `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributnumm wéi `brightness` oder `forecast[0].temperature`, oder en [Template](#templates) | Wat d'Linn ënner dem Numm weist, an dëser Reiefolleg. Ouni dës Optioun weist e `button_type: state` Knäppchen dat, wat Home Assistant fir d'Entitéit weist (hiren Zoustand, plus déi aktuell Temperatur vun engem Klima, d'Positioun vun enger Stouer, d'Hellegkeet vun enger Luucht). Déi al Schlësselen `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` funktionéieren nach ëmmer a ginn als `state_content` ëmgeschriwwen, wann Dir den Editor opmaacht. |
 | `show_name` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt den Numm |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt d'Ikon |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Ännerung vun Ärer `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Weist d'Zäit vun der lescht Aktualiséierung vun Ärer `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Weist en Attribut vun Ärer `entity` ënner dem `name` |
-| `attribute` | string | Optional (obligatoresch wann `show_attribute` op `true` gesat ass) | En Attribut vun Ärer `entity` | Den Attribut deen ugewise gëtt (z.B. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaabt dem Text ze scrollen wann den Inhalt d'Gréisst vum Container iwwerschreift |
 | `tap_action` | object | Optional | Kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Definéiert den Typ vun der Aktioun beim Klick op d'Ikon, wann net definéiert gëtt `more-info` benotzt. |
 | `double_tap_action` | object | Optional | Kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Definéiert den Typ vun der Aktioun beim Duebelklick op d'Ikon, wann net definéiert gëtt `none` benotzt. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Dës Kaart erlaabt Iech Är `climate`-Entitéiten ze kontrolléieren.
 | `name`                  | string  | Optional                            | Egal wéi ee String                                       | E personaliséierten Numm fir d'Kaart. Wann net definéiert, gëtt den Numm vun der Entitéit ugewisen.                                    |
 | `icon`                  | string  | Optional                            | Egal wéi eng `mdi:` Ikon                                  | Eng personaliséiert Ikon fir d'Kaart. Wann net definéiert, gëtt d'Ikon vun der Entitéit oder d'`entity-picture` benotzt.                   |
 | `force_icon`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Gëtt der Ikon de Virrang virun der `entity-picture`.                                                           |
-| `show_state`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Weist oder verstoppt den aktuellen Zoustand vun der `entity`.                                                                 |
+| `state_content`         | string oder list | Optional | `state`, en Attributnumm, en Template | Wat d'Linn ënner dem Numm weist, kuckt d'Knäppchen-Optiounen. Den ale Schlëssel `show_state` funktionéiert nach ëmmer. |
 | `show_name`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Weist oder verstoppt den Numm vun der Entitéit.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Weist oder verstoppt d'Ikon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (nëmmen fir Entitéiten déi `target_temp_low` ënnerstëtzen) | `true` oder `false` (Standard) | Verstoppt d'Kontroll vun der niddreger Zieltemperatur wann d'`entity` dat ënnerstëtzt.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Optional | `true` (Standard) oder `false` | Weist en Hannergrond fir Äre Sub-Knäppchen, d'Faarf ännert sech baséierend op dem Zoustand vun der Entitéit |
 | `state_background` | boolean | Optional | `true` (Standard) oder `false` | Benotzt d'Zoustandsfaarf wann d'Entitéit `on` ass |
 | `light_background` | boolean | Optional | `true` (Standard) oder `false` | Benotzt d'Luuchtfaarf fir den Hannergrond, wann verfügbar |
-| `show_state` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt de Zoustand vun Ärer `entity` |
+| `state_content` | string oder list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, en Attributnumm wéi `brightness` oder `forecast[0].temperature`, oder en [Template](#templates) | Wat d'Linn ënner dem Numm weist, an dëser Reiefolleg. Ouni dës Optioun weist e `button_type: state` Knäppchen dat, wat Home Assistant fir d'Entitéit weist (hiren Zoustand, plus déi aktuell Temperatur vun engem Klima, d'Positioun vun enger Stouer, d'Hellegkeet vun enger Luucht). Déi al Schlësselen `show_state`, `show_attribute`, `attribute`, `show_last_changed` a `show_last_updated` funktionéieren nach ëmmer a ginn als `state_content` ëmgeschriwwen, wann Dir den Editor opmaacht. |
 | `show_name` | boolean | Optional | `true` oder `false` (Standard) | Weist oder verstoppt den Numm |
 | `show_icon` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt d'Symbol |
-| `show_last_changed` | boolean | Optional | `true` oder `false` (Standard) | Weist déi lescht Ännerungszäit vun Ärer `entity` |
-| `show_last_updated` | boolean | Optional | `true` oder `false` (Standard) | Weist déi lescht Aktualiséierungszäit vun Ärer `entity` |
-| `show_attribute` | boolean | Optional | `true` oder `false` (Standard) | Weist en Attribut vun Ärer `entity` ënnert dem `name` |
-| `attribute` | string | Optional (obligatoresch wa `show_attribute` op `true` steet) | En Attribut vun Ärer `entity` | Den Attribut deen ugewise gëtt (z.B. `brightness`) |
 | `select_attribute` | string | Optional | Eng Attributslëscht vun Ärer `entity` (kuckt d'ënnerstëtzt Optiounen uewen) | Dës Attributslëscht mécht en Dropdown op wann ugeklickt (z.B. `effect_list`) |
 | `show_arrow` | boolean | Optional | `true` (Standard) oder `false` | Weist oder verstoppt de Dropdown-Pfeil fir Auswiel-Sub-Knäppercher |
 | `scrolling_effect` | boolean | Optional | `true` (Standard) oder `false` | Erlaabt Text ze scrollen wann den Inhalt méi grouss ass wéi de Container |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

@@ -412,13 +412,9 @@ Txartel hau oso malgua da. **etengailu**, **graduatzaile**, **egoera** edo **ize
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure botoiaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
 | `use_accent_color` | boolean | Aukerakoa (`false` lehenetsia) | **Argientzat soilik.** Erabili gaiaren nabarmentze-kolorea argiaren kolorearen ordez.                         |
-| `show_state` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu zure `entity`-ren egoera |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
-| `show_last_changed` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken aldaketa-ordua |
-| `show_last_updated` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken eguneratze-ordua |
-| `show_attribute` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren atributu bat bere `name`-ren azpian |
-| `attribute` | string | Aukerakoa (`show_attribute` `true` gisa ezarrita badago, beharrezkoa) | Zure `entity`-ren atributu bat | Erakutsi beharreko atributua (adibidez `brightness`) |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
 | `button_action` | object | Aukerakoa | `tap_action`, `double_tap_action` edo `hold_action`, ikusi behean | Botoiaren klik gaineko ekintza lehenetsiak aldatzeko aukera ematen du. |
 | `tap_action` | object | Aukerakoa | Ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Definitu ikonoaren klik gaineko ekintza mota, definitu ez bada `more-info` erabiliko da |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Txartel honek multimedia-erreproduzigailu entitate bat kontrolatzeko aukera emat
 | `name` | string | Aukerakoa | Edozein testu | Zure multimedia-erreproduzigailuaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure multimedia-erreproduzigailuaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `show_state` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu zure `entity`-ren egoera |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
-| `show_last_changed` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken aldaketa-ordua |
-| `show_last_updated` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken eguneratze-ordua |
-| `show_attribute` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren atributu bat bere `name`-ren azpian |
-| `attribute` | string | Aukerakoa (`show_attribute` `true` gisa ezarrita badago, beharrezkoa) | Zure `entity`-ren atributu bat | Erakutsi beharreko atributua (adibidez `brightness`) |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
 | `min_volume` | number | Aukerakoa | Edozein zenbaki | Bolumen-graduatzailearen balio minimoa. |
 | `max_volume` | number | Aukerakoa | Edozein zenbaki | Bolumen-graduatzailearen balio maximoa. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Txartel honek zure `cover` entitateak kontrolatzeko aukera ematen dizu.
 | `entity` | string | **Beharrezkoa** | Edozein estalki | Kontrolatzeko estalki bat |
 | `name` | string | Aukerakoa | Edozein testu | Zure estalkiaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `show_state` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu zure `entity`-ren egoera |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
-| `show_last_changed` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken aldaketa-ordua |
-| `show_last_updated` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken eguneratze-ordua |
-| `show_attribute` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren atributu bat bere `name`-ren azpian |
-| `attribute` | string | Aukerakoa (`show_attribute` `true` gisa ezarrita badago, beharrezkoa) | Zure `entity`-ren atributu bat | Erakutsi beharreko atributua (adibidez `brightness`) |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
 | `icon_open` | string | Aukerakoa | Edozein `mdi:` ikono | Zure estalki irekiaren ikonoa, definitu ez bada estalki irekiaren ikono lehenetsia erakutsiko da |
 | `icon_close` | string | Aukerakoa | Edozein `mdi:` ikono | Zure estalki itxiaren ikonoa, definitu ez bada estalki itxiaren ikono lehenetsia erakutsiko da |
@@ -778,13 +753,9 @@ Txartel honek zure `input_select` / `select` entitateentzako hedapen-menu bat ge
 | `name` | string | Aukerakoa | Edozein testu | Zure hautaketaren izena, definitu ez bada entitatearen izena erakutsiko da |
 | `icon` | string | Aukerakoa | Edozein `mdi:` ikono | Zure hautaketaren ikonoa, definitu ez bada entitatearen ikonoa edo `entity-picture` erakutsiko da |
 | `force_icon` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Eman lehentasuna ikonoari `entity-picture`-ren ordez |
-| `show_state` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu zure `entity`-ren egoera |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
-| `show_last_changed` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken aldaketa-ordua |
-| `show_last_updated` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren azken eguneratze-ordua |
-| `show_attribute` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-ren atributu bat bere `name`-ren azpian |
-| `attribute` | string | Aukerakoa (`show_attribute` `true` gisa ezarrita badago, beharrezkoa) | Zure `entity`-ren atributu bat | Erakutsi beharreko atributua (adibidez `brightness`) |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Testua irristatzea baimendu edukiak edukiontziaren tamaina gainditzen duenean |
 | `tap_action` | object | Aukerakoa | Ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Definitu ikonoaren klik gaineko ekintza mota, definitu ez bada `more-info` erabiliko da. |
 | `double_tap_action` | object | Aukerakoa | Ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Definitu ikonoaren klik bikoitz gaineko ekintza mota, definitu ez bada `none` erabiliko da. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Txartel honek zure `climate` entitateak kontrolatzeko aukera ematen dizu.
 | `name`                  | string  | Aukerakoa                            | Edozein testu                                       | Txartelarentzako izen pertsonalizatua. Definitu ez bada, entitatearen izena erakutsiko da.                                    |
 | `icon`                  | string  | Aukerakoa                            | Edozein `mdi:` ikono                                  | Txartelarentzako ikono pertsonalizatua. Definitu ez bada, entitatearen ikonoa edo `entity-picture` erabiliko da.                   |
 | `force_icon`            | boolean | Aukerakoa                            | `true` edo `false` (lehenetsia)                     | Lehentasuna ematen dio ikonoari `entity-picture`-ren gainetik.                                                           |
-| `show_state`            | boolean | Aukerakoa                            | `true` edo `false` (lehenetsia)                     | Erakutsi edo ezkutatu `entity`-ren uneko egoera.                                                                 |
+| `state_content`         | string edo list | Aukerakoa | `state`, atributu-izen bat, txantiloi bat | Izenaren azpiko lerroak zer erakusten duen, ikusi botoiaren aukerak. `show_state` gako zaharrak oraindik funtzionatzen du. |
 | `show_name`             | boolean | Aukerakoa                            | `true` (lehenetsia) edo `false`                     | Erakutsi edo ezkutatu entitatearen izena.                                                                            |
 | `show_icon`             | boolean | Aukerakoa                            | `true` (lehenetsia) edo `false`                     | Erakutsi edo ezkutatu ikonoa.                                                                                          |
 | `hide_target_temp_low`  | boolean | Aukerakoa (`target_temp_low` onartzen duten entitateentzat soilik) | `true` edo `false` (lehenetsia) | Ezkutatzen du helburuko tenperatura baxuaren kontrola, `entity`-k onartzen badu.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi zure azpibotoiaren atzeko planoa, entitatearen egoeraren arabera koloreztatuko da |
 | `state_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erabili egoeraren kolorea entitatea `on` dagoenean |
 | `light_background` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erabili argiaren kolorea atzeko planorako, eskuragarri dagoenean |
-| `show_state` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu zure `entity`-aren egoera |
+| `state_content` | string edo list | Aukerakoa | `state`, `last-changed`, `last-updated`, `last-triggered`, atributu-izen bat, adibidez `brightness` edo `forecast[0].temperature`, edo [txantiloi](#templates) bat | Izenaren azpiko lerroak zer erakusten duen, ordena horretan. Hori gabe, `button_type: state` motako botoi batek Home Assistantek entitatearentzat erakusten duena erakusten du (bere egoera, gehi klimatizazio baten uneko tenperatura, estalki baten posizioa, argi baten distira). `show_state`, `show_attribute`, `attribute`, `show_last_changed` eta `show_last_updated` gako zaharrek oraindik funtzionatzen dute, eta `state_content` gisa berridazten dira editorea irekitzen duzunean. |
 | `show_name` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi edo ezkutatu izena |
 | `show_icon` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu ikonoa |
-| `show_last_changed` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-aren azken aldaketa-ordua |
-| `show_last_updated` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-aren azken eguneratze-ordua |
-| `show_attribute` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | Erakutsi zure `entity`-aren atributu bat bere `name`-aren azpian |
-| `attribute` | string | Aukerakoa (beharrezkoa `show_attribute` `true` bada) | Zure `entity`-aren atributu bat | Erakutsi behar den atributua (adibidez `brightness`) |
 | `select_attribute` | string | Aukerakoa | Zure `entity`-aren atributu-zerrenda bat (ikusi goiko aukera onartuak) | Atributu-zerrenda honek goitibeherako bat irekiko du sakatzean (adibidez `effect_list`) |
 | `show_arrow` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Erakutsi edo ezkutatu goitibeherako gezia select motako azpibotoietan |
 | `scrolling_effect` | boolean | Aukerakoa | `true` (lehenetsia) edo `false` | Baimendu testua korritzea edukia edukiontziaren tamaina baino handiagoa denean |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

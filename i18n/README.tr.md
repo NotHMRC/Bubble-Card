@@ -412,13 +412,9 @@ Bu kart oldukça çok yönlüdür. Bir **anahtar**, bir **kaydırıcı**, bir **
 | `icon` | string | Optional | Any `mdi:` icon | Düğmeniz için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
 | `use_accent_color` | boolean | Optional (`false` default) | **Yalnızca ışıklar için.** Işığın rengi yerine temanın vurgu rengini kullanın.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | `entity`nizin durumunu göster veya gizle |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | `entity`nizin son değişim zamanını göster |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | `entity`nizin son güncelleme zamanını göster |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | `entity`nizin bir özelliğini `name`inin altında göster |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Gösterilecek özellik (örn. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | Düğme tıklamasındaki varsayılan eylemleri değiştirmeye izin ver. |
 | `tap_action` | object | Optional | See [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Simgeye dokunma eyleminin türünü tanımlayın, tanımlanmazsa `more-info` kullanılır |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ Bu kart, bir medya oynatıcı varlığını kontrol etmenizi sağlar.
 | `name` | string | Optional | Any string | Medya oynatıcınız için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `icon` | string | Optional | Any `mdi:` icon | Medya oynatıcınız için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `show_state` | boolean | Optional | `true` or `false` (default) | `entity`nizin durumunu göster veya gizle |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | `entity`nizin son değişim zamanını göster |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | `entity`nizin son güncelleme zamanını göster |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | `entity`nizin bir özelliğini `name`inin altında göster |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Gösterilecek özellik (örn. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
 | `min_volume` | number | Optional | Any number | Ses düzeyi kaydırıcısının minimum değeri. |
 | `max_volume` | number | Optional | Any number | Ses düzeyi kaydırıcısının maksimum değeri. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ Bu kart, `cover` varlıklarınızı kontrol etmenizi sağlar.
 | `entity` | string | **Required** | Any cover | Kontrol edilecek bir panjur |
 | `name` | string | Optional | Any string | Panjurunuz için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `show_state` | boolean | Optional | `true` or `false` (default) | `entity`nizin durumunu göster veya gizle |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | `entity`nizin son değişim zamanını göster |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | `entity`nizin son güncelleme zamanını göster |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | `entity`nizin bir özelliğini `name`inin altında göster |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Gösterilecek özellik (örn. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
 | `icon_open` | string | Optional | Any `mdi:` icon | Açık panjurunuz için bir simge, tanımlanmazsa varsayılan açık panjur simgesi gösterilir |
 | `icon_close` | string | Optional | Any `mdi:` icon | Kapalı panjurunuz için bir simge, tanımlanmazsa varsayılan kapalı panjur simgesi gösterilir |
@@ -778,13 +753,9 @@ Bu kart, `input_select` / `select` varlıklarınız için bir açılır menü ek
 | `name` | string | Optional | Any string | Seçiminiz için bir isim, tanımlanmazsa varlığın adı gösterilir |
 | `icon` | string | Optional | Any `mdi:` icon | Seçiminiz için bir simge, tanımlanmazsa varlığın simgesi veya `entity-picture` gösterilir |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture` yerine simgeye öncelik ver |
-| `show_state` | boolean | Optional | `true` or `false` (default) | `entity`nizin durumunu göster veya gizle |
+| `state_content` | string veya list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | Optional | `true` (default) or `false` | İsmi göster veya gizle |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | Simgeyi göster veya gizle |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | `entity`nizin son değişim zamanını göster |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | `entity`nizin son güncelleme zamanını göster |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | `entity`nizin bir özelliğini `name`inin altında göster |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | Gösterilecek özellik (örn. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | İçerik, kapsayıcısının boyutunu aştığında metnin kaymasına izin ver |
 | `tap_action` | object | Optional | See [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Simgeye dokunma eyleminin türünü tanımlayın, tanımlanmazsa `more-info` kullanılır. |
 | `double_tap_action` | object | Optional | See [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Simgeye çift dokunma eyleminin türünü tanımlayın, tanımlanmazsa `none` kullanılır. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ Bu kart, `climate` varlıklarınızı kontrol etmenizi sağlar.
 | `name`                  | string  | Optional                            | Any string                                       | Kart için özel bir isim. Tanımlanmazsa varlığın adı gösterilir.                                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Kart için özel bir simge. Tanımlanmazsa varlığın simgesi veya `entity-picture` kullanılır.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Simgeye `entity-picture` yerine öncelik verir.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | `entity`nin mevcut durumunu göster veya gizle.                                                                 |
+| `state_content`         | string veya list | Optional | `state`, bir özellik adı, bir şablon | Adın altındaki satırın ne gösterdiği, düğme seçeneklerine bakın. Eski `show_state` anahtarı hâlâ çalışır. |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | Varlığın adını göster veya gizle.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Simgeyi göster veya gizle.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | `entity` tarafından destekleniyorsa düşük hedef sıcaklık kontrolünü gizler.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Alt düğmeniz için bir arka plan göster, varlık durumunuza göre rengi değişir |
 | `state_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Varlık `on` olduğunda durum rengini kullan |
 | `light_background` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Mevcut olduğunda arka plan için ışık rengini kullan |
-| `show_state` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | `entity` durumunuzu göster veya gizle |
+| `state_content` | string veya list | İsteğe bağlı | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` veya `forecast[0].temperature` gibi bir özellik adı veya bir [şablon](#templates) | Adın altındaki satırın bu sırayla ne gösterdiği. Belirtilmezse `button_type: state` türündeki bir düğme, Home Assistant'ın varlık için gösterdiğini gösterir (durumunu, ayrıca bir iklim varlığının mevcut sıcaklığını, bir panjurun konumunu, bir ışığın parlaklığını). Eski `show_state`, `show_attribute`, `attribute`, `show_last_changed` ve `show_last_updated` anahtarları hâlâ çalışır ve editörü açtığınızda `state_content` olarak yeniden yazılır. |
 | `show_name` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | Adı göster veya gizle |
 | `show_icon` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Simgeyi göster veya gizle |
-| `show_last_changed` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | `entity` varlığınızın son değişim zamanını göster |
-| `show_last_updated` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | `entity` varlığınızın son güncellenme zamanını göster |
-| `show_attribute` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | `entity` varlığınızın bir özniteliğini `name` altında göster |
-| `attribute` | string | İsteğe bağlı (`show_attribute` `true` olarak ayarlandıysa zorunlu) | `entity` varlığınızdan bir öznitelik | Gösterilecek öznitelik (örn. `brightness`) |
 | `select_attribute` | string | İsteğe bağlı | `entity` varlığınızdan bir öznitelik listesi (yukarıdaki desteklenen seçeneklere bakın) | Bu öznitelik listesi tıklanınca bir açılır liste açar (örn. `effect_list`) |
 | `show_arrow` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | Seçim alt düğmeleri için açılır liste okunu göster veya gizle |
 | `scrolling_effect` | boolean | İsteğe bağlı | `true` (varsayılan) veya `false` | İçerik konteynerin boyutunu aştığında metnin kaymasına izin ver |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

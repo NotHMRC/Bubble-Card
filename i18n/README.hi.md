@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | वैकल्पिक | कोई भी `mdi:` आइकन | आपके बटन के लिए एक आइकन, यदि परिभाषित नहीं है तो एंटिटी का आइकन या `entity-picture` दिखेगा |
 | `force_icon` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | `entity-picture` के बजाय आइकन को प्राथमिकता दें |
 | `use_accent_color` | boolean | वैकल्पिक (`false` डिफ़ॉल्ट) | **केवल लाइट्स के लिए।** लाइट के रंग के बजाय थीम के एक्सेंट कलर का उपयोग करें।                         |
-| `show_state` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` की स्थिति दिखाएं या छिपाएं |
+| `state_content` | string या list | वैकल्पिक | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` या `forecast[0].temperature` जैसा कोई एट्रिब्यूट नाम, या कोई [टेम्पलेट](#templates) | नाम के नीचे वाली लाइन क्या दिखाती है, इसी क्रम में। इसके बिना एक `button_type: state` बटन वही दिखाता है जो Home Assistant एंटिटी के लिए दिखाता है (उसकी स्थिति, साथ ही क्लाइमेट का मौजूदा तापमान, कवर की पोज़िशन, लाइट की ब्राइटनेस)। पुराने `show_state`, `show_attribute`, `attribute`, `show_last_changed` और `show_last_updated` विकल्प अब भी काम करते हैं और जब आप एडिटर खोलते हैं तो `state_content` के रूप में फिर से लिख दिए जाते हैं। |
 | `show_name` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | नाम दिखाएं या छिपाएं |
 | `show_icon` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | आइकन दिखाएं या छिपाएं |
-| `show_last_changed` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम परिवर्तन समय दिखाएं |
-| `show_last_updated` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम अपडेट समय दिखाएं |
-| `show_attribute` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का एक एट्रिब्यूट उसके `name` के नीचे दिखाएं |
-| `attribute` | string | वैकल्पिक (आवश्यक यदि `show_attribute` को `true` सेट किया गया हो) | आपके `entity` से एक एट्रिब्यूट | दिखाने के लिए एट्रिब्यूट (जैसे `brightness`) |
 | `scrolling_effect` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब कंटेंट उसके कंटेनर के आकार से बड़ा हो तो टेक्स्ट को स्क्रॉल होने दें |
 | `button_action` | object | वैकल्पिक | `tap_action`, `double_tap_action` या `hold_action`, नीचे देखें | बटन क्लिक पर डिफ़ॉल्ट एक्शन बदलने देता है। |
 | `tap_action` | object | वैकल्पिक | देखें [एक्शन](#टैप-डबल-टैप-और-होल्ड-एक्शन) | आइकन क्लिक पर एक्शन का प्रकार परिभाषित करें, यदि परिभाषित नहीं है तो `more-info` का उपयोग होगा |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | वैकल्पिक | कोई भी स्ट्रिंग | आपके मीडिया प्लेयर के लिए एक नाम, यदि परिभाषित नहीं है तो एंटिटी का नाम दिखेगा |
 | `icon` | string | वैकल्पिक | कोई भी `mdi:` आइकन | आपके मीडिया प्लेयर के लिए एक आइकन, यदि परिभाषित नहीं है तो एंटिटी का आइकन या `entity-picture` दिखेगा |
 | `force_icon` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | `entity-picture` के बजाय आइकन को प्राथमिकता दें |
-| `show_state` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` की स्थिति दिखाएं या छिपाएं |
+| `state_content` | string या list | वैकल्पिक | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` या `forecast[0].temperature` जैसा कोई एट्रिब्यूट नाम, या कोई [टेम्पलेट](#templates) | नाम के नीचे वाली लाइन क्या दिखाती है, इसी क्रम में। इसके बिना एक `button_type: state` बटन वही दिखाता है जो Home Assistant एंटिटी के लिए दिखाता है (उसकी स्थिति, साथ ही क्लाइमेट का मौजूदा तापमान, कवर की पोज़िशन, लाइट की ब्राइटनेस)। पुराने `show_state`, `show_attribute`, `attribute`, `show_last_changed` और `show_last_updated` विकल्प अब भी काम करते हैं और जब आप एडिटर खोलते हैं तो `state_content` के रूप में फिर से लिख दिए जाते हैं। |
 | `show_name` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | नाम दिखाएं या छिपाएं |
 | `show_icon` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | आइकन दिखाएं या छिपाएं |
-| `show_last_changed` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम परिवर्तन समय दिखाएं |
-| `show_last_updated` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम अपडेट समय दिखाएं |
-| `show_attribute` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का एक एट्रिब्यूट उसके `name` के नीचे दिखाएं |
-| `attribute` | string | वैकल्पिक (आवश्यक यदि `show_attribute` को `true` सेट किया गया हो) | आपके `entity` से एक एट्रिब्यूट | दिखाने के लिए एट्रिब्यूट (जैसे `brightness`) |
 | `scrolling_effect` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब कंटेंट उसके कंटेनर के आकार से बड़ा हो तो टेक्स्ट को स्क्रॉल होने दें |
 | `min_volume` | number | वैकल्पिक | कोई भी संख्या | वॉल्यूम स्लाइडर की न्यूनतम वैल्यू। |
 | `max_volume` | number | वैकल्पिक | कोई भी संख्या | वॉल्यूम स्लाइडर की अधिकतम वैल्यू। |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **आवश्यक** | कोई भी कवर | नियंत्रित करने के लिए एक कवर |
 | `name` | string | वैकल्पिक | कोई भी स्ट्रिंग | आपके कवर के लिए एक नाम, यदि परिभाषित नहीं है तो एंटिटी का नाम दिखेगा |
 | `force_icon` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | `entity-picture` के बजाय आइकन को प्राथमिकता दें |
-| `show_state` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` की स्थिति दिखाएं या छिपाएं |
+| `state_content` | string या list | वैकल्पिक | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` या `forecast[0].temperature` जैसा कोई एट्रिब्यूट नाम, या कोई [टेम्पलेट](#templates) | नाम के नीचे वाली लाइन क्या दिखाती है, इसी क्रम में। इसके बिना एक `button_type: state` बटन वही दिखाता है जो Home Assistant एंटिटी के लिए दिखाता है (उसकी स्थिति, साथ ही क्लाइमेट का मौजूदा तापमान, कवर की पोज़िशन, लाइट की ब्राइटनेस)। पुराने `show_state`, `show_attribute`, `attribute`, `show_last_changed` और `show_last_updated` विकल्प अब भी काम करते हैं और जब आप एडिटर खोलते हैं तो `state_content` के रूप में फिर से लिख दिए जाते हैं। |
 | `show_name` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | नाम दिखाएं या छिपाएं |
 | `show_icon` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | आइकन दिखाएं या छिपाएं |
-| `show_last_changed` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम परिवर्तन समय दिखाएं |
-| `show_last_updated` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम अपडेट समय दिखाएं |
-| `show_attribute` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का एक एट्रिब्यूट उसके `name` के नीचे दिखाएं |
-| `attribute` | string | वैकल्पिक (आवश्यक यदि `show_attribute` को `true` सेट किया गया हो) | आपके `entity` से एक एट्रिब्यूट | दिखाने के लिए एट्रिब्यूट (जैसे `brightness`) |
 | `scrolling_effect` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब कंटेंट उसके कंटेनर के आकार से बड़ा हो तो टेक्स्ट को स्क्रॉल होने दें |
 | `icon_open` | string | वैकल्पिक | कोई भी `mdi:` आइकन | आपके खुले कवर के लिए एक आइकन, यदि परिभाषित नहीं है तो डिफ़ॉल्ट ओपन कवर आइकन दिखेगा |
 | `icon_close` | string | वैकल्पिक | कोई भी `mdi:` आइकन | आपके बंद कवर के लिए एक आइकन, यदि परिभाषित नहीं है तो डिफ़ॉल्ट क्लोज़ कवर आइकन दिखेगा |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | वैकल्पिक | कोई भी स्ट्रिंग | आपके सेलेक्ट के लिए एक नाम, यदि परिभाषित नहीं है तो एंटिटी का नाम दिखेगा |
 | `icon` | string | वैकल्पिक | कोई भी `mdi:` आइकन | आपके सेलेक्ट के लिए एक आइकन, यदि परिभाषित नहीं है तो एंटिटी का आइकन या `entity-picture` दिखेगा |
 | `force_icon` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | `entity-picture` के बजाय आइकन को प्राथमिकता दें |
-| `show_state` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` की स्थिति दिखाएं या छिपाएं |
+| `state_content` | string या list | वैकल्पिक | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` या `forecast[0].temperature` जैसा कोई एट्रिब्यूट नाम, या कोई [टेम्पलेट](#templates) | नाम के नीचे वाली लाइन क्या दिखाती है, इसी क्रम में। इसके बिना एक `button_type: state` बटन वही दिखाता है जो Home Assistant एंटिटी के लिए दिखाता है (उसकी स्थिति, साथ ही क्लाइमेट का मौजूदा तापमान, कवर की पोज़िशन, लाइट की ब्राइटनेस)। पुराने `show_state`, `show_attribute`, `attribute`, `show_last_changed` और `show_last_updated` विकल्प अब भी काम करते हैं और जब आप एडिटर खोलते हैं तो `state_content` के रूप में फिर से लिख दिए जाते हैं। |
 | `show_name` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | नाम दिखाएं या छिपाएं |
 | `show_icon` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | आइकन दिखाएं या छिपाएं |
-| `show_last_changed` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम परिवर्तन समय दिखाएं |
-| `show_last_updated` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का अंतिम अपडेट समय दिखाएं |
-| `show_attribute` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपने `entity` का एक एट्रिब्यूट उसके `name` के नीचे दिखाएं |
-| `attribute` | string | वैकल्पिक (आवश्यक यदि `show_attribute` को `true` सेट किया गया हो) | आपके `entity` से एक एट्रिब्यूट | दिखाने के लिए एट्रिब्यूट (जैसे `brightness`) |
 | `scrolling_effect` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब कंटेंट उसके कंटेनर के आकार से बड़ा हो तो टेक्स्ट को स्क्रॉल होने दें |
 | `tap_action` | object | वैकल्पिक | देखें [एक्शन](#टैप-डबल-टैप-और-होल्ड-एक्शन) | आइकन क्लिक पर एक्शन का प्रकार परिभाषित करें, यदि परिभाषित नहीं है तो `more-info` का उपयोग होगा। |
 | `double_tap_action` | object | वैकल्पिक | देखें [एक्शन](#टैप-डबल-टैप-और-होल्ड-एक्शन) | आइकन डबल क्लिक पर एक्शन का प्रकार परिभाषित करें, यदि परिभाषित नहीं है तो `none` का उपयोग होगा। |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | वैकल्पिक                            | कोई भी स्ट्रिंग                                       | कार्ड के लिए एक कस्टम नाम। यदि परिभाषित नहीं है, तो एंटिटी का नाम दिखेगा।                                    |
 | `icon`                  | string  | वैकल्पिक                            | कोई भी `mdi:` आइकन                                  | कार्ड के लिए एक कस्टम आइकन। यदि परिभाषित नहीं है, तो एंटिटी का आइकन या `entity-picture` इस्तेमाल होगा।                   |
 | `force_icon`            | boolean | वैकल्पिक                            | `true` या `false` (डिफ़ॉल्ट)                     | `entity-picture` के बजाय आइकन को प्राथमिकता देता है।                                                           |
-| `show_state`            | boolean | वैकल्पिक                            | `true` या `false` (डिफ़ॉल्ट)                     | `entity` की मौजूदा स्थिति दिखाएं या छिपाएं।                                                                 |
+| `state_content`         | string या list | वैकल्पिक | `state`, कोई एट्रिब्यूट नाम, कोई टेम्पलेट | नाम के नीचे वाली लाइन क्या दिखाती है, बटन के विकल्प देखें। पुराना `show_state` विकल्प अब भी काम करता है। |
 | `show_name`             | boolean | वैकल्पिक                            | `true` (डिफ़ॉल्ट) या `false`                     | एंटिटी का नाम दिखाएं या छिपाएं।                                                                            |
 | `show_icon`             | boolean | वैकल्पिक                            | `true` (डिफ़ॉल्ट) या `false`                     | आइकन दिखाएं या छिपाएं।                                                                                          |
 | `hide_target_temp_low`  | boolean | वैकल्पिक (केवल उन एंटिटी के लिए जो `target_temp_low` समर्थन करती हैं) | `true` या `false` (डिफ़ॉल्ट) | यदि `entity` समर्थन करती है तो निम्न लक्ष्य तापमान नियंत्रण छिपाता है।                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | अपने सब-बटन के लिए एक बैकग्राउंड दिखाएं, यह आपकी एंटिटी की स्थिति के आधार पर रंग बदलेगा |
 | `state_background` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब एंटिटी `on` हो तो स्थिति के रंग का उपयोग करें |
 | `light_background` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | उपलब्ध होने पर बैकग्राउंड के लिए लाइट का रंग उपयोग करें |
-| `show_state` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपनी `entity` की स्थिति दिखाएं या छिपाएं |
+| `state_content` | string या list | वैकल्पिक | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` या `forecast[0].temperature` जैसा कोई एट्रिब्यूट नाम, या कोई [टेम्पलेट](#templates) | नाम के नीचे वाली लाइन क्या दिखाती है, इसी क्रम में। इसके बिना एक `button_type: state` बटन वही दिखाता है जो Home Assistant एंटिटी के लिए दिखाता है (उसकी स्थिति, साथ ही क्लाइमेट का मौजूदा तापमान, कवर की पोज़िशन, लाइट की ब्राइटनेस)। पुराने `show_state`, `show_attribute`, `attribute`, `show_last_changed` और `show_last_updated` विकल्प अब भी काम करते हैं और जब आप एडिटर खोलते हैं तो `state_content` के रूप में फिर से लिख दिए जाते हैं। |
 | `show_name` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | नाम दिखाएं या छिपाएं |
 | `show_icon` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | आइकन दिखाएं या छिपाएं |
-| `show_last_changed` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपनी `entity` का अंतिम परिवर्तन समय दिखाएं |
-| `show_last_updated` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपनी `entity` का अंतिम अपडेट समय दिखाएं |
-| `show_attribute` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | अपनी `entity` का एक एट्रिब्यूट उसके `name` के नीचे दिखाएं |
-| `attribute` | string | वैकल्पिक (यदि `show_attribute` को `true` सेट किया गया हो तो आवश्यक) | आपकी `entity` से एक एट्रिब्यूट | दिखाने के लिए एट्रिब्यूट (जैसे `brightness`) |
 | `select_attribute` | string | वैकल्पिक | आपकी `entity` से एक एट्रिब्यूट लिस्ट (ऊपर दिए गए समर्थित विकल्प देखें) | क्लिक करने पर यह एट्रिब्यूट लिस्ट एक ड्रॉपडाउन खोलेगी (जैसे `effect_list`) |
 | `show_arrow` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | सेलेक्ट सब-बटन के लिए ड्रॉपडाउन एरो दिखाएं या छिपाएं |
 | `scrolling_effect` | boolean | वैकल्पिक | `true` (डिफ़ॉल्ट) या `false` | जब कंटेंट कंटेनर के आकार से बड़ा हो तो टेक्स्ट को स्क्रॉल करने दें |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

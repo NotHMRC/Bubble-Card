@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | არასავალდებულო | ნებისმიერი `mdi:` ხატულა | თქვენი ღილაკის ხატულა, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის ხატულა ან `entity-picture` |
 | `force_icon` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | ანიჭებს პრიორიტეტს ხატულას `entity-picture`-ის ნაცვლად |
 | `use_accent_color` | boolean | არასავალდებულო (ნაგულისხმევად `false`) | **მხოლოდ ნათურებისთვის.** გამოიყენოს თემის აქცენტის ფერი ნათურის ფერის ნაცვლად.                         |
-| `show_state` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს ან მალავს თქვენი `entity`-ის მდგომარეობას |
+| `state_content` | string ან list | არასავალდებულო | `state`, `last-changed`, `last-updated`, `last-triggered`, ატრიბუტის სახელი, მაგალითად `brightness` ან `forecast[0].temperature`, ან [შაბლონი](#templates) | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, ამ თანმიმდევრობით. ამ პარამეტრის გარეშე `button_type: state` ღილაკი აჩვენებს იმას, რასაც Home Assistant აჩვენებს ერთეულისთვის (მის მდგომარეობას, ასევე კლიმატის მიმდინარე ტემპერატურას, ჟალუზის პოზიციას, განათების სიკაშკაშეს). ძველი `show_state`, `show_attribute`, `attribute`, `show_last_changed` და `show_last_updated` გასაღებები კვლავ მუშაობს და რედაქტორის გახსნისას `state_content`-ად გადაიწერება. |
 | `show_name` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს სახელს |
 | `show_icon` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს ხატულას |
-| `show_last_changed` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო ცვლილების დროს |
-| `show_last_updated` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო განახლების დროს |
-| `show_attribute` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ატრიბუტს `name`-ის ქვემოთ |
-| `attribute` | string | არასავალდებულო (სავალდებულოა, თუ `show_attribute` დაყენებულია `true`-ზე) | თქვენი `entity`-ის ატრიბუტი | ატრიბუტი, რომელიც გამოსაჩენია (მაგ. `brightness`) |
 | `scrolling_effect` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | ტექსტის სქროლის დაშვება, როცა შემცველობა აღემატება მათი კონტეინერის ზომას |
 | `button_action` | object | არასავალდებულო | `tap_action`, `double_tap_action` ან `hold_action`, იხილეთ ქვემოთ | საშუალებას იძლევა შეიცვალოს ღილაკზე დაჭერის ნაგულისხმევი მოქმედებები. |
 | `tap_action` | object | არასავალდებულო | იხილეთ [მოქმედებები](#შეხების-ორმაგი-შეხებისა-და-ხანგრძლივი-დაჭერის-მოქმედებები) | განსაზღვრავს ხატულაზე დაჭერის მოქმედების ტიპს, თუ არ არის განსაზღვრული, გამოყენებული იქნება `more-info` |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | არასავალდებულო | ნებისმიერი სტრიქონი | თქვენი media player-ის სახელი, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის სახელი |
 | `icon` | string | არასავალდებულო | ნებისმიერი `mdi:` ხატულა | თქვენი media player-ის ხატულა, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის ხატულა ან `entity-picture` |
 | `force_icon` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | ანიჭებს პრიორიტეტს ხატულას `entity-picture`-ის ნაცვლად |
-| `show_state` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს ან მალავს თქვენი `entity`-ის მდგომარეობას |
+| `state_content` | string ან list | არასავალდებულო | `state`, `last-changed`, `last-updated`, `last-triggered`, ატრიბუტის სახელი, მაგალითად `brightness` ან `forecast[0].temperature`, ან [შაბლონი](#templates) | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, ამ თანმიმდევრობით. ამ პარამეტრის გარეშე `button_type: state` ღილაკი აჩვენებს იმას, რასაც Home Assistant აჩვენებს ერთეულისთვის (მის მდგომარეობას, ასევე კლიმატის მიმდინარე ტემპერატურას, ჟალუზის პოზიციას, განათების სიკაშკაშეს). ძველი `show_state`, `show_attribute`, `attribute`, `show_last_changed` და `show_last_updated` გასაღებები კვლავ მუშაობს და რედაქტორის გახსნისას `state_content`-ად გადაიწერება. |
 | `show_name` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს სახელს |
 | `show_icon` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს ხატულას |
-| `show_last_changed` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო ცვლილების დროს |
-| `show_last_updated` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო განახლების დროს |
-| `show_attribute` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ატრიბუტს `name`-ის ქვემოთ |
-| `attribute` | string | არასავალდებულო (სავალდებულოა, თუ `show_attribute` დაყენებულია `true`-ზე) | თქვენი `entity`-ის ატრიბუტი | ატრიბუტი, რომელიც გამოსაჩენია (მაგ. `brightness`) |
 | `scrolling_effect` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | ტექსტის სქროლის დაშვება, როცა შემცველობა აღემატება მათი კონტეინერის ზომას |
 | `min_volume` | number | არასავალდებულო | ნებისმიერი რიცხვი | ხმის დონის სლაიდერის მინიმალური მნიშვნელობა. |
 | `max_volume` | number | არასავალდებულო | ნებისმიერი რიცხვი | ხმის დონის სლაიდერის მაქსიმალური მნიშვნელობა. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **სავალდებულო** | ნებისმიერი cover | ჟალუზი, რომლის მართვაც გსურთ |
 | `name` | string | არასავალდებულო | ნებისმიერი სტრიქონი | თქვენი ჟალუზის სახელი, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის სახელი |
 | `force_icon` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | ანიჭებს პრიორიტეტს ხატულას `entity-picture`-ის ნაცვლად |
-| `show_state` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს ან მალავს თქვენი `entity`-ის მდგომარეობას |
+| `state_content` | string ან list | არასავალდებულო | `state`, `last-changed`, `last-updated`, `last-triggered`, ატრიბუტის სახელი, მაგალითად `brightness` ან `forecast[0].temperature`, ან [შაბლონი](#templates) | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, ამ თანმიმდევრობით. ამ პარამეტრის გარეშე `button_type: state` ღილაკი აჩვენებს იმას, რასაც Home Assistant აჩვენებს ერთეულისთვის (მის მდგომარეობას, ასევე კლიმატის მიმდინარე ტემპერატურას, ჟალუზის პოზიციას, განათების სიკაშკაშეს). ძველი `show_state`, `show_attribute`, `attribute`, `show_last_changed` და `show_last_updated` გასაღებები კვლავ მუშაობს და რედაქტორის გახსნისას `state_content`-ად გადაიწერება. |
 | `show_name` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს სახელს |
 | `show_icon` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს ხატულას |
-| `show_last_changed` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო ცვლილების დროს |
-| `show_last_updated` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო განახლების დროს |
-| `show_attribute` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ატრიბუტს `name`-ის ქვემოთ |
-| `attribute` | string | არასავალდებულო (სავალდებულოა, თუ `show_attribute` დაყენებულია `true`-ზე) | თქვენი `entity`-ის ატრიბუტი | ატრიბუტი, რომელიც გამოსაჩენია (მაგ. `brightness`) |
 | `scrolling_effect` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | ტექსტის სქროლის დაშვება, როცა შემცველობა აღემატება მათი კონტეინერის ზომას |
 | `icon_open` | string | არასავალდებულო | ნებისმიერი `mdi:` ხატულა | ხატულა თქვენი ღია ჟალუზისთვის, თუ არ არის განსაზღვრული, გამოჩნდება ნაგულისხმევი ღია ჟალუზის ხატულა |
 | `icon_close` | string | არასავალდებულო | ნებისმიერი `mdi:` ხატულა | ხატულა თქვენი დახურული ჟალუზისთვის, თუ არ არის განსაზღვრული, გამოჩნდება ნაგულისხმევი დახურული ჟალუზის ხატულა |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | არასავალდებულო | ნებისმიერი სტრიქონი | თქვენი select-ის სახელი, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის სახელი |
 | `icon` | string | არასავალდებულო | ნებისმიერი `mdi:` ხატულა | თქვენი select-ის ხატულა, თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის ხატულა ან `entity-picture` |
 | `force_icon` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | ანიჭებს პრიორიტეტს ხატულას `entity-picture`-ის ნაცვლად |
-| `show_state` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს ან მალავს თქვენი `entity`-ის მდგომარეობას |
+| `state_content` | string ან list | არასავალდებულო | `state`, `last-changed`, `last-updated`, `last-triggered`, ატრიბუტის სახელი, მაგალითად `brightness` ან `forecast[0].temperature`, ან [შაბლონი](#templates) | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, ამ თანმიმდევრობით. ამ პარამეტრის გარეშე `button_type: state` ღილაკი აჩვენებს იმას, რასაც Home Assistant აჩვენებს ერთეულისთვის (მის მდგომარეობას, ასევე კლიმატის მიმდინარე ტემპერატურას, ჟალუზის პოზიციას, განათების სიკაშკაშეს). ძველი `show_state`, `show_attribute`, `attribute`, `show_last_changed` და `show_last_updated` გასაღებები კვლავ მუშაობს და რედაქტორის გახსნისას `state_content`-ად გადაიწერება. |
 | `show_name` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს სახელს |
 | `show_icon` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | აჩვენებს ან მალავს ხატულას |
-| `show_last_changed` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო ცვლილების დროს |
-| `show_last_updated` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ბოლო განახლების დროს |
-| `show_attribute` | boolean | არასავალდებულო | `true` ან `false` (ნაგულისხმევი) | აჩვენებს თქვენი `entity`-ის ატრიბუტს `name`-ის ქვემოთ |
-| `attribute` | string | არასავალდებულო (სავალდებულოა, თუ `show_attribute` დაყენებულია `true`-ზე) | თქვენი `entity`-ის ატრიბუტი | ატრიბუტი, რომელიც გამოსაჩენია (მაგ. `brightness`) |
 | `scrolling_effect` | boolean | არასავალდებულო | `true` (ნაგულისხმევი) ან `false` | ტექსტის სქროლის დაშვება, როცა შემცველობა აღემატება მათი კონტეინერის ზომას |
 | `tap_action` | object | არასავალდებულო | იხილეთ [მოქმედებები](#შეხების-ორმაგი-შეხებისა-და-ხანგრძლივი-დაჭერის-მოქმედებები) | განსაზღვრავს ხატულაზე დაჭერის მოქმედების ტიპს, თუ არ არის განსაზღვრული, გამოყენებული იქნება `more-info`. |
 | `double_tap_action` | object | არასავალდებულო | იხილეთ [მოქმედებები](#შეხების-ორმაგი-შეხებისა-და-ხანგრძლივი-დაჭერის-მოქმედებები) | განსაზღვრავს ხატულაზე ორმაგი დაჭერის მოქმედების ტიპს, თუ არ არის განსაზღვრული, გამოყენებული იქნება `none`. |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | არასავალდებულო                            | ნებისმიერი სტრიქონი                                       | მორგებული სახელი ბარათისთვის. თუ არ არის განსაზღვრული, გამოჩნდება ერთეულის სახელი.                                    |
 | `icon`                  | string  | არასავალდებულო                            | ნებისმიერი `mdi:` ხატულა                                  | მორგებული ხატულა ბარათისთვის. თუ არ არის განსაზღვრული, გამოყენებული იქნება ერთეულის ხატულა ან `entity-picture`.                   |
 | `force_icon`            | boolean | არასავალდებულო                            | `true` ან `false` (ნაგულისხმევი)                     | ანიჭებს პრიორიტეტს ხატულას `entity-picture`-ის წინაშე.                                                           |
-| `show_state`            | boolean | არასავალდებულო                            | `true` ან `false` (ნაგულისხმევი)                     | აჩვენებს ან მალავს `entity`-ის მიმდინარე მდგომარეობას.                                                                 |
+| `state_content`         | string ან list | არასავალდებულო | `state`, ატრიბუტის სახელი, შაბლონი | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, იხილეთ ღილაკის პარამეტრები. ძველი `show_state` გასაღები კვლავ მუშაობს. |
 | `show_name`             | boolean | არასავალდებულო                            | `true` (ნაგულისხმევი) ან `false`                     | აჩვენებს ან მალავს ერთეულის სახელს.                                                                            |
 | `show_icon`             | boolean | არასავალდებულო                            | `true` (ნაგულისხმევი) ან `false`                     | აჩვენებს ან მალავს ხატულას.                                                                                          |
 | `hide_target_temp_low`  | boolean | არასავალდებულო (მხოლოდ ერთეულებისთვის, რომლებსაც აქვთ `target_temp_low`-ის მხარდაჭერა) | `true` ან `false` (ნაგულისხმევი) | მალავს დაბალი სამიზნე ტემპერატურის კონტროლს, თუ `entity` მხარს უჭერს მას.                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | თქვენი ქვეღილაკის ფონის ჩვენება, ის შეიცვლის ფერს ერთეულის მდგომარეობის მიხედვით |
 | `state_background` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | მდგომარეობის ფერის გამოყენება, როცა ერთეული `on` არის |
 | `light_background` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | განათების ფერის გამოყენება ფონისთვის, როცა ხელმისაწვდომია |
-| `show_state` | boolean | სურვილისამებრ | `true` ან `false` (ნაგულისხმევი) | თქვენი `entity`-ის მდგომარეობის ჩვენება ან დამალვა |
+| `state_content` | string ან list | სურვილისამებრ | `state`, `last-changed`, `last-updated`, `last-triggered`, ატრიბუტის სახელი, მაგალითად `brightness` ან `forecast[0].temperature`, ან [შაბლონი](#templates) | რას აჩვენებს სახელის ქვემოთ მდებარე ხაზი, ამ თანმიმდევრობით. ამ პარამეტრის გარეშე `button_type: state` ღილაკი აჩვენებს იმას, რასაც Home Assistant აჩვენებს ერთეულისთვის (მის მდგომარეობას, ასევე კლიმატის მიმდინარე ტემპერატურას, ჟალუზის პოზიციას, განათების სიკაშკაშეს). ძველი `show_state`, `show_attribute`, `attribute`, `show_last_changed` და `show_last_updated` გასაღებები კვლავ მუშაობს და რედაქტორის გახსნისას `state_content`-ად გადაიწერება. |
 | `show_name` | boolean | სურვილისამებრ | `true` ან `false` (ნაგულისხმევი) | სახელის ჩვენება ან დამალვა |
 | `show_icon` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | ხატულის ჩვენება ან დამალვა |
-| `show_last_changed` | boolean | სურვილისამებრ | `true` ან `false` (ნაგულისხმევი) | თქვენი `entity`-ის ბოლო ცვლილების დროის ჩვენება |
-| `show_last_updated` | boolean | სურვილისამებრ | `true` ან `false` (ნაგულისხმევი) | თქვენი `entity`-ის ბოლო განახლების დროის ჩვენება |
-| `show_attribute` | boolean | სურვილისამებრ | `true` ან `false` (ნაგულისხმევი) | თქვენი `entity`-ის ატრიბუტის ჩვენება მისი `name`-ის ქვემოთ |
-| `attribute` | string | სურვილისამებრ (სავალდებულოა, თუ `show_attribute` დაყენებულია `true`-ზე) | ატრიბუტი თქვენი `entity`-იდან | ჩასაშენებელი ატრიბუტი (მაგ. `brightness`) |
 | `select_attribute` | string | სურვილისამებრ | ატრიბუტების სია თქვენი `entity`-იდან (იხილეთ ზემოთ მხარდაჭერილი პარამეტრები) | ეს ატრიბუტების სია გახსნის ჩამოსაშლელ მენიუს დაწკაპუნებისას (მაგ. `effect_list`) |
 | `show_arrow` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | ჩამოსაშლელი ისრის ჩვენება ან დამალვა select ტიპის ქვეღილაკებისთვის |
 | `scrolling_effect` | boolean | სურვილისამებრ | `true` (ნაგულისხმევი) ან `false` | ტექსტის გადაადგილების დაშვება, როცა შემცველობა აღემატება კონტეინერის ზომას |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {

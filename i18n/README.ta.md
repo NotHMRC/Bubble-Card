@@ -412,13 +412,9 @@ auto_order: true
 | `icon` | string | Optional | Any `mdi:` icon | உங்கள் பட்டனுக்கான ஐகான், வரையறுக்கப்படவில்லை என்றால் entity ஐகான் அல்லது `entity-picture` காட்டப்படும் |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை கொடுக்கவும் |
 | `use_accent_color` | boolean | Optional (`false` default) | **விளக்குகளுக்கு மட்டும்.** ஒளியின் நிறத்திற்குப் பதிலாக theme-இன் accent நிறத்தைப் பயன்படுத்தவும்.                         |
-| `show_state` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் நிலையைக் காட்டவும் அல்லது மறைக்கவும் |
+| `state_content` | string அல்லது list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` அல்லது `forecast[0].temperature` போன்ற ஒரு attribute பெயர், அல்லது ஒரு [டெம்ப்ளேட்](#templates) | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, இந்த வரிசையில். இது இல்லாமல், ஒரு `button_type: state` பட்டன் அந்த entity-க்கு Home Assistant காட்டுவதையே காட்டும் (அதன் நிலை, அத்துடன் ஒரு காலநிலை entity-யின் தற்போதைய வெப்பநிலை, ஒரு மறைப்பின் position, ஒரு விளக்கின் பிரகாசம்). பழைய `show_state`, `show_attribute`, `attribute`, `show_last_changed` மற்றும் `show_last_updated` key-கள் இன்னும் வேலை செய்யும், மேலும் நீங்கள் எடிட்டரைத் திறக்கும்போது அவை `state_content` ஆக மாற்றி எழுதப்படும். |
 | `show_name` | boolean | Optional | `true` (default) or `false` | பெயரைக் காட்டவும் அல்லது மறைக்கவும் |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | ஐகானைக் காட்டவும் அல்லது மறைக்கவும் |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி மாற்ற நேரத்தைக் காட்டவும் |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி புதுப்பிப்பு நேரத்தைக் காட்டவும் |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் ஒரு attribute-ஐ அதன் `name`-க்குக் கீழே காட்டவும் |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | காட்ட வேண்டிய attribute (எ.கா. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | உள்ளடக்கம் அதன் கொள்கலனின் அளவை மீறும்போது உரை ஸ்க்ரோல் ஆக அனுமதிக்கவும் |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see below | பட்டன் கிளிக்கில் இயல்புநிலை செயல்களை மாற்ற அனுமதிக்கிறது. |
 | `tap_action` | object | Optional | See [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | ஐகான் கிளிக்கில் செயலின் வகையை வரையறுக்கவும், வரையறுக்கப்படாவிட்டால், `more-info` பயன்படுத்தப்படும் |
@@ -508,11 +504,7 @@ button_type: switch
 show_icon: true
 force_icon: true
 show_name: true
-show_last_changed: true
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: brightness
+state_content: [state, brightness, last-changed, last-updated]
 scrolling_effect: true
 card_layout: large
 button_action:
@@ -523,9 +515,7 @@ tap_action:
 sub_button:
   - entity: light.your_light
     icon: ''
-    show_state: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
     show_icon: false
     show_background: false
     show_name: false
@@ -557,13 +547,9 @@ sub_button:
 | `name` | string | Optional | Any string | உங்கள் media player-க்கான பெயர், வரையறுக்கப்படவில்லை என்றால் entity பெயர் காட்டப்படும் |
 | `icon` | string | Optional | Any `mdi:` icon | உங்கள் media player-க்கான ஐகான், வரையறுக்கப்படவில்லை என்றால் entity ஐகான் அல்லது `entity-picture` காட்டப்படும் |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை கொடுக்கவும் |
-| `show_state` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் நிலையைக் காட்டவும் அல்லது மறைக்கவும் |
+| `state_content` | string அல்லது list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` அல்லது `forecast[0].temperature` போன்ற ஒரு attribute பெயர், அல்லது ஒரு [டெம்ப்ளேட்](#templates) | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, இந்த வரிசையில். இது இல்லாமல், ஒரு `button_type: state` பட்டன் அந்த entity-க்கு Home Assistant காட்டுவதையே காட்டும் (அதன் நிலை, அத்துடன் ஒரு காலநிலை entity-யின் தற்போதைய வெப்பநிலை, ஒரு மறைப்பின் position, ஒரு விளக்கின் பிரகாசம்). பழைய `show_state`, `show_attribute`, `attribute`, `show_last_changed` மற்றும் `show_last_updated` key-கள் இன்னும் வேலை செய்யும், மேலும் நீங்கள் எடிட்டரைத் திறக்கும்போது அவை `state_content` ஆக மாற்றி எழுதப்படும். |
 | `show_name` | boolean | Optional | `true` (default) or `false` | பெயரைக் காட்டவும் அல்லது மறைக்கவும் |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | ஐகானைக் காட்டவும் அல்லது மறைக்கவும் |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி மாற்ற நேரத்தைக் காட்டவும் |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி புதுப்பிப்பு நேரத்தைக் காட்டவும் |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் ஒரு attribute-ஐ அதன் `name`-க்குக் கீழே காட்டவும் |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | காட்ட வேண்டிய attribute (எ.கா. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | உள்ளடக்கம் அதன் கொள்கலனின் அளவை மீறும்போது உரை ஸ்க்ரோல் ஆக அனுமதிக்கவும் |
 | `min_volume` | number | Optional | Any number | ஒலியளவு slider-இன் குறைந்தபட்ச மதிப்பு. |
 | `max_volume` | number | Optional | Any number | ஒலியளவு slider-இன் அதிகபட்ச மதிப்பு. |
@@ -622,16 +608,12 @@ type: custom:bubble-card
 card_type: media-player
 name: Media player
 entity: media_player.your_media_player
-show_state: true
-show_last_updated: true
-show_attribute: true
-attribute: assumed_state
+state_content: [state, assumed_state, last-changed, last-updated]
 card_layout: large
 scrolling_effect: false
 show_icon: false
 force_icon: true
 show_name: false
-show_last_changed: true
 columns: 2
 rows: 1
 min_volume: 10
@@ -652,11 +634,8 @@ sub_button:
     tap_action:
       action: more-info
     show_name: false
-    show_state: false
-    show_last_updated: false
-    show_attribute: true
+    state_content: volume_level
     show_background: false
-    attribute: volume_level
 ```
 
 </details>
@@ -684,13 +663,9 @@ sub_button:
 | `entity` | string | **Required** | Any cover | கட்டுப்படுத்த வேண்டிய cover |
 | `name` | string | Optional | Any string | உங்கள் cover-க்கான பெயர், வரையறுக்கப்படவில்லை என்றால் entity பெயர் காட்டப்படும் |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை கொடுக்கவும் |
-| `show_state` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் நிலையைக் காட்டவும் அல்லது மறைக்கவும் |
+| `state_content` | string அல்லது list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` அல்லது `forecast[0].temperature` போன்ற ஒரு attribute பெயர், அல்லது ஒரு [டெம்ப்ளேட்](#templates) | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, இந்த வரிசையில். இது இல்லாமல், ஒரு `button_type: state` பட்டன் அந்த entity-க்கு Home Assistant காட்டுவதையே காட்டும் (அதன் நிலை, அத்துடன் ஒரு காலநிலை entity-யின் தற்போதைய வெப்பநிலை, ஒரு மறைப்பின் position, ஒரு விளக்கின் பிரகாசம்). பழைய `show_state`, `show_attribute`, `attribute`, `show_last_changed` மற்றும் `show_last_updated` key-கள் இன்னும் வேலை செய்யும், மேலும் நீங்கள் எடிட்டரைத் திறக்கும்போது அவை `state_content` ஆக மாற்றி எழுதப்படும். |
 | `show_name` | boolean | Optional | `true` (default) or `false` | பெயரைக் காட்டவும் அல்லது மறைக்கவும் |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | ஐகானைக் காட்டவும் அல்லது மறைக்கவும் |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி மாற்ற நேரத்தைக் காட்டவும் |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி புதுப்பிப்பு நேரத்தைக் காட்டவும் |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் ஒரு attribute-ஐ அதன் `name`-க்குக் கீழே காட்டவும் |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | காட்ட வேண்டிய attribute (எ.கா. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | உள்ளடக்கம் அதன் கொள்கலனின் அளவை மீறும்போது உரை ஸ்க்ரோல் ஆக அனுமதிக்கவும் |
 | `icon_open` | string | Optional | Any `mdi:` icon | உங்கள் திறந்த cover-க்கான ஐகான், வரையறுக்கப்படவில்லை என்றால் இயல்புநிலை திறந்த cover ஐகான் காட்டப்படும் |
 | `icon_close` | string | Optional | Any `mdi:` icon | உங்கள் மூடிய cover-க்கான ஐகான், வரையறுக்கப்படவில்லை என்றால் இயல்புநிலை மூடிய cover ஐகான் காட்டப்படும் |
@@ -778,13 +753,9 @@ icon_close: mdi:roller-shade-closed
 | `name` | string | Optional | Any string | உங்கள் select-க்கான பெயர், வரையறுக்கப்படவில்லை என்றால் entity பெயர் காட்டப்படும் |
 | `icon` | string | Optional | Any `mdi:` icon | உங்கள் select-க்கான ஐகான், வரையறுக்கப்படவில்லை என்றால் entity ஐகான் அல்லது `entity-picture` காட்டப்படும் |
 | `force_icon` | boolean | Optional | `true` or `false` (default) | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை கொடுக்கவும் |
-| `show_state` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் நிலையைக் காட்டவும் அல்லது மறைக்கவும் |
+| `state_content` | string அல்லது list | Optional | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` அல்லது `forecast[0].temperature` போன்ற ஒரு attribute பெயர், அல்லது ஒரு [டெம்ப்ளேட்](#templates) | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, இந்த வரிசையில். இது இல்லாமல், ஒரு `button_type: state` பட்டன் அந்த entity-க்கு Home Assistant காட்டுவதையே காட்டும் (அதன் நிலை, அத்துடன் ஒரு காலநிலை entity-யின் தற்போதைய வெப்பநிலை, ஒரு மறைப்பின் position, ஒரு விளக்கின் பிரகாசம்). பழைய `show_state`, `show_attribute`, `attribute`, `show_last_changed` மற்றும் `show_last_updated` key-கள் இன்னும் வேலை செய்யும், மேலும் நீங்கள் எடிட்டரைத் திறக்கும்போது அவை `state_content` ஆக மாற்றி எழுதப்படும். |
 | `show_name` | boolean | Optional | `true` (default) or `false` | பெயரைக் காட்டவும் அல்லது மறைக்கவும் |
 | `show_icon` | boolean | Optional | `true` (default) or `false` | ஐகானைக் காட்டவும் அல்லது மறைக்கவும் |
-| `show_last_changed` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி மாற்ற நேரத்தைக் காட்டவும் |
-| `show_last_updated` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் கடைசி புதுப்பிப்பு நேரத்தைக் காட்டவும் |
-| `show_attribute` | boolean | Optional | `true` or `false` (default) | உங்கள் `entity`-யின் ஒரு attribute-ஐ அதன் `name`-க்குக் கீழே காட்டவும் |
-| `attribute` | string | Optional (required if `show_attribute` is set to `true`) | An attribute from your `entity` | காட்ட வேண்டிய attribute (எ.கா. `brightness`) |
 | `scrolling_effect` | boolean | Optional | `true` (default) or `false` | உள்ளடக்கம் அதன் கொள்கலனின் அளவை மீறும்போது உரை ஸ்க்ரோல் ஆக அனுமதிக்கவும் |
 | `tap_action` | object | Optional | See [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | ஐகான் கிளிக்கில் செயலின் வகையை வரையறுக்கவும், வரையறுக்கப்படாவிட்டால், `more-info` பயன்படுத்தப்படும். |
 | `double_tap_action` | object | Optional | See [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | ஐகான் இரட்டைக் கிளிக்கில் செயலின் வகையை வரையறுக்கவும், வரையறுக்கப்படாவிட்டால், `none` பயன்படுத்தப்படும். |
@@ -831,7 +802,7 @@ card_type: select
 name: Scene
 entity: input_select.scenes
 icon: mdi:brightness-4
-show_state: true
+state_content: state
 ```
 
 </details>
@@ -863,7 +834,7 @@ show_state: true
 | `name`                  | string  | Optional                            | Any string                                       | கார்டுக்கான தனிப்பயன் பெயர். வரையறுக்கப்படவில்லை என்றால், entity பெயர் காட்டப்படும்.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | கார்டுக்கான தனிப்பயன் ஐகான். வரையறுக்கப்படவில்லை என்றால், entity ஐகான் அல்லது `entity-picture` பயன்படுத்தப்படும்.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை அளிக்கிறது.                                                           |
-| `show_state`            | boolean | Optional                            | `true` or `false` (default)                     | `entity`-யின் தற்போதைய நிலையைக் காட்டவும் அல்லது மறைக்கவும்.                                                                 |
+| `state_content`         | string அல்லது list | Optional | `state`, ஒரு attribute பெயர், ஒரு டெம்ப்ளேட் | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, பட்டன் விருப்பங்களைப் பாருங்கள். பழைய `show_state` key இன்னும் வேலை செய்யும். |
 | `show_name`             | boolean | Optional                            | `true` (default) or `false`                     | entity-யின் பெயரைக் காட்டவும் அல்லது மறைக்கவும்.                                                                            |
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | ஐகானைக் காட்டவும் அல்லது மறைக்கவும்.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | `entity` ஆதரித்தால், குறைந்த இலக்கு வெப்பநிலை கட்டுப்பாட்டை மறைக்கிறது.                                                          |
@@ -1187,14 +1158,14 @@ sub_button:
             action: toggle
         - entity: sensor.salle_de_bain_temperature
           fill_width: false
-          show_state: true
+          state_content: state
           state_background: false
         - entity: input_select.test
           fill_width: false
           sub_button_type: select
           name: Scene
           icon: mdi:weather-sunny
-          show_state: true
+          state_content: state
       justify_content: center
 rows: 0.941
 ```
@@ -1261,10 +1232,10 @@ sub_button:
   main:
     - group:
         - entity: sensor.temperature
-          show_state: true
+          state_content: state
           show_background: false
         - entity: sensor.humidity
-          show_state: true
+          state_content: state
           show_background: false
       buttons_layout: column
   bottom:
@@ -1303,13 +1274,9 @@ sub_button:
 | `show_background` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | உங்கள் துணை பட்டனுக்கு பின்னணியைக் காட்டவும், இது உங்கள் entity நிலையின் அடிப்படையில் அதன் நிறத்தை மாற்றும் |
 | `state_background` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | entity `on` ஆக இருக்கும்போது நிலை நிறத்தைப் பயன்படுத்தவும் |
 | `light_background` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | கிடைக்கும்போது பின்னணிக்கு light நிறத்தைப் பயன்படுத்தவும் |
-| `show_state` | boolean | விருப்பத்தேர்வு | `true` அல்லது `false` (இயல்புநிலை) | உங்கள் `entity` இன் நிலையைக் காட்டவும் அல்லது மறைக்கவும் |
+| `state_content` | string அல்லது list | விருப்பத்தேர்வு | `state`, `last-changed`, `last-updated`, `last-triggered`, `brightness` அல்லது `forecast[0].temperature` போன்ற ஒரு attribute பெயர், அல்லது ஒரு [டெம்ப்ளேட்](#templates) | பெயருக்குக் கீழே உள்ள வரி எதைக் காட்டுகிறது என்பது, இந்த வரிசையில். இது இல்லாமல், ஒரு `button_type: state` பட்டன் அந்த entity-க்கு Home Assistant காட்டுவதையே காட்டும் (அதன் நிலை, அத்துடன் ஒரு காலநிலை entity-யின் தற்போதைய வெப்பநிலை, ஒரு மறைப்பின் position, ஒரு விளக்கின் பிரகாசம்). பழைய `show_state`, `show_attribute`, `attribute`, `show_last_changed` மற்றும் `show_last_updated` key-கள் இன்னும் வேலை செய்யும், மேலும் நீங்கள் எடிட்டரைத் திறக்கும்போது அவை `state_content` ஆக மாற்றி எழுதப்படும். |
 | `show_name` | boolean | விருப்பத்தேர்வு | `true` அல்லது `false` (இயல்புநிலை) | பெயரைக் காட்டவும் அல்லது மறைக்கவும் |
 | `show_icon` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | ஐகானைக் காட்டவும் அல்லது மறைக்கவும் |
-| `show_last_changed` | boolean | விருப்பத்தேர்வு | `true` அல்லது `false` (இயல்புநிலை) | உங்கள் `entity` இன் கடைசியாக மாற்றப்பட்ட நேரத்தைக் காட்டவும் |
-| `show_last_updated` | boolean | விருப்பத்தேர்வு | `true` அல்லது `false` (இயல்புநிலை) | உங்கள் `entity` இன் கடைசியாக புதுப்பிக்கப்பட்ட நேரத்தைக் காட்டவும் |
-| `show_attribute` | boolean | விருப்பத்தேர்வு | `true` அல்லது `false` (இயல்புநிலை) | உங்கள் `entity` இன் ஒரு attribute ஐ அதன் `name` க்குக் கீழே காட்டவும் |
-| `attribute` | string | விருப்பத்தேர்வு (`show_attribute` `true` எனில் தேவை) | உங்கள் `entity` இலிருந்து ஒரு attribute | காட்ட வேண்டிய attribute (எ.கா. `brightness`) |
 | `select_attribute` | string | விருப்பத்தேர்வு | உங்கள் `entity` இலிருந்து ஒரு attribute பட்டியல் (மேலே உள்ள ஆதரிக்கப்படும் விருப்பங்களைப் பார்க்கவும்) | இந்த attribute பட்டியல், கிளிக் செய்யப்பட்டால் ஒரு டிராப்டவுனைத் திறக்கும் (எ.கா. `effect_list`) |
 | `show_arrow` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | select துணை பட்டன்களுக்கான டிராப்டவுன் அம்புக்குறியைக் காட்டவும் அல்லது மறைக்கவும் |
 | `scrolling_effect` | boolean | விருப்பத்தேர்வு | `true` (இயல்புநிலை) அல்லது `false` | உள்ளடக்கம் கொள்கலனின் அளவை மீறும்போது உரையை உருள அனுமதிக்கவும் |
@@ -1371,8 +1338,7 @@ button_type: switch
 name: Vacuum
 entity: vacuum.downstairs
 icon: mdi:robot-vacuum
-show_state: true
-show_last_changed: true
+state_content: [state, last-changed]
 tap_action:
   action: more-info
 button_action:
@@ -1384,8 +1350,7 @@ sub_button:
     show_name: false
     show_icon: true
     show_background: false
-    show_attribute: true
-    attribute: battery_level
+    state_content: battery_level
   - name: Return to dock
     icon: mdi:home
     show_background: false
@@ -1433,14 +1398,13 @@ button_type: slider
 name: Kitchen
 entity: light.kitchen
 icon: mdi:fridge-outline
-show_last_updated: true
+state_content: last-updated
 sub_button:
   - name: Brightness
     icon: mdi:fridge-outline
     show_icon: false
     show_background: false
-    show_attribute: true
-    attribute: brightness
+    state_content: brightness
   - name: Toggle button
     icon: mdi:lightbulb
     tap_action:
@@ -1465,29 +1429,29 @@ card_type: button
 button_type: state
 entity: weather.openweathermap
 name: Weather
-show_state: true
+state_content: state
 card_layout: large-2-rows
 sub_button:
   - name: Home temperature
     icon: mdi:home-thermometer-outline
     entity: sensor.home_temperature
-    show_state: true
+    state_content: state
     show_icon: true
     show_background: false
   - name: Outside temperature
     entity: sensor.outside_temperature
-    show_state: true
+    state_content: state
     show_background: false
   - name: Today
     entity: sensor.home_realfeel_temperature_max_0d
     show_name: true
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - name: Tomorrow
     entity: sensor.home_realfeel_temperature_max_1d
     show_name: true
-    show_state: true
+    state_content: state
     show_background: false
 styles: >-
   /* Change the third and fourth sub-button icon based on the forecast.condition attribute, more details in the styles template section */
@@ -1540,7 +1504,7 @@ card_layout: large-2-rows
 name: Energy
 entity: sensor.current_power_production
 icon: mdi:home-lightning-bolt-outline
-show_state: true
+state_content: state
 button_action:
   tap_action:
     action: navigate
@@ -1549,17 +1513,17 @@ sub_button:
   - entity: sensor.electricity_counter
     icon: mdi:counter
     show_background: false
-    show_state: true
+    state_content: state
     tap_action:
       action: more-info
   - entity: sensor.today_s_energy_production
-    show_state: true
+    state_content: state
     show_background: false
   - entity: sensor.average_daily_consumption
     show_background: false
-    show_state: true
+    state_content: state
   - entity: sensor.this_week_production
-    show_state: true
+    state_content: state
     show_background: false
     icon: mdi:calendar-week
 ```
@@ -2357,7 +2321,7 @@ sub_button:
   - entity: sensor.outside_temperature
     icon: mdi:thermometer
     name: Temperature
-    show_state: true
+    state_content: state
     show_background: false
 styles: >
   .bubble-line {
