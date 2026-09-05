@@ -18,7 +18,7 @@ Bubble Card ass eng minimalistesch a personaliséierbar Kaarten-Kollektioun fir 
 
 ## Inhaltsverzeechnes
 
-**[`Installatioun`](#installatioun)**  **[`Konfiguratioun`](#konfiguratioun)**  **[`Entitéite-Virschléi`](#entitéite-virschléi)**  **[`Pop-up`](#pop-up)**  **[`Horizontale Knäppchen-Stapel`](#horizontale-knäppchen-stapel)**  **[`Knäppchen`](#knäppchen)**  **[`Mediaspiller`](#mediaspiller)**  **[`Stouer`](#stouer)**  **[`Auswiel`](#auswiel)**  **[`Klima`](#klima)**  **[`Kalenner`](#kalenner)**  **[`Trennlinn`](#trennlinn)**  **[`Eidel Kolonn`](#eidel-kolonn)**  **[`Nëmme Sub-Knäppercher`](#nëmme-sub-knäppercher)**  **[`Sub-Knäppercher`](#sub-knäppercher)**  **[`Kaarten-Layouten`](#kaarten-layouten)**  **[`Konditiounen`](#konditiounen)**  **[`Aktiounen`](#tipp--duebeltipp--an-halen-aktiounen)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Moduler`](#moduler)**  **[`Lokaliséierung`](#lokaliséierung)**  **[`Hëllef`](#hëllef)**  **[`Bäidroen`](#bäidroen)**  **[`Spenden`](#spenden)**
+**[`Installatioun`](#installatioun)**  **[`Konfiguratioun`](#konfiguratioun)**  **[`Pop-up`](#pop-up)**  **[`Horizontale Knäppchen-Stapel`](#horizontale-knäppchen-stapel)**  **[`Knäppchen`](#knäppchen)**  **[`Mediaspiller`](#mediaspiller)**  **[`Stouer`](#stouer)**  **[`Auswiel`](#auswiel)**  **[`Klima`](#klima)**  **[`Kalenner`](#kalenner)**  **[`Trennlinn`](#trennlinn)**  **[`Eidel Kolonn`](#eidel-kolonn)**  **[`Nëmme Sub-Knäppercher`](#nëmme-sub-knäppercher)**  **[`Sub-Knäppercher`](#sub-knäppercher)**  **[`Entitéite-Virschléi`](#entitéite-virschléi)**  **[`Kaarten-Layouten`](#kaarten-layouten)**  **[`Konditiounen`](#konditiounen)**  **[`Aktiounen`](#tipp--duebeltipp--an-halen-aktiounen)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Moduler`](#moduler)**  **[`Lokaliséierung`](#lokaliséierung)**  **[`Hëllef`](#hëllef)**  **[`Bäidroen`](#bäidroen)**  **[`Spenden`](#spenden)**
 
 <br>
 
@@ -123,21 +123,6 @@ All Optiounen kënnen an den Home Assistant Editor konfiguréiert ginn. Awer hei
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Kuck dëst [Video](https://www.youtube.com/watch?v=0hSQOlBxKKI) fir méi iwwer Bubble Card an hir Méiglechkeeten z'erfueren.** Mäi YouTube-Kanal ass nach relativ nei a konzentréiert sech op Tutorialen iwwer Home Assistant a Bubble Card. Zéck net dech ze abonnéieren, fir der Visibilitéit vu mengem Kanal ze hëllefen. Merci am Viraus!
-
-<br>
-
----
-
-<br>
-
-## Entitéite-Virschléi
-
-Zënter Home Assistant 2026.6 gëtt eng Entitéit, déi am Kaartewieler ausgewielt gëtt, e puer fäerdeg Kaarte proposéiert, a Bubble Card setzt seng eege Rezepter op dës Lëscht derbäi. Wielt eng Luucht aus an Dir kritt eng Kaart mat engem Hellegkeetsslider, plus eng Variant fir Faarftemperatur, Faarf a Sättegung, wann Är Luucht se ënnerstëtzt. Wielt eng Stouer aus an Dir kritt hire Positiounsslider, wielt e Mediaspiller aus an Dir kritt och eng Variant mat senger Quellelëscht, wielt e Robotstaubsauger aus an Dir kritt seng Knäppercher fir Start, Paus an Dock. All Virschlag ass eng ganz normal Bubble Card Konfiguratioun, als Live-Virschau gewisen, sou datt Dir déi hëllt déi am nooste läit a se wéi gewinnt weider ännert.
-
-Wat proposéiert gëtt hänkt dovun of, wat Är Entitéit tatsächlech ka maachen: eng Luucht ouni Hellegkeetskanal kritt e Schalter amplaz vun engem Slider, eng Stouer déi net kippe kann kritt keng Kipp-Variant, eng Klima-Entitéit kritt hir Presetmoden nëmme wa se der huet. D'klassesch Entréë kommen ënner de Bubble Card Virschléi, wa se applizéiere: déi speziell Kaart fir dësen Entitéitstyp, e simpelt Knäppchen an e Slider.
-
-> [!TIP]
-> Moduler kënnen hir eege Virschléi op dës Lëscht setzen, kuckt [Moduler](#moduler).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitéite-Virschléi
+
+Zënter Home Assistant 2026.6 gëtt eng Entitéit, déi am Kaartewieler ausgewielt gëtt, e puer fäerdeg Kaarte proposéiert, a Bubble Card setzt seng eege Rezepter op dës Lëscht derbäi. Wielt eng Luucht aus an Dir kritt eng Kaart mat engem Hellegkeetsslider, plus eng Variant fir Faarftemperatur, Faarf a Sättegung, wann Är Luucht se ënnerstëtzt. Wielt eng Stouer aus an Dir kritt hire Positiounsslider, wielt e Mediaspiller aus an Dir kritt och eng Variant mat senger Quellelëscht, wielt e Robotstaubsauger aus an Dir kritt seng Knäppercher fir Start, Paus an Dock. All Virschlag ass eng ganz normal Bubble Card Konfiguratioun, als Live-Virschau gewisen, sou datt Dir déi hëllt déi am nooste läit a se wéi gewinnt weider ännert.
+
+Wat proposéiert gëtt hänkt dovun of, wat Är Entitéit tatsächlech ka maachen: eng Luucht ouni Hellegkeetskanal kritt e Schalter amplaz vun engem Slider, eng Stouer déi net kippe kann kritt keng Kipp-Variant, eng Klima-Entitéit kritt hir Presetmoden nëmme wa se der huet. D'klassesch Entréë kommen ënner de Bubble Card Virschléi, wa se applizéiere: déi speziell Kaart fir dësen Entitéitstyp, e simpelt Knäppchen an e Slider.
+
+> [!TIP]
+> Moduler kënnen hir eege Virschléi op dës Lëscht setzen, kuckt [Moduler](#moduler).
 
 <br>
 

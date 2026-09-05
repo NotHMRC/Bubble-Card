@@ -18,7 +18,7 @@ Bubble Card adalah koleksi kartu yang minimalis dan dapat disesuaikan untuk Home
 
 ## Daftar isi
 
-**[`Instalasi`](#instalasi)**  **[`Konfigurasi`](#konfigurasi)**  **[`Saran entitas`](#saran-entitas)**  **[`Pop-up`](#pop-up)**  **[`Tumpukan tombol horizontal`](#tumpukan-tombol-horizontal)**  **[`Tombol`](#tombol)**  **[`Pemutar media`](#pemutar-media)**  **[`Penutup`](#penutup)**  **[`Pilih`](#pilih)**  **[`Iklim`](#iklim)**  **[`Kalender`](#kalender)**  **[`Pemisah`](#pemisah)**  **[`Kolom kosong`](#kolom-kosong)**  **[`Hanya subtombol`](#hanya-subtombol)**  **[`Subtombol`](#subtombol)**  **[`Tata letak kartu`](#tata-letak-kartu)**  **[`Kondisi`](#kondisi)**  **[`Aksi`](#aksi-ketuk-ketuk-dua-kali-dan-tahan)**  **[`Gaya`](#gaya)**  **[`Templat`](#templat)**  **[`Modul`](#modul)**  **[`Lokalisasi`](#lokalisasi)**  **[`Bantuan`](#bantuan)**  **[`Kontribusi`](#kontribusi)**  **[`Donasi`](#donasi)**
+**[`Instalasi`](#instalasi)**  **[`Konfigurasi`](#konfigurasi)**  **[`Pop-up`](#pop-up)**  **[`Tumpukan tombol horizontal`](#tumpukan-tombol-horizontal)**  **[`Tombol`](#tombol)**  **[`Pemutar media`](#pemutar-media)**  **[`Penutup`](#penutup)**  **[`Pilih`](#pilih)**  **[`Iklim`](#iklim)**  **[`Kalender`](#kalender)**  **[`Pemisah`](#pemisah)**  **[`Kolom kosong`](#kolom-kosong)**  **[`Hanya subtombol`](#hanya-subtombol)**  **[`Subtombol`](#subtombol)**  **[`Saran entitas`](#saran-entitas)**  **[`Tata letak kartu`](#tata-letak-kartu)**  **[`Kondisi`](#kondisi)**  **[`Aksi`](#aksi-ketuk-ketuk-dua-kali-dan-tahan)**  **[`Gaya`](#gaya)**  **[`Templat`](#templat)**  **[`Modul`](#modul)**  **[`Lokalisasi`](#lokalisasi)**  **[`Bantuan`](#bantuan)**  **[`Kontribusi`](#kontribusi)**  **[`Donasi`](#donasi)**
 
 <br>
 
@@ -123,21 +123,6 @@ Semua opsi dapat dikonfigurasi di editor Home Assistant. Namun Anda bisa menemuk
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Tonton [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) ini untuk mempelajari Bubble Card dan kemampuannya.** Kanal YouTube saya masih cukup baru dan berfokus pada tutorial tentang Home Assistant dan Bubble Card. Jangan ragu untuk berlangganan guna membantu meningkatkan visibilitas kanal saya. Terima kasih sebelumnya!
-
-<br>
-
----
-
-<br>
-
-## Saran entitas
-
-Sejak Home Assistant 2026.6, memilih entitas di pemilih kartu menawarkan beberapa kartu siap pakai kepada Anda, dan Bubble Card menambahkan resepnya sendiri ke daftar itu. Pilih lampu dan Anda ditawari kartu dengan slider kecerahan, ditambah varian suhu warna, varian warna, dan varian saturasi bila lampu Anda mendukungnya. Pilih penutup dan Anda mendapatkan slider posisinya, pilih pemutar media dan Anda juga mendapatkan varian dengan daftar sumbernya, pilih penyedot debu dan Anda mendapatkan tombol mulai, jeda, dan kembali ke dok. Setiap saran adalah konfigurasi Bubble Card biasa yang ditampilkan sebagai pratinjau langsung, jadi Anda bisa mengambil yang paling mendekati dan terus menyuntingnya seperti biasa.
-
-Apa yang ditawarkan bergantung pada apa yang benar-benar bisa dilakukan entitas Anda: lampu tanpa kanal kecerahan mendapat sakelar alih-alih slider, penutup yang tidak bisa dimiringkan tidak mendapat varian kemiringan, dan entitas iklim mendapat mode praseteknya hanya bila memang ada. Entri klasik menyusul di bawah saran Bubble Card bila memang berlaku: kartu khusus untuk jenis entitas tersebut, tombol biasa, dan slider.
-
-> [!TIP]
-> Modul dapat menambahkan saran mereka sendiri ke daftar itu, lihat [modul](#modul).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Saran entitas
+
+Sejak Home Assistant 2026.6, memilih entitas di pemilih kartu menawarkan beberapa kartu siap pakai kepada Anda, dan Bubble Card menambahkan resepnya sendiri ke daftar itu. Pilih lampu dan Anda ditawari kartu dengan slider kecerahan, ditambah varian suhu warna, varian warna, dan varian saturasi bila lampu Anda mendukungnya. Pilih penutup dan Anda mendapatkan slider posisinya, pilih pemutar media dan Anda juga mendapatkan varian dengan daftar sumbernya, pilih penyedot debu dan Anda mendapatkan tombol mulai, jeda, dan kembali ke dok. Setiap saran adalah konfigurasi Bubble Card biasa yang ditampilkan sebagai pratinjau langsung, jadi Anda bisa mengambil yang paling mendekati dan terus menyuntingnya seperti biasa.
+
+Apa yang ditawarkan bergantung pada apa yang benar-benar bisa dilakukan entitas Anda: lampu tanpa kanal kecerahan mendapat sakelar alih-alih slider, penutup yang tidak bisa dimiringkan tidak mendapat varian kemiringan, dan entitas iklim mendapat mode praseteknya hanya bila memang ada. Entri klasik menyusul di bawah saran Bubble Card bila memang berlaku: kartu khusus untuk jenis entitas tersebut, tombol biasa, dan slider.
+
+> [!TIP]
+> Modul dapat menambahkan saran mereka sendiri ke daftar itu, lihat [modul](#modul).
 
 <br>
 

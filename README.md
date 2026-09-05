@@ -13,7 +13,7 @@ Bubble Card is a minimalist and customizable card collection for Home Assistant,
 
 ## Table of contents
 
-**[`Installation`](#installation)**  **[`Configuration`](#configuration)**  **[`Entity suggestions`](#entity-suggestions)**  **[`Pop-up`](#pop-up)**  **[`Horizontal buttons stack`](#horizontal-buttons-stack)**  **[`Button`](#button)**  **[`Media player`](#media-player)**  **[`Cover`](#cover)**  **[`Select`](#select)**  **[`Climate`](#climate)**  **[`Calendar`](#calendar)**  **[`Separator`](#separator)**  **[`Empty column`](#empty-column)**  **[`Sub-buttons only`](#sub-buttons-only)**  **[`Sub-buttons`](#sub-buttons)**  **[`Card layouts`](#card-layouts)**  **[`Conditions`](#conditions)**  **[`Actions`](#tap-double-tap-and-hold-actions)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Modules`](#modules)**  **[`Localization`](#localization)**  **[`Help`](#help)**  **[`Contributing`](#contributing)**  **[`Donate`](#donate)**
+**[`Installation`](#installation)**  **[`Configuration`](#configuration)**  **[`Pop-up`](#pop-up)**  **[`Horizontal buttons stack`](#horizontal-buttons-stack)**  **[`Button`](#button)**  **[`Media player`](#media-player)**  **[`Cover`](#cover)**  **[`Select`](#select)**  **[`Climate`](#climate)**  **[`Calendar`](#calendar)**  **[`Separator`](#separator)**  **[`Empty column`](#empty-column)**  **[`Sub-buttons only`](#sub-buttons-only)**  **[`Sub-buttons`](#sub-buttons)**  **[`Entity suggestions`](#entity-suggestions)**  **[`Card layouts`](#card-layouts)**  **[`Conditions`](#conditions)**  **[`Actions`](#tap-double-tap-and-hold-actions)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Modules`](#modules)**  **[`Localization`](#localization)**  **[`Help`](#help)**  **[`Contributing`](#contributing)**  **[`Donate`](#donate)**
 
 <br>
 
@@ -118,21 +118,6 @@ All options can be configured in the Home Assistant editor. But you can find mor
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Check out this [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) to learn about Bubble Card and its capabilities.** My YouTube channel is quite new and focuses on tutorials about Home Assistant and Bubble Card. Don’t hesitate to subscribe to help increase my channel’s visibility. Thank you in advance!
-
-<br>
-
----
-
-<br>
-
-## Entity suggestions
-
-Since Home Assistant 2026.6, picking an entity in the card picker offers you a few ready made cards, and Bubble Card adds its own recipes to that list. Pick a light and you are offered a card with a brightness slider, plus a color temperature, a color and a saturation variant when your light supports them. Pick a cover and you get its position slider, pick a media player and you also get a variant with its source list, pick a vacuum and you get its start, pause and dock buttons. Each suggestion is a normal Bubble Card configuration shown as a live preview, so you can take the closest one and keep editing it as usual.
-
-What you are offered depends on what your entity can actually do, a light without a brightness channel gets a toggle instead of a slider, a cover that cannot tilt gets no tilt variant, a climate entity gets its preset modes only when it has some. The classic entries follow below the Bubble Card suggestions when they apply: the card dedicated to that entity type, a plain button and a slider.
-
-> [!TIP]
-> Modules can add their own suggestions to that list, see [modules](#modules).
 
 <br>
 
@@ -1461,6 +1446,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entity suggestions
+
+Since Home Assistant 2026.6, picking an entity in the card picker offers you a few ready made cards, and Bubble Card adds its own recipes to that list. Pick a light and you are offered a card with a brightness slider, plus a color temperature, a color and a saturation variant when your light supports them. Pick a cover and you get its position slider, pick a media player and you also get a variant with its source list, pick a vacuum and you get its start, pause and dock buttons. Each suggestion is a normal Bubble Card configuration shown as a live preview, so you can take the closest one and keep editing it as usual.
+
+What you are offered depends on what your entity can actually do, a light without a brightness channel gets a toggle instead of a slider, a cover that cannot tilt gets no tilt variant, a climate entity gets its preset modes only when it has some. The classic entries follow below the Bubble Card suggestions when they apply: the card dedicated to that entity type, a plain button and a slider.
+
+> [!TIP]
+> Modules can add their own suggestions to that list, see [modules](#modules).
 
 <br>
 

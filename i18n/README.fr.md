@@ -18,7 +18,7 @@ Bubble Card est une collection de cartes minimalistes et personnalisables pour H
 
 ## Table des matières
 
-**[`Installation`](#installation)**  **[`Configuration`](#configuration)**  **[`Suggestions d'entité`](#suggestions-dentité)**  **[`Pop-up`](#pop-up)**  **[`Pile de boutons horizontale`](#pile-de-boutons-horizontale)**  **[`Bouton`](#bouton)**  **[`Lecteur multimédia`](#lecteur-multimédia)**  **[`Ouvrant`](#ouvrant)**  **[`Sélecteur`](#sélecteur)**  **[`Thermostat`](#thermostat)**  **[`Calendrier`](#calendrier)**  **[`Séparateur`](#séparateur)**  **[`Colonne vide`](#colonne-vide)**  **[`Sous-boutons uniquement`](#sous-boutons-uniquement)**  **[`Sous-boutons`](#sous-boutons)**  **[`Dispositions de carte`](#dispositions-de-carte)**  **[`Conditions`](#conditions)**  **[`Actions`](#actions-dappui-double-appui-et-appui-long)**  **[`Mise en forme`](#mise-en-forme)**  **[`Modèles`](#modèles)**  **[`Modules`](#modules)**  **[`Localisation`](#localisation)**  **[`Aide`](#aide)**  **[`Contribuer`](#contribuer)**  **[`Faire un don`](#faire-un-don)**
+**[`Installation`](#installation)**  **[`Configuration`](#configuration)**  **[`Pop-up`](#pop-up)**  **[`Pile de boutons horizontale`](#pile-de-boutons-horizontale)**  **[`Bouton`](#bouton)**  **[`Lecteur multimédia`](#lecteur-multimédia)**  **[`Ouvrant`](#ouvrant)**  **[`Sélecteur`](#sélecteur)**  **[`Thermostat`](#thermostat)**  **[`Calendrier`](#calendrier)**  **[`Séparateur`](#séparateur)**  **[`Colonne vide`](#colonne-vide)**  **[`Sous-boutons uniquement`](#sous-boutons-uniquement)**  **[`Sous-boutons`](#sous-boutons)**  **[`Suggestions d'entité`](#suggestions-dentité)**  **[`Dispositions de carte`](#dispositions-de-carte)**  **[`Conditions`](#conditions)**  **[`Actions`](#actions-dappui-double-appui-et-appui-long)**  **[`Mise en forme`](#mise-en-forme)**  **[`Modèles`](#modèles)**  **[`Modules`](#modules)**  **[`Localisation`](#localisation)**  **[`Aide`](#aide)**  **[`Contribuer`](#contribuer)**  **[`Faire un don`](#faire-un-don)**
 
 <br>
 
@@ -123,21 +123,6 @@ Toutes les options peuvent être configurées dans l'éditeur de Home Assistant.
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Regardez cette [vidéo](https://www.youtube.com/watch?v=0hSQOlBxKKI) pour découvrir Bubble Card et tout ce qu'elle sait faire.** Ma chaîne YouTube est encore toute jeune et propose des tutoriels sur Home Assistant et Bubble Card. N'hésitez pas à vous y abonner pour aider à améliorer sa visibilité. Merci d'avance !
-
-<br>
-
----
-
-<br>
-
-## Suggestions d'entité
-
-Depuis Home Assistant 2026.6, choisir une entité dans le sélecteur de cartes vous propose quelques cartes toutes prêtes, et Bubble Card ajoute ses propres recettes à cette liste. Choisissez une lumière et on vous propose une carte avec un curseur de luminosité, plus une variante température de couleur, une variante couleur et une variante saturation quand votre lumière les prend en charge. Choisissez un ouvrant et vous obtenez son curseur de position, choisissez un lecteur multimédia et vous obtenez aussi une variante avec sa liste de sources, choisissez un aspirateur et vous obtenez ses boutons démarrer, pause et retour à la base. Chaque suggestion est une configuration Bubble Card normale affichée en aperçu en direct, donc vous pouvez prendre la plus proche et continuer à la modifier comme d'habitude.
-
-Ce qui vous est proposé dépend de ce que votre entité sait vraiment faire : une lumière sans canal de luminosité reçoit un interrupteur plutôt qu'un curseur, un ouvrant qui ne s'incline pas n'a pas de variante inclinaison, une entité de thermostat n'a ses modes prédéfinis que lorsqu'elle en possède. Les entrées classiques suivent en dessous des suggestions Bubble Card quand elles s'appliquent : la carte dédiée à ce type d'entité, un simple bouton et un curseur.
-
-> [!TIP]
-> Les modules peuvent ajouter leurs propres suggestions à cette liste, voir [modules](#modules).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Suggestions d'entité
+
+Depuis Home Assistant 2026.6, choisir une entité dans le sélecteur de cartes vous propose quelques cartes toutes prêtes, et Bubble Card ajoute ses propres recettes à cette liste. Choisissez une lumière et on vous propose une carte avec un curseur de luminosité, plus une variante température de couleur, une variante couleur et une variante saturation quand votre lumière les prend en charge. Choisissez un ouvrant et vous obtenez son curseur de position, choisissez un lecteur multimédia et vous obtenez aussi une variante avec sa liste de sources, choisissez un aspirateur et vous obtenez ses boutons démarrer, pause et retour à la base. Chaque suggestion est une configuration Bubble Card normale affichée en aperçu en direct, donc vous pouvez prendre la plus proche et continuer à la modifier comme d'habitude.
+
+Ce qui vous est proposé dépend de ce que votre entité sait vraiment faire : une lumière sans canal de luminosité reçoit un interrupteur plutôt qu'un curseur, un ouvrant qui ne s'incline pas n'a pas de variante inclinaison, une entité de thermostat n'a ses modes prédéfinis que lorsqu'elle en possède. Les entrées classiques suivent en dessous des suggestions Bubble Card quand elles s'appliquent : la carte dédiée à ce type d'entité, un simple bouton et un curseur.
+
+> [!TIP]
+> Les modules peuvent ajouter leurs propres suggestions à cette liste, voir [modules](#modules).
 
 <br>
 

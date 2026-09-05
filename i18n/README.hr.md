@@ -18,7 +18,7 @@ Bubble Card je minimalistička i prilagodljiva kolekcija kartica za Home Assista
 
 ## Sadržaj
 
-**[`Instalacija`](#instalacija)**  **[`Konfiguracija`](#konfiguracija)**  **[`Prijedlozi entiteta`](#prijedlozi-entiteta)**  **[`Skočni prozor`](#skočni-prozor)**  **[`Horizontalni niz gumba`](#horizontalni-niz-gumba)**  **[`Gumb`](#gumb)**  **[`Medijski reproduktor`](#medijski-reproduktor)**  **[`Rolete`](#rolete)**  **[`Odabir`](#odabir)**  **[`Klima`](#klima)**  **[`Kalendar`](#kalendar)**  **[`Razdjelnik`](#razdjelnik)**  **[`Prazan stupac`](#prazan-stupac)**  **[`Samo podgumbi`](#samo-podgumbi)**  **[`Podgumbi`](#podgumbi)**  **[`Rasporedi kartice`](#rasporedi-kartice)**  **[`Uvjeti`](#uvjeti)**  **[`Radnje`](#radnje-dodira-dvostrukog-dodira-i-držanja)**  **[`Stiliziranje`](#stiliziranje)**  **[`Predlošci`](#predlošci)**  **[`Moduli`](#moduli)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pomoć`](#pomoć)**  **[`Doprinos`](#doprinos)**  **[`Donirajte`](#donirajte)**
+**[`Instalacija`](#instalacija)**  **[`Konfiguracija`](#konfiguracija)**  **[`Skočni prozor`](#skočni-prozor)**  **[`Horizontalni niz gumba`](#horizontalni-niz-gumba)**  **[`Gumb`](#gumb)**  **[`Medijski reproduktor`](#medijski-reproduktor)**  **[`Rolete`](#rolete)**  **[`Odabir`](#odabir)**  **[`Klima`](#klima)**  **[`Kalendar`](#kalendar)**  **[`Razdjelnik`](#razdjelnik)**  **[`Prazan stupac`](#prazan-stupac)**  **[`Samo podgumbi`](#samo-podgumbi)**  **[`Podgumbi`](#podgumbi)**  **[`Prijedlozi entiteta`](#prijedlozi-entiteta)**  **[`Rasporedi kartice`](#rasporedi-kartice)**  **[`Uvjeti`](#uvjeti)**  **[`Radnje`](#radnje-dodira-dvostrukog-dodira-i-držanja)**  **[`Stiliziranje`](#stiliziranje)**  **[`Predlošci`](#predlošci)**  **[`Moduli`](#moduli)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pomoć`](#pomoć)**  **[`Doprinos`](#doprinos)**  **[`Donirajte`](#donirajte)**
 
 <br>
 
@@ -123,21 +123,6 @@ Sve opcije mogu se konfigurirati u Home Assistant uređivaču. No detalje i YAML
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Pogledajte ovaj [videozapis](https://www.youtube.com/watch?v=0hSQOlBxKKI) kako biste saznali više o Bubble Card kartici i njezinim mogućnostima.** Moj YouTube kanal je prilično nov i usmjeren je na vodiče o Home Assistantu i Bubble Card kartici. Ne oklijevajte se pretplatiti kako biste pomogli povećati vidljivost mog kanala. Hvala vam unaprijed!
-
-<br>
-
----
-
-<br>
-
-## Prijedlozi entiteta
-
-Od Home Assistanta 2026.6, odabir entiteta u biraču kartica nudi vam nekoliko gotovih kartica, a Bubble Card tom popisu dodaje vlastite recepte. Odaberite svjetlo i ponudit će vam se kartica s klizačem svjetline, uz varijantu temperature boje, varijantu boje i varijantu zasićenja kada ih vaše svjetlo podržava. Odaberite roletu i dobit ćete njezin klizač položaja, odaberite medijski reproduktor i dobit ćete i varijantu s popisom izvora, odaberite usisavač i dobit ćete njegove gumbe za pokretanje, pauzu i povratak na bazu. Svaki je prijedlog obična Bubble Card konfiguracija prikazana kao pretpregled uživo, pa možete uzeti onaj najbliži i nastaviti ga uređivati kao i obično.
-
-Ono što vam se nudi ovisi o tome što vaš entitet doista može: svjetlo bez kanala svjetline dobiva prekidač umjesto klizača, roleta koja se ne može nagnuti nema varijantu nagiba, a klima entitet dobiva svoje unaprijed postavljene načine rada samo kada ih ima. Klasične stavke slijede ispod Bubble Card prijedloga kada su primjenjive: kartica namijenjena toj vrsti entiteta, obični gumb i klizač.
-
-> [!TIP]
-> Moduli mogu dodati vlastite prijedloge na taj popis, pogledajte [module](#moduli).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Prijedlozi entiteta
+
+Od Home Assistanta 2026.6, odabir entiteta u biraču kartica nudi vam nekoliko gotovih kartica, a Bubble Card tom popisu dodaje vlastite recepte. Odaberite svjetlo i ponudit će vam se kartica s klizačem svjetline, uz varijantu temperature boje, varijantu boje i varijantu zasićenja kada ih vaše svjetlo podržava. Odaberite roletu i dobit ćete njezin klizač položaja, odaberite medijski reproduktor i dobit ćete i varijantu s popisom izvora, odaberite usisavač i dobit ćete njegove gumbe za pokretanje, pauzu i povratak na bazu. Svaki je prijedlog obična Bubble Card konfiguracija prikazana kao pretpregled uživo, pa možete uzeti onaj najbliži i nastaviti ga uređivati kao i obično.
+
+Ono što vam se nudi ovisi o tome što vaš entitet doista može: svjetlo bez kanala svjetline dobiva prekidač umjesto klizača, roleta koja se ne može nagnuti nema varijantu nagiba, a klima entitet dobiva svoje unaprijed postavljene načine rada samo kada ih ima. Klasične stavke slijede ispod Bubble Card prijedloga kada su primjenjive: kartica namijenjena toj vrsti entiteta, obični gumb i klizač.
+
+> [!TIP]
+> Moduli mogu dodati vlastite prijedloge na taj popis, pogledajte [module](#moduli).
 
 <br>
 

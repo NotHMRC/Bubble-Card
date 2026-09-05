@@ -18,7 +18,7 @@ Bubble Card është një koleksion kartash minimaliste dhe të personalizueshme 
 
 ## Tabela e përmbajtjes
 
-**[`Instalimi`](#instalimi)**  **[`Konfigurimi`](#konfigurimi)**  **[`Sugjerime për entitetet`](#sugjerime-për-entitetet)**  **[`Pop-up`](#pop-up)**  **[`Rresht horizontal butonash`](#rresht-horizontal-butonash)**  **[`Buton`](#buton)**  **[`Luajtës multimedial`](#luajtës-multimedial)**  **[`Grila`](#grila)**  **[`Përzgjedhje`](#përzgjedhje)**  **[`Klima`](#klima)**  **[`Kalendar`](#kalendar)**  **[`Ndarës`](#ndarës)**  **[`Kolonë bosh`](#kolonë-bosh)**  **[`Vetëm nën-butona`](#vetëm-nën-butona)**  **[`Nën-butonat`](#nën-butonat)**  **[`Faqosjet e kartës`](#faqosjet-e-kartës)**  **[`Kushtet`](#kushtet)**  **[`Veprimet`](#veprimet-e-prekjes-prekjes-së-dyfishtë-dhe-mbajtjes)**  **[`Stili`](#stili)**  **[`Shabllonet`](#shabllonet)**  **[`Modulet`](#modulet)**  **[`Lokalizimi`](#lokalizimi)**  **[`Ndihmë`](#ndihmë)**  **[`Kontributi`](#kontributi)**  **[`Dhuroni`](#dhuroni)**
+**[`Instalimi`](#instalimi)**  **[`Konfigurimi`](#konfigurimi)**  **[`Pop-up`](#pop-up)**  **[`Rresht horizontal butonash`](#rresht-horizontal-butonash)**  **[`Buton`](#buton)**  **[`Luajtës multimedial`](#luajtës-multimedial)**  **[`Grila`](#grila)**  **[`Përzgjedhje`](#përzgjedhje)**  **[`Klima`](#klima)**  **[`Kalendar`](#kalendar)**  **[`Ndarës`](#ndarës)**  **[`Kolonë bosh`](#kolonë-bosh)**  **[`Vetëm nën-butona`](#vetëm-nën-butona)**  **[`Nën-butonat`](#nën-butonat)**  **[`Sugjerime për entitetet`](#sugjerime-për-entitetet)**  **[`Faqosjet e kartës`](#faqosjet-e-kartës)**  **[`Kushtet`](#kushtet)**  **[`Veprimet`](#veprimet-e-prekjes-prekjes-së-dyfishtë-dhe-mbajtjes)**  **[`Stili`](#stili)**  **[`Shabllonet`](#shabllonet)**  **[`Modulet`](#modulet)**  **[`Lokalizimi`](#lokalizimi)**  **[`Ndihmë`](#ndihmë)**  **[`Kontributi`](#kontributi)**  **[`Dhuroni`](#dhuroni)**
 
 <br>
 
@@ -123,21 +123,6 @@ Të gjitha opsionet mund të konfigurohen në editorin e Home Assistant. Por më
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Shikoni këtë [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) për të mësuar rreth Bubble Card dhe mundësive që ofron.** Kanali im në YouTube është ende i ri dhe fokusohet në tutoriale rreth Home Assistant dhe Bubble Card. Mos hezitoni të abonoheni për të ndihmuar rritjen e dukshmërisë së kanalit tim. Faleminderit paraprakisht!
-
-<br>
-
----
-
-<br>
-
-## Sugjerime për entitetet
-
-Që nga Home Assistant 2026.6, zgjedhja e një entiteti në zgjedhësin e kartave ju ofron disa karta të gatshme, dhe Bubble Card i shton asaj liste recetat e veta. Zgjidhni një dritë dhe ju ofrohet një kartë me një rrëshqitës ndriçimi, plus një variant me temperaturë ngjyre, një me ngjyrë dhe një me ngopje kur drita juaj i mbështet. Zgjidhni një grilë dhe merrni rrëshqitësin e pozicionit të saj, zgjidhni një luajtës multimedial dhe merrni gjithashtu një variant me listën e burimeve, zgjidhni një fshesë me korrent dhe merrni butonat e saj për nisje, pauzë dhe kthim në bazë. Çdo sugjerim është një konfigurim normal i Bubble Card i shfaqur si paraparje e drejtpërdrejtë, kështu që mund të merrni atë më të afërtin dhe të vazhdoni ta redaktoni si zakonisht.
-
-Ajo që ju ofrohet varet nga ajo që entiteti juaj mund të bëjë vërtet: një dritë pa kanal ndriçimi merr një çelës në vend të një rrëshqitësi, një grilë që nuk mund të pjerrësohet nuk merr variant pjerrësimi, një entitet klime merr modalitetet e tij të paracaktuara vetëm kur ka të tilla. Hyrjet klasike vijnë poshtë sugjerimeve të Bubble Card kur janë të zbatueshme: karta e dedikuar për atë lloj entiteti, një buton i thjeshtë dhe një rrëshqitës.
-
-> [!TIP]
-> Modulet mund të shtojnë sugjerimet e tyre në atë listë, shihni [modulet](#modulet).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugjerime për entitetet
+
+Që nga Home Assistant 2026.6, zgjedhja e një entiteti në zgjedhësin e kartave ju ofron disa karta të gatshme, dhe Bubble Card i shton asaj liste recetat e veta. Zgjidhni një dritë dhe ju ofrohet një kartë me një rrëshqitës ndriçimi, plus një variant me temperaturë ngjyre, një me ngjyrë dhe një me ngopje kur drita juaj i mbështet. Zgjidhni një grilë dhe merrni rrëshqitësin e pozicionit të saj, zgjidhni një luajtës multimedial dhe merrni gjithashtu një variant me listën e burimeve, zgjidhni një fshesë me korrent dhe merrni butonat e saj për nisje, pauzë dhe kthim në bazë. Çdo sugjerim është një konfigurim normal i Bubble Card i shfaqur si paraparje e drejtpërdrejtë, kështu që mund të merrni atë më të afërtin dhe të vazhdoni ta redaktoni si zakonisht.
+
+Ajo që ju ofrohet varet nga ajo që entiteti juaj mund të bëjë vërtet: një dritë pa kanal ndriçimi merr një çelës në vend të një rrëshqitësi, një grilë që nuk mund të pjerrësohet nuk merr variant pjerrësimi, një entitet klime merr modalitetet e tij të paracaktuara vetëm kur ka të tilla. Hyrjet klasike vijnë poshtë sugjerimeve të Bubble Card kur janë të zbatueshme: karta e dedikuar për atë lloj entiteti, një buton i thjeshtë dhe një rrëshqitës.
+
+> [!TIP]
+> Modulet mund të shtojnë sugjerimet e tyre në atë listë, shihni [modulet](#modulet).
 
 <br>
 

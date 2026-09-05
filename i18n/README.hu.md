@@ -18,7 +18,7 @@ A Bubble Card egy minimalista és testreszabható kártyagyűjtemény a Home Ass
 
 ## Tartalomjegyzék
 
-**[`Telepítés`](#telepítés)**  **[`Konfiguráció`](#konfiguráció)**  **[`Entitásjavaslatok`](#entitásjavaslatok)**  **[`Pop-up`](#pop-up)**  **[`Vízszintes gombsor`](#vízszintes-gombsor)**  **[`Gomb`](#gomb)**  **[`Médialejátszó`](#médialejátszó)**  **[`Árnyékoló`](#árnyékoló)**  **[`Választó`](#választó)**  **[`Klíma`](#klíma)**  **[`Naptár`](#naptár)**  **[`Elválasztó`](#elválasztó)**  **[`Üres oszlop`](#üres-oszlop)**  **[`Csak algombok`](#csak-algombok)**  **[`Algombok`](#algombok)**  **[`Kártyaelrendezések`](#kártyaelrendezések)**  **[`Feltételek`](#feltételek)**  **[`Műveletek`](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek)**  **[`Stílus`](#stílus)**  **[`Sablonok`](#sablonok)**  **[`Modulok`](#modulok)**  **[`Honosítás`](#honosítás)**  **[`Súgó`](#súgó)**  **[`Közreműködés`](#közreműködés)**  **[`Támogatás`](#támogatás)**
+**[`Telepítés`](#telepítés)**  **[`Konfiguráció`](#konfiguráció)**  **[`Pop-up`](#pop-up)**  **[`Vízszintes gombsor`](#vízszintes-gombsor)**  **[`Gomb`](#gomb)**  **[`Médialejátszó`](#médialejátszó)**  **[`Árnyékoló`](#árnyékoló)**  **[`Választó`](#választó)**  **[`Klíma`](#klíma)**  **[`Naptár`](#naptár)**  **[`Elválasztó`](#elválasztó)**  **[`Üres oszlop`](#üres-oszlop)**  **[`Csak algombok`](#csak-algombok)**  **[`Algombok`](#algombok)**  **[`Entitásjavaslatok`](#entitásjavaslatok)**  **[`Kártyaelrendezések`](#kártyaelrendezések)**  **[`Feltételek`](#feltételek)**  **[`Műveletek`](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek)**  **[`Stílus`](#stílus)**  **[`Sablonok`](#sablonok)**  **[`Modulok`](#modulok)**  **[`Honosítás`](#honosítás)**  **[`Súgó`](#súgó)**  **[`Közreműködés`](#közreműködés)**  **[`Támogatás`](#támogatás)**
 
 <br>
 
@@ -123,21 +123,6 @@ Minden beállítás elvégezhető a Home Assistant szerkesztőjében. De az alá
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Nézd meg ezt a [videót](https://www.youtube.com/watch?v=0hSQOlBxKKI), hogy megismerd a Bubble Card lehetőségeit.** A YouTube-csatornám elég új, és a Home Assistantről és a Bubble Cardról szóló oktatóvideókra összpontosít. Ne habozz feliratkozni, hogy segíts növelni a csatornám láthatóságát. Előre is köszönöm!
-
-<br>
-
----
-
-<br>
-
-## Entitásjavaslatok
-
-A Home Assistant 2026.6 óta egy entitás kiválasztása a kártyaválasztóban néhány kész kártyát kínál fel, és a Bubble Card hozzáadja a saját receptjeit ehhez a listához. Válassz egy lámpát, és fényerő csúszkával ellátott kártyát kapsz, valamint színhőmérséklet, szín és telítettség változatot, ha a lámpád támogatja őket. Válassz egy árnyékolót, és megkapod a pozíció csúszkáját, válassz egy médialejátszót, és megkapod a forráslistájával ellátott változatot is, válassz egy robotporszívót, és megkapod az indítás, szünet és dokkolás gombjait. Minden javaslat egy szokásos Bubble Card konfiguráció, élő előnézetként megjelenítve, így kiveheted a hozzád legközelebb állót, és a megszokott módon szerkesztheted tovább.
-
-Az, hogy mit ajánl fel, attól függ, mire képes valójában az entitásod: a fényerő csatorna nélküli lámpa csúszka helyett kapcsolót kap, a dönteni nem tudó árnyékoló nem kap döntés változatot, a klíma entitás pedig csak akkor kapja meg az előre beállított módjait, ha vannak neki. A klasszikus bejegyzések a Bubble Card javaslatai alatt következnek, ha van értelmük: az adott entitástípushoz tartozó kártya, egy egyszerű gomb és egy csúszka.
-
-> [!TIP]
-> A modulok saját javaslatokat adhatnak ehhez a listához, lásd [modulok](#modulok).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitásjavaslatok
+
+A Home Assistant 2026.6 óta egy entitás kiválasztása a kártyaválasztóban néhány kész kártyát kínál fel, és a Bubble Card hozzáadja a saját receptjeit ehhez a listához. Válassz egy lámpát, és fényerő csúszkával ellátott kártyát kapsz, valamint színhőmérséklet, szín és telítettség változatot, ha a lámpád támogatja őket. Válassz egy árnyékolót, és megkapod a pozíció csúszkáját, válassz egy médialejátszót, és megkapod a forráslistájával ellátott változatot is, válassz egy robotporszívót, és megkapod az indítás, szünet és dokkolás gombjait. Minden javaslat egy szokásos Bubble Card konfiguráció, élő előnézetként megjelenítve, így kiveheted a hozzád legközelebb állót, és a megszokott módon szerkesztheted tovább.
+
+Az, hogy mit ajánl fel, attól függ, mire képes valójában az entitásod: a fényerő csatorna nélküli lámpa csúszka helyett kapcsolót kap, a dönteni nem tudó árnyékoló nem kap döntés változatot, a klíma entitás pedig csak akkor kapja meg az előre beállított módjait, ha vannak neki. A klasszikus bejegyzések a Bubble Card javaslatai alatt következnek, ha van értelmük: az adott entitástípushoz tartozó kártya, egy egyszerű gomb és egy csúszka.
+
+> [!TIP]
+> A modulok saját javaslatokat adhatnak ehhez a listához, lásd [modulok](#modulok).
 
 <br>
 

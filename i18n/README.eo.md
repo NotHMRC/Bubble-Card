@@ -18,7 +18,7 @@ Bubble Card estas minimalisma kaj personigebla kolekto da kartoj por Home Assist
 
 ## Enhavtabelo
 
-**[`Instalado`](#instalado)**  **[`Agordado`](#agordado)**  **[`Sugestoj pri entoj`](#sugestoj-pri-entoj)**  **[`Ŝprucfenestro`](#ŝprucfenestro)**  **[`Horizontala stako de butonoj`](#horizontala-stako-de-butonoj)**  **[`Butono`](#butono)**  **[`Plurmedia ludilo`](#plurmedia-ludilo)**  **[`Kovrilo`](#kovrilo)**  **[`Elektilo`](#elektilo)**  **[`Klimatizilo`](#klimatizilo)**  **[`Kalendaro`](#kalendaro)**  **[`Apartigilo`](#apartigilo)**  **[`Malplena kolumno`](#malplena-kolumno)**  **[`Nur subbutonoj`](#nur-subbutonoj)**  **[`Subbutonoj`](#subbutonoj)**  **[`Aranĝoj de la karto`](#aranĝoj-de-la-karto)**  **[`Kondiĉoj`](#kondiĉoj)**  **[`Agoj`](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi)**  **[`Stiligo`](#stiligo)**  **[`Ŝablonoj`](#ŝablonoj)**  **[`Moduloj`](#moduloj)**  **[`Lokalizado`](#lokalizado)**  **[`Helpo`](#helpo)**  **[`Kontribuado`](#kontribuado)**  **[`Donaci`](#donaci)**
+**[`Instalado`](#instalado)**  **[`Agordado`](#agordado)**  **[`Ŝprucfenestro`](#ŝprucfenestro)**  **[`Horizontala stako de butonoj`](#horizontala-stako-de-butonoj)**  **[`Butono`](#butono)**  **[`Plurmedia ludilo`](#plurmedia-ludilo)**  **[`Kovrilo`](#kovrilo)**  **[`Elektilo`](#elektilo)**  **[`Klimatizilo`](#klimatizilo)**  **[`Kalendaro`](#kalendaro)**  **[`Apartigilo`](#apartigilo)**  **[`Malplena kolumno`](#malplena-kolumno)**  **[`Nur subbutonoj`](#nur-subbutonoj)**  **[`Subbutonoj`](#subbutonoj)**  **[`Sugestoj pri entoj`](#sugestoj-pri-entoj)**  **[`Aranĝoj de la karto`](#aranĝoj-de-la-karto)**  **[`Kondiĉoj`](#kondiĉoj)**  **[`Agoj`](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi)**  **[`Stiligo`](#stiligo)**  **[`Ŝablonoj`](#ŝablonoj)**  **[`Moduloj`](#moduloj)**  **[`Lokalizado`](#lokalizado)**  **[`Helpo`](#helpo)**  **[`Kontribuado`](#kontribuado)**  **[`Donaci`](#donaci)**
 
 <br>
 
@@ -123,21 +123,6 @@ Vi ankaŭ povas rigardi mian YouTube-kanalon por paŝo-post-paŝaj videoj.
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Rigardu ĉi tiun [videon](https://www.youtube.com/watch?v=0hSQOlBxKKI) por lerni pri Bubble Card kaj ĝiaj kapabloj.** Mia YouTube-kanalo estas ankoraŭ sufiĉe nova kaj temas pri lernigiloj pri Home Assistant kaj Bubble Card. Ne hezitu aboni por helpi plivastigi la videblecon de mia kanalo. Antaŭdankon!
-
-<br>
-
----
-
-<br>
-
-## Sugestoj pri entoj
-
-Ekde Home Assistant 2026.6, elekti enton en la kartoelektilo proponas al vi kelkajn pretajn kartojn, kaj Bubble Card aldonas siajn proprajn receptojn al tiu listo. Elektu lumon kaj oni proponas al vi karton kun heleca glitilo, plus varianton kun kolortemperaturo, unu kun koloro kaj unu kun satureco, kiam via lumo subtenas ilin. Elektu kovrilon kaj vi ricevas la glitilon de ĝia pozicio, elektu plurmedian ludilon kaj vi ricevas ankaŭ varianton kun ĝia listo de fontoj, elektu polvosuĉilon kaj vi ricevas ĝiajn butonojn por starti, paŭzi kaj reveni al la bazo. Ĉiu sugesto estas ordinara agordo de Bubble Card montrata kiel viva antaŭrigardo, do vi povas preni la plej proksiman kaj plu redakti ĝin kiel kutime.
-
-Kio estas proponata al vi dependas de tio, kion via ento vere kapablas: lumo sen heleca kanalo ricevas ŝaltilon anstataŭ glitilon, kovrilo kiu ne povas klini ne ricevas klinan varianton, kaj klimatiza ento ricevas siajn antaŭagordojn nur kiam ĝi havas iujn. La klasikaj eroj sekvas sub la sugestoj de Bubble Card kiam ili taŭgas: la karto dediĉita al tiu speco de ento, simpla butono kaj glitilo.
-
-> [!TIP]
-> Moduloj povas aldoni siajn proprajn sugestojn al tiu listo, vidu [modulojn](#moduloj).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugestoj pri entoj
+
+Ekde Home Assistant 2026.6, elekti enton en la kartoelektilo proponas al vi kelkajn pretajn kartojn, kaj Bubble Card aldonas siajn proprajn receptojn al tiu listo. Elektu lumon kaj oni proponas al vi karton kun heleca glitilo, plus varianton kun kolortemperaturo, unu kun koloro kaj unu kun satureco, kiam via lumo subtenas ilin. Elektu kovrilon kaj vi ricevas la glitilon de ĝia pozicio, elektu plurmedian ludilon kaj vi ricevas ankaŭ varianton kun ĝia listo de fontoj, elektu polvosuĉilon kaj vi ricevas ĝiajn butonojn por starti, paŭzi kaj reveni al la bazo. Ĉiu sugesto estas ordinara agordo de Bubble Card montrata kiel viva antaŭrigardo, do vi povas preni la plej proksiman kaj plu redakti ĝin kiel kutime.
+
+Kio estas proponata al vi dependas de tio, kion via ento vere kapablas: lumo sen heleca kanalo ricevas ŝaltilon anstataŭ glitilon, kovrilo kiu ne povas klini ne ricevas klinan varianton, kaj klimatiza ento ricevas siajn antaŭagordojn nur kiam ĝi havas iujn. La klasikaj eroj sekvas sub la sugestoj de Bubble Card kiam ili taŭgas: la karto dediĉita al tiu speco de ento, simpla butono kaj glitilo.
+
+> [!TIP]
+> Moduloj povas aldoni siajn proprajn sugestojn al tiu listo, vidu [modulojn](#moduloj).
 
 <br>
 

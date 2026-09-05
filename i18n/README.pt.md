@@ -18,7 +18,7 @@ Bubble Card é uma coleção de cartões minimalista e personalizável para Home
 
 ## Índice
 
-**[`Instalação`](#instalação)**  **[`Configuração`](#configuração)**  **[`Sugestões de entidades`](#sugestões-de-entidades)**  **[`Pop-up`](#pop-up)**  **[`Pilha de botões horizontal`](#pilha-de-botões-horizontal)**  **[`Botão`](#botão)**  **[`Leitor multimédia`](#leitor-multimédia)**  **[`Estore`](#estore)**  **[`Seleção`](#seleção)**  **[`Climatização`](#climatização)**  **[`Calendário`](#calendário)**  **[`Separador`](#separador)**  **[`Coluna vazia`](#coluna-vazia)**  **[`Apenas sub-botões`](#apenas-sub-botões)**  **[`Sub-botões`](#sub-botões)**  **[`Disposições do cartão`](#disposições-do-cartão)**  **[`Condições`](#condições)**  **[`Ações`](#ações-de-toque-duplo-toque-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localização`](#localização)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Doar`](#doar)**
+**[`Instalação`](#instalação)**  **[`Configuração`](#configuração)**  **[`Pop-up`](#pop-up)**  **[`Pilha de botões horizontal`](#pilha-de-botões-horizontal)**  **[`Botão`](#botão)**  **[`Leitor multimédia`](#leitor-multimédia)**  **[`Estore`](#estore)**  **[`Seleção`](#seleção)**  **[`Climatização`](#climatização)**  **[`Calendário`](#calendário)**  **[`Separador`](#separador)**  **[`Coluna vazia`](#coluna-vazia)**  **[`Apenas sub-botões`](#apenas-sub-botões)**  **[`Sub-botões`](#sub-botões)**  **[`Sugestões de entidades`](#sugestões-de-entidades)**  **[`Disposições do cartão`](#disposições-do-cartão)**  **[`Condições`](#condições)**  **[`Ações`](#ações-de-toque-duplo-toque-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localização`](#localização)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Doar`](#doar)**
 
 <br>
 
@@ -123,21 +123,6 @@ Todas as opções podem ser configuradas no editor do Home Assistant. Mas pode e
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Veja este [vídeo](https://www.youtube.com/watch?v=0hSQOlBxKKI) para conhecer o Bubble Card e as suas capacidades.** O meu canal do YouTube é bastante recente e foca-se em tutoriais sobre Home Assistant e Bubble Card. Não hesite em subscrever para ajudar a aumentar a visibilidade do meu canal. Muito obrigado desde já!
-
-<br>
-
----
-
-<br>
-
-## Sugestões de entidades
-
-Desde o Home Assistant 2026.6, escolher uma entidade no seletor de cartões propõe-lhe alguns cartões prontos, e o Bubble Card acrescenta as suas próprias receitas a essa lista. Escolha uma luz e é-lhe proposto um cartão com um slider de brilho, além de variantes de temperatura de cor, cor e saturação quando a sua luz as suportar. Escolha um estore e obtém o slider de posição, escolha um leitor multimédia e obtém também uma variante com a lista de fontes, escolha um aspirador e obtém os botões de iniciar, pausar e regressar à base. Cada sugestão é uma configuração normal do Bubble Card apresentada como pré-visualização ao vivo, pelo que pode ficar com a mais próxima e continuar a editá-la como sempre.
-
-O que lhe é proposto depende do que a sua entidade sabe realmente fazer: uma luz sem canal de brilho recebe um interruptor em vez de um slider, um estore que não inclina não recebe a variante de inclinação, e uma entidade de climatização só recebe os seus modos predefinidos quando tem algum. As opções clássicas surgem por baixo das sugestões do Bubble Card quando se aplicam: o cartão dedicado a esse tipo de entidade, um botão simples e um slider.
-
-> [!TIP]
-> Os módulos podem acrescentar as suas próprias sugestões a essa lista, ver [módulos](#módulos).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugestões de entidades
+
+Desde o Home Assistant 2026.6, escolher uma entidade no seletor de cartões propõe-lhe alguns cartões prontos, e o Bubble Card acrescenta as suas próprias receitas a essa lista. Escolha uma luz e é-lhe proposto um cartão com um slider de brilho, além de variantes de temperatura de cor, cor e saturação quando a sua luz as suportar. Escolha um estore e obtém o slider de posição, escolha um leitor multimédia e obtém também uma variante com a lista de fontes, escolha um aspirador e obtém os botões de iniciar, pausar e regressar à base. Cada sugestão é uma configuração normal do Bubble Card apresentada como pré-visualização ao vivo, pelo que pode ficar com a mais próxima e continuar a editá-la como sempre.
+
+O que lhe é proposto depende do que a sua entidade sabe realmente fazer: uma luz sem canal de brilho recebe um interruptor em vez de um slider, um estore que não inclina não recebe a variante de inclinação, e uma entidade de climatização só recebe os seus modos predefinidos quando tem algum. As opções clássicas surgem por baixo das sugestões do Bubble Card quando se aplicam: o cartão dedicado a esse tipo de entidade, um botão simples e um slider.
+
+> [!TIP]
+> Os módulos podem acrescentar as suas próprias sugestões a essa lista, ver [módulos](#módulos).
 
 <br>
 

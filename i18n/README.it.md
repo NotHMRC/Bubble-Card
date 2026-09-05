@@ -18,7 +18,7 @@ Bubble Card è una raccolta di schede minimaliste e personalizzabili per Home As
 
 ## Indice
 
-**[`Installazione`](#installazione)**  **[`Configurazione`](#configurazione)**  **[`Suggerimenti per entità`](#suggerimenti-per-entità)**  **[`Pop-up`](#pop-up)**  **[`Pila di pulsanti orizzontale`](#pila-di-pulsanti-orizzontale)**  **[`Pulsante`](#pulsante)**  **[`Lettore multimediale`](#lettore-multimediale)**  **[`Tapparella`](#tapparella)**  **[`Selettore`](#selettore)**  **[`Clima`](#clima)**  **[`Calendario`](#calendario)**  **[`Separatore`](#separatore)**  **[`Colonna vuota`](#colonna-vuota)**  **[`Solo sotto-pulsanti`](#solo-sotto-pulsanti)**  **[`Sotto-pulsanti`](#sotto-pulsanti)**  **[`Layout delle schede`](#layout-delle-schede)**  **[`Condizioni`](#condizioni)**  **[`Azioni`](#azioni-tocco-doppio-tocco-e-pressione-prolungata)**  **[`Stile`](#stile)**  **[`Template`](#template)**  **[`Moduli`](#moduli)**  **[`Localizzazione`](#localizzazione)**  **[`Aiuto`](#aiuto)**  **[`Contribuire`](#contribuire)**  **[`Fare una donazione`](#fare-una-donazione)**
+**[`Installazione`](#installazione)**  **[`Configurazione`](#configurazione)**  **[`Pop-up`](#pop-up)**  **[`Pila di pulsanti orizzontale`](#pila-di-pulsanti-orizzontale)**  **[`Pulsante`](#pulsante)**  **[`Lettore multimediale`](#lettore-multimediale)**  **[`Tapparella`](#tapparella)**  **[`Selettore`](#selettore)**  **[`Clima`](#clima)**  **[`Calendario`](#calendario)**  **[`Separatore`](#separatore)**  **[`Colonna vuota`](#colonna-vuota)**  **[`Solo sotto-pulsanti`](#solo-sotto-pulsanti)**  **[`Sotto-pulsanti`](#sotto-pulsanti)**  **[`Suggerimenti per entità`](#suggerimenti-per-entità)**  **[`Layout delle schede`](#layout-delle-schede)**  **[`Condizioni`](#condizioni)**  **[`Azioni`](#azioni-tocco-doppio-tocco-e-pressione-prolungata)**  **[`Stile`](#stile)**  **[`Template`](#template)**  **[`Moduli`](#moduli)**  **[`Localizzazione`](#localizzazione)**  **[`Aiuto`](#aiuto)**  **[`Contribuire`](#contribuire)**  **[`Fare una donazione`](#fare-una-donazione)**
 
 <br>
 
@@ -123,21 +123,6 @@ Tutte le opzioni possono essere configurate nell'editor di Home Assistant. Ma qu
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Guarda questo [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) per scoprire Bubble Card e le sue possibilità.** Il mio canale YouTube è ancora nuovo e si concentra su tutorial su Home Assistant e Bubble Card. Non esitare a iscriverti per aiutarmi ad aumentare la visibilità del canale. Grazie in anticipo!
-
-<br>
-
----
-
-<br>
-
-## Suggerimenti per entità
-
-Da Home Assistant 2026.6, scegliere un'entità nel selettore di schede ti propone alcune schede già pronte, e Bubble Card aggiunge le sue ricette a quell'elenco. Scegli una luce e ti viene proposta una scheda con un cursore di luminosità, più una variante temperatura di colore, una variante colore e una variante saturazione quando la tua luce le supporta. Scegli una tapparella e ottieni il suo cursore di posizione, scegli un lettore multimediale e ottieni anche una variante con il suo elenco di sorgenti, scegli un aspirapolvere e ottieni i suoi pulsanti avvia, pausa e ritorno alla base. Ogni suggerimento è una normale configurazione Bubble Card mostrata come anteprima dal vivo, così puoi prendere quella più vicina e continuare a modificarla come al solito.
-
-Quello che ti viene proposto dipende da cosa la tua entità sa davvero fare: una luce senza canale di luminosità riceve un interruttore invece di un cursore, una tapparella che non può inclinarsi non ha la variante inclinazione, un'entità clima ottiene le sue modalità preimpostate solo quando ne ha. Le voci classiche seguono sotto i suggerimenti di Bubble Card quando sono pertinenti: la scheda dedicata a quel tipo di entità, un semplice pulsante e un cursore.
-
-> [!TIP]
-> I moduli possono aggiungere i propri suggerimenti a quell'elenco, vedi [moduli](#moduli).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Suggerimenti per entità
+
+Da Home Assistant 2026.6, scegliere un'entità nel selettore di schede ti propone alcune schede già pronte, e Bubble Card aggiunge le sue ricette a quell'elenco. Scegli una luce e ti viene proposta una scheda con un cursore di luminosità, più una variante temperatura di colore, una variante colore e una variante saturazione quando la tua luce le supporta. Scegli una tapparella e ottieni il suo cursore di posizione, scegli un lettore multimediale e ottieni anche una variante con il suo elenco di sorgenti, scegli un aspirapolvere e ottieni i suoi pulsanti avvia, pausa e ritorno alla base. Ogni suggerimento è una normale configurazione Bubble Card mostrata come anteprima dal vivo, così puoi prendere quella più vicina e continuare a modificarla come al solito.
+
+Quello che ti viene proposto dipende da cosa la tua entità sa davvero fare: una luce senza canale di luminosità riceve un interruttore invece di un cursore, una tapparella che non può inclinarsi non ha la variante inclinazione, un'entità clima ottiene le sue modalità preimpostate solo quando ne ha. Le voci classiche seguono sotto i suggerimenti di Bubble Card quando sono pertinenti: la scheda dedicata a quel tipo di entità, un semplice pulsante e un cursore.
+
+> [!TIP]
+> I moduli possono aggiungere i propri suggerimenti a quell'elenco, vedi [moduli](#moduli).
 
 <br>
 

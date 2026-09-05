@@ -18,7 +18,7 @@ Bubble Card ist eine minimalistische und anpassbare Kartensammlung für Home Ass
 
 ## Inhaltsverzeichnis
 
-**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Entitätsvorschläge`](#entitätsvorschläge)**  **[`Pop-up`](#pop-up)**  **[`Horizontaler Button-Stapel`](#horizontaler-button-stapel)**  **[`Button`](#button)**  **[`Medienplayer`](#medienplayer)**  **[`Abdeckung`](#abdeckung)**  **[`Auswahl`](#auswahl)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Trennlinie`](#trennlinie)**  **[`Leere Spalte`](#leere-spalte)**  **[`Nur Sub-Buttons`](#nur-sub-buttons)**  **[`Sub-Buttons`](#sub-buttons)**  **[`Kartenlayouts`](#kartenlayouts)**  **[`Bedingungen`](#bedingungen)**  **[`Aktionen`](#tipp--doppeltipp--und-halten-aktionen)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Module`](#module)**  **[`Lokalisierung`](#lokalisierung)**  **[`Hilfe`](#hilfe)**  **[`Mitwirken`](#mitwirken)**  **[`Spenden`](#spenden)**
+**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Pop-up`](#pop-up)**  **[`Horizontaler Button-Stapel`](#horizontaler-button-stapel)**  **[`Button`](#button)**  **[`Medienplayer`](#medienplayer)**  **[`Abdeckung`](#abdeckung)**  **[`Auswahl`](#auswahl)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Trennlinie`](#trennlinie)**  **[`Leere Spalte`](#leere-spalte)**  **[`Nur Sub-Buttons`](#nur-sub-buttons)**  **[`Sub-Buttons`](#sub-buttons)**  **[`Entitätsvorschläge`](#entitätsvorschläge)**  **[`Kartenlayouts`](#kartenlayouts)**  **[`Bedingungen`](#bedingungen)**  **[`Aktionen`](#tipp--doppeltipp--und-halten-aktionen)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Module`](#module)**  **[`Lokalisierung`](#lokalisierung)**  **[`Hilfe`](#hilfe)**  **[`Mitwirken`](#mitwirken)**  **[`Spenden`](#spenden)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alle Optionen lassen sich im Home Assistant Editor konfigurieren. In der Dokumen
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Schau dir dieses [Video](https://www.youtube.com/watch?v=0hSQOlBxKKI) an, um Bubble Card und seine Möglichkeiten kennenzulernen.** Mein YouTube-Kanal ist noch ziemlich neu und konzentriert sich auf Tutorials zu Home Assistant und Bubble Card. Zögere nicht, ihn zu abonnieren, um die Sichtbarkeit meines Kanals zu erhöhen. Vielen Dank im Voraus!
-
-<br>
-
----
-
-<br>
-
-## Entitätsvorschläge
-
-Seit Home Assistant 2026.6 bietet dir die Kartenauswahl ein paar fertige Karten an, wenn du eine Entität auswählst, und Bubble Card fügt dieser Liste eigene Rezepte hinzu. Wähle ein Licht, und du bekommst eine Karte mit einem Helligkeits-Slider angeboten, dazu eine Variante mit Farbtemperatur, eine mit Farbe und eine mit Sättigung, sofern dein Licht sie unterstützt. Wähle eine Abdeckung, und du bekommst den Slider für ihre Position, wähle einen Medienplayer, und du bekommst zusätzlich eine Variante mit seiner Quellenliste, wähle einen Staubsauger, und du bekommst seine Buttons für Start, Pause und Rückkehr zur Station. Jeder Vorschlag ist eine ganz normale Bubble Card-Konfiguration, als Live-Vorschau gezeigt, so kannst du die passendste nehmen und sie wie gewohnt weiter bearbeiten.
-
-Was dir angeboten wird, hängt davon ab, was deine Entität wirklich kann: ein Licht ohne Helligkeitskanal bekommt einen Umschalter statt eines Sliders, eine Abdeckung, die nicht neigen kann, bekommt keine Neigungsvariante, und eine Klima-Entität bekommt ihre Voreinstellungen nur dann, wenn sie welche hat. Die klassischen Einträge folgen unter den Bubble Card-Vorschlägen, wenn sie passen: die Karte für diesen Entitätstyp, ein einfacher Button und ein Slider.
-
-> [!TIP]
-> Module können der Liste eigene Vorschläge hinzufügen, siehe [Module](#module).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitätsvorschläge
+
+Seit Home Assistant 2026.6 bietet dir die Kartenauswahl ein paar fertige Karten an, wenn du eine Entität auswählst, und Bubble Card fügt dieser Liste eigene Rezepte hinzu. Wähle ein Licht, und du bekommst eine Karte mit einem Helligkeits-Slider angeboten, dazu eine Variante mit Farbtemperatur, eine mit Farbe und eine mit Sättigung, sofern dein Licht sie unterstützt. Wähle eine Abdeckung, und du bekommst den Slider für ihre Position, wähle einen Medienplayer, und du bekommst zusätzlich eine Variante mit seiner Quellenliste, wähle einen Staubsauger, und du bekommst seine Buttons für Start, Pause und Rückkehr zur Station. Jeder Vorschlag ist eine ganz normale Bubble Card-Konfiguration, als Live-Vorschau gezeigt, so kannst du die passendste nehmen und sie wie gewohnt weiter bearbeiten.
+
+Was dir angeboten wird, hängt davon ab, was deine Entität wirklich kann: ein Licht ohne Helligkeitskanal bekommt einen Umschalter statt eines Sliders, eine Abdeckung, die nicht neigen kann, bekommt keine Neigungsvariante, und eine Klima-Entität bekommt ihre Voreinstellungen nur dann, wenn sie welche hat. Die klassischen Einträge folgen unter den Bubble Card-Vorschlägen, wenn sie passen: die Karte für diesen Entitätstyp, ein einfacher Button und ein Slider.
+
+> [!TIP]
+> Module können der Liste eigene Vorschläge hinzufügen, siehe [Module](#module).
 
 <br>
 

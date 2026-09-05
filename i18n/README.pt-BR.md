@@ -18,7 +18,7 @@ Bubble Card é uma coleção de cartões minimalista e personalizável para o Ho
 
 ## Índice
 
-**[`Instalação`](#instalação)**  **[`Configuração`](#configuração)**  **[`Sugestões de entidades`](#sugestões-de-entidades)**  **[`Pop-up`](#pop-up)**  **[`Pilha de botões horizontal`](#pilha-de-botões-horizontal)**  **[`Botão`](#botão)**  **[`Reprodutor de mídia`](#reprodutor-de-mídia)**  **[`Cobertura`](#cobertura)**  **[`Seleção`](#seleção)**  **[`Climatização`](#climatização)**  **[`Calendário`](#calendário)**  **[`Separador`](#separador)**  **[`Coluna vazia`](#coluna-vazia)**  **[`Apenas sub-botões`](#apenas-sub-botões)**  **[`Sub-botões`](#sub-botões)**  **[`Layouts do cartão`](#layouts-do-cartão)**  **[`Condições`](#condições)**  **[`Ações`](#ações-de-toque-toque-duplo-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localização`](#localização)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Doar`](#doar)**
+**[`Instalação`](#instalação)**  **[`Configuração`](#configuração)**  **[`Pop-up`](#pop-up)**  **[`Pilha de botões horizontal`](#pilha-de-botões-horizontal)**  **[`Botão`](#botão)**  **[`Reprodutor de mídia`](#reprodutor-de-mídia)**  **[`Cobertura`](#cobertura)**  **[`Seleção`](#seleção)**  **[`Climatização`](#climatização)**  **[`Calendário`](#calendário)**  **[`Separador`](#separador)**  **[`Coluna vazia`](#coluna-vazia)**  **[`Apenas sub-botões`](#apenas-sub-botões)**  **[`Sub-botões`](#sub-botões)**  **[`Sugestões de entidades`](#sugestões-de-entidades)**  **[`Layouts do cartão`](#layouts-do-cartão)**  **[`Condições`](#condições)**  **[`Ações`](#ações-de-toque-toque-duplo-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localização`](#localização)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Doar`](#doar)**
 
 <br>
 
@@ -123,21 +123,6 @@ Todas as opções podem ser configuradas no editor do Home Assistant. Mas você 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Confira este [vídeo](https://www.youtube.com/watch?v=0hSQOlBxKKI) para conhecer o Bubble Card e suas capacidades.** Meu canal do YouTube é bem novo e foca em tutoriais sobre o Home Assistant e o Bubble Card. Não hesite em se inscrever para ajudar a aumentar a visibilidade do meu canal. Agradeço desde já!
-
-<br>
-
----
-
-<br>
-
-## Sugestões de entidades
-
-Desde o Home Assistant 2026.6, escolher uma entidade no seletor de cartões oferece alguns cartões prontos, e o Bubble Card acrescenta suas próprias receitas a essa lista. Escolha uma luz e você recebe um cartão com um controle deslizante de brilho, além de variantes de temperatura de cor, cor e saturação quando sua luz as suportar. Escolha uma cobertura e você recebe o controle deslizante de posição, escolha um reprodutor de mídia e você também recebe uma variante com a lista de fontes, escolha um aspirador e você recebe os botões de iniciar, pausar e voltar à base. Cada sugestão é uma configuração normal do Bubble Card exibida como prévia ao vivo, então você pode pegar a mais próxima e continuar editando como de costume.
-
-O que é oferecido depende do que sua entidade realmente sabe fazer: uma luz sem canal de brilho recebe um interruptor em vez de um controle deslizante, uma cobertura que não inclina não recebe a variante de inclinação, e uma entidade de climatização só recebe seus modos predefinidos quando tem algum. As opções clássicas aparecem abaixo das sugestões do Bubble Card quando se aplicam: o cartão dedicado a esse tipo de entidade, um botão simples e um controle deslizante.
-
-> [!TIP]
-> Os módulos podem acrescentar suas próprias sugestões a essa lista, veja [módulos](#módulos).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugestões de entidades
+
+Desde o Home Assistant 2026.6, escolher uma entidade no seletor de cartões oferece alguns cartões prontos, e o Bubble Card acrescenta suas próprias receitas a essa lista. Escolha uma luz e você recebe um cartão com um controle deslizante de brilho, além de variantes de temperatura de cor, cor e saturação quando sua luz as suportar. Escolha uma cobertura e você recebe o controle deslizante de posição, escolha um reprodutor de mídia e você também recebe uma variante com a lista de fontes, escolha um aspirador e você recebe os botões de iniciar, pausar e voltar à base. Cada sugestão é uma configuração normal do Bubble Card exibida como prévia ao vivo, então você pode pegar a mais próxima e continuar editando como de costume.
+
+O que é oferecido depende do que sua entidade realmente sabe fazer: uma luz sem canal de brilho recebe um interruptor em vez de um controle deslizante, uma cobertura que não inclina não recebe a variante de inclinação, e uma entidade de climatização só recebe seus modos predefinidos quando tem algum. As opções clássicas aparecem abaixo das sugestões do Bubble Card quando se aplicam: o cartão dedicado a esse tipo de entidade, um botão simples e um controle deslizante.
+
+> [!TIP]
+> Os módulos podem acrescentar suas próprias sugestões a essa lista, veja [módulos](#módulos).
 
 <br>
 

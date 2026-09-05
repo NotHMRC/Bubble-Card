@@ -18,7 +18,7 @@ Bubble Card yra minimalistinė ir individualiai pritaikoma kortelių kolekcija, 
 
 ## Turinys
 
-**[`Diegimas`](#diegimas)**  **[`Konfigūracija`](#konfigūracija)**  **[`Esybių pasiūlymai`](#esybių-pasiūlymai)**  **[`Iškylantysis langas`](#iškylantysis-langas)**  **[`Horizontali mygtukų juosta`](#horizontali-mygtukų-juosta)**  **[`Mygtukas`](#mygtukas)**  **[`Medijos leistuvas`](#medijos-leistuvas)**  **[`Uždanga`](#uždanga)**  **[`Pasirinkimas`](#pasirinkimas)**  **[`Klimatas`](#klimatas)**  **[`Kalendorius`](#kalendorius)**  **[`Skirtukas`](#skirtukas)**  **[`Tuščias stulpelis`](#tuščias-stulpelis)**  **[`Tik papildomi mygtukai`](#tik-papildomi-mygtukai)**  **[`Papildomi mygtukai`](#papildomi-mygtukai)**  **[`Kortelės išdėstymai`](#kortelės-išdėstymai)**  **[`Sąlygos`](#sąlygos)**  **[`Veiksmai`](#bakstelėjimo-dvigubo-bakstelėjimo-ir-palaikymo-veiksmai)**  **[`Stilius`](#stilius)**  **[`Šablonai`](#šablonai)**  **[`Moduliai`](#moduliai)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pagalba`](#pagalba)**  **[`Prisidėjimas`](#prisidėjimas)**  **[`Paremkite`](#paremkite)**
+**[`Diegimas`](#diegimas)**  **[`Konfigūracija`](#konfigūracija)**  **[`Iškylantysis langas`](#iškylantysis-langas)**  **[`Horizontali mygtukų juosta`](#horizontali-mygtukų-juosta)**  **[`Mygtukas`](#mygtukas)**  **[`Medijos leistuvas`](#medijos-leistuvas)**  **[`Uždanga`](#uždanga)**  **[`Pasirinkimas`](#pasirinkimas)**  **[`Klimatas`](#klimatas)**  **[`Kalendorius`](#kalendorius)**  **[`Skirtukas`](#skirtukas)**  **[`Tuščias stulpelis`](#tuščias-stulpelis)**  **[`Tik papildomi mygtukai`](#tik-papildomi-mygtukai)**  **[`Papildomi mygtukai`](#papildomi-mygtukai)**  **[`Esybių pasiūlymai`](#esybių-pasiūlymai)**  **[`Kortelės išdėstymai`](#kortelės-išdėstymai)**  **[`Sąlygos`](#sąlygos)**  **[`Veiksmai`](#bakstelėjimo-dvigubo-bakstelėjimo-ir-palaikymo-veiksmai)**  **[`Stilius`](#stilius)**  **[`Šablonai`](#šablonai)**  **[`Moduliai`](#moduliai)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pagalba`](#pagalba)**  **[`Prisidėjimas`](#prisidėjimas)**  **[`Paremkite`](#paremkite)**
 
 <br>
 
@@ -123,21 +123,6 @@ Visos parinktys gali būti sukonfigūruotos Home Assistant redaktoriuje. Tačiau
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Peržiūrėkite šį [vaizdo įrašą](https://www.youtube.com/watch?v=0hSQOlBxKKI), kad sužinotumėte apie Bubble Card ir jos galimybes.** Mano YouTube kanalas yra gana naujas ir orientuotas į Home Assistant bei Bubble Card mokomuosius vaizdo įrašus. Nedvejodami prenumeruokite, kad padėtumėte padidinti mano kanalo matomumą. Iš anksto dėkoju!
-
-<br>
-
----
-
-<br>
-
-## Esybių pasiūlymai
-
-Nuo Home Assistant 2026.6 pasirinkus esybę kortelių parinkiklyje siūloma keletas paruoštų kortelių, o Bubble Card į šį sąrašą įtraukia savo receptus. Pasirinkite šviestuvą ir jums bus pasiūlyta kortelė su ryškumo slankikliu, o kai jūsų šviestuvas tai palaiko, dar ir spalvos temperatūros, spalvos bei sodrumo variantai. Pasirinkite uždangą ir gausite jos padėties slankiklį, pasirinkite medijos leistuvą ir gausite dar vieną variantą su jo šaltinių sąrašu, pasirinkite dulkių siurblį ir gausite jo paleidimo, pristabdymo ir grąžinimo į stotelę mygtukus. Kiekvienas pasiūlymas yra įprasta Bubble Card konfigūracija, rodoma kaip gyva peržiūra, tad galite paimti artimiausią ir toliau ją redaguoti kaip visada.
-
-Kas jums pasiūloma, priklauso nuo to, ką jūsų esybė iš tikrųjų gali: šviestuvas be ryškumo kanalo gauna jungiklį vietoj slankiklio, uždanga, kurios negalima pakreipti, negauna pakreipimo varianto, o klimato esybė gauna savo išankstinius režimus tik tada, kai jų turi. Kai tinka, po Bubble Card pasiūlymų eina klasikiniai įrašai: tam esybės tipui skirta kortelė, paprastas mygtukas ir slankiklis.
-
-> [!TIP]
-> Moduliai gali įtraukti į šį sąrašą savo pasiūlymus, žr. [moduliai](#moduliai).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Esybių pasiūlymai
+
+Nuo Home Assistant 2026.6 pasirinkus esybę kortelių parinkiklyje siūloma keletas paruoštų kortelių, o Bubble Card į šį sąrašą įtraukia savo receptus. Pasirinkite šviestuvą ir jums bus pasiūlyta kortelė su ryškumo slankikliu, o kai jūsų šviestuvas tai palaiko, dar ir spalvos temperatūros, spalvos bei sodrumo variantai. Pasirinkite uždangą ir gausite jos padėties slankiklį, pasirinkite medijos leistuvą ir gausite dar vieną variantą su jo šaltinių sąrašu, pasirinkite dulkių siurblį ir gausite jo paleidimo, pristabdymo ir grąžinimo į stotelę mygtukus. Kiekvienas pasiūlymas yra įprasta Bubble Card konfigūracija, rodoma kaip gyva peržiūra, tad galite paimti artimiausią ir toliau ją redaguoti kaip visada.
+
+Kas jums pasiūloma, priklauso nuo to, ką jūsų esybė iš tikrųjų gali: šviestuvas be ryškumo kanalo gauna jungiklį vietoj slankiklio, uždanga, kurios negalima pakreipti, negauna pakreipimo varianto, o klimato esybė gauna savo išankstinius režimus tik tada, kai jų turi. Kai tinka, po Bubble Card pasiūlymų eina klasikiniai įrašai: tam esybės tipui skirta kortelė, paprastas mygtukas ir slankiklis.
+
+> [!TIP]
+> Moduliai gali įtraukti į šį sąrašą savo pasiūlymus, žr. [moduliai](#moduliai).
 
 <br>
 

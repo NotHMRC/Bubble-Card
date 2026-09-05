@@ -18,7 +18,7 @@ Bubble Card Home Assistant-erako txartel-bilduma minimalista eta pertsonalizagar
 
 ## Edukien aurkibidea
 
-**[`Instalazioa`](#instalazioa)**  **[`Konfigurazioa`](#konfigurazioa)**  **[`Entitate iradokizunak`](#entitate-iradokizunak)**  **[`Laster-leihoa`](#laster-leihoa)**  **[`Botoi-pila horizontala`](#botoi-pila-horizontala)**  **[`Botoia`](#botoia)**  **[`Multimedia-erreproduzigailua`](#multimedia-erreproduzigailua)**  **[`Estalkia`](#estalkia)**  **[`Hautaketa`](#hautaketa)**  **[`Klimatizazioa`](#klimatizazioa)**  **[`Egutegia`](#egutegia)**  **[`Bereizlea`](#bereizlea)**  **[`Zutabe hutsa`](#zutabe-hutsa)**  **[`Azpibotoiak soilik`](#azpibotoiak-soilik)**  **[`Azpibotoiak`](#azpibotoiak)**  **[`Txartelen diseinuak`](#txartelen-diseinuak)**  **[`Baldintzak`](#baldintzak)**  **[`Ekintzak`](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak)**  **[`Estiloa`](#estiloa)**  **[`Txantiloiak`](#txantiloiak)**  **[`Moduluak`](#moduluak)**  **[`Lokalizazioa`](#lokalizazioa)**  **[`Laguntza`](#laguntza)**  **[`Ekarpenak egitea`](#ekarpenak-egitea)**  **[`Egin dohaintza`](#egin-dohaintza)**
+**[`Instalazioa`](#instalazioa)**  **[`Konfigurazioa`](#konfigurazioa)**  **[`Laster-leihoa`](#laster-leihoa)**  **[`Botoi-pila horizontala`](#botoi-pila-horizontala)**  **[`Botoia`](#botoia)**  **[`Multimedia-erreproduzigailua`](#multimedia-erreproduzigailua)**  **[`Estalkia`](#estalkia)**  **[`Hautaketa`](#hautaketa)**  **[`Klimatizazioa`](#klimatizazioa)**  **[`Egutegia`](#egutegia)**  **[`Bereizlea`](#bereizlea)**  **[`Zutabe hutsa`](#zutabe-hutsa)**  **[`Azpibotoiak soilik`](#azpibotoiak-soilik)**  **[`Azpibotoiak`](#azpibotoiak)**  **[`Entitate iradokizunak`](#entitate-iradokizunak)**  **[`Txartelen diseinuak`](#txartelen-diseinuak)**  **[`Baldintzak`](#baldintzak)**  **[`Ekintzak`](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak)**  **[`Estiloa`](#estiloa)**  **[`Txantiloiak`](#txantiloiak)**  **[`Moduluak`](#moduluak)**  **[`Lokalizazioa`](#lokalizazioa)**  **[`Laguntza`](#laguntza)**  **[`Ekarpenak egitea`](#ekarpenak-egitea)**  **[`Egin dohaintza`](#egin-dohaintza)**
 
 <br>
 
@@ -123,21 +123,6 @@ Aukera guztiak Home Assistant editorean konfigura daitezke. Baina xehetasun gehi
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Ikusi [bideo](https://www.youtube.com/watch?v=0hSQOlBxKKI) hau Bubble Card eta bere gaitasunak ezagutzeko.** Nire YouTube kanala nahiko berria da eta Home Assistant eta Bubble Cardi buruzko tutorialetan zentratzen da. Ez izan zalantzarik harpidetzeko, nire kanalaren ikusgarritasuna handitzen laguntzeko. Aurretiaz eskerrik asko!
-
-<br>
-
----
-
-<br>
-
-## Entitate iradokizunak
-
-Home Assistant 2026.6 bertsiotik aurrera, txartel-hautatzailean entitate bat aukeratzean prest dauden txartel batzuk eskaintzen zaizkizu, eta Bubble Cardek bere errezetak gehitzen dizkio zerrenda horri. Aukeratu argi bat eta distira-graduatzailea duen txartel bat eskainiko zaizu, baita kolore-tenperatura, kolore eta saturazio aldaerak ere zure argiak onartzen dituenean. Aukeratu estalki bat eta bere posizio-graduatzailea lortuko duzu, aukeratu multimedia-erreproduzigailu bat eta bere iturri-zerrenda duen aldaera bat ere lortuko duzu, aukeratu xurgagailu bat eta abiarazteko, pausatzeko eta oinarrira itzultzeko botoiak lortuko dituzu. Iradokizun bakoitza Bubble Carden konfigurazio arrunt bat da, zuzeneko aurrebista gisa erakutsia, beraz hurbilena hartu eta ohi bezala editatzen jarrai dezakezu.
-
-Zer eskaintzen zaizun zure entitateak benetan zer egin dezakeen araberakoa da: distira-kanalik gabeko argi batek graduatzailearen ordez txandakatzailea jasotzen du, okertu ezin den estalki batek ez du okertze-aldaerarik jasotzen, eta klimatizazio-entitate batek bere aurrezarritako moduak jasotzen ditu horrelakorik badu soilik. Sarrera klasikoak Bubble Carden iradokizunen azpitik datoz aplikagarriak direnean: entitate mota horri dagokion txartela, botoi soil bat eta graduatzaile bat.
-
-> [!TIP]
-> Moduluek beren iradokizunak gehi ditzakete zerrenda horretan, ikus [moduluak](#moduluak).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitate iradokizunak
+
+Home Assistant 2026.6 bertsiotik aurrera, txartel-hautatzailean entitate bat aukeratzean prest dauden txartel batzuk eskaintzen zaizkizu, eta Bubble Cardek bere errezetak gehitzen dizkio zerrenda horri. Aukeratu argi bat eta distira-graduatzailea duen txartel bat eskainiko zaizu, baita kolore-tenperatura, kolore eta saturazio aldaerak ere zure argiak onartzen dituenean. Aukeratu estalki bat eta bere posizio-graduatzailea lortuko duzu, aukeratu multimedia-erreproduzigailu bat eta bere iturri-zerrenda duen aldaera bat ere lortuko duzu, aukeratu xurgagailu bat eta abiarazteko, pausatzeko eta oinarrira itzultzeko botoiak lortuko dituzu. Iradokizun bakoitza Bubble Carden konfigurazio arrunt bat da, zuzeneko aurrebista gisa erakutsia, beraz hurbilena hartu eta ohi bezala editatzen jarrai dezakezu.
+
+Zer eskaintzen zaizun zure entitateak benetan zer egin dezakeen araberakoa da: distira-kanalik gabeko argi batek graduatzailearen ordez txandakatzailea jasotzen du, okertu ezin den estalki batek ez du okertze-aldaerarik jasotzen, eta klimatizazio-entitate batek bere aurrezarritako moduak jasotzen ditu horrelakorik badu soilik. Sarrera klasikoak Bubble Carden iradokizunen azpitik datoz aplikagarriak direnean: entitate mota horri dagokion txartela, botoi soil bat eta graduatzaile bat.
+
+> [!TIP]
+> Moduluek beren iradokizunak gehi ditzakete zerrenda horretan, ikus [moduluak](#moduluak).
 
 <br>
 

@@ -18,7 +18,7 @@ Mae Bubble Card yn gasgliad o gardiau minimalaidd a chyfaddasadwy ar gyfer Home 
 
 ## Tabl cynnwys
 
-**[`Gosod`](#gosod)**  **[`Ffurfweddu`](#ffurfweddu)**  **[`Awgrymiadau endid`](#awgrymiadau-endid)**  **[`Naidlen`](#naidlen)**  **[`Pentwr botymau llorweddol`](#pentwr-botymau-llorweddol)**  **[`Botwm`](#botwm)**  **[`Chwaraeydd cyfryngau`](#chwaraeydd-cyfryngau)**  **[`Gorchudd`](#gorchudd)**  **[`Dewis`](#dewis)**  **[`Hinsawdd`](#hinsawdd)**  **[`Calendr`](#calendr)**  **[`Gwahanydd`](#gwahanydd)**  **[`Colofn wag`](#colofn-wag)**  **[`Is-fotymau yn unig`](#is-fotymau-yn-unig)**  **[`Is-fotymau`](#is-fotymau)**  **[`Cynlluniau cardiau`](#cynlluniau-cardiau)**  **[`Amodau`](#amodau)**  **[`Gweithredoedd`](#gweithredoedd-tapio-tapio-dwbl-a-dal)**  **[`Arddull`](#arddull)**  **[`Templedi`](#templedi)**  **[`Modiwlau`](#modiwlau)**  **[`Lleoleiddio`](#lleoleiddio)**  **[`Cymorth`](#cymorth)**  **[`Cyfrannu`](#cyfrannu)**  **[`Rhoi`](#rhoi)**
+**[`Gosod`](#gosod)**  **[`Ffurfweddu`](#ffurfweddu)**  **[`Naidlen`](#naidlen)**  **[`Pentwr botymau llorweddol`](#pentwr-botymau-llorweddol)**  **[`Botwm`](#botwm)**  **[`Chwaraeydd cyfryngau`](#chwaraeydd-cyfryngau)**  **[`Gorchudd`](#gorchudd)**  **[`Dewis`](#dewis)**  **[`Hinsawdd`](#hinsawdd)**  **[`Calendr`](#calendr)**  **[`Gwahanydd`](#gwahanydd)**  **[`Colofn wag`](#colofn-wag)**  **[`Is-fotymau yn unig`](#is-fotymau-yn-unig)**  **[`Is-fotymau`](#is-fotymau)**  **[`Awgrymiadau endid`](#awgrymiadau-endid)**  **[`Cynlluniau cardiau`](#cynlluniau-cardiau)**  **[`Amodau`](#amodau)**  **[`Gweithredoedd`](#gweithredoedd-tapio-tapio-dwbl-a-dal)**  **[`Arddull`](#arddull)**  **[`Templedi`](#templedi)**  **[`Modiwlau`](#modiwlau)**  **[`Lleoleiddio`](#lleoleiddio)**  **[`Cymorth`](#cymorth)**  **[`Cyfrannu`](#cyfrannu)**  **[`Rhoi`](#rhoi)**
 
 <br>
 
@@ -123,21 +123,6 @@ Gellir ffurfweddu pob opsiwn yng ngolygydd Home Assistant. Ond gallwch ddod o hy
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Bwrwch olwg dros y [fideo](https://www.youtube.com/watch?v=0hSQOlBxKKI) hwn i ddysgu am Bubble Card a'i alluoedd.** Mae fy sianel YouTube yn eithaf newydd ac yn canolbwyntio ar diwtorialau am Home Assistant a Bubble Card. Peidiwch ag oedi cyn tanysgrifio i helpu cynyddu gwelededd fy sianel. Diolch ymlaen llaw!
-
-<br>
-
----
-
-<br>
-
-## Awgrymiadau endid
-
-Ers Home Assistant 2026.6, mae dewis endid yn y dewisydd cardiau yn cynnig ychydig o gardiau parod i chi, ac mae Bubble Card yn ychwanegu ei ryseitiau ei hun at y rhestr honno. Dewiswch olau a chynigir cerdyn i chi gyda llithrydd disgleirdeb, ynghyd ag amrywiad tymheredd lliw, un lliw ac un dirlawnder pan fydd eich golau'n eu cefnogi. Dewiswch orchudd a chewch lithrydd ei safle, dewiswch chwaraeydd cyfryngau a chewch amrywiad gyda'i restr ffynonellau hefyd, dewiswch sugnwr llwch a chewch ei fotymau cychwyn, oedi a dychwelyd i'r doc. Mae pob awgrym yn ffurfweddiad Bubble Card arferol a ddangosir fel rhagolwg byw, felly gallwch gymryd yr un agosaf a dal ati i'w olygu fel arfer.
-
-Mae'r hyn a gynigir i chi yn dibynnu ar yr hyn y gall eich endid ei wneud mewn gwirionedd: mae golau heb sianel ddisgleirdeb yn cael switsh yn lle llithrydd, nid yw gorchudd na all ogwyddo yn cael amrywiad gogwyddo, ac nid yw endid hinsawdd yn cael ei foddau rhagosodedig oni bai bod rhai ganddo. Daw'r cofnodion clasurol o dan awgrymiadau Bubble Card pan fyddant yn berthnasol: y cerdyn pwrpasol ar gyfer y math hwnnw o endid, botwm plaen a llithrydd.
-
-> [!TIP]
-> Gall modiwlau ychwanegu eu hawgrymiadau eu hunain at y rhestr honno, gweler [modiwlau](#modiwlau).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Awgrymiadau endid
+
+Ers Home Assistant 2026.6, mae dewis endid yn y dewisydd cardiau yn cynnig ychydig o gardiau parod i chi, ac mae Bubble Card yn ychwanegu ei ryseitiau ei hun at y rhestr honno. Dewiswch olau a chynigir cerdyn i chi gyda llithrydd disgleirdeb, ynghyd ag amrywiad tymheredd lliw, un lliw ac un dirlawnder pan fydd eich golau'n eu cefnogi. Dewiswch orchudd a chewch lithrydd ei safle, dewiswch chwaraeydd cyfryngau a chewch amrywiad gyda'i restr ffynonellau hefyd, dewiswch sugnwr llwch a chewch ei fotymau cychwyn, oedi a dychwelyd i'r doc. Mae pob awgrym yn ffurfweddiad Bubble Card arferol a ddangosir fel rhagolwg byw, felly gallwch gymryd yr un agosaf a dal ati i'w olygu fel arfer.
+
+Mae'r hyn a gynigir i chi yn dibynnu ar yr hyn y gall eich endid ei wneud mewn gwirionedd: mae golau heb sianel ddisgleirdeb yn cael switsh yn lle llithrydd, nid yw gorchudd na all ogwyddo yn cael amrywiad gogwyddo, ac nid yw endid hinsawdd yn cael ei foddau rhagosodedig oni bai bod rhai ganddo. Daw'r cofnodion clasurol o dan awgrymiadau Bubble Card pan fyddant yn berthnasol: y cerdyn pwrpasol ar gyfer y math hwnnw o endid, botwm plaen a llithrydd.
+
+> [!TIP]
+> Gall modiwlau ychwanegu eu hawgrymiadau eu hunain at y rhestr honno, gweler [modiwlau](#modiwlau).
 
 <br>
 

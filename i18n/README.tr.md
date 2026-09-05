@@ -18,7 +18,7 @@ Bubble Card, Home Assistant için minimalist ve özelleştirilebilir bir kart ko
 
 ## İçindekiler
 
-**[`Kurulum`](#kurulum)**  **[`Yapılandırma`](#yapılandırma)**  **[`Varlık önerileri`](#varlık-önerileri)**  **[`Pop-up`](#pop-up)**  **[`Yatay düğme yığını`](#yatay-düğme-yığını)**  **[`Düğme`](#düğme)**  **[`Medya oynatıcı`](#medya-oynatıcı)**  **[`Panjur`](#panjur)**  **[`Seçim`](#seçim)**  **[`İklim`](#i̇klim)**  **[`Takvim`](#takvim)**  **[`Ayırıcı`](#ayırıcı)**  **[`Boş sütun`](#boş-sütun)**  **[`Yalnızca alt düğmeler`](#yalnızca-alt-düğmeler)**  **[`Alt düğmeler`](#alt-düğmeler)**  **[`Kart düzenleri`](#kart-düzenleri)**  **[`Koşullar`](#koşullar)**  **[`Eylemler`](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri)**  **[`Stil`](#stil)**  **[`Şablonlar`](#şablonlar)**  **[`Modüller`](#modüller)**  **[`Yerelleştirme`](#yerelleştirme)**  **[`Yardım`](#yardım)**  **[`Katkıda bulunma`](#katkıda-bulunma)**  **[`Bağış yapın`](#bağış-yapın)**
+**[`Kurulum`](#kurulum)**  **[`Yapılandırma`](#yapılandırma)**  **[`Pop-up`](#pop-up)**  **[`Yatay düğme yığını`](#yatay-düğme-yığını)**  **[`Düğme`](#düğme)**  **[`Medya oynatıcı`](#medya-oynatıcı)**  **[`Panjur`](#panjur)**  **[`Seçim`](#seçim)**  **[`İklim`](#i̇klim)**  **[`Takvim`](#takvim)**  **[`Ayırıcı`](#ayırıcı)**  **[`Boş sütun`](#boş-sütun)**  **[`Yalnızca alt düğmeler`](#yalnızca-alt-düğmeler)**  **[`Alt düğmeler`](#alt-düğmeler)**  **[`Varlık önerileri`](#varlık-önerileri)**  **[`Kart düzenleri`](#kart-düzenleri)**  **[`Koşullar`](#koşullar)**  **[`Eylemler`](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri)**  **[`Stil`](#stil)**  **[`Şablonlar`](#şablonlar)**  **[`Modüller`](#modüller)**  **[`Yerelleştirme`](#yerelleştirme)**  **[`Yardım`](#yardım)**  **[`Katkıda bulunma`](#katkıda-bulunma)**  **[`Bağış yapın`](#bağış-yapın)**
 
 <br>
 
@@ -123,21 +123,6 @@ Tüm seçenekler Home Assistant düzenleyicisinden yapılandırılabilir. Ancak 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Bubble Card ve yetenekleri hakkında bilgi edinmek için bu [videoya](https://www.youtube.com/watch?v=0hSQOlBxKKI) göz atın.** YouTube kanalım oldukça yeni ve Home Assistant ile Bubble Card hakkında eğitim içeriklerine odaklanıyor. Kanalımın görünürlüğünü artırmama yardımcı olmak için abone olmakta tereddüt etmeyin. Şimdiden teşekkür ederim!
-
-<br>
-
----
-
-<br>
-
-## Varlık önerileri
-
-Home Assistant 2026.6 sürümünden beri, kart seçicide bir varlık seçtiğinizde size birkaç hazır kart sunulur ve Bubble Card bu listeye kendi tariflerini ekler. Bir ışık seçin, size parlaklık kaydırıcılı bir kart sunulur, ışığınız destekliyorsa ayrıca renk sıcaklığı, renk ve doygunluk çeşitleri de gelir. Bir panjur seçin, konum kaydırıcısını alırsınız, bir medya oynatıcı seçin, kaynak listeli bir çeşidini de alırsınız, bir süpürge seçin, başlat, duraklat ve şarj istasyonuna dön düğmelerini alırsınız. Her öneri, canlı önizleme olarak gösterilen sıradan bir Bubble Card yapılandırmasıdır, bu yüzden en yakın olanı alıp her zamanki gibi düzenlemeye devam edebilirsiniz.
-
-Size ne sunulacağı, varlığınızın gerçekte ne yapabildiğine bağlıdır: parlaklık kanalı olmayan bir ışık kaydırıcı yerine bir anahtar alır, eğilemeyen bir panjur için eğim çeşidi sunulmaz, bir iklim varlığı ön ayar modlarını yalnızca sahipse alır. Uygun olduklarında klasik girdiler Bubble Card önerilerinin altında gelir: o varlık türünün özel kartı, sade bir düğme ve bir kaydırıcı.
-
-> [!TIP]
-> Modüller bu listeye kendi önerilerini ekleyebilir, bkz. [modüller](#modüller).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Varlık önerileri
+
+Home Assistant 2026.6 sürümünden beri, kart seçicide bir varlık seçtiğinizde size birkaç hazır kart sunulur ve Bubble Card bu listeye kendi tariflerini ekler. Bir ışık seçin, size parlaklık kaydırıcılı bir kart sunulur, ışığınız destekliyorsa ayrıca renk sıcaklığı, renk ve doygunluk çeşitleri de gelir. Bir panjur seçin, konum kaydırıcısını alırsınız, bir medya oynatıcı seçin, kaynak listeli bir çeşidini de alırsınız, bir süpürge seçin, başlat, duraklat ve şarj istasyonuna dön düğmelerini alırsınız. Her öneri, canlı önizleme olarak gösterilen sıradan bir Bubble Card yapılandırmasıdır, bu yüzden en yakın olanı alıp her zamanki gibi düzenlemeye devam edebilirsiniz.
+
+Size ne sunulacağı, varlığınızın gerçekte ne yapabildiğine bağlıdır: parlaklık kanalı olmayan bir ışık kaydırıcı yerine bir anahtar alır, eğilemeyen bir panjur için eğim çeşidi sunulmaz, bir iklim varlığı ön ayar modlarını yalnızca sahipse alır. Uygun olduklarında klasik girdiler Bubble Card önerilerinin altında gelir: o varlık türünün özel kartı, sade bir düğme ve bir kaydırıcı.
+
+> [!TIP]
+> Modüller bu listeye kendi önerilerini ekleyebilir, bkz. [modüller](#modüller).
 
 <br>
 

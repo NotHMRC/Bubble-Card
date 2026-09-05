@@ -18,7 +18,7 @@ Bubble Card és una col·lecció de targetes minimalista i personalitzable per a
 
 ## Taula de continguts
 
-**[`Instal·lació`](#installació)**  **[`Configuració`](#configuració)**  **[`Suggeriments d'entitat`](#suggeriments-dentitat)**  **[`Pop-up`](#pop-up)**  **[`Pila de botons horitzontal`](#pila-de-botons-horitzontal)**  **[`Botó`](#botó)**  **[`Reproductor multimèdia`](#reproductor-multimèdia)**  **[`Coberta`](#coberta)**  **[`Selecció`](#selecció)**  **[`Climatització`](#climatització)**  **[`Calendari`](#calendari)**  **[`Separador`](#separador)**  **[`Columna buida`](#columna-buida)**  **[`Només subbotons`](#només-subbotons)**  **[`Subbotons`](#subbotons)**  **[`Disposicions de la targeta`](#disposicions-de-la-targeta)**  **[`Condicions`](#condicions)**  **[`Accions`](#accions-de-toc-doble-toc-i-toc-llarg)**  **[`Estils`](#estils)**  **[`Plantilles`](#plantilles)**  **[`Mòduls`](#mòduls)**  **[`Localització`](#localització)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Donatius`](#donatius)**
+**[`Instal·lació`](#installació)**  **[`Configuració`](#configuració)**  **[`Pop-up`](#pop-up)**  **[`Pila de botons horitzontal`](#pila-de-botons-horitzontal)**  **[`Botó`](#botó)**  **[`Reproductor multimèdia`](#reproductor-multimèdia)**  **[`Coberta`](#coberta)**  **[`Selecció`](#selecció)**  **[`Climatització`](#climatització)**  **[`Calendari`](#calendari)**  **[`Separador`](#separador)**  **[`Columna buida`](#columna-buida)**  **[`Només subbotons`](#només-subbotons)**  **[`Subbotons`](#subbotons)**  **[`Suggeriments d'entitat`](#suggeriments-dentitat)**  **[`Disposicions de la targeta`](#disposicions-de-la-targeta)**  **[`Condicions`](#condicions)**  **[`Accions`](#accions-de-toc-doble-toc-i-toc-llarg)**  **[`Estils`](#estils)**  **[`Plantilles`](#plantilles)**  **[`Mòduls`](#mòduls)**  **[`Localització`](#localització)**  **[`Ajuda`](#ajuda)**  **[`Contribuir`](#contribuir)**  **[`Donatius`](#donatius)**
 
 <br>
 
@@ -123,21 +123,6 @@ Totes les opcions es poden configurar a l'editor de Home Assistant. Però a la d
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Mireu aquest [vídeo](https://www.youtube.com/watch?v=0hSQOlBxKKI) per descobrir Bubble Card i les seves capacitats.** El meu canal de YouTube és força nou i se centra en tutorials sobre Home Assistant i Bubble Card. No dubteu a subscriure-us-hi per ajudar a augmentar la visibilitat del meu canal. Gràcies per endavant!
-
-<br>
-
----
-
-<br>
-
-## Suggeriments d'entitat
-
-Des de Home Assistant 2026.6, escollir una entitat al selector de targetes us ofereix unes quantes targetes ja fetes, i Bubble Card afegeix les seves pròpies receptes a aquesta llista. Trieu un llum i se us ofereix una targeta amb un control lliscant de brillantor, més una variant de temperatura de color, una de color i una de saturació quan el vostre llum les admet. Trieu una coberta i obteniu el control lliscant de la seva posició, trieu un reproductor multimèdia i obteniu també una variant amb la llista de les seves fonts, trieu un aspirador i obteniu els seus botons d'inici, pausa i retorn a la base. Cada suggeriment és una configuració normal de Bubble Card mostrada com una previsualització en directe, així podeu agafar la més propera i continuar editant-la com sempre.
-
-El que se us ofereix depèn del que la vostra entitat pot fer realment: un llum sense canal de brillantor rep un commutador en lloc d'un control lliscant, una coberta que no es pot inclinar no rep cap variant d'inclinació, i una entitat de climatització rep els seus modes preestablerts només quan en té. Les entrades clàssiques segueixen sota els suggeriments de Bubble Card quan són aplicables: la targeta dedicada a aquest tipus d'entitat, un botó senzill i un control lliscant.
-
-> [!TIP]
-> Els mòduls poden afegir els seus propis suggeriments a aquesta llista, vegeu [mòduls](#mòduls).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Suggeriments d'entitat
+
+Des de Home Assistant 2026.6, escollir una entitat al selector de targetes us ofereix unes quantes targetes ja fetes, i Bubble Card afegeix les seves pròpies receptes a aquesta llista. Trieu un llum i se us ofereix una targeta amb un control lliscant de brillantor, més una variant de temperatura de color, una de color i una de saturació quan el vostre llum les admet. Trieu una coberta i obteniu el control lliscant de la seva posició, trieu un reproductor multimèdia i obteniu també una variant amb la llista de les seves fonts, trieu un aspirador i obteniu els seus botons d'inici, pausa i retorn a la base. Cada suggeriment és una configuració normal de Bubble Card mostrada com una previsualització en directe, així podeu agafar la més propera i continuar editant-la com sempre.
+
+El que se us ofereix depèn del que la vostra entitat pot fer realment: un llum sense canal de brillantor rep un commutador en lloc d'un control lliscant, una coberta que no es pot inclinar no rep cap variant d'inclinació, i una entitat de climatització rep els seus modes preestablerts només quan en té. Les entrades clàssiques segueixen sota els suggeriments de Bubble Card quan són aplicables: la targeta dedicada a aquest tipus d'entitat, un botó senzill i un control lliscant.
+
+> [!TIP]
+> Els mòduls poden afegir els seus propis suggeriments a aquesta llista, vegeu [mòduls](#mòduls).
 
 <br>
 

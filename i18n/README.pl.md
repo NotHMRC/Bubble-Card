@@ -18,7 +18,7 @@ Bubble Card to minimalistyczna i w pełni konfigurowalna kolekcja kart dla Home 
 
 ## Spis treści
 
-**[`Instalacja`](#instalacja)**  **[`Konfiguracja`](#konfiguracja)**  **[`Sugestie encji`](#sugestie-encji)**  **[`Pop-up`](#pop-up)**  **[`Poziomy stos przycisków`](#poziomy-stos-przycisków)**  **[`Przycisk`](#przycisk)**  **[`Odtwarzacz mediów`](#odtwarzacz-mediów)**  **[`Rolety`](#rolety)**  **[`Select`](#select)**  **[`Klimatyzacja`](#klimatyzacja)**  **[`Kalendarz`](#kalendarz)**  **[`Separator`](#separator)**  **[`Pusta kolumna`](#pusta-kolumna)**  **[`Tylko podprzyciski`](#tylko-podprzyciski)**  **[`Podprzyciski`](#podprzyciski)**  **[`Układy kart`](#układy-kart)**  **[`Warunki`](#warunki)**  **[`Akcje`](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania)**  **[`Stylizacja`](#stylizacja)**  **[`Szablony`](#szablony)**  **[`Moduły`](#moduły)**  **[`Lokalizacja`](#lokalizacja)**  **[`Pomoc`](#pomoc)**  **[`Współtworzenie`](#współtworzenie)**  **[`Wesprzyj projekt`](#wesprzyj-projekt)**
+**[`Instalacja`](#instalacja)**  **[`Konfiguracja`](#konfiguracja)**  **[`Pop-up`](#pop-up)**  **[`Poziomy stos przycisków`](#poziomy-stos-przycisków)**  **[`Przycisk`](#przycisk)**  **[`Odtwarzacz mediów`](#odtwarzacz-mediów)**  **[`Rolety`](#rolety)**  **[`Select`](#select)**  **[`Klimatyzacja`](#klimatyzacja)**  **[`Kalendarz`](#kalendarz)**  **[`Separator`](#separator)**  **[`Pusta kolumna`](#pusta-kolumna)**  **[`Tylko podprzyciski`](#tylko-podprzyciski)**  **[`Podprzyciski`](#podprzyciski)**  **[`Sugestie encji`](#sugestie-encji)**  **[`Układy kart`](#układy-kart)**  **[`Warunki`](#warunki)**  **[`Akcje`](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania)**  **[`Stylizacja`](#stylizacja)**  **[`Szablony`](#szablony)**  **[`Moduły`](#moduły)**  **[`Lokalizacja`](#lokalizacja)**  **[`Pomoc`](#pomoc)**  **[`Współtworzenie`](#współtworzenie)**  **[`Wesprzyj projekt`](#wesprzyj-projekt)**
 
 <br>
 
@@ -123,21 +123,6 @@ Wszystkie opcje można skonfigurować w edytorze Home Assistant. Więcej szczeg�
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Obejrzyj ten [film](https://www.youtube.com/watch?v=0hSQOlBxKKI), aby dowiedzieć się więcej o Bubble Card i jej możliwościach.** Mój kanał YouTube jest jeszcze dość nowy i koncentruje się na poradnikach dotyczących Home Assistant i Bubble Card. Nie wahaj się subskrybować, aby pomóc zwiększyć widoczność mojego kanału. Z góry dziękuję!
-
-<br>
-
----
-
-<br>
-
-## Sugestie encji
-
-Od Home Assistant 2026.6 wybranie encji w selektorze kart podpowiada kilka gotowych kart, a Bubble Card dodaje do tej listy własne przepisy. Wybierz światło, a otrzymasz kartę z suwakiem jasności, a także warianty temperatury barwowej, koloru i nasycenia, jeśli twoje światło je obsługuje. Wybierz roletę, a otrzymasz suwak jej pozycji, wybierz odtwarzacz mediów, a dostaniesz również wariant z listą źródeł, wybierz odkurzacz, a dostaniesz przyciski uruchomienia, pauzy i powrotu do stacji. Każda sugestia to zwykła konfiguracja Bubble Card pokazana jako podgląd na żywo, więc możesz wziąć tę najbliższą i edytować ją dalej jak zwykle.
-
-To, co zostanie zaproponowane, zależy od tego, co twoja encja naprawdę potrafi: światło bez kanału jasności dostaje przełącznik zamiast suwaka, roleta bez możliwości nachylenia nie dostaje wariantu nachylenia, a encja klimatyzacji dostaje swoje tryby predefiniowane tylko wtedy, gdy jakieś ma. Pod sugestiami Bubble Card, jeśli mają zastosowanie, znajdują się klasyczne pozycje: karta dedykowana temu typowi encji, zwykły przycisk i suwak.
-
-> [!TIP]
-> Moduły mogą dodawać do tej listy własne sugestie, zobacz [moduły](#moduły).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugestie encji
+
+Od Home Assistant 2026.6 wybranie encji w selektorze kart podpowiada kilka gotowych kart, a Bubble Card dodaje do tej listy własne przepisy. Wybierz światło, a otrzymasz kartę z suwakiem jasności, a także warianty temperatury barwowej, koloru i nasycenia, jeśli twoje światło je obsługuje. Wybierz roletę, a otrzymasz suwak jej pozycji, wybierz odtwarzacz mediów, a dostaniesz również wariant z listą źródeł, wybierz odkurzacz, a dostaniesz przyciski uruchomienia, pauzy i powrotu do stacji. Każda sugestia to zwykła konfiguracja Bubble Card pokazana jako podgląd na żywo, więc możesz wziąć tę najbliższą i edytować ją dalej jak zwykle.
+
+To, co zostanie zaproponowane, zależy od tego, co twoja encja naprawdę potrafi: światło bez kanału jasności dostaje przełącznik zamiast suwaka, roleta bez możliwości nachylenia nie dostaje wariantu nachylenia, a encja klimatyzacji dostaje swoje tryby predefiniowane tylko wtedy, gdy jakieś ma. Pod sugestiami Bubble Card, jeśli mają zastosowanie, znajdują się klasyczne pozycje: karta dedykowana temu typowi encji, zwykły przycisk i suwak.
+
+> [!TIP]
+> Moduły mogą dodawać do tej listy własne sugestie, zobacz [moduły](#moduły).
 
 <br>
 

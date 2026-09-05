@@ -18,7 +18,7 @@ Bubble Card on minimalistlik ja kohandatav kaartide kogu Home Assistant'i jaoks,
 
 ## Sisukord
 
-**[`Paigaldamine`](#paigaldamine)**  **[`Seadistamine`](#seadistamine)**  **[`Olemite soovitused`](#olemite-soovitused)**  **[`Hüpikaken`](#hüpikaken)**  **[`Horisontaalne nuppude virn`](#horisontaalne-nuppude-virn)**  **[`Nupp`](#nupp)**  **[`Meediumipleier`](#meediumipleier)**  **[`Kate`](#kate)**  **[`Valik`](#valik)**  **[`Kliimaseade`](#kliimaseade)**  **[`Kalender`](#kalender)**  **[`Eraldaja`](#eraldaja)**  **[`Tühi veerg`](#tühi-veerg)**  **[`Ainult alamnupud`](#ainult-alamnupud)**  **[`Alamnupud`](#alamnupud)**  **[`Kaardi paigutused`](#kaardi-paigutused)**  **[`Tingimused`](#tingimused)**  **[`Toimingud`](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud)**  **[`Stiilimine`](#stiilimine)**  **[`Mallid`](#mallid)**  **[`Moodulid`](#moodulid)**  **[`Lokaliseerimine`](#lokaliseerimine)**  **[`Abi`](#abi)**  **[`Panustamine`](#panustamine)**  **[`Anneta`](#anneta)**
+**[`Paigaldamine`](#paigaldamine)**  **[`Seadistamine`](#seadistamine)**  **[`Hüpikaken`](#hüpikaken)**  **[`Horisontaalne nuppude virn`](#horisontaalne-nuppude-virn)**  **[`Nupp`](#nupp)**  **[`Meediumipleier`](#meediumipleier)**  **[`Kate`](#kate)**  **[`Valik`](#valik)**  **[`Kliimaseade`](#kliimaseade)**  **[`Kalender`](#kalender)**  **[`Eraldaja`](#eraldaja)**  **[`Tühi veerg`](#tühi-veerg)**  **[`Ainult alamnupud`](#ainult-alamnupud)**  **[`Alamnupud`](#alamnupud)**  **[`Olemite soovitused`](#olemite-soovitused)**  **[`Kaardi paigutused`](#kaardi-paigutused)**  **[`Tingimused`](#tingimused)**  **[`Toimingud`](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud)**  **[`Stiilimine`](#stiilimine)**  **[`Mallid`](#mallid)**  **[`Moodulid`](#moodulid)**  **[`Lokaliseerimine`](#lokaliseerimine)**  **[`Abi`](#abi)**  **[`Panustamine`](#panustamine)**  **[`Anneta`](#anneta)**
 
 <br>
 
@@ -123,21 +123,6 @@ Kõiki valikuid saab seadistada Home Assistant'i redaktoris. Kuid allolevast dok
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Vaata seda [videot](https://www.youtube.com/watch?v=0hSQOlBxKKI), et tutvuda Bubble Card'i ja selle võimalustega.** Minu YouTube'i kanal on üsna uus ja keskendub Home Assistant'i ja Bubble Card'i õpetustele. Ära kõhkle tellimast, et aidata suurendada minu kanali nähtavust. Tänan juba ette!
-
-<br>
-
----
-
-<br>
-
-## Olemite soovitused
-
-Alates Home Assistant 2026.6-st pakub kaardivalija sulle mõned valmis kaardid, kui valid olemi, ja Bubble Card lisab sellesse loendisse oma retseptid. Vali valgusti ja sulle pakutakse kaarti heleduse liuguriga, lisaks värvitemperatuuri, värvi ja küllastuse variant, kui sinu valgusti neid toetab. Vali kate ja saad selle asendi liuguri, vali meediumipleier ja saad ka variandi selle allikate loendiga, vali tolmuimeja ja saad selle käivitamise, pausi ja dokki naasmise nupud. Iga soovitus on tavaline Bubble Cardi seadistus, mida näidatakse reaalajas eelvaates, nii et saad võtta lähima ja jätkata selle muutmist nagu ikka.
-
-See, mida sulle pakutakse, sõltub sellest, mida sinu olem tegelikult suudab: heleduskanalita valgusti saab liuguri asemel lüliti, kate, mis ei suuda kallutada, ei saa kaldevarianti, ja kliimaseadme olem saab oma eelseadistatud režiimid ainult siis, kui tal neid on. Klassikalised kirjed järgnevad Bubble Cardi soovituste all, kui need sobivad: sellele olemitüübile pühendatud kaart, tavaline nupp ja liugur.
-
-> [!TIP]
-> Moodulid võivad lisada sellesse loendisse oma soovitusi, vaata [mooduleid](#moodulid).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Olemite soovitused
+
+Alates Home Assistant 2026.6-st pakub kaardivalija sulle mõned valmis kaardid, kui valid olemi, ja Bubble Card lisab sellesse loendisse oma retseptid. Vali valgusti ja sulle pakutakse kaarti heleduse liuguriga, lisaks värvitemperatuuri, värvi ja küllastuse variant, kui sinu valgusti neid toetab. Vali kate ja saad selle asendi liuguri, vali meediumipleier ja saad ka variandi selle allikate loendiga, vali tolmuimeja ja saad selle käivitamise, pausi ja dokki naasmise nupud. Iga soovitus on tavaline Bubble Cardi seadistus, mida näidatakse reaalajas eelvaates, nii et saad võtta lähima ja jätkata selle muutmist nagu ikka.
+
+See, mida sulle pakutakse, sõltub sellest, mida sinu olem tegelikult suudab: heleduskanalita valgusti saab liuguri asemel lüliti, kate, mis ei suuda kallutada, ei saa kaldevarianti, ja kliimaseadme olem saab oma eelseadistatud režiimid ainult siis, kui tal neid on. Klassikalised kirjed järgnevad Bubble Cardi soovituste all, kui need sobivad: sellele olemitüübile pühendatud kaart, tavaline nupp ja liugur.
+
+> [!TIP]
+> Moodulid võivad lisada sellesse loendisse oma soovitusi, vaata [mooduleid](#moodulid).
 
 <br>
 

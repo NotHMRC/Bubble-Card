@@ -18,7 +18,7 @@ Bubble Card isch e minimalistischi und aapassbari Kartesammlig für Home Assista
 
 ## Inhaltsverzeichnis
 
-**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Entitäte-Vorschläg`](#entitäte-vorschläg)**  **[`Pop-up`](#pop-up)**  **[`Horizontale Button-Stapel`](#horizontale-button-stapel)**  **[`Button`](#button)**  **[`Mediaplayer`](#mediaplayer)**  **[`Storen`](#storen)**  **[`Uswahl`](#uswahl)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Trännlinie`](#trännlinie)**  **[`Leeri Spalte`](#leeri-spalte)**  **[`Nur Sub-Buttons`](#nur-sub-buttons)**  **[`Sub-Buttons`](#sub-buttons)**  **[`Charte-Layouts`](#charte-layouts)**  **[`Bedingige`](#bedingige)**  **[`Aktione`](#tippe--doppeltipp--und-halte-aktione)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Modul`](#module)**  **[`Lokalisierig`](#lokalisierig)**  **[`Hilf`](#hilf)**  **[`Mitmache`](#mitmache)**  **[`Spände`](#spände)**
+**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Pop-up`](#pop-up)**  **[`Horizontale Button-Stapel`](#horizontale-button-stapel)**  **[`Button`](#button)**  **[`Mediaplayer`](#mediaplayer)**  **[`Storen`](#storen)**  **[`Uswahl`](#uswahl)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Trännlinie`](#trännlinie)**  **[`Leeri Spalte`](#leeri-spalte)**  **[`Nur Sub-Buttons`](#nur-sub-buttons)**  **[`Sub-Buttons`](#sub-buttons)**  **[`Entitäte-Vorschläg`](#entitäte-vorschläg)**  **[`Charte-Layouts`](#charte-layouts)**  **[`Bedingige`](#bedingige)**  **[`Aktione`](#tippe--doppeltipp--und-halte-aktione)**  **[`Styling`](#styling)**  **[`Templates`](#templates)**  **[`Modul`](#module)**  **[`Lokalisierig`](#lokalisierig)**  **[`Hilf`](#hilf)**  **[`Mitmache`](#mitmache)**  **[`Spände`](#spände)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alli Optione chasch im Home Assistant Editor konfiguriere. Aber du findsch meh D
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Lueg dir das [Video](https://www.youtube.com/watch?v=0hSQOlBxKKI) aa, zum meh über Bubble Card und sini Möglichkeite z erfahre.** Mi YouTube-Kanal isch na relativ neu und konzentriert sich uf Tutorials über Home Assistant und Bubble Card. Zögere nid, en z abonniere, zum d Sichtbarkeit vo mim Kanal z erhöhe. Danke scho jetzt!
-
-<br>
-
----
-
-<br>
-
-## Entitäte-Vorschläg
-
-Sit Home Assistant 2026.6 wird dir bim Uswähle vo ere Entität im Charte-Uswähler es paar fertigi Charte aabote, und Bubble Card tuet sini eigene Rezäpt zu dere Lischte dezue. Wähl es Liecht us und du übercho es Charte mit eme Helligkeits-Schieberegler, plus e Farbtemperatur-, e Farb- und e Sättigungsvariante, wenn dis Liecht die unterstützt. Wähl e Store us und du übercho ihre Positions-Schieberegler, wähl en Mediaplayer us und du übercho au e Variante mit sinere Quelleliste, wähl en Staubsuger us und du übercho sini Buttons Start, Pause und Zrugg zur Basis. Jede Vorschlag isch e normali Bubble Card-Konfiguration, wo als Live-Vorschau azeigt wird, drum chasch de nächschti neh und wie gwohnt witer bearbeite.
-
-Was dir aabote wird, hanget dervo ab, was dini Entität würklich cha: es Liecht ohni Helligkeitskanal übercho en Schalter statt en Schieberegler, e Store wo nöd chippe cha übercho kei Chippvariante, e Klima-Entität übercho ihri voreigstellte Modi nur, wenn si sonigi het. D klassische Iiträg chömed under de Bubble Card-Vorschläg, wenn si passe: s eigene Charte für die Art vo Entität, en eifache Button und en Schieberegler.
-
-> [!TIP]
-> Module chönd ihri eigene Vorschläg zu dere Lischte hinzuefüege, lueg [Module](#module).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitäte-Vorschläg
+
+Sit Home Assistant 2026.6 wird dir bim Uswähle vo ere Entität im Charte-Uswähler es paar fertigi Charte aabote, und Bubble Card tuet sini eigene Rezäpt zu dere Lischte dezue. Wähl es Liecht us und du übercho es Charte mit eme Helligkeits-Schieberegler, plus e Farbtemperatur-, e Farb- und e Sättigungsvariante, wenn dis Liecht die unterstützt. Wähl e Store us und du übercho ihre Positions-Schieberegler, wähl en Mediaplayer us und du übercho au e Variante mit sinere Quelleliste, wähl en Staubsuger us und du übercho sini Buttons Start, Pause und Zrugg zur Basis. Jede Vorschlag isch e normali Bubble Card-Konfiguration, wo als Live-Vorschau azeigt wird, drum chasch de nächschti neh und wie gwohnt witer bearbeite.
+
+Was dir aabote wird, hanget dervo ab, was dini Entität würklich cha: es Liecht ohni Helligkeitskanal übercho en Schalter statt en Schieberegler, e Store wo nöd chippe cha übercho kei Chippvariante, e Klima-Entität übercho ihri voreigstellte Modi nur, wenn si sonigi het. D klassische Iiträg chömed under de Bubble Card-Vorschläg, wenn si passe: s eigene Charte für die Art vo Entität, en eifache Button und en Schieberegler.
+
+> [!TIP]
+> Module chönd ihri eigene Vorschläg zu dere Lischte hinzuefüege, lueg [Module](#module).
 
 <br>
 

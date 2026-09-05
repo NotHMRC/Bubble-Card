@@ -18,7 +18,7 @@ Bubble Card er ei minimalistisk og tilpassbar kortsamling for Home Assistant, me
 
 ## Innhaldsliste
 
-**[`Installasjon`](#installasjon)**  **[`Konfigurasjon`](#konfigurasjon)**  **[`Entitetsforslag`](#entitetsforslag)**  **[`Pop-up`](#pop-up)**  **[`Horisontal knapperad`](#horisontal-knapperad)**  **[`Knapp`](#knapp)**  **[`Mediespelar`](#mediespelar)**  **[`Gardin`](#gardin)**  **[`Select`](#select)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Skiljeteikn`](#skiljeteikn)**  **[`Tom kolonne`](#tom-kolonne)**  **[`Berre underknappar`](#berre-underknappar)**  **[`Underknappar`](#underknappar)**  **[`Kortoppsett`](#kortoppsett)**  **[`Vilkår`](#vilkår)**  **[`Handlingar`](#trykk--dobbelttrykk--og-haldhandlingar)**  **[`Styling`](#styling)**  **[`Malar`](#malar)**  **[`Modular`](#modular)**  **[`Lokalisering`](#lokalisering)**  **[`Hjelp`](#hjelp)**  **[`Bidra`](#bidra)**  **[`Doner`](#doner)**
+**[`Installasjon`](#installasjon)**  **[`Konfigurasjon`](#konfigurasjon)**  **[`Pop-up`](#pop-up)**  **[`Horisontal knapperad`](#horisontal-knapperad)**  **[`Knapp`](#knapp)**  **[`Mediespelar`](#mediespelar)**  **[`Gardin`](#gardin)**  **[`Select`](#select)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Skiljeteikn`](#skiljeteikn)**  **[`Tom kolonne`](#tom-kolonne)**  **[`Berre underknappar`](#berre-underknappar)**  **[`Underknappar`](#underknappar)**  **[`Entitetsforslag`](#entitetsforslag)**  **[`Kortoppsett`](#kortoppsett)**  **[`Vilkår`](#vilkår)**  **[`Handlingar`](#trykk--dobbelttrykk--og-haldhandlingar)**  **[`Styling`](#styling)**  **[`Malar`](#malar)**  **[`Modular`](#modular)**  **[`Lokalisering`](#lokalisering)**  **[`Hjelp`](#hjelp)**  **[`Bidra`](#bidra)**  **[`Doner`](#doner)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alle val kan setjast opp i Home Assistant-editoren. Men du finn fleire detaljar 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Ta ein kikk på denne [videoen](https://www.youtube.com/watch?v=0hSQOlBxKKI) for å lære om Bubble Card og kva han kan gjere.** YouTube-kanalen min er ganske ny og fokuserer på opplæringsvideoar om Home Assistant og Bubble Card. Ikkje nøl med å abonnere for å hjelpe kanalen min med å bli meir synleg. Takk på førehand!
-
-<br>
-
----
-
-<br>
-
-## Entitetsforslag
-
-Frå og med Home Assistant 2026.6 gjev det å velje ei eining i kortveljaren deg nokre ferdige kort, og Bubble Card legg sine eigne oppskrifter til i den lista. Vel eit lys, og du får eit kort med ein lysstyrkeglidebrytar, i tillegg til ein variant for fargetemperatur, farge og metting når lyset ditt støttar det. Vel ei gardin, og du får posisjonsglidebrytaren, vel ein mediespelar, og du får òg ein variant med kjeldelista, vel ein støvsugar, og du får knappane for start, pause og dokking. Kvart forslag er ein heilt vanleg Bubble Card-konfigurasjon vist som direkte førehandsvising, så du kan ta det som ligg nærast og redigere vidare som vanleg.
-
-Kva du får tilbode, kjem an på kva eininga di faktisk kan: eit lys utan lysstyrkekanal får ein brytar i staden for ein glidebrytar, ei gardin som ikkje kan vinklast får ingen vinkelvariant, og ei klimaeining får førehandsinnstillingane sine berre når ho har nokon. Dei klassiske oppføringane følgjer under Bubble Card-forslaga når dei er aktuelle: kortet som høyrer til den entitetstypen, ein enkel knapp og ein glidebrytar.
-
-> [!TIP]
-> Modular kan leggje sine eigne forslag til den lista, sjå [modular](#modular).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitetsforslag
+
+Frå og med Home Assistant 2026.6 gjev det å velje ei eining i kortveljaren deg nokre ferdige kort, og Bubble Card legg sine eigne oppskrifter til i den lista. Vel eit lys, og du får eit kort med ein lysstyrkeglidebrytar, i tillegg til ein variant for fargetemperatur, farge og metting når lyset ditt støttar det. Vel ei gardin, og du får posisjonsglidebrytaren, vel ein mediespelar, og du får òg ein variant med kjeldelista, vel ein støvsugar, og du får knappane for start, pause og dokking. Kvart forslag er ein heilt vanleg Bubble Card-konfigurasjon vist som direkte førehandsvising, så du kan ta det som ligg nærast og redigere vidare som vanleg.
+
+Kva du får tilbode, kjem an på kva eininga di faktisk kan: eit lys utan lysstyrkekanal får ein brytar i staden for ein glidebrytar, ei gardin som ikkje kan vinklast får ingen vinkelvariant, og ei klimaeining får førehandsinnstillingane sine berre når ho har nokon. Dei klassiske oppføringane følgjer under Bubble Card-forslaga når dei er aktuelle: kortet som høyrer til den entitetstypen, ein enkel knapp og ein glidebrytar.
+
+> [!TIP]
+> Modular kan leggje sine eigne forslag til den lista, sjå [modular](#modular).
 
 <br>
 

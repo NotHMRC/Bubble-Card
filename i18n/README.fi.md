@@ -18,7 +18,7 @@ Bubble Card on minimalistinen ja muokattava korttikokoelma Home Assistantiin, jo
 
 ## Sisällysluettelo
 
-**[`Asennus`](#asennus)**  **[`Määritykset`](#määritykset)**  **[`Entiteettiehdotukset`](#entiteettiehdotukset)**  **[`Ponnahdusikkuna`](#ponnahdusikkuna)**  **[`Vaakasuora painikepino`](#vaakasuora-painikepino)**  **[`Painike`](#painike)**  **[`Mediasoitin`](#mediasoitin)**  **[`Kaihdin`](#kaihdin)**  **[`Valinta`](#valinta)**  **[`Ilmastointi`](#ilmastointi)**  **[`Kalenteri`](#kalenteri)**  **[`Erotin`](#erotin)**  **[`Tyhjä sarake`](#tyhjä-sarake)**  **[`Vain alipainikkeet`](#vain-alipainikkeet)**  **[`Alipainikkeet`](#alipainikkeet)**  **[`Korttien asettelut`](#korttien-asettelut)**  **[`Ehdot`](#ehdot)**  **[`Napautuksen, kaksoisnapautuksen ja pitkän painalluksen toiminnot`](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot)**  **[`Tyylit`](#tyylit)**  **[`Mallit`](#mallit)**  **[`Moduulit`](#moduulit)**  **[`Lokalisointi`](#lokalisointi)**  **[`Ohje`](#ohje)**  **[`Osallistuminen`](#osallistuminen)**  **[`Lahjoita`](#lahjoita)**
+**[`Asennus`](#asennus)**  **[`Määritykset`](#määritykset)**  **[`Ponnahdusikkuna`](#ponnahdusikkuna)**  **[`Vaakasuora painikepino`](#vaakasuora-painikepino)**  **[`Painike`](#painike)**  **[`Mediasoitin`](#mediasoitin)**  **[`Kaihdin`](#kaihdin)**  **[`Valinta`](#valinta)**  **[`Ilmastointi`](#ilmastointi)**  **[`Kalenteri`](#kalenteri)**  **[`Erotin`](#erotin)**  **[`Tyhjä sarake`](#tyhjä-sarake)**  **[`Vain alipainikkeet`](#vain-alipainikkeet)**  **[`Alipainikkeet`](#alipainikkeet)**  **[`Entiteettiehdotukset`](#entiteettiehdotukset)**  **[`Korttien asettelut`](#korttien-asettelut)**  **[`Ehdot`](#ehdot)**  **[`Napautuksen, kaksoisnapautuksen ja pitkän painalluksen toiminnot`](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot)**  **[`Tyylit`](#tyylit)**  **[`Mallit`](#mallit)**  **[`Moduulit`](#moduulit)**  **[`Lokalisointi`](#lokalisointi)**  **[`Ohje`](#ohje)**  **[`Osallistuminen`](#osallistuminen)**  **[`Lahjoita`](#lahjoita)**
 
 <br>
 
@@ -123,21 +123,6 @@ Kaikki asetukset voi määrittää Home Assistantin editorissa. Voit kuitenkin l
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Katso tämä [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) oppiaksesi lisää Bubble Cardista ja sen ominaisuuksista.** YouTube-kanavani on melko uusi ja keskittyy Home Assistantia ja Bubble Cardia käsitteleviin oppaisiin. Älä epäröi tilata kanavaani auttaaksesi sen näkyvyyden kasvattamisessa. Kiitos etukäteen!
-
-<br>
-
----
-
-<br>
-
-## Entiteettiehdotukset
-
-Home Assistant 2026.6:sta lähtien entiteetin valitseminen korttivalitsimessa tarjoaa sinulle muutaman valmiin kortin, ja Bubble Card lisää tuohon luetteloon omat reseptinsä. Valitse valaisin, niin saat kortin kirkkaudensäätimellä, sekä värilämpötila-, väri- ja kylläisyysvariantit silloin kun valaisimesi tukee niitä. Valitse kaihdin, niin saat sen sijaintiliukusäätimen, valitse mediasoitin, niin saat myös variantin sen lähdeluettelolla, valitse pölynimuri, niin saat sen käynnistys-, tauko- ja telakointipainikkeet. Jokainen ehdotus on tavallinen Bubble Card -määritys, joka näytetään live-esikatseluna, joten voit ottaa lähimmän ja jatkaa sen muokkaamista tavalliseen tapaan.
-
-Se, mitä sinulle tarjotaan, riippuu siitä, mihin entiteettisi todella pystyy: valaisin ilman kirkkauskanavaa saa kytkimen liukusäätimen sijaan, kaihdin joka ei kallistu ei saa kallistusvarianttia, ilmastointientiteetti saa esiasetetut tilansa vain jos sillä on niitä. Klassiset vaihtoehdot seuraavat Bubble Cardin ehdotusten alapuolella silloin kun ne soveltuvat: kyseiselle entiteettityypille omistettu kortti, tavallinen painike ja liukusäädin.
-
-> [!TIP]
-> Moduulit voivat lisätä omat ehdotuksensa tuohon luetteloon, katso [moduulit](#moduulit).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entiteettiehdotukset
+
+Home Assistant 2026.6:sta lähtien entiteetin valitseminen korttivalitsimessa tarjoaa sinulle muutaman valmiin kortin, ja Bubble Card lisää tuohon luetteloon omat reseptinsä. Valitse valaisin, niin saat kortin kirkkaudensäätimellä, sekä värilämpötila-, väri- ja kylläisyysvariantit silloin kun valaisimesi tukee niitä. Valitse kaihdin, niin saat sen sijaintiliukusäätimen, valitse mediasoitin, niin saat myös variantin sen lähdeluettelolla, valitse pölynimuri, niin saat sen käynnistys-, tauko- ja telakointipainikkeet. Jokainen ehdotus on tavallinen Bubble Card -määritys, joka näytetään live-esikatseluna, joten voit ottaa lähimmän ja jatkaa sen muokkaamista tavalliseen tapaan.
+
+Se, mitä sinulle tarjotaan, riippuu siitä, mihin entiteettisi todella pystyy: valaisin ilman kirkkauskanavaa saa kytkimen liukusäätimen sijaan, kaihdin joka ei kallistu ei saa kallistusvarianttia, ilmastointientiteetti saa esiasetetut tilansa vain jos sillä on niitä. Klassiset vaihtoehdot seuraavat Bubble Cardin ehdotusten alapuolella silloin kun ne soveltuvat: kyseiselle entiteettityypille omistettu kortti, tavallinen painike ja liukusäädin.
+
+> [!TIP]
+> Moduulit voivat lisätä omat ehdotuksensa tuohon luetteloon, katso [moduulit](#moduulit).
 
 <br>
 

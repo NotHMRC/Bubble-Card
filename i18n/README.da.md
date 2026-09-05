@@ -18,7 +18,7 @@ Bubble Card er en minimalistisk og tilpasselig kortsamling til Home Assistant, m
 
 ## Indholdsfortegnelse
 
-**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Entitetsforslag`](#entitetsforslag)**  **[`Pop-up`](#pop-up)**  **[`Vandret knaprække`](#vandret-knaprække)**  **[`Knap`](#knap)**  **[`Medieafspiller`](#medieafspiller)**  **[`Gardin`](#gardin)**  **[`Vælg`](#vælg)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Separator`](#separator)**  **[`Tom kolonne`](#tom-kolonne)**  **[`Kun underknapper`](#kun-underknapper)**  **[`Underknapper`](#underknapper)**  **[`Kortlayouts`](#kortlayouts)**  **[`Betingelser`](#betingelser)**  **[`Handlinger`](#tryk--dobbelttryk--og-holdehandlinger)**  **[`Styling`](#styling)**  **[`Skabeloner`](#skabeloner)**  **[`Modules`](#modules)**  **[`Lokalisering`](#lokalisering)**  **[`Hjælp`](#hjælp)**  **[`Bidrag`](#bidrag)**  **[`Donér`](#donér)**
+**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Pop-up`](#pop-up)**  **[`Vandret knaprække`](#vandret-knaprække)**  **[`Knap`](#knap)**  **[`Medieafspiller`](#medieafspiller)**  **[`Gardin`](#gardin)**  **[`Vælg`](#vælg)**  **[`Klima`](#klima)**  **[`Kalender`](#kalender)**  **[`Separator`](#separator)**  **[`Tom kolonne`](#tom-kolonne)**  **[`Kun underknapper`](#kun-underknapper)**  **[`Underknapper`](#underknapper)**  **[`Entitetsforslag`](#entitetsforslag)**  **[`Kortlayouts`](#kortlayouts)**  **[`Betingelser`](#betingelser)**  **[`Handlinger`](#tryk--dobbelttryk--og-holdehandlinger)**  **[`Styling`](#styling)**  **[`Skabeloner`](#skabeloner)**  **[`Modules`](#modules)**  **[`Lokalisering`](#lokalisering)**  **[`Hjælp`](#hjælp)**  **[`Bidrag`](#bidrag)**  **[`Donér`](#donér)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alle indstillinger kan konfigureres i Home Assistant-editoren. Men du kan finde 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Se denne [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) for at lære om Bubble Card og dens muligheder.** Min YouTube-kanal er ret ny og fokuserer på tutorials om Home Assistant og Bubble Card. Du er meget velkommen til at abonnere for at hjælpe med at øge min kanals synlighed. Tak på forhånd!
-
-<br>
-
----
-
-<br>
-
-## Entitetsforslag
-
-Siden Home Assistant 2026.6 tilbyder kortvælgeren dig et par færdige kort, når du vælger en entitet, og Bubble Card tilføjer sine egne opskrifter til den liste. Vælg et lys, og du får tilbudt et kort med en lysstyrkeskyder, plus en variant med farvetemperatur, en med farve og en med mætning, når dit lys understøtter dem. Vælg et gardin, og du får skyderen til dets position, vælg en medieafspiller, og du får også en variant med dens kildeliste, vælg en støvsuger, og du får dens knapper til start, pause og retur til dock. Hvert forslag er en almindelig Bubble Card-konfiguration vist som en live forhåndsvisning, så du kan tage den nærmeste og redigere videre på den som sædvanlig.
-
-Hvad du får tilbudt, afhænger af, hvad din entitet faktisk kan: et lys uden lysstyrkekanal får en kontakt i stedet for en skyder, et gardin, der ikke kan vippe, får ingen vippevariant, og en klimaentitet får kun sine forudindstillinger, når den har nogle. De klassiske punkter følger under Bubble Card-forslagene, når de giver mening: kortet dedikeret til den entitetstype, en almindelig knap og en skyder.
-
-> [!TIP]
-> Modules kan tilføje deres egne forslag til den liste, se [Modules](#modules).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitetsforslag
+
+Siden Home Assistant 2026.6 tilbyder kortvælgeren dig et par færdige kort, når du vælger en entitet, og Bubble Card tilføjer sine egne opskrifter til den liste. Vælg et lys, og du får tilbudt et kort med en lysstyrkeskyder, plus en variant med farvetemperatur, en med farve og en med mætning, når dit lys understøtter dem. Vælg et gardin, og du får skyderen til dets position, vælg en medieafspiller, og du får også en variant med dens kildeliste, vælg en støvsuger, og du får dens knapper til start, pause og retur til dock. Hvert forslag er en almindelig Bubble Card-konfiguration vist som en live forhåndsvisning, så du kan tage den nærmeste og redigere videre på den som sædvanlig.
+
+Hvad du får tilbudt, afhænger af, hvad din entitet faktisk kan: et lys uden lysstyrkekanal får en kontakt i stedet for en skyder, et gardin, der ikke kan vippe, får ingen vippevariant, og en klimaentitet får kun sine forudindstillinger, når den har nogle. De klassiske punkter følger under Bubble Card-forslagene, når de giver mening: kortet dedikeret til den entitetstype, en almindelig knap og en skyder.
+
+> [!TIP]
+> Modules kan tilføje deres egne forslag til den liste, se [Modules](#modules).
 
 <br>
 

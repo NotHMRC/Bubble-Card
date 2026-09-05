@@ -18,7 +18,7 @@ Bubble Card is in minimalistyske en oanpasbere kaartkolleksje foar Home Assistan
 
 ## Ynhâldsopjefte
 
-**[`Ynstallaasje`](#ynstallaasje)**  **[`Konfiguraasje`](#konfiguraasje)**  **[`Entiteitsuggestjes`](#entiteitsuggestjes)**  **[`Pop-up`](#pop-up)**  **[`Horizontale knoppenstack`](#horizontale-knoppenstack)**  **[`Knop`](#knop)**  **[`Mediaspiler`](#mediaspiler)**  **[`Sinneskerm`](#sinneskerm)**  **[`Seleksje`](#seleksje)**  **[`Klimaat`](#klimaat)**  **[`Aginda`](#aginda)**  **[`Skiedingsline`](#skiedingsline)**  **[`Lege kolom`](#lege-kolom)**  **[`Allinnich subknoppen`](#allinnich-subknoppen)**  **[`Subknoppen`](#subknoppen)**  **[`Kaartyndielingen`](#kaartyndielingen)**  **[`Betingsten`](#betingsten)**  **[`Aksjes`](#tik--dûbeltik--en-fêsthâldaksjes)**  **[`Styling`](#styling)**  **[`Sjabloanen`](#sjabloanen)**  **[`Modules`](#modules)**  **[`Lokalisaasje`](#lokalisaasje)**  **[`Help`](#help)**  **[`Bydrage`](#bydrage)**  **[`Donearje`](#donearje)**
+**[`Ynstallaasje`](#ynstallaasje)**  **[`Konfiguraasje`](#konfiguraasje)**  **[`Pop-up`](#pop-up)**  **[`Horizontale knoppenstack`](#horizontale-knoppenstack)**  **[`Knop`](#knop)**  **[`Mediaspiler`](#mediaspiler)**  **[`Sinneskerm`](#sinneskerm)**  **[`Seleksje`](#seleksje)**  **[`Klimaat`](#klimaat)**  **[`Aginda`](#aginda)**  **[`Skiedingsline`](#skiedingsline)**  **[`Lege kolom`](#lege-kolom)**  **[`Allinnich subknoppen`](#allinnich-subknoppen)**  **[`Subknoppen`](#subknoppen)**  **[`Entiteitsuggestjes`](#entiteitsuggestjes)**  **[`Kaartyndielingen`](#kaartyndielingen)**  **[`Betingsten`](#betingsten)**  **[`Aksjes`](#tik--dûbeltik--en-fêsthâldaksjes)**  **[`Styling`](#styling)**  **[`Sjabloanen`](#sjabloanen)**  **[`Modules`](#modules)**  **[`Lokalisaasje`](#lokalisaasje)**  **[`Help`](#help)**  **[`Bydrage`](#bydrage)**  **[`Donearje`](#donearje)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alle opsjes kinne yn de Home Assistant-bewurker ynsteld wurde. Mar hjirûnder yn
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Besjoch dizze [fideo](https://www.youtube.com/watch?v=0hSQOlBxKKI) om mear te learen oer Bubble Card en syn mooglikheden.** Myn YouTube-kanaal is noch frij nij en rjochtet him op tutorials oer Home Assistant en Bubble Card. Skromje net om dy te abonnearjen, dat helpt om de sichtberheid fan myn kanaal te fergrutsjen. Alfêst tank!
-
-<br>
-
----
-
-<br>
-
-## Entiteitsuggestjes
-
-Sûnt Home Assistant 2026.6 krijst by it kiezen fan in entiteit yn de kaartkiezer in pear kant-en-klare kaarten oanbean, en Bubble Card foeget syn eigen resepten oan dy list ta. Kies in ljocht en dy krijst in kaart mei in helderheidsskúfregeler oanbean, plus in kleurtemperatuer-, in kleur- en in fersadigingsfariant as dyn ljocht dy stipet. Kies in sinneskerm en dû krigest de posysjeskúfregeler, kies in mediaspiler en dû krigest ek in fariant mei syn boarnelist, kies in stofsûger en dû krigest de knoppen starte, pauzearje en werom nei it dok. Elke suggestje is in gewoane Bubble Card-konfiguraasje dy't as live foarbyld toand wurdt, dus dû kinst dejinge nimme dy't it tichtst by komt en dy gewoan fierder bewurkje.
-
-Wat oanbean wurdt hinget ôf fan wat dyn entiteit werklik kin: in ljocht sûnder helderheidskanaal krijt in skeakelder ynstee fan in skúfregeler, in sinneskerm dat net kantelje kin krijt gjin kantelfariant, in klimaatentiteit krijt syn foarynstelde modi allinnich as dy der binne. De klassike opsjes folgje ûnder de Bubble Card-suggestjes as se fan tapassing binne: de kaart foar dat type entiteit, in gewoane knop en in skúfregeler.
-
-> [!TIP]
-> Modules kinne har eigen suggestjes oan dy list tafoegje, sjoch [modules](#modules).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entiteitsuggestjes
+
+Sûnt Home Assistant 2026.6 krijst by it kiezen fan in entiteit yn de kaartkiezer in pear kant-en-klare kaarten oanbean, en Bubble Card foeget syn eigen resepten oan dy list ta. Kies in ljocht en dy krijst in kaart mei in helderheidsskúfregeler oanbean, plus in kleurtemperatuer-, in kleur- en in fersadigingsfariant as dyn ljocht dy stipet. Kies in sinneskerm en dû krigest de posysjeskúfregeler, kies in mediaspiler en dû krigest ek in fariant mei syn boarnelist, kies in stofsûger en dû krigest de knoppen starte, pauzearje en werom nei it dok. Elke suggestje is in gewoane Bubble Card-konfiguraasje dy't as live foarbyld toand wurdt, dus dû kinst dejinge nimme dy't it tichtst by komt en dy gewoan fierder bewurkje.
+
+Wat oanbean wurdt hinget ôf fan wat dyn entiteit werklik kin: in ljocht sûnder helderheidskanaal krijt in skeakelder ynstee fan in skúfregeler, in sinneskerm dat net kantelje kin krijt gjin kantelfariant, in klimaatentiteit krijt syn foarynstelde modi allinnich as dy der binne. De klassike opsjes folgje ûnder de Bubble Card-suggestjes as se fan tapassing binne: de kaart foar dat type entiteit, in gewoane knop en in skúfregeler.
+
+> [!TIP]
+> Modules kinne har eigen suggestjes oan dy list tafoegje, sjoch [modules](#modules).
 
 <br>
 

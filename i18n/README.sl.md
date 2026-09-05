@@ -18,7 +18,7 @@ Bubble Card je minimalistična in prilagodljiva zbirka kartic za Home Assistant,
 
 ## Kazalo vsebine
 
-**[`Namestitev`](#namestitev)**  **[`Konfiguracija`](#konfiguracija)**  **[`Predlogi za entitete`](#predlogi-za-entitete)**  **[`Pojavno okno`](#pojavno-okno)**  **[`Vodoravni sklad gumbov`](#vodoravni-sklad-gumbov)**  **[`Gumb`](#gumb)**  **[`Predvajalnik medijev`](#predvajalnik-medijev)**  **[`Senčilo`](#senčilo)**  **[`Select`](#select)**  **[`Klimatska naprava`](#klimatska-naprava)**  **[`Koledar`](#koledar)**  **[`Ločilo`](#ločilo)**  **[`Prazen stolpec`](#prazen-stolpec)**  **[`Samo podgumbi`](#samo-podgumbi)**  **[`Podgumbi`](#podgumbi)**  **[`Postavitve kartic`](#postavitve-kartic)**  **[`Pogoji`](#pogoji)**  **[`Dejanja`](#dejanja-dotika-dvojnega-dotika-in-zadržanja)**  **[`Oblikovanje`](#oblikovanje)**  **[`Predloge`](#predloge)**  **[`Moduli`](#moduli)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pomoč`](#pomoč)**  **[`Prispevanje`](#prispevanje)**  **[`Donirajte`](#donirajte)**
+**[`Namestitev`](#namestitev)**  **[`Konfiguracija`](#konfiguracija)**  **[`Pojavno okno`](#pojavno-okno)**  **[`Vodoravni sklad gumbov`](#vodoravni-sklad-gumbov)**  **[`Gumb`](#gumb)**  **[`Predvajalnik medijev`](#predvajalnik-medijev)**  **[`Senčilo`](#senčilo)**  **[`Select`](#select)**  **[`Klimatska naprava`](#klimatska-naprava)**  **[`Koledar`](#koledar)**  **[`Ločilo`](#ločilo)**  **[`Prazen stolpec`](#prazen-stolpec)**  **[`Samo podgumbi`](#samo-podgumbi)**  **[`Podgumbi`](#podgumbi)**  **[`Predlogi za entitete`](#predlogi-za-entitete)**  **[`Postavitve kartic`](#postavitve-kartic)**  **[`Pogoji`](#pogoji)**  **[`Dejanja`](#dejanja-dotika-dvojnega-dotika-in-zadržanja)**  **[`Oblikovanje`](#oblikovanje)**  **[`Predloge`](#predloge)**  **[`Moduli`](#moduli)**  **[`Lokalizacija`](#lokalizacija)**  **[`Pomoč`](#pomoč)**  **[`Prispevanje`](#prispevanje)**  **[`Donirajte`](#donirajte)**
 
 <br>
 
@@ -123,21 +123,6 @@ Vse možnosti lahko nastavite v urejevalniku Home Assistant. Podrobnosti in YAML
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Oglejte si ta [videoposnetek](https://www.youtube.com/watch?v=0hSQOlBxKKI), da spoznate Bubble Card in njegove zmožnosti.** Moj kanal YouTube je precej nov in se osredotoča na vodnike o Home Assistant in Bubble Card. Ne oklevajte in se naročite, s tem mi pomagate povečati prepoznavnost kanala. Najlepša hvala vnaprej!
-
-<br>
-
----
-
-<br>
-
-## Predlogi za entitete
-
-Od Home Assistant 2026.6 vam izbira entitete v izbirniku kartic ponudi nekaj že pripravljenih kartic, Bubble Card pa temu seznamu dodaja svoje recepte. Izberite luč in ponujena vam bo kartica z drsnikom svetlosti, poleg tega pa še različica s temperaturo barve, različica z barvo in različica z nasičenostjo, kadar jih vaša luč podpira. Izberite senčilo in dobite njegov drsnik položaja, izberite predvajalnik medijev in dobite tudi različico s seznamom virov, izberite sesalnik in dobite njegove gumbe za zagon, premor in vrnitev na postajo. Vsak predlog je običajna konfiguracija Bubble Card, prikazana kot predogled v živo, tako da lahko vzamete najbližjega in ga urejate naprej kot običajno.
-
-Kaj vam je ponujeno, je odvisno od tega, kaj vaša entiteta v resnici zmore: luč brez kanala svetlosti dobi stikalo namesto drsnika, senčilo, ki se ne more nagibati, ne dobi različice z nagibom, entiteta klimatske naprave pa dobi svoje prednastavljene načine samo takrat, ko jih ima. Klasični vnosi sledijo pod predlogi Bubble Card, kadar so smiselni: kartica, namenjena temu tipu entitete, preprost gumb in drsnik.
-
-> [!TIP]
-> Moduli lahko na ta seznam dodajo svoje predloge, glejte [module](#moduli).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Predlogi za entitete
+
+Od Home Assistant 2026.6 vam izbira entitete v izbirniku kartic ponudi nekaj že pripravljenih kartic, Bubble Card pa temu seznamu dodaja svoje recepte. Izberite luč in ponujena vam bo kartica z drsnikom svetlosti, poleg tega pa še različica s temperaturo barve, različica z barvo in različica z nasičenostjo, kadar jih vaša luč podpira. Izberite senčilo in dobite njegov drsnik položaja, izberite predvajalnik medijev in dobite tudi različico s seznamom virov, izberite sesalnik in dobite njegove gumbe za zagon, premor in vrnitev na postajo. Vsak predlog je običajna konfiguracija Bubble Card, prikazana kot predogled v živo, tako da lahko vzamete najbližjega in ga urejate naprej kot običajno.
+
+Kaj vam je ponujeno, je odvisno od tega, kaj vaša entiteta v resnici zmore: luč brez kanala svetlosti dobi stikalo namesto drsnika, senčilo, ki se ne more nagibati, ne dobi različice z nagibom, entiteta klimatske naprave pa dobi svoje prednastavljene načine samo takrat, ko jih ima. Klasični vnosi sledijo pod predlogi Bubble Card, kadar so smiselni: kartica, namenjena temu tipu entitete, preprost gumb in drsnik.
+
+> [!TIP]
+> Moduli lahko na ta seznam dodajo svoje predloge, glejte [module](#moduli).
 
 <br>
 

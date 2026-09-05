@@ -18,7 +18,7 @@ Bubble Card je minimalistická a přizpůsobitelná kolekce karet pro Home Assis
 
 ## Obsah
 
-**[`Instalace`](#instalace)**  **[`Konfigurace`](#konfigurace)**  **[`Návrhy entit`](#návrhy-entit)**  **[`Pop-up`](#pop-up)**  **[`Horizontální zásobník tlačítek`](#horizontální-zásobník-tlačítek)**  **[`Tlačítko`](#tlačítko)**  **[`Přehrávač médií`](#přehrávač-médií)**  **[`Rolety`](#rolety)**  **[`Select`](#select)**  **[`Klimatizace`](#klimatizace)**  **[`Kalendář`](#kalendář)**  **[`Oddělovač`](#oddělovač)**  **[`Prázdný sloupec`](#prázdný-sloupec)**  **[`Pouze podtlačítka`](#pouze-podtlačítka)**  **[`Podtlačítka`](#podtlačítka)**  **[`Rozvržení karet`](#rozvržení-karet)**  **[`Podmínky`](#podmínky)**  **[`Akce`](#akce-klepnutí-dvojitého-klepnutí-a-podržení)**  **[`Styly`](#styly)**  **[`Šablony`](#šablony)**  **[`Moduly`](#moduly)**  **[`Lokalizace`](#lokalizace)**  **[`Pomoc`](#pomoc)**  **[`Přispívání`](#přispívání)**  **[`Podpořte projekt`](#podpořte-projekt)**
+**[`Instalace`](#instalace)**  **[`Konfigurace`](#konfigurace)**  **[`Pop-up`](#pop-up)**  **[`Horizontální zásobník tlačítek`](#horizontální-zásobník-tlačítek)**  **[`Tlačítko`](#tlačítko)**  **[`Přehrávač médií`](#přehrávač-médií)**  **[`Rolety`](#rolety)**  **[`Select`](#select)**  **[`Klimatizace`](#klimatizace)**  **[`Kalendář`](#kalendář)**  **[`Oddělovač`](#oddělovač)**  **[`Prázdný sloupec`](#prázdný-sloupec)**  **[`Pouze podtlačítka`](#pouze-podtlačítka)**  **[`Podtlačítka`](#podtlačítka)**  **[`Návrhy entit`](#návrhy-entit)**  **[`Rozvržení karet`](#rozvržení-karet)**  **[`Podmínky`](#podmínky)**  **[`Akce`](#akce-klepnutí-dvojitého-klepnutí-a-podržení)**  **[`Styly`](#styly)**  **[`Šablony`](#šablony)**  **[`Moduly`](#moduly)**  **[`Lokalizace`](#lokalizace)**  **[`Pomoc`](#pomoc)**  **[`Přispívání`](#přispívání)**  **[`Podpořte projekt`](#podpořte-projekt)**
 
 <br>
 
@@ -123,21 +123,6 @@ Všechny možnosti lze nastavit v editoru Home Assistant. Více podrobností a Y
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Podívejte se na toto [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) a poznejte Bubble Card a jeho možnosti.** Můj YouTube kanál je poměrně nový a zaměřuje se na návody o Home Assistant a Bubble Card. Neváhejte se přihlásit k odběru, pomůžete tím zviditelnit můj kanál. Předem děkuji!
-
-<br>
-
----
-
-<br>
-
-## Návrhy entit
-
-Od Home Assistant 2026.6 vám výběr entity ve výběru karet nabídne několik hotových karet a Bubble Card do tohoto seznamu přidává vlastní recepty. Vyberte světlo a dostanete kartu s posuvníkem jasu, k tomu variantu s teplotou barvy, s barvou a se sytostí, pokud je vaše světlo podporuje. Vyberte roletu a dostanete posuvník její polohy, vyberte přehrávač médií a dostanete i variantu se seznamem jeho zdrojů, vyberte vysavač a dostanete jeho tlačítka pro spuštění, pauzu a návrat do doku. Každý návrh je běžná konfigurace Bubble Card zobrazená jako živý náhled, takže si můžete vzít tu nejbližší a dál ji upravovat jako obvykle.
-
-Co se vám nabídne, závisí na tom, co vaše entita opravdu umí: světlo bez kanálu jasu dostane přepínač místo posuvníku, roleta, která neumí naklápět, nedostane variantu s naklopením, a entita klimatizace dostane své přednastavené režimy jen tehdy, když nějaké má. Klasické položky následují pod návrhy Bubble Card, pokud dávají smysl: karta vyhrazená pro tento typ entity, obyčejné tlačítko a posuvník.
-
-> [!TIP]
-> Moduly mohou do tohoto seznamu přidat vlastní návrhy, viz [moduly](#moduly).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Návrhy entit
+
+Od Home Assistant 2026.6 vám výběr entity ve výběru karet nabídne několik hotových karet a Bubble Card do tohoto seznamu přidává vlastní recepty. Vyberte světlo a dostanete kartu s posuvníkem jasu, k tomu variantu s teplotou barvy, s barvou a se sytostí, pokud je vaše světlo podporuje. Vyberte roletu a dostanete posuvník její polohy, vyberte přehrávač médií a dostanete i variantu se seznamem jeho zdrojů, vyberte vysavač a dostanete jeho tlačítka pro spuštění, pauzu a návrat do doku. Každý návrh je běžná konfigurace Bubble Card zobrazená jako živý náhled, takže si můžete vzít tu nejbližší a dál ji upravovat jako obvykle.
+
+Co se vám nabídne, závisí na tom, co vaše entita opravdu umí: světlo bez kanálu jasu dostane přepínač místo posuvníku, roleta, která neumí naklápět, nedostane variantu s naklopením, a entita klimatizace dostane své přednastavené režimy jen tehdy, když nějaké má. Klasické položky následují pod návrhy Bubble Card, pokud dávají smysl: karta vyhrazená pro tento typ entity, obyčejné tlačítko a posuvník.
+
+> [!TIP]
+> Moduly mohou do tohoto seznamu přidat vlastní návrhy, viz [moduly](#moduly).
 
 <br>
 

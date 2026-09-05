@@ -18,7 +18,7 @@ Bubble Card ir minimālistiska un pielāgojama kartīšu kolekcija Home Assistan
 
 ## Satura rādītājs
 
-**[`Instalēšana`](#instalēšana)**  **[`Konfigurācija`](#konfigurācija)**  **[`Entītiju ieteikumi`](#entītiju-ieteikumi)**  **[`Uznirstošais logs`](#uznirstošais-logs)**  **[`Horizontāla pogu josla`](#horizontāla-pogu-josla)**  **[`Poga`](#poga)**  **[`Multivides atskaņotājs`](#multivides-atskaņotājs)**  **[`Aizsegs`](#aizsegs)**  **[`Izvēle`](#izvēle)**  **[`Klimats`](#klimats)**  **[`Kalendārs`](#kalendārs)**  **[`Atdalītājs`](#atdalītājs)**  **[`Tukša kolonna`](#tukša-kolonna)**  **[`Tikai papildpogas`](#tikai-papildpogas)**  **[`Papildpogas`](#papildpogas)**  **[`Kartīšu izkārtojumi`](#kartīšu-izkārtojumi)**  **[`Nosacījumi`](#nosacījumi)**  **[`Darbības`](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības)**  **[`Stils`](#stils)**  **[`Veidnes`](#veidnes)**  **[`Moduļi`](#moduļi)**  **[`Lokalizācija`](#lokalizācija)**  **[`Palīdzība`](#palīdzība)**  **[`Līdzdalība`](#līdzdalība)**  **[`Ziedot`](#ziedot)**
+**[`Instalēšana`](#instalēšana)**  **[`Konfigurācija`](#konfigurācija)**  **[`Uznirstošais logs`](#uznirstošais-logs)**  **[`Horizontāla pogu josla`](#horizontāla-pogu-josla)**  **[`Poga`](#poga)**  **[`Multivides atskaņotājs`](#multivides-atskaņotājs)**  **[`Aizsegs`](#aizsegs)**  **[`Izvēle`](#izvēle)**  **[`Klimats`](#klimats)**  **[`Kalendārs`](#kalendārs)**  **[`Atdalītājs`](#atdalītājs)**  **[`Tukša kolonna`](#tukša-kolonna)**  **[`Tikai papildpogas`](#tikai-papildpogas)**  **[`Papildpogas`](#papildpogas)**  **[`Entītiju ieteikumi`](#entītiju-ieteikumi)**  **[`Kartīšu izkārtojumi`](#kartīšu-izkārtojumi)**  **[`Nosacījumi`](#nosacījumi)**  **[`Darbības`](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības)**  **[`Stils`](#stils)**  **[`Veidnes`](#veidnes)**  **[`Moduļi`](#moduļi)**  **[`Lokalizācija`](#lokalizācija)**  **[`Palīdzība`](#palīdzība)**  **[`Līdzdalība`](#līdzdalība)**  **[`Ziedot`](#ziedot)**
 
 <br>
 
@@ -123,21 +123,6 @@ Visas opcijas var konfigurēt Home Assistant redaktorā. Bet zemāk esošajā do
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Noskatieties šo [video](https://www.youtube.com/watch?v=0hSQOlBxKKI), lai uzzinātu vairāk par Bubble Card un tā iespējām.** Mans YouTube kanāls ir diezgan jauns un koncentrējas uz pamācībām par Home Assistant un Bubble Card. Nevilcinieties abonēt, lai palīdzētu palielināt mana kanāla redzamību. Paldies jau iepriekš!
-
-<br>
-
----
-
-<br>
-
-## Entītiju ieteikumi
-
-Kopš Home Assistant 2026.6 entītijas izvēle kartīšu atlasītājā piedāvā dažas gatavas kartītes, un Bubble Card šim sarakstam pievieno savas receptes. Izvēlieties gaismu, un jums tiek piedāvāta kartīte ar spilgtuma slīdni, kā arī krāsas temperatūras, krāsas un piesātinājuma varianti, ja jūsu gaisma tos atbalsta. Izvēlieties aizsegu, un jūs iegūstat tā pozīcijas slīdni, izvēlieties multivides atskaņotāju, un jūs iegūstat arī variantu ar tā avotu sarakstu, izvēlieties putekļsūcēju, un jūs iegūstat tā palaišanas, pauzes un doka pogas. Katrs ieteikums ir parasta Bubble Card konfigurācija, kas parādīta kā dzīvs priekšskatījums, tāpēc varat paņemt tuvāko un turpināt to rediģēt kā parasti.
-
-Piedāvātais ir atkarīgs no tā, ko jūsu entītija patiesībā spēj: gaisma bez spilgtuma kanāla saņem slēdzi slīdņa vietā, aizsegs, kas nevar sasvērties, nesaņem sasvēršanas variantu, klimata entītija saņem savus iepriekšiestatītos režīmus tikai tad, ja tādi tai ir. Zem Bubble Card ieteikumiem, kad tie ir piemēroti, seko klasiskie ieraksti: šim entītijas veidam paredzētā kartīte, vienkārša poga un slīdnis.
-
-> [!TIP]
-> Moduļi var pievienot šim sarakstam savus ieteikumus, skatiet [moduļi](#moduļi).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entītiju ieteikumi
+
+Kopš Home Assistant 2026.6 entītijas izvēle kartīšu atlasītājā piedāvā dažas gatavas kartītes, un Bubble Card šim sarakstam pievieno savas receptes. Izvēlieties gaismu, un jums tiek piedāvāta kartīte ar spilgtuma slīdni, kā arī krāsas temperatūras, krāsas un piesātinājuma varianti, ja jūsu gaisma tos atbalsta. Izvēlieties aizsegu, un jūs iegūstat tā pozīcijas slīdni, izvēlieties multivides atskaņotāju, un jūs iegūstat arī variantu ar tā avotu sarakstu, izvēlieties putekļsūcēju, un jūs iegūstat tā palaišanas, pauzes un doka pogas. Katrs ieteikums ir parasta Bubble Card konfigurācija, kas parādīta kā dzīvs priekšskatījums, tāpēc varat paņemt tuvāko un turpināt to rediģēt kā parasti.
+
+Piedāvātais ir atkarīgs no tā, ko jūsu entītija patiesībā spēj: gaisma bez spilgtuma kanāla saņem slēdzi slīdņa vietā, aizsegs, kas nevar sasvērties, nesaņem sasvēršanas variantu, klimata entītija saņem savus iepriekšiestatītos režīmus tikai tad, ja tādi tai ir. Zem Bubble Card ieteikumiem, kad tie ir piemēroti, seko klasiskie ieraksti: šim entītijas veidam paredzētā kartīte, vienkārša poga un slīdnis.
+
+> [!TIP]
+> Moduļi var pievienot šim sarakstam savus ieteikumus, skatiet [moduļi](#moduļi).
 
 <br>
 

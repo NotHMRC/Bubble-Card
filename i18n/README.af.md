@@ -18,7 +18,7 @@ Bubble Card is 'n minimalistiese en aanpasbare kaartversameling vir Home Assista
 
 ## Inhoudsopgawe
 
-**[`Installasie`](#installasie)**  **[`Konfigurasie`](#konfigurasie)**  **[`Entiteitvoorstelle`](#entiteitvoorstelle)**  **[`Pop-up`](#pop-up)**  **[`Horisontale knoppiestapel`](#horisontale-knoppiestapel)**  **[`Knoppie`](#knoppie)**  **[`Mediaspeler`](#mediaspeler)**  **[`Bedekking`](#bedekking)**  **[`Keuse`](#keuse)**  **[`Klimaat`](#klimaat)**  **[`Kalender`](#kalender)**  **[`Skeier`](#skeier)**  **[`Leë kolom`](#leë-kolom)**  **[`Slegs subknoppies`](#slegs-subknoppies)**  **[`Subknoppies`](#subknoppies)**  **[`Kaartuitlegte`](#kaartuitlegte)**  **[`Voorwaardes`](#voorwaardes)**  **[`Aksies`](#tik--dubbeltik--en-hou-aksies)**  **[`Styl`](#styl)**  **[`Sjablone`](#sjablone)**  **[`Modules`](#modules)**  **[`Lokalisering`](#lokalisering)**  **[`Hulp`](#hulp)**  **[`Bydraes`](#bydraes)**  **[`Skenk`](#skenk)**
+**[`Installasie`](#installasie)**  **[`Konfigurasie`](#konfigurasie)**  **[`Pop-up`](#pop-up)**  **[`Horisontale knoppiestapel`](#horisontale-knoppiestapel)**  **[`Knoppie`](#knoppie)**  **[`Mediaspeler`](#mediaspeler)**  **[`Bedekking`](#bedekking)**  **[`Keuse`](#keuse)**  **[`Klimaat`](#klimaat)**  **[`Kalender`](#kalender)**  **[`Skeier`](#skeier)**  **[`Leë kolom`](#leë-kolom)**  **[`Slegs subknoppies`](#slegs-subknoppies)**  **[`Subknoppies`](#subknoppies)**  **[`Entiteitvoorstelle`](#entiteitvoorstelle)**  **[`Kaartuitlegte`](#kaartuitlegte)**  **[`Voorwaardes`](#voorwaardes)**  **[`Aksies`](#tik--dubbeltik--en-hou-aksies)**  **[`Styl`](#styl)**  **[`Sjablone`](#sjablone)**  **[`Modules`](#modules)**  **[`Lokalisering`](#lokalisering)**  **[`Hulp`](#hulp)**  **[`Bydraes`](#bydraes)**  **[`Skenk`](#skenk)**
 
 <br>
 
@@ -123,21 +123,6 @@ Al die opsies kan in die Home Assistant-redigeerder gekonfigureer word. Maar jy 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Kyk na hierdie [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) om meer oor Bubble Card en sy vermoëns te leer.** My YouTube-kanaal is nog redelik nuut en fokus op tutoriale oor Home Assistant en Bubble Card. Moenie huiwer om in te teken nie, dit help om my kanaal se sigbaarheid te verhoog. By voorbaat dankie!
-
-<br>
-
----
-
-<br>
-
-## Entiteitvoorstelle
-
-Sedert Home Assistant 2026.6 bied die kaartkieser jou 'n paar klaargemaakte kaarte aan wanneer jy 'n entiteit kies, en Bubble Card voeg sy eie resepte by daardie lys. Kies 'n lig en jy kry 'n kaart met 'n helderheidskuifbalk, plus 'n kleurtemperatuur-, 'n kleur- en 'n versadigingsvariant wanneer jou lig hulle ondersteun. Kies 'n bedekking en jy kry sy posisieskuifbalk, kies 'n mediaspeler en jy kry ook 'n variant met sy bronlys, kies 'n stofsuier en jy kry sy begin-, wag- en dok-knoppies. Elke voorstel is 'n gewone Bubble Card-konfigurasie wat as 'n lewendige voorskou gewys word, sodat jy die naaste een kan neem en dit soos gewoonlik verder kan redigeer.
-
-Wat aangebied word, hang af van wat jou entiteit werklik kan doen: 'n lig sonder 'n helderheidskanaal kry 'n wisselaar in plaas van 'n skuifbalk, 'n bedekking wat nie kan kantel nie kry geen kantelvariant nie, en 'n klimaat-entiteit kry sy voorafinstellings net wanneer dit sommige het. Die klassieke inskrywings volg onder die Bubble Card-voorstelle wanneer hulle van toepassing is: die kaart wat aan daardie soort entiteit gewy is, 'n gewone knoppie en 'n skuifbalk.
-
-> [!TIP]
-> Modules kan hul eie voorstelle by daardie lys voeg, sien [modules](#modules).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entiteitvoorstelle
+
+Sedert Home Assistant 2026.6 bied die kaartkieser jou 'n paar klaargemaakte kaarte aan wanneer jy 'n entiteit kies, en Bubble Card voeg sy eie resepte by daardie lys. Kies 'n lig en jy kry 'n kaart met 'n helderheidskuifbalk, plus 'n kleurtemperatuur-, 'n kleur- en 'n versadigingsvariant wanneer jou lig hulle ondersteun. Kies 'n bedekking en jy kry sy posisieskuifbalk, kies 'n mediaspeler en jy kry ook 'n variant met sy bronlys, kies 'n stofsuier en jy kry sy begin-, wag- en dok-knoppies. Elke voorstel is 'n gewone Bubble Card-konfigurasie wat as 'n lewendige voorskou gewys word, sodat jy die naaste een kan neem en dit soos gewoonlik verder kan redigeer.
+
+Wat aangebied word, hang af van wat jou entiteit werklik kan doen: 'n lig sonder 'n helderheidskanaal kry 'n wisselaar in plaas van 'n skuifbalk, 'n bedekking wat nie kan kantel nie kry geen kantelvariant nie, en 'n klimaat-entiteit kry sy voorafinstellings net wanneer dit sommige het. Die klassieke inskrywings volg onder die Bubble Card-voorstelle wanneer hulle van toepassing is: die kaart wat aan daardie soort entiteit gewy is, 'n gewone knoppie en 'n skuifbalk.
+
+> [!TIP]
+> Modules kan hul eie voorstelle by daardie lys voeg, sien [modules](#modules).
 
 <br>
 

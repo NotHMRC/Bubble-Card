@@ -18,7 +18,7 @@ Bubble Card er einfalt og sérsniðanlegt kortasafn fyrir Home Assistant, með n
 
 ## Efnisyfirlit
 
-**[`Uppsetning`](#uppsetning)**  **[`Stillingar`](#stillingar)**  **[`Tillögur fyrir einingar`](#tillögur-fyrir-einingar)**  **[`Sprettigluggi`](#sprettigluggi)**  **[`Lárétt hnapparöð`](#lárétt-hnapparöð)**  **[`Hnappur`](#hnappur)**  **[`Spilari`](#spilari)**  **[`Gluggatjöld`](#gluggatjöld)**  **[`Val`](#val)**  **[`Loftslag`](#loftslag)**  **[`Dagatal`](#dagatal)**  **[`Skil`](#skil)**  **[`Tómur dálkur`](#tómur-dálkur)**  **[`Aðeins undirhnappar`](#aðeins-undirhnappar)**  **[`Undirhnappar`](#undirhnappar)**  **[`Útlit korta`](#útlit-korta)**  **[`Skilyrði`](#skilyrði)**  **[`Aðgerðir`](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni)**  **[`Stílun`](#stílun)**  **[`Sniðmát`](#sniðmát)**  **[`Einingar`](#einingar)**  **[`Staðfærsla`](#staðfærsla)**  **[`Hjálp`](#hjálp)**  **[`Framlög`](#framlög)**  **[`Styrkja`](#styrkja)**
+**[`Uppsetning`](#uppsetning)**  **[`Stillingar`](#stillingar)**  **[`Sprettigluggi`](#sprettigluggi)**  **[`Lárétt hnapparöð`](#lárétt-hnapparöð)**  **[`Hnappur`](#hnappur)**  **[`Spilari`](#spilari)**  **[`Gluggatjöld`](#gluggatjöld)**  **[`Val`](#val)**  **[`Loftslag`](#loftslag)**  **[`Dagatal`](#dagatal)**  **[`Skil`](#skil)**  **[`Tómur dálkur`](#tómur-dálkur)**  **[`Aðeins undirhnappar`](#aðeins-undirhnappar)**  **[`Undirhnappar`](#undirhnappar)**  **[`Tillögur fyrir einingar`](#tillögur-fyrir-einingar)**  **[`Útlit korta`](#útlit-korta)**  **[`Skilyrði`](#skilyrði)**  **[`Aðgerðir`](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni)**  **[`Stílun`](#stílun)**  **[`Sniðmát`](#sniðmát)**  **[`Einingar`](#einingar)**  **[`Staðfærsla`](#staðfærsla)**  **[`Hjálp`](#hjálp)**  **[`Framlög`](#framlög)**  **[`Styrkja`](#styrkja)**
 
 <br>
 
@@ -123,21 +123,6 @@ Hægt er að stilla alla valkosti í Home Assistant ritlinum. En þú finnur ná
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Skoðaðu þetta [myndband](https://www.youtube.com/watch?v=0hSQOlBxKKI) til að læra meira um Bubble Card og eiginleika þess.** YouTube rásin mín er frekar ný og fjallar um kennslumyndbönd um Home Assistant og Bubble Card. Ekki hika við að gerast áskrifandi til að hjálpa til við að auka sýnileika rásarinnar. Fyrirfram þakkir!
-
-<br>
-
----
-
-<br>
-
-## Tillögur fyrir einingar
-
-Frá og með Home Assistant 2026.6 færðu nokkur tilbúin kort í boði þegar þú velur einingu í kortavalinu, og Bubble Card bætir eigin uppskriftum við þann lista. Veldu ljós og þér býðst kort með birtusleða, auk litahita-, lita- og mettunarafbrigðis þegar ljósið þitt styður þau. Veldu gluggatjöld og þú færð stöðusleðann þeirra, veldu spilara og þú færð líka afbrigði með upprunalistanum hans, veldu ryksugu og þú færð hnappana ræsa, gera hlé og fara í hleðslustöð. Hver tillaga er venjuleg Bubble Card stilling sem birtist sem lifandi forskoðun, svo þú getur tekið þá sem er næst því sem þú vilt og haldið áfram að breyta henni eins og venjulega.
-
-Það sem þér býðst fer eftir því hvað einingin þín getur í raun: ljós án birturásar fær rofa í stað sleða, gluggatjöld sem geta ekki hallað fá ekkert hallaafbrigði, og loftslagseining fær forstillingar sínar aðeins þegar hún á einhverjar. Klassísku færslurnar koma fyrir neðan tillögur Bubble Card þegar þær eiga við: kortið sem er ætlað þessari tegund einingar, venjulegur hnappur og sleði.
-
-> [!TIP]
-> Einingar geta bætt eigin tillögum við þann lista, sjá [einingar](#einingar).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Tillögur fyrir einingar
+
+Frá og með Home Assistant 2026.6 færðu nokkur tilbúin kort í boði þegar þú velur einingu í kortavalinu, og Bubble Card bætir eigin uppskriftum við þann lista. Veldu ljós og þér býðst kort með birtusleða, auk litahita-, lita- og mettunarafbrigðis þegar ljósið þitt styður þau. Veldu gluggatjöld og þú færð stöðusleðann þeirra, veldu spilara og þú færð líka afbrigði með upprunalistanum hans, veldu ryksugu og þú færð hnappana ræsa, gera hlé og fara í hleðslustöð. Hver tillaga er venjuleg Bubble Card stilling sem birtist sem lifandi forskoðun, svo þú getur tekið þá sem er næst því sem þú vilt og haldið áfram að breyta henni eins og venjulega.
+
+Það sem þér býðst fer eftir því hvað einingin þín getur í raun: ljós án birturásar fær rofa í stað sleða, gluggatjöld sem geta ekki hallað fá ekkert hallaafbrigði, og loftslagseining fær forstillingar sínar aðeins þegar hún á einhverjar. Klassísku færslurnar koma fyrir neðan tillögur Bubble Card þegar þær eiga við: kortið sem er ætlað þessari tegund einingar, venjulegur hnappur og sleði.
+
+> [!TIP]
+> Einingar geta bætt eigin tillögum við þann lista, sjá [einingar](#einingar).
 
 <br>
 

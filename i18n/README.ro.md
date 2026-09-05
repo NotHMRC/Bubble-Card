@@ -18,7 +18,7 @@ Bubble Card este o colecție minimalistă și personalizabilă de carduri pentru
 
 ## Cuprins
 
-**[`Instalare`](#instalare)**  **[`Configurare`](#configurare)**  **[`Sugestii de entități`](#sugestii-de-entități)**  **[`Pop-up`](#pop-up)**  **[`Stivă orizontală de butoane`](#stivă-orizontală-de-butoane)**  **[`Buton`](#buton)**  **[`Player media`](#player-media)**  **[`Rulou`](#rulou)**  **[`Selecție`](#selecție)**  **[`Climatizare`](#climatizare)**  **[`Calendar`](#calendar)**  **[`Separator`](#separator)**  **[`Coloană goală`](#coloană-goală)**  **[`Doar sub-butoane`](#doar-sub-butoane)**  **[`Sub-butoane`](#sub-butoane)**  **[`Aspectele cardurilor`](#aspectele-cardurilor)**  **[`Condiții`](#condiții)**  **[`Acțiuni`](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă)**  **[`Stiluri`](#stiluri)**  **[`Șabloane`](#șabloane)**  **[`Module`](#module)**  **[`Localizare`](#localizare)**  **[`Ajutor`](#ajutor)**  **[`Contribuții`](#contribuții)**  **[`Donații`](#donații)**
+**[`Instalare`](#instalare)**  **[`Configurare`](#configurare)**  **[`Pop-up`](#pop-up)**  **[`Stivă orizontală de butoane`](#stivă-orizontală-de-butoane)**  **[`Buton`](#buton)**  **[`Player media`](#player-media)**  **[`Rulou`](#rulou)**  **[`Selecție`](#selecție)**  **[`Climatizare`](#climatizare)**  **[`Calendar`](#calendar)**  **[`Separator`](#separator)**  **[`Coloană goală`](#coloană-goală)**  **[`Doar sub-butoane`](#doar-sub-butoane)**  **[`Sub-butoane`](#sub-butoane)**  **[`Sugestii de entități`](#sugestii-de-entități)**  **[`Aspectele cardurilor`](#aspectele-cardurilor)**  **[`Condiții`](#condiții)**  **[`Acțiuni`](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă)**  **[`Stiluri`](#stiluri)**  **[`Șabloane`](#șabloane)**  **[`Module`](#module)**  **[`Localizare`](#localizare)**  **[`Ajutor`](#ajutor)**  **[`Contribuții`](#contribuții)**  **[`Donații`](#donații)**
 
 <br>
 
@@ -123,21 +123,6 @@ Toate opțiunile pot fi configurate din editorul Home Assistant. Dar poți găsi
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Vezi acest [videoclip](https://www.youtube.com/watch?v=0hSQOlBxKKI) pentru a afla mai multe despre Bubble Card și posibilitățile sale.** Canalul meu de YouTube este destul de nou și se concentrează pe tutoriale despre Home Assistant și Bubble Card. Nu ezita să te abonezi, mă ajută să cresc vizibilitatea canalului. Îți mulțumesc anticipat!
-
-<br>
-
----
-
-<br>
-
-## Sugestii de entități
-
-Începând cu Home Assistant 2026.6, alegerea unei entități în selectorul de carduri îți propune câteva carduri gata făcute, iar Bubble Card adaugă propriile rețete la această listă. Alege o lumină și ți se propune un card cu un cursor de luminozitate, plus variante pentru temperatura culorii, culoare și saturație atunci când lumina ta le suportă. Alege un rulou și primești cursorul de poziție, alege un player media și primești și o variantă cu lista lui de surse, alege un aspirator și primești butoanele de pornire, pauză și revenire la stație. Fiecare sugestie este o configurație obișnuită Bubble Card afișată ca previzualizare live, așa că poți lua cea mai apropiată și să o editezi mai departe ca de obicei.
-
-Ce ți se propune depinde de ceea ce poate face cu adevărat entitatea ta: o lumină fără canal de luminozitate primește un comutator în locul unui cursor, un rulou care nu se poate înclina nu primește varianta de înclinare, iar o entitate de climatizare primește modurile presetate doar dacă are vreunul. Intrările clasice urmează sub sugestiile Bubble Card atunci când se aplică: cardul dedicat acelui tip de entitate, un buton simplu și un cursor.
-
-> [!TIP]
-> Modulele pot adăuga propriile sugestii în acea listă, vezi [module](#module).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugestii de entități
+
+Începând cu Home Assistant 2026.6, alegerea unei entități în selectorul de carduri îți propune câteva carduri gata făcute, iar Bubble Card adaugă propriile rețete la această listă. Alege o lumină și ți se propune un card cu un cursor de luminozitate, plus variante pentru temperatura culorii, culoare și saturație atunci când lumina ta le suportă. Alege un rulou și primești cursorul de poziție, alege un player media și primești și o variantă cu lista lui de surse, alege un aspirator și primești butoanele de pornire, pauză și revenire la stație. Fiecare sugestie este o configurație obișnuită Bubble Card afișată ca previzualizare live, așa că poți lua cea mai apropiată și să o editezi mai departe ca de obicei.
+
+Ce ți se propune depinde de ceea ce poate face cu adevărat entitatea ta: o lumină fără canal de luminozitate primește un comutator în locul unui cursor, un rulou care nu se poate înclina nu primește varianta de înclinare, iar o entitate de climatizare primește modurile presetate doar dacă are vreunul. Intrările clasice urmează sub sugestiile Bubble Card atunci când se aplică: cardul dedicat acelui tip de entitate, un buton simplu și un cursor.
+
+> [!TIP]
+> Modulele pot adăuga propriile sugestii în acea listă, vezi [module](#module).
 
 <br>
 

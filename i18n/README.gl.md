@@ -18,7 +18,7 @@ Bubble Card é unha colección de tarxetas minimalista e personalizable para Hom
 
 ## Índice
 
-**[`Instalación`](#instalación)**  **[`Configuración`](#configuración)**  **[`Suxestións de entidades`](#suxestións-de-entidades)**  **[`Pop-up`](#pop-up)**  **[`Pila de botóns horizontal`](#pila-de-botóns-horizontal)**  **[`Botón`](#botón)**  **[`Reprodutor multimedia`](#reprodutor-multimedia)**  **[`Cuberta`](#cuberta)**  **[`Selección`](#selección)**  **[`Climatización`](#climatización)**  **[`Calendario`](#calendario)**  **[`Separador`](#separador)**  **[`Columna baleira`](#columna-baleira)**  **[`Só subbotóns`](#só-subbotóns)**  **[`Subbotóns`](#subbotóns)**  **[`Disposicións da tarxeta`](#disposicións-da-tarxeta)**  **[`Condicións`](#condicións)**  **[`Accións`](#accións-de-toque-dobre-toque-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localización`](#localización)**  **[`Axuda`](#axuda)**  **[`Colaborar`](#colaborar)**  **[`Doar`](#doar)**
+**[`Instalación`](#instalación)**  **[`Configuración`](#configuración)**  **[`Pop-up`](#pop-up)**  **[`Pila de botóns horizontal`](#pila-de-botóns-horizontal)**  **[`Botón`](#botón)**  **[`Reprodutor multimedia`](#reprodutor-multimedia)**  **[`Cuberta`](#cuberta)**  **[`Selección`](#selección)**  **[`Climatización`](#climatización)**  **[`Calendario`](#calendario)**  **[`Separador`](#separador)**  **[`Columna baleira`](#columna-baleira)**  **[`Só subbotóns`](#só-subbotóns)**  **[`Subbotóns`](#subbotóns)**  **[`Suxestións de entidades`](#suxestións-de-entidades)**  **[`Disposicións da tarxeta`](#disposicións-da-tarxeta)**  **[`Condicións`](#condicións)**  **[`Accións`](#accións-de-toque-dobre-toque-e-toque-longo)**  **[`Estilo`](#estilo)**  **[`Modelos`](#modelos)**  **[`Módulos`](#módulos)**  **[`Localización`](#localización)**  **[`Axuda`](#axuda)**  **[`Colaborar`](#colaborar)**  **[`Doar`](#doar)**
 
 <br>
 
@@ -123,21 +123,6 @@ Todas as opcións pódense configurar no editor de Home Assistant. Pero podes at
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Consulta este [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) para coñecer Bubble Card e as súas capacidades.** A miña canle de YouTube é bastante nova e céntrase en titoriais sobre Home Assistant e Bubble Card. Non dubides en subscribirte para axudar a aumentar a visibilidade da miña canle. Grazas de antemán!
-
-<br>
-
----
-
-<br>
-
-## Suxestións de entidades
-
-Desde Home Assistant 2026.6, escoller unha entidade no selector de tarxetas ofréceche unhas cantas tarxetas xa preparadas, e Bubble Card engade as súas propias receitas a esa lista. Escolle unha luz e ofréceseche unha tarxeta cun control desprazable de brillo, ademais dunha variante de temperatura de cor, unha de cor e unha de saturación cando a túa luz as admite. Escolle unha cuberta e obtés o seu control de posición, escolle un reprodutor multimedia e obtés tamén unha variante coa súa lista de fontes, escolle un aspirador e obtés os seus botóns de iniciar, pausar e volver á base. Cada suxestión é unha configuración normal de Bubble Card mostrada como vista previa en directo, así que podes coller a máis próxima e seguir editándoa como sempre.
-
-O que se che ofrece depende do que a túa entidade sabe facer realmente: unha luz sen canle de brillo recibe un interruptor no canto dun control desprazable, unha cuberta que non pode inclinarse non ten variante de inclinación, unha entidade de climatización só ten os seus modos predefinidos cando os posúe. As entradas clásicas veñen debaixo das suxestións de Bubble Card cando corresponden: a tarxeta dedicada a ese tipo de entidade, un botón simple e un control desprazable.
-
-> [!TIP]
-> Os módulos poden engadir as súas propias suxestións a esa lista, consulta [módulos](#módulos).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Suxestións de entidades
+
+Desde Home Assistant 2026.6, escoller unha entidade no selector de tarxetas ofréceche unhas cantas tarxetas xa preparadas, e Bubble Card engade as súas propias receitas a esa lista. Escolle unha luz e ofréceseche unha tarxeta cun control desprazable de brillo, ademais dunha variante de temperatura de cor, unha de cor e unha de saturación cando a túa luz as admite. Escolle unha cuberta e obtés o seu control de posición, escolle un reprodutor multimedia e obtés tamén unha variante coa súa lista de fontes, escolle un aspirador e obtés os seus botóns de iniciar, pausar e volver á base. Cada suxestión é unha configuración normal de Bubble Card mostrada como vista previa en directo, así que podes coller a máis próxima e seguir editándoa como sempre.
+
+O que se che ofrece depende do que a túa entidade sabe facer realmente: unha luz sen canle de brillo recibe un interruptor no canto dun control desprazable, unha cuberta que non pode inclinarse non ten variante de inclinación, unha entidade de climatización só ten os seus modos predefinidos cando os posúe. As entradas clásicas veñen debaixo das suxestións de Bubble Card cando corresponden: a tarxeta dedicada a ese tipo de entidade, un botón simple e un control desprazable.
+
+> [!TIP]
+> Os módulos poden engadir as súas propias suxestións a esa lista, consulta [módulos](#módulos).
 
 <br>
 

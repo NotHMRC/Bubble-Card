@@ -18,7 +18,7 @@ Bubble Card is een minimalistische en aanpasbare kaartcollectie voor Home Assist
 
 ## Inhoudsopgave
 
-**[`Installatie`](#installatie)**  **[`Configuratie`](#configuratie)**  **[`Entiteitsuggesties`](#entiteitsuggesties)**  **[`Pop-up`](#pop-up)**  **[`Horizontale knoppenstack`](#horizontale-knoppenstack)**  **[`Knop`](#knop)**  **[`Mediaspeler`](#mediaspeler)**  **[`Zonwering`](#zonwering)**  **[`Select`](#select)**  **[`Klimaat`](#klimaat)**  **[`Agenda`](#agenda)**  **[`Scheidingslijn`](#scheidingslijn)**  **[`Lege kolom`](#lege-kolom)**  **[`Alleen subknoppen`](#alleen-subknoppen)**  **[`Subknoppen`](#subknoppen)**  **[`Kaartlay-outs`](#kaartlay-outs)**  **[`Voorwaarden`](#voorwaarden)**  **[`Acties`](#tik--dubbeltik--en-vasthoudacties)**  **[`Stijl`](#stijl)**  **[`Sjablonen`](#sjablonen)**  **[`Modules`](#modules)**  **[`Lokalisatie`](#lokalisatie)**  **[`Hulp`](#hulp)**  **[`Bijdragen`](#bijdragen)**  **[`Doneren`](#doneren)**
+**[`Installatie`](#installatie)**  **[`Configuratie`](#configuratie)**  **[`Pop-up`](#pop-up)**  **[`Horizontale knoppenstack`](#horizontale-knoppenstack)**  **[`Knop`](#knop)**  **[`Mediaspeler`](#mediaspeler)**  **[`Zonwering`](#zonwering)**  **[`Select`](#select)**  **[`Klimaat`](#klimaat)**  **[`Agenda`](#agenda)**  **[`Scheidingslijn`](#scheidingslijn)**  **[`Lege kolom`](#lege-kolom)**  **[`Alleen subknoppen`](#alleen-subknoppen)**  **[`Subknoppen`](#subknoppen)**  **[`Entiteitsuggesties`](#entiteitsuggesties)**  **[`Kaartlay-outs`](#kaartlay-outs)**  **[`Voorwaarden`](#voorwaarden)**  **[`Acties`](#tik--dubbeltik--en-vasthoudacties)**  **[`Stijl`](#stijl)**  **[`Sjablonen`](#sjablonen)**  **[`Modules`](#modules)**  **[`Lokalisatie`](#lokalisatie)**  **[`Hulp`](#hulp)**  **[`Bijdragen`](#bijdragen)**  **[`Doneren`](#doneren)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alle opties kunnen worden geconfigureerd in de editor van Home Assistant. Maar h
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Bekijk deze [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) om meer te leren over Bubble Card en zijn mogelijkheden.** Mijn YouTube-kanaal is nog vrij nieuw en richt zich op tutorials over Home Assistant en Bubble Card. Aarzel niet om je te abonneren, dat helpt om de zichtbaarheid van mijn kanaal te vergroten. Alvast bedankt!
-
-<br>
-
----
-
-<br>
-
-## Entiteitsuggesties
-
-Sinds Home Assistant 2026.6 krijg je bij het kiezen van een entiteit in de kaartkiezer een paar kant-en-klare kaarten voorgesteld, en Bubble Card voegt zijn eigen recepten aan die lijst toe. Kies een lamp en je krijgt een kaart met een helderheidsslider aangeboden, plus een variant voor kleurtemperatuur, kleur en verzadiging wanneer je lamp die ondersteunt. Kies een zonwering en je krijgt de positieslider, kies een mediaspeler en je krijgt ook een variant met de bronnenlijst, kies een stofzuiger en je krijgt de knoppen voor starten, pauzeren en terugkeren naar het dock. Elke suggestie is een gewone Bubble Card-configuratie die als live voorbeeld wordt getoond, dus je kunt de suggestie nemen die er het dichtst bij komt en die verder bewerken zoals gewoonlijk.
-
-Wat je krijgt aangeboden hangt af van wat je entiteit werkelijk kan: een lamp zonder helderheidskanaal krijgt een schakelaar in plaats van een slider, een zonwering die niet kan kantelen krijgt geen kantelvariant, en een klimaatentiteit krijgt haar voorkeurstanden alleen wanneer ze die heeft. De klassieke items volgen onder de Bubble Card-suggesties wanneer ze van toepassing zijn: de kaart die bij dat entiteitstype hoort, een gewone knop en een slider.
-
-> [!TIP]
-> Modules kunnen hun eigen suggesties aan die lijst toevoegen, zie [modules](#modules).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entiteitsuggesties
+
+Sinds Home Assistant 2026.6 krijg je bij het kiezen van een entiteit in de kaartkiezer een paar kant-en-klare kaarten voorgesteld, en Bubble Card voegt zijn eigen recepten aan die lijst toe. Kies een lamp en je krijgt een kaart met een helderheidsslider aangeboden, plus een variant voor kleurtemperatuur, kleur en verzadiging wanneer je lamp die ondersteunt. Kies een zonwering en je krijgt de positieslider, kies een mediaspeler en je krijgt ook een variant met de bronnenlijst, kies een stofzuiger en je krijgt de knoppen voor starten, pauzeren en terugkeren naar het dock. Elke suggestie is een gewone Bubble Card-configuratie die als live voorbeeld wordt getoond, dus je kunt de suggestie nemen die er het dichtst bij komt en die verder bewerken zoals gewoonlijk.
+
+Wat je krijgt aangeboden hangt af van wat je entiteit werkelijk kan: een lamp zonder helderheidskanaal krijgt een schakelaar in plaats van een slider, een zonwering die niet kan kantelen krijgt geen kantelvariant, en een klimaatentiteit krijgt haar voorkeurstanden alleen wanneer ze die heeft. De klassieke items volgen onder de Bubble Card-suggesties wanneer ze van toepassing zijn: de kaart die bij dat entiteitstype hoort, een gewone knop en een slider.
+
+> [!TIP]
+> Modules kunnen hun eigen suggesties aan die lijst toevoegen, zie [modules](#modules).
 
 <br>
 

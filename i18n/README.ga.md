@@ -18,7 +18,7 @@ Is bailiúchán cárta íogair agus insaincheaptha é Bubble Card do Home Assist
 
 ## Clár na n-ábhar
 
-**[`Suiteáil`](#suiteáil)**  **[`Cumraíocht`](#cumraíocht)**  **[`Moltaí aonán`](#moltaí-aonán)**  **[`Preabfhuinneog`](#preabfhuinneog)**  **[`Cruach chothrománach cnaipí`](#cruach-chothrománach-cnaipí)**  **[`Cnaipe`](#cnaipe)**  **[`Seinnteoir meán`](#seinnteoir-meán)**  **[`Clúdach`](#clúdach)**  **[`Roghnú`](#roghnú)**  **[`Aeráid`](#aeráid)**  **[`Féilire`](#féilire)**  **[`Deighilteoir`](#deighilteoir)**  **[`Colún folamh`](#colún-folamh)**  **[`Fochnaipí amháin`](#fochnaipí-amháin)**  **[`Fochnaipí`](#fochnaipí)**  **[`Leaganacha amach na gcártaí`](#leaganacha-amach-na-gcártaí)**  **[`Coinníollacha`](#coinníollacha)**  **[`Gníomhartha`](#gníomhartha-tapála-tapála-dúbailte-agus-coinneála)**  **[`Stíliú`](#stíliú)**  **[`Teimpléid`](#teimpléid)**  **[`Modúil`](#modúil)**  **[`Logánú`](#logánú)**  **[`Cabhair`](#cabhair)**  **[`Rannchuidiú`](#rannchuidiú)**  **[`Síntiús a thabhairt`](#síntiús-a-thabhairt)**
+**[`Suiteáil`](#suiteáil)**  **[`Cumraíocht`](#cumraíocht)**  **[`Preabfhuinneog`](#preabfhuinneog)**  **[`Cruach chothrománach cnaipí`](#cruach-chothrománach-cnaipí)**  **[`Cnaipe`](#cnaipe)**  **[`Seinnteoir meán`](#seinnteoir-meán)**  **[`Clúdach`](#clúdach)**  **[`Roghnú`](#roghnú)**  **[`Aeráid`](#aeráid)**  **[`Féilire`](#féilire)**  **[`Deighilteoir`](#deighilteoir)**  **[`Colún folamh`](#colún-folamh)**  **[`Fochnaipí amháin`](#fochnaipí-amháin)**  **[`Fochnaipí`](#fochnaipí)**  **[`Moltaí aonán`](#moltaí-aonán)**  **[`Leaganacha amach na gcártaí`](#leaganacha-amach-na-gcártaí)**  **[`Coinníollacha`](#coinníollacha)**  **[`Gníomhartha`](#gníomhartha-tapála-tapála-dúbailte-agus-coinneála)**  **[`Stíliú`](#stíliú)**  **[`Teimpléid`](#teimpléid)**  **[`Modúil`](#modúil)**  **[`Logánú`](#logánú)**  **[`Cabhair`](#cabhair)**  **[`Rannchuidiú`](#rannchuidiú)**  **[`Síntiús a thabhairt`](#síntiús-a-thabhairt)**
 
 <br>
 
@@ -123,21 +123,6 @@ Is féidir gach rogha a chumrú in eagarthóir Home Assistant. Ach gheobhaidh t�
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Féach ar an [bhfíseán](https://www.youtube.com/watch?v=0hSQOlBxKKI) seo chun eolas a fháil ar Bubble Card agus a chumas.** Tá mo chainéal YouTube nua go leor agus dírithe ar theagascóirí faoi Home Assistant agus Bubble Card. Ná bíodh drogall ort liostáil chun cabhrú le hinfheictheacht mo chainéil a mhéadú. Go raibh maith agat roimh ré!
-
-<br>
-
----
-
-<br>
-
-## Moltaí aonán
-
-Ó Home Assistant 2026.6 i leith, nuair a roghnaíonn tú aonán i roghnóir na gcártaí cuirtear cúpla cárta réamhdhéanta ar fáil duit, agus cuireann Bubble Card a oidis féin leis an liosta sin. Roghnaigh solas agus cuirtear cárta le sleamhnán gile ar fáil duit, chomh maith le leagan teochta datha, leagan datha agus leagan sáithithe nuair a thacaíonn do sholas leo. Roghnaigh clúdach agus gheobhaidh tú a sleamhnán suímh, roghnaigh seinnteoir meán agus gheobhaidh tú leagan lena liosta foinsí freisin, roghnaigh folúsghlantóir agus gheobhaidh tú a chnaipí tosaigh, sos agus fill ar an duga. Is gnáthchumraíocht Bubble Card gach moladh, taispeántar é mar réamhamharc beo, mar sin is féidir leat an ceann is gaire a thógáil agus leanúint ort á chur in eagar mar is gnách.
-
-Braitheann a gcuirtear ar fáil duit ar a bhfuil ar chumas d'aonáin i ndáiríre: faigheann solas gan cainéal gile scoránaí in ionad sleamhnáin, ní fhaigheann clúdach nach féidir leis claonadh aon leagan claonta, ní fhaigheann aonán aeráide a mhodhanna réamhshocraithe ach amháin nuair atá siad aige. Leanann na hiontrálacha clasaiceacha faoi mholtaí Bubble Card nuair a bhaineann siad le hábhar: an cárta atá tiomnaithe don chineál aonáin sin, cnaipe simplí agus sleamhnán.
-
-> [!TIP]
-> Is féidir le modúil a moltaí féin a chur leis an liosta sin, féach [modúil](#modúil).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Moltaí aonán
+
+Ó Home Assistant 2026.6 i leith, nuair a roghnaíonn tú aonán i roghnóir na gcártaí cuirtear cúpla cárta réamhdhéanta ar fáil duit, agus cuireann Bubble Card a oidis féin leis an liosta sin. Roghnaigh solas agus cuirtear cárta le sleamhnán gile ar fáil duit, chomh maith le leagan teochta datha, leagan datha agus leagan sáithithe nuair a thacaíonn do sholas leo. Roghnaigh clúdach agus gheobhaidh tú a sleamhnán suímh, roghnaigh seinnteoir meán agus gheobhaidh tú leagan lena liosta foinsí freisin, roghnaigh folúsghlantóir agus gheobhaidh tú a chnaipí tosaigh, sos agus fill ar an duga. Is gnáthchumraíocht Bubble Card gach moladh, taispeántar é mar réamhamharc beo, mar sin is féidir leat an ceann is gaire a thógáil agus leanúint ort á chur in eagar mar is gnách.
+
+Braitheann a gcuirtear ar fáil duit ar a bhfuil ar chumas d'aonáin i ndáiríre: faigheann solas gan cainéal gile scoránaí in ionad sleamhnáin, ní fhaigheann clúdach nach féidir leis claonadh aon leagan claonta, ní fhaigheann aonán aeráide a mhodhanna réamhshocraithe ach amháin nuair atá siad aige. Leanann na hiontrálacha clasaiceacha faoi mholtaí Bubble Card nuair a bhaineann siad le hábhar: an cárta atá tiomnaithe don chineál aonáin sin, cnaipe simplí agus sleamhnán.
+
+> [!TIP]
+> Is féidir le modúil a moltaí féin a chur leis an liosta sin, féach [modúil](#modúil).
 
 <br>
 

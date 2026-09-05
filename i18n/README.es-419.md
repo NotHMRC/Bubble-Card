@@ -18,7 +18,7 @@ Bubble Card es una colección de tarjetas minimalista y personalizable para Home
 
 ## Tabla de contenidos
 
-**[`Instalación`](#instalación)**  **[`Configuración`](#configuración)**  **[`Sugerencias de entidad`](#sugerencias-de-entidad)**  **[`Pop-up`](#pop-up)**  **[`Pila de botones horizontal`](#pila-de-botones-horizontal)**  **[`Botón`](#botón)**  **[`Reproductor multimedia`](#reproductor-multimedia)**  **[`Persiana`](#persiana)**  **[`Selector`](#selector)**  **[`Clima`](#clima)**  **[`Calendario`](#calendario)**  **[`Separador`](#separador)**  **[`Columna vacía`](#columna-vacía)**  **[`Solo sub-botones`](#solo-sub-botones)**  **[`Sub-botones`](#sub-botones)**  **[`Diseños de tarjeta`](#diseños-de-tarjeta)**  **[`Condiciones`](#condiciones)**  **[`Acciones`](#acciones-de-toque-doble-toque-y-mantener-presionado)**  **[`Estilos`](#estilos)**  **[`Plantillas`](#plantillas)**  **[`Módulos`](#módulos)**  **[`Localización`](#localización)**  **[`Ayuda`](#ayuda)**  **[`Contribuir`](#contribuir)**  **[`Donar`](#donar)**
+**[`Instalación`](#instalación)**  **[`Configuración`](#configuración)**  **[`Pop-up`](#pop-up)**  **[`Pila de botones horizontal`](#pila-de-botones-horizontal)**  **[`Botón`](#botón)**  **[`Reproductor multimedia`](#reproductor-multimedia)**  **[`Persiana`](#persiana)**  **[`Selector`](#selector)**  **[`Clima`](#clima)**  **[`Calendario`](#calendario)**  **[`Separador`](#separador)**  **[`Columna vacía`](#columna-vacía)**  **[`Solo sub-botones`](#solo-sub-botones)**  **[`Sub-botones`](#sub-botones)**  **[`Sugerencias de entidad`](#sugerencias-de-entidad)**  **[`Diseños de tarjeta`](#diseños-de-tarjeta)**  **[`Condiciones`](#condiciones)**  **[`Acciones`](#acciones-de-toque-doble-toque-y-mantener-presionado)**  **[`Estilos`](#estilos)**  **[`Plantillas`](#plantillas)**  **[`Módulos`](#módulos)**  **[`Localización`](#localización)**  **[`Ayuda`](#ayuda)**  **[`Contribuir`](#contribuir)**  **[`Donar`](#donar)**
 
 <br>
 
@@ -123,21 +123,6 @@ Todas las opciones se pueden configurar en el editor de Home Assistant. Pero pue
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Mira este [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) para conocer Bubble Card y sus capacidades.** Mi canal de YouTube es bastante nuevo y se enfoca en tutoriales sobre Home Assistant y Bubble Card. No dudes en suscribirte para ayudar a aumentar la visibilidad de mi canal. ¡Gracias de antemano!
-
-<br>
-
----
-
-<br>
-
-## Sugerencias de entidad
-
-Desde Home Assistant 2026.6, elegir una entidad en el selector de tarjetas te ofrece unas cuantas tarjetas ya listas, y Bubble Card agrega sus propias recetas a esa lista. Elige una luz y se te ofrece una tarjeta con un deslizador de brillo, además de una variante con temperatura de color, otra con color y otra con saturación cuando tu luz las admite. Elige una persiana y obtienes el deslizador de su posición, elige un reproductor multimedia y obtienes también una variante con su lista de fuentes, elige una aspiradora y obtienes sus botones de inicio, pausa y regreso a la base. Cada sugerencia es una configuración normal de Bubble Card mostrada como una vista previa en vivo, así que puedes tomar la más cercana y seguir editándola como siempre.
-
-Lo que se te ofrece depende de lo que tu entidad realmente puede hacer: una luz sin canal de brillo recibe un interruptor en lugar de un deslizador, una persiana que no puede inclinarse no recibe variante de inclinación, y una entidad de clima recibe sus modos preestablecidos solo cuando tiene alguno. Las entradas clásicas siguen debajo de las sugerencias de Bubble Card cuando corresponden: la tarjeta dedicada a ese tipo de entidad, un botón simple y un deslizador.
-
-> [!TIP]
-> Los módulos pueden agregar sus propias sugerencias a esa lista, ver [módulos](#módulos).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Sugerencias de entidad
+
+Desde Home Assistant 2026.6, elegir una entidad en el selector de tarjetas te ofrece unas cuantas tarjetas ya listas, y Bubble Card agrega sus propias recetas a esa lista. Elige una luz y se te ofrece una tarjeta con un deslizador de brillo, además de una variante con temperatura de color, otra con color y otra con saturación cuando tu luz las admite. Elige una persiana y obtienes el deslizador de su posición, elige un reproductor multimedia y obtienes también una variante con su lista de fuentes, elige una aspiradora y obtienes sus botones de inicio, pausa y regreso a la base. Cada sugerencia es una configuración normal de Bubble Card mostrada como una vista previa en vivo, así que puedes tomar la más cercana y seguir editándola como siempre.
+
+Lo que se te ofrece depende de lo que tu entidad realmente puede hacer: una luz sin canal de brillo recibe un interruptor en lugar de un deslizador, una persiana que no puede inclinarse no recibe variante de inclinación, y una entidad de clima recibe sus modos preestablecidos solo cuando tiene alguno. Las entradas clásicas siguen debajo de las sugerencias de Bubble Card cuando corresponden: la tarjeta dedicada a ese tipo de entidad, un botón simple y un deslizador.
+
+> [!TIP]
+> Los módulos pueden agregar sus propias sugerencias a esa lista, ver [módulos](#módulos).
 
 <br>
 

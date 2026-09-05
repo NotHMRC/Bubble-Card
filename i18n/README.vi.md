@@ -18,7 +18,7 @@ Bubble Card là một bộ sưu tập thẻ tối giản và có thể tùy ch�
 
 ## Mục lục
 
-**[`Cài đặt`](#cài-đặt)**  **[`Cấu hình`](#cấu-hình)**  **[`Gợi ý thực thể`](#gợi-ý-thực-thể)**  **[`Pop-up`](#pop-up)**  **[`Ngăn xếp nút ngang`](#ngăn-xếp-nút-ngang)**  **[`Nút`](#nút)**  **[`Trình phát đa phương tiện`](#trình-phát-đa-phương-tiện)**  **[`Rèm cửa`](#rèm-cửa)**  **[`Chọn`](#chọn)**  **[`Điều hòa`](#điều-hòa)**  **[`Lịch`](#lịch)**  **[`Dấu phân cách`](#dấu-phân-cách)**  **[`Cột trống`](#cột-trống)**  **[`Chỉ nút phụ`](#chỉ-nút-phụ)**  **[`Nút phụ`](#nút-phụ)**  **[`Bố cục thẻ`](#bố-cục-thẻ)**  **[`Điều kiện`](#điều-kiện)**  **[`Hành động`](#hành-động-chạm-chạm-đúp-và-giữ)**  **[`Giao diện`](#giao-diện)**  **[`Mẫu`](#mẫu)**  **[`Mô-đun`](#mô-đun)**  **[`Bản địa hóa`](#bản-địa-hóa)**  **[`Trợ giúp`](#trợ-giúp)**  **[`Đóng góp`](#đóng-góp)**  **[`Quyên góp`](#quyên-góp)**
+**[`Cài đặt`](#cài-đặt)**  **[`Cấu hình`](#cấu-hình)**  **[`Pop-up`](#pop-up)**  **[`Ngăn xếp nút ngang`](#ngăn-xếp-nút-ngang)**  **[`Nút`](#nút)**  **[`Trình phát đa phương tiện`](#trình-phát-đa-phương-tiện)**  **[`Rèm cửa`](#rèm-cửa)**  **[`Chọn`](#chọn)**  **[`Điều hòa`](#điều-hòa)**  **[`Lịch`](#lịch)**  **[`Dấu phân cách`](#dấu-phân-cách)**  **[`Cột trống`](#cột-trống)**  **[`Chỉ nút phụ`](#chỉ-nút-phụ)**  **[`Nút phụ`](#nút-phụ)**  **[`Gợi ý thực thể`](#gợi-ý-thực-thể)**  **[`Bố cục thẻ`](#bố-cục-thẻ)**  **[`Điều kiện`](#điều-kiện)**  **[`Hành động`](#hành-động-chạm-chạm-đúp-và-giữ)**  **[`Giao diện`](#giao-diện)**  **[`Mẫu`](#mẫu)**  **[`Mô-đun`](#mô-đun)**  **[`Bản địa hóa`](#bản-địa-hóa)**  **[`Trợ giúp`](#trợ-giúp)**  **[`Đóng góp`](#đóng-góp)**  **[`Quyên góp`](#quyên-góp)**
 
 <br>
 
@@ -123,21 +123,6 @@ Tất cả các tùy chọn có thể được cấu hình trong trình chỉnh 
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Hãy xem [video](https://www.youtube.com/watch?v=0hSQOlBxKKI) này để tìm hiểu về Bubble Card và các khả năng của nó.** Kênh YouTube của tôi còn khá mới và tập trung vào các hướng dẫn về Home Assistant và Bubble Card. Đừng ngần ngại đăng ký để giúp tăng độ nhận diện cho kênh của tôi. Xin cảm ơn trước!
-
-<br>
-
----
-
-<br>
-
-## Gợi ý thực thể
-
-Kể từ Home Assistant 2026.6, việc chọn một thực thể trong bộ chọn thẻ sẽ đề xuất cho bạn vài thẻ dựng sẵn, và Bubble Card thêm những công thức của riêng nó vào danh sách đó. Chọn một đèn và bạn được đề xuất một thẻ có thanh trượt độ sáng, kèm theo các biến thể nhiệt độ màu, màu sắc và độ bão hòa khi đèn của bạn hỗ trợ. Chọn một rèm cửa và bạn có thanh trượt vị trí của nó, chọn một trình phát đa phương tiện và bạn còn có một biến thể kèm danh sách nguồn, chọn một máy hút bụi và bạn có các nút bắt đầu, tạm dừng và về dock. Mỗi gợi ý là một cấu hình Bubble Card bình thường được hiển thị dưới dạng xem trước trực tiếp, nên bạn có thể lấy cái gần nhất và tiếp tục chỉnh sửa như thường lệ.
-
-Những gì được đề xuất phụ thuộc vào việc thực thể của bạn thực sự làm được gì: một đèn không có kênh độ sáng sẽ nhận công tắc thay vì thanh trượt, một rèm cửa không nghiêng được thì không có biến thể góc nghiêng, và một thực thể điều hòa chỉ nhận các chế độ cài sẵn khi nó có. Các mục cổ điển theo sau bên dưới các gợi ý của Bubble Card khi phù hợp: thẻ chuyên dụng cho loại thực thể đó, một nút thường và một thanh trượt.
-
-> [!TIP]
-> Mô-đun có thể thêm gợi ý của riêng chúng vào danh sách đó, xem [mô-đun](#mô-đun).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Gợi ý thực thể
+
+Kể từ Home Assistant 2026.6, việc chọn một thực thể trong bộ chọn thẻ sẽ đề xuất cho bạn vài thẻ dựng sẵn, và Bubble Card thêm những công thức của riêng nó vào danh sách đó. Chọn một đèn và bạn được đề xuất một thẻ có thanh trượt độ sáng, kèm theo các biến thể nhiệt độ màu, màu sắc và độ bão hòa khi đèn của bạn hỗ trợ. Chọn một rèm cửa và bạn có thanh trượt vị trí của nó, chọn một trình phát đa phương tiện và bạn còn có một biến thể kèm danh sách nguồn, chọn một máy hút bụi và bạn có các nút bắt đầu, tạm dừng và về dock. Mỗi gợi ý là một cấu hình Bubble Card bình thường được hiển thị dưới dạng xem trước trực tiếp, nên bạn có thể lấy cái gần nhất và tiếp tục chỉnh sửa như thường lệ.
+
+Những gì được đề xuất phụ thuộc vào việc thực thể của bạn thực sự làm được gì: một đèn không có kênh độ sáng sẽ nhận công tắc thay vì thanh trượt, một rèm cửa không nghiêng được thì không có biến thể góc nghiêng, và một thực thể điều hòa chỉ nhận các chế độ cài sẵn khi nó có. Các mục cổ điển theo sau bên dưới các gợi ý của Bubble Card khi phù hợp: thẻ chuyên dụng cho loại thực thể đó, một nút thường và một thanh trượt.
+
+> [!TIP]
+> Mô-đun có thể thêm gợi ý của riêng chúng vào danh sách đó, xem [mô-đun](#mô-đun).
 
 <br>
 

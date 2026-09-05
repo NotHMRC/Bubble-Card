@@ -18,7 +18,7 @@ Bubble Card är en minimalistisk och anpassningsbar samling kort för Home Assis
 
 ## Innehållsförteckning
 
-**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Entitetsförslag`](#entitetsförslag)**  **[`Pop-up`](#pop-up)**  **[`Horisontell knapprad`](#horisontell-knapprad)**  **[`Knapp`](#knapp)**  **[`Mediaspelare`](#mediaspelare)**  **[`Persienn`](#persienn)**  **[`Välj`](#välj)**  **[`Klimat`](#klimat)**  **[`Kalender`](#kalender)**  **[`Avdelare`](#avdelare)**  **[`Tom kolumn`](#tom-kolumn)**  **[`Endast underknappar`](#endast-underknappar)**  **[`Underknappar`](#underknappar)**  **[`Kortlayouter`](#kortlayouter)**  **[`Villkor`](#villkor)**  **[`Åtgärder`](#tryck--dubbeltryck--och-hållåtgärder)**  **[`Stil`](#stil)**  **[`Mallar`](#mallar)**  **[`Moduler`](#moduler)**  **[`Lokalisering`](#lokalisering)**  **[`Hjälp`](#hjälp)**  **[`Bidra`](#bidra)**  **[`Donera`](#donera)**
+**[`Installation`](#installation)**  **[`Konfiguration`](#konfiguration)**  **[`Pop-up`](#pop-up)**  **[`Horisontell knapprad`](#horisontell-knapprad)**  **[`Knapp`](#knapp)**  **[`Mediaspelare`](#mediaspelare)**  **[`Persienn`](#persienn)**  **[`Välj`](#välj)**  **[`Klimat`](#klimat)**  **[`Kalender`](#kalender)**  **[`Avdelare`](#avdelare)**  **[`Tom kolumn`](#tom-kolumn)**  **[`Endast underknappar`](#endast-underknappar)**  **[`Underknappar`](#underknappar)**  **[`Entitetsförslag`](#entitetsförslag)**  **[`Kortlayouter`](#kortlayouter)**  **[`Villkor`](#villkor)**  **[`Åtgärder`](#tryck--dubbeltryck--och-hållåtgärder)**  **[`Stil`](#stil)**  **[`Mallar`](#mallar)**  **[`Moduler`](#moduler)**  **[`Lokalisering`](#lokalisering)**  **[`Hjälp`](#hjälp)**  **[`Bidra`](#bidra)**  **[`Donera`](#donera)**
 
 <br>
 
@@ -123,21 +123,6 @@ Alla alternativ kan konfigureras i Home Assistants redigerare. Men du hittar fle
 [![Bubble-Card---Youtube-github](https://github.com/user-attachments/assets/643aa16a-3fc9-4770-8269-62ec01db49b3)](https://www.youtube.com/watch?v=0hSQOlBxKKI)
 
 **Kolla in den här [videon](https://www.youtube.com/watch?v=0hSQOlBxKKI) för att lära dig mer om Bubble Card och dess möjligheter.** Min YouTube-kanal är ganska ny och fokuserar på handledningar om Home Assistant och Bubble Card. Tveka inte att prenumerera för att hjälpa till att öka min kanals synlighet. Tack på förhand!
-
-<br>
-
----
-
-<br>
-
-## Entitetsförslag
-
-Sedan Home Assistant 2026.6 erbjuds du några färdiga kort när du väljer en entitet i kortväljaren, och Bubble Card lägger till sina egna recept i den listan. Välj en lampa så erbjuds du ett kort med ett ljusstyrkereglage, plus en variant med färgtemperatur, en med färg och en med mättnad när din lampa stöder dem. Välj en persienn så får du dess positionsreglage, välj en mediaspelare så får du även en variant med dess källista, välj en dammsugare så får du dess knappar för start, paus och dockning. Varje förslag är en vanlig Bubble Card-konfiguration som visas som en förhandsvisning i realtid, så du kan ta det som ligger närmast och fortsätta redigera det som vanligt.
-
-Vad du erbjuds beror på vad din entitet faktiskt kan göra: en lampa utan ljusstyrkekanal får en strömbrytare i stället för ett skjutreglage, en persienn som inte kan vinklas får ingen vinkelvariant, och en klimatentitet får sina förinställda lägen bara när den har några. De klassiska posterna följer under Bubble Card-förslagen när de är tillämpliga: kortet som är avsett för den entitetstypen, en enkel knapp och ett skjutreglage.
-
-> [!TIP]
-> Moduler kan lägga till sina egna förslag i den listan, se [moduler](#moduler).
 
 <br>
 
@@ -1466,6 +1451,21 @@ styles: >-
 ```
 
 </details>
+
+<br>
+
+---
+
+<br>
+
+## Entitetsförslag
+
+Sedan Home Assistant 2026.6 erbjuds du några färdiga kort när du väljer en entitet i kortväljaren, och Bubble Card lägger till sina egna recept i den listan. Välj en lampa så erbjuds du ett kort med ett ljusstyrkereglage, plus en variant med färgtemperatur, en med färg och en med mättnad när din lampa stöder dem. Välj en persienn så får du dess positionsreglage, välj en mediaspelare så får du även en variant med dess källista, välj en dammsugare så får du dess knappar för start, paus och dockning. Varje förslag är en vanlig Bubble Card-konfiguration som visas som en förhandsvisning i realtid, så du kan ta det som ligger närmast och fortsätta redigera det som vanligt.
+
+Vad du erbjuds beror på vad din entitet faktiskt kan göra: en lampa utan ljusstyrkekanal får en strömbrytare i stället för ett skjutreglage, en persienn som inte kan vinklas får ingen vinkelvariant, och en klimatentitet får sina förinställda lägen bara när den har några. De klassiska posterna följer under Bubble Card-förslagen när de är tillämpliga: kortet som är avsett för den entitetstypen, en enkel knapp och ett skjutreglage.
+
+> [!TIP]
+> Moduler kan lägga till sina egna förslag i den listan, se [moduler](#moduler).
 
 <br>
 
