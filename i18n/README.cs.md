@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Pokud chcete šablonovat stav (`.bubble-state`), nezapínejte `show_state: true`, jen zapněte `show_attribute: true` bez jakéhokoli atributu.
+Pokud chcete šablonovat stav (`.bubble-state`) ze svých stylů, řádek se na obrazovce objeví, jakmile do něj šablona něco zapíše, ať už `state_content` říká cokoli.
 
 </details>
 

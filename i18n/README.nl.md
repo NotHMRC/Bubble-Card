@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Als je de status (`.bubble-state`) wilt sjabloneren, schakel dan niet `show_state: true` in, maar alleen `show_attribute: true` zonder attribuut.
+Als je de status (`.bubble-state`) vanuit je stijlen wilt sjabloneren, verschijnt de regel op het scherm zodra een sjabloon erin schrijft, wat `state_content` ook zegt.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Se vuoi creare un template per lo stato (`.bubble-state`) non attivare `show_state: true`, attiva solo `show_attribute: true` senza alcun attributo.
+Se vuoi creare un template per lo stato (`.bubble-state`) dai tuoi stili, la riga compare sullo schermo non appena un template ci scrive dentro, qualunque cosa dica `state_content`.
 
 </details>
 

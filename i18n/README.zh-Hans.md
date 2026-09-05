@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-如果你想为状态 (`.bubble-state`) 添加模板，不要开启 `show_state: true`，只需开启 `show_attribute: true`，不指定任何属性即可。
+如果你想从你的样式中为状态 (`.bubble-state`) 添加模板，只要有模板写入这一行，它就会立刻显示在屏幕上，无论 `state_content` 是什么。
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Če želite predlogo za stanje (`.bubble-state`), ne vklopite `show_state: true`, samo vklopite `show_attribute: true` brez atributa.
+Če želite predlogo za stanje (`.bubble-state`) iz svojih stilov, se vrstica prikaže na zaslonu takoj, ko vanjo kaj zapiše predloga, ne glede na to, kaj pravi `state_content`.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Más mian leat an staid a theimpléadú (`.bubble-state`) ná scoránaigh `show_state: true`, ach scoránaigh `show_attribute: true` gan aon aitreabúid.
+Más mian leat an staid a theimpléadú (`.bubble-state`) ó do stíleanna, tagann an líne ar an scáileán a luaithe a scríobhann teimpléad isteach inti, is cuma cad a deir `state_content`.
 
 </details>
 

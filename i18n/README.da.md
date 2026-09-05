@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Hvis du vil lave en skabelon for tilstanden (`.bubble-state`), skal du ikke aktivere `show_state: true`, men blot aktivere `show_attribute: true` uden nogen attribut.
+Hvis du vil lave en skabelon for tilstanden (`.bubble-state`) fra dine stilarter, vises linjen på skærmen, så snart en skabelon skriver til den, uanset hvad `state_content` siger.
 
 </details>
 

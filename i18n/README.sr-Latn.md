@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ako želite da šablonirate stanje (`.bubble-state`), ne uključujte `show_state: true`, samo uključite `show_attribute: true` bez ikakvog atributa.
+Ako želite da šablonirate stanje (`.bubble-state`) iz svojih stilova, red se pojavljuje na ekranu čim šablon upiše nešto u njega, bez obzira na to šta kaže `state_content`.
 
 </details>
 

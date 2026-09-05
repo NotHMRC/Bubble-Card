@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Se você quiser aplicar um modelo ao estado (`.bubble-state`) não ative `show_state: true`, apenas ative `show_attribute: true` sem nenhum atributo.
+Se você quiser aplicar um modelo ao estado (`.bubble-state`) a partir dos seus estilos, a linha aparece na tela assim que um modelo escreve nela, independentemente do que `state_content` diga.
 
 </details>
 

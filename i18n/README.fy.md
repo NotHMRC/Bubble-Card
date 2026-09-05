@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-As jo de steat (`.bubble-state`) sjablonearje wolle, skeakelje dan net `show_state: true` yn, mar allinnich `show_attribute: true` sûnder attribút.
+As jo de steat (`.bubble-state`) fanút jo stilen sjablonearje wolle, ferskynt de rigel op it skerm sa gau't in sjabloan deryn skriuwt, wat `state_content` ek seit.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-如果你想為狀態（`.bubble-state`）建立範本，請不要開啟 `show_state: true`，只需開啟 `show_attribute: true` 且不設定任何屬性即可。
+如果你想從你的樣式中為狀態（`.bubble-state`）建立範本，只要有範本寫入這一行，它就會立刻顯示在螢幕上，無論 `state_content` 是什麼。
 
 </details>
 

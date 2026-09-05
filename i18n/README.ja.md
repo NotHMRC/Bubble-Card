@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-状態(`.bubble-state`)をテンプレート化したい場合は、`show_state: true`ではなく、属性を指定せずに`show_attribute: true`だけを有効にしてください。
+スタイルから状態(`.bubble-state`)をテンプレート化したい場合は、`state_content`の指定が何であれ、テンプレートがそこに書き込むとすぐにその行が画面に表示されます。
 
 </details>
 

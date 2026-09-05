@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-상태(`.bubble-state`)를 템플릿화하려면 `show_state: true`를 켜지 말고, 속성 없이 `show_attribute: true`만 켜세요.
+스타일에서 상태(`.bubble-state`)를 템플릿화하려는 경우, `state_content`에 무엇이 지정되어 있든 템플릿이 내용을 쓰는 즉시 그 줄이 화면에 나타납니다.
 
 </details>
 

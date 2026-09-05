@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Jika Anda ingin membuat templat status (`.bubble-state`), jangan aktifkan `show_state: true`, cukup aktifkan `show_attribute: true` tanpa atribut apa pun.
+Jika Anda ingin membuat templat status (`.bubble-state`) dari gaya Anda, baris tersebut muncul di layar begitu sebuah templat menulis ke dalamnya, apa pun yang dikatakan `state_content`.
 
 </details>
 

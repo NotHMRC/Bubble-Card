@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Se vi volas ŝablonigi la staton (`.bubble-state`), ne ŝaltu `show_state: true`, simple ŝaltu `show_attribute: true` sen ajna atributo.
+Se vi volas ŝablonigi la staton (`.bubble-state`) el viaj stiloj, la linio aperas sur la ekrano tuj kiam ŝablono skribas en ĝin, kion ajn diras `state_content`.
 
 </details>
 

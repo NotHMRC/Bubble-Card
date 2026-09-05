@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Durumu (`.bubble-state`) şablonlaştırmak istiyorsanız `show_state: true` seçeneğini değil, herhangi bir öznitelik olmadan sadece `show_attribute: true` seçeneğini açın.
+Durumu (`.bubble-state`) stillerinizden şablonlaştırmak istiyorsanız, `state_content` ne derse desin, bir şablon satıra yazar yazmaz satır ekranda görünür.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Jeśli chcesz szablonować stan (`.bubble-state`), nie włączaj `show_state: true`, tylko włącz `show_attribute: true` bez żadnego atrybutu.
+Jeśli chcesz szablonować stan (`.bubble-state`) ze swoich stylów, wiersz pojawia się na ekranie, gdy tylko szablon coś do niego wpisze, niezależnie od tego, co mówi `state_content`.
 
 </details>
 

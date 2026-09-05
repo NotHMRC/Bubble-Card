@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Egoera (`.bubble-state`) txantiloitu nahi baduzu, ez aktibatu `show_state: true`, aktibatu `show_attribute: true` soilik, atributurik gabe.
+Egoera (`.bubble-state`) zure estiloetatik txantiloitu nahi baduzu, lerroa pantailan agertzen da txantiloi batek bertan idatzi bezain laster, `state_content`-ek dioena dioela.
 
 </details>
 

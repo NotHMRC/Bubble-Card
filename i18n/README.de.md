@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Wenn du den Zustand (`.bubble-state`) per Template ändern möchtest, aktiviere nicht `show_state: true`, sondern nur `show_attribute: true` ohne ein Attribut.
+Wenn du den Zustand (`.bubble-state`) über deine Styles per Template ändern möchtest, erscheint die Zeile auf dem Bildschirm, sobald ein Template etwas hineinschreibt, egal, was `state_content` sagt.
 
 </details>
 

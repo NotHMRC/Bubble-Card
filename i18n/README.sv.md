@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Om du vill skapa en mall för tillståndet (`.bubble-state`), aktivera inte `show_state: true`, aktivera bara `show_attribute: true` utan något attribut.
+Om du vill skapa en mall för tillståndet (`.bubble-state`) från dina stilar, visas raden på skärmen så snart en mall skriver in något i den, oavsett vad `state_content` säger.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-As jy 'n sjabloon vir die toestand (`.bubble-state`) wil gebruik, moenie `show_state: true` aanskakel nie, skakel net `show_attribute: true` aan sonder enige attribuut.
+As jy 'n sjabloon vir die toestand (`.bubble-state`) vanuit jou style wil gebruik, verskyn die reël op die skerm sodra 'n sjabloon daarin skryf, wat `state_content` ook al sê.
 
 </details>
 

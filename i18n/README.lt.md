@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Jei norite šablonizuoti būseną (`.bubble-state`), neįjunkite `show_state: true`, tiesiog įjunkite `show_attribute: true` be jokio atributo.
+Jei norite šablonizuoti būseną (`.bubble-state`) iš savo stilių, eilutė ekrane pasirodo vos tik šablonas į ją ką nors įrašo, kad ir ką nurodytų `state_content`.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Si quieres aplicar una plantilla al estado (`.bubble-state`), no actives `show_state: true`, activa solo `show_attribute: true` sin ningún atributo.
+Si quieres aplicar una plantilla al estado (`.bubble-state`) desde tus estilos, la línea aparece en pantalla en cuanto una plantilla escribe en ella, diga lo que diga `state_content`.
 
 </details>
 

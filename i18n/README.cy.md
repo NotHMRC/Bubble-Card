@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Os ydych chi am dempledu'r stad (`.bubble-state`) peidiwch â throi `show_state: true` ymlaen, dim ond trowch `show_attribute: true` ymlaen heb unrhyw briodoledd.
+Os ydych chi am dempledu'r stad (`.bubble-state`) o'ch arddulliau, mae'r llinell yn ymddangos ar y sgrin cyn gynted ag y bydd templed yn ysgrifennu iddi, beth bynnag mae `state_content` yn ei ddweud.
 
 </details>
 

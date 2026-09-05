@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ef þú vilt sniðmáta stöðuna (`.bubble-state`) skaltu ekki kveikja á `show_state: true`, heldur aðeins á `show_attribute: true` án nokkurs eigindar.
+Ef þú vilt sniðmáta stöðuna (`.bubble-state`) úr stílunum þínum birtist línan á skjánum um leið og sniðmát skrifar í hana, sama hvað `state_content` segir.
 
 </details>
 

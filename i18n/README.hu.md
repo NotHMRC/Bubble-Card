@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ha az állapotot (`.bubble-state`) szeretnéd sablonozni, ne kapcsold be a `show_state: true` opciót, csak a `show_attribute: true` opciót, attribútum megadása nélkül.
+Ha az állapotot (`.bubble-state`) a stílusaidból szeretnéd sablonozni, a sor megjelenik a képernyőn, amint egy sablon beleír, bármit is mond a `state_content`.
 
 </details>
 

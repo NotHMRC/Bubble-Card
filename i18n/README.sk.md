@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ak chcete šablónovať stav (`.bubble-state`), neprepínajte `show_state: true`, len prepnite `show_attribute: true` bez akéhokoľvek atribútu.
+Ak chcete šablónovať stav (`.bubble-state`) zo svojich štýlov, riadok sa zobrazí na obrazovke hneď, ako doň šablóna niečo zapíše, bez ohľadu na to, čo hovorí `state_content`.
 
 </details>
 

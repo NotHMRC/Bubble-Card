@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Nếu bạn muốn tạo mẫu cho trạng thái (`.bubble-state`) đừng bật `show_state: true`, chỉ cần bật `show_attribute: true` mà không có thuộc tính nào.
+Nếu bạn muốn tạo mẫu cho trạng thái (`.bubble-state`) từ kiểu tùy chỉnh của bạn, dòng này sẽ hiện trên màn hình ngay khi một mẫu ghi vào nó, bất kể `state_content` nói gì.
 
 </details>
 

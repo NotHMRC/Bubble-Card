@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Viss du vil lage ein mal for tilstanden (`.bubble-state`), ikkje slå på `show_state: true`, berre slå på `show_attribute: true` utan nokon attributt.
+Viss du vil lage ein mal for tilstanden (`.bubble-state`) frå stilane dine, kjem linja fram på skjermen så snart ein mal skriv noko i henne, uansett kva `state_content` seier.
 
 </details>
 

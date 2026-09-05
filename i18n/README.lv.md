@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ja vēlaties veidot stāvokli (`.bubble-state`) pēc veidnes, neieslēdziet `show_state: true`, tikai ieslēdziet `show_attribute: true` bez jebkāda atribūta.
+Ja vēlaties veidot stāvokli (`.bubble-state`) pēc veidnes no saviem stiliem, rinda parādās ekrānā, tiklīdz veidne tajā kaut ko ieraksta, neatkarīgi no tā, ko norāda `state_content`.
 
 </details>
 

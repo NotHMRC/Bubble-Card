@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Si vous voulez utiliser un modèle pour l'état (`.bubble-state`), n'activez pas `show_state: true`, activez simplement `show_attribute: true` sans aucun attribut.
+Si vous voulez utiliser un modèle pour l'état (`.bubble-state`) depuis vos styles, la ligne apparaît à l'écran dès qu'un modèle y écrit, quoi que dise `state_content`.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Nëse doni të shabllonizoni gjendjen (`.bubble-state`) mos aktivizoni `show_state: true`, aktivizoni thjesht `show_attribute: true` pa asnjë atribut.
+Nëse doni të shabllonizoni gjendjen (`.bubble-state`) nga stilet tuaja, rreshti shfaqet në ekran sapo një shabllon shkruan në të, pavarësisht se çfarë thotë `state_content`.
 
 </details>
 

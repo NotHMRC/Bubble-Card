@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Kui soovid olekut (`.bubble-state`) mallida, ära lülita sisse `show_state: true`, vaid lülita sisse `show_attribute: true` ilma atribuuti määramata.
+Kui soovid olekut (`.bubble-state`) oma stiilidest mallida, ilmub rida ekraanile kohe, kui mall sinna midagi kirjutab, olenemata sellest, mida `state_content` ütleb.
 
 </details>
 

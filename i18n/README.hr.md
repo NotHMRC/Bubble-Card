@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Ako želite predloškom urediti stanje (`.bubble-state`), ne uključujte `show_state: true`, već samo uključite `show_attribute: true` bez ikakvog atributa.
+Ako želite predloškom urediti stanje (`.bubble-state`) iz svojih stilova, redak se pojavljuje na zaslonu čim predložak nešto upiše u njega, bez obzira na to što `state_content` kaže.
 
 </details>
 

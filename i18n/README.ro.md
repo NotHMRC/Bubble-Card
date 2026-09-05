@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Dacă vrei să șablonizezi starea (`.bubble-state`) nu activa `show_state: true`, activează doar `show_attribute: true` fără niciun atribut.
+Dacă vrei să șablonizezi starea (`.bubble-state`) din stilurile tale, linia apare pe ecran de îndată ce un șablon scrie în ea, indiferent ce spune `state_content`.
 
 </details>
 

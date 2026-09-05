@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Wann Dir de Status (`.bubble-state`) templaten wëllt, aktivéiert net `show_state: true`, aktivéiert einfach `show_attribute: true` ouni en Attribut.
+Wann Dir de Status (`.bubble-state`) aus Äre Styles templaten wëllt, erschéngt d'Linn um Bildschierm, soubal en Template eppes dra schreift, egal wat `state_content` seet.
 
 </details>
 

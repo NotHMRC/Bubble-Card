@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Wenn du dr Zuestand (`.bubble-state`) templiere wottsch, aktivier nöd `show_state: true`, aktivier eifach `show_attribute: true` ohni es Attribut.
+Wenn du dr Zuestand (`.bubble-state`) us dine Styles templiere wottsch, erschiint d Zile uf em Bildschirm, sobald es Template dri schriibt, egal was `state_content` seit.
 
 </details>
 

@@ -2282,7 +2282,7 @@ styles: |
 ```
 
 
-Jos haluat mallintaa tilan (`.bubble-state`) älä ota käyttöön `show_state: true`, ota vain käyttöön `show_attribute: true` ilman attribuuttia.
+Jos haluat mallintaa tilan (`.bubble-state`) tyyleistäsi, rivi ilmestyy näytölle heti, kun malli kirjoittaa siihen, riippumatta siitä, mitä `state_content` sanoo.
 
 </details>
 
