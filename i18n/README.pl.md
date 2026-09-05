@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ta karta pozwala dodać menu rozwijane dla Twoich encji `input_select` / `select`. Ta karta obsługuje również podprzyciski oraz wszystkie wspólne funkcje Bubble Card.
 
+Działa również z każdą encją, która udostępnia swoje opcje w postaci listy atrybutów: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` i `preset_modes` w encji klimatyzacji, `available_modes` w nawilżaczu, `operation_list` w podgrzewaczu wody, `effect_list` w świetle, `source_list` i `sound_mode_list` w odtwarzaczu mediów.
+
 > [!TIP]
 > Możesz też mieć podprzyciski typu select, jeśli chcesz, ta funkcja jest dostępna we wszystkich kartach obsługujących podprzyciski.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ta karta pozwala sterować Twoimi encjami `climate`.
+Ta karta pozwala sterować Twoimi encjami `climate`, `humidifier` i `water_heater`. Nawilżacz, osuszacz lub ogólny higrostat otrzymuje te same przyciski plus i minus dla docelowej wilgotności, a podgrzewacz wody dla docelowej temperatury.
 
 > [!TIP]
-> Menu wyboru trybu to [podprzycisk](#podprzyciski), który jest dodawany automatycznie przy tworzeniu karty. Możesz go później zmodyfikować lub usunąć według uznania.
+> Menu wyboru trybu to [podprzycisk](#podprzyciski), który jest dodawany automatycznie przy tworzeniu karty. Możesz go później zmodyfikować lub usunąć według uznania. Odczytuje ono `hvac_modes` encji klimatyzacji, `available_modes` nawilżacza oraz `operation_list` podgrzewacza wody.
 
 ### Opcje klimatyzacji
 
@@ -830,7 +832,7 @@ Ta karta pozwala sterować Twoimi encjami `climate`.
 
 | Nazwa                     | Typ    | Wymagane                         | Obsługiwane opcje                                  | Opis                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Wymagane**                        | Encja klimatyzacji                                   | Encja do sterowania (np. `climate.living_room`).                                                            |
+| `entity`                | string  | **Wymagane**                        | Encja klimatyzacji, nawilżacza lub podgrzewacza wody | Encja do sterowania (np. `climate.living_room`, `humidifier.bedroom` lub `water_heater.boiler`).            |
 | `name`                  | string  | Opcjonalne                            | Dowolny ciąg znaków                                       | Niestandardowa nazwa karty. Jeśli nie zdefiniowano, wyświetlana będzie nazwa encji.                                    |
 | `icon`                  | string  | Opcjonalne                            | Dowolna ikona `mdi:`                                  | Niestandardowa ikona karty. Jeśli nie zdefiniowano, użyta zostanie ikona encji lub `entity-picture`.                   |
 | `force_icon`            | boolean | Opcjonalne                            | `true` lub `false` (domyślnie)                     | Nadaje priorytet ikonie zamiast `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Ta karta pozwala sterować Twoimi encjami `climate`.
 | `show_icon`             | boolean | Opcjonalne                            | `true` (domyślnie) lub `false`                     | Pokaż lub ukryj ikonę.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opcjonalne (tylko dla encji obsługujących `target_temp_low`) | `true` lub `false` (domyślnie) | Ukrywa sterowanie dolną temperaturą docelową, jeśli obsługiwane przez `entity`.                                          |
 | `hide_target_temp_high` | boolean | Opcjonalne (tylko dla encji obsługujących `target_temp_high`)| `true` lub `false` (domyślnie) | Ukrywa sterowanie górną temperaturą docelową, jeśli obsługiwane przez `entity`.                                         |
-| `state_color`           | boolean | Opcjonalne                            | `true` lub `false` (domyślnie)                     | Stosuje stały kolor tła, gdy encja klimatyzacji jest włączona.                                              |
-| `step` | number | Opcjonalne | Dowolna liczba | Krok temperatury. |
-| `min_temp` | number | Opcjonalne | Dowolna liczba | Minimalna temperatura. |
-| `max_temp` | number | Opcjonalne | Dowolna liczba | Maksymalna temperatura. |
+| `state_color`           | boolean | Opcjonalne                            | `true` lub `false` (domyślnie)                     | Stosuje stały kolor tła, gdy encja jest włączona. Podgrzewacz wody nie ma odpowiednika `hvac_action`, więc tylko to nadaje mu kolor. |
+| `step` | number | Opcjonalne | Dowolna liczba | Krok wartości docelowej, temperatury lub wilgotności. |
+| `min_temp` | number | Opcjonalne | Dowolna liczba | Minimalna wartość docelowa. W przypadku nawilżacza jest to wilgotność, a nie temperatura. |
+| `max_temp` | number | Opcjonalne | Dowolna liczba | Maksymalna wartość docelowa. W przypadku nawilżacza jest to wilgotność, a nie temperatura. |
 | `button_action` | object | Opcjonalne | `tap_action`, `double_tap_action` lub `hold_action`, zobacz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Pozwala zmienić domyślne akcje po kliknięciu przycisku. |
 | `tap_action` | object | Opcjonalne | Zobacz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Określa typ akcji po dotknięciu ikony, jeśli nie zdefiniowano, użyta zostanie `more-info`. |
 | `double_tap_action` | object | Opcjonalne | Zobacz [akcje](#akcje-dotknięcia-podwójnego-dotknięcia-i-przytrzymania) | Określa typ akcji po podwójnym dotknięciu ikony, jeśli nie zdefiniowano, użyta zostanie `none`. |
@@ -872,6 +874,10 @@ Ta karta pozwala sterować Twoimi encjami `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Kolor nakładki dla stanu grzania |
 | `--bubble-state-climate-auto-color` | `color` | Kolor nakładki dla stanu automatycznego |
 | `--bubble-state-climate-heat-cool-color` | `color` | Kolor nakładki dla stanu grzanie-chłodzenie |
+| `--bubble-state-humidifier-on-color` | `color` | Kolor nakładki dla pracującego nawilżacza |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Kolor nakładki dla pracującego nawilżacza, gdy jego klasa urządzenia to `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Kolor nakładki dla pracującego osuszacza, gdy jego klasa urządzenia to `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Kolor nakładki dla trybu pracy podgrzewacza wody, np. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Kolor akcentu karty klimatyzacji |
 | `--bubble-climate-box-shadow` | Zobacz [cień](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Cień kontenera klimatyzacji. |
 

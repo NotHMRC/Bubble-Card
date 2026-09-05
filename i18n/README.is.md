@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Þetta kort gerir þér kleift að bæta við fellivalmynd fyrir `input_select` / `select` eindirnar þínar. Þetta kort styður einnig undirhnappa og alla algenga eiginleika Bubble Card.
 
+Það virkar líka með öllum eindum sem birta valkosti sína sem eiginleikalista: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` og `preset_modes` á loftslagseind, `available_modes` á rakatæki, `operation_list` á vatnshitara, `effect_list` á ljósi, `source_list` og `sound_mode_list` á spilara.
+
 > [!TIP]
 > Þú getur líka haft valundirhnappa ef þú vilt, þessi eiginleiki er í boði í öllum kortum sem styðja undirhnappa.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Þetta kort gerir þér kleift að stjórna `climate` eindunum þínum.
+Þetta kort gerir þér kleift að stjórna `climate`, `humidifier` og `water_heater` eindunum þínum. Rakatæki, rakaeyðir eða almennur rakastillir fær sömu plús- og mínusstýringar fyrir markrakastigið sitt, og vatnshitari fyrir markhitastigið sitt.
 
 > [!TIP]
-> Hamvalmyndin er [undirhnappur](#undirhnappar) sem er bætt sjálfkrafa við þegar kortið er búið til. Þú getur svo breytt honum eða fjarlægt hann eftir þörfum.
+> Hamvalmyndin er [undirhnappur](#undirhnappar) sem er bætt sjálfkrafa við þegar kortið er búið til. Þú getur svo breytt honum eða fjarlægt hann eftir þörfum. Hún les `hvac_modes` af loftslagseind, `available_modes` af rakatæki og `operation_list` af vatnshitara.
 
 ### Valkostir loftslags
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Eindin sem á að stjórna (t.d. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Eind fyrir loftslag, rakatæki eða vatnshitara    | Eindin sem á að stjórna (t.d. `climate.living_room`, `humidifier.bedroom` eða `water_heater.boiler`).            |
 | `name`                  | string  | Optional                            | Any string                                       | Sérsniðið nafn fyrir kortið. Ef ekki skilgreint birtist nafn eindarinnar.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Sérsniðin táknmynd fyrir kortið. Ef ekki skilgreint verður táknmynd eindarinnar eða `entity-picture` notuð.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Gefur táknmyndinni forgang fram yfir `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Sýna eða fela táknmyndina.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Felur lágmarkshitastigsstillinguna ef eindin styður hana.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Felur hámarkshitastigsstillinguna ef eindin styður hana.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Notar fastan bakgrunnslit þegar loftslagseindin er á (ON).                                              |
-| `step` | number | Optional | Any number | Hitastigsskrefið. |
-| `min_temp` | number | Optional | Any number | Lágmarkshitastig. |
-| `max_temp` | number | Optional | Any number | Hámarkshitastig. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Notar fastan bakgrunnslit þegar eindin er á (ON). Vatnshitari hefur enga hliðstæðu við `hvac_action`, svo þetta er það eina sem litar hann. |
+| `step` | number | Optional | Any number | Skref markgildisins, hitastigs eða rakastigs. |
+| `min_temp` | number | Optional | Any number | Lægsta markgildið. Á rakatæki er þetta rakastig, ekki hitastig. |
+| `max_temp` | number | Optional | Any number | Hæsta markgildið. Á rakatæki er þetta rakastig, ekki hitastig. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Gerir kleift að breyta sjálfgefnum aðgerðum við smell á hnappinn. |
 | `tap_action` | object | Optional | See [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Skilgreinir tegund aðgerðar við smell á táknmyndina, ef ekki skilgreint er `more-info` notað. |
 | `double_tap_action` | object | Optional | See [aðgerðir](#aðgerðir-við-ýtingu-tvíýtingu-og-að-halda-inni) | Skilgreinir tegund aðgerðar við tvísmell á táknmyndina, ef ekki skilgreint er `none` notað. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Yfirlitslitur fyrir hitunarstöðu |
 | `--bubble-state-climate-auto-color` | `color` | Yfirlitslitur fyrir sjálfvirka stöðu |
 | `--bubble-state-climate-heat-cool-color` | `color` | Yfirlitslitur fyrir hitun-kælingu stöðu |
+| `--bubble-state-humidifier-on-color` | `color` | Yfirlitslitur fyrir rakatæki sem er í gangi |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Yfirlitslitur fyrir rakatæki í gangi, þegar tækjaflokkur þess er `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Yfirlitslitur fyrir rakaeyði í gangi, þegar tækjaflokkur þess er `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Yfirlitslitur fyrir aðgerð vatnshitara, t.d. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Áherslulitur loftslagskortsins |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Skuggi loftslagsgámsins. |
 

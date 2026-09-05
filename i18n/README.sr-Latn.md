@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ova kartica vam omogućava da dodate padajući meni za vaše entitete `input_select` / `select`. Ova kartica takođe podržava pod-dugmad i sve uobičajene funkcije Bubble Card.
 
+Takođe radi sa svakim entitetom koji svoje opcije izlaže kao listu atributa: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` i `preset_modes` kod klime, `available_modes` kod ovlaživača, `operation_list` kod bojlera, `effect_list` kod svetla, `source_list` i `sound_mode_list` kod medija plejera.
+
 > [!TIP]
 > Ako želite, možete imati i pod-dugmad za izbor, ova funkcija je dostupna u svim karticama koje podržavaju pod-dugmad.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ova kartica vam omogućava da kontrolišete vaše entitete `climate`.
+Ova kartica vam omogućava da kontrolišete vaše entitete `climate`, `humidifier` i `water_heater`. Ovlaživač, odvlaživač ili opšti higrostat dobija iste kontrole plus i minus za svoju ciljnu vlažnost, a bojler za svoju ciljnu temperaturu.
 
 > [!TIP]
-> Meni za izbor režima je [pod-dugme](#pod-dugmad) koje se automatski dodaje pri kreiranju kartice. Zatim ga možete izmeniti ili ukloniti po želji.
+> Meni za izbor režima je [pod-dugme](#pod-dugmad) koje se automatski dodaje pri kreiranju kartice. Zatim ga možete izmeniti ili ukloniti po želji. Ono čita `hvac_modes` klima entiteta, `available_modes` ovlaživača i `operation_list` bojlera.
 
 ### Opcije klime
 
@@ -830,7 +832,7 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `climate`.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Entitet koji se kontroliše (npr. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Entitet klime, ovlaživača ili bojlera            | Entitet koji se kontroliše (npr. `climate.living_room`, `humidifier.bedroom` ili `water_heater.boiler`).            |
 | `name`                  | string  | Optional                            | Any string                                       | Prilagođen naziv za karticu. Ako nije definisan, biće prikazan naziv entiteta.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Prilagođena ikonica za karticu. Ako nije definisana, koristiće se ikonica entiteta ili `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Daje prioritet ikonici u odnosu na `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `climate`.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Prikazuje ili sakriva ikonicu.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Sakriva kontrolu niže ciljne temperature ako je entitet `entity` podržava.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Sakriva kontrolu više ciljne temperature ako je entitet `entity` podržava.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Primenjuje stalnu boju pozadine kada je entitet klime UKLJUČEN.                                                              |
-| `step` | number | Optional | Any number | Korak temperature. |
-| `min_temp` | number | Optional | Any number | Minimalna temperatura. |
-| `max_temp` | number | Optional | Any number | Maksimalna temperatura. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Primenjuje stalnu boju pozadine kada je entitet UKLJUČEN. Bojler nema ekvivalent za `hvac_action`, pa je ovo jedino što ga boji. |
+| `step` | number | Optional | Any number | Korak ciljne vrednosti, temperature ili vlažnosti. |
+| `min_temp` | number | Optional | Any number | Minimalna ciljna vrednost. Kod ovlaživača je to vlažnost, a ne temperatura. |
+| `max_temp` | number | Optional | Any number | Maksimalna ciljna vrednost. Kod ovlaživača je to vlažnost, a ne temperatura. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Omogućava promenu podrazumevanih akcija pri kliku na dugme. |
 | `tap_action` | object | Optional | See [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Definiše tip akcije pri kliku na ikonicu, ako nije definisano, koristiće se `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#akcije-dodira-dvostrukog-dodira-i-držanja) | Definiše tip akcije pri dvostrukom kliku na ikonicu, ako nije definisano, koristiće se `none`. |
@@ -872,6 +874,10 @@ Ova kartica vam omogućava da kontrolišete vaše entitete `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Boja preklapanja za stanje grejanja |
 | `--bubble-state-climate-auto-color` | `color` | Boja preklapanja za automatsko stanje |
 | `--bubble-state-climate-heat-cool-color` | `color` | Boja preklapanja za stanje grejanje-hlađenje |
+| `--bubble-state-humidifier-on-color` | `color` | Boja preklapanja za ovlaživač koji radi |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Boja preklapanja za ovlaživač koji radi, kada je njegova klasa uređaja `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Boja preklapanja za odvlaživač koji radi, kada je njegova klasa uređaja `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Boja preklapanja za režim rada bojlera, npr. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Akcentna boja za karticu klime |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Senka za kontejner klime. |
 

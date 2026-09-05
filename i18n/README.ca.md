@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Aquesta targeta us permet afegir un menú desplegable per a les vostres entitats `input_select` / `select`. Aquesta targeta també admet els subbotons i totes les funcions comunes de Bubble Card.
 
+També funciona amb qualsevol entitat que exposi les seves opcions com una llista d'atributs: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` i `preset_modes` en una climatització, `available_modes` en un humidificador, `operation_list` en un escalfador d'aigua, `effect_list` en un llum, `source_list` i `sound_mode_list` en un reproductor multimèdia.
+
 > [!TIP]
 > Si voleu, també podeu tenir subbotons de selecció, aquesta funció està disponible a totes les targetes que admeten els subbotons.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Aquesta targeta us permet controlar les vostres entitats `climate`.
+Aquesta targeta us permet controlar les vostres entitats `climate`, `humidifier` i `water_heater`. Un humidificador, un deshumidificador o un higròstat genèric obté els mateixos controls de més i menys sobre la seva humitat objectiu, i un escalfador d'aigua sobre la seva temperatura objectiu.
 
 > [!TIP]
-> El menú de selecció de mode és un [subbotó](#subbotons) que s'afegeix automàticament en crear la targeta. Després el podeu modificar o eliminar com vulgueu.
+> El menú de selecció de mode és un [subbotó](#subbotons) que s'afegeix automàticament en crear la targeta. Després el podeu modificar o eliminar com vulgueu. Llegeix els `hvac_modes` d'una entitat de climatització, els `available_modes` d'un humidificador i l'`operation_list` d'un escalfador d'aigua.
 
 ### Opcions de climatització
 
@@ -830,7 +832,7 @@ Aquesta targeta us permet controlar les vostres entitats `climate`.
 
 | Nom                     | Tipus   | Requisit                            | Opcions compatibles                                | Descripció                                                                                                      |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Obligatori**                      | Entitat de climatització                         | L'entitat a controlar (p. ex. `climate.living_room`).                                                           |
+| `entity`                | string  | **Obligatori**                      | Entitat de climatització, humidificador o escalfador d'aigua | L'entitat a controlar (p. ex. `climate.living_room`, `humidifier.bedroom` o `water_heater.boiler`).             |
 | `name`                  | string  | Opcional                            | Qualsevol text                                   | Un nom personalitzat per a la targeta. Si no es defineix, es mostrarà el nom de l'entitat.                      |
 | `icon`                  | string  | Opcional                            | Qualsevol icona `mdi:`                           | Una icona personalitzada per a la targeta. Si no es defineix, s'utilitzarà la icona de l'entitat o l'`entity-picture`. |
 | `force_icon`            | boolean | Opcional                            | `true` o `false` (per defecte)                  | Prioritza la icona per sobre de l'`entity-picture`.                                                             |
@@ -839,10 +841,10 @@ Aquesta targeta us permet controlar les vostres entitats `climate`.
 | `show_icon`             | boolean | Opcional                            | `true` (per defecte) o `false`                  | Mostra o oculta la icona.                                                                                       |
 | `hide_target_temp_low`  | boolean | Opcional (només per a entitats compatibles amb `target_temp_low`) | `true` o `false` (per defecte) | Oculta el control de temperatura objectiu mínima si l'`entity` l'admet.                                         |
 | `hide_target_temp_high` | boolean | Opcional (només per a entitats compatibles amb `target_temp_high`)| `true` o `false` (per defecte) | Oculta el control de temperatura objectiu màxima si l'`entity` l'admet.                                         |
-| `state_color`           | boolean | Opcional                            | `true` o `false` (per defecte)                  | Aplica un color de fons constant quan l'entitat de climatització està encesa.                                   |
-| `step` | number | Opcional | Qualsevol nombre | El pas de temperatura. |
-| `min_temp` | number | Opcional | Qualsevol nombre | La temperatura mínima. |
-| `max_temp` | number | Opcional | Qualsevol nombre | La temperatura màxima. |
+| `state_color`           | boolean | Opcional                            | `true` o `false` (per defecte)                  | Aplica un color de fons constant quan l'entitat està encesa. Un escalfador d'aigua no té cap equivalent de l'`hvac_action`, així que això és l'única cosa que li dona color. |
+| `step` | number | Opcional | Qualsevol nombre | El pas del valor objectiu, temperatura o humitat. |
+| `min_temp` | number | Opcional | Qualsevol nombre | El valor objectiu mínim. En un humidificador és una humitat, no una temperatura. |
+| `max_temp` | number | Opcional | Qualsevol nombre | El valor objectiu màxim. En un humidificador és una humitat, no una temperatura. |
 | `button_action` | object | Opcional | `tap_action`, `double_tap_action` o `hold_action`, vegeu les [accions](#accions-de-toc-doble-toc-i-toc-llarg) | Permet canviar les accions per defecte en fer clic al botó. |
 | `tap_action` | object | Opcional | Vegeu les [accions](#accions-de-toc-doble-toc-i-toc-llarg) | Defineix el tipus d'acció en fer clic a la icona; si no es defineix, s'utilitzarà `more-info`. |
 | `double_tap_action` | object | Opcional | Vegeu les [accions](#accions-de-toc-doble-toc-i-toc-llarg) | Defineix el tipus d'acció en fer doble clic a la icona; si no es defineix, s'utilitzarà `none`. |
@@ -872,6 +874,10 @@ Aquesta targeta us permet controlar les vostres entitats `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Color de superposició per a l'estat d'escalfament |
 | `--bubble-state-climate-auto-color` | `color` | Color de superposició per a l'estat automàtic |
 | `--bubble-state-climate-heat-cool-color` | `color` | Color de superposició per a l'estat d'escalfament-refredament |
+| `--bubble-state-humidifier-on-color` | `color` | Color de superposició per a un humidificador en funcionament |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Color de superposició per a un humidificador en funcionament, quan la seva classe de dispositiu és `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Color de superposició per a un deshumidificador en funcionament, quan la seva classe de dispositiu és `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Color de superposició per a una operació d'escalfador d'aigua, p. ex. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Color d'èmfasi de la targeta de climatització |
 | `--bubble-climate-box-shadow` | Vegeu [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Ombra del contenidor de climatització. |
 

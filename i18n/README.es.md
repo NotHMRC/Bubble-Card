@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Esta tarjeta te permite añadir un menú desplegable para tus entidades `input_select` / `select`. Esta tarjeta también admite los sub-botones y todas las funciones comunes de Bubble Card.
 
+También funciona con cualquier entidad que exponga sus opciones como una lista de atributos: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` y `preset_modes` en un clima, `available_modes` en un humidificador, `operation_list` en un calentador de agua, `effect_list` en una luz, `source_list` y `sound_mode_list` en un reproductor multimedia.
+
 > [!TIP]
 > Si quieres, también puedes tener sub-botones de selección, esta función está disponible en todas las tarjetas que admiten los sub-botones.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Esta tarjeta te permite controlar tus entidades `climate`.
+Esta tarjeta te permite controlar tus entidades `climate`, `humidifier` y `water_heater`. Un humidificador, un deshumidificador o un higrostato genérico obtiene los mismos controles de más y menos sobre su humedad objetivo, y un calentador de agua sobre su temperatura objetivo.
 
 > [!TIP]
-> El menú de selección de modo es un [sub-botón](#sub-botones) que se añade automáticamente al crear la tarjeta. Después puedes modificarlo o eliminarlo como quieras.
+> El menú de selección de modo es un [sub-botón](#sub-botones) que se añade automáticamente al crear la tarjeta. Después puedes modificarlo o eliminarlo como quieras. Lee los `hvac_modes` de una entidad de clima, los `available_modes` de un humidificador y la `operation_list` de un calentador de agua.
 
 ### Opciones de clima
 
@@ -830,7 +832,7 @@ Esta tarjeta te permite controlar tus entidades `climate`.
 
 | Nombre                   | Tipo    | Requisito                           | Opciones admitidas                                 | Descripción                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Obligatorio**                     | Entidad de clima                                 | La entidad a controlar (p. ej. `climate.living_room`).                                                          |
+| `entity`                | string  | **Obligatorio**                     | Entidad de clima, humidificador o calentador de agua | La entidad a controlar (p. ej. `climate.living_room`, `humidifier.bedroom` o `water_heater.boiler`).            |
 | `name`                  | string  | Opcional                            | Cualquier cadena                                 | Un nombre personalizado para la tarjeta. Si no se define, se mostrará el nombre de la entidad.                  |
 | `icon`                  | string  | Opcional                            | Cualquier icono `mdi:`                           | Un icono personalizado para la tarjeta. Si no se define, se usará el icono de la entidad o la `entity-picture`. |
 | `force_icon`            | boolean | Opcional                            | `true` o `false` (predeterminado)               | Prioriza el icono sobre la `entity-picture`.                                                                    |
@@ -839,10 +841,10 @@ Esta tarjeta te permite controlar tus entidades `climate`.
 | `show_icon`             | boolean | Opcional                            | `true` (predeterminado) o `false`               | Muestra u oculta el icono.                                                                                      |
 | `hide_target_temp_low`  | boolean | Opcional (solo para entidades compatibles con `target_temp_low`) | `true` o `false` (predeterminado) | Oculta el control de temperatura objetivo baja si la `entity` lo admite.                                        |
 | `hide_target_temp_high` | boolean | Opcional (solo para entidades compatibles con `target_temp_high`)| `true` o `false` (predeterminado) | Oculta el control de temperatura objetivo alta si la `entity` lo admite.                                        |
-| `state_color`           | boolean | Opcional                            | `true` o `false` (predeterminado)               | Aplica un color de fondo constante cuando la entidad de clima está encendida.                                   |
-| `step` | number | Opcional | Cualquier número | El paso de temperatura. |
-| `min_temp` | number | Opcional | Cualquier número | La temperatura mínima. |
-| `max_temp` | number | Opcional | Cualquier número | La temperatura máxima. |
+| `state_color`           | boolean | Opcional                            | `true` o `false` (predeterminado)               | Aplica un color de fondo constante cuando la entidad está encendida. Un calentador de agua no tiene un equivalente de `hvac_action`, así que esto es lo único que lo colorea. |
+| `step` | number | Opcional | Cualquier número | El paso del valor objetivo, temperatura o humedad. |
+| `min_temp` | number | Opcional | Cualquier número | El valor objetivo mínimo. En un humidificador es una humedad, no una temperatura. |
+| `max_temp` | number | Opcional | Cualquier número | El valor objetivo máximo. En un humidificador es una humedad, no una temperatura. |
 | `button_action` | object | Opcional | `tap_action`, `double_tap_action` o `hold_action`, ver [acciones](#acciones-de-pulsación-doble-pulsación-y-mantener-pulsado) | Permite cambiar las acciones predeterminadas al hacer clic en el botón. |
 | `tap_action` | object | Opcional | Ver [acciones](#acciones-de-pulsación-doble-pulsación-y-mantener-pulsado) | Define el tipo de acción al hacer clic en el icono, si no se define, se usará `more-info`. |
 | `double_tap_action` | object | Opcional | Ver [acciones](#acciones-de-pulsación-doble-pulsación-y-mantener-pulsado) | Define el tipo de acción al hacer doble clic en el icono, si no se define, se usará `none`. |
@@ -872,6 +874,10 @@ Esta tarjeta te permite controlar tus entidades `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Color de superposición para el estado calentar |
 | `--bubble-state-climate-auto-color` | `color` | Color de superposición para el estado auto |
 | `--bubble-state-climate-heat-cool-color` | `color` | Color de superposición para el estado calentar/enfriar |
+| `--bubble-state-humidifier-on-color` | `color` | Color de superposición para un humidificador en funcionamiento |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Color de superposición para un humidificador en funcionamiento, cuando su clase de dispositivo es `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Color de superposición para un deshumidificador en funcionamiento, cuando su clase de dispositivo es `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Color de superposición para una operación de calentador de agua, p. ej. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Color de acento de la tarjeta de clima |
 | `--bubble-climate-box-shadow` | Ver [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Sombra del contenedor de clima. |
 

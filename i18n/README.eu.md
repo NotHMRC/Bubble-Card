@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Txartel honek zure `input_select` / `select` entitateentzako hedapen-menu bat gehitzeko aukera ematen dizu. Txartel honek azpibotoiak eta Bubble Card-en ezaugarri arrunt guztiak ere onartzen ditu.
 
+Bere aukerak atributu-zerrenda gisa erakusten dituen edozein entitaterekin ere funtzionatzen du: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` eta `preset_modes` klimatizazio batean, `available_modes` hezegailu batean, `operation_list` ur-berogailu batean, `effect_list` argi batean, `source_list` eta `sound_mode_list` multimedia-erreproduzigailu batean.
+
 > [!TIP]
 > Hautaketa-azpibotoiak ere izan ditzakezu nahi izanez gero, ezaugarri hau azpibotoiak onartzen dituzten txartel guztietan dago erabilgarri.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Txartel honek zure `climate` entitateak kontrolatzeko aukera ematen dizu.
+Txartel honek zure `climate`, `humidifier` eta `water_heater` entitateak kontrolatzeko aukera ematen dizu. Hezegailu batek, deshezegailu batek edo higrostato generiko batek plus eta minus kontrol berberak izango ditu bere helburuko hezetasunerako, eta ur-berogailu batek bere helburuko tenperaturarako.
 
 > [!TIP]
-> Modu-hautaketaren menua txartela sortzean automatikoki gehitzen den [azpibotoi](#azpibotoiak) bat da. Ondoren nahi bezala alda edo ken dezakezu.
+> Modu-hautaketaren menua txartela sortzean automatikoki gehitzen den [azpibotoi](#azpibotoiak) bat da. Ondoren nahi bezala alda edo ken dezakezu. Klimatizazio-entitate baten `hvac_modes` irakurtzen ditu, hezegailu baten `available_modes` eta ur-berogailu baten `operation_list`.
 
 ### Klimatizazioaren aukerak
 
@@ -830,7 +832,7 @@ Txartel honek zure `climate` entitateak kontrolatzeko aukera ematen dizu.
 
 | Izena                     | Mota    | Beharra                         | Onartutako aukerak                                  | Azalpena                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Beharrezkoa**                        | Klimatizazio-entitatea                                   | Kontrolatu beharreko entitatea (adibidez, `climate.living_room`).                                                            |
+| `entity`                | string  | **Beharrezkoa**                        | Klimatizazio-, hezegailu- edo ur-berogailu-entitatea     | Kontrolatu beharreko entitatea (adibidez, `climate.living_room`, `humidifier.bedroom` edo `water_heater.boiler`).            |
 | `name`                  | string  | Aukerakoa                            | Edozein testu                                       | Txartelarentzako izen pertsonalizatua. Definitu ez bada, entitatearen izena erakutsiko da.                                    |
 | `icon`                  | string  | Aukerakoa                            | Edozein `mdi:` ikono                                  | Txartelarentzako ikono pertsonalizatua. Definitu ez bada, entitatearen ikonoa edo `entity-picture` erabiliko da.                   |
 | `force_icon`            | boolean | Aukerakoa                            | `true` edo `false` (lehenetsia)                     | Lehentasuna ematen dio ikonoari `entity-picture`-ren gainetik.                                                           |
@@ -839,10 +841,10 @@ Txartel honek zure `climate` entitateak kontrolatzeko aukera ematen dizu.
 | `show_icon`             | boolean | Aukerakoa                            | `true` (lehenetsia) edo `false`                     | Erakutsi edo ezkutatu ikonoa.                                                                                          |
 | `hide_target_temp_low`  | boolean | Aukerakoa (`target_temp_low` onartzen duten entitateentzat soilik) | `true` edo `false` (lehenetsia) | Ezkutatzen du helburuko tenperatura baxuaren kontrola, `entity`-k onartzen badu.                                          |
 | `hide_target_temp_high` | boolean | Aukerakoa (`target_temp_high` onartzen duten entitateentzat soilik)| `true` edo `false` (lehenetsia) | Ezkutatzen du helburuko tenperatura altuaren kontrola, `entity`-k onartzen badu.                                         |
-| `state_color`           | boolean | Aukerakoa                            | `true` edo `false` (lehenetsia)                     | Klimatizazio-entitatea PIZTUTA dagoenean atzeko planoaren kolore konstante bat aplikatzen du.                                                              |
-| `step` | number | Aukerakoa | Edozein zenbaki | Tenperatura-urratsa. |
-| `min_temp` | number | Aukerakoa | Edozein zenbaki | Gutxieneko tenperatura. |
-| `max_temp` | number | Aukerakoa | Edozein zenbaki | Gehieneko tenperatura. |
+| `state_color`           | boolean | Aukerakoa                            | `true` edo `false` (lehenetsia)                     | Entitatea PIZTUTA dagoenean atzeko planoaren kolore konstante bat aplikatzen du. Ur-berogailu batek ez du `hvac_action`-en baliokiderik, beraz hori da kolorea ematen dion gauza bakarra. |
+| `step` | number | Aukerakoa | Edozein zenbaki | Helburuko balioaren, tenperaturaren edo hezetasunaren urratsa. |
+| `min_temp` | number | Aukerakoa | Edozein zenbaki | Gutxieneko helburuko balioa. Hezegailu batean hezetasun bat da, ez tenperatura bat. |
+| `max_temp` | number | Aukerakoa | Edozein zenbaki | Gehieneko helburuko balioa. Hezegailu batean hezetasun bat da, ez tenperatura bat. |
 | `button_action` | object | Aukerakoa | `tap_action`, `double_tap_action` edo `hold_action`, ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Botoiaren klik gaineko ekintza lehenetsiak aldatzeko aukera ematen du. |
 | `tap_action` | object | Aukerakoa | Ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Definitu ikonoaren klik gaineko ekintza mota, definitu ez bada `more-info` erabiliko da. |
 | `double_tap_action` | object | Aukerakoa | Ikusi [ekintzak](#sakatze--sakatze-bikoitz--eta-luze-sakatze-ekintzak) | Definitu ikonoaren klik bikoitz gaineko ekintza mota, definitu ez bada `none` erabiliko da. |
@@ -872,6 +874,10 @@ Txartel honek zure `climate` entitateak kontrolatzeko aukera ematen dizu.
 | `--bubble-state-climate-heat-color` | `color` | Berotze-egoeraren gainjarpen-kolorea |
 | `--bubble-state-climate-auto-color` | `color` | Modu automatikoaren gainjarpen-kolorea |
 | `--bubble-state-climate-heat-cool-color` | `color` | Berotu-hoztu egoeraren gainjarpen-kolorea |
+| `--bubble-state-humidifier-on-color` | `color` | Martxan dagoen hezegailu baten gainjarpen-kolorea |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Martxan dagoen hezegailu baten gainjarpen-kolorea, bere gailu-klasea `humidifier` denean |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Martxan dagoen deshezegailu baten gainjarpen-kolorea, bere gailu-klasea `dehumidifier` denean |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Ur-berogailu baten funtzionamendu-moduaren gainjarpen-kolorea, adibidez `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Klimatizazio-txartelaren nabarmentze-kolorea |
 | `--bubble-climate-box-shadow` | ikusi [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Klimatizazio-edukiontziaren itzala. |
 

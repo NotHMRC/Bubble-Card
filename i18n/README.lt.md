@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ši kortelė leidžia pridėti išskleidžiamąjį meniu jūsų `input_select` / `select` entitetams. Ši kortelė taip pat palaiko papildomus mygtukus ir visas įprastas Bubble Card funkcijas.
 
+Ji taip pat veikia su bet kuriuo entitetu, kuris savo parinktis pateikia kaip atributų sąrašą: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` ir `preset_modes` klimato entitete, `available_modes` drėkintuve, `operation_list` vandens šildytuve, `effect_list` šviestuve, `source_list` ir `sound_mode_list` medijos leistuve.
+
 > [!TIP]
 > Jei norite, galite turėti ir pasirinkimo papildomus mygtukus, ši funkcija prieinama visose kortelėse, kurios palaiko papildomus mygtukus.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ši kortelė leidžia valdyti jūsų `climate` entitetus.
+Ši kortelė leidžia valdyti jūsų `climate`, `humidifier` ir `water_heater` entitetus. Drėkintuvas, sausintuvas arba bendrasis higrostatas gauna tokius pačius pliuso ir minuso valdiklius tikslinei drėgmei, o vandens šildytuvas tikslinei temperatūrai.
 
 > [!TIP]
-> Režimo pasirinkimo meniu yra [papildomas mygtukas](#papildomi-mygtukai), kuris pridedamas automatiškai kuriant kortelę. Vėliau galite jį pakeisti arba pašalinti savo nuožiūra.
+> Režimo pasirinkimo meniu yra [papildomas mygtukas](#papildomi-mygtukai), kuris pridedamas automatiškai kuriant kortelę. Vėliau galite jį pakeisti arba pašalinti savo nuožiūra. Jis nuskaito klimato entiteto `hvac_modes`, drėkintuvo `available_modes` ir vandens šildytuvo `operation_list`.
 
 ### Klimato parinktys
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Valdytinas entitetas (pvz., `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Climate, humidifier or water heater entity       | Valdytinas entitetas (pvz., `climate.living_room`, `humidifier.bedroom` arba `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Any string                                       | Pritaikytas kortelės pavadinimas. Jei nenustatytas, bus rodomas entiteto pavadinimas.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Pritaikyta kortelės ikona. Jei nenustatyta, bus naudojama entiteto ikona arba `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Suteikia pirmenybę ikonai, o ne `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Rodyti arba slėpti ikoną.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Paslepia žemos tikslinės temperatūros valdiklį, jei jį palaiko `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Paslepia aukštos tikslinės temperatūros valdiklį, jei jį palaiko `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Taiko pastovią fono spalvą, kai klimato entitetas yra įjungtas.                                                              |
-| `step` | number | Optional | Any number | Temperatūros žingsnis. |
-| `min_temp` | number | Optional | Any number | Minimali temperatūra. |
-| `max_temp` | number | Optional | Any number | Maksimali temperatūra. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Taiko pastovią fono spalvą, kai entitetas yra įjungtas. Vandens šildytuvas neturi `hvac_action` atitikmens, todėl tik tai suteikia jam spalvą. |
+| `step` | number | Optional | Any number | Tikslinės reikšmės, temperatūros ar drėgmės žingsnis. |
+| `min_temp` | number | Optional | Any number | Minimali tikslinė reikšmė. Drėkintuve tai yra drėgmė, o ne temperatūra. |
+| `max_temp` | number | Optional | Any number | Maksimali tikslinė reikšmė. Drėkintuve tai yra drėgmė, o ne temperatūra. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#bakstelėjimo-dvigubo-bakstelėjimo-ir-palaikymo-veiksmai) | Leidžia pakeisti numatytuosius veiksmus paspaudus mygtuką. |
 | `tap_action` | object | Optional | See [actions](#bakstelėjimo-dvigubo-bakstelėjimo-ir-palaikymo-veiksmai) | Nustato veiksmo tipą paspaudus ikoną, jei nenustatyta, bus naudojama `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#bakstelėjimo-dvigubo-bakstelėjimo-ir-palaikymo-veiksmai) | Nustato veiksmo tipą dvigubai bakstelėjus ikoną, jei nenustatyta, bus naudojama `none`. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Perdangos spalva šildymo būsenai |
 | `--bubble-state-climate-auto-color` | `color` | Perdangos spalva automatinei būsenai |
 | `--bubble-state-climate-heat-cool-color` | `color` | Perdangos spalva šildymo-vėsinimo būsenai |
+| `--bubble-state-humidifier-on-color` | `color` | Perdangos spalva veikiančiam drėkintuvui |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Perdangos spalva veikiančiam drėkintuvui, kai jo įrenginio klasė yra `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Perdangos spalva veikiančiam sausintuvui, kai jo įrenginio klasė yra `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Perdangos spalva vandens šildytuvo veikimo režimui, pvz. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Klimato kortelės akcentinė spalva |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Klimato konteinerio šešėlis. |
 

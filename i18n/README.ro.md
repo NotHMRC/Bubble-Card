@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Acest card îți permite să adaugi un meniu derulant pentru entitățile tale `input_select` / `select`. Acest card acceptă și sub-butoanele și toate funcțiile comune Bubble Card.
 
+Funcționează și cu orice entitate care își expune opțiunile sub forma unei liste de atribute: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` și `preset_modes` pe o entitate de climatizare, `available_modes` pe un umidificator, `operation_list` pe un boiler, `effect_list` pe o lumină, `source_list` și `sound_mode_list` pe un player media.
+
 > [!TIP]
 > Poți avea și sub-butoane de selecție dacă dorești, această funcție este disponibilă în toate cardurile care acceptă sub-butoanele.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Acest card îți permite să controlezi entitățile tale `climate`.
+Acest card îți permite să controlezi entitățile tale `climate`, `humidifier` și `water_heater`. Un umidificator, un dezumidificator sau un higrostat generic primește aceleași controale plus și minus pentru umiditatea sa țintă, iar un boiler pentru temperatura sa țintă.
 
 > [!TIP]
-> Meniul de selecție al modului este un [sub-buton](#sub-butoane) care este adăugat automat la crearea cardului. Îl poți modifica sau elimina ulterior după cum dorești.
+> Meniul de selecție al modului este un [sub-buton](#sub-butoane) care este adăugat automat la crearea cardului. Îl poți modifica sau elimina ulterior după cum dorești. Citește `hvac_modes` ale unei entități de climatizare, `available_modes` ale unui umidificator și `operation_list` a unui boiler.
 
 ### Opțiunile climatizării
 
@@ -830,7 +832,7 @@ Acest card îți permite să controlezi entitățile tale `climate`.
 
 | Nume                     | Tip    | Cerință                         | Opțiuni acceptate                                  | Descriere                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Obligatoriu**                        | Entitate climatizare                                   | Entitatea de controlat (de exemplu, `climate.living_room`).                                                            |
+| `entity`                | string  | **Obligatoriu**                        | Entitate climatizare, umidificator sau boiler          | Entitatea de controlat (de exemplu, `climate.living_room`, `humidifier.bedroom` sau `water_heater.boiler`).            |
 | `name`                  | string  | Opțional                            | Orice șir de caractere                                       | Un nume personalizat pentru card. Dacă nu este definit, va afișa numele entității.                                    |
 | `icon`                  | string  | Opțional                            | Orice pictogramă `mdi:`                                  | O pictogramă personalizată pentru card. Dacă nu este definită, se va folosi pictograma entității sau `entity-picture`.                   |
 | `force_icon`            | boolean | Opțional                            | `true` sau `false` (implicit)                     | Acordă prioritate pictogramei în locul `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Acest card îți permite să controlezi entitățile tale `climate`.
 | `show_icon`             | boolean | Opțional                            | `true` (implicit) sau `false`                     | Arată sau ascunde pictograma.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opțional (doar pentru entitățile care acceptă `target_temp_low`) | `true` sau `false` (implicit) | Ascunde controlul temperaturii țintă scăzute dacă este acceptat de entitatea `entity`.                                          |
 | `hide_target_temp_high` | boolean | Opțional (doar pentru entitățile care acceptă `target_temp_high`)| `true` sau `false` (implicit) | Ascunde controlul temperaturii țintă ridicate dacă este acceptat de entitatea `entity`.                                         |
-| `state_color`           | boolean | Opțional                            | `true` sau `false` (implicit)                     | Aplică o culoare de fundal constantă atunci când entitatea de climatizare este PORNITĂ.                                              |
-| `step` | number | Opțional | Orice număr | Pasul temperaturii. |
-| `min_temp` | number | Opțional | Orice număr | Temperatura minimă. |
-| `max_temp` | number | Opțional | Orice număr | Temperatura maximă. |
+| `state_color`           | boolean | Opțional                            | `true` sau `false` (implicit)                     | Aplică o culoare de fundal constantă atunci când entitatea este PORNITĂ. Un boiler nu are un echivalent al `hvac_action`, deci acesta este singurul lucru care îl colorează. |
+| `step` | number | Opțional | Orice număr | Pasul valorii țintă, temperatură sau umiditate. |
+| `min_temp` | number | Opțional | Orice număr | Valoarea țintă minimă. Pe un umidificator aceasta este o umiditate, nu o temperatură. |
+| `max_temp` | number | Opțional | Orice număr | Valoarea țintă maximă. Pe un umidificator aceasta este o umiditate, nu o temperatură. |
 | `button_action` | object | Opțional | `tap_action`, `double_tap_action` sau `hold_action`, vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Permite schimbarea acțiunilor implicite la clic pe buton. |
 | `tap_action` | object | Opțional | Vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Definește tipul de acțiune la clic pe pictogramă, dacă nu este definit, se va folosi `more-info`. |
 | `double_tap_action` | object | Opțional | Vezi [acțiuni](#acțiuni-la-atingere-atingere-dublă-și-apăsare-lungă) | Definește tipul de acțiune la dublu clic pe pictogramă, dacă nu este definit, se va folosi `none`. |
@@ -872,6 +874,10 @@ Acest card îți permite să controlezi entitățile tale `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Culoarea de suprapunere pentru starea încălzire |
 | `--bubble-state-climate-auto-color` | `color` | Culoarea de suprapunere pentru starea automat |
 | `--bubble-state-climate-heat-cool-color` | `color` | Culoarea de suprapunere pentru starea încălzire-răcire |
+| `--bubble-state-humidifier-on-color` | `color` | Culoarea de suprapunere pentru un umidificator care funcționează |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Culoarea de suprapunere pentru un umidificator care funcționează, când clasa sa de dispozitiv este `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Culoarea de suprapunere pentru un dezumidificator care funcționează, când clasa sa de dispozitiv este `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Culoarea de suprapunere pentru un mod de funcționare al boilerului, de exemplu `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Culoarea de accent pentru cardul de climatizare |
 | `--bubble-climate-box-shadow` | Vezi [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Umbra cutiei pentru containerul de climatizare. |
 

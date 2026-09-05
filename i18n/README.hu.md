@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ez a kártya lehetővé teszi egy legördülő menü hozzáadását az `input_select` / `select` entitásaidhoz. Ez a kártya támogatja az algombokat és a Bubble Card összes közös funkcióját is.
 
+Bármely olyan entitással is működik, amely a lehetőségeit attribútumlistaként teszi közzé: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` és `preset_modes` egy klímán, `available_modes` egy párásítón, `operation_list` egy vízmelegítőn, `effect_list` egy lámpán, `source_list` és `sound_mode_list` egy médialejátszón.
+
 > [!TIP]
 > Ha szeretnéd, választó algombokat is használhatsz, ez a funkció minden algombokat támogató kártyán elérhető.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ez a kártya lehetővé teszi a `climate` entitásaid vezérlését.
+Ez a kártya lehetővé teszi a `climate`, `humidifier` és `water_heater` entitásaid vezérlését. Egy párásító, egy párátlanító vagy egy általános higrosztát ugyanazokat a plusz és mínusz vezérlőket kapja a célpáratartalmához, egy vízmelegítő pedig a célhőmérsékletéhez.
 
 > [!TIP]
-> A módválasztó menü egy [algomb](#algombok), amely automatikusan hozzáadódik a kártya létrehozásakor. Ezután tetszés szerint módosíthatod vagy eltávolíthatod.
+> A módválasztó menü egy [algomb](#algombok), amely automatikusan hozzáadódik a kártya létrehozásakor. Ezután tetszés szerint módosíthatod vagy eltávolíthatod. Egy klíma entitás `hvac_modes`, egy párásító `available_modes` és egy vízmelegítő `operation_list` értékeit olvassa be.
 
 ### Klíma beállításai
 
@@ -830,7 +832,7 @@ Ez a kártya lehetővé teszi a `climate` entitásaid vezérlését.
 
 | Név                     | Típus    | Követelmény                         | Támogatott opciók                                  | Leírás                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Kötelező**                        | Klíma entitás                                   | A vezérlendő entitás (pl. `climate.living_room`).                                                            |
+| `entity`                | string  | **Kötelező**                        | Klíma, párásító vagy vízmelegítő entitás        | A vezérlendő entitás (pl. `climate.living_room`, `humidifier.bedroom` vagy `water_heater.boiler`).           |
 | `name`                  | string  | Opcionális                            | Bármely string                                       | A kártya egyéni neve. Ha nincs megadva, az entitás neve jelenik meg.                                    |
 | `icon`                  | string  | Opcionális                            | Bármely `mdi:` ikon                                  | A kártya egyéni ikonja. Ha nincs megadva, az entitás ikonja vagy az `entity-picture` lesz használva.                   |
 | `force_icon`            | boolean | Opcionális                            | `true` vagy `false` (alapértelmezett)                     | Elsőbbséget ad az ikonnak az `entity-picture` helyett.                                                           |
@@ -839,10 +841,10 @@ Ez a kártya lehetővé teszi a `climate` entitásaid vezérlését.
 | `show_icon`             | boolean | Opcionális                            | `true` (alapértelmezett) vagy `false`                     | Az ikon megjelenítése vagy elrejtése.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opcionális (csak `target_temp_low`-t támogató entitásokhoz) | `true` vagy `false` (alapértelmezett) | Elrejti az alsó célhőmérséklet vezérlőjét, ha az `entity` támogatja.                                          |
 | `hide_target_temp_high` | boolean | Opcionális (csak `target_temp_high`-ot támogató entitásokhoz)| `true` vagy `false` (alapértelmezett) | Elrejti a felső célhőmérséklet vezérlőjét, ha az `entity` támogatja.                                         |
-| `state_color`           | boolean | Opcionális                            | `true` vagy `false` (alapértelmezett)                     | Állandó háttérszínt alkalmaz, amikor a klíma entitás BE van kapcsolva.                                                              |
-| `step` | number | Opcionális | Bármely szám | A hőmérséklet lépésköze. |
-| `min_temp` | number | Opcionális | Bármely szám | A minimális hőmérséklet. |
-| `max_temp` | number | Opcionális | Bármely szám | A maximális hőmérséklet. |
+| `state_color`           | boolean | Opcionális                            | `true` vagy `false` (alapértelmezett)                     | Állandó háttérszínt alkalmaz, amikor az entitás BE van kapcsolva. Egy vízmelegítőnek nincs `hvac_action` megfelelője, így csak ez színezi. |
+| `step` | number | Opcionális | Bármely szám | A célérték, a hőmérséklet vagy a páratartalom lépésköze. |
+| `min_temp` | number | Opcionális | Bármely szám | A minimális célérték. Egy párásítón ez páratartalom, nem hőmérséklet. |
+| `max_temp` | number | Opcionális | Bármely szám | A maximális célérték. Egy párásítón ez páratartalom, nem hőmérséklet. |
 | `button_action` | object | Opcionális | `tap_action`, `double_tap_action` vagy `hold_action`, lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Lehetővé teszi az alapértelmezett műveletek módosítását gombkattintáskor. |
 | `tap_action` | object | Opcionális | Lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Meghatározza az ikonra koppintáskor végrehajtott műveletet, ha nincs megadva, a `more-info` lesz használva. |
 | `double_tap_action` | object | Opcionális | Lásd [műveletek](#koppintás-dupla-koppintás-és-hosszú-nyomás-műveletek) | Meghatározza az ikonra dupla koppintáskor végrehajtott műveletet, ha nincs megadva, a `none` lesz használva. |
@@ -872,6 +874,10 @@ Ez a kártya lehetővé teszi a `climate` entitásaid vezérlését.
 | `--bubble-state-climate-heat-color` | `color` | Fedőszín a fűtés állapothoz |
 | `--bubble-state-climate-auto-color` | `color` | Fedőszín az automatikus állapothoz |
 | `--bubble-state-climate-heat-cool-color` | `color` | Fedőszín a fűtés-hűtés állapothoz |
+| `--bubble-state-humidifier-on-color` | `color` | Fedőszín a működő párásítóhoz |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Fedőszín a működő párásítóhoz, ha az eszközosztálya `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Fedőszín a működő párátlanítóhoz, ha az eszközosztálya `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Fedőszín egy vízmelegítő működési módjához, pl. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Kiemelő szín a klíma kártyához |
 | `--bubble-climate-box-shadow` | Lásd [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | A klíma konténer árnyéka. |
 

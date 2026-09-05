@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Thẻ này cho phép bạn thêm một menu thả xuống cho các thực thể `input_select` / `select` của bạn. Thẻ này cũng hỗ trợ các nút phụ và tất cả các tính năng chung của Bubble Card.
 
+Nó cũng hoạt động với bất kỳ thực thể nào công bố các tùy chọn của mình dưới dạng một danh sách thuộc tính: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` và `preset_modes` trên một thực thể điều hòa, `available_modes` trên một máy tạo ẩm, `operation_list` trên một máy nước nóng, `effect_list` trên một đèn, `source_list` và `sound_mode_list` trên một trình phát đa phương tiện.
+
 > [!TIP]
 > Bạn cũng có thể có các nút phụ chọn nếu muốn, tính năng này khả dụng trong tất cả các thẻ hỗ trợ nút phụ.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Thẻ này cho phép bạn điều khiển các thực thể `climate` của bạn.
+Thẻ này cho phép bạn điều khiển các thực thể `climate`, `humidifier` và `water_heater` của bạn. Một máy tạo ẩm, một máy hút ẩm hoặc một bộ điều ẩm thông thường nhận được cùng các điều khiển cộng và trừ cho độ ẩm mục tiêu của nó, còn một máy nước nóng thì cho nhiệt độ mục tiêu của nó.
 
 > [!TIP]
-> Menu chọn chế độ là một [nút phụ](#nút-phụ) được thêm tự động khi tạo thẻ. Sau đó bạn có thể chỉnh sửa hoặc xóa nó tùy ý.
+> Menu chọn chế độ là một [nút phụ](#nút-phụ) được thêm tự động khi tạo thẻ. Sau đó bạn có thể chỉnh sửa hoặc xóa nó tùy ý. Nó đọc `hvac_modes` của một thực thể điều hòa, `available_modes` của một máy tạo ẩm và `operation_list` của một máy nước nóng.
 
 ### Tùy chọn điều hòa
 
@@ -830,7 +832,7 @@ Thẻ này cho phép bạn điều khiển các thực thể `climate` của b�
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Thực thể cần điều khiển (ví dụ: `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Climate, humidifier or water heater entity       | Thực thể cần điều khiển (ví dụ: `climate.living_room`, `humidifier.bedroom` hoặc `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Any string                                       | Tên tùy chỉnh cho thẻ. Nếu không được định nghĩa, nó sẽ hiển thị tên thực thể.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Biểu tượng tùy chỉnh cho thẻ. Nếu không được định nghĩa, biểu tượng thực thể hoặc `entity-picture` sẽ được dùng.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Ưu tiên biểu tượng thay vì `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Thẻ này cho phép bạn điều khiển các thực thể `climate` của b�
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Hiện hoặc ẩn biểu tượng.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Ẩn điều khiển nhiệt độ mục tiêu thấp nếu được `entity` hỗ trợ.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Ẩn điều khiển nhiệt độ mục tiêu cao nếu được `entity` hỗ trợ.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Áp dụng màu nền cố định khi thực thể điều hòa BẬT.                                                              |
-| `step` | number | Optional | Any number | Bước nhiệt độ. |
-| `min_temp` | number | Optional | Any number | Nhiệt độ tối thiểu. |
-| `max_temp` | number | Optional | Any number | Nhiệt độ tối đa. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Áp dụng màu nền cố định khi thực thể BẬT. Máy nước nóng không có thứ gì tương đương `hvac_action`, nên đây là thứ duy nhất tô màu cho nó. |
+| `step` | number | Optional | Any number | Bước của giá trị mục tiêu, nhiệt độ hoặc độ ẩm. |
+| `min_temp` | number | Optional | Any number | Giá trị mục tiêu tối thiểu. Trên một máy tạo ẩm, đây là độ ẩm chứ không phải nhiệt độ. |
+| `max_temp` | number | Optional | Any number | Giá trị mục tiêu tối đa. Trên một máy tạo ẩm, đây là độ ẩm chứ không phải nhiệt độ. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Cho phép thay đổi hành động mặc định khi nhấn nút. |
 | `tap_action` | object | Optional | See [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Định nghĩa loại hành động khi nhấn biểu tượng, nếu không định nghĩa, `more-info` sẽ được dùng. |
 | `double_tap_action` | object | Optional | See [actions](#hành-động-chạm-chạm-đúp-và-giữ) | Định nghĩa loại hành động khi nhấn đúp biểu tượng, nếu không định nghĩa, `none` sẽ được dùng. |
@@ -872,6 +874,10 @@ Thẻ này cho phép bạn điều khiển các thực thể `climate` của b�
 | `--bubble-state-climate-heat-color` | `color` | Màu phủ cho trạng thái sưởi |
 | `--bubble-state-climate-auto-color` | `color` | Màu phủ cho trạng thái tự động |
 | `--bubble-state-climate-heat-cool-color` | `color` | Màu phủ cho trạng thái sưởi-làm mát |
+| `--bubble-state-humidifier-on-color` | `color` | Màu phủ cho một máy tạo ẩm đang chạy |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Màu phủ cho một máy tạo ẩm đang chạy, khi loại thiết bị của nó là `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Màu phủ cho một máy hút ẩm đang chạy, khi loại thiết bị của nó là `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Màu phủ cho một chế độ vận hành của máy nước nóng, ví dụ `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Màu nhấn cho thẻ điều hòa |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Đổ bóng cho vùng chứa điều hòa. |
 

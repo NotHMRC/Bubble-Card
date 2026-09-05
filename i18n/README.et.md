@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 See kaart võimaldab lisada rippmenüü `input_select` / `select` olemitele. See kaart toetab ka alamnuppe ja kõiki Bubble Card'i ühiseid funktsioone.
 
+See töötab ka iga olemiga, mis esitab oma valikud atribuutide loendina: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` ja `preset_modes` kliimaseadmel, `available_modes` õhuniisutil, `operation_list` veeboileril, `effect_list` valgustil, `source_list` ja `sound_mode_list` meediumipleieril.
+
 > [!TIP]
 > Kui soovid, saad kasutada ka valiku alamnuppe. See funktsioon on saadaval kõigis kaartides, mis toetavad alamnuppe.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-See kaart võimaldab juhtida `climate` olemeid.
+See kaart võimaldab juhtida `climate`, `humidifier` ja `water_heater` olemeid. Õhuniisuti, õhukuivati või üldine hügrostaat saab samad pluss- ja miinusjuhtnupud oma sihtniiskuse jaoks ja veeboiler oma sihttemperatuuri jaoks.
 
 > [!TIP]
-> Režiimivaliku menüü on [alamnupp](#alamnupud), mis lisatakse automaatselt kaardi loomisel. Seda saab hiljem soovi järgi muuta või eemaldada.
+> Režiimivaliku menüü on [alamnupp](#alamnupud), mis lisatakse automaatselt kaardi loomisel. Seda saab hiljem soovi järgi muuta või eemaldada. See loeb kliimaseadme olemi puhul `hvac_modes`, õhuniisuti puhul `available_modes` ja veeboileri puhul `operation_list`.
 
 ### Kliimaseadme valikud
 
@@ -830,7 +832,7 @@ See kaart võimaldab juhtida `climate` olemeid.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Juhitav olem (nt `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Kliimaseadme, õhuniisuti või veeboileri olem     | Juhitav olem (nt `climate.living_room`, `humidifier.bedroom` või `water_heater.boiler`).            |
 | `name`                  | string  | Optional                            | Any string                                       | Kaardi kohandatud nimi. Kui pole määratud, kuvatakse olemi nimi.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Kaardi kohandatud ikoon. Kui pole määratud, kasutatakse olemi ikooni või `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Annab ikoonile eelistuse `entity-picture` ees.                                                           |
@@ -839,10 +841,10 @@ See kaart võimaldab juhtida `climate` olemeid.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Näita või peida ikoon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Peida madala sihttemperatuuri juhtelement, kui `entity` seda toetab.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Peida kõrge sihttemperatuuri juhtelement, kui `entity` seda toetab.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Rakenda püsiv taustavärv, kui kliimaseadme olem on SEES.                                                              |
-| `step` | number | Optional | Any number | Temperatuuri samm. |
-| `min_temp` | number | Optional | Any number | Miinimumtemperatuur. |
-| `max_temp` | number | Optional | Any number | Maksimumtemperatuur. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Rakenda püsiv taustavärv, kui olem on SEES. Veeboileril puudub `hvac_action` vaste, seega ainult see annab talle värvi. |
+| `step` | number | Optional | Any number | Sihtväärtuse, temperatuuri või niiskuse samm. |
+| `min_temp` | number | Optional | Any number | Minimaalne sihtväärtus. Õhuniisutil on see niiskus, mitte temperatuur. |
+| `max_temp` | number | Optional | Any number | Maksimaalne sihtväärtus. Õhuniisutil on see niiskus, mitte temperatuur. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Võimaldab muuta nupu klõpsu vaikimisi toiminguid. |
 | `tap_action` | object | Optional | See [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Määra ikooni klõpsu toimingu tüüp, kui pole määratud, kasutatakse `more-info`. |
 | `double_tap_action` | object | Optional | See [toimingud](#puudutuse-topeltpuudutuse-ja-pika-vajutuse-toimingud) | Määra ikooni topeltklõpsu toimingu tüüp, kui pole määratud, kasutatakse `none`. |
@@ -872,6 +874,10 @@ See kaart võimaldab juhtida `climate` olemeid.
 | `--bubble-state-climate-heat-color` | `color` | Ülekattevärv heat oleku jaoks |
 | `--bubble-state-climate-auto-color` | `color` | Ülekattevärv auto oleku jaoks |
 | `--bubble-state-climate-heat-cool-color` | `color` | Ülekattevärv heat-cool oleku jaoks |
+| `--bubble-state-humidifier-on-color` | `color` | Ülekattevärv töötava õhuniisuti jaoks |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Ülekattevärv töötava õhuniisuti jaoks, kui selle seadmeklass on `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Ülekattevärv töötava õhukuivati jaoks, kui selle seadmeklass on `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Ülekattevärv veeboileri töörežiimi jaoks, nt `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Kliimaseadme kaardi aktsendivärv |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Kliimaseadme konteineri varju efekt. |
 

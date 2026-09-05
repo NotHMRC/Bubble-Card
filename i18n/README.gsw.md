@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Die Charte erlaubt dir, es Dropdown-Menü für dini `input_select` / `select`-Entities z füege. Die Charte unterstützt au d Sub-Buttons und alli gmeinsame Bubble-Card-Funktione.
 
+Si funktioniert au mit jedere Entity, wo ihri Optione als Attributliste zeigt: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` und `preset_modes` bimene Klima, `available_modes` bimene Luftbefüechter, `operation_list` bimene Boiler, `effect_list` bimene Liecht, `source_list` und `sound_mode_list` bimene Mediaplayer.
+
 > [!TIP]
 > Du chasch au Uswahl-Sub-Buttons ha, wenn du wottsch, die Funktion isch in alle Charte verfüegbar, wo Sub-Buttons unterstütze.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Die Charte erlaubt dir, dini `climate`-Entities z stüüre.
+Die Charte erlaubt dir, dini `climate`-, `humidifier`- und `water_heater`-Entities z stüüre. En Luftbefüechter, en Entfüechter oder en allgemeine Hygrostat überchunnt di gliiche Plus- und Minus-Stüürige für sini Zielfüechtigkeit, und en Boiler für sini Zieltemperatur.
 
 > [!TIP]
-> S Modus-Uswahlmenü isch en [Sub-Button](#sub-buttons), wo automatisch derfüegt wird bim Erstelle vo de Charte. Du chasch en dänn wie du wottsch ändere oder entferne.
+> S Modus-Uswahlmenü isch en [Sub-Button](#sub-buttons), wo automatisch derfüegt wird bim Erstelle vo de Charte. Du chasch en dänn wie du wottsch ändere oder entferne. Es liest d `hvac_modes` vonere Klima-Entity, d `available_modes` vomene Luftbefüechter und d `operation_list` vomene Boiler.
 
 ### Klima-Optione
 
@@ -830,7 +832,7 @@ Die Charte erlaubt dir, dini `climate`-Entities z stüüre.
 
 | Name                     | Typ    | Aaforderig                         | Unterstützti Optione                                  | Beschribig                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Erforderlich**                        | Klima-Entity                                   | D Entity zum Stüüre (z. B. `climate.living_room`).                                                            |
+| `entity`                | string  | **Erforderlich**                        | Klima-, Luftbefüechter- oder Boiler-Entity     | D Entity zum Stüüre (z. B. `climate.living_room`, `humidifier.bedroom` oder `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Jede String                                       | En eigete Name für d Charte. Wenn nöd definiert, wird de Entity-Name azeigt.                                    |
 | `icon`                  | string  | Optional                            | Jedes `mdi:`-Icon                                  | En eigete Icon für d Charte. Wenn nöd definiert, wird s Entity-Icon oder `entity-picture` bruucht.                   |
 | `force_icon`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Git em Icon d Priorität anstatt em `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Die Charte erlaubt dir, dini `climate`-Entities z stüüre.
 | `show_icon`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Zeig oder verstecke s Icon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (nur für Entities, wo `target_temp_low` unterstütze) | `true` oder `false` (Standard) | Verstecked d Stüürig vo de tiefe Zieltemperatur, wenn vo de `entity` unterstützt.                                          |
 | `hide_target_temp_high` | boolean | Optional (nur für Entities, wo `target_temp_high` unterstütze)| `true` oder `false` (Standard) | Verstecked d Stüürig vo de hohe Zieltemperatur, wenn vo de `entity` unterstützt.                                         |
-| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Wendet e konstante Hintergrundfarb a, wenn d Klima-Entity aktiv isch.                                              |
-| `step` | number | Optional | Jedi Zahl | De Temperaturschritt. |
-| `min_temp` | number | Optional | Jedi Zahl | Die Minimaltemperatur. |
-| `max_temp` | number | Optional | Jedi Zahl | Die Maximaltemperatur. |
+| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Wendet e konstante Hintergrundfarb a, wenn d Entity aktiv isch. En Boiler het kes Äquivalänt zum `hvac_action`, drum isch das s einzige, wo en iifärbt. |
+| `step` | number | Optional | Jedi Zahl | De Schritt vom Zielwärt, Temperatur oder Füechtigkeit. |
+| `min_temp` | number | Optional | Jedi Zahl | De minimal Zielwärt. Bimene Luftbefüechter isch das e Füechtigkeit und kei Temperatur. |
+| `max_temp` | number | Optional | Jedi Zahl | De maximal Zielwärt. Bimene Luftbefüechter isch das e Füechtigkeit und kei Temperatur. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` oder `hold_action`, gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Erlaubt d Standardaktione bim Button-Klick z ändere. |
 | `tap_action` | object | Optional | Gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Definiert d Art vo de Aktion bim Icon-Klick, wenn nöd definiert wird `more-info` bruucht. |
 | `double_tap_action` | object | Optional | Gseh [Aktione](#tippe--doppeltipp--und-halte-aktione) | Definiert d Art vo de Aktion bim Icon-Doppelklick, wenn nöd definiert wird `none` bruucht. |
@@ -872,6 +874,10 @@ Die Charte erlaubt dir, dini `climate`-Entities z stüüre.
 | `--bubble-state-climate-heat-color` | `color` | Überlagerigsfarb für de Heiz-Zuestand |
 | `--bubble-state-climate-auto-color` | `color` | Überlagerigsfarb für de Auto-Zuestand |
 | `--bubble-state-climate-heat-cool-color` | `color` | Überlagerigsfarb für de Heiz-Kühl-Zuestand |
+| `--bubble-state-humidifier-on-color` | `color` | Überlagerigsfarb für en Luftbefüechter, wo lauft |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Überlagerigsfarb für en laufende Luftbefüechter, wenn sini Geräteklass `humidifier` isch |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Überlagerigsfarb für en laufende Entfüechter, wenn sini Geräteklass `dehumidifier` isch |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Überlagerigsfarb für e Boiler-Betriebsart, z. B. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Akzentfarb für d Klima-Charte |
 | `--bubble-climate-box-shadow` | Gseh [Box Shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Schatte für de Klima-Container. |
 

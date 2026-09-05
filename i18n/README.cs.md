@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Tato karta umožňuje přidat rozbalovací nabídku pro vaše entity `input_select` / `select`. Karta také podporuje podtlačítka a všechny běžné funkce Bubble Card.
 
+Funguje také s každou entitou, která své možnosti vystavuje jako seznam atributů: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` a `preset_modes` u klimatizace, `available_modes` u zvlhčovače, `operation_list` u ohřívače vody, `effect_list` u světla, `source_list` a `sound_mode_list` u přehrávače médií.
+
 > [!TIP]
 > Pokud chcete, můžete mít i podtlačítka typu select, tato funkce je dostupná ve všech kartách, které podporují podtlačítka.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Tato karta umožňuje ovládat vaše entity `climate`.
+Tato karta umožňuje ovládat vaše entity `climate`, `humidifier` a `water_heater`. Zvlhčovač, odvlhčovač nebo obecný hygrostat získá stejné ovládání plus a minus pro svou cílovou vlhkost a ohřívač vody pro svou cílovou teplotu.
 
 > [!TIP]
-> Nabídka výběru režimu je [podtlačítko](#podtlačítka), které se při vytvoření karty přidá automaticky. Můžete je pak podle libosti upravit nebo odebrat.
+> Nabídka výběru režimu je [podtlačítko](#podtlačítka), které se při vytvoření karty přidá automaticky. Můžete je pak podle libosti upravit nebo odebrat. Čte `hvac_modes` entity klimatizace, `available_modes` zvlhčovače a `operation_list` ohřívače vody.
 
 ### Možnosti klimatizace
 
@@ -830,7 +832,7 @@ Tato karta umožňuje ovládat vaše entity `climate`.
 
 | Název                    | Typ     | Povinnost                           | Podporované možnosti                             | Popis                                                                                                           |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Povinné**                         | Entita klimatizace                               | Entita, kterou chcete ovládat (např. `climate.living_room`).                                                    |
+| `entity`                | string  | **Povinné**                         | Entita klimatizace, zvlhčovače nebo ohřívače vody | Entita, kterou chcete ovládat (např. `climate.living_room`, `humidifier.bedroom` nebo `water_heater.boiler`).   |
 | `name`                  | string  | Volitelné                           | Libovolný řetězec                                | Vlastní název karty. Pokud není definován, zobrazí se název entity.                                             |
 | `icon`                  | string  | Volitelné                           | Libovolná ikona `mdi:`                           | Vlastní ikona karty. Pokud není definována, použije se ikona entity nebo `entity-picture`.                      |
 | `force_icon`            | boolean | Volitelné                           | `true` nebo `false` (výchozí)                   | Upřednostní ikonu před `entity-picture`.                                                                        |
@@ -839,10 +841,10 @@ Tato karta umožňuje ovládat vaše entity `climate`.
 | `show_icon`             | boolean | Volitelné                           | `true` (výchozí) nebo `false`                   | Zobrazí nebo skryje ikonu.                                                                                      |
 | `hide_target_temp_low`  | boolean | Volitelné (pouze pro entity podporující `target_temp_low`) | `true` nebo `false` (výchozí) | Skryje ovládání dolní cílové teploty, pokud je entitou `entity` podporováno.                                    |
 | `hide_target_temp_high` | boolean | Volitelné (pouze pro entity podporující `target_temp_high`)| `true` nebo `false` (výchozí) | Skryje ovládání horní cílové teploty, pokud je entitou `entity` podporováno.                                    |
-| `state_color`           | boolean | Volitelné                           | `true` nebo `false` (výchozí)                   | Použije stálou barvu pozadí, když je entita klimatizace zapnutá.                                                |
-| `step` | number | Volitelné | Libovolné číslo | Krok teploty. |
-| `min_temp` | number | Volitelné | Libovolné číslo | Minimální teplota. |
-| `max_temp` | number | Volitelné | Libovolné číslo | Maximální teplota. |
+| `state_color`           | boolean | Volitelné                           | `true` nebo `false` (výchozí)                   | Použije stálou barvu pozadí, když je entita zapnutá. Ohřívač vody nemá obdobu `hvac_action`, takže je to jediné, co ho obarví. |
+| `step` | number | Volitelné | Libovolné číslo | Krok cílové hodnoty, teploty nebo vlhkosti. |
+| `min_temp` | number | Volitelné | Libovolné číslo | Minimální cílová hodnota. U zvlhčovače jde o vlhkost, ne o teplotu. |
+| `max_temp` | number | Volitelné | Libovolné číslo | Maximální cílová hodnota. U zvlhčovače jde o vlhkost, ne o teplotu. |
 | `button_action` | object | Volitelné | `tap_action`, `double_tap_action` nebo `hold_action`, viz [akce](#akce-klepnutí-dvojitého-klepnutí-a-podržení) | Umožní změnit výchozí akce při kliknutí na tlačítko. |
 | `tap_action` | object | Volitelné | Viz [akce](#akce-klepnutí-dvojitého-klepnutí-a-podržení) | Definuje typ akce při kliknutí na ikonu, pokud není definována, použije se `more-info`. |
 | `double_tap_action` | object | Volitelné | Viz [akce](#akce-klepnutí-dvojitého-klepnutí-a-podržení) | Definuje typ akce při dvojitém kliknutí na ikonu, pokud není definována, použije se `none`. |
@@ -872,6 +874,10 @@ Tato karta umožňuje ovládat vaše entity `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Barva překryvu pro stav heat |
 | `--bubble-state-climate-auto-color` | `color` | Barva překryvu pro stav auto |
 | `--bubble-state-climate-heat-cool-color` | `color` | Barva překryvu pro stav heat-cool |
+| `--bubble-state-humidifier-on-color` | `color` | Barva překryvu pro běžící zvlhčovač |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Barva překryvu pro běžící zvlhčovač, když je jeho třída zařízení `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Barva překryvu pro běžící odvlhčovač, když je jeho třída zařízení `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Barva překryvu pro provozní režim ohřívače vody, např. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Barva zvýraznění karty klimatizace |
 | `--bubble-climate-box-shadow` | Viz [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Stín kontejneru klimatizace. |
 

@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ligeann an cárta seo duit roghchlár anuas a chur le d'eintitis `input_select` / `select`. Tacaíonn an cárta seo freisin leis na fochnaipí agus le gnéithe coitianta Bubble Card ar fad.
 
+Oibríonn sé freisin le haon eintiteas a nochtann a chuid roghanna mar liosta airíonna: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` agus `preset_modes` ar aeráid, `available_modes` ar thaisritheoir, `operation_list` ar théitheoir uisce, `effect_list` ar sholas, `source_list` agus `sound_mode_list` ar sheinnteoir meán.
+
 > [!TIP]
 > Is féidir leat fochnaipí roghnaithe a bheith agat freisin más mian leat, tá an ghné seo ar fáil i ngach cárta a dtacaítear leis na fochnaipí ann.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ligeann an cárta seo duit d'eintitis `climate` a rialú.
+Ligeann an cárta seo duit d'eintitis `climate`, `humidifier` agus `water_heater` a rialú. Faigheann taisritheoir, díthaisritheoir nó hidreastat ginearálta na rialtáin plus agus lúide céanna ar a sprioc-thaise, agus faigheann téitheoir uisce iad ar a sprioctheocht.
 
 > [!TIP]
-> Is [fochnaipe](#fochnaipí) é an roghchlár roghnaithe móid, a chuirtear leis go huathoibríoch nuair a chruthaítear an cárta. Is féidir leat é a athrú nó a bhaint ansin de réir mar is mian leat.
+> Is [fochnaipe](#fochnaipí) é an roghchlár roghnaithe móid, a chuirtear leis go huathoibríoch nuair a chruthaítear an cárta. Is féidir leat é a athrú nó a bhaint ansin de réir mar is mian leat. Léann sé `hvac_modes` eintitis aeráide, `available_modes` taisritheora agus `operation_list` téitheora uisce.
 
 ### Roghanna aeráide
 
@@ -830,7 +832,7 @@ Ligeann an cárta seo duit d'eintitis `climate` a rialú.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | An t-eintiteas atá le rialú (m.sh. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Eintiteas aeráide, taisritheora nó téitheora uisce | An t-eintiteas atá le rialú (m.sh. `climate.living_room`, `humidifier.bedroom` nó `water_heater.boiler`).             |
 | `name`                  | string  | Optional                            | Any string                                       | Ainm saincheaptha don chárta. Mura sonraítear é, taispeánfar ainm an eintitis.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Deilbhín saincheaptha don chárta. Mura sonraítear é, úsáidfear deilbhín an eintitis nó an `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Tugann sé tosaíocht don deilbhín seachas don `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Ligeann an cárta seo duit d'eintitis `climate` a rialú.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Taispeáin nó folaigh an deilbhín.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Folaíonn sé an rialtán íosteochta sprice má thacaíonn an `entity` leis.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Folaíonn sé an rialtán uasteochta sprice má thacaíonn an `entity` leis.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Cuireann sé dath cúlra seasta i bhfeidhm nuair atá an t-eintiteas aeráide ANN.                                              |
-| `step` | number | Optional | Any number | Céim na teochta. |
-| `min_temp` | number | Optional | Any number | An teocht íosta. |
-| `max_temp` | number | Optional | Any number | An teocht uasta. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Cuireann sé dath cúlra seasta i bhfeidhm nuair atá an t-eintiteas ANN. Níl aon rud comhionann le `hvac_action` ag téitheoir uisce, mar sin is é seo an t-aon rud a chuireann dath air. |
+| `step` | number | Optional | Any number | Céim an sprioc-luacha, teocht nó taise. |
+| `min_temp` | number | Optional | Any number | An sprioc-luach íosta. Ar thaisritheoir, is taise é seo agus ní teocht. |
+| `max_temp` | number | Optional | Any number | An sprioc-luach uasta. Ar thaisritheoir, is taise é seo agus ní teocht. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#gníomhartha-tapála-tapála-dúbailte-agus-coinneála) | Ceadaíonn sé na gníomhartha réamhshocraithe a athrú nuair a chliceáiltear ar an gcnaipe. |
 | `tap_action` | object | Optional | See [actions](#gníomhartha-tapála-tapála-dúbailte-agus-coinneála) | Sainigh cineál an ghnímh ar chliceáil an deilbhín, mura sonraítear é úsáidfear `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#gníomhartha-tapála-tapála-dúbailte-agus-coinneála) | Sainigh cineál an ghnímh ar chliceáil dhúbailte an deilbhín, mura sonraítear é úsáidfear `none`. |
@@ -872,6 +874,10 @@ Ligeann an cárta seo duit d'eintitis `climate` a rialú.
 | `--bubble-state-climate-heat-color` | `color` | Dath forleagain don staid téimh |
 | `--bubble-state-climate-auto-color` | `color` | Dath forleagain don staid uathoibríoch |
 | `--bubble-state-climate-heat-cool-color` | `color` | Dath forleagain don staid téamh-fuaraithe |
+| `--bubble-state-humidifier-on-color` | `color` | Dath forleagain do thaisritheoir atá ag rith |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Dath forleagain do thaisritheoir atá ag rith, nuair atá `humidifier` mar aicme gléis air |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Dath forleagain do dhíthaisritheoir atá ag rith, nuair atá `dehumidifier` mar aicme gléis air |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Dath forleagain d'oibríocht téitheora uisce, m.sh. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Dath aicinte don chárta aeráide |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Scáth boscaí do choimeádán na haeráide. |
 

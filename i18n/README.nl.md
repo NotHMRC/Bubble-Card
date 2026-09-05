@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Met deze kaart voeg je een dropdownmenu toe voor je `input_select`- / `select`-entiteiten. Deze kaart ondersteunt ook subknoppen en alle gangbare Bubble Card-functies.
 
+Deze kaart werkt ook met elke entiteit die haar opties in een attributenlijst aanbiedt: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` en `preset_modes` op een klimaatentiteit, `available_modes` op een luchtbevochtiger, `operation_list` op een boiler, `effect_list` op een lamp, `source_list` en `sound_mode_list` op een mediaspeler.
+
 > [!TIP]
 > Je kunt ook select-subknoppen gebruiken als je dat wilt, deze functie is beschikbaar in alle kaarten die subknoppen ondersteunen.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Met deze kaart bedien je je `climate`-entiteiten.
+Met deze kaart bedien je je `climate`-, `humidifier`- en `water_heater`-entiteiten. Een luchtbevochtiger, een luchtontvochtiger of een generieke hygrostaat krijgt dezelfde plus- en minknoppen voor de doelluchtvochtigheid, en een boiler voor de doeltemperatuur.
 
 > [!TIP]
-> Het modusselectiemenu is een [subknop](#subknoppen) die automatisch wordt toegevoegd bij het aanmaken van de kaart. Je kunt deze daarna naar wens aanpassen of verwijderen.
+> Het modusselectiemenu is een [subknop](#subknoppen) die automatisch wordt toegevoegd bij het aanmaken van de kaart. Je kunt deze daarna naar wens aanpassen of verwijderen. Het leest de `hvac_modes` van een klimaatentiteit, de `available_modes` van een luchtbevochtiger en de `operation_list` van een boiler.
 
 ### Klimaatopties
 
@@ -830,7 +832,7 @@ Met deze kaart bedien je je `climate`-entiteiten.
 
 | Naam                     | Type    | Vereiste                         | Ondersteunde opties                                  | Beschrijving                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Verplicht**                        | Klimaatentiteit                                   | De te bedienen entiteit (bijv. `climate.living_room`).                                                            |
+| `entity`                | string  | **Verplicht**                        | Klimaat-, luchtbevochtiger- of boilerentiteit     | De te bedienen entiteit (bijv. `climate.living_room`, `humidifier.bedroom` of `water_heater.boiler`).             |
 | `name`                  | string  | Optioneel                            | Elke tekenreeks                                       | Een aangepaste naam voor de kaart. Indien niet gedefinieerd wordt de entiteitsnaam weergegeven.                                    |
 | `icon`                  | string  | Optioneel                            | Elk `mdi:`-pictogram                                  | Een aangepast pictogram voor de kaart. Indien niet gedefinieerd wordt het entiteitspictogram of de `entity-picture` gebruikt.                   |
 | `force_icon`            | boolean | Optioneel                            | `true` of `false` (standaard)                     | Geeft voorrang aan het pictogram in plaats van de `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Met deze kaart bedien je je `climate`-entiteiten.
 | `show_icon`             | boolean | Optioneel                            | `true` (standaard) of `false`                     | Toon of verberg het pictogram.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optioneel (alleen voor entiteiten die `target_temp_low` ondersteunen) | `true` of `false` (standaard) | Verbergt de bediening voor de lage doeltemperatuur indien ondersteund door de `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optioneel (alleen voor entiteiten die `target_temp_high` ondersteunen)| `true` of `false` (standaard) | Verbergt de bediening voor de hoge doeltemperatuur indien ondersteund door de `entity`.                                         |
-| `state_color`           | boolean | Optioneel                            | `true` of `false` (standaard)                     | Past een constante achtergrondkleur toe wanneer de klimaatentiteit AAN staat.                                              |
-| `step` | number | Optioneel | Elk getal | De temperatuurstap. |
-| `min_temp` | number | Optioneel | Elk getal | De minimumtemperatuur. |
-| `max_temp` | number | Optioneel | Elk getal | De maximumtemperatuur. |
+| `state_color`           | boolean | Optioneel                            | `true` of `false` (standaard)                     | Past een constante achtergrondkleur toe wanneer de entiteit AAN staat. Een boiler heeft geen equivalent van `hvac_action`, dus dit is het enige dat hem kleurt. |
+| `step` | number | Optioneel | Elk getal | De stap van de doelwaarde, temperatuur of luchtvochtigheid. |
+| `min_temp` | number | Optioneel | Elk getal | De minimale doelwaarde. Op een luchtbevochtiger is dit een luchtvochtigheid, geen temperatuur. |
+| `max_temp` | number | Optioneel | Elk getal | De maximale doelwaarde. Op een luchtbevochtiger is dit een luchtvochtigheid, geen temperatuur. |
 | `button_action` | object | Optioneel | `tap_action`, `double_tap_action` of `hold_action`, zie [acties](#tik--dubbeltik--en-vasthoudacties) | Hiermee wijzig je de standaardacties bij het klikken op de knop. |
 | `tap_action` | object | Optioneel | Zie [acties](#tik--dubbeltik--en-vasthoudacties) | Definieer het type actie bij het klikken op het pictogram, indien niet gedefinieerd wordt `more-info` gebruikt. |
 | `double_tap_action` | object | Optioneel | Zie [acties](#tik--dubbeltik--en-vasthoudacties) | Definieer het type actie bij het dubbelklikken op het pictogram, indien niet gedefinieerd wordt `none` gebruikt. |
@@ -872,6 +874,10 @@ Met deze kaart bedien je je `climate`-entiteiten.
 | `--bubble-state-climate-heat-color` | `color` | Overlaykleur voor de verwarmingsstatus |
 | `--bubble-state-climate-auto-color` | `color` | Overlaykleur voor de automatische status |
 | `--bubble-state-climate-heat-cool-color` | `color` | Overlaykleur voor de status verwarmen/koelen |
+| `--bubble-state-humidifier-on-color` | `color` | Overlaykleur voor een luchtbevochtiger die actief is |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Overlaykleur voor een actieve luchtbevochtiger, wanneer de apparaatklasse `humidifier` is |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Overlaykleur voor een actieve luchtontvochtiger, wanneer de apparaatklasse `dehumidifier` is |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Overlaykleur voor een werkingsmodus van een boiler, bijv. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Accentkleur voor de klimaatkaart |
 | `--bubble-climate-box-shadow` | Zie [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Box shadow voor de klimaatcontainer. |
 

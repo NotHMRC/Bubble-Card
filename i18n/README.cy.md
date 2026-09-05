@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Mae'r cerdyn hwn yn eich galluogi i ychwanegu dewislen ollwng ar gyfer eich endidau `input_select` / `select`. Mae'r cerdyn hwn hefyd yn cefnogi'r is-fotymau a holl nodweddion cyffredin Bubble Card.
 
+Mae hefyd yn gweithio gydag unrhyw endid sy'n dangos ei opsiynau fel rhestr o briodoleddau: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` a `preset_modes` ar endid hinsawdd, `available_modes` ar leithydd, `operation_list` ar wresogydd dŵr, `effect_list` ar olau, `source_list` a `sound_mode_list` ar chwaraeydd cyfryngau.
+
 > [!TIP]
 > Gallwch hefyd gael is-fotymau dewis os ydych am hynny, mae'r nodwedd hon ar gael ym mhob cerdyn sy'n cefnogi'r is-fotymau.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `climate`.
+Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `climate`, `humidifier` a `water_heater`. Mae lleithydd, dadleithydd neu hygrostat cyffredinol yn cael yr un rheolyddion plws a minws ar ei leithder targed, a gwresogydd dŵr ar ei dymheredd targed.
 
 > [!TIP]
-> Mae'r ddewislen dewis modd yn [is-fotwm](#is-fotymau) sy'n cael ei ychwanegu'n awtomatig wrth greu'r cerdyn. Gallwch wedyn ei addasu neu ei dynnu fel y dymunwch.
+> Mae'r ddewislen dewis modd yn [is-fotwm](#is-fotymau) sy'n cael ei ychwanegu'n awtomatig wrth greu'r cerdyn. Gallwch wedyn ei addasu neu ei dynnu fel y dymunwch. Mae'n darllen `hvac_modes` endid hinsawdd, `available_modes` lleithydd ac `operation_list` gwresogydd dŵr.
 
 ### Opsiynau'r hinsawdd
 
@@ -830,7 +832,7 @@ Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `climate`.
 
 | Enw                     | Math    | Gofyniad                         | Opsiynau a gefnogir                                  | Disgrifiad                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Angenrheidiol**                        | Endid hinsawdd                                   | Yr endid i'w reoli (e.e. `climate.living_room`).                                                            |
+| `entity`                | string  | **Angenrheidiol**                        | Endid hinsawdd, lleithydd neu wresogydd dŵr      | Yr endid i'w reoli (e.e. `climate.living_room`, `humidifier.bedroom` neu `water_heater.boiler`).            |
 | `name`                  | string  | Dewisol                            | Unrhyw linyn                                       | Enw cyfaddas ar gyfer y cerdyn. Os na chaiff ei ddiffinio, bydd yn dangos enw'r endid.                                    |
 | `icon`                  | string  | Dewisol                            | Unrhyw eicon `mdi:`                                  | Eicon cyfaddas ar gyfer y cerdyn. Os na chaiff ei ddiffinio, defnyddir eicon yr endid neu'r `entity-picture`.                   |
 | `force_icon`            | boolean | Dewisol                            | `true` neu `false` (rhagosodedig)                     | Yn rhoi blaenoriaeth i'r eicon dros yr `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `climate`.
 | `show_icon`             | boolean | Dewisol                            | `true` (rhagosodedig) neu `false`                     | Dangos neu guddio'r eicon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Dewisol (dim ond ar gyfer endidau sy'n cefnogi `target_temp_low`) | `true` neu `false` (rhagosodedig) | Cuddio'r rheolydd tymheredd targed isel os yw'r `entity` yn ei gefnogi.                                          |
 | `hide_target_temp_high` | boolean | Dewisol (dim ond ar gyfer endidau sy'n cefnogi `target_temp_high`)| `true` neu `false` (rhagosodedig) | Cuddio'r rheolydd tymheredd targed uchel os yw'r `entity` yn ei gefnogi.                                         |
-| `state_color`           | boolean | Dewisol                            | `true` neu `false` (rhagosodedig)                     | Cymhwyso lliw cefndir cyson pan fydd yr endid hinsawdd YMLAEN.                                              |
-| `step` | number | Dewisol | Unrhyw rif | Cam y tymheredd. |
-| `min_temp` | number | Dewisol | Unrhyw rif | Y tymheredd lleiaf. |
-| `max_temp` | number | Dewisol | Unrhyw rif | Y tymheredd mwyaf. |
+| `state_color`           | boolean | Dewisol                            | `true` neu `false` (rhagosodedig)                     | Cymhwyso lliw cefndir cyson pan fydd yr endid YMLAEN. Nid oes gan wresogydd dŵr unrhyw beth cyfatebol i `hvac_action`, felly dyma'r unig beth sy'n rhoi lliw iddo. |
+| `step` | number | Dewisol | Unrhyw rif | Cam y gwerth targed, tymheredd neu leithder. |
+| `min_temp` | number | Dewisol | Unrhyw rif | Y gwerth targed lleiaf. Ar leithydd, lleithder yw hwn, nid tymheredd. |
+| `max_temp` | number | Dewisol | Unrhyw rif | Y gwerth targed mwyaf. Ar leithydd, lleithder yw hwn, nid tymheredd. |
 | `button_action` | object | Dewisol | `tap_action`, `double_tap_action` neu `hold_action`, gweler [gweithredoedd](#gweithredoedd-tapio-tapio-dwbl-a-dal) | Caniatáu newid y gweithredoedd rhagosodedig wrth glicio'r botwm. |
 | `tap_action` | object | Dewisol | Gweler [gweithredoedd](#gweithredoedd-tapio-tapio-dwbl-a-dal) | Diffinio math y weithred wrth glicio'r eicon, os na chaiff ei ddiffinio, defnyddir `more-info`. |
 | `double_tap_action` | object | Dewisol | Gweler [gweithredoedd](#gweithredoedd-tapio-tapio-dwbl-a-dal) | Diffinio math y weithred wrth glicio dwbl yr eicon, os na chaiff ei ddiffinio, defnyddir `none`. |
@@ -872,6 +874,10 @@ Mae'r cerdyn hwn yn eich galluogi i reoli eich endidau `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Lliw troshaen ar gyfer y cyflwr gwresogi |
 | `--bubble-state-climate-auto-color` | `color` | Lliw troshaen ar gyfer y cyflwr awtomatig |
 | `--bubble-state-climate-heat-cool-color` | `color` | Lliw troshaen ar gyfer y cyflwr gwresogi-oeri |
+| `--bubble-state-humidifier-on-color` | `color` | Lliw troshaen ar gyfer lleithydd sy'n rhedeg |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Lliw troshaen ar gyfer lleithydd sy'n rhedeg, pan fo'i ddosbarth dyfais yn `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Lliw troshaen ar gyfer dadleithydd sy'n rhedeg, pan fo'i ddosbarth dyfais yn `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Lliw troshaen ar gyfer modd gweithredu gwresogydd dŵr, e.e. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Lliw acen ar gyfer cerdyn yr hinsawdd |
 | `--bubble-climate-box-shadow` | Gweler [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Cysgod blwch ar gyfer cynhwysydd yr hinsawdd. |
 

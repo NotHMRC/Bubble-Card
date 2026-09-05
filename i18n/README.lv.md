@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Šī kartīte ļauj pievienot nolaižamo izvēlni jūsu `input_select` / `select` entītijām. Šī kartīte atbalsta arī papildpogas un visas Bubble Card kopīgās funkcijas.
 
+Tā darbojas arī ar jebkuru entītiju, kas savas opcijas piedāvā kā atribūtu sarakstu: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` un `preset_modes` klimata entītijai, `available_modes` gaisa mitrinātājam, `operation_list` ūdens sildītājam, `effect_list` gaismai, `source_list` un `sound_mode_list` multivides atskaņotājam.
+
 > [!TIP]
 > Ja vēlaties, varat izmantot arī izvēles papildpogas, šī funkcija ir pieejama visās kartītēs, kas atbalsta papildpogas.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Šī kartīte ļauj vadīt jūsu `climate` entītijas.
+Šī kartīte ļauj vadīt jūsu `climate`, `humidifier` un `water_heater` entītijas. Gaisa mitrinātājs, gaisa sausinātājs vai vispārīgs higrostats saņem tādas pašas plus un mīnus vadīklas savam mērķa mitrumam, bet ūdens sildītājs savai mērķa temperatūrai.
 
 > [!TIP]
-> Režīma izvēles izvēlne ir [papildpoga](#papildpogas), kas tiek pievienota automātiski, izveidojot kartīti. Pēc tam to var mainīt vai noņemt pēc vēlēšanās.
+> Režīma izvēles izvēlne ir [papildpoga](#papildpogas), kas tiek pievienota automātiski, izveidojot kartīti. Pēc tam to var mainīt vai noņemt pēc vēlēšanās. Tā nolasa klimata entītijas `hvac_modes`, gaisa mitrinātāja `available_modes` un ūdens sildītāja `operation_list`.
 
 ### Klimata opcijas
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Vadāmā entītija (piemēram, `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Klimata, gaisa mitrinātāja vai ūdens sildītāja entītija | Vadāmā entītija (piemēram, `climate.living_room`, `humidifier.bedroom` vai `water_heater.boiler`).            |
 | `name`                  | string  | Optional                            | Any string                                       | Pielāgots kartītes nosaukums. Ja nav definēts, tiks parādīts entītijas nosaukums.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Pielāgota kartītes ikona. Ja nav definēta, tiks izmantota entītijas ikona vai `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Piešķir prioritāti ikonai, nevis `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Rādīt vai slēpt ikonu.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Slēpj zemākās mērķa temperatūras vadību, ja to atbalsta `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Slēpj augstākās mērķa temperatūras vadību, ja to atbalsta `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Pielieto pastāvīgu fona krāsu, kad klimata entītija ir ieslēgta.                                              |
-| `step` | number | Optional | Any number | Temperatūras solis. |
-| `min_temp` | number | Optional | Any number | Minimālā temperatūra. |
-| `max_temp` | number | Optional | Any number | Maksimālā temperatūra. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Pielieto pastāvīgu fona krāsu, kad entītija ir ieslēgta. Ūdens sildītājam nav `hvac_action` ekvivalenta, tāpēc tas ir vienīgais, kas to iekrāso. |
+| `step` | number | Optional | Any number | Mērķa vērtības, temperatūras vai mitruma solis. |
+| `min_temp` | number | Optional | Any number | Minimālā mērķa vērtība. Gaisa mitrinātājam tas ir mitrums, nevis temperatūra. |
+| `max_temp` | number | Optional | Any number | Maksimālā mērķa vērtība. Gaisa mitrinātājam tas ir mitrums, nevis temperatūra. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Ļauj mainīt noklusējuma darbības, klikšķinot uz pogas. |
 | `tap_action` | object | Optional | See [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Definē darbības veidu, klikšķinot uz ikonas, ja nav definēts, tiks izmantots `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#pieskāriena-dubultpieskāriena-un-turēšanas-darbības) | Definē darbības veidu, veicot dubultklikšķi uz ikonas, ja nav definēts, tiks izmantots `none`. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Pārklājuma krāsa sildīšanas stāvoklim |
 | `--bubble-state-climate-auto-color` | `color` | Pārklājuma krāsa automātiskā režīma stāvoklim |
 | `--bubble-state-climate-heat-cool-color` | `color` | Pārklājuma krāsa sildīšanas/dzesēšanas stāvoklim |
+| `--bubble-state-humidifier-on-color` | `color` | Pārklājuma krāsa gaisa mitrinātājam, kas darbojas |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Pārklājuma krāsa strādājošam gaisa mitrinātājam, kad tā ierīces klase ir `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Pārklājuma krāsa strādājošam gaisa sausinātājam, kad tā ierīces klase ir `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Pārklājuma krāsa ūdens sildītāja darbības režīmam, piemēram, `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Klimata kartītes akcenta krāsa |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Klimata konteinera ēna. |
 

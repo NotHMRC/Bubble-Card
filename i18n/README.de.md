@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Mit dieser Karte kannst du ein Dropdown-Menü für deine `input_select`- / `select`-Entitäten hinzufügen. Diese Karte unterstützt außerdem die Sub-Buttons und alle gemeinsamen Bubble Card-Funktionen.
 
+Das funktioniert auch mit jeder Entität, die ihre Optionen als Attributliste bereitstellt: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` und `preset_modes` bei einer Klima-Entität, `available_modes` bei einem Luftbefeuchter, `operation_list` bei einem Warmwasserbereiter, `effect_list` bei einem Licht, `source_list` und `sound_mode_list` bei einem Medienplayer.
+
 > [!TIP]
 > Du kannst auch Auswahl-Sub-Buttons haben, wenn du möchtest, diese Funktion ist in allen Karten verfügbar, die die Sub-Buttons unterstützen.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Mit dieser Karte kannst du deine `climate`-Entitäten steuern.
+Mit dieser Karte kannst du deine `climate`-, `humidifier`- und `water_heater`-Entitäten steuern. Ein Luftbefeuchter, ein Luftentfeuchter oder ein generischer Hygrostat bekommt dieselben Plus- und Minus-Regler für seine Zielluftfeuchtigkeit und ein Warmwasserbereiter für seine Zieltemperatur.
 
 > [!TIP]
-> Das Modusauswahl-Menü ist ein [Sub-Button](#sub-buttons), der beim Erstellen der Karte automatisch hinzugefügt wird. Du kannst ihn anschließend nach Belieben anpassen oder entfernen.
+> Das Modusauswahl-Menü ist ein [Sub-Button](#sub-buttons), der beim Erstellen der Karte automatisch hinzugefügt wird. Du kannst ihn anschließend nach Belieben anpassen oder entfernen. Er liest die `hvac_modes` einer Klima-Entität, die `available_modes` eines Luftbefeuchters und die `operation_list` eines Warmwasserbereiters.
 
 ### Klima-Optionen
 
@@ -830,7 +832,7 @@ Mit dieser Karte kannst du deine `climate`-Entitäten steuern.
 
 | Name                     | Typ    | Erforderlich                         | Unterstützte Optionen                                  | Beschreibung                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Erforderlich**                        | Klima-Entität                                   | Die zu steuernde Entität (z. B. `climate.living_room`).                                                            |
+| `entity`                | string  | **Erforderlich**                        | Klima-, Luftbefeuchter- oder Warmwasserbereiter-Entität | Die zu steuernde Entität (z. B. `climate.living_room`, `humidifier.bedroom` oder `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Beliebiger Text                                       | Ein benutzerdefinierter Name für die Karte. Wenn nicht definiert, wird der Entitätsname angezeigt.                                    |
 | `icon`                  | string  | Optional                            | Jedes `mdi:`-Icon                                  | Ein benutzerdefiniertes Icon für die Karte. Wenn nicht definiert, wird das Entitäts-Icon oder das `entity-picture` verwendet.                   |
 | `force_icon`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Bevorzugt das Icon gegenüber dem `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Mit dieser Karte kannst du deine `climate`-Entitäten steuern.
 | `show_icon`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Zeigt das Icon an oder blendet es aus.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (nur für Entitäten mit Unterstützung für `target_temp_low`) | `true` oder `false` (Standard) | Blendet die Regelung der unteren Zieltemperatur aus, sofern von der `entity` unterstützt.                                          |
 | `hide_target_temp_high` | boolean | Optional (nur für Entitäten mit Unterstützung für `target_temp_high`)| `true` oder `false` (Standard) | Blendet die Regelung der oberen Zieltemperatur aus, sofern von der `entity` unterstützt.                                         |
-| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Wendet eine konstante Hintergrundfarbe an, wenn die Klima-Entität eingeschaltet ist.                                              |
-| `step` | number | Optional | Beliebige Zahl | Der Temperaturschritt. |
-| `min_temp` | number | Optional | Beliebige Zahl | Die minimale Temperatur. |
-| `max_temp` | number | Optional | Beliebige Zahl | Die maximale Temperatur. |
+| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Wendet eine konstante Hintergrundfarbe an, wenn die Entität eingeschaltet ist. Ein Warmwasserbereiter hat kein Gegenstück zu `hvac_action`, deshalb ist dies das Einzige, was ihn einfärbt. |
+| `step` | number | Optional | Beliebige Zahl | Die Schrittweite des Zielwerts, Temperatur oder Luftfeuchtigkeit. |
+| `min_temp` | number | Optional | Beliebige Zahl | Der minimale Zielwert. Bei einem Luftbefeuchter ist das eine Luftfeuchtigkeit, keine Temperatur. |
+| `max_temp` | number | Optional | Beliebige Zahl | Der maximale Zielwert. Bei einem Luftbefeuchter ist das eine Luftfeuchtigkeit, keine Temperatur. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` oder `hold_action`, siehe [Aktionen](#tipp--doppeltipp--und-halten-aktionen) | Ermöglicht das Ändern der Standardaktionen beim Klick auf den Button. |
 | `tap_action` | object | Optional | Siehe [Aktionen](#tipp--doppeltipp--und-halten-aktionen) | Legt die Art der Aktion beim Klick auf das Icon fest, wenn nicht definiert, wird `more-info` verwendet. |
 | `double_tap_action` | object | Optional | Siehe [Aktionen](#tipp--doppeltipp--und-halten-aktionen) | Legt die Art der Aktion beim Doppelklick auf das Icon fest, wenn nicht definiert, wird `none` verwendet. |
@@ -872,6 +874,10 @@ Mit dieser Karte kannst du deine `climate`-Entitäten steuern.
 | `--bubble-state-climate-heat-color` | `color` | Überlagerungsfarbe für den Zustand "Heizen" |
 | `--bubble-state-climate-auto-color` | `color` | Überlagerungsfarbe für den Zustand "Auto" |
 | `--bubble-state-climate-heat-cool-color` | `color` | Überlagerungsfarbe für den Zustand "Heizen/Kühlen" |
+| `--bubble-state-humidifier-on-color` | `color` | Überlagerungsfarbe für einen Luftbefeuchter, der läuft |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Überlagerungsfarbe für einen laufenden Luftbefeuchter, wenn seine Geräteklasse `humidifier` ist |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Überlagerungsfarbe für einen laufenden Luftentfeuchter, wenn seine Geräteklasse `dehumidifier` ist |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Überlagerungsfarbe für einen Betriebsmodus des Warmwasserbereiters, z. B. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Akzentfarbe für die Klima-Karte |
 | `--bubble-climate-box-shadow` | Siehe [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Schlagschatten für den Klima-Container. |
 

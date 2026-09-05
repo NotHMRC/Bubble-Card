@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Questa scheda ti permette di aggiungere un menu a tendina per le tue entità `input_select` / `select`. Questa scheda supporta anche i sotto-pulsanti e tutte le funzionalità comuni di Bubble Card.
 
+Funziona anche con qualsiasi entità che espone le sue opzioni come lista di attributi: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` e `preset_modes` su un'entità clima, `available_modes` su un umidificatore, `operation_list` su uno scaldabagno, `effect_list` su una luce, `source_list` e `sound_mode_list` su un lettore multimediale.
+
 > [!TIP]
 > Puoi anche avere sotto-pulsanti selettore se lo desideri, questa funzionalità è disponibile in tutte le schede che supportano i sotto-pulsanti.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Questa scheda ti permette di controllare le tue entità `climate`.
+Questa scheda ti permette di controllare le tue entità `climate`, `humidifier` e `water_heater`. Un umidificatore, un deumidificatore o un igrostato generico riceve gli stessi controlli più e meno sulla sua umidità target, e uno scaldabagno sulla sua temperatura target.
 
 > [!TIP]
-> Il menu di selezione della modalità è un [sotto-pulsante](#sotto-pulsanti) che viene aggiunto automaticamente alla creazione della scheda. Puoi poi modificarlo o rimuoverlo come preferisci.
+> Il menu di selezione della modalità è un [sotto-pulsante](#sotto-pulsanti) che viene aggiunto automaticamente alla creazione della scheda. Puoi poi modificarlo o rimuoverlo come preferisci. Legge `hvac_modes` di un'entità clima, `available_modes` di un umidificatore e `operation_list` di uno scaldabagno.
 
 ### Opzioni del clima
 
@@ -830,7 +832,7 @@ Questa scheda ti permette di controllare le tue entità `climate`.
 
 | Nome                     | Tipo    | Requisito                         | Opzioni supportate                                  | Descrizione                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Obbligatorio**                        | Entità clima                                   | L'entità da controllare (es. `climate.living_room`).                                                            |
+| `entity`                | string  | **Obbligatorio**                        | Entità clima, umidificatore o scaldabagno      | L'entità da controllare (es. `climate.living_room`, `humidifier.bedroom` o `water_heater.boiler`).              |
 | `name`                  | string  | Opzionale                            | Qualsiasi stringa                                       | Un nome personalizzato per la scheda. Se non definito, verrà mostrato il nome dell'entità.                                    |
 | `icon`                  | string  | Opzionale                            | Qualsiasi icona `mdi:`                                  | Un'icona personalizzata per la scheda. Se non definita, verrà usata l'icona dell'entità o l'`entity-picture`.                   |
 | `force_icon`            | boolean | Opzionale                            | `true` o `false` (predefinito)                     | Dà priorità all'icona rispetto all'`entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Questa scheda ti permette di controllare le tue entità `climate`.
 | `show_icon`             | boolean | Opzionale                            | `true` (predefinito) o `false`                     | Mostra o nascondi l'icona.                                                                                          |
 | `hide_target_temp_low`  | boolean | Opzionale (solo per entità che supportano `target_temp_low`) | `true` o `false` (predefinito) | Nasconde il controllo della temperatura target bassa, se supportato dall'`entity`.                                          |
 | `hide_target_temp_high` | boolean | Opzionale (solo per entità che supportano `target_temp_high`)| `true` o `false` (predefinito) | Nasconde il controllo della temperatura target alta, se supportato dall'`entity`.                                         |
-| `state_color`           | boolean | Opzionale                            | `true` o `false` (predefinito)                     | Applica un colore di sfondo costante quando l'entità clima è accesa.                                              |
-| `step` | number | Opzionale | Qualsiasi numero | L'incremento della temperatura. |
-| `min_temp` | number | Opzionale | Qualsiasi numero | La temperatura minima. |
-| `max_temp` | number | Opzionale | Qualsiasi numero | La temperatura massima. |
+| `state_color`           | boolean | Opzionale                            | `true` o `false` (predefinito)                     | Applica un colore di sfondo costante quando l'entità è accesa. Uno scaldabagno non ha un equivalente di `hvac_action`, quindi questa è l'unica cosa che lo colora. |
+| `step` | number | Opzionale | Qualsiasi numero | L'incremento del valore target, temperatura o umidità. |
+| `min_temp` | number | Opzionale | Qualsiasi numero | Il valore target minimo. Su un umidificatore è un'umidità, non una temperatura. |
+| `max_temp` | number | Opzionale | Qualsiasi numero | Il valore target massimo. Su un umidificatore è un'umidità, non una temperatura. |
 | `button_action` | object | Opzionale | `tap_action`, `double_tap_action` o `hold_action`, vedi [azioni](#azioni-tocco-doppio-tocco-e-pressione-prolungata) | Permette di cambiare le azioni predefinite al clic del pulsante. |
 | `tap_action` | object | Opzionale | Vedi [azioni](#azioni-tocco-doppio-tocco-e-pressione-prolungata) | Definisce il tipo di azione al tocco dell'icona, se non definito verrà usato `more-info`. |
 | `double_tap_action` | object | Opzionale | Vedi [azioni](#azioni-tocco-doppio-tocco-e-pressione-prolungata) | Definisce il tipo di azione al doppio tocco dell'icona, se non definito verrà usato `none`. |
@@ -872,6 +874,10 @@ Questa scheda ti permette di controllare le tue entità `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Colore di sovrapposizione per lo stato riscaldamento |
 | `--bubble-state-climate-auto-color` | `color` | Colore di sovrapposizione per lo stato automatico |
 | `--bubble-state-climate-heat-cool-color` | `color` | Colore di sovrapposizione per lo stato riscaldamento/raffreddamento |
+| `--bubble-state-humidifier-on-color` | `color` | Colore di sovrapposizione per un umidificatore in funzione |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Colore di sovrapposizione per un umidificatore in funzione, quando la sua classe di dispositivo è `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Colore di sovrapposizione per un deumidificatore in funzione, quando la sua classe di dispositivo è `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Colore di sovrapposizione per un'operazione dello scaldabagno, es. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Colore di accento per la scheda clima |
 | `--bubble-climate-box-shadow` | Vedi [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Ombra per il contenitore del clima. |
 

@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Dës Kaart erlaabt Iech e Dropdown-Menü fir Är `input_select`/`select`-Entitéiten bäizesetzen. Dës Kaart ënnerstëtzt och d'Sub-Knäppercher an all déi gemeinsam Feature vu Bubble Card.
 
+Si funktionéiert och mat all Entitéit déi hir Optiounen als Attributslëscht ubitt: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` a `preset_modes` bei engem Klima, `available_modes` bei engem Befiichter, `operation_list` bei engem Waarmwaasserbereeder, `effect_list` bei enger Luucht, `source_list` a `sound_mode_list` bei engem Mediaspiller.
+
 > [!TIP]
 > Dir kënnt och Auswiel-Sub-Knäppercher hunn wann Dir wëllt, dëse Feature ass an alle Kaarten verfügbar déi d'Sub-Knäppercher ënnerstëtzen.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Dës Kaart erlaabt Iech Är `climate`-Entitéiten ze kontrolléieren.
+Dës Kaart erlaabt Iech Är `climate`-, `humidifier`- a `water_heater`-Entitéiten ze kontrolléieren. E Befiichter, en Entfiichter oder en allgemengen Hygrostat kritt déiselwecht Plus- a Minus-Kontrollen op senger Zielfiichtegkeet, an e Waarmwaasserbereeder op senger Zieltemperatur.
 
 > [!TIP]
-> Den Auswiel-Menü fir de Modus ass e [Sub-Knäppchen](#sub-knäppercher) dat automatesch bäigesat gëtt wann d'Kaart erstallt gëtt. Dir kënnt et duerno änneren oder ewechhuelen wéi Dir wëllt.
+> Den Auswiel-Menü fir de Modus ass e [Sub-Knäppchen](#sub-knäppercher) dat automatesch bäigesat gëtt wann d'Kaart erstallt gëtt. Dir kënnt et duerno änneren oder ewechhuelen wéi Dir wëllt. Et liest d'`hvac_modes` vun enger Klima-Entitéit, d'`available_modes` vun engem Befiichter an d'`operation_list` vun engem Waarmwaasserbereeder.
 
 ### Klima-Optiounen
 
@@ -830,7 +832,7 @@ Dës Kaart erlaabt Iech Är `climate`-Entitéiten ze kontrolléieren.
 
 | Numm                     | Typ    | Viraussetzung                         | Ënnerstëtzt Optiounen                                  | Beschreiwung                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Obligatoresch**                        | Klima-Entitéit                                   | D'Entitéit déi ze kontrolléieren ass (z.B. `climate.living_room`).                                                            |
+| `entity`                | string  | **Obligatoresch**                        | Klima-, Befiichter- oder Waarmwaasserbereeder-Entitéit | D'Entitéit déi ze kontrolléieren ass (z.B. `climate.living_room`, `humidifier.bedroom` oder `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Egal wéi ee String                                       | E personaliséierten Numm fir d'Kaart. Wann net definéiert, gëtt den Numm vun der Entitéit ugewisen.                                    |
 | `icon`                  | string  | Optional                            | Egal wéi eng `mdi:` Ikon                                  | Eng personaliséiert Ikon fir d'Kaart. Wann net definéiert, gëtt d'Ikon vun der Entitéit oder d'`entity-picture` benotzt.                   |
 | `force_icon`            | boolean | Optional                            | `true` oder `false` (Standard)                     | Gëtt der Ikon de Virrang virun der `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Dës Kaart erlaabt Iech Är `climate`-Entitéiten ze kontrolléieren.
 | `show_icon`             | boolean | Optional                            | `true` (Standard) oder `false`                     | Weist oder verstoppt d'Ikon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (nëmmen fir Entitéiten déi `target_temp_low` ënnerstëtzen) | `true` oder `false` (Standard) | Verstoppt d'Kontroll vun der niddreger Zieltemperatur wann d'`entity` dat ënnerstëtzt.                                          |
 | `hide_target_temp_high` | boolean | Optional (nëmmen fir Entitéiten déi `target_temp_high` ënnerstëtzen)| `true` oder `false` (Standard) | Verstoppt d'Kontroll vun der héijer Zieltemperatur wann d'`entity` dat ënnerstëtzt.                                         |
-| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Applizéiert eng konstant Hannergrondfaarf wann d'Klima-Entitéit UN ass.                                              |
-| `step` | number | Optional | Egal wéi eng Zuel | Den Temperaturschrëtt. |
-| `min_temp` | number | Optional | Egal wéi eng Zuel | Déi minimal Temperatur. |
-| `max_temp` | number | Optional | Egal wéi eng Zuel | Déi maximal Temperatur. |
+| `state_color`           | boolean | Optional                            | `true` oder `false` (Standard)                     | Applizéiert eng konstant Hannergrondfaarf wann d'Entitéit UN ass. E Waarmwaasserbereeder huet keen Äquivalent zu `hvac_action`, dofir ass dat dat eenzegt wat him eng Faarf gëtt. |
+| `step` | number | Optional | Egal wéi eng Zuel | De Schrëtt vum Zielwert, Temperatur oder Fiichtegkeet. |
+| `min_temp` | number | Optional | Egal wéi eng Zuel | De minimalen Zielwert. Bei engem Befiichter ass dat eng Fiichtegkeet, keng Temperatur. |
+| `max_temp` | number | Optional | Egal wéi eng Zuel | De maximalen Zielwert. Bei engem Befiichter ass dat eng Fiichtegkeet, keng Temperatur. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` oder `hold_action`, kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Erlaabt d'Standardaktiounen beim Klick op de Knäppchen z'änneren. |
 | `tap_action` | object | Optional | Kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Definéiert den Typ vun der Aktioun beim Klick op d'Ikon, wann net definéiert gëtt `more-info` benotzt. |
 | `double_tap_action` | object | Optional | Kuckt [Aktiounen](#tipp--duebeltipp--an-halen-aktiounen) | Definéiert den Typ vun der Aktioun beim Duebelklick op d'Ikon, wann net definéiert gëtt `none` benotzt. |
@@ -872,6 +874,10 @@ Dës Kaart erlaabt Iech Är `climate`-Entitéiten ze kontrolléieren.
 | `--bubble-state-climate-heat-color` | `color` | Iwwerlagerungsfaarf fir den Heat-Zoustand |
 | `--bubble-state-climate-auto-color` | `color` | Iwwerlagerungsfaarf fir den Auto-Zoustand |
 | `--bubble-state-climate-heat-cool-color` | `color` | Iwwerlagerungsfaarf fir den Heat-Cool-Zoustand |
+| `--bubble-state-humidifier-on-color` | `color` | Iwwerlagerungsfaarf fir e Befiichter dee leeft |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Iwwerlagerungsfaarf fir e lafende Befiichter, wann seng Apparateklass `humidifier` ass |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Iwwerlagerungsfaarf fir e lafenden Entfiichter, wann seng Apparateklass `dehumidifier` ass |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Iwwerlagerungsfaarf fir eng Operatioun vun engem Waarmwaasserbereeder, z.B. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Akzentfaarf fir d'Klima-Kaart |
 | `--bubble-climate-box-shadow` | Kuckt [Box-Schiet](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Box-Schiet fir de Klima-Container. |
 

@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Cette carte vous permet d'ajouter un menu déroulant pour vos entités `input_select` / `select`. Elle prend également en charge les sous-boutons et toutes les fonctionnalités communes de Bubble Card.
 
+Elle fonctionne aussi avec toute entité qui expose ses options sous forme de liste d'attributs : `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` et `preset_modes` sur un thermostat, `available_modes` sur un humidificateur, `operation_list` sur un chauffe-eau, `effect_list` sur une lumière, `source_list` et `sound_mode_list` sur un lecteur multimédia.
+
 > [!TIP]
 > Vous pouvez aussi avoir des sous-boutons de type sélecteur si vous le souhaitez, cette fonctionnalité est disponible dans toutes les cartes qui prennent en charge les sous-boutons.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Cette carte vous permet de contrôler vos entités `climate`.
+Cette carte vous permet de contrôler vos entités `climate`, `humidifier` et `water_heater`. Un humidificateur, un déshumidificateur ou un hygrostat générique reçoit les mêmes contrôles plus et moins sur son humidité cible, et un chauffe-eau sur sa température cible.
 
 > [!TIP]
-> Le menu de sélection des modes est un [sous-bouton](#sous-boutons) ajouté automatiquement à la création de la carte. Vous pouvez ensuite le modifier ou le supprimer à votre guise.
+> Le menu de sélection des modes est un [sous-bouton](#sous-boutons) ajouté automatiquement à la création de la carte. Vous pouvez ensuite le modifier ou le supprimer à votre guise. Il lit les `hvac_modes` d'une entité thermostat, les `available_modes` d'un humidificateur et l'`operation_list` d'un chauffe-eau.
 
 ### Options du thermostat
 
@@ -830,7 +832,7 @@ Cette carte vous permet de contrôler vos entités `climate`.
 
 | Nom                      | Type    | Obligatoire                         | Options possibles                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Requis**                          | Entité climate                                   | L'entité à contrôler (ex. `climate.living_room`).                                                               |
+| `entity`                | string  | **Requis**                          | Entité thermostat, humidificateur ou chauffe-eau | L'entité à contrôler (ex. `climate.living_room`, `humidifier.bedroom` ou `water_heater.boiler`).                |
 | `name`                  | string  | Optionnel                           | N'importe quelle chaîne                                     | Un nom personnalisé pour la carte. S'il n'est pas défini, le nom de l'entité sera affiché.                      |
 | `icon`                  | string  | Optionnel                           | N'importe quelle icône `mdi:`                               | Une icône personnalisée pour la carte. Si elle n'est pas définie, l'icône de l'entité ou `entity-picture` sera utilisée. |
 | `force_icon`            | boolean | Optionnel                           | `true` ou `false` (par défaut)                  | Donne la priorité à l'icône sur `entity-picture`.                                                               |
@@ -839,10 +841,10 @@ Cette carte vous permet de contrôler vos entités `climate`.
 | `show_icon`             | boolean | Optionnel                           | `true` (par défaut) ou `false`                  | Affiche ou masque l'icône.                                                                                      |
 | `hide_target_temp_low`  | boolean | Optionnel (uniquement pour les entités prenant en charge `target_temp_low`) | `true` ou `false` (par défaut) | Masque le contrôle de la température cible basse s'il est pris en charge par l'`entity`.                        |
 | `hide_target_temp_high` | boolean | Optionnel (uniquement pour les entités prenant en charge `target_temp_high`)| `true` ou `false` (par défaut) | Masque le contrôle de la température cible haute s'il est pris en charge par l'`entity`.                        |
-| `state_color`           | boolean | Optionnel                           | `true` ou `false` (par défaut)                  | Applique une couleur de fond constante lorsque l'entité climate est allumée.                                    |
-| `step` | number | Optionnel | N'importe quel nombre | Le pas de température. |
-| `min_temp` | number | Optionnel | N'importe quel nombre | La température minimale. |
-| `max_temp` | number | Optionnel | N'importe quel nombre | La température maximale. |
+| `state_color`           | boolean | Optionnel                           | `true` ou `false` (par défaut)                  | Applique une couleur de fond constante lorsque l'entité est allumée. Un chauffe-eau n'a pas d'équivalent de `hvac_action`, c'est donc la seule chose qui le colore. |
+| `step` | number | Optionnel | N'importe quel nombre | Le pas de la valeur cible, température ou humidité. |
+| `min_temp` | number | Optionnel | N'importe quel nombre | La valeur cible minimale. Sur un humidificateur il s'agit d'une humidité, pas d'une température. |
+| `max_temp` | number | Optionnel | N'importe quel nombre | La valeur cible maximale. Sur un humidificateur il s'agit d'une humidité, pas d'une température. |
 | `button_action` | object | Optionnel | `tap_action`, `double_tap_action` ou `hold_action`, voir [actions](#actions-dappui-double-appui-et-appui-long) | Permet de modifier les actions par défaut au clic sur le bouton. |
 | `tap_action` | object | Optionnel | Voir [actions](#actions-dappui-double-appui-et-appui-long) | Définir le type d'action au clic sur l'icône, si non défini, `more-info` sera utilisé. |
 | `double_tap_action` | object | Optionnel | Voir [actions](#actions-dappui-double-appui-et-appui-long) | Définir le type d'action au double clic sur l'icône, si non défini, `none` sera utilisé. |
@@ -872,6 +874,10 @@ Cette carte vous permet de contrôler vos entités `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Couleur de superposition pour l'état heat |
 | `--bubble-state-climate-auto-color` | `color` | Couleur de superposition pour l'état auto |
 | `--bubble-state-climate-heat-cool-color` | `color` | Couleur de superposition pour l'état heat-cool |
+| `--bubble-state-humidifier-on-color` | `color` | Couleur de superposition pour un humidificateur en marche |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Couleur de superposition pour un humidificateur en marche, lorsque sa classe d'appareil est `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Couleur de superposition pour un déshumidificateur en marche, lorsque sa classe d'appareil est `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Couleur de superposition pour une opération de chauffe-eau, ex. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Couleur d'accentuation de la carte thermostat |
 | `--bubble-climate-box-shadow` | Voir [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Ombre portée du conteneur du thermostat. |
 

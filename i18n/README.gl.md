@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Esta tarxeta permíteche engadir un menú despregable para as túas entidades `input_select` / `select`. Esta tarxeta tamén admite os subbotóns e todas as características comúns de Bubble Card.
 
+Tamén funciona con calquera entidade que expoña as súas opcións como unha lista de atributos: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` e `preset_modes` nunha climatización, `available_modes` nun humidificador, `operation_list` nun quentador de auga, `effect_list` nunha luz, `source_list` e `sound_mode_list` nun reprodutor multimedia.
+
 > [!TIP]
 > Tamén podes ter subbotóns de selección se o desexas, esta característica está dispoñible en todas as tarxetas que admiten os subbotóns.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Esta tarxeta permíteche controlar as túas entidades `climate`.
+Esta tarxeta permíteche controlar as túas entidades `climate`, `humidifier` e `water_heater`. Un humidificador, un deshumidificador ou un hixróstato xenérico obtén os mesmos controis de máis e menos para a súa humidade obxectivo, e un quentador de auga para a súa temperatura obxectivo.
 
 > [!TIP]
-> O menú de selección de modo é un [subbotón](#subbotóns) que se engade automaticamente ao crear a tarxeta. Despois podes modificalo ou eliminalo como desexes.
+> O menú de selección de modo é un [subbotón](#subbotóns) que se engade automaticamente ao crear a tarxeta. Despois podes modificalo ou eliminalo como desexes. Le os `hvac_modes` dunha entidade de climatización, os `available_modes` dun humidificador e a `operation_list` dun quentador de auga.
 
 ### Opcións de climatización
 
@@ -830,7 +832,7 @@ Esta tarxeta permíteche controlar as túas entidades `climate`.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | The entity to control (e.g., `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Entidade de climatización, humidificador ou quentador de auga | A entidade a controlar (por exemplo, `climate.living_room`, `humidifier.bedroom` ou `water_heater.boiler`).     |
 | `name`                  | string  | Optional                            | Any string                                       | A custom name for the card. If not defined, it will display the entity name.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | A custom icon for the card. If not defined, the entity icon or `entity-picture` will be used.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Gives priority to the icon over the `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Esta tarxeta permíteche controlar as túas entidades `climate`.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Show or hide the icon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Hides the low target temperature control if supported by the `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Hides the high target temperature control if supported by the `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Applies a constant background color when the climate entity is ON.                                              |
-| `step` | number | Optional | Any number | The temperature step. |
-| `min_temp` | number | Optional | Any number | The minimum temperature. |
-| `max_temp` | number | Optional | Any number | The maximum temperature. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Aplica unha cor de fondo constante cando a entidade está acesa. Un quentador de auga non ten equivalente de `hvac_action`, así que isto é o único que o colorea. |
+| `step` | number | Optional | Any number | O paso do valor obxectivo, temperatura ou humidade. |
+| `min_temp` | number | Optional | Any number | O valor obxectivo mínimo. Nun humidificador isto é unha humidade, non unha temperatura. |
+| `max_temp` | number | Optional | Any number | O valor obxectivo máximo. Nun humidificador isto é unha humidade, non unha temperatura. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#accións-de-toque-dobre-toque-e-toque-longo) | Allow to change the default actions on button click. |
 | `tap_action` | object | Optional | See [actions](#accións-de-toque-dobre-toque-e-toque-longo) | Define the type of action on icon click, if undefined, `more-info` will be used. |
 | `double_tap_action` | object | Optional | See [actions](#accións-de-toque-dobre-toque-e-toque-longo) | Define the type of action on icon double click, if undefined, `none` will be used. |
@@ -872,6 +874,10 @@ Esta tarxeta permíteche controlar as túas entidades `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Overlay color for the heat state |
 | `--bubble-state-climate-auto-color` | `color` | Overlay color for the auto state |
 | `--bubble-state-climate-heat-cool-color` | `color` | Overlay color for the heat-cool state |
+| `--bubble-state-humidifier-on-color` | `color` | Cor de superposición para un humidificador en funcionamento |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Cor de superposición para un humidificador en funcionamento, cando a súa clase de dispositivo é `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Cor de superposición para un deshumidificador en funcionamento, cando a súa clase de dispositivo é `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Cor de superposición para unha operación dun quentador de auga, por exemplo `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Accent color for the climate card |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Box shadow for climate container. |
 

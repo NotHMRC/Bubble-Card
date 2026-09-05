@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Ĉi tiu karto ebligas aldoni falmenuon por viaj `input_select` / `select`-eroj. Ĉi tiu karto ankaŭ subtenas la subbutonojn kaj ĉiujn komunajn funkciojn de Bubble Card.
 
+Ĝi ankaŭ funkcias kun ajna ero, kiu prezentas siajn opciojn kiel atributan liston: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` kaj `preset_modes` ĉe klimatizilo, `available_modes` ĉe humidigilo, `operation_list` ĉe akvovarmigilo, `effect_list` ĉe lumo, `source_list` kaj `sound_mode_list` ĉe plurmedia ludilo.
+
 > [!TIP]
 > Vi ankaŭ povas havi elektilajn subbutonojn se vi volas, ĉi tiu funkcio disponeblas en ĉiuj kartoj, kiuj subtenas la subbutonojn.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Ĉi tiu karto ebligas kontroli viajn `climate`-erojn.
+Ĉi tiu karto ebligas kontroli viajn `climate`-, `humidifier`- kaj `water_heater`-erojn. Humidigilo, malhumidigilo aŭ ĝenerala higrostato ricevas la samajn plus- kaj minus-kontrolilojn por sia celhumideco, kaj akvovarmigilo por sia celtemperaturo.
 
 > [!TIP]
-> La reĝima elektomenuo estas [subbutono](#subbutonoj), kiu aŭtomate aldoniĝas kreante la karton. Vi poste povas modifi aŭ forigi ĝin laŭvole.
+> La reĝima elektomenuo estas [subbutono](#subbutonoj), kiu aŭtomate aldoniĝas kreante la karton. Vi poste povas modifi aŭ forigi ĝin laŭvole. Ĝi legas la `hvac_modes` de klimatizila ero, la `available_modes` de humidigilo kaj la `operation_list` de akvovarmigilo.
 
 ### Opcioj de la klimatizilo
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Nomo                     | Tipo    | Postulo                         | Subtenataj opcioj                                  | Priskribo                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Deviga**                        | Klimatiziloero                                   | La ero por kontroli (ekz. `climate.living_room`).                                                            |
+| `entity`                | string  | **Deviga**                        | Klimatizila, humidigila aŭ akvovarmigila ero     | La ero por kontroli (ekz. `climate.living_room`, `humidifier.bedroom` aŭ `water_heater.boiler`).             |
 | `name`                  | string  | Nedeviga                            | Ajna string                                       | Personigita nomo por la karto. Se ne difinita, ĝi montros la nomon de la ero.                                    |
 | `icon`                  | string  | Nedeviga                            | Ajna `mdi:`-ikono                                  | Personigita ikono por la karto. Se ne difinita, la ikono de la ero aŭ la `entity-picture` estos uzata.                   |
 | `force_icon`            | boolean | Nedeviga                            | `true` aŭ `false` (defaŭlta)                     | Donas prioritaton al la ikono anstataŭ la `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Nedeviga                            | `true` (defaŭlta) aŭ `false`                     | Montri aŭ kaŝi la ikonon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Nedeviga (nur por eroj subtenantaj `target_temp_low`) | `true` aŭ `false` (defaŭlta) | Kaŝas la malaltan celtemperaturan kontrolilon se subtenata de la `entity`.                                          |
 | `hide_target_temp_high` | boolean | Nedeviga (nur por eroj subtenantaj `target_temp_high`)| `true` aŭ `false` (defaŭlta) | Kaŝas la altan celtemperaturan kontrolilon se subtenata de la `entity`.                                         |
-| `state_color`           | boolean | Nedeviga                            | `true` aŭ `false` (defaŭlta)                     | Aplikas konstantan fonan koloron kiam la klimatizila ero estas ŜALTITA.                                              |
-| `step` | number | Nedeviga | Ajna nombro | La temperatura paŝo. |
-| `min_temp` | number | Nedeviga | Ajna nombro | La minimuma temperaturo. |
-| `max_temp` | number | Nedeviga | Ajna nombro | La maksimuma temperaturo. |
+| `state_color`           | boolean | Nedeviga                            | `true` aŭ `false` (defaŭlta)                     | Aplikas konstantan fonan koloron kiam la ero estas ŜALTITA. Akvovarmigilo havas nenian ekvivalenton de `hvac_action`, do tio estas la sola afero, kiu kolorigas ĝin. |
+| `step` | number | Nedeviga | Ajna nombro | La paŝo de la cela valoro, temperaturo aŭ humideco. |
+| `min_temp` | number | Nedeviga | Ajna nombro | La minimuma cela valoro. Ĉe humidigilo tio estas humideco, ne temperaturo. |
+| `max_temp` | number | Nedeviga | Ajna nombro | La maksimuma cela valoro. Ĉe humidigilo tio estas humideco, ne temperaturo. |
 | `button_action` | object | Nedeviga | `tap_action`, `double_tap_action` aŭ `hold_action`, vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Permesi ŝanĝi la defaŭltajn agojn ĉe klako sur la butono. |
 | `tap_action` | object | Nedeviga | Vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Difini la tipon de ago ĉe klako sur la ikono, se nedifinita, `more-info` estos uzata. |
 | `double_tap_action` | object | Nedeviga | Vidu [agojn](#agoj-tuŝeti-duoble-tuŝeti-kaj-longe-premi) | Difini la tipon de ago ĉe duobla klako sur la ikono, se nedifinita, `none` estos uzata. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Surkovra koloro por la varmiga stato |
 | `--bubble-state-climate-auto-color` | `color` | Surkovra koloro por la aŭtomata stato |
 | `--bubble-state-climate-heat-cool-color` | `color` | Surkovra koloro por la varmig-malvarmiga stato |
+| `--bubble-state-humidifier-on-color` | `color` | Surkovra koloro por funkcianta humidigilo |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Surkovra koloro por funkcianta humidigilo, kies aparatklaso estas `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Surkovra koloro por funkcianta malhumidigilo, kies aparatklaso estas `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Surkovra koloro por funkcia reĝimo de akvovarmigilo, ekz. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Akcenta koloro por la klimatizila karto |
 | `--bubble-climate-box-shadow` | Vidu [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Ombro (box shadow) por la klimatizila ujo. |
 

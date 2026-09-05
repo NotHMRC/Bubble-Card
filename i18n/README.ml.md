@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 ഈ കാർഡ് നിങ്ങളുടെ `input_select` / `select` entities ക്കായി ഒരു ഡ്രോപ്ഡൗൺ മെനു ചേർക്കാൻ അനുവദിക്കുന്നു. സബ്-ബട്ടണുകളും എല്ലാ പൊതു Bubble Card ഫീച്ചറുകളും ഈ കാർഡ് പിന്തുണയ്ക്കുന്നു.
 
+ആട്രിബ്യൂട്ട് ലിസ്റ്റായി അതിന്റെ ഓപ്ഷനുകൾ നൽകുന്ന ഏത് entity യുമായും ഇത് പ്രവർത്തിക്കുന്നു: കാലാവസ്ഥാ നിയന്ത്രണത്തിൽ `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes`, `preset_modes` എന്നിവ, ഹ്യുമിഡിഫയറിൽ `available_modes`, വാട്ടർ ഹീറ്ററിൽ `operation_list`, ലൈറ്റിൽ `effect_list`, മീഡിയ പ്ലെയറിൽ `source_list`, `sound_mode_list` എന്നിവ.
+
 > [!TIP]
 > നിങ്ങൾക്ക് സെലക്റ്റ് സബ്-ബട്ടണുകളും വേണമെങ്കിൽ ഉപയോഗിക്കാം, സബ്-ബട്ടണുകളെ പിന്തുണയ്ക്കുന്ന എല്ലാ കാർഡുകളിലും ഈ ഫീച്ചർ ലഭ്യമാണ്.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-ഈ കാർഡ് നിങ്ങളുടെ `climate` entities നിയന്ത്രിക്കാൻ അനുവദിക്കുന്നു.
+ഈ കാർഡ് നിങ്ങളുടെ `climate`, `humidifier`, `water_heater` entities നിയന്ത്രിക്കാൻ അനുവദിക്കുന്നു. ഒരു ഹ്യുമിഡിഫയറിനും ഡീഹ്യുമിഡിഫയറിനും പൊതുവായ ഹൈഗ്രോസ്റ്റാറ്റിനും അതിന്റെ ലക്ഷ്യ ഈർപ്പത്തിന് ഇതേ പ്ലസ്, മൈനസ് നിയന്ത്രണങ്ങൾ ലഭിക്കും, ഒരു വാട്ടർ ഹീറ്ററിന് അതിന്റെ ലക്ഷ്യ താപനിലയ്ക്കും.
 
 > [!TIP]
-> മോഡ് തിരഞ്ഞെടുക്കൽ മെനു ഒരു [സബ്-ബട്ടൺ](#സബ്-ബട്ടണുകൾ) ആണ്, കാർഡ് സൃഷ്ടിക്കുമ്പോൾ ഇത് സ്വയമേവ ചേർക്കപ്പെടും. നിങ്ങൾക്ക് ഇഷ്ടാനുസരണം അത് മാറ്റുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യാം.
+> മോഡ് തിരഞ്ഞെടുക്കൽ മെനു ഒരു [സബ്-ബട്ടൺ](#സബ്-ബട്ടണുകൾ) ആണ്, കാർഡ് സൃഷ്ടിക്കുമ്പോൾ ഇത് സ്വയമേവ ചേർക്കപ്പെടും. നിങ്ങൾക്ക് ഇഷ്ടാനുസരണം അത് മാറ്റുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യാം. ഒരു കാലാവസ്ഥാ നിയന്ത്രണ entity യുടെ `hvac_modes`, ഒരു ഹ്യുമിഡിഫയറിന്റെ `available_modes`, ഒരു വാട്ടർ ഹീറ്ററിന്റെ `operation_list` എന്നിവ ഇത് വായിക്കുന്നു.
 
 ### കാലാവസ്ഥാ നിയന്ത്രണ ഓപ്ഷനുകൾ
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | നിയന്ത്രിക്കാനുള്ള entity (ഉദാ. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | കാലാവസ്ഥാ നിയന്ത്രണ, ഹ്യുമിഡിഫയർ അല്ലെങ്കിൽ വാട്ടർ ഹീറ്റർ entity | നിയന്ത്രിക്കാനുള്ള entity (ഉദാ. `climate.living_room`, `humidifier.bedroom` അല്ലെങ്കിൽ `water_heater.boiler`).     |
 | `name`                  | string  | Optional                            | Any string                                       | കാർഡിനുള്ള ഒരു ഇഷ്ടാനുസൃത പേര്. നിർവചിച്ചിട്ടില്ലെങ്കിൽ entity യുടെ പേര് പ്രദർശിപ്പിക്കും.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | കാർഡിനുള്ള ഒരു ഇഷ്ടാനുസൃത ഐക്കൺ. നിർവചിച്ചിട്ടില്ലെങ്കിൽ entity ഐക്കൺ അല്ലെങ്കിൽ `entity-picture` ഉപയോഗിക്കും.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | `entity-picture` യെക്കാൾ ഐക്കണിന് മുൻഗണന നൽകുന്നു.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | ഐക്കൺ കാണിക്കുക അല്ലെങ്കിൽ മറയ്ക്കുക.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | `entity` പിന്തുണച്ചാൽ, കുറഞ്ഞ ടാർഗെറ്റ് താപനില നിയന്ത്രണം മറയ്ക്കുന്നു.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | `entity` പിന്തുണച്ചാൽ, കൂടിയ ടാർഗെറ്റ് താപനില നിയന്ത്രണം മറയ്ക്കുന്നു.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | climate entity ON ആയിരിക്കുമ്പോൾ സ്ഥിരമായ ബാക്ക്ഗ്രൗണ്ട് നിറം പ്രയോഗിക്കുന്നു.                                              |
-| `step` | number | Optional | Any number | താപനില സ്റ്റെപ്പ്. |
-| `min_temp` | number | Optional | Any number | ഏറ്റവും കുറഞ്ഞ താപനില. |
-| `max_temp` | number | Optional | Any number | ഏറ്റവും കൂടിയ താപനില. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | entity ON ആയിരിക്കുമ്പോൾ സ്ഥിരമായ ബാക്ക്ഗ്രൗണ്ട് നിറം പ്രയോഗിക്കുന്നു. ഒരു വാട്ടർ ഹീറ്ററിന് `hvac_action` ന് തുല്യമായ ഒന്നുമില്ല, അതിനാൽ അതിന് നിറം നൽകുന്ന ഒരേയൊരു കാര്യം ഇതാണ്. |
+| `step` | number | Optional | Any number | ലക്ഷ്യ മൂല്യത്തിന്റെ, താപനിലയുടെ അല്ലെങ്കിൽ ഈർപ്പത്തിന്റെ സ്റ്റെപ്പ്. |
+| `min_temp` | number | Optional | Any number | ഏറ്റവും കുറഞ്ഞ ലക്ഷ്യ മൂല്യം. ഒരു ഹ്യുമിഡിഫയറിൽ ഇത് ഈർപ്പമാണ്, താപനിലയല്ല. |
+| `max_temp` | number | Optional | Any number | ഏറ്റവും കൂടിയ ലക്ഷ്യ മൂല്യം. ഒരു ഹ്യുമിഡിഫയറിൽ ഇത് ഈർപ്പമാണ്, താപനിലയല്ല. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#ടാപ്പ്-ഇരട്ട-ടാപ്പ്-അമർത്തിപ്പിടിക്കൽ-പ്രവർത്തനങ്ങൾ) | ബട്ടൺ ക്ലിക്കിലെ സ്ഥിരസ്ഥിതി പ്രവർത്തനങ്ങൾ മാറ്റാൻ അനുവദിക്കുന്നു. |
 | `tap_action` | object | Optional | See [actions](#ടാപ്പ്-ഇരട്ട-ടാപ്പ്-അമർത്തിപ്പിടിക്കൽ-പ്രവർത്തനങ്ങൾ) | ഐക്കൺ ക്ലിക്കിലെ പ്രവർത്തന തരം നിർവചിക്കുക, നിർവചിച്ചിട്ടില്ലെങ്കിൽ `more-info` ഉപയോഗിക്കും. |
 | `double_tap_action` | object | Optional | See [actions](#ടാപ്പ്-ഇരട്ട-ടാപ്പ്-അമർത്തിപ്പിടിക്കൽ-പ്രവർത്തനങ്ങൾ) | ഐക്കൺ ഇരട്ട ക്ലിക്കിലെ പ്രവർത്തന തരം നിർവചിക്കുക, നിർവചിച്ചിട്ടില്ലെങ്കിൽ `none` ഉപയോഗിക്കും. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | heat അവസ്ഥയ്ക്കുള്ള ഓവർലേ നിറം |
 | `--bubble-state-climate-auto-color` | `color` | auto അവസ്ഥയ്ക്കുള്ള ഓവർലേ നിറം |
 | `--bubble-state-climate-heat-cool-color` | `color` | heat-cool അവസ്ഥയ്ക്കുള്ള ഓവർലേ നിറം |
+| `--bubble-state-humidifier-on-color` | `color` | പ്രവർത്തിക്കുന്ന ഒരു ഹ്യുമിഡിഫയറിനുള്ള ഓവർലേ നിറം |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | പ്രവർത്തിക്കുന്ന ഒരു ഹ്യുമിഡിഫയറിനുള്ള ഓവർലേ നിറം, അതിന്റെ ഡിവൈസ് ക്ലാസ് `humidifier` ആയിരിക്കുമ്പോൾ |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | പ്രവർത്തിക്കുന്ന ഒരു ഡീഹ്യുമിഡിഫയറിനുള്ള ഓവർലേ നിറം, അതിന്റെ ഡിവൈസ് ക്ലാസ് `dehumidifier` ആയിരിക്കുമ്പോൾ |
+| `--bubble-state-water_heater-<operation>-color` | `color` | ഒരു വാട്ടർ ഹീറ്റർ പ്രവർത്തന രീതിക്കുള്ള ഓവർലേ നിറം, ഉദാ. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | കാലാവസ്ഥാ കാർഡിനുള്ള accent നിറം |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | കാലാവസ്ഥാ കണ്ടെയ്നറിനുള്ള box shadow. |
 

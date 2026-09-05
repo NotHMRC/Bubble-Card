@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Tämän kortin avulla voit lisätä pudotusvalikon `input_select` / `select` entiteeteillesi. Tämä kortti tukee myös alipainikkeita ja kaikkia yleisiä Bubble Card ominaisuuksia.
 
+Tämä kortti toimii myös minkä tahansa entiteetin kanssa, joka tarjoaa vaihtoehtonsa attribuuttiluettelona: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` ja `preset_modes` ilmastointientiteetissä, `available_modes` ilmankostuttimessa, `operation_list` vedenlämmittimessä, `effect_list` valaisimessa, `source_list` ja `sound_mode_list` mediasoittimessa.
+
 > [!TIP]
 > Voit myös käyttää valinta-alipainikkeita halutessasi, tämä ominaisuus on saatavilla kaikissa korteissa, jotka tukevat alipainikkeita.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Tämän kortin avulla voit ohjata `climate` entiteettejäsi.
+Tämän kortin avulla voit ohjata `climate`, `humidifier` ja `water_heater` entiteettejäsi. Ilmankostutin, ilmankuivain tai yleinen hygrostaatti saa samat plus- ja miinussäätimet tavoitekosteudelleen, ja vedenlämmitin tavoitelämpötilalleen.
 
 > [!TIP]
-> Tilanvalintavalikko on [alipainike](#alipainikkeet), joka lisätään automaattisesti korttia luotaessa. Voit sen jälkeen muokata tai poistaa sen halutessasi.
+> Tilanvalintavalikko on [alipainike](#alipainikkeet), joka lisätään automaattisesti korttia luotaessa. Voit sen jälkeen muokata tai poistaa sen halutessasi. Se lukee ilmastointientiteetin `hvac_modes`, ilmankostuttimen `available_modes` ja vedenlämmittimen `operation_list`.
 
 ### Ilmastoinnin asetukset
 
@@ -830,7 +832,7 @@ Tämän kortin avulla voit ohjata `climate` entiteettejäsi.
 
 | Nimi                     | Tyyppi    | Vaatimus                         | Tuetut arvot                                  | Kuvaus                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Pakollinen**                        | Ilmastointientiteetti                                   | Ohjattava entiteetti (esim. `climate.living_room`).                                                            |
+| `entity`                | string  | **Pakollinen**                        | Ilmastointi-, ilmankostutin- tai vedenlämmitinentiteetti | Ohjattava entiteetti (esim. `climate.living_room`, `humidifier.bedroom` tai `water_heater.boiler`).            |
 | `name`                  | string  | Valinnainen                            | Mikä tahansa merkkijono                                       | Kortin mukautettu nimi. Jos ei määritetty, näytetään entiteetin nimi.                                    |
 | `icon`                  | string  | Valinnainen                            | Mikä tahansa `mdi:` kuvake                                  | Kortin mukautettu kuvake. Jos ei määritetty, käytetään entiteetin kuvaketta tai `entity-picture`.                   |
 | `force_icon`            | boolean | Valinnainen                            | `true` tai `false` (oletus)                     | Antaa kuvakkeelle etusijan `entity-picture` kentän sijaan.                                                           |
@@ -839,10 +841,10 @@ Tämän kortin avulla voit ohjata `climate` entiteettejäsi.
 | `show_icon`             | boolean | Valinnainen                            | `true` (oletus) tai `false`                     | Näytä tai piilota kuvake.                                                                                          |
 | `hide_target_temp_low`  | boolean | Valinnainen (vain entiteeteille, jotka tukevat `target_temp_low` kenttää) | `true` tai `false` (oletus) | Piilottaa alarajan tavoitelämpötilan säätimen, jos `entity` tukee sitä.                                          |
 | `hide_target_temp_high` | boolean | Valinnainen (vain entiteeteille, jotka tukevat `target_temp_high` kenttää)| `true` tai `false` (oletus) | Piilottaa ylärajan tavoitelämpötilan säätimen, jos `entity` tukee sitä.                                         |
-| `state_color`           | boolean | Valinnainen                            | `true` tai `false` (oletus)                     | Käyttää vakiotaustaväriä, kun ilmastointientiteetti on päällä.                                              |
-| `step` | number | Valinnainen | Mikä tahansa luku | Lämpötilan askel. |
-| `min_temp` | number | Valinnainen | Mikä tahansa luku | Minimilämpötila. |
-| `max_temp` | number | Valinnainen | Mikä tahansa luku | Maksimilämpötila. |
+| `state_color`           | boolean | Valinnainen                            | `true` tai `false` (oletus)                     | Käyttää vakiotaustaväriä, kun entiteetti on päällä. Vedenlämmittimellä ei ole `hvac_action` vastinetta, joten tämä on ainoa asia, joka värittää sen. |
+| `step` | number | Valinnainen | Mikä tahansa luku | Tavoitearvon askel, lämpötilan tai kosteuden. |
+| `min_temp` | number | Valinnainen | Mikä tahansa luku | Tavoitearvon vähimmäisarvo. Ilmankostuttimella tämä on kosteus, ei lämpötila. |
+| `max_temp` | number | Valinnainen | Mikä tahansa luku | Tavoitearvon enimmäisarvo. Ilmankostuttimella tämä on kosteus, ei lämpötila. |
 | `button_action` | object | Valinnainen | `tap_action`, `double_tap_action` tai `hold_action`, katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Salli oletustoimintojen muuttaminen painikkeen napautuksessa. |
 | `tap_action` | object | Valinnainen | Katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Määritä kuvakkeen napautuksen toiminto, jos määrittelemätön, käytetään `more-info`. |
 | `double_tap_action` | object | Valinnainen | Katso [toiminnot](#napautuksen-kaksoisnapautuksen-ja-pitkän-painalluksen-toiminnot) | Määritä kuvakkeen kaksoisnapautuksen toiminto, jos määrittelemätön, käytetään `none`. |
@@ -872,6 +874,10 @@ Tämän kortin avulla voit ohjata `climate` entiteettejäsi.
 | `--bubble-state-climate-heat-color` | `color` | Peittoväri heat tilalle |
 | `--bubble-state-climate-auto-color` | `color` | Peittoväri auto tilalle |
 | `--bubble-state-climate-heat-cool-color` | `color` | Peittoväri heat-cool tilalle |
+| `--bubble-state-humidifier-on-color` | `color` | Peittoväri käynnissä olevalle ilmankostuttimelle |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Peittoväri käynnissä olevalle ilmankostuttimelle, kun sen laiteluokka on `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Peittoväri käynnissä olevalle ilmankuivaimelle, kun sen laiteluokka on `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Peittoväri vedenlämmittimen toimintatilalle, esim. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Ilmastointikortin korostusväri |
 | `--bubble-climate-box-shadow` | Katso [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Ilmastointisäiliön varjostus. |
 

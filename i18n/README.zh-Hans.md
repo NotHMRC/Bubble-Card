@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 此卡片可让你为 `input_select` / `select` 实体添加下拉菜单。此卡片同样支持子按钮以及所有 Bubble Card 的通用功能。
 
+此卡片也适用于任何以属性列表形式提供选项的实体：空调的 `hvac_modes`、`fan_modes`、`swing_modes`、`swing_horizontal_modes` 和 `preset_modes`，加湿器的 `available_modes`，热水器的 `operation_list`，灯光的 `effect_list`，以及媒体播放器的 `source_list` 和 `sound_mode_list`。
+
 > [!TIP]
 > 如果需要，你也可以使用选择类的子按钮，此功能在所有支持子按钮的卡片中都可用。
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-此卡片可让你控制你的 `climate` 实体。
+此卡片可让你控制你的 `climate`、`humidifier` 和 `water_heater` 实体。加湿器、除湿机或通用恒湿器同样拥有加号和减号控制来调整其目标湿度，在热水器上则是调整其目标温度。
 
 > [!TIP]
-> 模式选择菜单是一个[子按钮](#子按钮)，创建卡片时会自动添加。你之后可以随意修改或移除它。
+> 模式选择菜单是一个[子按钮](#子按钮)，创建卡片时会自动添加。你之后可以随意修改或移除它。它会读取空调实体的 `hvac_modes`、加湿器的 `available_modes` 以及热水器的 `operation_list`。
 
 ### 空调选项
 
@@ -830,7 +832,7 @@ state_content: state
 
 | 名称                     | 类型    | 要求                         | 支持的选项                                  | 描述                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **必填**                        | 空调实体                                   | 要控制的实体 (例如 `climate.living_room`)。                                                            |
+| `entity`                | string  | **必填**                        | 空调、加湿器或热水器实体                           | 要控制的实体 (例如 `climate.living_room`、`humidifier.bedroom` 或 `water_heater.boiler`)。               |
 | `name`                  | string  | 可选                            | 任意字符串                                       | 卡片的自定义名称。若未定义，则显示实体名称。                                                    |
 | `icon`                  | string  | 可选                            | 任意 `mdi:` 图标                                  | 卡片的自定义图标。若未定义，则使用实体图标或 `entity-picture`。                   |
 | `force_icon`            | boolean | 可选                            | `true` 或 `false` (默认)                     | 优先显示图标而非 `entity-picture`。                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | 可选                            | `true` (默认) 或 `false`                     | 显示或隐藏图标。                                                                                          |
 | `hide_target_temp_low`  | boolean | 可选 (仅适用于支持 `target_temp_low` 的实体) | `true` 或 `false` (默认) | 若 `entity` 支持，则隐藏目标温度下限控制。                                                          |
 | `hide_target_temp_high` | boolean | 可选 (仅适用于支持 `target_temp_high` 的实体)| `true` 或 `false` (默认) | 若 `entity` 支持，则隐藏目标温度上限控制。                                                         |
-| `state_color`           | boolean | 可选                            | `true` 或 `false` (默认)                     | 当空调实体开启时应用固定的背景色。                                                              |
-| `step` | number | 可选 | 任意数字 | 温度步长。 |
-| `min_temp` | number | 可选 | 任意数字 | 最低温度。 |
-| `max_temp` | number | 可选 | 任意数字 | 最高温度。 |
+| `state_color`           | boolean | 可选                            | `true` 或 `false` (默认)                     | 当实体开启时应用固定的背景色。热水器没有与 `hvac_action` 对应的属性，因此这是唯一能为它着色的方式。                      |
+| `step` | number | 可选 | 任意数字 | 目标值的步长，可以是温度或湿度。 |
+| `min_temp` | number | 可选 | 任意数字 | 最低目标值。在加湿器上这是湿度而不是温度。 |
+| `max_temp` | number | 可选 | 任意数字 | 最高目标值。在加湿器上这是湿度而不是温度。 |
 | `button_action` | object | 可选 | `tap_action`、`double_tap_action` 或 `hold_action`，参见[动作](#点击双击和长按动作) | 允许更改按钮点击时的默认动作。 |
 | `tap_action` | object | 可选 | 参见[动作](#点击双击和长按动作) | 定义点击图标时的动作类型，若未定义则使用 `more-info`。 |
 | `double_tap_action` | object | 可选 | 参见[动作](#点击双击和长按动作) | 定义双击图标时的动作类型，若未定义则使用 `none`。 |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | 制热状态的叠加颜色 |
 | `--bubble-state-climate-auto-color` | `color` | 自动状态的叠加颜色 |
 | `--bubble-state-climate-heat-cool-color` | `color` | 冷暖状态的叠加颜色 |
+| `--bubble-state-humidifier-on-color` | `color` | 加湿器正在运行时的叠加颜色 |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | 设备类别为 `humidifier` 的加湿器正在运行时的叠加颜色 |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | 设备类别为 `dehumidifier` 的除湿机正在运行时的叠加颜色 |
+| `--bubble-state-water_heater-<operation>-color` | `color` | 热水器某个运行模式的叠加颜色，例如 `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | 空调卡片的强调色 |
 | `--bubble-climate-box-shadow` | 见[盒阴影](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | 空调容器的盒阴影。 |
 

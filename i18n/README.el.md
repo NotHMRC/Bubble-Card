@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Αυτή η κάρτα σας επιτρέπει να προσθέσετε ένα αναπτυσσόμενο μενού για τις οντότητες `input_select` / `select` σας. Αυτή η κάρτα υποστηρίζει επίσης τα υπο-κουμπιά και όλα τα κοινά χαρακτηριστικά του Bubble Card.
 
+Λειτουργεί επίσης με κάθε οντότητα που εκθέτει τις επιλογές της ως λίστα χαρακτηριστικών: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` και `preset_modes` σε έναν κλιματισμό, `available_modes` σε έναν υγραντήρα, `operation_list` σε έναν θερμοσίφωνα, `effect_list` σε ένα φωτιστικό, `source_list` και `sound_mode_list` σε ένα media player.
+
 > [!TIP]
 > Μπορείτε επίσης να έχετε υπο-κουμπιά επιλογής αν το θέλετε, αυτό το χαρακτηριστικό είναι διαθέσιμο σε όλες τις κάρτες που υποστηρίζουν τα υπο-κουμπιά.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Αυτή η κάρτα σας επιτρέπει να ελέγχετε τις οντότητες `climate` σας.
+Αυτή η κάρτα σας επιτρέπει να ελέγχετε τις οντότητες `climate`, `humidifier` και `water_heater` σας. Ένας υγραντήρας, ένας αφυγραντήρας ή ένας γενικός υγροστάτης αποκτά τα ίδια χειριστήρια συν και πλην για την υγρασία στόχου του, και ένας θερμοσίφωνας για τη θερμοκρασία στόχου του.
 
 > [!TIP]
-> Το μενού επιλογής λειτουργίας είναι ένα [υπο-κουμπί](#υπο-κουμπιά) που προστίθεται αυτόματα κατά τη δημιουργία της κάρτας. Μπορείτε στη συνέχεια να το τροποποιήσετε ή να το αφαιρέσετε όπως επιθυμείτε.
+> Το μενού επιλογής λειτουργίας είναι ένα [υπο-κουμπί](#υπο-κουμπιά) που προστίθεται αυτόματα κατά τη δημιουργία της κάρτας. Μπορείτε στη συνέχεια να το τροποποιήσετε ή να το αφαιρέσετε όπως επιθυμείτε. Διαβάζει τα `hvac_modes` μιας οντότητας κλιματισμού, τα `available_modes` ενός υγραντήρα και το `operation_list` ενός θερμοσίφωνα.
 
 ### Επιλογές κλιματισμού
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Η οντότητα προς έλεγχο (π.χ. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Climate, humidifier or water heater entity       | Η οντότητα προς έλεγχο (π.χ. `climate.living_room`, `humidifier.bedroom` ή `water_heater.boiler`).              |
 | `name`                  | string  | Optional                            | Any string                                       | Ένα προσαρμοσμένο όνομα για την κάρτα. Αν δεν οριστεί, θα εμφανιστεί το όνομα της οντότητας.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Ένα προσαρμοσμένο εικονίδιο για την κάρτα. Αν δεν οριστεί, θα χρησιμοποιηθεί το εικονίδιο της οντότητας ή το `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Δίνει προτεραιότητα στο εικονίδιο έναντι του `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Εμφανίζει ή αποκρύπτει το εικονίδιο.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Αποκρύπτει το χειριστήριο χαμηλής θερμοκρασίας στόχου αν υποστηρίζεται από την `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Αποκρύπτει το χειριστήριο υψηλής θερμοκρασίας στόχου αν υποστηρίζεται από την `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Εφαρμόζει ένα σταθερό χρώμα φόντου όταν η οντότητα κλιματισμού είναι ενεργοποιημένη.                                              |
-| `step` | number | Optional | Any number | Το βήμα θερμοκρασίας. |
-| `min_temp` | number | Optional | Any number | Η ελάχιστη θερμοκρασία. |
-| `max_temp` | number | Optional | Any number | Η μέγιστη θερμοκρασία. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Εφαρμόζει ένα σταθερό χρώμα φόντου όταν η οντότητα είναι ενεργοποιημένη. Ένας θερμοσίφωνας δεν έχει αντίστοιχο του `hvac_action`, οπότε αυτό είναι το μόνο που τον χρωματίζει. |
+| `step` | number | Optional | Any number | Το βήμα της τιμής στόχου, θερμοκρασίας ή υγρασίας. |
+| `min_temp` | number | Optional | Any number | Η ελάχιστη τιμή στόχου. Σε έναν υγραντήρα αυτή είναι υγρασία, όχι θερμοκρασία. |
+| `max_temp` | number | Optional | Any number | Η μέγιστη τιμή στόχου. Σε έναν υγραντήρα αυτή είναι υγρασία, όχι θερμοκρασία. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Επιτρέπει την αλλαγή των προεπιλεγμένων ενεργειών κατά το πάτημα του κουμπιού. |
 | `tap_action` | object | Optional | See [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Ορίζει τον τύπο ενέργειας κατά το πάτημα του εικονιδίου, αν δεν οριστεί, θα χρησιμοποιηθεί το `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#ενέργειες-πατήματος-διπλού-πατήματος-και-παρατεταμένου-πατήματος) | Ορίζει τον τύπο ενέργειας κατά το διπλό πάτημα του εικονιδίου, αν δεν οριστεί, θα χρησιμοποιηθεί το `none`. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Χρώμα επικάλυψης για την κατάσταση θέρμανσης |
 | `--bubble-state-climate-auto-color` | `color` | Χρώμα επικάλυψης για την αυτόματη κατάσταση |
 | `--bubble-state-climate-heat-cool-color` | `color` | Χρώμα επικάλυψης για την κατάσταση θέρμανσης-ψύξης |
+| `--bubble-state-humidifier-on-color` | `color` | Χρώμα επικάλυψης για έναν υγραντήρα που λειτουργεί |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Χρώμα επικάλυψης για έναν υγραντήρα σε λειτουργία, όταν η κλάση συσκευής του είναι `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Χρώμα επικάλυψης για έναν αφυγραντήρα σε λειτουργία, όταν η κλάση συσκευής του είναι `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Χρώμα επικάλυψης για μια λειτουργία θερμοσίφωνα, π.χ. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Χρώμα έμφασης για την κάρτα κλιματισμού |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Σκιά κουτιού για τον περιέκτη κλιματισμού. |
 

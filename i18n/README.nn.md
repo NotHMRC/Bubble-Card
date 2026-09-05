@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Dette kortet lèt deg leggje til ein nedtrekksmeny for `input_select`/`select`-entitetane dine. Dette kortet støttar òg underknappar og alle dei felles funksjonane i Bubble Card.
 
+Det fungerer òg med kva entitet som helst som har vala sine i ei attributtliste: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` og `preset_modes` på ein klima-entitet, `available_modes` på ein luftfuktar, `operation_list` på ein varmtvasstank, `effect_list` på eit lys, `source_list` og `sound_mode_list` på ein mediespelar.
+
 > [!TIP]
 > Du kan òg ha select-underknappar viss du vil, denne funksjonen er tilgjengeleg i alle korta som støttar underknappar.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Dette kortet lèt deg styre `climate`-entitetane dine.
+Dette kortet lèt deg styre `climate`-, `humidifier`- og `water_heater`-entitetane dine. Ein luftfuktar, ein avfuktar eller ein generisk hygrostat får dei same pluss- og minusknappane for målverdien for luftfukt, og ein varmtvasstank for måltemperaturen.
 
 > [!TIP]
-> Menyen for modusval er ein [underknapp](#underknappar) som vert lagt til automatisk når kortet vert oppretta. Du kan deretter endre eller fjerne han som du vil.
+> Menyen for modusval er ein [underknapp](#underknappar) som vert lagt til automatisk når kortet vert oppretta. Du kan deretter endre eller fjerne han som du vil. Han les `hvac_modes` til ein klima-entitet, `available_modes` til ein luftfuktar og `operation_list` til ein varmtvasstank.
 
 ### Val for Klima
 
@@ -830,7 +832,7 @@ Dette kortet lèt deg styre `climate`-entitetane dine.
 
 | Namn                     | Type    | Krav                         | Støtta val                                  | Skildring                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Påkravd**                        | Klima-entitet                                   | Entiteten som skal styrast (t.d. `climate.living_room`).                                                            |
+| `entity`                | string  | **Påkravd**                        | Klima-, luftfuktar- eller varmtvasstank-entitet | Entiteten som skal styrast (t.d. `climate.living_room`, `humidifier.bedroom` eller `water_heater.boiler`).          |
 | `name`                  | string  | Valfritt                            | Kva streng som helst                                       | Eit tilpassa namn for kortet. Viss det ikkje er definert, vert entitetsnamnet vist.                                    |
 | `icon`                  | string  | Valfritt                            | Kva `mdi:`-ikon som helst                                  | Eit tilpassa ikon for kortet. Viss det ikkje er definert, vert entitetsikonet eller `entity-picture` brukt.                   |
 | `force_icon`            | boolean | Valfritt                            | `true` eller `false` (standard)                     | Gir ikonet prioritet framfor `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Dette kortet lèt deg styre `climate`-entitetane dine.
 | `show_icon`             | boolean | Valfritt                            | `true` (standard) eller `false`                     | Vis eller skjul ikonet.                                                                                          |
 | `hide_target_temp_low`  | boolean | Valfritt (berre for entitetar som støttar `target_temp_low`) | `true` eller `false` (standard) | Skjuler kontrollen for lågt måltemperatur viss `entity`-en støttar det.                                          |
 | `hide_target_temp_high` | boolean | Valfritt (berre for entitetar som støttar `target_temp_high`)| `true` eller `false` (standard) | Skjuler kontrollen for høgt måltemperatur viss `entity`-en støttar det.                                         |
-| `state_color`           | boolean | Valfritt                            | `true` eller `false` (standard)                     | Legg på ein konstant bakgrunnsfarge når klima-entiteten er PÅ.                                              |
-| `step` | number | Valfritt | Kva tal som helst | Temperatursteget. |
-| `min_temp` | number | Valfritt | Kva tal som helst | Minstetemperaturen. |
-| `max_temp` | number | Valfritt | Kva tal som helst | Maksimumstemperaturen. |
+| `state_color`           | boolean | Valfritt                            | `true` eller `false` (standard)                     | Legg på ein konstant bakgrunnsfarge når entiteten er PÅ. Ein varmtvasstank har ingen tilsvarande `hvac_action`, så dette er det einaste som gjev han farge. |
+| `step` | number | Valfritt | Kva tal som helst | Steget for målverdien, temperatur eller fuktnivå. |
+| `min_temp` | number | Valfritt | Kva tal som helst | Den lågaste målverdien. På ein luftfuktar er dette eit fuktnivå, ikkje ein temperatur. |
+| `max_temp` | number | Valfritt | Kva tal som helst | Den høgaste målverdien. På ein luftfuktar er dette eit fuktnivå, ikkje ein temperatur. |
 | `button_action` | object | Valfritt | `tap_action`, `double_tap_action` eller `hold_action`, sjå [handlingar](#trykk--dobbelttrykk--og-haldhandlingar) | Lèt deg endre standardhandlingane ved klikk på knappen. |
 | `tap_action` | object | Valfritt | Sjå [handlingar](#trykk--dobbelttrykk--og-haldhandlingar) | Definer typen handling ved klikk på ikonet, viss udefinert vil `more-info` bli brukt. |
 | `double_tap_action` | object | Valfritt | Sjå [handlingar](#trykk--dobbelttrykk--og-haldhandlingar) | Definer typen handling ved dobbeltklikk på ikonet, viss udefinert vil `none` bli brukt. |
@@ -872,6 +874,10 @@ Dette kortet lèt deg styre `climate`-entitetane dine.
 | `--bubble-state-climate-heat-color` | `color` | Overleggsfarge for heat-tilstanden |
 | `--bubble-state-climate-auto-color` | `color` | Overleggsfarge for auto-tilstanden |
 | `--bubble-state-climate-heat-cool-color` | `color` | Overleggsfarge for heat-cool-tilstanden |
+| `--bubble-state-humidifier-on-color` | `color` | Overleggsfarge for ein luftfuktar som er i gang |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Overleggsfarge for ein luftfuktar som er i gang, når einingsklassa hans er `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Overleggsfarge for ein avfuktar som er i gang, når einingsklassa hans er `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Overleggsfarge for ein driftsmodus på ein varmtvasstank, t.d. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Aksentfarge for klimakortet |
 | `--bubble-climate-box-shadow` | Sjå [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Skugge for klimabehaldaren. |
 

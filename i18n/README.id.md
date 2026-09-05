@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Kartu ini memungkinkan Anda menambahkan menu dropdown untuk entitas `input_select` / `select` Anda. Kartu ini juga mendukung subtombol dan semua fitur umum Bubble Card.
 
+Kartu ini juga berfungsi dengan entitas apa pun yang menampilkan opsinya sebagai daftar atribut: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` dan `preset_modes` pada entitas iklim, `available_modes` pada pelembap udara, `operation_list` pada pemanas air, `effect_list` pada lampu, `source_list` dan `sound_mode_list` pada pemutar media.
+
 > [!TIP]
 > Anda juga bisa memiliki subtombol select jika diinginkan, fitur ini tersedia di semua kartu yang mendukung subtombol.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Kartu ini memungkinkan Anda mengontrol entitas `climate` Anda.
+Kartu ini memungkinkan Anda mengontrol entitas `climate`, `humidifier` dan `water_heater` Anda. Pelembap udara, dehumidifier atau higrostat generik mendapat kontrol plus dan minus yang sama pada kelembapan targetnya, dan pemanas air pada suhu targetnya.
 
 > [!TIP]
-> Menu pemilihan mode adalah [subtombol](#subtombol) yang ditambahkan secara otomatis saat kartu dibuat. Anda kemudian bisa mengubah atau menghapusnya sesuai keinginan.
+> Menu pemilihan mode adalah [subtombol](#subtombol) yang ditambahkan secara otomatis saat kartu dibuat. Anda kemudian bisa mengubah atau menghapusnya sesuai keinginan. Menu ini membaca `hvac_modes` dari entitas iklim, `available_modes` dari pelembap udara dan `operation_list` dari pemanas air.
 
 ### Opsi iklim
 
@@ -830,7 +832,7 @@ Kartu ini memungkinkan Anda mengontrol entitas `climate` Anda.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Entitas yang akan dikontrol (misalnya `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Entitas iklim, pelembap udara atau pemanas air   | Entitas yang akan dikontrol (misalnya `climate.living_room`, `humidifier.bedroom` atau `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Any string                                       | Nama kustom untuk kartu. Jika tidak ditentukan, akan menampilkan nama entitas.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Ikon kustom untuk kartu. Jika tidak ditentukan, ikon entitas atau `entity-picture` akan digunakan.                   |
 | `force_icon`            | boolean | Optional                            | `true` atau `false` (default)                     | Memberi prioritas pada ikon dibanding `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Kartu ini memungkinkan Anda mengontrol entitas `climate` Anda.
 | `show_icon`             | boolean | Optional                            | `true` (default) atau `false`                     | Menampilkan atau menyembunyikan ikon.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` atau `false` (default) | Menyembunyikan kontrol suhu target rendah jika didukung oleh `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` atau `false` (default) | Menyembunyikan kontrol suhu target tinggi jika didukung oleh `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` atau `false` (default)                     | Menerapkan warna latar konstan saat entitas climate dalam keadaan ON.                                              |
-| `step` | number | Optional | Any number | Langkah suhu. |
-| `min_temp` | number | Optional | Any number | Suhu minimum. |
-| `max_temp` | number | Optional | Any number | Suhu maksimum. |
+| `state_color`           | boolean | Optional                            | `true` atau `false` (default)                     | Menerapkan warna latar konstan saat entitas dalam keadaan ON. Pemanas air tidak memiliki padanan `hvac_action`, jadi hanya ini yang memberinya warna. |
+| `step` | number | Optional | Any number | Langkah nilai target, suhu atau kelembapan. |
+| `min_temp` | number | Optional | Any number | Nilai target minimum. Pada pelembap udara ini adalah kelembapan, bukan suhu. |
+| `max_temp` | number | Optional | Any number | Nilai target maksimum. Pada pelembap udara ini adalah kelembapan, bukan suhu. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` atau `hold_action`, see [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Memungkinkan mengubah aksi bawaan saat tombol diklik. |
 | `tap_action` | object | Optional | See [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Menentukan jenis aksi saat ikon diklik, jika tidak ditentukan, `more-info` akan digunakan. |
 | `double_tap_action` | object | Optional | See [actions](#aksi-ketuk-ketuk-dua-kali-dan-tahan) | Menentukan jenis aksi saat ikon diklik dua kali, jika tidak ditentukan, `none` akan digunakan. |
@@ -872,6 +874,10 @@ Kartu ini memungkinkan Anda mengontrol entitas `climate` Anda.
 | `--bubble-state-climate-heat-color` | `color` | Warna overlay untuk state heat |
 | `--bubble-state-climate-auto-color` | `color` | Warna overlay untuk state auto |
 | `--bubble-state-climate-heat-cool-color` | `color` | Warna overlay untuk state heat-cool |
+| `--bubble-state-humidifier-on-color` | `color` | Warna overlay untuk pelembap udara yang sedang bekerja |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Warna overlay untuk pelembap udara yang sedang bekerja, saat kelas perangkatnya adalah `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Warna overlay untuk dehumidifier yang sedang bekerja, saat kelas perangkatnya adalah `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Warna overlay untuk operasi pemanas air, misalnya `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Warna aksen untuk kartu climate |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Box shadow untuk kontainer climate. |
 

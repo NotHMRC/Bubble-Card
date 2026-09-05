@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Met hierdie kaart kan jy 'n aftreklys byvoeg vir jou `input_select`- / `select`-entiteite. Hierdie kaart ondersteun ook die subknoppies en al die algemene funksies van Bubble Card.
 
+Dit werk ook met enige entiteit wat sy opsies as 'n attribuutlys blootstel: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` en `preset_modes` op 'n klimaatentiteit, `available_modes` op 'n lugbevogtiger, `operation_list` op 'n waterverwarmer, `effect_list` op 'n lig, `source_list` en `sound_mode_list` op 'n mediaspeler.
+
 > [!TIP]
 > Jy kan ook keuse-subknoppies hê as jy wil, hierdie funksie is beskikbaar in al die kaarte wat die subknoppies ondersteun.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Met hierdie kaart kan jy jou `climate`-entiteite beheer.
+Met hierdie kaart kan jy jou `climate`-, `humidifier`- en `water_heater`-entiteite beheer. 'n Lugbevogtiger, 'n ontvogtiger of 'n generiese higrostaat kry dieselfde plus- en minusbeheer vir sy teikenhumiditeit, en 'n waterverwarmer vir sy teikentemperatuur.
 
 > [!TIP]
-> Die moduskeuselys is 'n [subknoppie](#subknoppies) wat outomaties bygevoeg word wanneer die kaart geskep word. Jy kan dit daarna na wense wysig of verwyder.
+> Die moduskeuselys is 'n [subknoppie](#subknoppies) wat outomaties bygevoeg word wanneer die kaart geskep word. Jy kan dit daarna na wense wysig of verwyder. Dit lees die `hvac_modes` van 'n klimaatentiteit, die `available_modes` van 'n lugbevogtiger en die `operation_list` van 'n waterverwarmer.
 
 ### Klimaatopsies
 
@@ -830,7 +832,7 @@ Met hierdie kaart kan jy jou `climate`-entiteite beheer.
 
 | Naam                     | Tipe    | Vereiste                            | Ondersteunde opsies                              | Beskrywing                                                                                                      |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Vereis**                          | Klimaatentiteit                                  | Die entiteit om te beheer (bv. `climate.living_room`).                                                          |
+| `entity`                | string  | **Vereis**                          | Klimaat-, lugbevogtiger- of waterverwarmerentiteit | Die entiteit om te beheer (bv. `climate.living_room`, `humidifier.bedroom` of `water_heater.boiler`).           |
 | `name`                  | string  | Opsioneel                           | Enige string                                     | 'n Pasgemaakte naam vir die kaart. Indien nie gedefinieer nie, sal die entiteitnaam vertoon word.               |
 | `icon`                  | string  | Opsioneel                           | Enige `mdi:`-ikoon                               | 'n Pasgemaakte ikoon vir die kaart. Indien nie gedefinieer nie, word die entiteit-ikoon of `entity-picture` gebruik. |
 | `force_icon`            | boolean | Opsioneel                           | `true` of `false` (verstek)                     | Gee voorrang aan die ikoon bo die `entity-picture`.                                                             |
@@ -839,10 +841,10 @@ Met hierdie kaart kan jy jou `climate`-entiteite beheer.
 | `show_icon`             | boolean | Opsioneel                           | `true` (verstek) of `false`                     | Wys of versteek die ikoon.                                                                                      |
 | `hide_target_temp_low`  | boolean | Opsioneel (slegs vir entiteite wat `target_temp_low` ondersteun) | `true` of `false` (verstek) | Versteek die beheer vir die onderste teikentemperatuur as die `entity` dit ondersteun.                          |
 | `hide_target_temp_high` | boolean | Opsioneel (slegs vir entiteite wat `target_temp_high` ondersteun)| `true` of `false` (verstek) | Versteek die beheer vir die boonste teikentemperatuur as die `entity` dit ondersteun.                           |
-| `state_color`           | boolean | Opsioneel                           | `true` of `false` (verstek)                     | Pas 'n konstante agtergrondkleur toe wanneer die klimaatentiteit AAN is.                                        |
-| `step` | number | Opsioneel | Enige getal | Die temperatuurstap. |
-| `min_temp` | number | Opsioneel | Enige getal | Die minimum temperatuur. |
-| `max_temp` | number | Opsioneel | Enige getal | Die maksimum temperatuur. |
+| `state_color`           | boolean | Opsioneel                           | `true` of `false` (verstek)                     | Pas 'n konstante agtergrondkleur toe wanneer die entiteit AAN is. 'n Waterverwarmer het geen ekwivalent van `hvac_action` nie, dus is dit die enigste ding wat dit inkleur. |
+| `step` | number | Opsioneel | Enige getal | Die stap van die teikenwaarde, temperatuur of humiditeit. |
+| `min_temp` | number | Opsioneel | Enige getal | Die minimum teikenwaarde. Op 'n lugbevogtiger is dit 'n humiditeit, nie 'n temperatuur nie. |
+| `max_temp` | number | Opsioneel | Enige getal | Die maksimum teikenwaarde. Op 'n lugbevogtiger is dit 'n humiditeit, nie 'n temperatuur nie. |
 | `button_action` | object | Opsioneel | `tap_action`, `double_tap_action` of `hold_action`, sien [aksies](#tik--dubbeltik--en-hou-aksies) | Laat jou toe om die verstekaksies by 'n klik op die knoppie te verander. |
 | `tap_action` | object | Opsioneel | Sien [aksies](#tik--dubbeltik--en-hou-aksies) | Definieer die tipe aksie by 'n klik op die ikoon, indien ongedefinieer word `more-info` gebruik. |
 | `double_tap_action` | object | Opsioneel | Sien [aksies](#tik--dubbeltik--en-hou-aksies) | Definieer die tipe aksie by 'n dubbelklik op die ikoon, indien ongedefinieer word `none` gebruik. |
@@ -872,6 +874,10 @@ Met hierdie kaart kan jy jou `climate`-entiteite beheer.
 | `--bubble-state-climate-heat-color` | `color` | Oorlegkleur vir die heat-toestand |
 | `--bubble-state-climate-auto-color` | `color` | Oorlegkleur vir die auto-toestand |
 | `--bubble-state-climate-heat-cool-color` | `color` | Oorlegkleur vir die heat-cool-toestand |
+| `--bubble-state-humidifier-on-color` | `color` | Oorlegkleur vir 'n lugbevogtiger wat loop |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Oorlegkleur vir 'n lugbevogtiger wat loop, wanneer sy toestelklas `humidifier` is |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Oorlegkleur vir 'n ontvogtiger wat loop, wanneer sy toestelklas `dehumidifier` is |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Oorlegkleur vir 'n bedryfsmodus van 'n waterverwarmer, bv. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Aksentkleur vir die klimaatkaart |
 | `--bubble-climate-box-shadow` | Sien [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Boksskadu vir die klimaathouer. |
 

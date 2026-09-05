@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 このカードは`input_select` / `select`エンティティ用のドロップダウンメニューを追加できます。このカードはサブボタンと、Bubble Cardの共通機能すべてにも対応しています。
 
+また、属性リストとしてオプションを公開しているエンティティであれば、どれでも動作します。空調の`hvac_modes`、`fan_modes`、`swing_modes`、`swing_horizontal_modes`、`preset_modes`、加湿器の`available_modes`、給湯器の`operation_list`、ライトの`effect_list`、メディアプレーヤーの`source_list`と`sound_mode_list`などです。
+
 > [!TIP]
 > セレクトのサブボタンも利用できます。この機能はサブボタンに対応しているすべてのカードで使用できます。
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-このカードは`climate`エンティティを操作できます。
+このカードは`climate`、`humidifier`、`water_heater`エンティティを操作できます。加湿器、除湿機、汎用ハイグロスタットでは目標湿度に、給湯器では目標温度に、同じプラスとマイナスのコントロールが付きます。
 
 > [!TIP]
-> モード選択メニューは、カード作成時に自動的に追加される[サブボタン](#サブボタン)です。あとから自由に変更したり削除したりできます。
+> モード選択メニューは、カード作成時に自動的に追加される[サブボタン](#サブボタン)です。あとから自由に変更したり削除したりできます。空調エンティティの`hvac_modes`、加湿器の`available_modes`、給湯器の`operation_list`を読み取ります。
 
 ### 空調のオプション
 
@@ -830,7 +832,7 @@ state_content: state
 
 | 名前                     | 型    | 必須                         | 対応するオプション                                  | 説明                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **必須**                        | 空調エンティティ                                   | 制御するエンティティ (例: `climate.living_room`)                                                            |
+| `entity`                | string  | **必須**                        | 空調、加湿器、給湯器のエンティティ                          | 制御するエンティティ (例: `climate.living_room`、`humidifier.bedroom`、`water_heater.boiler`)                 |
 | `name`                  | string  | 任意                            | 任意の文字列                                       | カードのカスタム名。指定しない場合はエンティティ名が表示されます。                                                    |
 | `icon`                  | string  | 任意                            | 任意の`mdi:`アイコン                                  | カードのカスタムアイコン。指定しない場合はエンティティのアイコンまたは`entity-picture`が使用されます。                   |
 | `force_icon`            | boolean | 任意                            | `true` または `false` (デフォルト)                     | `entity-picture`よりアイコンを優先します。                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | 任意                            | `true` (デフォルト) または `false`                     | アイコンを表示または非表示にします。                                                                                          |
 | `hide_target_temp_low`  | boolean | 任意 (`target_temp_low`に対応するエンティティのみ) | `true` または `false` (デフォルト) | `entity`が対応している場合、下限目標温度のコントロールを非表示にします。                                                          |
 | `hide_target_temp_high` | boolean | 任意 (`target_temp_high`に対応するエンティティのみ)| `true` または `false` (デフォルト) | `entity`が対応している場合、上限目標温度のコントロールを非表示にします。                                                         |
-| `state_color`           | boolean | 任意                            | `true` または `false` (デフォルト)                     | 空調エンティティがオンのとき、背景色を一定にします。                                                              |
-| `step` | number | 任意 | 任意の数値 | 温度のステップ幅。 |
-| `min_temp` | number | 任意 | 任意の数値 | 最低温度。 |
-| `max_temp` | number | 任意 | 任意の数値 | 最高温度。 |
+| `state_color`           | boolean | 任意                            | `true` または `false` (デフォルト)                     | エンティティがオンのとき、背景色を一定にします。給湯器には`hvac_action`に相当するものがないため、色が付くのはこれだけです。                    |
+| `step` | number | 任意 | 任意の数値 | 目標値 (温度または湿度) のステップ幅。 |
+| `min_temp` | number | 任意 | 任意の数値 | 目標値の下限。加湿器では温度ではなく湿度です。 |
+| `max_temp` | number | 任意 | 任意の数値 | 目標値の上限。加湿器では温度ではなく湿度です。 |
 | `button_action` | object | 任意 | `tap_action`、`double_tap_action`または`hold_action`。[アクション](#タップダブルタップ長押しのアクション)を参照 | ボタンクリック時のデフォルトアクションを変更できます。 |
 | `tap_action` | object | 任意 | [アクション](#タップダブルタップ長押しのアクション)を参照 | アイコンクリック時のアクションタイプを定義します。未定義の場合は`more-info`が使用されます。 |
 | `double_tap_action` | object | 任意 | [アクション](#タップダブルタップ長押しのアクション)を参照 | アイコンをダブルクリックしたときのアクションタイプを定義します。未定義の場合は`none`が使用されます。 |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | 暖房状態のオーバーレイカラー |
 | `--bubble-state-climate-auto-color` | `color` | 自動状態のオーバーレイカラー |
 | `--bubble-state-climate-heat-cool-color` | `color` | 暖房冷房状態のオーバーレイカラー |
+| `--bubble-state-humidifier-on-color` | `color` | 稼働中の加湿器のオーバーレイカラー |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | デバイスクラスが`humidifier`のとき、稼働中の加湿器のオーバーレイカラー |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | デバイスクラスが`dehumidifier`のとき、稼働中の除湿機のオーバーレイカラー |
+| `--bubble-state-water_heater-<operation>-color` | `color` | 給湯器の運転モードのオーバーレイカラー。例: `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | 空調カードのアクセントカラー |
 | `--bubble-climate-box-shadow` | [ボックスシャドウ](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow)を参照 | 空調コンテナのボックスシャドウ。 |
 

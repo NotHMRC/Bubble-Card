@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 இந்தக் கார்டு உங்கள் `input_select` / `select` entity-களுக்கு ஒரு dropdown மெனுவைச் சேர்க்க அனுமதிக்கிறது. இந்தக் கார்டு துணை பட்டன்களையும், Bubble Card-இன் அனைத்து பொதுவான அம்சங்களையும் ஆதரிக்கிறது.
 
+தன் விருப்பங்களை ஒரு attribute பட்டியலாக வெளிப்படுத்தும் எந்த entity-யுடனும் இது வேலை செய்கிறது: ஒரு காலநிலை entity-யில் `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` மற்றும் `preset_modes`, ஒரு ஈரப்பதமாக்கியில் `available_modes`, ஒரு நீர் சூடாக்கியில் `operation_list`, ஒரு விளக்கில் `effect_list`, ஒரு மீடியா பிளேயரில் `source_list` மற்றும் `sound_mode_list`.
+
 > [!TIP]
 > நீங்கள் விரும்பினால் select துணை பட்டன்களையும் வைத்திருக்கலாம், இந்த அம்சம் துணை பட்டன்களை ஆதரிக்கும் அனைத்து கார்டுகளிலும் கிடைக்கிறது.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-இந்தக் கார்டு உங்கள் `climate` entity-களைக் கட்டுப்படுத்த அனுமதிக்கிறது.
+இந்தக் கார்டு உங்கள் `climate`, `humidifier` மற்றும் `water_heater` entity-களைக் கட்டுப்படுத்த அனுமதிக்கிறது. ஒரு ஈரப்பதமாக்கி, ஒரு ஈரப்பதநீக்கி அல்லது ஒரு பொதுவான ஹைக்ரோஸ்டாட் அதன் இலக்கு ஈரப்பதத்திற்கு அதே கூட்டல் மற்றும் கழித்தல் கட்டுப்பாடுகளைப் பெறுகிறது, மேலும் ஒரு நீர் சூடாக்கி அதன் இலக்கு வெப்பநிலைக்கு அவற்றைப் பெறுகிறது.
 
 > [!TIP]
-> முறை தேர்வு மெனு என்பது கார்டை உருவாக்கும்போது தானாக சேர்க்கப்படும் ஒரு [துணை பட்டன்](#துணை-பட்டன்கள்). நீங்கள் விரும்பியபடி பின்னர் அதை மாற்றலாம் அல்லது நீக்கலாம்.
+> முறை தேர்வு மெனு என்பது கார்டை உருவாக்கும்போது தானாக சேர்க்கப்படும் ஒரு [துணை பட்டன்](#துணை-பட்டன்கள்). நீங்கள் விரும்பியபடி பின்னர் அதை மாற்றலாம் அல்லது நீக்கலாம். இது ஒரு காலநிலை entity-யின் `hvac_modes`, ஒரு ஈரப்பதமாக்கியின் `available_modes` மற்றும் ஒரு நீர் சூடாக்கியின் `operation_list` ஆகியவற்றைப் படிக்கிறது.
 
 ### காலநிலை விருப்பங்கள்
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | கட்டுப்படுத்த வேண்டிய entity (எ.கா., `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | காலநிலை, ஈரப்பதமாக்கி அல்லது நீர் சூடாக்கி entity | கட்டுப்படுத்த வேண்டிய entity (எ.கா., `climate.living_room`, `humidifier.bedroom` அல்லது `water_heater.boiler`).         |
 | `name`                  | string  | Optional                            | Any string                                       | கார்டுக்கான தனிப்பயன் பெயர். வரையறுக்கப்படவில்லை என்றால், entity பெயர் காட்டப்படும்.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | கார்டுக்கான தனிப்பயன் ஐகான். வரையறுக்கப்படவில்லை என்றால், entity ஐகான் அல்லது `entity-picture` பயன்படுத்தப்படும்.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | `entity-picture`-க்கு பதிலாக ஐகானுக்கு முன்னுரிமை அளிக்கிறது.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | ஐகானைக் காட்டவும் அல்லது மறைக்கவும்.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | `entity` ஆதரித்தால், குறைந்த இலக்கு வெப்பநிலை கட்டுப்பாட்டை மறைக்கிறது.                                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | `entity` ஆதரித்தால், அதிக இலக்கு வெப்பநிலை கட்டுப்பாட்டை மறைக்கிறது.                                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | climate entity ON ஆக இருக்கும்போது ஒரு நிலையான பின்னணி நிறத்தைப் பயன்படுத்துகிறது.                                                              |
-| `step` | number | Optional | Any number | வெப்பநிலை step. |
-| `min_temp` | number | Optional | Any number | குறைந்தபட்ச வெப்பநிலை. |
-| `max_temp` | number | Optional | Any number | அதிகபட்ச வெப்பநிலை. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | entity ON ஆக இருக்கும்போது ஒரு நிலையான பின்னணி நிறத்தைப் பயன்படுத்துகிறது. ஒரு நீர் சூடாக்கிக்கு `hvac_action`-க்கு இணையானது எதுவும் இல்லை, எனவே அதற்கு நிறம் தருவது இது மட்டுமே. |
+| `step` | number | Optional | Any number | இலக்கு மதிப்பின் step, வெப்பநிலை அல்லது ஈரப்பதம். |
+| `min_temp` | number | Optional | Any number | குறைந்தபட்ச இலக்கு மதிப்பு. ஒரு ஈரப்பதமாக்கியில் இது வெப்பநிலை அல்ல, ஈரப்பதம். |
+| `max_temp` | number | Optional | Any number | அதிகபட்ச இலக்கு மதிப்பு. ஒரு ஈரப்பதமாக்கியில் இது வெப்பநிலை அல்ல, ஈரப்பதம். |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | பட்டன் கிளிக்கில் இயல்புநிலை செயல்களை மாற்ற அனுமதிக்கிறது. |
 | `tap_action` | object | Optional | See [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | ஐகான் கிளிக்கில் செயலின் வகையை வரையறுக்கவும், வரையறுக்கப்படாவிட்டால், `more-info` பயன்படுத்தப்படும். |
 | `double_tap_action` | object | Optional | See [செயல்கள்](#தட்டு-இரட்டைத்-தட்டு-மற்றும்-அழுத்திப்-பிடி-செயல்கள்) | ஐகான் இரட்டைக் கிளிக்கில் செயலின் வகையை வரையறுக்கவும், வரையறுக்கப்படாவிட்டால், `none` பயன்படுத்தப்படும். |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | heat நிலைக்கான overlay நிறம் |
 | `--bubble-state-climate-auto-color` | `color` | auto நிலைக்கான overlay நிறம் |
 | `--bubble-state-climate-heat-cool-color` | `color` | heat-cool நிலைக்கான overlay நிறம் |
+| `--bubble-state-humidifier-on-color` | `color` | இயங்கிக்கொண்டிருக்கும் ஒரு ஈரப்பதமாக்கிக்கான overlay நிறம் |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | இயங்கிக்கொண்டிருக்கும் ஒரு ஈரப்பதமாக்கிக்கான overlay நிறம், அதன் device class `humidifier` ஆக இருக்கும்போது |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | இயங்கிக்கொண்டிருக்கும் ஒரு ஈரப்பதநீக்கிக்கான overlay நிறம், அதன் device class `dehumidifier` ஆக இருக்கும்போது |
+| `--bubble-state-water_heater-<operation>-color` | `color` | ஒரு நீர் சூடாக்கியின் இயக்க முறைக்கான overlay நிறம், எ.கா. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | காலநிலை கார்டுக்கான accent நிறம் |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | காலநிலை கொள்கலனுக்கான box shadow. |
 

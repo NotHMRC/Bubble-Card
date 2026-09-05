@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Այս քարտը թույլ է տալիս ավելացնել բացվող ցանկ ձեր `input_select` / `select` էնթիթիների համար: Այս քարտը նաև աջակցում է ենթակոճակները և Bubble Card-ի բոլոր ընդհանուր հատկանիշները:
 
+Այն նաև աշխատում է ցանկացած էնթիթիի հետ, որն իր ընտրանքները ցուցադրում է որպես ատրիբուտների ցանկ՝ `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` և `preset_modes` կլիմայի վրա, `available_modes` խոնավացուցիչի վրա, `operation_list` ջրատաքացուցիչի վրա, `effect_list` լույսի վրա, `source_list` և `sound_mode_list` մեդիա նվագարկիչի վրա:
+
 > [!TIP]
 > Դուք կարող եք նաև ունենալ select ենթակոճակներ, եթե ցանկանում եք, այս հատկանիշը հասանելի է բոլոր այն քարտերում, որոնք աջակցում են ենթակոճակները:
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Այս քարտը թույլ է տալիս կառավարել ձեր `climate` էնթիթիները:
+Այս քարտը թույլ է տալիս կառավարել ձեր `climate`, `humidifier` և `water_heater` էնթիթիները: Խոնավացուցիչը, օդի չորացուցիչը կամ ընդհանուր հիգրոստատը ստանում է նույն գումարած և հանած կառավարումները իր թիրախային խոնավության համար, իսկ ջրատաքացուցիչը՝ իր թիրախային ջերմաստիճանի համար:
 
 > [!TIP]
-> Ռեժիմի ընտրության ցանկը [ենթակոճակ](#ենթակոճակներ) է, որն ինքնաբերաբար ավելացվում է քարտը ստեղծելիս: Դուք հետո կարող եք փոփոխել կամ հեռացնել այն ըստ ցանկության:
+> Ռեժիմի ընտրության ցանկը [ենթակոճակ](#ենթակոճակներ) է, որն ինքնաբերաբար ավելացվում է քարտը ստեղծելիս: Դուք հետո կարող եք փոփոխել կամ հեռացնել այն ըստ ցանկության: Այն կարդում է կլիմայի էնթիթիի `hvac_modes`-ը, խոնավացուցիչի `available_modes`-ը և ջրատաքացուցիչի `operation_list`-ը:
 
 ### Կլիմայի ընտրանքներ
 
@@ -830,7 +832,7 @@ state_content: state
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Կառավարվող էնթիթին (օրինակ `climate.living_room`)                                                            |
+| `entity`                | string  | **Required**                        | Կլիմայի, խոնավացուցիչի կամ ջրատաքացուցիչի էնթիթի | Կառավարվող էնթիթին (օրինակ `climate.living_room`, `humidifier.bedroom` կամ `water_heater.boiler`)            |
 | `name`                  | string  | Optional                            | Any string                                       | Քարտի հարմարեցված անուն: Եթե սահմանված չէ, կցուցադրվի էնթիթիի անունը:                                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Քարտի հարմարեցված պատկերակ: Եթե սահմանված չէ, կօգտագործվի էնթիթիի պատկերակը կամ `entity-picture`-ը:                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Առաջնահերթություն է տալիս պատկերակին՝ `entity-picture`-ի փոխարեն:                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Ցուցադրել կամ թաքցնել պատկերակը:                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Թաքցնում է ցածր թիրախային ջերմաստիճանի կառավարումը, եթե `entity`-ն այն աջակցում է:                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Թաքցնում է բարձր թիրախային ջերմաստիճանի կառավարումը, եթե `entity`-ն այն աջակցում է:                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Կիրառում է ֆոնի հաստատուն գույն, երբ կլիմայի էնթիթին միացված է:                                                              |
-| `step` | number | Optional | Any number | Ջերմաստիճանի քայլը: |
-| `min_temp` | number | Optional | Any number | Նվազագույն ջերմաստիճանը: |
-| `max_temp` | number | Optional | Any number | Առավելագույն ջերմաստիճանը: |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Կիրառում է ֆոնի հաստատուն գույն, երբ էնթիթին միացված է: Ջրատաքացուցիչը `hvac_action`-ի համարժեք չունի, ուստի միայն սա է այն գունավորում: |
+| `step` | number | Optional | Any number | Թիրախային արժեքի, ջերմաստիճանի կամ խոնավության քայլը: |
+| `min_temp` | number | Optional | Any number | Նվազագույն թիրախային արժեքը: Խոնավացուցիչի վրա դա խոնավություն է, ոչ թե ջերմաստիճան: |
+| `max_temp` | number | Optional | Any number | Առավելագույն թիրախային արժեքը: Խոնավացուցիչի վրա դա խոնավություն է, ոչ թե ջերմաստիճան: |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Թույլ է տալիս փոխել լռելյայն գործողությունները կոճակի սեղմման ժամանակ: |
 | `tap_action` | object | Optional | See [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Սահմանել գործողության տեսակը պատկերակի սեղմման ժամանակ, եթե սահմանված չէ, կօգտագործվի `more-info`-ն: |
 | `double_tap_action` | object | Optional | See [actions](#հպելու-կրկնակի-հպելու-և-պահելու-գործողություններ) | Սահմանել գործողության տեսակը պատկերակի կրկնակի սեղմման ժամանակ, եթե սահմանված չէ, կօգտագործվի `none`-ը: |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | Overlay գույն heat վիճակի համար |
 | `--bubble-state-climate-auto-color` | `color` | Overlay գույն auto վիճակի համար |
 | `--bubble-state-climate-heat-cool-color` | `color` | Overlay գույն heat-cool վիճակի համար |
+| `--bubble-state-humidifier-on-color` | `color` | Overlay գույն աշխատող խոնավացուցիչի համար |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Overlay գույն աշխատող խոնավացուցիչի համար, երբ նրա սարքի դասը `humidifier` է |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Overlay գույն աշխատող օդի չորացուցիչի համար, երբ նրա սարքի դասը `dehumidifier` է |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Overlay գույն ջրատաքացուցիչի աշխատանքային ռեժիմի համար, օրինակ `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Կլիմայի քարտի շեշտադրման գույն |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Կլիմայի տարայի ստվերը: |
 

@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Bu kart, `input_select` / `select` varlıklarınız için bir açılır menü eklemenizi sağlar. Bu kart ayrıca alt düğmeleri ve tüm ortak Bubble Card özelliklerini destekler.
 
+Ayrıca seçeneklerini bir özellik listesi olarak sunan her varlıkla çalışır: bir iklim varlığında `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` ve `preset_modes`, bir nemlendiricide `available_modes`, bir su ısıtıcısında `operation_list`, bir ışıkta `effect_list`, bir medya oynatıcıda `source_list` ve `sound_mode_list`.
+
 > [!TIP]
 > İsterseniz seçim alt düğmelerine de sahip olabilirsiniz, bu özellik alt düğmeleri destekleyen tüm kartlarda mevcuttur.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Bu kart, `climate` varlıklarınızı kontrol etmenizi sağlar.
+Bu kart, `climate`, `humidifier` ve `water_heater` varlıklarınızı kontrol etmenizi sağlar. Bir nemlendirici, bir nem alma cihazı veya genel bir higrostat, hedef nemi için aynı artı ve eksi kontrollerine sahip olur, bir su ısıtıcısı da hedef sıcaklığı için.
 
 > [!TIP]
-> Mod seçim menüsü, kart oluşturulurken otomatik olarak eklenen bir [alt düğmedir](#alt-düğmeler). Ardından dilediğiniz gibi değiştirebilir veya kaldırabilirsiniz.
+> Mod seçim menüsü, kart oluşturulurken otomatik olarak eklenen bir [alt düğmedir](#alt-düğmeler). Ardından dilediğiniz gibi değiştirebilir veya kaldırabilirsiniz. Bir iklim varlığının `hvac_modes` değerlerini, bir nemlendiricinin `available_modes` değerlerini ve bir su ısıtıcısının `operation_list` değerlerini okur.
 
 ### İklim seçenekleri
 
@@ -830,7 +832,7 @@ Bu kart, `climate` varlıklarınızı kontrol etmenizi sağlar.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Kontrol edilecek varlık (örn. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Climate, humidifier or water heater entity       | Kontrol edilecek varlık (örn. `climate.living_room`, `humidifier.bedroom` veya `water_heater.boiler`).           |
 | `name`                  | string  | Optional                            | Any string                                       | Kart için özel bir isim. Tanımlanmazsa varlığın adı gösterilir.                                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Kart için özel bir simge. Tanımlanmazsa varlığın simgesi veya `entity-picture` kullanılır.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | Simgeye `entity-picture` yerine öncelik verir.                                                           |
@@ -839,10 +841,10 @@ Bu kart, `climate` varlıklarınızı kontrol etmenizi sağlar.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Simgeyi göster veya gizle.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | `entity` tarafından destekleniyorsa düşük hedef sıcaklık kontrolünü gizler.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | `entity` tarafından destekleniyorsa yüksek hedef sıcaklık kontrolünü gizler.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | İklim varlığı AÇIK olduğunda sabit bir arka plan rengi uygular.                                                              |
-| `step` | number | Optional | Any number | Sıcaklık adımı. |
-| `min_temp` | number | Optional | Any number | Minimum sıcaklık. |
-| `max_temp` | number | Optional | Any number | Maksimum sıcaklık. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Varlık AÇIK olduğunda sabit bir arka plan rengi uygular. Bir su ısıtıcısının `hvac_action` karşılığı yoktur, bu yüzden onu renklendiren tek şey budur. |
+| `step` | number | Optional | Any number | Hedef değerin, sıcaklığın veya nemin adımı. |
+| `min_temp` | number | Optional | Any number | Minimum hedef değer. Bir nemlendiricide bu bir nem değeridir, sıcaklık değil. |
+| `max_temp` | number | Optional | Any number | Maksimum hedef değer. Bir nemlendiricide bu bir nem değeridir, sıcaklık değil. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Düğme tıklamasındaki varsayılan eylemleri değiştirmeye izin ver. |
 | `tap_action` | object | Optional | See [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Simgeye dokunma eyleminin türünü tanımlayın, tanımlanmazsa `more-info` kullanılır. |
 | `double_tap_action` | object | Optional | See [actions](#dokunma-çift-dokunma-ve-basılı-tutma-eylemleri) | Simgeye çift dokunma eyleminin türünü tanımlayın, tanımlanmazsa `none` kullanılır. |
@@ -872,6 +874,10 @@ Bu kart, `climate` varlıklarınızı kontrol etmenizi sağlar.
 | `--bubble-state-climate-heat-color` | `color` | Isıtma durumu için kaplama rengi |
 | `--bubble-state-climate-auto-color` | `color` | Otomatik durum için kaplama rengi |
 | `--bubble-state-climate-heat-cool-color` | `color` | Isıtma-soğutma durumu için kaplama rengi |
+| `--bubble-state-humidifier-on-color` | `color` | Çalışan bir nemlendirici için kaplama rengi |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Cihaz sınıfı `humidifier` olan, çalışan bir nemlendirici için kaplama rengi |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Cihaz sınıfı `dehumidifier` olan, çalışan bir nem alma cihazı için kaplama rengi |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Bir su ısıtıcısı çalışma modu için kaplama rengi, örn. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | İklim kartı için vurgu rengi |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | İklim kapsayıcısı için kutu gölgesi. |
 

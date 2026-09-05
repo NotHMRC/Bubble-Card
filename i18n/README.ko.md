@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 이 카드를 사용하면 `input_select` / `select` 엔티티를 위한 드롭다운 메뉴를 추가할 수 있습니다. 이 카드는 서브 버튼과 Bubble Card의 모든 공통 기능도 지원합니다.
 
+옵션을 속성 목록으로 제공하는 모든 엔티티에서도 작동합니다: 냉난방의 `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes`, `preset_modes`, 가습기의 `available_modes`, 온수기의 `operation_list`, 조명의 `effect_list`, 미디어 플레이어의 `source_list`와 `sound_mode_list`입니다.
+
 > [!TIP]
 > 원한다면 선택 서브 버튼도 사용할 수 있습니다. 이 기능은 서브 버튼을 지원하는 모든 카드에서 사용할 수 있습니다.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-이 카드를 사용하면 `climate` 엔티티를 제어할 수 있습니다.
+이 카드를 사용하면 `climate`, `humidifier`, `water_heater` 엔티티를 제어할 수 있습니다. 가습기, 제습기 또는 일반 습도 조절기는 목표 습도에 대해, 온수기는 목표 온도에 대해 동일한 플러스, 마이너스 컨트롤을 갖습니다.
 
 > [!TIP]
-> 모드 선택 메뉴는 카드를 생성할 때 자동으로 추가되는 [서브 버튼](#서브-버튼)입니다. 이후 원하는 대로 수정하거나 제거할 수 있습니다.
+> 모드 선택 메뉴는 카드를 생성할 때 자동으로 추가되는 [서브 버튼](#서브-버튼)입니다. 이후 원하는 대로 수정하거나 제거할 수 있습니다. 냉난방 엔티티의 `hvac_modes`, 가습기의 `available_modes`, 온수기의 `operation_list`를 읽습니다.
 
 ### 냉난방 옵션
 
@@ -830,7 +832,7 @@ state_content: state
 
 | 이름                     | 유형    | 필수 여부                         | 지원 옵션                                  | 설명                                                                                                     |
 |--------------------------|---------|-------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **필수**                        | 냉난방 엔티티                                   | 제어할 엔티티 (예: `climate.living_room`).                                                            |
+| `entity`                | string  | **필수**                        | 냉난방, 가습기 또는 온수기 엔티티                       | 제어할 엔티티 (예: `climate.living_room`, `humidifier.bedroom` 또는 `water_heater.boiler`).             |
 | `name`                  | string  | 선택                            | 모든 문자열                                       | 카드의 커스텀 이름입니다. 정의하지 않으면 엔티티 이름이 표시됩니다.                                    |
 | `icon`                  | string  | 선택                            | 모든 `mdi:` 아이콘                                  | 카드의 커스텀 아이콘입니다. 정의하지 않으면 엔티티 아이콘 또는 `entity-picture`가 사용됩니다.                   |
 | `force_icon`            | boolean | 선택                            | `true` 또는 `false` (기본값)                     | `entity-picture` 대신 아이콘을 우선 사용합니다.                                                           |
@@ -839,10 +841,10 @@ state_content: state
 | `show_icon`             | boolean | 선택                            | `true` (기본값) 또는 `false`                     | 아이콘을 표시하거나 숨깁니다.                                                                                          |
 | `hide_target_temp_low`  | boolean | 선택 (`target_temp_low`를 지원하는 엔티티에만 해당) | `true` 또는 `false` (기본값) | `entity`가 지원하는 경우 낮은 목표 온도 컨트롤을 숨깁니다.                                                          |
 | `hide_target_temp_high` | boolean | 선택 (`target_temp_high`를 지원하는 엔티티에만 해당)| `true` 또는 `false` (기본값) | `entity`가 지원하는 경우 높은 목표 온도 컨트롤을 숨깁니다.                                                         |
-| `state_color`           | boolean | 선택                            | `true` 또는 `false` (기본값)                     | 냉난방 엔티티가 켜져 있을 때 일정한 배경색을 적용합니다.                                                              |
-| `step` | number | 선택 | 모든 숫자 | 온도 단계 값입니다. |
-| `min_temp` | number | 선택 | 모든 숫자 | 최소 온도입니다. |
-| `max_temp` | number | 선택 | 모든 숫자 | 최대 온도입니다. |
+| `state_color`           | boolean | 선택                            | `true` 또는 `false` (기본값)                     | 엔티티가 켜져 있을 때 일정한 배경색을 적용합니다. 온수기에는 `hvac_action`에 해당하는 것이 없으므로 색을 입히는 것은 이것뿐입니다.              |
+| `step` | number | 선택 | 모든 숫자 | 목표 값(온도 또는 습도)의 단계 값입니다. |
+| `min_temp` | number | 선택 | 모든 숫자 | 최소 목표 값입니다. 가습기에서는 온도가 아니라 습도입니다. |
+| `max_temp` | number | 선택 | 모든 숫자 | 최대 목표 값입니다. 가습기에서는 온도가 아니라 습도입니다. |
 | `button_action` | object | 선택 | `tap_action`, `double_tap_action` 또는 `hold_action`, [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 버튼 클릭 시 기본 동작을 변경할 수 있습니다. |
 | `tap_action` | object | 선택 | [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 아이콘 클릭 시 동작 유형을 정의합니다. 정의하지 않으면 `more-info`가 사용됩니다. |
 | `double_tap_action` | object | 선택 | [동작](#탭-더블-탭-길게-누르기-동작) 참조 | 아이콘 더블 클릭 시 동작 유형을 정의합니다. 정의하지 않으면 `none`이 사용됩니다. |
@@ -872,6 +874,10 @@ state_content: state
 | `--bubble-state-climate-heat-color` | `color` | 난방 상태의 오버레이 색상 |
 | `--bubble-state-climate-auto-color` | `color` | 자동 상태의 오버레이 색상 |
 | `--bubble-state-climate-heat-cool-color` | `color` | 냉난방 상태의 오버레이 색상 |
+| `--bubble-state-humidifier-on-color` | `color` | 작동 중인 가습기의 오버레이 색상 |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | 기기 클래스가 `humidifier`인 작동 중인 가습기의 오버레이 색상 |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | 기기 클래스가 `dehumidifier`인 작동 중인 제습기의 오버레이 색상 |
+| `--bubble-state-water_heater-<operation>-color` | `color` | 온수기 작동 모드의 오버레이 색상, 예: `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | 냉난방 카드의 강조 색상 |
 | `--bubble-climate-box-shadow` | [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) 참조 | 냉난방 컨테이너의 그림자. |
 

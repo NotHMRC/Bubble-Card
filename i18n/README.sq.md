@@ -738,6 +738,8 @@ icon_close: mdi:roller-shade-closed
 
 Kjo kartë ju lejon të shtoni një menu rënëse (dropdown) për entitetet tuaja `input_select` / `select`. Kjo kartë mbështet gjithashtu nën-butonat dhe të gjitha veçoritë e zakonshme të Bubble Card.
 
+Funksionon gjithashtu me çdo entitet që i shfaq opsionet e veta si listë atributesh: `hvac_modes`, `fan_modes`, `swing_modes`, `swing_horizontal_modes` dhe `preset_modes` te një klimë, `available_modes` te një lagështues, `operation_list` te një ngrohës uji, `effect_list` te një dritë, `source_list` dhe `sound_mode_list` te një luajtës multimedial.
+
 > [!TIP]
 > Mund të keni gjithashtu nën-butona përzgjedhjeje nëse dëshironi, kjo veçori është e disponueshme në të gjitha kartat që mbështesin nën-butonat.
 
@@ -817,10 +819,10 @@ state_content: state
 
 ![readme-climate-card](https://github.com/user-attachments/assets/59145c69-2f85-4ee7-a290-e848971e1925)
 
-Kjo kartë ju lejon të kontrolloni entitetet tuaja `climate`.
+Kjo kartë ju lejon të kontrolloni entitetet tuaja `climate`, `humidifier` dhe `water_heater`. Një lagështues, një çlagështues ose një higrostat i përgjithshëm merr të njëjtat kontrolle plus dhe minus për lagështinë e synuar, kurse një ngrohës uji për temperaturën e synuar.
 
 > [!TIP]
-> Menyja e përzgjedhjes së mënyrës është një [nën-buton](#nën-butonat) që shtohet automatikisht kur krijohet karta. Mund ta modifikoni ose ta hiqni pastaj sipas dëshirës.
+> Menyja e përzgjedhjes së mënyrës është një [nën-buton](#nën-butonat) që shtohet automatikisht kur krijohet karta. Mund ta modifikoni ose ta hiqni pastaj sipas dëshirës. Ajo lexon `hvac_modes` e një entiteti klime, `available_modes` e një lagështuesi dhe `operation_list` e një ngrohësi uji.
 
 ### Opsionet e klimës
 
@@ -830,7 +832,7 @@ Kjo kartë ju lejon të kontrolloni entitetet tuaja `climate`.
 
 | Name                     | Type    | Requirement                         | Supported options                                  | Description                                                                                                     |
 |--------------------------|---------|--------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| `entity`                | string  | **Required**                        | Climate entity                                   | Entiteti që do të kontrollohet (p.sh. `climate.living_room`).                                                            |
+| `entity`                | string  | **Required**                        | Entitet klime, lagështuesi ose ngrohësi uji      | Entiteti që do të kontrollohet (p.sh. `climate.living_room`, `humidifier.bedroom` ose `water_heater.boiler`).            |
 | `name`                  | string  | Optional                            | Any string                                       | Një emër i personalizuar për kartën. Nëse nuk përcaktohet, do të shfaqet emri i entitetit.                                    |
 | `icon`                  | string  | Optional                            | Any `mdi:` icon                                  | Një ikonë e personalizuar për kartën. Nëse nuk përcaktohet, do të përdoret ikona e entitetit ose `entity-picture`.                   |
 | `force_icon`            | boolean | Optional                            | `true` or `false` (default)                     | I jep përparësi ikonës në vend të `entity-picture`.                                                           |
@@ -839,10 +841,10 @@ Kjo kartë ju lejon të kontrolloni entitetet tuaja `climate`.
 | `show_icon`             | boolean | Optional                            | `true` (default) or `false`                     | Shfaq ose fsheh ikonën.                                                                                          |
 | `hide_target_temp_low`  | boolean | Optional (only for entities supporting `target_temp_low`) | `true` or `false` (default) | Fsheh kontrollin e temperaturës minimale të synuar, nëse mbështetet nga `entity`.                                          |
 | `hide_target_temp_high` | boolean | Optional (only for entities supporting `target_temp_high`)| `true` or `false` (default) | Fsheh kontrollin e temperaturës maksimale të synuar, nëse mbështetet nga `entity`.                                         |
-| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Aplikon një ngjyrë të vazhdueshme sfondi kur entiteti i klimës është i ndezur (ON).                                                              |
-| `step` | number | Optional | Any number | Hapi i temperaturës. |
-| `min_temp` | number | Optional | Any number | Temperatura minimale. |
-| `max_temp` | number | Optional | Any number | Temperatura maksimale. |
+| `state_color`           | boolean | Optional                            | `true` or `false` (default)                     | Aplikon një ngjyrë të vazhdueshme sfondi kur entiteti është i ndezur (ON). Një ngrohës uji nuk ka ekuivalent të `hvac_action`, prandaj kjo është e vetmja gjë që e ngjyros atë. |
+| `step` | number | Optional | Any number | Hapi i vlerës së synuar, temperaturë ose lagështi. |
+| `min_temp` | number | Optional | Any number | Vlera minimale e synuar. Te një lagështues kjo është lagështi, jo temperaturë. |
+| `max_temp` | number | Optional | Any number | Vlera maksimale e synuar. Te një lagështues kjo është lagështi, jo temperaturë. |
 | `button_action` | object | Optional | `tap_action`, `double_tap_action` or `hold_action`, see [actions](#veprimet-e-prekjes-prekjes-së-dyfishtë-dhe-mbajtjes) | Lejon të ndryshoni veprimet e paracaktuara në klikim të butonit. |
 | `tap_action` | object | Optional | See [actions](#veprimet-e-prekjes-prekjes-së-dyfishtë-dhe-mbajtjes) | Përcakton llojin e veprimit në klikim të ikonës, nëse nuk përcaktohet do të përdoret `more-info`. |
 | `double_tap_action` | object | Optional | See [actions](#veprimet-e-prekjes-prekjes-së-dyfishtë-dhe-mbajtjes) | Përcakton llojin e veprimit në klikim të dyfishtë të ikonës, nëse nuk përcaktohet do të përdoret `none`. |
@@ -872,6 +874,10 @@ Kjo kartë ju lejon të kontrolloni entitetet tuaja `climate`.
 | `--bubble-state-climate-heat-color` | `color` | Ngjyra mbivendosëse për gjendjen ngrohje |
 | `--bubble-state-climate-auto-color` | `color` | Ngjyra mbivendosëse për gjendjen automatike |
 | `--bubble-state-climate-heat-cool-color` | `color` | Ngjyra mbivendosëse për gjendjen ngrohje-ftohje |
+| `--bubble-state-humidifier-on-color` | `color` | Ngjyra mbivendosëse për një lagështues që është në punë |
+| `--bubble-state-humidifier-humidifier-on-color` | `color` | Ngjyra mbivendosëse për një lagështues në punë, kur klasa e pajisjes së tij është `humidifier` |
+| `--bubble-state-humidifier-dehumidifier-on-color` | `color` | Ngjyra mbivendosëse për një çlagështues në punë, kur klasa e pajisjes së tij është `dehumidifier` |
+| `--bubble-state-water_heater-<operation>-color` | `color` | Ngjyra mbivendosëse për një mënyrë funksionimi të ngrohësit të ujit, p.sh. `--bubble-state-water_heater-eco-color` |
 | `--bubble-climate-accent-color` | `color` | Ngjyra e theksit (accent) për kartën e klimës |
 | `--bubble-climate-box-shadow` | See [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Hija e kutisë (box shadow) për kontejnerin e klimës. |
 
