@@ -2039,6 +2039,10 @@ Bubble Card supports two kinds of templates:
 
 Templates are rendered by your Home Assistant server and update by themselves when what they read changes. They work in these fields:
 
+<details>
+
+<summary><b>Supported fields (with examples)</b></summary>
+
 | Field | Example |
 | --- | --- |
 | `name`, on every card (pop-up header and separator included) | `name: "{{ states('sensor.living_temp') }} °C"` |
@@ -2048,6 +2052,8 @@ Templates are rendered by your Home Assistant server and update by themselves wh
 | `1_name`, `1_icon`... of an [horizontal buttons stack](#horizontal-buttons-stack) | `1_name: "{{ user }}"` |
 | `styles` of a card and the code of a [module](#modules), mixed with JavaScript templates | see below |
 | [Conditions](#conditions), with `condition: template` | `value_template: "{{ is_state('sun.sun', 'below_horizon') }}"` |
+
+</details>
 
 > [!IMPORTANT]
 > Always put a template between quotes. Without them, `name: {{ states('x') }}` is read by YAML as a mapping rather than as text, and the card refuses it.
