@@ -138,8 +138,6 @@
       "light_background": "Hintergrundfarbe basierend auf der Lichtfarbe",
       "accent_color": "Akzentfarbe statt Lichtfarbe verwenden",
       "force_icon": "Icon gegenüber dem Entitätsbild bevorzugen",
-      "last_updated": "Letzte Aktualisierung anzeigen",
-      "attribute": "Attribut anzeigen",
       "arrow": "Pfeil anzeigen (nur Select-Entitäten)"
     },
     "actions": {

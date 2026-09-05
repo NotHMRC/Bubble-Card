@@ -464,7 +464,7 @@ class BubbleCard extends HTMLElement {
     resetRenderGate(this);
     // Its templates too: the next render subscribes to the ones it still uses,
     // and the store keeps their values meanwhile.
-    releaseTemplates(this);
+    releaseTemplates(this, true);
     const workingConfig = { ...config };
 
     if (!workingConfig.card_type) throw new Error(tGlobal('editor.errors.card_type_required'));

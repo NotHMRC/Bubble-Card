@@ -138,8 +138,6 @@
       "light_background": "Cor de fundo com base na cor da luz",
       "accent_color": "Usar a cor de destaque em vez da cor da luz",
       "force_icon": "Dar prioridade ao ícone sobre a imagem da entidade",
-      "last_updated": "Mostrar última atualização",
-      "attribute": "Mostrar atributo",
       "arrow": "Mostrar seta (apenas entidades Select)"
     },
     "actions": {

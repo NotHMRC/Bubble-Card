@@ -587,6 +587,13 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
     const target = context.elements?.[type];
     if (target && !target.templateDetected) {
       target.templateDetected = true;
+      // A line the card had nothing to show in is hidden. The template is
+      // about to write into it, so it comes on screen now rather than on the
+      // next render.
+      if (type === 'state' && target.classList) {
+        target.classList.remove('hidden');
+        target.classList.add('display-state');
+      }
     }
   }
 

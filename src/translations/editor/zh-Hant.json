@@ -138,8 +138,6 @@
       "light_background": "依燈光顏色變化的背景顏色",
       "accent_color": "使用主題強調色取代燈光顏色",
       "force_icon": "優先顯示圖示而非實體圖片",
-      "last_updated": "顯示最後更新時間",
-      "attribute": "顯示屬性",
       "arrow": "顯示箭頭 (僅限 Select 實體)"
     },
     "actions": {

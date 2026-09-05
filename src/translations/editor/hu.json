@@ -138,8 +138,6 @@
       "light_background": "Háttérszín a fény színe alapján",
       "accent_color": "Kiemelőszín használata a fény színe helyett",
       "force_icon": "Ikon előnyben részesítése az entitás képével szemben",
-      "last_updated": "Utolsó frissítés megjelenítése",
-      "attribute": "Attribútum megjelenítése",
       "arrow": "Nyíl megjelenítése (csak Select entitásoknál)"
     },
     "actions": {

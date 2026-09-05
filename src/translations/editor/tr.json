@@ -138,8 +138,6 @@
       "light_background": "Işık rengine göre arka plan rengi",
       "accent_color": "Işık rengi yerine vurgu rengini kullan",
       "force_icon": "Varlık resmi yerine simgeye öncelik ver",
-      "last_updated": "Son güncellemeyi göster",
-      "attribute": "Özniteliği göster",
       "arrow": "Oku göster (yalnızca Select varlıkları)"
     },
     "actions": {

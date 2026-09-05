@@ -138,8 +138,6 @@
       "light_background": "Bakgrundsfärg baserad på ljusfärg",
       "accent_color": "Använd accentfärg istället för ljusfärg",
       "force_icon": "Prioritera ikon framför entitetsbild",
-      "last_updated": "Visa senast uppdaterad",
-      "attribute": "Visa attribut",
       "arrow": "Visa pil (endast Select-entiteter)"
     },
     "actions": {

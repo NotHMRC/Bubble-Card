@@ -138,8 +138,6 @@
       "light_background": "基于灯光颜色的背景色",
       "accent_color": "使用主题强调色代替灯光颜色",
       "force_icon": "优先显示图标而非实体图片",
-      "last_updated": "显示最后更新时间",
-      "attribute": "显示属性",
       "arrow": "显示箭头 (仅限 Select 实体)"
     },
     "actions": {

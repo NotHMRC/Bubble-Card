@@ -265,3 +265,36 @@ describe('BubbleCardEditor cleared fields', () => {
         expect(editor._config.sub_button[0].entity).toBe('light.lamp');
     });
 });
+
+describe('BubbleCardEditor state content migration', () => {
+    beforeEach(() => {
+        jest.useFakeTimers();
+        jest.clearAllMocks();
+    });
+
+    afterEach(() => {
+        jest.useRealTimers();
+    });
+
+    test('rewrites the old state keys as state_content when a config is opened, and tells the dashboard once', () => {
+        const editor = new BubbleCardEditor();
+        editor.setConfig({ card_type: 'button', entity: 'sensor.t', show_state: true, show_last_changed: true, sub_button: [{ entity: 'sensor.h', show_attribute: true, attribute: 'humidity' }] });
+
+        expect(editor._config.show_state).toBeUndefined();
+        expect(editor._config.state_content).toEqual(['state', 'last-changed'].map((v) => v.replace('-', '_')));
+        expect(editor._config.sub_button[0]).toEqual({ entity: 'sensor.h', state_content: 'humidity' });
+        expect(fireEvent).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(0);
+        expect(fireEvent).toHaveBeenCalledWith(editor, 'config-changed', { config: editor._config });
+    });
+
+    test('leaves a config without old keys alone', () => {
+        const editor = new BubbleCardEditor();
+        const config = { card_type: 'button', entity: 'sensor.t', state_content: 'state' };
+        editor.setConfig(config);
+        jest.advanceTimersByTime(0);
+        expect(editor._config).toEqual(config);
+        expect(fireEvent).not.toHaveBeenCalled();
+    });
+});

@@ -126,7 +126,9 @@ describe('BubbleCard disconnect contract', () => {
 
         card.disconnectedCallback();
 
+        // Not forgotten: the card takes them back when it comes back.
         expect(releaseTemplates).toHaveBeenCalledWith(card);
+        expect(releaseTemplates).not.toHaveBeenCalledWith(card, true);
         expect(card._templateHoldTimer).toBeNull();
     });
 
@@ -363,7 +365,7 @@ describe('BubbleCard and the template store', () => {
     test('a reconfigured card lets go of its templates', () => {
         const card = createCard();
         card.setConfig({ card_type: 'button', entity: 'light.a', name: "{{ states('sensor.t') }}" });
-        expect(releaseTemplates).toHaveBeenCalledWith(card);
+        expect(releaseTemplates).toHaveBeenCalledWith(card, true);
         expect(card.config.name).toBe("{{ states('sensor.t') }}");
     });
 

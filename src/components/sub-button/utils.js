@@ -5,6 +5,8 @@ import { addActions, addFeedback } from "../../tools/tap-actions.js";
 import { checkConditionsMet, validateConditionalConfig, ensureArray } from "../../tools/validate-condition.js";
 import { resolveTemplate } from "../../tools/render-template.js";
 import { isTemplate } from "../../tools/jinja.js";
+import { resolveStateContent } from "../../tools/state-content.js";
+import { renderStateLine } from "../base-card/state-line.js";
 
 // Get entity picture for sub-button
 // Returns empty if force_icon is set or if an icon is explicitly configured for the sub-button
@@ -39,10 +41,8 @@ export function getSubButtonOptions(context, subButton, index) {
     attribute: getAttribute(context, subButton.attribute ?? '', entity),
     isOn: isStateOn(context, entity),
     showName: subButton.show_name ?? false,
-    showState: subButton.show_state ?? false,
-    showAttribute: subButton.show_attribute ?? false,
-    showLastChanged: subButton.show_last_changed ?? false,
-    showLastUpdated: subButton.show_last_updated ?? false,
+    // What the line shows after the name: state_content, or the old show keys.
+    content: resolveStateContent(subButton, 'sub_button', entity),
     showIcon: subButton.show_icon ?? true,
     showBackground: subButton.show_background ?? true,
     stateBackground: subButton.state_background ?? true,
@@ -76,88 +76,40 @@ export function applySubButtonScrollingEffect(context, element, text, subButton)
 
 // Build the text content for the sub-button state/name/attribute line
 export function buildDisplayedState(options, context, element = null) {
-  const { state, name, attribute, attributeType, showName, showState, showAttribute, showLastChanged, showLastUpdated, entity } = options;
+  const { state, name, showName, entity, content } = options;
 
   const parts = [];
   if (showName && name && name !== 'unknown') parts.push(name);
-  if (state && showState && state.state !== 'unknown') {
-    // Check if entity is a timer and format accordingly
-    const isTimer = isTimerEntity(entity);
-    if (isTimer) {
-      const timeRemaining = timerTimeRemaining(state);
-      const timerDisplay = computeDisplayTimer(context._hass, state, timeRemaining);
-      if (timerDisplay) parts.push(timerDisplay);
-      
-      // Manage timer interval for active timers
-      if (element && state.state === 'active') {
-        startElementTimerInterval(element, context, entity, () => {
-          // Force update by calling the sub-button handler again
-          if (element.isConnected && context._hass?.states?.[entity]) {
-            const currentState = context._hass.states[entity];
-            if (currentState && currentState.state === 'active') {
-              // Rebuild displayed state
-              const updatedOptions = { ...options, state: currentState };
-              const updatedDisplayedState = buildDisplayedState(updatedOptions, context, element);
-              if (element.nameContainer) {
-                applySubButtonScrollingEffect(context, element.nameContainer, updatedDisplayedState, options.subButton);
-              }
-            } else {
-              stopElementTimerInterval(element);
+
+  // A running timer counts down on its own beat while the line shows it.
+  if (element) {
+    const timerShown = isTimerEntity(entity) && !!content && (content.includes('state') || content.includes('remaining_time'));
+    if (timerShown && state?.state === 'active') {
+      startElementTimerInterval(element, context, entity, () => {
+        // Force update by calling the sub-button handler again
+        if (element.isConnected && context._hass?.states?.[entity]) {
+          const currentState = context._hass.states[entity];
+          if (currentState && currentState.state === 'active') {
+            // Rebuild displayed state
+            const updatedOptions = { ...options, state: currentState };
+            const updatedDisplayedState = buildDisplayedState(updatedOptions, context, element);
+            if (element.nameContainer) {
+              applySubButtonScrollingEffect(context, element.nameContainer, updatedDisplayedState, options.subButton);
             }
           } else {
             stopElementTimerInterval(element);
           }
-        });
-      } else if (element && isTimer) {
-        stopElementTimerInterval(element);
-      }
-    } else {
-      parts.push(context._hass.formatEntityState(state));
-      // Stop timer interval if entity is no longer a timer
-      if (element) {
-        stopElementTimerInterval(element);
-      }
-    }
-  } else if (element) {
-    // Stop timer interval if state is not shown
-    stopElementTimerInterval(element);
-  }
-  if (state && showLastChanged && state.last_changed !== 'unknown') parts.push(formatDateTime(state.last_changed, context._hass.locale.language));
-  if (state && showLastUpdated && state.last_updated !== 'unknown') parts.push(formatDateTime(state.last_updated, context._hass.locale.language));
-  if (state && showAttribute) {
-    if (attributeType.includes('forecast')) {
-      const isMetric = context._hass.config.unit_system.length === 'km';
-      const locale = context._hass?.locale?.language || 'en-US';
-
-      if (attributeType.includes('temperature') && attribute !== null && attribute !== undefined) {
-        const tempValue = parseFloat(attribute);
-        const unit = getTemperatureUnit(context._hass);
-        const decimals = (tempValue === 0 || tempValue === 0.0) ? 0 : 1;
-        parts.push(formatNumericValue(tempValue, decimals, unit, locale));
-      } else if (attributeType.includes('humidity') && attribute !== null && attribute !== undefined) {
-        parts.push(formatNumericValue(parseFloat(attribute), 0, '%', locale));
-      } else if (attributeType.includes('precipitation') && attribute !== null && attribute !== undefined) {
-        parts.push(formatNumericValue(parseFloat(attribute), 1, 'mm', locale));
-      } else if (attributeType.includes('wind_speed') && attribute !== null && attribute !== undefined) {
-        const unit = isMetric ? 'km/h' : 'mph';
-        parts.push(formatNumericValue(parseFloat(attribute), 1, unit, locale));
-      } else if (attribute !== null && attribute !== undefined && attribute !== 'unknown') {
-        parts.push(attribute);
-      }
-    } else {
-      const formattedAttribute = context._hass.formatEntityAttributeValue(state, attributeType);
-      const rawAttribute = state.attributes?.[attributeType];
-      const isZeroWithUnit = formattedAttribute &&
-                            (typeof formattedAttribute === 'string') &&
-                            formattedAttribute.trim().startsWith('0') &&
-                            formattedAttribute.trim().length > 1;
-
-      if ((attribute !== 0 && attribute !== 'unknown' && attribute != null) || isZeroWithUnit) {
-        if (rawAttribute !== 'unknown' && rawAttribute != null) {
-          parts.push(formattedAttribute ?? attribute);
+        } else {
+          stopElementTimerInterval(element);
         }
-      }
+      });
+    } else {
+      stopElementTimerInterval(element);
     }
+  }
+
+  if (content && content.length > 0) {
+    parts.push(...renderStateLine(context, entity, content, { name, capitalizeTimes: false }));
   }
 
   return parts.length ? parts.join(' · ').charAt(0).toUpperCase() + parts.join(' · ').slice(1) : '';

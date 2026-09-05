@@ -6,6 +6,7 @@ import { cleanupPopUpCards, handlePopUpCards } from './cards/index.js';
 import { isStandalonePopUpConfig } from './migration.js';
 import { ensureArray, extractConditionEntityIds } from '../../tools/validate-condition.js';
 import { resolveTemplate } from '../../tools/render-template.js';
+import { resolveStateContent, stateContentHasClock } from '../../tools/state-content.js';
 
 initPopUpHashNavigationBridge();
 
@@ -285,17 +286,18 @@ function _haveSubButtonEntityRefsChanged(context) {
     return false;
 }
 
-function _subButtonUsesRelativeTime(subButton) {
+function _subButtonUsesRelativeTime(subButton, cardEntity) {
     if (!subButton) {
         return false;
     }
 
-    if (subButton.show_last_changed || subButton.show_last_updated) {
+    const entity = subButton.entity ?? cardEntity;
+    if (stateContentHasClock(resolveStateContent(subButton, 'sub_button', entity), entity)) {
         return true;
     }
 
     return Array.isArray(subButton.group)
-        ? subButton.group.some(_subButtonUsesRelativeTime)
+        ? subButton.group.some((button) => _subButtonUsesRelativeTime(button, cardEntity))
         : false;
 }
 
@@ -304,7 +306,7 @@ function _headerUsesRelativeTime(config) {
         return false;
     }
 
-    if (config.show_last_changed || config.show_last_updated) {
+    if (stateContentHasClock(resolveStateContent(config, 'card', config.entity), config.entity)) {
         return true;
     }
 
@@ -317,7 +319,7 @@ function _headerUsesRelativeTime(config) {
         ? [sub]
         : [sub.main || [], sub.bottom || []];
 
-    return sections.some(section => Array.isArray(section) && section.some(_subButtonUsesRelativeTime));
+    return sections.some(section => Array.isArray(section) && section.some((button) => _subButtonUsesRelativeTime(button, config.entity)));
 }
 
 // Answered on every hass tick, from a config reference that is stable between

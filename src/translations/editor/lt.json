@@ -138,8 +138,6 @@
       "light_background": "Fono spalva pagal šviesos spalvą",
       "accent_color": "Naudoti akcento spalvą vietoj šviesos spalvos",
       "force_icon": "Teikti pirmenybę piktogramai, o ne esybės paveikslėliui",
-      "last_updated": "Rodyti paskutinį atnaujinimą",
-      "attribute": "Rodyti atributą",
       "arrow": "Rodyti rodyklę (tik Select esybėms)"
     },
     "actions": {

@@ -138,8 +138,6 @@
       "light_background": "Kolor tła zależny od koloru światła",
       "accent_color": "Użyj koloru akcentu zamiast koloru światła",
       "force_icon": "Preferuj ikonę zamiast zdjęcia encji",
-      "last_updated": "Pokaż czas ostatniej aktualizacji",
-      "attribute": "Pokaż atrybut",
       "arrow": "Pokaż strzałkę (tylko encje Select)"
     },
     "actions": {

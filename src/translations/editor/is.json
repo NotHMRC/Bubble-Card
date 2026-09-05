@@ -138,8 +138,6 @@
       "light_background": "Bakgrunnslitur byggður á lit ljóss",
       "accent_color": "Nota áherslulit í stað ljóslitar",
       "force_icon": "Setja tákn fram yfir mynd einingar",
-      "last_updated": "Sýna síðast uppfært",
-      "attribute": "Sýna eigindi",
       "arrow": "Sýna ör (aðeins Select-einingar)"
     },
     "actions": {

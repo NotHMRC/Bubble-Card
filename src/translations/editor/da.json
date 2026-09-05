@@ -138,8 +138,6 @@
       "light_background": "Baggrundsfarve baseret på lysfarve",
       "accent_color": "Brug accentfarve i stedet for lysfarve",
       "force_icon": "Prioriter ikon frem for entitetsbillede",
-      "last_updated": "Vis senest opdateret",
-      "attribute": "Vis attribut",
       "arrow": "Vis pil (kun Select-entiteter)"
     },
     "actions": {

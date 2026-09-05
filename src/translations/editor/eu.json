@@ -138,8 +138,6 @@
       "light_background": "Atzeko planoaren kolorea argiaren kolorearen arabera",
       "accent_color": "Erabili azentu-kolorea argiaren kolorearen ordez",
       "force_icon": "Lehenetsi ikonoa entitatearen irudiaren aurretik",
-      "last_updated": "Erakutsi azken eguneratzea",
-      "attribute": "Erakutsi atributua",
       "arrow": "Erakutsi gezia (Select entitateentzat soilik)"
     },
     "actions": {

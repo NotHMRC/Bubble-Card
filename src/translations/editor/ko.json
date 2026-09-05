@@ -138,8 +138,6 @@
       "light_background": "조명 색상에 따른 배경색",
       "accent_color": "조명 색상 대신 강조 색상 사용",
       "force_icon": "엔티티 사진보다 아이콘 우선",
-      "last_updated": "마지막 업데이트 표시",
-      "attribute": "속성 표시",
       "arrow": "화살표 표시 (Select 엔티티만)"
     },
     "actions": {

@@ -138,8 +138,6 @@
       "light_background": "Couleur de fond basée sur la couleur de la lumière",
       "accent_color": "Utiliser la couleur d'accentuation au lieu de la couleur de la lumière",
       "force_icon": "Prioriser l'icône sur l'image de l'entité",
-      "last_updated": "Afficher la dernière mise à jour",
-      "attribute": "Afficher l'attribut",
       "arrow": "Afficher la flèche (entités Select uniquement)"
     },
     "actions": {

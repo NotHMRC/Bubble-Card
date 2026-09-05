@@ -138,8 +138,6 @@
       "light_background": "Farba pozadia podľa farby svetla",
       "accent_color": "Použiť farbu zvýraznenia namiesto farby svetla",
       "force_icon": "Uprednostniť ikonu pred obrázkom entity",
-      "last_updated": "Zobraziť poslednú aktualizáciu",
-      "attribute": "Zobraziť atribút",
       "arrow": "Zobraziť šípku (iba entity Select)"
     },
     "actions": {

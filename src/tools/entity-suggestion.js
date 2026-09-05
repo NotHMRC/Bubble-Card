@@ -1,3 +1,4 @@
+import { migrateStateContent } from './state-content.js';
 import setupTranslation, { ensureEditorTranslations } from './localize.js';
 
 // Suggestions offered by the Home Assistant entity card picker through the
@@ -1016,5 +1017,8 @@ export function getEntitySuggestion(hass, entityId) {
     ...(builder ? builder(entityId, stateObj, t) : []),
     ...classicSuggestions(entityId, domain, t),
   ];
+  // Written the way the editor writes it: state_content rather than the old
+  // show keys, so a picked suggestion needs no migration.
+  for (const suggestion of suggestions) suggestion.config = migrateStateContent(suggestion.config);
   return suggestions.length ? suggestions : null;
 }

@@ -249,13 +249,22 @@ function detach(entry, owner) {
     if (entry.owners.size === 0) scheduleRelease(entry);
 }
 
-function attach(entry, owner, hass, kind) {
+// `stamp` marks the key as read by the current render. A card taking its
+// templates back after a disconnect does not stamp, the cap below must still
+// be able to tell what the latest render read.
+function attach(entry, owner, hass, kind, stamp = true) {
     if (owner) {
         const held = entry.owners.get(owner) || 0;
         if ((held & kind) !== kind) entry.owners.set(owner, held | kind);
         let keys = owner._templateKeys;
         if (!keys) keys = owner._templateKeys = new Map();
-        keys.set(entry.key, owner._templateGen || 0);
+        const known = keys.get(entry.key);
+        keys.set(entry.key, {
+            gen: stamp || !known ? (owner._templateGen || 0) : known.gen,
+            kinds: (known ? known.kinds : 0) | kind,
+            template: entry.template,
+            variables: entry.variables,
+        });
         if (entry.releaseTimer) {
             clearTimeout(entry.releaseTimer);
             entry.releaseTimer = 0;
@@ -355,18 +364,40 @@ export function resolveTemplate(context, value, entity = context?.config?.entity
 }
 
 // Called before a render: every template the render reads is stamped with
-// this generation, and sweepTemplates lets go of the ones it did not read.
+// this generation. A card holds its templates until it is reconfigured,
+// whether or not a given render read them again: most render paths sit
+// behind a memo that skips the read when nothing moved, and a template let
+// go of on such a pass would stop telling the card about its results. The
+// generation only serves the cap below.
+//
+// A card that left the DOM let go of its entries, so nothing renders into a
+// detached element, and takes them back here on its first render after it
+// came back, the memos never having read them again.
 export function beginTemplateRender(owner) {
     if (!owner) return;
     owner._templateGen = (owner._templateGen || 0) + 1;
+    const keys = owner._templateKeys;
+    if (!keys || keys.size === 0 || !owner._hass?.connection) return;
+    for (const [key, held] of keys) {
+        const entry = entries.get(key);
+        if (entry) {
+            if (!entry.owners.has(owner)) attach(entry, owner, owner._hass, held.kinds, false);
+        } else {
+            lookup(owner._hass, held.template, held.variables, key, owner, held.kinds);
+        }
+    }
 }
 
+// A card that keeps reading new template strings, a module building them
+// from a state for instance, would hold one subscription per string it ever
+// rendered. Past this many, the ones the latest render did not read are let go.
+const templateKeysMax = 32;
 export function sweepTemplates(owner) {
     const keys = owner?._templateKeys;
-    if (!keys || keys.size === 0) return;
+    if (!keys || keys.size <= templateKeysMax) return;
     const gen = owner._templateGen || 0;
-    for (const [key, seen] of keys) {
-        if (seen === gen) continue;
+    for (const [key, held] of keys) {
+        if (held.gen === gen) continue;
         keys.delete(key);
         const entry = entries.get(key);
         if (entry) detach(entry, owner);
@@ -374,8 +405,10 @@ export function sweepTemplates(owner) {
 }
 
 // Drops the owner from every entry it holds. The entries outlive it for the
-// grace period, so a card that comes right back finds its values.
-export function releaseTemplates(owner) {
+// grace period, so a card that comes right back finds its values. The owner
+// remembers what it held and takes it back on its next render, unless told to
+// forget, which a reconfigured card does since its templates may differ.
+export function releaseTemplates(owner, forget = false) {
     if (!owner) return;
     dirtyOwners.delete(owner);
     const keys = owner._templateKeys;
@@ -389,7 +422,7 @@ export function releaseTemplates(owner) {
         if (entry.editor && entry.error !== undefined) hadEditorError = true;
         detach(entry, owner);
     }
-    keys.clear();
+    if (forget) keys.clear();
     // The editor rebuilds its preview on every keystroke: the error of the
     // template that was just replaced must not outlive it in the console. The
     // new preview reports its own, if it has one.

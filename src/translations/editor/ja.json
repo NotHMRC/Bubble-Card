@@ -138,8 +138,6 @@
       "light_background": "照明の色に基づく背景色",
       "accent_color": "照明の色の代わりにアクセントカラーを使用",
       "force_icon": "エンティティ画像よりアイコンを優先",
-      "last_updated": "最終更新を表示",
-      "attribute": "属性を表示",
       "arrow": "矢印を表示 (Select エンティティのみ)"
     },
     "actions": {

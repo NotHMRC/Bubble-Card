@@ -1,4 +1,5 @@
 import { monotonicNow } from './monotonic-time.js';
+import { resolveStateContent, stateContentHasClock } from './state-content.js';
 
 // Home Assistant replaces the whole `hass` object whenever any entity in the
 // installation changes, so every card is asked to render on every state change
@@ -48,8 +49,8 @@ function isTimerEntityId(entity) {
 export function isClockDriven(config) {
     if (!config) return true;
     if (CLOCK_DRIVEN_TYPES.has(config.card_type)) return true;
-    if (config.show_last_changed || config.show_last_updated) return true;
     if (isTimerEntityId(config.entity)) return true;
+    if (stateContentHasClock(resolveStateContent(config, 'card', config.entity), config.entity)) return true;
 
     let found = false;
     const walk = (value, depth) => {
@@ -58,7 +59,8 @@ export function isClockDriven(config) {
             for (const item of value) walk(item, depth + 1);
             return;
         }
-        if (value.show_last_changed || value.show_last_updated || isTimerEntityId(value.entity)) {
+        const entity = value.entity ?? config.entity;
+        if (isTimerEntityId(value.entity) || stateContentHasClock(resolveStateContent(value, 'sub_button', entity), entity)) {
             found = true;
             return;
         }

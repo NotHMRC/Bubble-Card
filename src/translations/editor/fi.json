@@ -138,8 +138,6 @@
       "light_background": "Taustaväri valon värin mukaan",
       "accent_color": "Käytä korostusväriä valon värin sijaan",
       "force_icon": "Aseta kuvake etusijalle entiteetin kuvaan nähden",
-      "last_updated": "Näytä viimeisin päivitys",
-      "attribute": "Näytä attribuutti",
       "arrow": "Näytä nuoli (vain Select-entiteetit)"
     },
     "actions": {

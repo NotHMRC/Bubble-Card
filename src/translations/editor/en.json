@@ -165,10 +165,7 @@
       "icon": "@ui.panel.lovelace.editor.card.generic.show_icon|Show icon",
       "force_icon": "Prioritize icon over entity picture",
       "name": "@ui.panel.lovelace.editor.card.generic.show_name|Show name",
-      "state": "@ui.panel.lovelace.editor.card.generic.show_state|Show state",
-      "last_changed": "@ui.panel.lovelace.editor.card.generic.show_last_changed|Show last changed",
-      "last_updated": "Show last updated",
-      "attribute": "Show attribute",
+      "state_content": "@ui.panel.lovelace.editor.card.tile.state_content|State content",
       "arrow": "Show arrow (Select entities only)"
     },
     "actions": {

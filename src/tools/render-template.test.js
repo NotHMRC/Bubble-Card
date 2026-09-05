@@ -42,6 +42,11 @@ function createOwner(entity = 'light.a', extra = {}) {
     };
 }
 
+// Entries are keyed on the template and its variables, this finds one by its template alone.
+function entryFor(template) {
+    return Array.from(_templateStore().entries.values()).find((entry) => entry.template === template);
+}
+
 async function deliver(subscription, result) {
     subscription.callback({ result, listeners: { all: false, domains: [], entities: [], time: false } });
     // The flush runs on the next animation frame, faked as a timer.
@@ -314,7 +319,7 @@ describe('the shared template store', () => {
         expect(connection.subscribeMessage).toHaveBeenCalledTimes(2);
     });
 
-    test('a template the card stopped reading is let go of at the end of the render', async () => {
+    test('a template a memoized render did not read again stays with the card', async () => {
         const { hass } = createHass();
         const owner = createOwner();
 
@@ -323,15 +328,55 @@ describe('the shared template store', () => {
         getTemplateResult(hass, '{{ b }}', 'light.a', owner);
         sweepTemplates(owner);
         await flushPromiseQueue();
-        expect(_templateStore().entries.get('{{ a }}').owners.has(owner)).toBe(true);
 
         beginTemplateRender(owner);
         getTemplateResult(hass, '{{ b }}', 'light.a', owner);
         sweepTemplates(owner);
 
-        expect(_templateStore().entries.get('{{ a }}').owners.has(owner)).toBe(false);
-        expect(_templateStore().entries.get('{{ b }}').owners.has(owner)).toBe(true);
+        expect(entryFor('{{ a }}').owners.has(owner)).toBe(true);
+        expect(owner._templateKeys.size).toBe(2);
+    });
+
+    test('a card that keeps reading new strings lets the stale ones go past the cap', async () => {
+        const { hass } = createHass();
+        const owner = createOwner();
+
+        beginTemplateRender(owner);
+        for (let i = 0; i < 40; i++) getTemplateResult(hass, '{{ ' + i + ' }}', 'light.a', owner);
+        sweepTemplates(owner);
+        expect(owner._templateKeys.size).toBe(40);
+
+        beginTemplateRender(owner);
+        getTemplateResult(hass, '{{ 0 }}', 'light.a', owner);
+        getTemplateResult(hass, '{{ 40 }}', 'light.a', owner);
+        sweepTemplates(owner);
+
+        expect(owner._templateKeys.size).toBe(2);
+        expect(entryFor('{{ 1 }}').owners.has(owner)).toBe(false);
+        expect(entryFor('{{ 0 }}').owners.has(owner)).toBe(true);
+    });
+
+    test('a card that left the DOM takes its templates back on its next render, memo or not', async () => {
+        const { hass, subscriptions } = createHass();
+        const owner = createOwner('light.a', { _hass: hass });
+        beginTemplateRender(owner);
+        getTemplateResult(hass, '{{ a }}', 'light.a', owner, TEMPLATE_STYLE);
+        await flushPromiseQueue();
+
+        releaseTemplates(owner);
+        expect(entryFor('{{ a }}').owners.has(owner)).toBe(false);
         expect(owner._templateKeys.size).toBe(1);
+
+        // The render after the reconnect reads nothing, its memos are warm.
+        beginTemplateRender(owner);
+        expect(entryFor('{{ a }}').owners.get(owner)).toBe(TEMPLATE_STYLE);
+
+        await deliver(subscriptions[0], 'back');
+        expect(owner.onTemplateResults).toHaveBeenCalledWith(TEMPLATE_STYLE);
+
+        // A reconfigured card forgets, its templates may be different now.
+        releaseTemplates(owner, true);
+        expect(owner._templateKeys.size).toBe(0);
     });
 
     test('an owner that goes away is dropped from the render queue', async () => {

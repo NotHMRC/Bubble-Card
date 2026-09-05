@@ -138,8 +138,6 @@
       "light_background": "Achtergrondkleur op basis van de lichtkleur",
       "accent_color": "Accentkleur gebruiken in plaats van de lichtkleur",
       "force_icon": "Pictogram voorrang geven boven de entiteitsafbeelding",
-      "last_updated": "Laatste update tonen",
-      "attribute": "Attribuut tonen",
       "arrow": "Pijl tonen (alleen select-entiteiten)"
     },
     "actions": {

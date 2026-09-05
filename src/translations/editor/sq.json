@@ -138,8 +138,6 @@
       "light_background": "Ngjyra e sfondit sipas ngjyrës së dritës",
       "accent_color": "Përdor ngjyrën theksuese në vend të ngjyrës së dritës",
       "force_icon": "Jepi përparësi ikonës ndaj figurës së entitetit",
-      "last_updated": "Shfaq përditësimin e fundit",
-      "attribute": "Shfaq atributin",
       "arrow": "Shfaq shigjetën (vetëm për entitetet Select)"
     },
     "actions": {

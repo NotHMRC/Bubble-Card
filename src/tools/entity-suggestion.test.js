@@ -314,7 +314,8 @@ describe('getEntitySuggestion', () => {
         // show_name defaults to false so the card still shows the icon alone.
         expect(dropdown.name).toBe('Effect');
         expect(dropdown.show_name).toBeUndefined();
-        expect(dropdown.show_attribute).toBe(false);
+        expect(dropdown.state_content).toBeUndefined();
+        expect(dropdown.show_attribute).toBeUndefined();
         expect(dropdown.icon).toBe('mdi:auto-fix');
         expect(group.some((b) => b.icon === 'mdi:chevron-right')).toBe(false);
         expect(group.map((b) => b.light_slider_type)).toContain('hue');
@@ -391,7 +392,7 @@ describe('getEntitySuggestion', () => {
 
         // Read on a button tile, set on the climate card, both kept.
         expect(byLabel('Temperature').card_type).toBe('button');
-        expect(byLabel('Temperature').attribute).toBe('temperature');
+        expect(byLabel('Temperature').state_content).toBe('temperature');
         expect(byLabel('Temperature').sub_button.bottom[0].group[0].select_attribute).toBe('hvac_modes');
         expect(byLabel('Temperature \u00b7 Preset mode').sub_button.bottom[0].group[0].select_attribute)
             .toBe('preset_modes');
@@ -401,12 +402,12 @@ describe('getEntitySuggestion', () => {
         const slider = byLabel('Temperature \u00b7 Slider');
         expect(slider.card_type).toBe('button');
         expect(slider.sub_button.bottom[0].group[0].sub_button_type).toBe('slider');
-        expect(slider.attribute).toBe('temperature');
+        expect(slider.state_content).toBe('temperature');
 
         // The preset dropdown of the climate card renders no value, its icon
         // already says which preset is active.
         const presetCard = suggestionsFor('climate.preset')[2].config;
-        expect(presetCard.sub_button.main[0].group[0].show_attribute).toBeUndefined();
+        expect(presetCard.sub_button.main[0].group[0].state_content).toBeUndefined();
 
         // A climate with no preset gets neither preset variant, on either shape.
         const basic = suggestionsFor('climate.basic').map((s) => s.label);
@@ -435,9 +436,9 @@ describe('getEntitySuggestion', () => {
         const humidity = suggestionsFor('weather.humidity');
         expect(humidity).toHaveLength(2);
         expect(humidity[1].label).toBe('Humidity');
-        expect(humidity[1].config.sub_button.main[0].group[0].attribute).toBe('humidity');
+        expect(humidity[1].config.sub_button.main[0].group[0].state_content).toBe('humidity');
         // The weather condition matters: every weather tile shows the state.
-        humidity.forEach((s) => expect(s.config.show_state).toBe(true));
+        humidity.forEach((s) => expect(s.config.state_content).toBe('state'));
     });
 
     test('a humidifier is offered the climate card, and keeps its toggle tile', () => {
@@ -481,8 +482,9 @@ describe('getEntitySuggestion', () => {
     });
 
     test('vacuums only show the battery attribute when they report one', () => {
-        expect(suggestionsFor('vacuum.battery')[0].config.attribute).toBe('battery_level');
-        expect(suggestionsFor('vacuum.nobattery')[0].config.attribute).toBeUndefined();
+        expect(suggestionsFor('vacuum.battery')[0].config.state_content).toEqual(['state', 'battery_level']);
+        // Without a battery nothing is written, the state button shows the domain default.
+        expect(suggestionsFor('vacuum.nobattery')[0].config.state_content).toBeUndefined();
     });
 
     test('calendars target the entities list instead of a single entity', () => {

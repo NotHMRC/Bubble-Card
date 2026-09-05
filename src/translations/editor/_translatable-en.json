@@ -138,8 +138,6 @@
       "light_background": "Background color based on light color",
       "accent_color": "Use accent color instead of light color",
       "force_icon": "Prioritize icon over entity picture",
-      "last_updated": "Show last updated",
-      "attribute": "Show attribute",
       "arrow": "Show arrow (Select entities only)"
     },
     "actions": {

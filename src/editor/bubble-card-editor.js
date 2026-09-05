@@ -27,6 +27,7 @@ import { makeModuleStore, _fetchModuleStore } from '../modules/store.js';
 import { dropSuggestionsPreviewIfStale, releaseSuggestionsPreview } from '../modules/module-editor.js';
 import { yamlKeysMap } from '../modules/registry.js';
 import setupTranslation, { ensureEditorTranslations, isEditorEnglishForced, setEditorEnglishForced, getCurrentLocale } from '../tools/localize.js';
+import { migrateStateContent, defaultStateContent } from '../tools/state-content.js';
 import styles from './styles.css';
 import moduleStyles from '../modules/styles.css';
 import cardsEditorStyles from '../cards/pop-up/cards/styles.css';
@@ -78,6 +79,21 @@ class BubbleCardEditor extends LitElement {
         const previewStillConnected = !!prevHost?.isConnected;
 
         this._config = { ...config };
+        // The old state keys are rewritten as state_content the first time the
+        // editor sees them, and the dashboard is told once, so the config on
+        // screen is the one the docs describe. A config left alone keeps
+        // rendering through the old keys.
+        const migrated = migrateStateContent(this._config);
+        if (migrated !== this._config) {
+            this._config = migrated;
+            if (!this._stateContentMigrationQueued) {
+                this._stateContentMigrationQueued = true;
+                setTimeout(() => {
+                    this._stateContentMigrationQueued = false;
+                    fireEvent(this, 'config-changed', { config: this._config });
+                }, 0);
+            }
+        }
         // A card type change swaps the whole form out, and the card types that
         // offer no module editor at all would leave the suggestions preview
         // holding Home Assistant's preview column with nothing on screen to
@@ -707,13 +723,26 @@ class BubbleCardEditor extends LitElement {
         const isSubButton = array === 'sub_button' || (typeof array === 'string' && array.startsWith('sub_button'));
         const showSelectUi = isSubButton && (context?.sub_button_type === 'select' || (!context?.sub_button_type && isSelectEntity));
 
-        const attributeList = context?.show_attribute
-            ? Object.keys(this._hassRender.states[entity]?.attributes || {}).map((attributeName) => {
-                let state = this._hassRender.states[entity];
-                let formattedName = this._hassRender.formatEntityAttributeName(state, attributeName);
-                return { label: formattedName, value: attributeName };
-              })
-            : [];
+        // One field for the whole line, the same picker Home Assistant uses on
+        // its tile card. Without a key the picker shows what the card shows by
+        // default, and clearing it writes an empty list where that default
+        // would otherwise come back.
+        const stateContentKind = isSubButton ? 'sub_button' : 'card';
+        const stateContentDefault = defaultStateContent(context, stateContentKind, entity);
+        const stateContentValue = context?.state_content ?? stateContentDefault ?? undefined;
+        const onStateContentChanged = (ev) => {
+            const value = ev.detail?.value?.state_content;
+            const cleared = value === undefined || value === null || (Array.isArray(value) && value.length === 0);
+            const stored = cleared ? (stateContentDefault ? [] : undefined) : value;
+            if (!array) {
+                this._valueChanged({
+                    target: { configValue: config + "state_content" },
+                    detail: { value: stored }
+                });
+            } else {
+                this._arrayValueChange(index, { state_content: stored }, array);
+            }
+        };
 
         const t = setupTranslation(this._hassRender);
 
@@ -814,80 +843,21 @@ class BubbleCardEditor extends LitElement {
                     <label class="mdc-label">${t('editor.show.name')}</label>
                 </div>
             </ha-formfield>
-            <ha-formfield>
-                <ha-switch
-                    aria-label="${t('editor.show.state')}"
-                    .checked="${context?.show_state ?? context.button_type === 'state'}"
-                    .configValue="${config + "show_state"}"
-                    .disabled="${(nameButton || noEntity) && !isSubButton}"
-                    @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { show_state: ev.target.checked }, array)}"
-                ></ha-switch>
-                <div class="mdc-form-field">
-                    <label class="mdc-label">${t('editor.show.state')}</label>
-                </div>
-            </ha-formfield>
-            <ha-formfield>
-                <ha-switch
-                    aria-label="${t('editor.show.last_changed')}"
-                    .checked=${context?.show_last_changed}
-                    .configValue="${config + "show_last_changed"}"
-                    .disabled="${(nameButton || noEntity) && !isSubButton}"
-                    @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { show_last_changed: ev.target.checked }, array)}"
-                ></ha-switch>
-                <div class="mdc-form-field">
-                    <label class="mdc-label">${t('editor.show.last_changed')}</label>
-                </div>
-            </ha-formfield>
-            <ha-formfield>
-                <ha-switch
-                    aria-label="${t('editor.show.last_updated')}"
-                    .checked=${context?.show_last_updated}
-                    .configValue="${config + "show_last_updated"}"
-                    .disabled="${(nameButton || noEntity) && !isSubButton}"
-                    @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { show_last_updated: ev.target.checked }, array)}"
-                ></ha-switch>
-                <div class="mdc-form-field">
-                    <label class="mdc-label">${t('editor.show.last_updated')}</label>
-                </div>
-            </ha-formfield>
-            <ha-formfield>
-                <ha-switch
-                    aria-label="${t('editor.show.attribute')}"
-                    .checked=${context?.show_attribute}
-                    .configValue="${config + "show_attribute"}"
-                    .disabled="${(nameButton || noEntity) && !isSubButton}"
-                    @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { show_attribute: ev.target.checked }, array)}"
-                ></ha-switch>
-                <div class="mdc-form-field">
-                    <label class="mdc-label">${t('editor.show.attribute')}</label>
-                </div>
-            </ha-formfield>
-            ${this._renderConditionalContent(context?.show_attribute, html`
+            ${this._renderConditionalContent(!nameButton || isSubButton, html`
                 <ha-form
                     .hass=${this._hassRender}
-                    .data=${{ attribute: context?.attribute }}
+                    .data=${{ state_content: stateContentValue }}
                     .schema=${[{
-                        name: 'attribute',
+                        name: 'state_content',
                         selector: {
-                            select: {
-                                options: attributeList,
-                                mode: 'dropdown'
+                            ui_state_content: {
+                                entity_id: entity || undefined,
                             }
                         }
                     }]}
-                    .disabled=${(nameButton || noEntity) && !isSubButton}
-                    .computeLabel=${() => t('editor.common.attribute_to_show')}
-                    @value-changed=${(ev) => {
-                        const value = ev.detail.value.attribute;
-                        if (!array) {
-                            this._valueChanged({
-                                target: { configValue: config + "attribute" },
-                                detail: { value }
-                            });
-                        } else {
-                            this._arrayValueChange(index, { attribute: value }, array);
-                        }
-                    }}
+                    .disabled=${noEntity && !isSubButton}
+                    .computeLabel=${() => t('editor.show.state_content')}
+                    @value-changed=${onStateContentChanged}
                 ></ha-form>
             `)}
             ${this._renderConditionalContent(showSelectUi, html`

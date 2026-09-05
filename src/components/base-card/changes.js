@@ -16,6 +16,8 @@ import {
     relativeTimeRefreshDelay
 } from '../../tools/utils.js';
 import { resolveTemplate } from '../../tools/render-template.js';
+import { resolveStateContent } from '../../tools/state-content.js';
+import { renderStateLine, stateContentTimestamps } from './state-line.js';
 import { applyScrollingEffect } from '../../tools/text-scrolling.js';
 import { getIcon, getImage, getIconColor } from '../../tools/icon.js';
 import { getClimateColor } from '../../cards/climate/helpers.js';
@@ -40,55 +42,54 @@ function startTimerCountdown(context, entity) {
 // path below would never restart it and the visible countdown would freeze.
 export function ensureTimerCountdown(context) {
     const entity = context.config?.entity;
-    const showState = context.config?.show_state ?? (context.config?.button_type === 'state');
-    if (!entity || !showState || !isTimerEntity(entity)) return;
+    if (!entity || !isTimerEntity(entity)) return;
+    if (!showsTimer(resolveStateContent(context.config, 'card', entity), entity)) return;
     if (context._hass?.states?.[entity]?.state !== 'active') return;
     if (hasTimerInterval(context)) return;
     startTimerCountdown(context, entity);
+}
+
+// Whether the line counts a running timer down, which takes a beat of its own.
+function showsTimer(content, entity) {
+    return !!content && isTimerEntity(entity) && (content.includes('state') || content.includes('remaining_time'));
 }
 
 export function changeState(context, force = false) {
     const entity = context.config?.entity;
     const card = context.card;
     const state = context._hass.states[entity];
-    const attribute = getAttribute(context, context.config.attribute, entity);
     const lastChanged = state?.last_changed;
     const lastUpdated = state?.last_updated;
 
-    const buttonType = context.config.button_type;
-    const defaultShowState = buttonType === 'state';
     const showName = context.config.show_name ?? true;
     const showIcon = context.config.show_icon ?? true;
-    const showState = context.config.show_state ?? defaultShowState;
-    const showAttribute = context.config.show_attribute ?? defaultShowState;
-    const showLastChanged = context.config.show_last_changed ?? false;
-    const showLastUpdated = context.config.show_last_updated ?? false;
     const scrollingEffect = context.config.scrolling_effect ?? true;
+    // What the line is made of: state_content, or the old show keys, or the
+    // Home Assistant default of the entity's domain on a state button.
+    const content = resolveStateContent(context.config, 'card', entity);
+    const contentKey = content ? content.join('') : '';
+    const templateVersion = context._templateResultVersion || 0;
 
     const previousConfig = context.previousConfig || {};
 
     const configChanged = (
+        previousConfig.config !== context.config ||
         context.previousState !== state ||
-        context.previousAttribute !== attribute ||
         context.previousLastChanged !== lastChanged ||
         context.previousLastUpdated !== lastUpdated ||
         previousConfig.showName !== showName ||
         previousConfig.showIcon !== showIcon ||
-        previousConfig.showState !== showState ||
-        previousConfig.showAttribute !== showAttribute ||
-        previousConfig.showLastChanged !== showLastChanged ||
-        previousConfig.showLastUpdated !== showLastUpdated ||
+        previousConfig.contentKey !== contentKey ||
+        previousConfig.templateVersion !== templateVersion ||
         previousConfig.scrollingEffect !== scrollingEffect
     );
 
     // The beat is armed before the guard below, because the guard exists for the
     // exact case the beat is for: nothing about the entity changed, so the card
     // has no other reason to come back and rewrite an ageing relative time.
-    if ((showLastChanged || showLastUpdated) && state) {
-        const currentDelay = () => Math.min(
-            relativeTimeRefreshDelay(showLastChanged ? state.last_changed : null),
-            relativeTimeRefreshDelay(showLastUpdated ? state.last_updated : null)
-        );
+    const timestamps = stateContentTimestamps(content, state, entity);
+    if (timestamps.length > 0) {
+        const delayFor = (dates) => Math.min(...dates.map((date) => relativeTimeRefreshDelay(date)));
         startRelativeTimeInterval(context, () => {
             // changeState reads context._hass unguarded, and a beat callback
             // that throws is caught by nobody.
@@ -98,12 +99,11 @@ export function changeState(context, force = false) {
             changeState(context, true);
             // Read back rather than closed over: arming is idempotent, so this
             // callback outlives the values it was built with.
-            const current = context._hass.states[context.config.entity];
-            return Math.min(
-                relativeTimeRefreshDelay(showLastChanged ? current?.last_changed : null),
-                relativeTimeRefreshDelay(showLastUpdated ? current?.last_updated : null)
-            );
-        }, currentDelay());
+            const currentEntity = context.config.entity;
+            const current = context._hass.states[currentEntity];
+            const dates = stateContentTimestamps(resolveStateContent(context.config, 'card', currentEntity), current, currentEntity);
+            return dates.length > 0 ? delayFor(dates) : null;
+        }, delayFor(timestamps));
     } else {
         stopRelativeTimeInterval(context);
     }
@@ -113,95 +113,26 @@ export function changeState(context, force = false) {
         return;
     }
 
-    // Check if entity is a timer and format accordingly
-    const isTimer = isTimerEntity(entity);
-    let formattedState = '';
-    if (state && showState) {
-        if (isTimer) {
-            const timeRemaining = timerTimeRemaining(state);
-            formattedState = computeDisplayTimer(context._hass, state, timeRemaining) || '';
-
-            // Start/stop interval for active timers
-            if (state.state === 'active') {
-                startTimerCountdown(context, entity);
-            } else {
-                stopTimerInterval(context);
-            }
+    // A running timer counts down on its own beat while the line shows it.
+    if (isTimerEntity(entity)) {
+        if (state && state.state === 'active' && showsTimer(content, entity)) {
+            startTimerCountdown(context, entity);
         } else {
-            formattedState = context._hass.formatEntityState(state);
-            // Stop any timer interval if entity is no longer a timer
-            stopTimerInterval(context);
-        }
-    } else {
-        // Stop timer interval if state is not shown
-        if (isTimer) {
             stopTimerInterval(context);
         }
     }
-    let formattedAttribute = '';
-    let formattedLastChanged = '';
-    let formattedLastUpdated = '';
-    let displayedState = '';
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    
-    // Utility function to format numeric values
-    function formatNumericValue(value, precision, unit, removeTrailingZeros = true) {
-        if (value === undefined || value === null) return '';
-        const numValue = parseFloat(value);
-        if (isNaN(numValue)) return value;
-        
-        let formatted = numValue === 0 ? '0' : numValue.toFixed(precision);
-        if (removeTrailingZeros) formatted = formatted.replace(/\.0$/, '');
-        return formatted + ' ' + unit;
-    }
+    const displayedState = renderStateLine(context, entity, content, { capitalizeTimes: true }).join(' • ');
 
-    if (showAttribute && attribute) {
-        if (context.config.attribute.includes('forecast')) {
-            // Format weather forecast attributes
-            const isCelcius = context._hass.config.unit_system.temperature === '°C';
-            const isMetric = context._hass.config.unit_system.length === 'km';
-            
-            if (context.config.attribute.includes('temperature')) {
-                formattedAttribute = state ? formatNumericValue(attribute, 1, isCelcius ? '°C' : '°F') : '';
-            } else if (context.config.attribute.includes('humidity')) {
-                formattedAttribute = state ? formatNumericValue(attribute, 0, '%', false) : '';
-            } else if (context.config.attribute.includes('precipitation')) {
-                formattedAttribute = state ? formatNumericValue(attribute, 1, 'mm') : '';
-            } else if (context.config.attribute.includes('wind_speed')) {
-                formattedAttribute = state ? formatNumericValue(attribute, 1, isMetric ? 'km/h' : 'mph') : '';
-            } else {
-                formattedAttribute = state ? attribute : '';
-            }
-        } else {
-            formattedAttribute = state ? context.config.attribute.includes('[') ? attribute : context._hass.formatEntityAttributeValue(state, context.config.attribute) ?? attribute : '';
-        }
-    }
-
-    if (showLastChanged && state) {
-        formattedLastChanged = state ? capitalizeFirstLetter(
-            formatDateTime(lastChanged, context._hass.locale.language)
-        ) : '';
-    }
-
-    if (showLastUpdated && state) {
-        formattedLastUpdated = state ? capitalizeFirstLetter(
-            formatDateTime(lastUpdated, context._hass.locale.language)
-        ) : '';
-    }
-
-    displayedState = [formattedState, formattedAttribute, formattedLastChanged, formattedLastUpdated]
-        .filter(Boolean)
-        .join(' • ');
-
+    // The line is on screen when it has something to show, or when a style
+    // template claimed it to write its own text into it.
+    const visible = (!!content && content.length > 0) || !!context.elements.state.templateDetected;
     context.elements.name.classList.toggle('hidden', !showName);
     context.elements.iconContainer.classList.toggle('hidden', !showIcon);
     context.elements.nameContainer.classList.toggle('name-without-icon', !showIcon);
-    context.elements.state.classList.toggle('state-without-name', (showState || showLastChanged || showLastUpdated || showAttribute) && !showName);
-    context.elements.state.classList.toggle('display-state', showState || showLastChanged || showLastUpdated || showAttribute);
-    context.elements.state.classList.toggle('hidden', !(showState || showLastChanged || showLastUpdated || showAttribute));
+    context.elements.state.classList.toggle('state-without-name', visible && !showName);
+    context.elements.state.classList.toggle('display-state', visible);
+    context.elements.state.classList.toggle('hidden', !visible);
 
     applyScrollingEffect(context, context.elements.state, displayedState);
 
@@ -223,19 +154,17 @@ export function changeState(context, force = false) {
             card.classList.add('is-off');
         }
     }
-    
+
     // Update previous values
     context.previousState = state;
-    context.previousAttribute = attribute;
     context.previousLastChanged = lastChanged;
     context.previousLastUpdated = lastUpdated;
     context.previousConfig = {
+        config: context.config,
         showName,
         showIcon,
-        showState,
-        showAttribute,
-        showLastChanged,
-        showLastUpdated,
+        contentKey,
+        templateVersion,
         scrollingEffect,
     };
 }

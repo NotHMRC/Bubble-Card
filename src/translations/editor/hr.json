@@ -138,8 +138,6 @@
       "light_background": "Boja pozadine na temelju boje svjetla",
       "accent_color": "Koristi naglasnu boju umjesto boje svjetla",
       "force_icon": "Prednost ikoni pred slikom entiteta",
-      "last_updated": "Prikaži zadnje ažuriranje",
-      "attribute": "Prikaži atribut",
       "arrow": "Prikaži strelicu (samo Select entiteti)"
     },
     "actions": {

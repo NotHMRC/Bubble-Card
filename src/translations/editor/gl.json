@@ -138,8 +138,6 @@
       "light_background": "Cor de fondo baseada na cor da luz",
       "accent_color": "Usar a cor de acento en lugar da cor da luz",
       "force_icon": "Priorizar a icona sobre a imaxe da entidade",
-      "last_updated": "Mostrar a última actualización",
-      "attribute": "Mostrar o atributo",
       "arrow": "Mostrar a frecha (só entidades Select)"
     },
     "actions": {

@@ -138,8 +138,6 @@
       "light_background": "Agtergrondkleur gebaseer op die ligkleur",
       "accent_color": "Gebruik aksentkleur in plaas van die ligkleur",
       "force_icon": "Prioritiseer ikoon bo die entiteitsprent",
-      "last_updated": "Wys laas bygewerk",
-      "attribute": "Wys attribuut",
       "arrow": "Wys pyltjie (slegs select-entiteite)"
     },
     "actions": {
