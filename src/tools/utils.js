@@ -540,34 +540,48 @@ function formatRelativeValue(locale, value, unit) {
     return text;
 }
 
+// A moment in the past reads "2 hours ago", one in the future "in 2 hours",
+// with the unit Home Assistant would pick, up to years. The value is signed
+// for the future, which Intl turns into the right wording in every language.
 export function formatDateTime(datetime, locale) {
     if (!datetime) return '';
     const date = new Date(datetime);
     const now = new Date();
-    let diffInSeconds = Math.floor((now - date) / 1000);
+    const diffInSeconds = Math.floor((now - date) / 1000);
 
     if (isNaN(diffInSeconds)) {
         // datetime was not a valid date
         return '';
     }
 
+    const future = diffInSeconds < 0;
+    const age = Math.abs(diffInSeconds);
     let unit;
     let value;
-    if (diffInSeconds < 60) {
+    if (age < 60) {
         unit = 'second';
-        value = diffInSeconds + 1;
-    } else if (diffInSeconds < 3600) {
+        value = age + 1;
+    } else if (age < 3600) {
         unit = 'minute';
-        value = Math.round(diffInSeconds / 60);
-    } else if (diffInSeconds < 86400) {
+        value = Math.round(age / 60);
+    } else if (age < 86400) {
         unit = 'hour';
-        value = Math.round(diffInSeconds / 3600);
-    } else {
+        value = Math.round(age / 3600);
+    } else if (age < 7 * 86400) {
         unit = 'day';
-        value = Math.round(diffInSeconds / 86400);
+        value = Math.round(age / 86400);
+    } else if (age < 30 * 86400) {
+        unit = 'week';
+        value = Math.round(age / (7 * 86400));
+    } else if (age < 365 * 86400) {
+        unit = 'month';
+        value = Math.round(age / (30 * 86400));
+    } else {
+        unit = 'year';
+        value = Math.round(age / (365 * 86400));
     }
 
-    return formatRelativeValue(locale, value, unit);
+    return formatRelativeValue(locale, future ? -value : value, unit);
 }
 
 // Timer utility functions
@@ -695,7 +709,8 @@ const relativeTimeHidden = () => typeof document !== 'undefined' && document.hid
 /** How long a relative time built from `datetime` stays true, in ms. */
 export function relativeTimeRefreshDelay(datetime) {
     if (!datetime) return RELATIVE_TIME_BEAT_MS;
-    const age = Date.now() - new Date(datetime).getTime();
+    // A moment less than a minute away, past or future, reads in seconds.
+    const age = Math.abs(Date.now() - new Date(datetime).getTime());
     if (isNaN(age)) return RELATIVE_TIME_BEAT_MS;
     return age < 60000 ? RELATIVE_TIME_FAST_MS : RELATIVE_TIME_BEAT_MS;
 }

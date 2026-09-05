@@ -667,6 +667,13 @@ describe('relative time formatting', () => {
         expect(utilsModule.formatDateTime(ago(120), 'en')).toBe('2 minutes ago');
         expect(utilsModule.formatDateTime(ago(7200), 'en')).toBe('2 hours ago');
         expect(utilsModule.formatDateTime(ago(172800), 'en')).toBe('2 days ago');
+        // Beyond a week the unit keeps growing, the way Home Assistant reads it.
+        expect(utilsModule.formatDateTime(ago(14 * 86400), 'en')).toBe('2 weeks ago');
+        expect(utilsModule.formatDateTime(ago(90 * 86400), 'en')).toBe('3 months ago');
+        expect(utilsModule.formatDateTime(ago(800 * 86400), 'en')).toBe('2 years ago');
+        // A moment ahead reads as such, a sunrise or a calendar event is one.
+        expect(utilsModule.formatDateTime(ago(-7200), 'en')).toBe('in 2 hours');
+        expect(utilsModule.formatDateTime(ago(-30), 'en')).toBe('in 31 seconds');
     });
 
     test('builds one formatter per locale rather than one per call', () => {
