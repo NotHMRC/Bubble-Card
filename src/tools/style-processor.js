@@ -10,6 +10,7 @@ import { cleanCSS } from './clean-css.js';
 import { trackedHass } from './render-gate.js';
 import { registerModuleTeardown, teardownKey } from './module-teardown.js';
 import { hasChanged } from './module-gate.js';
+import { interceptTemplateWrites } from './text-scrolling.js';
 
 const compiledTemplateCache = new Map();
 
@@ -587,6 +588,9 @@ export function evalStyles(context, styles = "", sourceInfo = { type: 'unknown' 
     const target = context.elements?.[type];
     if (target && !target.templateDetected) {
       target.templateDetected = true;
+      // What the template writes there goes through the scrolling pipeline from
+      // now on, so it scrolls like the card's own text when the card asks for it.
+      interceptTemplateWrites(context, target);
       // A line the card had nothing to show in is hidden. The template is
       // about to write into it, so it comes on screen now rather than on the
       // next render.

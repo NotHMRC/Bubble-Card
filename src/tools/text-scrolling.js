@@ -25,6 +25,25 @@ const supportsWeakRef = typeof WeakRef === 'function';
 const makeRef = (el) => supportsWeakRef ? new WeakRef(el) : el;
 const readRef = (ref) => supportsWeakRef ? ref.deref() : ref;
 
+// Lines a style template writes into, whose writes this module has taken over.
+// The card's own text stays out of them, and their marquee survives a pass.
+const driven = new WeakSet();
+
+// Elements whose write accessors have been replaced, so it is done once.
+const intercepted = new WeakSet();
+
+// Writes this module makes itself. A line whose writes it has taken over would
+// send them right back through the pipeline, so they go straight to the DOM.
+let internalWrite = false;
+function setHtml(element, html) {
+    internalWrite = true;
+    try {
+        element.innerHTML = html;
+    } finally {
+        internalWrite = false;
+    }
+}
+
 // Lazy singleton observers (module-scoped, shared across all cards)
 let resizeObs = null;
 let intersectionObs = null;
@@ -273,7 +292,10 @@ function flush() {
         // The card evaluates its styles after it has set its name and its state, so
         // a template only claims the element once the measurement is already
         // queued. This is the frame that would overwrite it.
-        if (el.templateDetected) { handOverToTemplate(el); continue; }
+        // Except when this module writes that text itself on the template's
+        // behalf: handing the element back here would take its marquee down on
+        // the very frame that was about to build it.
+        if (el.templateDetected && !driven.has(el)) { handOverToTemplate(el); continue; }
         // Not attached yet: leave it observed rather than dropping it, the resize
         // observer sends it back through as soon as it has a box.
         if (!el.isConnected) continue;
@@ -308,7 +330,7 @@ function flush() {
             if (!needsScroll) {
                 // Text now fits — disable scrolling
                 el.removeAttribute('data-animated');
-                el.innerHTML = state.text;
+                setHtml(el, state.text);
                 state.animated = false;
                 state.span = null;
                 state.duration = '';
@@ -322,7 +344,7 @@ function flush() {
             }
         } else if (needsScroll) {
             // Enable scrolling — duplicate text with separators
-            el.innerHTML = `<div class="scrolling-container"><span>${state.text}${SEPARATOR}${state.text}${SEPARATOR}</span></div>`;
+            setHtml(el, `<div class="scrolling-container"><span>${state.text}${SEPARATOR}${state.text}${SEPARATOR}</span></div>`);
             el.setAttribute('data-animated', 'true');
             const span = el.querySelector('.scrolling-container span');
             state.animated = true;
@@ -341,6 +363,10 @@ function formatDuration(contentWidth) {
 }
 
 export function applyScrollingEffect(context, element, text, scrollingEffectOverride) {
+    // A template feeds this line, through the accessors below: it is the card's
+    // own text that has to stay out of it now.
+    if (driven.has(element)) return;
+
     const scrollingEffect = scrollingEffectOverride ?? context.config?.scrolling_effect ?? true;
 
     // Claimed by a style template: leave its content alone. The layout the
@@ -352,6 +378,12 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
         return;
     }
 
+    writeText(element, text, scrollingEffect);
+}
+
+// The pipeline itself, shared by the card's own text and by the text a template
+// writes into a line this module has taken the writes of.
+function writeText(element, text, scrollingEffect) {
     // No text at all: take the element right out of the pipeline. Callers used to
     // clear it themselves and return early, which left the state behind and let
     // the next measurement put the old label back into an element the card had
@@ -359,7 +391,7 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
     if (!text) {
         if (element.previousText === '' && !scrollState.has(element)) return;
         element.removeAttribute('data-animated');
-        element.innerHTML = '';
+        setHtml(element, '');
         element.previousText = '';
         release(element, scrollState.get(element));
         return;
@@ -369,6 +401,10 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
         if (element.previousText !== text || scrollState.has(element)) {
             applyNonScrollingStyle(element, text);
         }
+        // The marquee goes down with the state released below, so the mark
+        // saying one is running goes with it. Turning the effect off on a card
+        // whose text was already scrolling used to leave it behind.
+        element.removeAttribute('data-animated');
         release(element, scrollState.get(element));
         return;
     }
@@ -391,7 +427,7 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
             // updated in a task — changeState right after changeName, the artist
             // right after the title — was sized against the previous string and
             // stayed unscrolled with nothing left to bring it back.
-            element.innerHTML = text;
+            setHtml(element, text);
             state.animated = false;
             state.span = null;
         }
@@ -423,7 +459,7 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
     scrollState.set(element, fresh);
 
     element.setAttribute(MARKER, '');
-    element.innerHTML = text;
+    setHtml(element, text);
     element.style.cssText = '';
 
     hookFontLoading();
@@ -432,8 +468,76 @@ export function applyScrollingEffect(context, element, text, scrollingEffectOver
     queue(element, fresh);
 }
 
+const WRITE_PROPS = ['innerText', 'textContent', 'innerHTML'];
+
+// A style template writing into .bubble-state or .bubble-name owns that line,
+// and owning it means writing the text itself, which is exactly what kept a
+// module's text from ever scrolling: a line the card hands over is a line
+// nothing measures any more. Its writes are taken over here instead, so that
+// text goes through the same pipeline as the card's own, marquee included, with
+// nothing to change in the module.
+//
+// The card's own scrolling_effect decides, exactly as it does for the text the
+// card writes itself: on unless the card says otherwise, and the line clamped
+// onto two lines rather than scrolled when it does.
+export function interceptTemplateWrites(context, element) {
+    if (!element || intercepted.has(element)) return;
+
+    const natives = [];
+    for (const prop of WRITE_PROPS) {
+        const native = nativeAccessor(element, prop);
+        if (native) natives.push([prop, native]);
+    }
+    if (natives.length === 0) return;
+
+    intercepted.add(element);
+    for (const [prop, native] of natives) {
+        try {
+            Object.defineProperty(element, prop, {
+                configurable: true,
+                get() { return native.get.call(this); },
+                set(value) {
+                    if (internalWrite) { native.set.call(this, value); return; }
+                    // innerText and textContent write characters where the
+                    // pipeline writes markup, so what they are given is escaped
+                    // and reads back the same either way.
+                    templateWrite(context, this, value, prop !== 'innerHTML');
+                },
+            });
+        } catch (e) {}
+    }
+}
+
+// innerText is defined on HTMLElement, textContent on Node and innerHTML on
+// Element, so the chain is walked rather than one prototype guessed at.
+function nativeAccessor(element, prop) {
+    for (let proto = Object.getPrototypeOf(element); proto; proto = Object.getPrototypeOf(proto)) {
+        const descriptor = Object.getOwnPropertyDescriptor(proto, prop);
+        if (descriptor?.get && descriptor?.set) return descriptor;
+    }
+    return null;
+}
+
+function templateWrite(context, element, value, escapeText) {
+    driven.add(element);
+    const text = value === null || value === undefined ? '' : String(value);
+    // Read on every write rather than once, so an effect turned off in the
+    // editor lands on the next text the module writes.
+    writeText(
+        element,
+        escapeText ? escapeHtml(text) : text,
+        context?.config?.scrolling_effect ?? true,
+    );
+}
+
+function escapeHtml(text) {
+    return /[&<>]/.test(text)
+        ? text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        : text;
+}
+
 function applyNonScrollingStyle(element, text) {
-    element.innerHTML = text;
+    setHtml(element, text);
     element.previousText = text;
     applyNonScrollingLayout(element);
 }

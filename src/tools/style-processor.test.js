@@ -45,6 +45,11 @@ jest.unstable_mockModule('./clean-css.js', () => ({
     cleanCSS,
 }));
 
+const interceptTemplateWrites = jest.fn();
+jest.unstable_mockModule('./text-scrolling.js', () => ({
+    interceptTemplateWrites,
+}));
+
 const { handleCustomStyles, evalStyles, confineSelectorToPopupChrome } = await import('./style-processor.js');
 const { checkConditionsMet: checkConditionsMetMock } = await import('./validate-condition.js');
 const { runModuleTeardowns } = await import('./module-teardown.js');
@@ -215,6 +220,18 @@ describe('template target detection', () => {
 
         expect(context.elements.state.templateDetected).toBe(true);
         expect(context.elements.name.templateDetected).toBeUndefined();
+    });
+
+    // Marking the element is only half of it: what the template writes there has
+    // to reach the scrolling pipeline, or it is text nothing ever measures.
+    test('takes the writes of the marked element over, and only that one', () => {
+        const { context, element } = createTargetContext(WRITES_STATE);
+        interceptTemplateWrites.mockClear();
+
+        handleCustomStyles(context, element);
+
+        expect(interceptTemplateWrites).toHaveBeenCalledWith(context, context.elements.state);
+        expect(interceptTemplateWrites).toHaveBeenCalledTimes(1);
     });
 
     test('leaves both unmarked when the template writes into neither', () => {

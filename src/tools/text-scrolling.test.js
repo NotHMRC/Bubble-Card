@@ -74,6 +74,23 @@ function createFakeDocument() {
     return { documentElement: { contentWidth: 0 }, createRange: () => range };
 }
 
+// The three properties a style template writes its text with are accessors on
+// the DOM prototypes, and replacing them is how the module takes those writes
+// over, so the fake carries them on a prototype too rather than as plain fields.
+const encode = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const decode = (html) => html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+
+const elementProto = {
+    get innerHTML() { return this._html; },
+    set innerHTML(value) { this._html = String(value); },
+    get textContent() { return decode(this._html); },
+    set textContent(value) { this._html = encode(String(value)); },
+    get innerText() { return decode(this._html); },
+    set innerText(value) { this._html = encode(String(value)); },
+};
+
 // A text element the module can measure: `contentWidth` is what the text renders
 // at, `boxWidth` is the element's own box. The two move independently, which is
 // exactly what a late webfont does. `visible` is what the near observer reports,
@@ -86,9 +103,9 @@ function createElement({ connected = true, boxWidth = 100, contentWidth = 100, v
         style: {},
         getBoundingClientRect: () => ({ width: (element.contentWidth + SEPARATOR_WIDTH) * 2 }),
     };
-    const element = {
+    const element = Object.assign(Object.create(elementProto), {
         isConnected: connected,
-        innerHTML: '',
+        _html: '',
         previousText: undefined,
         style: { cssText: '' },
         boxWidth,
@@ -102,9 +119,11 @@ function createElement({ connected = true, boxWidth = 100, contentWidth = 100, v
         removeAttribute: (name) => attributes.delete(name),
         querySelector: () => span,
         getBoundingClientRect: () => { element.reads++; return { width: element.boxWidth }; },
-        get scrollWidth() { return Math.round(Math.max(element.boxWidth, element.contentWidth)); },
-        get clientWidth() { return Math.round(element.boxWidth); },
-    };
+    });
+    Object.defineProperties(element, {
+        scrollWidth: { get: () => Math.round(Math.max(element.boxWidth, element.contentWidth)) },
+        clientWidth: { get: () => Math.round(element.boxWidth) },
+    });
     return element;
 }
 
@@ -304,6 +323,23 @@ describe('text scrolling activation', () => {
 
         expect(isAnimated(element)).toBe(false);
         expect(element.style.display).toBe('-webkit-box');
+    });
+
+    // Whatever reads that mark, a stylesheet of one's own included, would have
+    // gone on believing a marquee was running over a text sitting still.
+    test('takes the animated mark down when the effect is turned off', async () => {
+        const { applyScrollingEffect } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        applyScrollingEffect(context, element, 'a very long name');
+        runFrame();
+        expect(isAnimated(element)).toBe(true);
+
+        applyScrollingEffect(context, element, 'a very long name', false);
+        runFrame();
+
+        expect(isAnimated(element)).toBe(false);
+        expect(element.innerHTML).toBe('a very long name');
     });
 
     test('drops an element that leaves the document after being measured', async () => {
@@ -565,6 +601,139 @@ describe('elements a style template has taken over', () => {
         expect(element.innerHTML).toBe('written by the template');
         expect(element.style.display).toBe('-webkit-box');
         expect(element.style.WebkitLineClamp).toBe('2');
+    });
+});
+
+// A module writing into .bubble-state owns that line, and owning it means
+// writing the text itself, which is what left it unmeasured and unable to
+// scroll. Those writes go through the pipeline now, on a card that asks for it.
+describe('a line whose writes a style template has taken over', () => {
+    // The effect is on unless a card says otherwise, so a card that says nothing
+    // is a card that scrolls.
+    const asking = () => ({ config: {} });
+
+    function claimed(cardContext, options) {
+        const element = createElement(options);
+        element.templateDetected = true;
+        interceptWrites(cardContext, element);
+        return element;
+    }
+
+    let interceptWrites;
+
+    async function load() {
+        const module = await loadModule();
+        interceptWrites = module.interceptTemplateWrites;
+        return module;
+    }
+
+    test('scrolls what the module writes, the effect being on by default', async () => {
+        await load();
+        const element = claimed(asking(), { boxWidth: 100, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C \u2022 48 %';
+        runFrame();
+
+        expect(isAnimated(element)).toBe(true);
+        expect(element.innerHTML).toContain('scrolling-container');
+        expect(element.textContent).toContain('Rain \u2022 21.5 \u00b0C \u2022 48 %');
+    });
+
+    // A card that turns the effect off wraps its own text onto two lines rather
+    // than scrolling it, and a text a module writes has no reason to differ.
+    test('clamps instead of scrolling on a card that turned the effect off', async () => {
+        await load();
+        const element = claimed({ config: { scrolling_effect: false } }, { boxWidth: 100, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C';
+        runFrame();
+
+        expect(element.innerHTML).toBe('Rain \u2022 21.5 \u00b0C');
+        expect(isAnimated(element)).toBe(false);
+        expect(element.style.display).toBe('-webkit-box');
+        expect(element.style.WebkitLineClamp).toBe('2');
+    });
+
+    test('follows the effect being turned off between two writes', async () => {
+        await load();
+        const cardContext = asking();
+        const element = claimed(cardContext, { boxWidth: 100, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C';
+        runFrame();
+        expect(isAnimated(element)).toBe(true);
+
+        cardContext.config.scrolling_effect = false;
+        element.innerText = 'Rain \u2022 19.0 \u00b0C';
+        runFrame();
+
+        expect(isAnimated(element)).toBe(false);
+        expect(element.innerHTML).toBe('Rain \u2022 19.0 \u00b0C');
+    });
+
+    test('keeps that text when the card sends its own state along', async () => {
+        const { applyScrollingEffect } = await load();
+        const cardContext = asking();
+        const element = claimed(cardContext, { boxWidth: 100, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C';
+        runFrame();
+
+        applyScrollingEffect(cardContext, element, 'Off');
+        runFrame();
+
+        expect(isAnimated(element)).toBe(true);
+        expect(element.textContent).toContain('Rain \u2022 21.5 \u00b0C');
+        expect(element.textContent).not.toContain('Off');
+    });
+
+    // The card measures again on its own whenever its column narrows, and that
+    // is the pass that hands a claimed line back to the template.
+    test('goes on measuring a line it drives when the card is resized', async () => {
+        await load();
+        const element = claimed(asking(), { boxWidth: 400, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C';
+        runFrame();
+        expect(isAnimated(element)).toBe(false);
+
+        const [resizeObserver] = resizeObservers;
+        element.boxWidth = 100;
+        resizeObserver.fire([element]);
+        runFrame();
+
+        expect(isAnimated(element)).toBe(true);
+    });
+
+    // The pipeline writes markup where innerText writes characters, so a text
+    // has to read back the same either way, and markup has to stay markup.
+    test('writes characters as characters and markup as markup', async () => {
+        await load();
+        const element = claimed(asking(), { boxWidth: 300, contentWidth: 100 });
+
+        element.innerText = 'Tom & Jerry <3';
+        runFrame();
+        expect(element.innerHTML).toBe('Tom &amp; Jerry &lt;3');
+        expect(element.textContent).toBe('Tom & Jerry <3');
+
+        element.innerHTML = '<b>bold</b>';
+        runFrame();
+        expect(element.innerHTML).toBe('<b>bold</b>');
+    });
+
+    test('takes an emptied line back out of the pipeline', async () => {
+        await load();
+        const element = claimed(asking(), { boxWidth: 100, contentWidth: 300 });
+
+        element.innerText = 'Rain \u2022 21.5 \u00b0C';
+        runFrame();
+        expect(isAnimated(element)).toBe(true);
+
+        element.innerText = '';
+        runFrame();
+
+        expect(element.innerHTML).toBe('');
+        expect(isAnimated(element)).toBe(false);
     });
 });
 
