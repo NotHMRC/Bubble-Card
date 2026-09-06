@@ -1,17 +1,22 @@
 import { blendSurface, needsSurfaceOutline, paintedSurfaces, readSurfaceLayer, readSurfaceLayers, stackSurfaces } from '../../tools/contrast.js';
 import { getStyleGeneration } from '../../tools/utils.js';
 
-// A sub-button (or a slider) can end up painting exactly the color of what sits
-// behind it: the accent color on both, the same light color on both, or a card
-// slider whose fill has grown under it. Nothing separates them then, so those
-// elements get a hairline. Every other case is left untouched, the outline is
-// only there to rescue the ones that would be invisible.
+// A slider sub-button can end up painting exactly the color of what sits behind
+// it: the accent color on both, the same light color on both, or a card slider
+// whose fill has grown under it. A rail carries nothing else, no icon and no
+// label, so there is then nothing left on screen to say a slider is there at
+// all, and it gets a hairline. Every other case is left untouched.
+//
+// Only the sliders. A plain sub-button that ends up the color of its card still
+// shows its icon and its text, so it never disappears, it just loses its pill,
+// and drawing a hairline around every one of them restyles a dashboard instead
+// of rescuing it.
 //
 // The pass is coalesced to one frame per card, skipped whole when nothing it
 // depends on has changed, and reduced to plain arithmetic while a slider is
 // being dragged.
 const OUTLINE_CLASS = 'needs-outline';
-const TARGET_SELECTOR = '.bubble-sub-button, .bubble-sub-button-slider';
+const TARGET_SELECTOR = '.bubble-sub-button-slider';
 
 function getScope(context) {
   return context?.elements?.mainContainer || context?.elements?.cardWrapper || null;
@@ -144,6 +149,59 @@ function setOutline(element, cache, needed) {
   cache.applied = needed;
 }
 
+// Every color read here is in the middle of a transition. A sub-button fades
+// over half a second, the card background over a second and a half, so one
+// frame after a state change the elements still show the color of the state
+// before it: a sub-button turning on measures rgba(250, 250, 250, 0.004) at the
+// next frame and an opaque 250 once it has settled. A verdict taken then is a
+// verdict about the previous state, and the signature keeps it until something
+// else moves. That is what left a hairline behind after the light went back off
+// in #2603, and what made one come and go for no visible reason in #2493.
+//
+// So the pass runs a second time once the transitions it read have finished,
+// and that verdict is the one that stands. Only the properties that change what
+// a surface looks like are waited on: a fill sliding to a new percentage moves
+// `transform`, which never changes a color.
+const SETTLING_PROPERTIES = new Set(['background-color', 'background-image', 'opacity']);
+
+function collectSettling(element, waits) {
+  if (!element || typeof element.getAnimations !== 'function') return;
+
+  let animations;
+  try {
+    animations = element.getAnimations();
+  } catch (_) {
+    return;
+  }
+
+  for (const animation of animations) {
+    // Only CSS transitions carry transitionProperty, which leaves out the
+    // keyframe animations a module may be running forever
+    if (!SETTLING_PROPERTIES.has(animation.transitionProperty)) continue;
+    if (animation.playState !== 'running') continue;
+    waits.push(animation.finished);
+  }
+}
+
+function scheduleSettledPass(context, elements) {
+  if (context._outlineSettling) return;
+
+  const waits = [];
+  elements.forEach(element => collectSettling(element, waits));
+  if (!waits.length) return;
+
+  context._outlineSettling = true;
+  // allSettled, not all: a transition cut short by the next state change
+  // rejects, and that is a reason to read again, not to give up
+  Promise.allSettled(waits).then(() => {
+    context._outlineSettling = false;
+    if (context.isConnected === false) return;
+    // The colors are new ones, the cached verdict was taken on the old
+    context._outlineSignature = null;
+    scheduleSubButtonOutlines(context);
+  });
+}
+
 export function applySubButtonOutlines(context) {
   const scope = getScope(context);
   if (!scope?.querySelectorAll || !ownsSubButtons(context)) return;
@@ -181,6 +239,20 @@ export function applySubButtonOutlines(context) {
     }
     setOutline(element, cache, needsSurfaceOutline(cache.surfaces, backgrounds, cache.spans));
   });
+
+  // Only the elements whose colors this pass just read, so a ripple or a module
+  // animation elsewhere on the card never brings it back for nothing
+  if (settled) {
+    scheduleSettledPass(context, [
+      context.elements.mainContainer,
+      context.elements.cardWrapper,
+      context.elements.background,
+      context.elements.contentContainer,
+      context.elements.rangeFill,
+      ...targets,
+      ...targets.map(element => element._bubbleOutline?.fill)
+    ]);
+  }
 }
 
 export function scheduleSubButtonOutlines(context) {
@@ -213,4 +285,5 @@ export function cancelSubButtonOutlines(context) {
   context._outlineColors = null;
   context._outlineSignature = null;
   context._outlinePrimed = false;
+  context._outlineSettling = false;
 }

@@ -200,7 +200,13 @@ export function spansOverlap(span1, span2) {
 
 // An element needs an outline when one of the colors it paints is the same as
 // the color painted right behind it. A background limited to a span (a slider
-// fill) only counts for the elements standing in front of it
+// fill) only counts for the elements standing in front of it.
+//
+// Nothing here asks where the color came from. What keeps this a rescue rather
+// than a restyle is who gets asked at all: outline.js only ever brings slider
+// rails, the elements that carry no icon and no label and so have nothing left
+// on screen once they take the color behind them. A rail is invisible whether a
+// state or a theme made it so, and it needs the same hairline either way.
 export function needsSurfaceOutline(surfaces, backgrounds, spans) {
   if (!surfaces?.length || !backgrounds?.length) return false;
 

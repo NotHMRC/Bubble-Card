@@ -213,11 +213,11 @@ describe('needsSurfaceOutline', () => {
   const white = [255, 255, 255];
   const spans = { x: [0.8, 0.95], y: [0.2, 0.8] };
 
-  test('outlines an element painting the color of the card behind it', () => {
+  test('outlines a rail painting the color of the card behind it', () => {
     expect(needsSurfaceOutline([blue], [{ rgb: blue, span: null }], spans)).toBe(true);
   });
 
-  test('leaves an element that stands out alone', () => {
+  test('leaves a rail that stands out alone', () => {
     expect(needsSurfaceOutline([white], [{ rgb: blue, span: null }], spans)).toBe(false);
   });
 
