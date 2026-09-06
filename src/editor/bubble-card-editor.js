@@ -1481,9 +1481,18 @@ class BubbleCardEditor extends LitElement {
       };
 
       // Helper to pick the config slice matching the current field
-      const getFieldConfig = (data, fieldName) => {
-        if (!data || fieldName === undefined) return undefined;
-        if (Array.isArray(data)) return data;
+      const getFieldConfig = (data, field) => {
+        if (!data) return undefined;
+        const fieldName = field?.name;
+        // A section with no name, or a flattened one, shares its parent's
+        // config: that is the data ha-form hands to its own nested form.
+        if (fieldName === undefined || fieldName === "" || field?.flatten) return data;
+        if (Array.isArray(data)) {
+          // A list is indexed by the numeric names repeated sections use;
+          // any other name keeps the whole list, which the object selector
+          // paths resolve their entity from.
+          return /^\d+$/.test(String(fieldName)) ? data[fieldName] : data;
+        }
         // Only return the field value if it exists, otherwise return undefined
         return data[fieldName];
       };
@@ -1539,7 +1548,7 @@ class BubbleCardEditor extends LitElement {
       let currentInherited = inheritedEntity;
 
       return schema.map((field) => {
-        const fieldConfig = getFieldConfig(configData, field.name);
+        const fieldConfig = getFieldConfig(configData, field);
 
         if (field.selector && field.selector.entity) {
           currentInherited = resolveEntityFromConfig(fieldConfig, undefined);

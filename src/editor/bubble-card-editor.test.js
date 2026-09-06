@@ -298,3 +298,56 @@ describe('BubbleCardEditor state content migration', () => {
         expect(fireEvent).not.toHaveBeenCalled();
     });
 });
+
+// A module editor schema wires its attribute fields to the entity field next
+// to them, and Home Assistant greys an attribute picker out as soon as it has
+// no entity id. The schema shape below is the one the shipped
+// "Get state/attribute from other entities" module uses.
+describe('BubbleCardEditor module attribute selectors', () => {
+    const moduleSchema = () => [{
+        type: 'expandable',
+        title: 'Select entities and attributes',
+        icon: 'mdi:list-box-outline',
+        schema: ['0', '1'].map((name) => ({
+            name,
+            type: 'expandable',
+            title: `Entity ${Number(name) + 1}`,
+            schema: [
+                { name: 'entity', label: 'Entity', selector: { entity: {} } },
+                { name: 'attribute', label: 'Attribute', selector: { attribute: {} } },
+            ],
+        })),
+    }];
+
+    const attributeEntityIds = (schema) =>
+        schema[0].schema.map((section) => section.schema[1].selector.attribute.entity_id);
+
+    test('a section with no name passes its own config down, so each entity feeds its attribute field', () => {
+        const editor = new BubbleCardEditor();
+        const config = [
+            { entity: 'weather.home' },
+            { entity: 'sensor.weather_station', attribute: 'humidity' },
+        ];
+
+        const processed = editor._getProcessedSchema('get_state_attribute', moduleSchema(), config);
+
+        expect(attributeEntityIds(processed)).toEqual(['weather.home', 'sensor.weather_station']);
+    });
+
+    test('reads the same config once ha-form has turned the list into numeric keys', () => {
+        const editor = new BubbleCardEditor();
+        const config = { 0: { entity: 'weather.home' }, 1: { entity: 'sensor.weather_station' } };
+
+        const processed = editor._getProcessedSchema('get_state_attribute', moduleSchema(), config);
+
+        expect(attributeEntityIds(processed)).toEqual(['weather.home', 'sensor.weather_station']);
+    });
+
+    test('leaves the attribute field of an entry without an entity unset', () => {
+        const editor = new BubbleCardEditor();
+
+        const processed = editor._getProcessedSchema('get_state_attribute', moduleSchema(), [{ entity: 'weather.home' }]);
+
+        expect(attributeEntityIds(processed)).toEqual(['weather.home', undefined]);
+    });
+});
