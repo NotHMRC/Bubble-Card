@@ -47,6 +47,41 @@ function updateModuleInConfig(context, moduleId, oldId = null) {
   fireEvent(context, "config-changed", { config: context._config });
 }
 
+// A module being created may not take an id that already belongs to one. Every
+// live update below writes by id, so a module named `default_icon_coloring`
+// would rewrite the `default` module on its way through `default`, one letter
+// before the name the user is typing.
+export function isTakenModuleId(context) {
+  const id = context._editingModule?.id;
+  return !!(context._showNewModuleForm && id && yamlKeysMap.has(id));
+}
+
+// The parts of the form the `default` module has no use for. A new module only
+// borrows that id while it is being typed, so it keeps the whole form.
+function isDefaultModule(context) {
+  return !context._showNewModuleForm && context._editingModule?.id === 'default';
+}
+
+// Renaming the module being created. The field takes anything, so that a name
+// on the way to a longer one can be typed through, but an id another module
+// already holds is never written into the card config.
+export function applyModuleIdChange(context, newId) {
+  if (!context._editingModule) return;
+  context._editingModule.id = newId;
+
+  if (!context._showNewModuleForm || !context._config?.modules) return;
+
+  if (yamlKeysMap.has(newId)) {
+    context.requestUpdate?.();
+    return;
+  }
+
+  // Replace the id this form really put in the config, not the one the field
+  // held a keystroke ago, which may be a taken one.
+  updateModuleInConfig(context, newId, context._previousModuleId);
+  fireEvent(context, "config-changed", { config: context._config });
+}
+
 function refreshStyles(context) {
   // Reset style cache
   context.lastEvaluatedStyles = "";
@@ -462,12 +497,17 @@ export function renderModuleEditorForm(context) {
   // Writing a module whose suggestions cannot be read back is exactly what the
   // editor schema check prevents for `editor:`, so the same rule applies here.
   const hasSuggestionsError = !!(suggestions.rulesError || suggestions.rulesInvalid || suggestions.codeError);
-  const hasBlockingErrors = hasYamlError || hasTemplateError || hasSuggestionsError;
+  const hasTakenId = isTakenModuleId(context);
+  const showsDefaultModule = isDefaultModule(context);
+  const hasBlockingErrors = hasYamlError || hasTemplateError || hasSuggestionsError || hasTakenId;
 
   // Apply styles in real-time
   const applyLiveStyles = (newCssCode) => {
     if (!context._editingModule || !context._config || isFromYamlFile) return;
-    
+    // Read again rather than trusting the render that built this closure: the
+    // id field changes without waiting for a new one.
+    if (isTakenModuleId(context)) return;
+
     const moduleId = context._editingModule.id;
     
     // Call the main editor's method to clear errors for this module
@@ -512,7 +552,8 @@ export function renderModuleEditorForm(context) {
   // Apply editor schema changes in real-time
   const applyLiveEditorSchema = (newEditorSchema) => {
     if (!context._editingModule || !context._config || isFromYamlFile) return;
-    
+    if (isTakenModuleId(context)) return;
+
     try {
       const moduleId = context._editingModule.id;
       
@@ -694,7 +735,7 @@ export function renderModuleEditorForm(context) {
             ${context._showNewModuleForm ? t('editor.module_editor.create_module') : context._editingModule.id === 'default' ? t('editor.module_editor.edit_default_module') : t('editor.module_editor.edit_module')}
           </h3>
           
-          <div class="module-editor-not-default" style="display: ${context._editingModule.id === 'default' ? 'none' : ''}">
+          <div class="module-editor-not-default" style="display: ${showsDefaultModule ? 'none' : ''}">
             ${isFromYamlFile ? html`
               <div class="bubble-info warning">
                 <h4 class="bubble-section-title">
@@ -713,20 +754,24 @@ export function renderModuleEditorForm(context) {
               .schema=${[{ name: 'id', selector: { text: {} } }]}
               .computeLabel=${() => t('editor.module_editor.module_id')}
               .disabled=${!context._showNewModuleForm || isFromYamlFile}
-              @value-changed=${(ev) => {
-                const oldId = context._editingModule.id;
-                const newId = ev.detail.value.id;
-                context._editingModule.id = newId;
-                if (context._showNewModuleForm && context._config.modules) {
-                  updateModuleInConfig(context, newId, oldId);
-                  fireEvent(context, "config-changed", { config: context._config });
-                }
-              }}
+              @value-changed=${(ev) => applyModuleIdChange(context, ev.detail.value.id)}
             ></ha-form>
             <span class="helper-text">
               ${t('editor.module_editor.module_id_helper')}
             </span>
-            
+
+            ${hasTakenId ? html`
+              <div class="bubble-info warning">
+                <h4 class="bubble-section-title">
+                  <ha-icon icon="mdi:alert-circle-outline"></ha-icon>
+                  ${t('editor.module_editor.duplicate_id_title')}
+                </h4>
+                <div class="content">
+                  <p>${t('editor.module_editor.duplicate_id_body')}</p>
+                </div>
+              </div>
+            ` : ''}
+
             <ha-form
               .hass=${context.hass}
               .data=${{ name: context._editingModule.name || '' }}
@@ -809,7 +854,7 @@ export function renderModuleEditorForm(context) {
           </ha-expansion-panel>
           
           <ha-expansion-panel 
-            style="display: ${context._editingModule.id === 'default' ? 'none' : ''}" 
+            style="display: ${showsDefaultModule ? 'none' : ''}" 
             .header=${html`
               <ha-icon icon="mdi:form-select" style="margin-inline-end: 8px;"></ha-icon>
               ${t('editor.module_editor.editor_schema_title')}
@@ -884,7 +929,7 @@ export function renderModuleEditorForm(context) {
           </ha-expansion-panel>
 
           <ha-expansion-panel
-            style="display: ${context._editingModule.id === 'default' ? 'none' : ''}"
+            style="display: ${showsDefaultModule ? 'none' : ''}"
             .header=${html`
               <ha-icon icon="mdi:lightbulb-auto-outline" style="margin-inline-end: 8px;"></ha-icon>
               ${t('editor.module_editor.suggestions_title')}
@@ -987,6 +1032,8 @@ export function renderModuleEditorForm(context) {
                   ${hasTemplateError ? t('editor.module_editor.fix_template_error') : ''}
                   ${(hasYamlError || hasTemplateError) && hasSuggestionsError ? html`<br>` : ''}
                   ${hasSuggestionsError ? t('editor.module_editor.fix_suggestions_error') : ''}
+                  ${(hasYamlError || hasTemplateError || hasSuggestionsError) && hasTakenId ? html`<br>` : ''}
+                  ${hasTakenId ? t('editor.module_editor.fix_duplicate_id') : ''}
                 </p>
               </div>
             </div>
@@ -1071,9 +1118,11 @@ export function renderModuleEditorForm(context) {
                   }
                   resetModuleChanges(context, moduleId);
                 } else if (context._showNewModuleForm && context._editingModule) {
-                  // For new module creation cancellation
-                  const moduleId = context._editingModule.id;
-                  
+                  // For new module creation cancellation. Clean up the id this
+                  // form really claimed, never the one left in the field: a
+                  // taken id belongs to a module that was here first.
+                  const moduleId = context._previousModuleId;
+
                   // Remove temporary module from configuration
                   if (context._config && context._config.modules && moduleId) {
                     context._config.modules = context._config.modules.filter(id => id !== moduleId);
@@ -1242,6 +1291,10 @@ function renderSupportedCardCheckboxes(context, isFromYamlFile = false) {
 export async function saveModule(context, moduleData) {
   try {
     const moduleId = moduleData.id;
+    // The id field lets a name be typed through ids that are taken, so a module
+    // being created can be holding one. Writing here would replace the module
+    // that owns it, code and all.
+    if (isTakenModuleId(context)) return;
     const wasModuleEnabled = context._config.modules && context._config.modules.includes(moduleId);
     
     // Preserve is_global from existing module before saving

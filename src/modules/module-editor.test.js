@@ -99,6 +99,8 @@ const {
     validateSuggestionsCode,
     buildSuggestionsPreview,
     saveModule,
+    applyModuleIdChange,
+    isTakenModuleId,
     renderModuleEditorForm,
     releaseSuggestionsPreview,
     dropSuggestionsPreviewIfStale,
@@ -701,5 +703,67 @@ describe('saveModule', () => {
         await saveModule(context, editingModule);
 
         expect(generateYamlExport.mock.calls[0][0].suggestions).toEqual([{ extends: 'native' }]);
+    });
+});
+
+// #2354 : en nommant un module `default_icon_coloring`, la frappe passe par
+// `default`, l'id du module par defaut. Tout ce qui ecrit par id ecrivait alors
+// dans ce module la, et son code partait avec.
+describe('an id another module already holds', () => {
+    const makeCreationContext = () => ({
+        hass,
+        _hassRender: hass,
+        _config: { modules: ['my_module'], entity: ENTITY },
+        _editingModule: { id: 'my_module', name: 'My Module', code: '' },
+        _showNewModuleForm: true,
+        _previousModuleId: 'my_module',
+        createErrorConsole: () => '',
+        requestUpdate: jest.fn(),
+    });
+
+    beforeEach(() => {
+        yamlKeysMap.clear();
+        yamlKeysMap.set('default', { id: 'default', name: 'Default', code: '.my-style {}', is_global: true });
+        generateYamlExport.mockClear();
+    });
+
+    test('is never claimed by the module being created', () => {
+        const context = makeCreationContext();
+
+        applyModuleIdChange(context, 'default');
+
+        expect(context._config.modules).toEqual(['my_module']);
+        expect(context._previousModuleId).toBe('my_module');
+        expect(yamlKeysMap.get('default').code).toBe('.my-style {}');
+    });
+
+    test('is only typed through, so the longer name still lands', () => {
+        const context = makeCreationContext();
+
+        for (const id of ['d', 'de', 'def', 'defa', 'defau', 'defaul', 'default', 'default_', 'default_icon']) {
+            applyModuleIdChange(context, id);
+        }
+
+        expect(context._editingModule.id).toBe('default_icon');
+        expect(context._config.modules).toEqual(['default_icon']);
+        expect(yamlKeysMap.get('default').code).toBe('.my-style {}');
+    });
+
+    test('blocks the save that would write over the module owning it', async () => {
+        const context = makeCreationContext();
+        applyModuleIdChange(context, 'default');
+
+        await saveModule(context, context._editingModule);
+
+        expect(generateYamlExport).not.toHaveBeenCalled();
+        expect(yamlKeysMap.get('default').code).toBe('.my-style {}');
+    });
+
+    test('leaves the real default module editable', () => {
+        const context = makeCreationContext();
+        context._showNewModuleForm = false;
+        context._editingModule = { id: 'default', name: 'Default', code: '.my-style {}' };
+
+        expect(isTakenModuleId(context)).toBe(false);
     });
 });

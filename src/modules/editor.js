@@ -1187,10 +1187,13 @@ export function makeModulesEditor(context) {
               // We use the ID of the template to start, it will be updated if the user changes it
               if (!context._config.modules.includes(context._editingModule.id)) {
                 context._config.modules = [...context._config.modules, context._editingModule.id];
-                
+
                 // Notify the change to apply styles in real-time
                 fireEvent(context, "config-changed", { config: context._config });
               }
+              // The id the form now owns, so renaming replaces this one rather
+              // than whatever the field held a keystroke ago.
+              context._previousModuleId = context._editingModule.id;
               
               context.requestUpdate();
               
