@@ -990,21 +990,21 @@ show_progress: true
 
 ![readme-separator](https://github.com/Clooos/Bubble-Card/assets/36499953/7e416a34-b95e-4a03-a200-4b3aa04f560d)
 
-Ova kartica je jednostavan razdvajač za deljenje vašeg iskačućeg prozora na kategorije / sekcije, na primer: Svetla, Uređaji, Roletne, Podešavanja, Automatizacije...
+Ова картица је једноставан раздвајач за дељење вашег искачућег прозора на категорије / секције, на пример: Светла, Уређаји, Ролетне, Подешавања, Аутоматизације...
 
-### Opcije razdvajača
+### Опције раздвајача
 
 <details>
 
 <summary><b>Опције (YAML + описи)</b></summary>
 
-| Naziv | Tip | Zahtev | Podržane opcije | Opis |
+| Назив | Тип | Захтев | Подржане опције | Опис |
 | --- | --- | --- | --- | --- |
-| `name` | string | Opciono, ali preporučeno | Bilo koji string | Naziv za vaš razdvajač |
-| `icon` | string | Opciono, ali preporučeno | Bilo koja `mdi:` ikonica | Ikonica za vaš razdvajač |
-| `card_layout` | string | Opciono | `normal` (podrazumevano ako nije u prikazu sekcije), `large` (podrazumevano ako je u prikazu sekcije), `large-2-rows`, `large-sub-buttons-grid` | Stil rasporeda kartice, pogledajte [распореде картице](#распореди-картице) |
-| `rows` | number | Opciono | Bilo koji broj | Broj redova (visina) (npr. `2`) |
-| `sub_button` | object | Opciono | Pogledajte [под-дугмад](#под-дугмад) | Dodajte prilagođena dugmad fiksirana desno |
+| `name` | string | Опционо, али препоручено | Било који string | Назив за ваш раздвајач |
+| `icon` | string | Опционо, али препоручено | Било која `mdi:` иконица | Иконица за ваш раздвајач |
+| `card_layout` | string | Опционо | `normal` (подразумевано ако није у приказу секције), `large` (подразумевано ако је у приказу секције), `large-2-rows`, `large-sub-buttons-grid` | Стил распореда картице, погледајте [распореде картице](#распореди-картице) |
+| `rows` | number | Опционо | Било који број | Број редова (висина) (нпр. `2`) |
+| `sub_button` | object | Опционо | Погледајте [под-дугмад](#под-дугмад) | Додајте прилагођена дугмад фиксирана десно |
 
 </details>
 
@@ -1012,17 +1012,17 @@ Ova kartica je jednostavan razdvajač za deljenje vašeg iskačućeg prozora na 
 
 <summary><b>CSS varijable (pogledajte <a href="#стилизовање">Стилизовање</a>)</b></summary>
 
-| Varijabla | Očekivana vrednost | Opis |
+| Варијабла | Очекивана вредност | Опис |
 | --- | --- | --- |
-| `--bubble-line-background-color` | `color` | Boja pozadine za liniju u razdvajaču |
+| `--bubble-line-background-color` | `color` | Боја позадине за линију у раздвајачу |
 
 </details>
 
-#### Primer
+#### Пример
 
 <details>
 
-<summary>Razdvajač za sekciju "Roletne"</summary>
+<summary>Раздвајач за секцију "Ролетне"</summary>
 
 <br>
 
@@ -1045,13 +1045,13 @@ icon: mdi:window-shutter
 
 ![readme-empty-column](https://github.com/Clooos/Bubble-Card/assets/36499953/a97fa8df-8360-4613-8bb7-e8a269cb1913)
 
-Ova kartica služi za popunjavanje prazne kolone. Ovo je korisno ako imate `horizontal-stack` u vašem iskačućem prozoru sa samo jednom karticom. Pogledajte donji desni ugao ovog snimka ekrana da (ne) vidite je.
+Ова картица служи за попуњавање празне колоне. Ово је корисно ако имате `horizontal-stack` у вашем искачућем прозору са само једном картицом. Погледајте доњи десни угао овог снимка екрана да (не) видите је.
 
-### Opcije prazne kolone
+### Опције празне колоне
 
-Ova kartica nema opcije i ne podržava [стилизовање](#стилизовање), iako podržava opcije rasporeda za HA sekcije.
+Ова картица нема опције и не подржава [стилизовање](#стилизовање), иако подржава опције распореда за HA секције.
 
-#### Primer
+#### Пример
 
 <details>
 
@@ -1081,27 +1081,27 @@ cards:
 
 ![bubble-card-sub-buttons-only-card](https://github.com/user-attachments/assets/89d420e0-6ec0-4aa0-a1c9-3b515678beaa)
 
-Ova kartica je namenjena isključivo sub-dugmadima. Idealna je za menije, brze akcije, informativne čipove ili fiksirano podnožje na dnu stranice.
+Ова картица је намењена искључиво под-дугмадима. Идеална је за меније, брзе акције, информативне чипове или фиксирано подножје на дну странице.
 
 > [!IMPORTANT]  
-> Ova kartica koristi novu šemu sub-dugmadi. Koristite `sub_button.bottom` za definisanje vaših dugmadi. Sekcija `sub_button.main` se ignoriše.
+> Ова картица користи нову шему под-дугмади. Користите `sub_button.bottom` за дефинисање ваших дугмади. Секција `sub_button.main` се игнорише.
 
-### Opcije "samo pod-dugmad"
+### Опције "само под-дугмад"
 
 <details>
 
 <summary><b>Опције (YAML + описи)</b></summary>
 
-| Naziv | Tip | Zahtev | Podržane opcije | Opis |
+| Назив | Тип | Захтев | Подржане опције | Опис |
 | --- | --- | --- | --- | --- |
-| `sub_button` | object | **Obavezno** | Pogledajte [под-дугмад](#под-дугмад) | Definišite vaše sub-dugmad pomoću sekcije `bottom` |
-| `hide_main_background` | boolean | Opciono | `true` ili `false` (podrazumevano) | Uklanja pozadinu kartice |
-| `footer_mode` | boolean | Opciono | `true` ili `false` (podrazumevano) | Fiksira karticu na dnu stranice |
-| `footer_full_width` | boolean | Opciono | `true` ili `false` (podrazumevano) | Podnožje zauzima punu širinu (100%) |
-| `footer_width` | number | Opciono | Bilo koji broj | Širina podnožja u pikselima kada je `footer_full_width` postavljeno na `false` |
-| `footer_bottom_offset` | number | Opciono | Bilo koji broj | Udaljenost od dna stranice u pikselima (podrazumevano: `16`) |
-| `card_layout` | string | Opciono | `normal` (podrazumevano ako nije u prikazu sekcije), `large` (podrazumevano ako je u prikazu sekcije), `large-2-rows`, `large-sub-buttons-grid` | Stil rasporeda kartice, pogledajte [распореде картице](#распореди-картице) |
-| `rows` | number | Opciono | Bilo koji broj | Broj redova (visina) (npr. `2`) |
+| `sub_button` | object | **Обавезно** | Погледајте [под-дугмад](#под-дугмад) | Дефинишите ваше под-дугмад помоћу секције `bottom` |
+| `hide_main_background` | boolean | Опционо | `true` или `false` (подразумевано) | Уклања позадину картице |
+| `footer_mode` | boolean | Опционо | `true` или `false` (подразумевано) | Фиксира картицу на дну странице |
+| `footer_full_width` | boolean | Опционо | `true` или `false` (подразумевано) | Подножје заузима пуну ширину (100%) |
+| `footer_width` | number | Опционо | Било који број | Ширина подножја у пикселима када је `footer_full_width` постављено на `false` |
+| `footer_bottom_offset` | number | Опционо | Било који број | Удаљеност од дна странице у пикселима (подразумевано: `16`) |
+| `card_layout` | string | Опционо | `normal` (подразумевано ако није у приказу секције), `large` (подразумевано ако је у приказу секције), `large-2-rows`, `large-sub-buttons-grid` | Стил распореда картице, погледајте [распореде картице](#распореди-картице) |
+| `rows` | number | Опционо | Било који број | Број редова (висина) (нпр. `2`) |
 
 </details>
 
@@ -1109,19 +1109,19 @@ Ova kartica je namenjena isključivo sub-dugmadima. Idealna je za menije, brze a
 
 <summary><b>CSS varijable (pogledajte <a href="#стилизовање">Стилизовање</a>)</b></summary>
 
-| Varijabla | Očekivana vrednost | Opis |
+| Варијабла | Очекивана вредност | Опис |
 | --- | --- | --- |
-| `--bubble-footer-width` | `px` | Širina podnožja kada je `footer_full_width` postavljeno na `false` |
-| `--bubble-footer-bottom` | `px` | Razmak podnožja od dna |
-| `--bubble-footer-box-shadow` | pogledajte [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Senka za kontejner podnožja |
+| `--bubble-footer-width` | `px` | Ширина подножја када је `footer_full_width` постављено на `false` |
+| `--bubble-footer-bottom` | `px` | Размак подножја од дна |
+| `--bubble-footer-box-shadow` | погледајте [box shadow](https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow) | Сенка за контејнер подножја |
 
 </details>
 
-#### Primeri
+#### Примери
 
 <details>
 
-<summary>Čipovi (kao na snimku ekrana)</summary>
+<summary>Чипови (као на снимку екрана)</summary>
 
 <br>
 
@@ -1165,7 +1165,7 @@ rows: 0.941
 
 <details>
 
-<summary>Fiksirani meni u podnožju</summary>
+<summary>Фиксирани мени у подножју</summary>
 
 <br>
 
@@ -1206,11 +1206,11 @@ rows: 0.941
 
 ![readme-button](https://github.com/Clooos/Bubble-Card/assets/36499953/c7bfda91-943e-42f3-a963-4847e57c6b97)
 
-U svakoj kartici koja podržava tu opciju, možete dodati sub-dugmad za dodatno prilagođavanje vaših kartica. Možete, na primer, napraviti dugme koje kontroliše usisivač, karticu vremenske prognoze ili gotovo bilo šta drugo što vam padne na pamet. Ova sub-dugmad podržavaju akcije dodira i većinu opcija dugmeta.
+У свакој картици која подржава ту опцију, можете додати под-дугмад за додатно прилагођавање ваших картица. Можете, на пример, направити дугме које контролише усисивач, картицу временске прогнозе или готово било шта друго што вам падне на памет. Ова под-дугмад подржавају акције додира и већину опција дугмета.
 
-Sub-dugmad sada podržavaju tri tipa: **podrazumevani (dugme)**, **klizač** i **padajući meni / izbor**. Možete kombinovati tipove u istoj kartici, postaviti sub-dugmad na vrh ili dno i organizovati ih u grupe za napredniji raspored.
+Под-дугмад сада подржавају три типа: **подразумевани (дугме)**, **клизач** и **падајући мени / избор**. Можете комбиновати типове у истој картици, поставити под-дугмад на врх или дно и организовати их у групе за напреднији распоред.
 
-#### Raspoređivanje i grupe sub-dugmadi
+#### Распоређивање и групе под-дугмади
 
 <details>
 
@@ -1240,59 +1240,59 @@ sub_button:
 ```
 
 **Napomene:**
-- `main` i `bottom` su dve nezavisne sekcije. Sub-dugmad na dnu su fiksirana na dno kartice.
-- `main_layout` i `bottom_layout` prihvataju `inline` (podrazumevano) ili `rows` za vertikalno slaganje grupa.
-- Grupe su objekti sa nizom `group` i opcionim `buttons_layout` (`inline` ili `column`).
-- `justify_content` je dostupno **samo za donje grupe** (`start`, `center`, `end`, `fill`).
-- Kada su prisutna sub-dugmad na dnu, raspored kartice se automatski prebacuje na `large` osim ako eksplicitno postavite drugi raspored.
-- Nasleđeni nizovi `sub_button` su i dalje podržani i tretiraju se kao sekcija `main`.
+- `main` и `bottom` су две независне секције. Под-дугмад на дну су фиксирана на дно картице.
+- `main_layout` и `bottom_layout` прихватају `inline` (подразумевано) или `rows` за вертикално слагање група.
+- Групе су објекти са низом `group` и опционим `buttons_layout` (`inline` или `column`).
+- `justify_content` је доступно **само за доње групе** (`start`, `center`, `end`, `fill`).
+- Када су присутна под-дугмад на дну, распоред картице се аутоматски пребацује на `large` осим ако експлицитно поставите други распоред.
+- Наслеђени низови `sub_button` су и даље подржани и третирају се као секција `main`.
 
 </details>
 
-### Opcije sub-dugmadi
+### Опције под-дугмади
 
 <details>
 
 <summary><b>Опције (YAML + опис)</b></summary>
 
-| Naziv | Tip | Zahtev | Podržane opcije | Opis |
+| Назив | Тип | Захтев | Подржане опције | Опис |
 | --- | --- | --- | --- | --- |
-| `entity` | string | Opciono | Bilo koji entitet | Entitet za kontrolu |
-| `name` | string | Opciono | Bilo koji string | Naziv za vaše sub-dugme, ako nije definisano prikazaće se naziv entiteta |
-| `icon` | string | Opciono | Bilo koja `mdi:` ikonica | Ikonica za vaše sub-dugme, ako nije definisana prikazaće se ikonica entiteta ili slika entiteta |
-| `force_icon` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prisiljava ikonicu čak i ako je dostupna slika entiteta |
-| `sub_button_type` | string | Opciono | `default`, `slider` ili `select` | Odaberite tip sub-dugmeta |
-| `show_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikazuje pozadinu za vaše sub-dugme, boja će se menjati na osnovu stanja entiteta |
-| `state_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju stanja kada je entitet `on` |
-| `light_background` | boolean | Opciono | `true` (podrazumevano) ili `false` | Koristi boju svetla za pozadinu kada je dostupna |
-| `state_content` | string или list | Opciono | `state`, `last-changed`, `last-updated`, `last-triggered`, назив атрибута као `brightness` или `forecast[0].temperature`, или [шаблон](#шаблони) | Шта приказује ред испод назива, овим редоследом. Без њега дугме `button_type: state` приказује оно што Home Assistant приказује за ентитет (његово стање, уз то и тренутну температуру климе, позицију ролетне, осветљеност светла). Стари кључеви `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` и даље раде и преписују се у `state_content` када отворите едитор. |
-| `show_name` | boolean | Opciono | `true` ili `false` (podrazumevano) | Prikazuje ili sakriva naziv |
-| `show_icon` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikazuje ili sakriva ikonicu |
-| `select_attribute` | string | Opciono | Lista atributa vašeg `entity` (pogledajte podržane opcije iznad) | Ova lista atributa otvoriće padajući meni ako se klikne (npr. `effect_list`) |
-| `show_arrow` | boolean | Opciono | `true` (podrazumevano) ili `false` | Prikazuje ili sakriva strelicu padajućeg menija za sub-dugmad tipa select |
-| `scrolling_effect` | boolean | Opciono | `true` (podrazumevano) ili `false` | Omogućava pomeranje teksta kada sadržaj premašuje veličinu kontejnera |
-| `tap_action` | object | Opciono | Pogledajte [акције](#акције-додира-двоструког-додира-и-држања) | Definiše tip akcije pri kliku na sub-dugme, ako nije definisano koristiće se `more-info` |
-| `double_tap_action` | object | Opciono | Pogledajte [акције](#акције-додира-двоструког-додира-и-држања) | Definiše tip akcije pri dvostrukom kliku na sub-dugme, ako nije definisano koristiće se `none` |
-| `hold_action` | object | Opciono | Pogledajte [акције](#акције-додира-двоструког-додира-и-држања) | Definiše tip akcije pri držanju sub-dugmeta, ako nije definisano koristiće se `more-info` |
-| `fill_width` | boolean | Opciono | `true` ili `false` | Popunjava dostupnu širinu (podrazumevano: `false` za main, `true` za bottom) |
-| `width` | number ili string | Opciono | Bilo koji broj ili CSS dužina | Prilagođena širina (`px` za sekciju main, `%` za sekciju bottom po podrazumevanoj vrednosti) |
-| `custom_height` | number | Opciono | Bilo koji broj | Prilagođena visina u pikselima |
-| `content_layout` | string | Opciono | `icon-left` (podrazumevano), `icon-top`, `icon-bottom`, `icon-right` | Postavljanje ikonice unutar sub-dugmeta |
-| `always_visible` | boolean | Opciono | `true` ili `false` (podrazumevano) | **Samo za klizač.** Uvek prikazuje klizač umesto da ga otvara pri dodiru |
-| `show_button_info` | boolean | Opciono | `true` ili `false` (podrazumevano) | **Samo za klizač.** Prikazuje ikonicu/naziv/stanje kada je `always_visible` omogućeno |
-| `visibility` | object ili list | Opciono | Pogledajte [услове](#услови) | Prikazuje ili sakriva sub-dugme na osnovu uslova |
-| `hide_when_parent_unavailable` | boolean | Opciono | `true` ili `false` (podrazumevano) | Sakriva sub-dugme ako je entitet roditeljske kartice nedostupan |
-| `css_class` | string | Opciono | Bilo koji tekst | Dodatna CSS klasa na sub-dugmetu, da biste ga ciljali u svojim [стиловима](#стилизовање) bez obzira na njegovo ime (na primer `My value` daje `.my-value`) |
+| `entity` | string | Опционо | Било који ентитет | Ентитет за контролу |
+| `name` | string | Опционо | Било који string | Назив за ваше под-дугме, ако није дефинисано приказаће се назив ентитета |
+| `icon` | string | Опционо | Било која `mdi:` иконица | Иконица за ваше под-дугме, ако није дефинисана приказаће се иконица ентитета или слика ентитета |
+| `force_icon` | boolean | Опционо | `true` или `false` (подразумевано) | Присиљава иконицу чак и ако је доступна слика ентитета |
+| `sub_button_type` | string | Опционо | `default`, `slider` или `select` | Одаберите тип под-дугмета |
+| `show_background` | boolean | Опционо | `true` (подразумевано) или `false` | Приказује позадину за ваше под-дугме, боја ће се мењати на основу стања ентитета |
+| `state_background` | boolean | Опционо | `true` (подразумевано) или `false` | Користи боју стања када је ентитет `on` |
+| `light_background` | boolean | Опционо | `true` (подразумевано) или `false` | Користи боју светла за позадину када је доступна |
+| `state_content` | string или list | Опционо | `state`, `last-changed`, `last-updated`, `last-triggered`, назив атрибута као `brightness` или `forecast[0].temperature`, или [шаблон](#шаблони) | Шта приказује ред испод назива, овим редоследом. Без њега дугме `button_type: state` приказује оно што Home Assistant приказује за ентитет (његово стање, уз то и тренутну температуру климе, позицију ролетне, осветљеност светла). Стари кључеви `show_state`, `show_attribute`, `attribute`, `show_last_changed` и `show_last_updated` и даље раде и преписују се у `state_content` када отворите едитор. |
+| `show_name` | boolean | Опционо | `true` или `false` (подразумевано) | Приказује или сакрива назив |
+| `show_icon` | boolean | Опционо | `true` (подразумевано) или `false` | Приказује или сакрива иконицу |
+| `select_attribute` | string | Опционо | Листа атрибута вашег `entity` (погледајте подржане опције изнад) | Ова листа атрибута отвориће падајући мени ако се кликне (нпр. `effect_list`) |
+| `show_arrow` | boolean | Опционо | `true` (подразумевано) или `false` | Приказује или сакрива стрелицу падајућег менија за под-дугмад типа селецт |
+| `scrolling_effect` | boolean | Опционо | `true` (подразумевано) или `false` | Омогућава померање текста када садржај премашује величину контејнера |
+| `tap_action` | object | Опционо | Погледајте [акције](#акције-додира-двоструког-додира-и-држања) | Дефинише тип акције при клику на под-дугме, ако није дефинисано користиће се `more-info` |
+| `double_tap_action` | object | Опционо | Погледајте [акције](#акције-додира-двоструког-додира-и-држања) | Дефинише тип акције при двоструком клику на под-дугме, ако није дефинисано користиће се `none` |
+| `hold_action` | object | Опционо | Погледајте [акције](#акције-додира-двоструког-додира-и-држања) | Дефинише тип акције при држању под-дугмета, ако није дефинисано користиће се `more-info` |
+| `fill_width` | boolean | Опционо | `true` или `false` | Попуњава доступну ширину (подразумевано: `false` за маин, `true` за боттом) |
+| `width` | number или string | Опционо | Било који број или CSS дужина | Прилагођена ширина (`px` за секцију маин, `%` за секцију боттом по подразумеваној вредности) |
+| `custom_height` | number | Опционо | Било који број | Прилагођена висина у пикселима |
+| `content_layout` | string | Опционо | `icon-left` (подразумевано), `icon-top`, `icon-bottom`, `icon-right` | Постављање иконице унутар под-дугмета |
+| `always_visible` | boolean | Опционо | `true` или `false` (подразумевано) | **Само за клизач.** Увек приказује клизач уместо да га отвара при додиру |
+| `show_button_info` | boolean | Опционо | `true` или `false` (подразумевано) | **Само за клизач.** Приказује иконицу/назив/стање када је `always_visible` омогућено |
+| `visibility` | object или list | Опционо | Погледајте [услове](#услови) | Приказује или сакрива под-дугме на основу услова |
+| `hide_when_parent_unavailable` | boolean | Опционо | `true` или `false` (подразумевано) | Сакрива под-дугме ако је ентитет родитељске картице недоступан |
+| `css_class` | string | Опционо | Било који текст | Додатна CSS класа на под-дугмету, да бисте га циљали у својим [стиловима](#стилизовање) без обзира на његово име (на пример `My value` даје `.my-value`) |
 
 </details>
 
 <details>
 
-<summary><b>Opcije klizača u sub-dugmetu (isto kao klizači dugmeta)</b></summary>
+<summary><b>Опције клизача у под-дугмету (исто као клизачи дугмета)</b></summary>
 
 <br>
 
-Sub-dugmad tipa klizač podržavaju iste opcije kao klizači dugmeta, uključujući:
+Под-дугмад типа клизач подржавају исте опције као клизачи дугмета, укључујући:
 `min_value`, `max_value`, `step`, `tap_to_slide`, `relative_slide`, `read_only_slider`, `slider_live_update`, `slider_fill_orientation`, `slider_value_position`, `invert_slider_value`, `light_slider_type`, `cover_slider_type`, `hue_force_saturation`, `hue_force_saturation_value`, `use_accent_color`, `allow_light_slider_to_0`, `light_transition`, `light_transition_time`.
 
 </details>
@@ -1301,24 +1301,24 @@ Sub-dugmad tipa klizač podržavaju iste opcije kao klizači dugmeta, uključuju
 
 <summary><b>CSS varijable (pogledajte <a href="#стилизовање">Стилизовање</a>)</b></summary>
 
-| Varijabla | Očekivana vrednost | Opis |
+| Варијабла | Очекивана вредност | Опис |
 | --- | --- | --- |
-| `--bubble-sub-button-border-radius` | `px` | Radijus ivica za sub-dugmad |
-| `--bubble-sub-button-background-color` | `color` | Boja pozadine za sub-dugmad |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontura dodata sub-dugmetu tipa klizač, samo kada se iscrtava istom bojom kao kartica iza njega, zbog čega na ekranu ne bi ostalo ništa što pokazuje da je tu klizač (postavite je na `none` da je uklonite) |
-| `--bubble-sub-slider-border-radius` | `px` | Radijus ivica za sub-dugmad tipa klizač |
-| `--bubble-sub-slider-background-color` | `color` | Boja pozadine za sub-dugmad tipa klizač |
-| `--bubble-sub-slider-height` | `px` | Visina za uvek prikazane klizače sub-dugmadi |
-| `--bubble-sub-slider-outline` | `box-shadow` | Ista kontura, zadržana radi jasnoće, vraća se na `--bubble-sub-button-outline` |
-| `--bubble-sub-button-dark-text-color` | `color` | Boja teksta na svetlim pozadinama sub-dugmadi |
+| `--bubble-sub-button-border-radius` | `px` | Радијус ивица за под-дугмад |
+| `--bubble-sub-button-background-color` | `color` | Боја позадине за под-дугмад |
+| `--bubble-sub-button-outline` | `box-shadow` | Контура додата под-дугмету типа клизач, само када се исцртава истом бојом као картица иза њега, због чега на екрану не би остало ништа што показује да је ту клизач (поставите је на `none` да је уклоните) |
+| `--bubble-sub-slider-border-radius` | `px` | Радијус ивица за под-дугмад типа клизач |
+| `--bubble-sub-slider-background-color` | `color` | Боја позадине за под-дугмад типа клизач |
+| `--bubble-sub-slider-height` | `px` | Висина за увек приказане клизаче под-дугмади |
+| `--bubble-sub-slider-outline` | `box-shadow` | Иста контура, задржана ради јасноће, враћа се на `--bubble-sub-button-outline` |
+| `--bubble-sub-button-dark-text-color` | `color` | Боја текста на светлим позадинама под-дугмади |
 
 </details>
 
-#### Primeri
+#### Примери
 
 <details>
 
-<summary>Dugme sa nekoliko sub-dugmadi za pravljenje kartice usisivača (kao na snimku ekrana)</summary>
+<summary>Дугме са неколико под-дугмади за прављење картице усисивача (као на снимку екрана)</summary>
 
 <br>
 
@@ -1378,7 +1378,7 @@ styles: >-
 
 <details>
 
-<summary>Klizač dugmeta sa sub-dugmetom koje prikazuje osvetljenost i sub-dugmetom koje pali/gasi svetlo (kao na snimku ekrana)</summary>
+<summary>Клизач дугмета са под-дугметом које приказује осветљеност и под-дугметом које пали/гаси светло (као на снимку екрана)</summary>
 
 <br>
 
@@ -1406,13 +1406,13 @@ sub_button:
 
 <details>
 
-<summary>Dugme koje prikazuje unutrašnju i spoljašnju temperaturu i vremensku prognozu za danas i sutra (uključen snimak ekrana)</summary>
+<summary>Дугме које приказује унутрашњу и спољашњу температуру и временску прогнозу за данас и сутра (укључен снимак екрана)</summary>
 
 <br>
 
 <img width="591" alt="image" src="https://github.com/Clooos/Bubble-Card/assets/36499953/360312de-db08-47bf-9b46-92afeb435edd">
 
-> Nažalost, kod mene je stalno oblačno, ali se sve ikonice menjaju u zavisnosti od vremena.
+> Нажалост, код мене је стално облачно, али се све иконице мењају у зависности од времена.
 
 ```yaml
 type: custom:bubble-card
@@ -1477,26 +1477,26 @@ styles: >-
 
 ![My-Bubble-Card-dashboard](https://github.com/Clooos/Bubble-Card/assets/36499953/0c049498-969b-4939-959e-fc49fb08d0a1)
 
-Bubble Card u potpunosti podržava prikaz sekcije Home Assistant, možete promeniti raspored kartice kako biste je povećali, a takođe promeniti broj kolona ili redova koje kartica treba da zauzima u vašem prikazu sekcije (samo na karticama koje podržavaju tu opciju). Ovi rasporedi su takođe podržani u svim ostalim tipovima prikaza.
+Bubble Card у потпуности подржава приказ секције Home Assistant, можете променити распоред картице како бисте је повећали, а такође променити број колона или редова које картица треба да заузима у вашем приказу секције (само на картицама које подржавају ту опцију). Ови распореди су такође подржани у свим осталим типовима приказа.
 
 <details>
 
 <summary><b>Dostupni rasporedi kartice</b></summary>
 
-| Raspored | Opis |
+| Распоред | Опис |
 | --- | --- |
-| `normal` | Regularan raspored (nije optimizovan za prikaz sekcije) |
-| `large` | Veći raspored koji će se prilagoditi izabranim redovima u prikazu sekcije (optimizovan za prikaz sekcije) |
-| `large-2-rows` | Veći raspored sa 2 reda sub-dugmadi koji će se prilagoditi izabranim redovima u prikazu sekcije (optimizovan za prikaz sekcije) |
-| `large-sub-buttons-grid` | Ovaj raspored prikazuje sub-dugmad u mreži, `rows` mora biti postavljeno na najmanje `2`.
+| `normal` | Регуларан распоред (није оптимизован за приказ секције) |
+| `large` | Већи распоред који ће се прилагодити изабраним редовима у приказу секције (оптимизован за приказ секције) |
+| `large-2-rows` | Већи распоред са 2 реда под-дугмади који ће се прилагодити изабраним редовима у приказу секције (оптимизован за приказ секције) |
+| `large-sub-buttons-grid` | Овај распоред приказује под-дугмад у мрежи, `rows` мора бити постављено на најмање `2`.
 
 </details>
 
-#### Primeri
+#### Примери
 
 <details>
 
-<summary>Veliko dugme koje prikazuje statistiku energije sa 2 reda sub-dugmadi (uključen snimak ekrana)</summary>
+<summary>Велико дугме које приказује статистику енергије са 2 реда под-дугмади (укључен снимак екрана)</summary>
 
 <br>
 
@@ -1538,7 +1538,7 @@ sub_button:
 
 <details>
 
-<summary>Veliko dugme sa više redova i 12 sub-dugmadi</summary>
+<summary>Велико дугме са више редова и 12 под-дугмади</summary>
 
 <br>
 
@@ -1632,34 +1632,34 @@ sub_button:
 
 ## Акције додира, двоструког додира и држања
 
-Takođe možete koristiti podrazumevane Home Assistant akcije dodira, dvostrukog dodira i držanja na karticama koje podržavaju ovu opciju. Ovo, na primer, omogućava da se prozor "više informacija" prikaže držanjem ikonice dugmeta ili pokretanjem servisa kada se pritisne sub-dugme.
+Такође можете користити подразумеване Home Assistant акције додира, двоструког додира и држања на картицама које подржавају ову опцију. Ово, на пример, омогућава да се прозор "више информација" прикаже држањем иконице дугмета или покретањем сервиса када се притисне под-дугме.
 
-**Napomena: kada je konfigurisano `double_tap_action`, redovno `tap_action` će imati kašnjenje od 200ms kako bi se omogućilo otkrivanje
-dvostrukog dodira. Ako je ovo kašnjenje neželjeno, postavite `double_tap_action` na `none` da biste onemogućili obradu dvostrukog dodira.**
+**Напомена: када је конфигурисано `double_tap_action`, редовно `tap_action` ће имати кашњење од 200мс како би се омогућило откривање
+двоструког додира. Ако је ово кашњење нежељено, поставите `double_tap_action` на `none` да бисте онемогућили обраду двоструког додира.**
 
-### Opcije akcije
+### Опције акције
 
 <details>
 
 <summary><b>Опције (YAML + опис)</b></summary>
 
-| Naziv | Tip | Podržane opcije | Opis |
+| Назив | Тип | Подржане опције | Опис |
 | --- | --- | --- | --- |
-| `action` | string | `more-info`, `toggle`, `call-service`, `navigate`, `url`, `fire-dom-event`, `none` | Akcija koja se izvršava |
-| `target` | object |  | Radi samo sa `call-service`. Prati [home-assistant syntax](https://www.home-assistant.io/docs/scripts/service-calls/#targeting-areas-and-devices) |
-| `navigation_path` | string | Bilo koja putanja vašeg dashboard-a | Putanja za navigaciju (npr. `'#kitchen'` za otvaranje iskačućeg prozora) kada je akcija definisana kao navigate |
-| `url_path` | string | Bilo koji link | URL koji se otvara na klik (npr. `https://www.google.com`) kada je akcija `url` |
-| `service` | string | Bilo koji servis | Servis koji se poziva (npr. `media_player.media_play_pause`) kada je `action` definisano kao `call-service` |
-| `data` ili `service_data` | object | Bilo koji podaci servisa | Podaci servisa koji se uključuju (npr. `entity_id: media_player.kitchen`) kada je `action` definisano kao `call-service` |
-| `confirmation` | object | Pogledajte [potvrdu](https://www.home-assistant.io/dashboards/actions/#options-for-confirmation) | Prikazuje prozor za potvrdu (ne Bubble Card prozor), zamenjuje podrazumevani objekat `confirmation` |
+| `action` | string | `more-info`, `toggle`, `call-service`, `navigate`, `url`, `fire-dom-event`, `none` | Акција која се извршава |
+| `target` | object |  | Ради само са `call-service`. Прати [хоме-ассистант сyнтаx](https://www.home-assistant.io/docs/scripts/service-calls/#targeting-areas-and-devices) |
+| `navigation_path` | string | Било која путања вашег дасхбоард-а | Путања за навигацију (нпр. `'#kitchen'` за отварање искачућег прозора) када је акција дефинисана као навигате |
+| `url_path` | string | Било који линк | URL који се отвара на клик (нпр. `https://www.google.com`) када је акција `url` |
+| `service` | string | Било који сервис | Сервис који се позива (нпр. `media_player.media_play_pause`) када је `action` дефинисано као `call-service` |
+| `data` или `service_data` | object | Било који подаци сервиса | Подаци сервиса који се укључују (нпр. `entity_id: media_player.kitchen`) када је `action` дефинисано као `call-service` |
+| `confirmation` | object | Погледајте [потврду](https://www.home-assistant.io/dashboards/actions/#options-for-confirmation) | Приказује прозор за потврду (не Bubble Card прозор), замењује подразумевани објекат `confirmation` |
 
 </details>
 
-#### Primer
+#### Пример
 
 <details>
 
-<summary>Dugme za otvaranje iskačućeg prozora</summary>
+<summary>Дугме за отварање искачућег прозора</summary>
 
 <br>
 
