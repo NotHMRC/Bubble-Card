@@ -1305,11 +1305,11 @@ Tacaíonn fochnaipí sleamhnáin leis na roghanna sleamhnáin céanna le sleamhn
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Ga chúinne do na fochnaipí |
 | `--bubble-sub-button-background-color` | `color` | Dath cúlra do na fochnaipí |
-| `--bubble-sub-button-outline` | `box-shadow` | Imlíne a chuirtear le fochnaipe nó le sleamhnán, ach amháin nuair a phéinteálann an eilimint sin an dath céanna leis an gcárta taobh thiar di, rud a d'fhágfadh dofheicthe í (socraigh go `none` é chun é a bhaint) |
+| `--bubble-sub-button-outline` | `box-shadow` | Imlíne a chuirtear le fochnaipe sleamhnáin, ach amháin nuair a phéinteálann sé an dath céanna leis an gcárta taobh thiar de, rud nach bhfágfadh aon rud ar an scáileán le taispeáint go bhfuil sleamhnán ann (socraigh go `none` é chun é a bhaint) |
 | `--bubble-sub-slider-border-radius` | `px` | Ga chúinne d'fhochnaipí sleamhnáin |
 | `--bubble-sub-slider-background-color` | `color` | Dath cúlra d'fhochnaipí sleamhnáin |
 | `--bubble-sub-slider-height` | `px` | Airde d'fhochnaipí sleamhnáin atá i gcónaí infheicthe |
-| `--bubble-sub-slider-outline` | `box-shadow` | Imlíne na bhfochnaipí sleamhnáin amháin, filleann sé ar `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | An imlíne chéanna, coinnithe ar mhaithe le soiléireacht, filleann sé ar `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Dath téacs ar chúlraí geala fochnaipí |
 
 </details>

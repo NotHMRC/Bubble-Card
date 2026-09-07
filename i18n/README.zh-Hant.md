@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | 子按鈕的圓角半徑 |
 | `--bubble-sub-button-background-color` | `color` | 子按鈕的背景顏色 |
-| `--bubble-sub-button-outline` | `box-shadow` | 只有當子按鈕或滑桿與其後方卡片顏色相同、因而會看不見時，才會為它加上的外框(設為 `none` 即可移除) |
+| `--bubble-sub-button-outline` | `box-shadow` | 只有當滑桿子按鈕與其後方卡片顏色相同、畫面上再無任何東西顯示那裡有滑桿時，才會為它加上的外框(設為 `none` 即可移除) |
 | `--bubble-sub-slider-border-radius` | `px` | 滑桿子按鈕的圓角半徑 |
 | `--bubble-sub-slider-background-color` | `color` | 滑桿子按鈕的背景顏色 |
 | `--bubble-sub-slider-height` | `px` | 永久顯示滑桿子按鈕的高度 |
-| `--bubble-sub-slider-outline` | `box-shadow` | 僅滑桿子按鈕的外框，未設定時會回落到 `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | 同一個外框，為求清楚而保留，未設定時會回落到 `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | 明亮子按鈕背景上的文字顏色 |
 
 </details>

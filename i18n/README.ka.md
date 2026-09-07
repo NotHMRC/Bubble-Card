@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | კუთხის მრუდი ქვეღილაკებისთვის |
 | `--bubble-sub-button-background-color` | `color` | ფონის ფერი ქვეღილაკებისთვის |
-| `--bubble-sub-button-outline` | `box-shadow` | კონტური, რომელიც ემატება ქვეღილაკს ან სლაიდერს მხოლოდ მაშინ, როცა ეს ელემენტი იმავე ფერს ხატავს, რაც მის უკან მდებარე ბარათს, რაც მას უხილავს გახდიდა (დააყენეთ `none` მოსაშორებლად) |
+| `--bubble-sub-button-outline` | `box-shadow` | კონტური, რომელიც ემატება სლაიდერის ქვეღილაკს მხოლოდ მაშინ, როცა ის იმავე ფერს ხატავს, რაც მის უკან მდებარე ბარათს, რის გამოც ეკრანზე აღარაფერი დარჩებოდა, რაც აჩვენებდა, რომ იქ სლაიდერია (დააყენეთ `none` მოსაშორებლად) |
 | `--bubble-sub-slider-border-radius` | `px` | კუთხის მრუდი სლაიდერის ქვეღილაკებისთვის |
 | `--bubble-sub-slider-background-color` | `color` | ფონის ფერი სლაიდერის ქვეღილაკებისთვის |
 | `--bubble-sub-slider-height` | `px` | სიმაღლე ყოველთვის ხილული სლაიდერის ქვეღილაკებისთვის |
-| `--bubble-sub-slider-outline` | `box-shadow` | მხოლოდ სლაიდერის ქვეღილაკების კონტური, უკან იხევს `--bubble-sub-button-outline`-ზე |
+| `--bubble-sub-slider-outline` | `box-shadow` | იგივე კონტური, სიცხადისთვის შენარჩუნებული, უკან იხევს `--bubble-sub-button-outline`-ზე |
 | `--bubble-sub-button-dark-text-color` | `color` | ტექსტის ფერი ღია ქვეღილაკის ფონებზე |
 
 </details>

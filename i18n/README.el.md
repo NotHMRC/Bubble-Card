@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Ακτίνα καμπύλωσης για τα υπο-κουμπιά |
 | `--bubble-sub-button-background-color` | `color` | Χρώμα φόντου για τα υπο-κουμπιά |
-| `--bubble-sub-button-outline` | `box-shadow` | Περίγραμμα που προστίθεται σε υπο-κουμπί ή ρυθμιστικό, μόνο όταν αυτό το στοιχείο σχεδιάζεται στο ίδιο χρώμα με την κάρτα από πίσω, κάτι που θα το έκανε αόρατο (ορίστε το σε `none` για να το αφαιρέσετε) |
+| `--bubble-sub-button-outline` | `box-shadow` | Περίγραμμα που προστίθεται σε υπο-κουμπί slider, μόνο όταν σχεδιάζεται στο ίδιο χρώμα με την κάρτα από πίσω, κάτι που δεν θα άφηνε τίποτα στην οθόνη να δείχνει ότι υπάρχει slider (ορίστε το σε `none` για να το αφαιρέσετε) |
 | `--bubble-sub-slider-border-radius` | `px` | Ακτίνα καμπύλωσης για τα υπο-κουμπιά slider |
 | `--bubble-sub-slider-background-color` | `color` | Χρώμα φόντου για τα υπο-κουμπιά slider |
 | `--bubble-sub-slider-height` | `px` | Ύψος για τα πάντα-ορατά υπο-κουμπιά slider |
-| `--bubble-sub-slider-outline` | `box-shadow` | Περίγραμμα μόνο των υπο-κουμπιών slider, με εφεδρικό το `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Το ίδιο περίγραμμα, διατηρημένο για σαφήνεια, με εφεδρικό το `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Χρώμα κειμένου σε φωτεινά φόντα υπο-κουμπιών |
 
 </details>

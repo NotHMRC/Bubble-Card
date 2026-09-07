@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | துணை பட்டன்களுக்கான border radius |
 | `--bubble-sub-button-background-color` | `color` | துணை பட்டன்களுக்கான பின்னணி நிறம் |
-| `--bubble-sub-button-outline` | `box-shadow` | ஒரு துணை பட்டன் அல்லது ஸ்லைடர் அதன் பின்னால் உள்ள கார்டின் அதே நிறத்தில் வரையப்படும்போது மட்டும் சேர்க்கப்படும் வெளிக்கோடு, இல்லையெனில் அது கண்ணுக்குத் தெரியாமல் போகும் (அகற்ற `none` என அமைக்கவும்) |
+| `--bubble-sub-button-outline` | `box-shadow` | ஒரு ஸ்லைடர் துணை பட்டன் அதன் பின்னால் உள்ள கார்டின் அதே நிறத்தில் வரையப்படும்போது மட்டும் சேர்க்கப்படும் வெளிக்கோடு, இல்லையெனில் அங்கே ஒரு ஸ்லைடர் இருப்பதைக் காட்ட திரையில் எதுவும் இருக்காது (அகற்ற `none` என அமைக்கவும்) |
 | `--bubble-sub-slider-border-radius` | `px` | ஸ்லைடர் துணை பட்டன்களுக்கான border radius |
 | `--bubble-sub-slider-background-color` | `color` | ஸ்லைடர் துணை பட்டன்களுக்கான பின்னணி நிறம் |
 | `--bubble-sub-slider-height` | `px` | எப்போதும்-தெரியும் ஸ்லைடர் துணை பட்டன்களுக்கான உயரம் |
-| `--bubble-sub-slider-outline` | `box-shadow` | ஸ்லைடர் துணை பட்டன்களுக்கு மட்டும் வெளிக்கோடு, `--bubble-sub-button-outline` க்குத் திரும்பும் |
+| `--bubble-sub-slider-outline` | `box-shadow` | அதே வெளிக்கோடு, தெளிவுக்காக வைக்கப்பட்டுள்ளது, `--bubble-sub-button-outline` க்குத் திரும்பும் |
 | `--bubble-sub-button-dark-text-color` | `color` | பிரகாசமான துணை பட்டன் பின்னணிகளில் உரை நிறம் |
 
 </details>

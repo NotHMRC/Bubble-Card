@@ -1305,11 +1305,11 @@ I sotto-pulsanti cursore supportano le stesse opzioni dei cursori dei pulsanti, 
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Raggio del bordo per i sotto-pulsanti |
 | `--bubble-sub-button-background-color` | `color` | Colore di sfondo per i sotto-pulsanti |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorno aggiunto a un sotto-pulsante o a un cursore, solo quando quell'elemento assume lo stesso colore della scheda che ha dietro, cosa che lo renderebbe invisibile (impostalo su `none` per toglierlo) |
+| `--bubble-sub-button-outline` | `box-shadow` | Contorno aggiunto a un sotto-pulsante cursore, solo quando assume lo stesso colore della scheda che ha dietro, cosa che non lascerebbe nulla sullo schermo a indicare che lì c'è un cursore (impostalo su `none` per toglierlo) |
 | `--bubble-sub-slider-border-radius` | `px` | Raggio del bordo per i sotto-pulsanti cursore |
 | `--bubble-sub-slider-background-color` | `color` | Colore di sfondo per i sotto-pulsanti cursore |
 | `--bubble-sub-slider-height` | `px` | Altezza per i sotto-pulsanti cursore sempre visibili |
-| `--bubble-sub-slider-outline` | `box-shadow` | Contorno dei soli sotto-pulsanti cursore, ricade su `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Lo stesso contorno, mantenuto per chiarezza, ricade su `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Colore del testo sugli sfondi chiari dei sotto-pulsanti |
 
 </details>

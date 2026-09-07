@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | 서브 버튼의 테두리 반경 |
 | `--bubble-sub-button-background-color` | `color` | 서브 버튼의 배경색 |
-| `--bubble-sub-button-outline` | `box-shadow` | 서브 버튼이나 슬라이더에, 그 요소가 뒤에 있는 카드와 같은 색으로 칠해져 보이지 않게 될 때만 추가되는 외곽선 (`none`으로 설정하면 제거됩니다) |
+| `--bubble-sub-button-outline` | `box-shadow` | 슬라이더 서브 버튼에, 그것이 뒤에 있는 카드와 같은 색으로 칠해져 거기에 슬라이더가 있다는 것을 보여줄 것이 화면에 아무것도 남지 않을 때만 추가되는 외곽선 (`none`으로 설정하면 제거됩니다) |
 | `--bubble-sub-slider-border-radius` | `px` | 슬라이더 서브 버튼의 테두리 반경 |
 | `--bubble-sub-slider-background-color` | `color` | 슬라이더 서브 버튼의 배경색 |
 | `--bubble-sub-slider-height` | `px` | 항상 표시되는 슬라이더 서브 버튼의 높이 |
-| `--bubble-sub-slider-outline` | `box-shadow` | 슬라이더 서브 버튼에만 적용되는 외곽선, 지정하지 않으면 `--bubble-sub-button-outline`을 따릅니다 |
+| `--bubble-sub-slider-outline` | `box-shadow` | 같은 외곽선, 명확성을 위해 유지되며, 지정하지 않으면 `--bubble-sub-button-outline`을 따릅니다 |
 | `--bubble-sub-button-dark-text-color` | `color` | 밝은 서브 버튼 배경에서의 텍스트 색상 |
 
 </details>

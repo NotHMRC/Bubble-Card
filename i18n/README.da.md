@@ -1305,11 +1305,11 @@ Skyder-underknapper understøtter de samme skyderindstillinger som knapskydere, 
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Kantradius for underknapperne |
 | `--bubble-sub-button-background-color` | `color` | Baggrundsfarve for underknapperne |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur tilføjet til en underknap eller en skyder, kun når elementet tegnes i samme farve som kortet bagved, hvilket ville gøre det usynligt (sæt den til `none` for at fjerne den) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur tilføjet til en skyder-underknap, kun når den tegnes i samme farve som kortet bagved, hvilket ikke ville efterlade noget på skærmen til at vise, at der er en skyder (sæt den til `none` for at fjerne den) |
 | `--bubble-sub-slider-border-radius` | `px` | Kantradius for skyder-underknapper |
 | `--bubble-sub-slider-background-color` | `color` | Baggrundsfarve for skyder-underknapper |
 | `--bubble-sub-slider-height` | `px` | Højde for altid synlige skyder-underknapper |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontur kun for skyder-underknapperne, falder tilbage til `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Samme kontur, bevaret for klarhedens skyld, falder tilbage til `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstfarve på lyse underknap-baggrunde |
 
 </details>

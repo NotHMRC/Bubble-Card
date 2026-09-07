@@ -1305,11 +1305,11 @@ Glidebrytar-underknappar støttar dei same glidebrytarvala som knappeglidebrytar
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Rundingsradius for underknappane |
 | `--bubble-sub-button-background-color` | `color` | Bakgrunnsfarge for underknappane |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur som blir lagd til ein underknapp eller ein glidebrytar, berre når det elementet blir teikna i same farge som kortet bak, noko som ville gjort det usynleg (set han til `none` for å fjerne han) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur som blir lagd til ein glidebrytar-underknapp, berre når han blir teikna i same farge som kortet bak, slik at ingenting ville vore att på skjermen for å vise at det er ein glidebrytar der (set han til `none` for å fjerne han) |
 | `--bubble-sub-slider-border-radius` | `px` | Rundingsradius for glidebrytar-underknappar |
 | `--bubble-sub-slider-background-color` | `color` | Bakgrunnsfarge for glidebrytar-underknappar |
 | `--bubble-sub-slider-height` | `px` | Høgd for alltid synlege glidebrytar-underknappar |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontur berre for glidebrytar-underknappane, fell tilbake på `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Same kontur, halden for tydelegheita, fell tilbake på `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstfarge på lyse underknapp-bakgrunnar |
 
 </details>

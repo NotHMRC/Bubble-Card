@@ -1305,11 +1305,11 @@ Sub-dugmad tipa klizač podržavaju iste opcije kao klizači dugmeta, uključuju
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radijus ivica za sub-dugmad |
 | `--bubble-sub-button-background-color` | `color` | Boja pozadine za sub-dugmad |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontura dodata sub-dugmetu ili klizaču, samo kada se taj element iscrtava istom bojom kao kartica iza njega, što bi ga učinilo nevidljivim (postavite je na `none` da je uklonite) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontura dodata sub-dugmetu tipa klizač, samo kada se iscrtava istom bojom kao kartica iza njega, zbog čega na ekranu ne bi ostalo ništa što pokazuje da je tu klizač (postavite je na `none` da je uklonite) |
 | `--bubble-sub-slider-border-radius` | `px` | Radijus ivica za sub-dugmad tipa klizač |
 | `--bubble-sub-slider-background-color` | `color` | Boja pozadine za sub-dugmad tipa klizač |
 | `--bubble-sub-slider-height` | `px` | Visina za uvek prikazane klizače sub-dugmadi |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontura samo za sub-dugmad tipa klizač, vraća se na `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Ista kontura, zadržana radi jasnoće, vraća se na `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Boja teksta na svetlim pozadinama sub-dugmadi |
 
 </details>

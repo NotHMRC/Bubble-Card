@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Радіус заокруглення додаткових кнопок |
 | `--bubble-sub-button-background-color` | `color` | Колір фону додаткових кнопок |
-| `--bubble-sub-button-outline` | `box-shadow` | Контур, який додається до додаткової кнопки або повзунка, лише тоді, коли цей елемент має той самий колір, що й картка позаду, через що став би невидимим (встановіть `none`, щоб прибрати його) |
+| `--bubble-sub-button-outline` | `box-shadow` | Контур, який додається до повзунка додаткової кнопки, лише тоді, коли він має той самий колір, що й картка позаду, через що на екрані не лишилося б нічого, що показувало б, що там є повзунок (встановіть `none`, щоб прибрати його) |
 | `--bubble-sub-slider-border-radius` | `px` | Радіус заокруглення повзунків додаткових кнопок |
 | `--bubble-sub-slider-background-color` | `color` | Колір фону повзунків додаткових кнопок |
 | `--bubble-sub-slider-height` | `px` | Висота для завжди видимих повзунків додаткових кнопок |
-| `--bubble-sub-slider-outline` | `box-shadow` | Контур лише повзунків додаткових кнопок, повертається до `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Той самий контур, залишений для ясності, повертається до `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Колір тексту на яскравих фонах додаткових кнопок |
 
 </details>

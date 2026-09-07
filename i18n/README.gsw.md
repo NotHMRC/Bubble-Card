@@ -1305,11 +1305,11 @@ Slider-Sub-Buttons unterstütze die gliche Slider-Optione wie Button-Slider, ink
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Randradius für d'Sub-Buttons |
 | `--bubble-sub-button-background-color` | `color` | Hintergrundfarb für d'Sub-Buttons |
-| `--bubble-sub-button-outline` | `box-shadow` | Umriss, wo zu eme Sub-Button oder eme Schieberegler dezue chunnt, aber nur denn, wenn das Element die gliich Farb übercho wie s Charte dehinder, was es unsichtbar machti (setz en uf `none`, zum en entferne) |
+| `--bubble-sub-button-outline` | `box-shadow` | Umriss, wo zu eme Slider-Sub-Button dezue chunnt, aber nur denn, wenn er die gliich Farb übercho wie s Charte dehinder, so dass nüt meh uf em Bildschirm bliibt wo zeigt, dass dört en Slider isch (setz en uf `none`, zum en entferne) |
 | `--bubble-sub-slider-border-radius` | `px` | Randradius für Slider-Sub-Buttons |
 | `--bubble-sub-slider-background-color` | `color` | Hintergrundfarb für Slider-Sub-Buttons |
 | `--bubble-sub-slider-height` | `px` | Höchi für immer sichtbari Slider-Sub-Buttons |
-| `--bubble-sub-slider-outline` | `box-shadow` | Umriss vo nur de Slider-Sub-Buttons, fallt zrugg uf `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | De gliich Umriss, zur Klarheit bhalte, fallt zrugg uf `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Textfarb uf hälle Sub-Button-Hintergründ |
 
 </details>

@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Ենթակոճակների եզրերի կլորացումը |
 | `--bubble-sub-button-background-color` | `color` | Ենթակոճակների ֆոնի գույնը |
-| `--bubble-sub-button-outline` | `box-shadow` | Ուրվագիծ, որն ավելացվում է ենթակոճակին կամ սահիչին միայն այն դեպքում, երբ այդ տարրը ներկվում է իր հետևի քարտի նույն գույնով, ինչը կդարձներ այն անտեսանելի (դրեք `none`՝ այն հեռացնելու համար) |
+| `--bubble-sub-button-outline` | `box-shadow` | Ուրվագիծ, որն ավելացվում է սահիչ ենթակոճակին միայն այն դեպքում, երբ այն ներկվում է իր հետևի քարտի նույն գույնով, ինչի պատճառով էկրանին ոչինչ չէր մնա՝ ցույց տալու, որ այնտեղ սահիչ կա (դրեք `none`՝ այն հեռացնելու համար) |
 | `--bubble-sub-slider-border-radius` | `px` | Սլայդեր ենթակոճակների եզրերի կլորացումը |
 | `--bubble-sub-slider-background-color` | `color` | Սլայդեր ենթակոճակների ֆոնի գույնը |
 | `--bubble-sub-slider-height` | `px` | Միշտ տեսանելի սլայդեր ենթակոճակների բարձրությունը |
-| `--bubble-sub-slider-outline` | `box-shadow` | Միայն սահիչ ենթակոճակների ուրվագիծը, բացակայության դեպքում վերադառնում է `--bubble-sub-button-outline`-ին |
+| `--bubble-sub-slider-outline` | `box-shadow` | Նույն ուրվագիծը, պահված պարզության համար, բացակայության դեպքում վերադառնում է `--bubble-sub-button-outline`-ին |
 | `--bubble-sub-button-dark-text-color` | `color` | Տեքստի գույնը վառ ենթակոճակների ֆոնի վրա |
 
 </details>

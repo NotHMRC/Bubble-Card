@@ -1305,11 +1305,11 @@ Os sub-botões do tipo cursor suportam as mesmas opções que os cursores de bot
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Raio da borda dos sub-botões |
 | `--bubble-sub-button-background-color` | `color` | Cor de fundo dos sub-botões |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorno acrescentado a um sub-botão ou a um cursor, apenas quando esse elemento é pintado com a mesma cor do cartão por trás, o que o tornaria invisível (defina `none` para o remover) |
+| `--bubble-sub-button-outline` | `box-shadow` | Contorno acrescentado a um sub-botão cursor, apenas quando é pintado com a mesma cor do cartão por trás, o que não deixaria nada no ecrã a mostrar que ali está um cursor (defina `none` para o remover) |
 | `--bubble-sub-slider-border-radius` | `px` | Raio da borda dos sub-botões cursor |
 | `--bubble-sub-slider-background-color` | `color` | Cor de fundo dos sub-botões cursor |
 | `--bubble-sub-slider-height` | `px` | Altura dos sub-botões cursor sempre visíveis |
-| `--bubble-sub-slider-outline` | `box-shadow` | Contorno apenas dos sub-botões cursor, recorre a `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | O mesmo contorno, mantido por clareza, recorre a `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Cor do texto sobre fundos claros de sub-botão |
 
 </details>

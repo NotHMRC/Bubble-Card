@@ -1305,11 +1305,11 @@ Slīdņa papildpogas atbalsta tādas pašas slīdņa opcijas kā pogas slīdņi,
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Apaļojuma rādiuss papildpogām |
 | `--bubble-sub-button-background-color` | `color` | Fona krāsa papildpogām |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontūra, kas papildpogai vai slīdnim tiek pievienota tikai tad, kad šis elements zīmējas tādā pašā krāsā kā kartīte aiz tā, kas to padarītu neredzamu (iestatiet `none`, lai to noņemtu) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontūra, kas slīdņa papildpogai tiek pievienota tikai tad, kad tā zīmējas tādā pašā krāsā kā kartīte aiz tās, tāpēc ekrānā nepaliktu nekas, kas rādītu, ka tur ir slīdnis (iestatiet `none`, lai to noņemtu) |
 | `--bubble-sub-slider-border-radius` | `px` | Apaļojuma rādiuss slīdņa papildpogām |
 | `--bubble-sub-slider-background-color` | `color` | Fona krāsa slīdņa papildpogām |
 | `--bubble-sub-slider-height` | `px` | Augstums pastāvīgi redzamām slīdņa papildpogām |
-| `--bubble-sub-slider-outline` | `box-shadow` | Tikai slīdņa papildpogu kontūra, ja nav norādīta, tiek izmantota `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Tā pati kontūra, saglabāta skaidrības labad, ja nav norādīta, tiek izmantota `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Teksta krāsa uz spilgtiem papildpogu foniem |
 
 </details>

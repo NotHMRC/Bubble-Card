@@ -1305,11 +1305,11 @@ Kaydırıcı alt düğmeleri, düğme kaydırıcılarıyla aynı kaydırıcı se
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Alt düğmeler için kenar yuvarlaklığı |
 | `--bubble-sub-button-background-color` | `color` | Alt düğmeler için arka plan rengi |
-| `--bubble-sub-button-outline` | `box-shadow` | Bir alt düğmeye veya kaydırıcıya, yalnızca o öğe arkasındaki kartla aynı rengi alıp görünmez kalacağı durumda eklenen dış çizgi (kaldırmak için `none` olarak ayarlayın) |
+| `--bubble-sub-button-outline` | `box-shadow` | Bir kaydırıcı alt düğmeye, yalnızca o arkasındaki kartla aynı rengi alıp ekranda orada bir kaydırıcı olduğunu gösterecek hiçbir şey kalmayacağı durumda eklenen dış çizgi (kaldırmak için `none` olarak ayarlayın) |
 | `--bubble-sub-slider-border-radius` | `px` | Kaydırıcı alt düğmeler için kenar yuvarlaklığı |
 | `--bubble-sub-slider-background-color` | `color` | Kaydırıcı alt düğmeler için arka plan rengi |
 | `--bubble-sub-slider-height` | `px` | Her zaman görünür kaydırıcı alt düğmeler için yükseklik |
-| `--bubble-sub-slider-outline` | `box-shadow` | Yalnızca kaydırıcı alt düğmelerin dış çizgisi, `--bubble-sub-button-outline` değerine geri döner |
+| `--bubble-sub-slider-outline` | `box-shadow` | Aynı dış çizgi, açıklık için korundu, `--bubble-sub-button-outline` değerine geri döner |
 | `--bubble-sub-button-dark-text-color` | `color` | Parlak alt düğme arka planlarında metin rengi |
 
 </details>

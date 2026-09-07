@@ -1307,11 +1307,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | ذیلی بٹن کے لیے بارڈر ریڈیئس |
 | `--bubble-sub-button-background-color` | `color` | ذیلی بٹن کے لیے پس منظر رنگ |
-| `--bubble-sub-button-outline` | `box-shadow` | کسی ذیلی بٹن یا سلائیڈر پر صرف اسی وقت شامل ہونے والا آؤٹ لائن جب وہ عنصر اپنے پیچھے والے کارڈ جیسا ہی رنگ اختیار کر لے، جس سے وہ نظر نہ آئے (اسے ہٹانے کے لیے `none` مقرر کریں) |
+| `--bubble-sub-button-outline` | `box-shadow` | سلائیڈر ذیلی بٹن پر صرف اسی وقت شامل ہونے والا آؤٹ لائن جب وہ اپنے پیچھے والے کارڈ جیسا ہی رنگ اختیار کر لے، جس سے اسکرین پر ایسا کچھ نہ بچے جو بتائے کہ وہاں سلائیڈر ہے (اسے ہٹانے کے لیے `none` مقرر کریں) |
 | `--bubble-sub-slider-border-radius` | `px` | سلائیڈر ذیلی بٹن کے لیے بارڈر ریڈیئس |
 | `--bubble-sub-slider-background-color` | `color` | سلائیڈر ذیلی بٹن کے لیے پس منظر رنگ |
 | `--bubble-sub-slider-height` | `px` | ہمیشہ دکھائی دینے والے سلائیڈر ذیلی بٹن کے لیے اونچائی |
-| `--bubble-sub-slider-outline` | `box-shadow` | صرف سلائیڈر ذیلی بٹن کا آؤٹ لائن، جو `--bubble-sub-button-outline` پر واپس چلا جاتا ہے |
+| `--bubble-sub-slider-outline` | `box-shadow` | وہی آؤٹ لائن، وضاحت کے لیے رکھا گیا، جو `--bubble-sub-button-outline` پر واپس چلا جاتا ہے |
 | `--bubble-sub-button-dark-text-color` | `color` | روشن ذیلی بٹن پس منظر پر متن کا رنگ |
 
 </details>

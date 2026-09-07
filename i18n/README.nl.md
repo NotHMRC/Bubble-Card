@@ -1305,11 +1305,11 @@ Slider-subknoppen ondersteunen dezelfde slideropties als knopsliders, waaronder:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Randradius voor de subknoppen |
 | `--bubble-sub-button-background-color` | `color` | Achtergrondkleur voor de subknoppen |
-| `--bubble-sub-button-outline` | `box-shadow` | Omlijning die aan een subknop of een slider wordt toegevoegd, alleen wanneer dat element dezelfde kleur krijgt als de kaart erachter, waardoor het onzichtbaar zou worden (zet op `none` om ze te verwijderen) |
+| `--bubble-sub-button-outline` | `box-shadow` | Omlijning die aan een slider-subknop wordt toegevoegd, alleen wanneer die dezelfde kleur krijgt als de kaart erachter, waardoor er niets op het scherm zou overblijven dat laat zien dat daar een slider zit (zet op `none` om ze te verwijderen) |
 | `--bubble-sub-slider-border-radius` | `px` | Randradius voor slider-subknoppen |
 | `--bubble-sub-slider-background-color` | `color` | Achtergrondkleur voor slider-subknoppen |
 | `--bubble-sub-slider-height` | `px` | Hoogte voor altijd zichtbare slider-subknoppen |
-| `--bubble-sub-slider-outline` | `box-shadow` | Omlijning van uitsluitend de slider-subknoppen, valt terug op `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Dezelfde omlijning, voor de duidelijkheid behouden, valt terug op `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstkleur op lichte subknopachtergronden |
 
 </details>

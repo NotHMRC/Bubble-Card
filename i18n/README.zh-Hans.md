@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | 子按钮的圆角半径 |
 | `--bubble-sub-button-background-color` | `color` | 子按钮的背景颜色 |
-| `--bubble-sub-button-outline` | `box-shadow` | 仅当子按钮或滑块与其背后的卡片颜色相同、会因此看不见时，才为它添加的轮廓 (设为 `none` 可移除) |
+| `--bubble-sub-button-outline` | `box-shadow` | 仅当滑块子按钮与其背后的卡片颜色相同、屏幕上再无任何东西表明那里有一个滑块时，才为它添加的轮廓 (设为 `none` 可移除) |
 | `--bubble-sub-slider-border-radius` | `px` | 滑块子按钮的圆角半径 |
 | `--bubble-sub-slider-background-color` | `color` | 滑块子按钮的背景颜色 |
 | `--bubble-sub-slider-height` | `px` | 常显滑块子按钮的高度 |
-| `--bubble-sub-slider-outline` | `box-shadow` | 仅滑块子按钮的轮廓，未设置时回退到 `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | 同一个轮廓，为清晰起见保留，未设置时回退到 `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | 明亮子按钮背景上的文字颜色 |
 
 </details>

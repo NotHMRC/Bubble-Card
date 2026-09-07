@@ -1305,11 +1305,11 @@ Nën-butonat e llojit rrëshqitës mbështesin të njëjtat opsione si rrëshqit
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Rrezja e këndeve për nën-butonat |
 | `--bubble-sub-button-background-color` | `color` | Ngjyra e sfondit për nën-butonat |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur i shtuar një nën-butoni ose një rrëshqitësi, vetëm kur ai element ngjyroset me të njëjtën ngjyrë si karta pas tij, gjë që do ta bënte të padukshëm (vendoseni në `none` për ta hequr) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur i shtuar një nën-butoni rrëshqitës, vetëm kur ai ngjyroset me të njëjtën ngjyrë si karta pas tij, gjë që nuk do të linte asgjë në ekran për të treguar se aty ka një rrëshqitës (vendoseni në `none` për ta hequr) |
 | `--bubble-sub-slider-border-radius` | `px` | Rrezja e këndeve për nën-butonat rrëshqitës |
 | `--bubble-sub-slider-background-color` | `color` | Ngjyra e sfondit për nën-butonat rrëshqitës |
 | `--bubble-sub-slider-height` | `px` | Lartësia për nën-butonat rrëshqitës gjithmonë të dukshëm |
-| `--bubble-sub-slider-outline` | `box-shadow` | Konturi vetëm i nën-butonave rrëshqitës, kthehet te `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | I njëjti kontur, i mbajtur për qartësi, kthehet te `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Ngjyra e tekstit mbi sfonde të ndritshme të nën-butonit |
 
 </details>

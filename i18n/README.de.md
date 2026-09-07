@@ -1305,11 +1305,11 @@ Slider-Sub-Buttons unterstützen dieselben Slider-Optionen wie Button-Slider, da
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Rahmenradius der Sub-Buttons |
 | `--bubble-sub-button-background-color` | `color` | Hintergrundfarbe der Sub-Buttons |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur, die einem Sub-Button oder einem Slider nur dann hinzugefügt wird, wenn dieses Element in derselben Farbe wie die Karte dahinter gezeichnet wird, was es unsichtbar machen würde (setze sie auf `none`, um sie zu entfernen) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur, die einem Slider-Sub-Button nur dann hinzugefügt wird, wenn er in derselben Farbe wie die Karte dahinter gezeichnet wird, sodass nichts auf dem Bildschirm bliebe, was zeigt, dass dort ein Slider ist (setze sie auf `none`, um sie zu entfernen) |
 | `--bubble-sub-slider-border-radius` | `px` | Rahmenradius der Slider-Sub-Buttons |
 | `--bubble-sub-slider-background-color` | `color` | Hintergrundfarbe der Slider-Sub-Buttons |
 | `--bubble-sub-slider-height` | `px` | Höhe der immer sichtbaren Slider-Sub-Buttons |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontur nur der Slider-Sub-Buttons, greift sonst auf `--bubble-sub-button-outline` zurück |
+| `--bubble-sub-slider-outline` | `box-shadow` | Dieselbe Kontur, der Klarheit halber behalten, greift sonst auf `--bubble-sub-button-outline` zurück |
 | `--bubble-sub-button-dark-text-color` | `color` | Textfarbe auf hellen Sub-Button-Hintergründen |
 
 </details>

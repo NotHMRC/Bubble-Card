@@ -1305,11 +1305,11 @@ Podgumbi tipa drsnik podpirajo enake možnosti kot drsniki gumbov, vključno z:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radij zaokrožitve robov za podgumbe |
 | `--bubble-sub-button-background-color` | `color` | Barva ozadja za podgumbe |
-| `--bubble-sub-button-outline` | `box-shadow` | Obroba, dodana podgumbu ali drsniku, samo takrat, ko se ta element izriše v isti barvi kot kartica za njim, kar bi ga naredilo nevidnega (nastavite jo na `none`, da jo odstranite) |
+| `--bubble-sub-button-outline` | `box-shadow` | Obroba, dodana podgumbu drsnika, samo takrat, ko se izriše v isti barvi kot kartica za njim, zaradi česar na zaslonu ne bi ostalo nič, kar bi kazalo, da je tam drsnik (nastavite jo na `none`, da jo odstranite) |
 | `--bubble-sub-slider-border-radius` | `px` | Radij zaokrožitve robov za podgumbe drsnika |
 | `--bubble-sub-slider-background-color` | `color` | Barva ozadja za podgumbe drsnika |
 | `--bubble-sub-slider-height` | `px` | Višina za vedno vidne podgumbe drsnika |
-| `--bubble-sub-slider-outline` | `box-shadow` | Obroba samo za podgumbe drsnika, povrne se na `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Ista obroba, ohranjena zaradi jasnosti, povrne se na `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Barva besedila na svetlih ozadjih podgumbov |
 
 </details>

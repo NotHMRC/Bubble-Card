@@ -1305,11 +1305,11 @@ Os subbotóns tipo slider admiten as mesmas opcións que os sliders de botón, i
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Raio de bordo para os subbotóns |
 | `--bubble-sub-button-background-color` | `color` | Cor de fondo para os subbotóns |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorno engadido a un subbotón ou a un control desprazable, só cando ese elemento se pinta da mesma cor que a tarxeta que ten detrás, o que o faría invisible (ponno en `none` para quitalo) |
+| `--bubble-sub-button-outline` | `box-shadow` | Contorno engadido a un subbotón tipo slider, só cando se pinta da mesma cor que a tarxeta que ten detrás, o que non deixaría nada na pantalla que indique que alí hai un slider (ponno en `none` para quitalo) |
 | `--bubble-sub-slider-border-radius` | `px` | Raio de bordo para os subbotóns tipo slider |
 | `--bubble-sub-slider-background-color` | `color` | Cor de fondo para os subbotóns tipo slider |
 | `--bubble-sub-slider-height` | `px` | Altura para os subbotóns tipo slider sempre visibles |
-| `--bubble-sub-slider-outline` | `box-shadow` | Contorno só dos subbotóns tipo slider, recorre a `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | O mesmo contorno, mantido por claridade, recorre a `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Cor do texto en fondos claros de subbotón |
 
 </details>

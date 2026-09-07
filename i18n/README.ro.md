@@ -1305,11 +1305,11 @@ Sub-butoanele de tip slider acceptă aceleași opțiuni de slider ca și slidere
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Raza de rotunjire pentru sub-butoane |
 | `--bubble-sub-button-background-color` | `color` | Culoarea de fundal pentru sub-butoane |
-| `--bubble-sub-button-outline` | `box-shadow` | Contur adăugat unui sub-buton sau unui cursor, doar când acel element se desenează în aceeași culoare ca și cardul din spate, ceea ce l-ar face invizibil (setează-l pe `none` pentru a-l elimina) |
+| `--bubble-sub-button-outline` | `box-shadow` | Contur adăugat unui sub-buton de tip slider, doar când se desenează în aceeași culoare ca și cardul din spate, ceea ce nu ar lăsa nimic pe ecran care să arate că acolo se află un slider (setează-l pe `none` pentru a-l elimina) |
 | `--bubble-sub-slider-border-radius` | `px` | Raza de rotunjire pentru sub-butoanele de tip slider |
 | `--bubble-sub-slider-background-color` | `color` | Culoarea de fundal pentru sub-butoanele de tip slider |
 | `--bubble-sub-slider-height` | `px` | Înălțimea pentru sub-butoanele de tip slider mereu vizibile |
-| `--bubble-sub-slider-outline` | `box-shadow` | Conturul doar al sub-butoanelor de tip slider, revine la `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Același contur, păstrat pentru claritate, revine la `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Culoarea textului pe fundaluri deschise ale sub-butonului |
 
 </details>

@@ -1305,11 +1305,11 @@ Subtombol slider mendukung opsi slider yang sama seperti slider tombol, termasuk
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radius sudut untuk subtombol |
 | `--bubble-sub-button-background-color` | `color` | Warna latar belakang untuk subtombol |
-| `--bubble-sub-button-outline` | `box-shadow` | Garis luar yang ditambahkan ke subtombol atau slider, hanya ketika elemen itu berwarna sama dengan kartu di belakangnya, yang akan membuatnya tak terlihat (setel ke `none` untuk menghapusnya) |
+| `--bubble-sub-button-outline` | `box-shadow` | Garis luar yang ditambahkan ke subtombol slider, hanya ketika ia berwarna sama dengan kartu di belakangnya, sehingga tidak ada yang tersisa di layar untuk menunjukkan bahwa ada slider di sana (setel ke `none` untuk menghapusnya) |
 | `--bubble-sub-slider-border-radius` | `px` | Radius sudut untuk subtombol slider |
 | `--bubble-sub-slider-background-color` | `color` | Warna latar belakang untuk subtombol slider |
 | `--bubble-sub-slider-height` | `px` | Tinggi untuk subtombol slider yang selalu terlihat |
-| `--bubble-sub-slider-outline` | `box-shadow` | Garis luar khusus subtombol slider, kembali ke `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Garis luar yang sama, dipertahankan demi kejelasan, kembali ke `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Warna teks pada latar belakang subtombol yang terang |
 
 </details>

@@ -1305,11 +1305,11 @@ Los sub-botones de tipo deslizador admiten las mismas opciones de deslizador que
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radio de borde para los sub-botones |
 | `--bubble-sub-button-background-color` | `color` | Color de fondo para los sub-botones |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorno agregado a un sub-botón o a un deslizador, solo cuando ese elemento se pinta del mismo color que la tarjeta que tiene detrás, lo que lo haría invisible (ponlo en `none` para quitarlo) |
+| `--bubble-sub-button-outline` | `box-shadow` | Contorno agregado a un sub-botón de tipo deslizador, solo cuando se pinta del mismo color que la tarjeta que tiene detrás, lo que no dejaría nada en pantalla que indique que ahí hay un deslizador (ponlo en `none` para quitarlo) |
 | `--bubble-sub-slider-border-radius` | `px` | Radio de borde para los sub-botones de tipo deslizador |
 | `--bubble-sub-slider-background-color` | `color` | Color de fondo para los sub-botones de tipo deslizador |
 | `--bubble-sub-slider-height` | `px` | Altura para los sub-botones de deslizador siempre visibles |
-| `--bubble-sub-slider-outline` | `box-shadow` | Contorno solo de los sub-botones de tipo deslizador, recurre a `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | El mismo contorno, conservado por claridad, recurre a `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Color del texto en fondos claros de sub-botones |
 
 </details>

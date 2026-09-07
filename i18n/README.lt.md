@@ -1305,11 +1305,11 @@ Slankiklio papildomi mygtukai palaiko tas pačias slankiklio parinktis kaip mygt
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Papildomų mygtukų kraštų spindulys |
 | `--bubble-sub-button-background-color` | `color` | Papildomų mygtukų fono spalva |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontūras, pridedamas papildomam mygtukui ar slankikliui, tik tada, kai tas elementas nusipiešia ta pačia spalva kaip už jo esanti kortelė, dėl ko taptų nematomas (nustatykite `none`, kad pašalintumėte) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontūras, pridedamas slankiklio papildomam mygtukui, tik tada, kai jis nusipiešia ta pačia spalva kaip už jo esanti kortelė, dėl ko ekrane neliktų nieko, kas rodytų, kad ten yra slankiklis (nustatykite `none`, kad pašalintumėte) |
 | `--bubble-sub-slider-border-radius` | `px` | Slankiklio papildomų mygtukų kraštų spindulys |
 | `--bubble-sub-slider-background-color` | `color` | Slankiklio papildomų mygtukų fono spalva |
 | `--bubble-sub-slider-height` | `px` | Visada matomo slankiklio papildomo mygtuko aukštis |
-| `--bubble-sub-slider-outline` | `box-shadow` | Tik slankiklio papildomų mygtukų kontūras, nenurodžius naudojama `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Tas pats kontūras, paliktas aiškumo dėlei, nenurodžius naudojama `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Teksto spalva ryškiuose papildomų mygtukų fonuose |
 
 </details>

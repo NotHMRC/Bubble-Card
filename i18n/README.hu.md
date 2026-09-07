@@ -1305,11 +1305,11 @@ A csúszka algombok ugyanazokat a csúszka beállításokat támogatják, mint a
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Lekerekítés az algombokhoz |
 | `--bubble-sub-button-background-color` | `color` | Háttérszín az algombokhoz |
-| `--bubble-sub-button-outline` | `box-shadow` | Körvonal, amely csak akkor kerül egy algombra vagy csúszkára, ha az adott elem ugyanolyan színnel jelenik meg, mint a mögötte lévő kártya, ami láthatatlanná tenné (állítsd `none` értékre az eltávolításához) |
+| `--bubble-sub-button-outline` | `box-shadow` | Körvonal, amely csak akkor kerül egy csúszka algombra, ha ugyanolyan színnel jelenik meg, mint a mögötte lévő kártya, így semmi nem maradna a képernyőn, ami jelezné, hogy ott csúszka van (állítsd `none` értékre az eltávolításához) |
 | `--bubble-sub-slider-border-radius` | `px` | Lekerekítés a csúszka algombokhoz |
 | `--bubble-sub-slider-background-color` | `color` | Háttérszín a csúszka algombokhoz |
 | `--bubble-sub-slider-height` | `px` | Magasság az állandóan látható csúszka algomboknál |
-| `--bubble-sub-slider-outline` | `box-shadow` | Csak a csúszka algombok körvonala, ennek hiányában a `--bubble-sub-button-outline` értékére esik vissza |
+| `--bubble-sub-slider-outline` | `box-shadow` | Ugyanaz a körvonal, az érthetőség kedvéért megtartva, ennek hiányában a `--bubble-sub-button-outline` értékére esik vissza |
 | `--bubble-sub-button-dark-text-color` | `color` | Szövegszín a világos algomb hátterek esetén |
 
 </details>

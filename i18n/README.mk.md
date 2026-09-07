@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Радиус на заоблување за подкопчињата |
 | `--bubble-sub-button-background-color` | `color` | Боја на позадина за подкопчињата |
-| `--bubble-sub-button-outline` | `box-shadow` | Контура што се додава на подкопче или лизгач, само кога тој елемент се исцртува со истата боја како картичката зад него, што би го направило невидливо (поставете `none` за да ја отстраните) |
+| `--bubble-sub-button-outline` | `box-shadow` | Контура што се додава на лизгач подкопче, само кога тоа се исцртува со истата боја како картичката зад него, поради што на екранот не би останало ништо што покажува дека таму има лизгач (поставете `none` за да ја отстраните) |
 | `--bubble-sub-slider-border-radius` | `px` | Радиус на заоблување за лизгач подкопчиња |
 | `--bubble-sub-slider-background-color` | `color` | Боја на позадина за лизгач подкопчиња |
 | `--bubble-sub-slider-height` | `px` | Висина за секогаш видливи лизгач подкопчиња |
-| `--bubble-sub-slider-outline` | `box-shadow` | Контура само на лизгач подкопчињата, се враќа на `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Истата контура, задржана заради јасност, се враќа на `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Боја на текстот на светли позадини на подкопчиња |
 
 </details>

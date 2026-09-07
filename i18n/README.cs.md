@@ -1305,11 +1305,11 @@ Posuvníková podtlačítka podporují stejné možnosti posuvníku jako posuvn�
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Zaoblení rohů podtlačítek |
 | `--bubble-sub-button-background-color` | `color` | Barva pozadí podtlačítek |
-| `--bubble-sub-button-outline` | `box-shadow` | Obrys přidaný k podtlačítku nebo posuvníku, jen když se tento prvek vykreslí ve stejné barvě jako karta za ním, což by jej učinilo neviditelným (nastavte `none` pro jeho odebrání) |
+| `--bubble-sub-button-outline` | `box-shadow` | Obrys přidaný k podtlačítku s posuvníkem, jen když se vykreslí ve stejné barvě jako karta za ním, takže by na obrazovce nezůstalo nic, co by ukazovalo, že tam posuvník je (nastavte `none` pro jeho odebrání) |
 | `--bubble-sub-slider-border-radius` | `px` | Zaoblení rohů posuvníkových podtlačítek |
 | `--bubble-sub-slider-background-color` | `color` | Barva pozadí posuvníkových podtlačítek |
 | `--bubble-sub-slider-height` | `px` | Výška vždy viditelných posuvníkových podtlačítek |
-| `--bubble-sub-slider-outline` | `box-shadow` | Obrys pouze podtlačítek s posuvníkem, jinak se použije `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Stejný obrys, ponechaný pro přehlednost, jinak se použije `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Barva textu na světlém pozadí podtlačítek |
 
 </details>

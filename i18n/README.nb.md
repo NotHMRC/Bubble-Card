@@ -1305,11 +1305,11 @@ Underknapper av typen glidebryter støtter de samme glidebrytervalgene som knapp
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Hjørneradius for underknappene |
 | `--bubble-sub-button-background-color` | `color` | Bakgrunnsfarge for underknappene |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur som legges til en underknapp eller en glidebryter, bare når det elementet tegnes i samme farge som kortet bak det, noe som ville gjort det usynlig (sett den til `none` for å fjerne den) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur som legges til en glidebryter-underknapp, bare når den tegnes i samme farge som kortet bak den, slik at ingenting ville blitt igjen på skjermen for å vise at det er en glidebryter der (sett den til `none` for å fjerne den) |
 | `--bubble-sub-slider-border-radius` | `px` | Hjørneradius for underknapper av typen glidebryter |
 | `--bubble-sub-slider-background-color` | `color` | Bakgrunnsfarge for underknapper av typen glidebryter |
 | `--bubble-sub-slider-height` | `px` | Høyde for alltid synlige underknapper av typen glidebryter |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontur bare for glidebryter-underknappene, faller tilbake på `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Samme kontur, beholdt for tydelighetens skyld, faller tilbake på `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstfarge på lyse underknapp-bakgrunner |
 
 </details>

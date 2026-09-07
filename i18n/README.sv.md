@@ -1305,11 +1305,11 @@ Skjutreglage-underknappar stöder samma skjutreglagealternativ som knappskjutreg
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Kantradie för underknapparna |
 | `--bubble-sub-button-background-color` | `color` | Bakgrundsfärg för underknapparna |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur som läggs till på en underknapp eller ett skjutreglage, bara när det elementet målas i samma färg som kortet bakom, vilket skulle göra den osynlig (sätt den till `none` för att ta bort den) |
+| `--bubble-sub-button-outline` | `box-shadow` | Kontur som läggs till på en skjutreglage-underknapp, bara när den målas i samma färg som kortet bakom, vilket inte skulle lämna något på skärmen som visar att det finns ett skjutreglage där (sätt den till `none` för att ta bort den) |
 | `--bubble-sub-slider-border-radius` | `px` | Kantradie för skjutreglage-underknappar |
 | `--bubble-sub-slider-background-color` | `color` | Bakgrundsfärg för skjutreglage-underknappar |
 | `--bubble-sub-slider-height` | `px` | Höjd för alltid synliga skjutreglage-underknappar |
-| `--bubble-sub-slider-outline` | `box-shadow` | Kontur enbart för skjutreglage-underknappar, faller tillbaka på `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Samma kontur, behållen för tydlighetens skull, faller tillbaka på `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Textfärg på ljusa underknappsbakgrunder |
 
 </details>

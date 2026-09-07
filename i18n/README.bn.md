@@ -1305,11 +1305,11 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | সাব-বাটনের বর্ডার রেডিয়াস |
 | `--bubble-sub-button-background-color` | `color` | সাব-বাটনের ব্যাকগ্রাউন্ডের রং |
-| `--bubble-sub-button-outline` | `box-shadow` | সাব-বাটন বা স্লাইডারে যোগ হওয়া রূপরেখা, কেবল তখনই যখন সেই উপাদানটি পেছনের কার্ডের মতো একই রঙে আঁকা হয় এবং অদৃশ্য হয়ে যেত (সরাতে `none` দিন) |
+| `--bubble-sub-button-outline` | `box-shadow` | স্লাইডার সাব-বাটনে যোগ হওয়া রূপরেখা, কেবল তখনই যখন সেটি পেছনের কার্ডের মতো একই রঙে আঁকা হয় এবং সেখানে যে স্লাইডার আছে তা দেখানোর মতো কিছুই পর্দায় থাকত না (সরাতে `none` দিন) |
 | `--bubble-sub-slider-border-radius` | `px` | স্লাইডার সাব-বাটনের বর্ডার রেডিয়াস |
 | `--bubble-sub-slider-background-color` | `color` | স্লাইডার সাব-বাটনের ব্যাকগ্রাউন্ডের রং |
 | `--bubble-sub-slider-height` | `px` | সবসময় দৃশ্যমান স্লাইডার সাব-বাটনের উচ্চতা |
-| `--bubble-sub-slider-outline` | `box-shadow` | কেবল স্লাইডার সাব-বাটনের রূপরেখা, না থাকলে `--bubble-sub-button-outline` ব্যবহার হয় |
+| `--bubble-sub-slider-outline` | `box-shadow` | একই রূপরেখা, স্পষ্টতার জন্য রাখা, না থাকলে `--bubble-sub-button-outline` ব্যবহার হয় |
 | `--bubble-sub-button-dark-text-color` | `color` | উজ্জ্বল সাব-বাটন ব্যাকগ্রাউন্ডে টেক্সটের রং |
 
 </details>

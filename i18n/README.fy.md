@@ -1305,11 +1305,11 @@ Skúfregelder-subknoppen stypje deselde opsjes as knop-skúfregelders, ûnder oa
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radius fan de rânen foar de subknoppen |
 | `--bubble-sub-button-background-color` | `color` | Eftergrûnkleur foar de subknoppen |
-| `--bubble-sub-button-outline` | `box-shadow` | Omline dy't oan in subknop of in skúfregeler tafoege wurdt, allinnich as dat elemint deselde kleur krijt as de kaart derefter, wat it ûnsichtber meitsje soe (set him op `none` om him fuort te heljen) |
+| `--bubble-sub-button-outline` | `box-shadow` | Omline dy't oan in skúfregeler-subknop tafoege wurdt, allinnich as dy deselde kleur krijt as de kaart derefter, wêrtroch't der neat op it skerm oerbliuwe soe dat sjen lit dat dêr in skúfregeler is (set him op `none` om him fuort te heljen) |
 | `--bubble-sub-slider-border-radius` | `px` | Radius fan de rânen foar skúfregelder-subknoppen |
 | `--bubble-sub-slider-background-color` | `color` | Eftergrûnkleur foar skúfregelder-subknoppen |
 | `--bubble-sub-slider-height` | `px` | Hichte foar altyd-sichtbere skúfregelder-subknoppen |
-| `--bubble-sub-slider-outline` | `box-shadow` | Omline fan allinnich de skúfregelder-subknoppen, falt werom op `--bubble-sub-button-outline` |
+| `--bubble-sub-slider-outline` | `box-shadow` | Deselde omline, om dúdlikens hâlden, falt werom op `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstkleur op ljochte eftergrûnen fan subknoppen |
 
 </details>
