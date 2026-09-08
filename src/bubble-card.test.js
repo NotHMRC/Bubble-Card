@@ -440,3 +440,36 @@ describe('BubbleCard and the template store', () => {
         expect(refreshTemplateStyles).not.toHaveBeenCalled();
     });
 });
+
+// The header of the more info dialog is a title, built as a switch with nothing
+// to read, so it is the one header that needs no entity. The check used to name
+// the classic style, and the Home Assistant one arrived wearing the same header.
+describe('the entity a pop-up header is asked for', () => {
+    const popUp = (extra) => ({
+        card_type: 'pop-up',
+        hash: '#chambre',
+        button_type: 'slider',
+        show_header: true,
+        modules: ['default'],
+        ...extra,
+    });
+
+    test.each(['classic', 'home-assistant'])('%s asks for none', (style) => {
+        expect(() => createCard().setConfig(popUp({ popup_style: style }))).not.toThrow();
+    });
+
+    test('a Bubble header still asks for one', () => {
+        expect(() => createCard().setConfig(popUp())).toThrow(/entity/i);
+        expect(() => createCard().setConfig(popUp({ popup_style: 'bubble' }))).toThrow(/entity/i);
+    });
+
+    test('an entity satisfies every style', () => {
+        for (const style of [undefined, 'bubble', 'classic', 'home-assistant']) {
+            expect(() => createCard().setConfig(popUp({ popup_style: style, entity: 'light.chambre' }))).not.toThrow();
+        }
+    });
+
+    test('a name header never needed one', () => {
+        expect(() => createCard().setConfig(popUp({ button_type: 'name' }))).not.toThrow();
+    });
+});

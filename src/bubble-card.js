@@ -13,6 +13,7 @@ import { awaitsPreviewHydration, notePreviewHeight, observePreviewHydration, set
 import { updatePreviewBadge } from './tools/preview-badge.js';
 import { getEntitySuggestion } from './modules/suggestions.js';
 import { registerPopupContext, shouldHoldDashboardHassUpdate } from './cards/pop-up/helpers.js';
+import { hasClassicHeader } from './cards/pop-up/style.js';
 import { shouldSkipRender, noteRender, resetRenderGate } from './tools/render-gate.js';
 import { beginTemplateRender, sweepTemplates, releaseTemplates, refreshTemplateStyles, TEMPLATE_STYLE } from './tools/render-template.js';
 import { maybeShowMigrationNotice } from './cards/pop-up/migration.js';
@@ -474,7 +475,10 @@ class BubbleCard extends HTMLElement {
     }
 
     if (workingConfig.card_type === 'pop-up') {
-      if (workingConfig.hash && workingConfig.button_type && workingConfig.button_type !== 'name' && !workingConfig.entity && workingConfig.modules && workingConfig.popup_style !== 'classic' && workingConfig.show_header !== false) {
+      // A header copying the more info dialog is a title, built as a switch with
+      // no entity to read, so it is the one shape of header that asks for none.
+      // Both styles wear it, which the exemption used to say of `classic` alone.
+      if (workingConfig.hash && workingConfig.button_type && workingConfig.button_type !== 'name' && !workingConfig.entity && workingConfig.modules && !hasClassicHeader(workingConfig) && workingConfig.show_header !== false) {
         throw new Error(tGlobal('editor.errors.entity_required'));
       }
     } else if (workingConfig.card_type === 'horizontal-buttons-stack') {
