@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { isReadOnlyEntityId } from './helpers.js';
 import setupTranslation from '../../tools/localize.js';
 import { tTemplate } from '../../editor/utils.js';
+import { hasClassicHeader } from '../../cards/pop-up/style.js';
 
 // The 'default' entry maps to an absent YAML key: the runtime then follows the
 // document direction (left fill and right value in LTR, mirrored in RTL),
@@ -65,7 +66,12 @@ export function makeButtonSliderPanel(editor) {
         editor._valueChanged(syntheticEvent);
     };
 
-    const sliderVisible = editor._config.button_type === 'slider';
+    // A pop-up wearing the header of the more info dialog is built as a switch
+    // whatever `button_type` says, so it has no slider of its own to settle.
+    // The one a sub-button carries is settled in the sub-buttons editor.
+    const headerRendersAsSwitch = editor._config.card_type === 'pop-up'
+        && hasClassicHeader(editor._config);
+    const sliderVisible = editor._config.button_type === 'slider' && !headerRendersAsSwitch;
 
     return html`
         <ha-expansion-panel outlined style="display: ${sliderVisible ? '' : 'none'}">

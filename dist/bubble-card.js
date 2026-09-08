@@ -1002,8 +1002,8 @@
                     ${e.makeShowState()}
                 </div>
             </ha-expansion-panel>
-            ${function(e){const t=(0,i.Ay)(e.hass);void 0===e._disableEntityFilter&&(e._disableEntityFilter=!1);const n="slider"===e._config.button_type;return pn.qy`
-        <ha-expansion-panel outlined style="display: ${n?"":"none"}">
+            ${function(e){const t=(0,i.Ay)(e.hass);void 0===e._disableEntityFilter&&(e._disableEntityFilter=!1);const n="pop-up"===e._config.card_type&&p(e._config),o="slider"===e._config.button_type&&!n;return pn.qy`
+        <ha-expansion-panel outlined style="display: ${o?"":"none"}">
             <h4 slot="header">
             <ha-icon icon="mdi:tune-variant"></ha-icon>
             ${t("editor.button.slider_settings")}
