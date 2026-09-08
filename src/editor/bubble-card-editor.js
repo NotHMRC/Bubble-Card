@@ -889,6 +889,7 @@ class BubbleCardEditor extends LitElement {
                         label="${label}"
                         .value="${this._config?.[configValue] || default_value}"
                         .configValue="${configValue}"
+                        .disabled=${disabled}
                         item-value-path="icon"
                         item-label-path="icon"
                         @value-changed="${this._valueChanged}"

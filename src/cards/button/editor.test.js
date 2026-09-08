@@ -20,7 +20,8 @@ function makeEditor(config) {
         _computeLabelCallback: () => '',
         _optionalLabel: (label) => `optional:${label}`,
         _valueChanged: jest.fn(),
-        makeDropdown: (label, configValue) => `[dropdown:${configValue}]`,
+        makeDropdown: (label, configValue, items, disabled) =>
+            `[dropdown:${configValue}${disabled ? ':disabled' : ''}]`,
         makeShowState: () => '[show-state]',
         makeActionPanel: (token) => `[action:${token}]`,
         makeSubButtonPanel: () => '[sub-buttons]',
@@ -49,8 +50,9 @@ describe('the button type of a pop-up header', () => {
             expect(out).not.toContain('[dropdown:button_type]');
             expect(out).not.toContain('[action:tap]');
         }
-        // The two styles wear the same header, so they ask the same questions.
-        expect(homeAssistant).toBe(classic);
+        // Same header, so the same questions, down to the one the Home Assistant
+        // style has to grey out.
+        expect(homeAssistant).toBe(classic.replace('[dropdown:icon]', '[dropdown:icon:disabled]'));
     });
 
     test('a header without a button type of its own keeps the config untouched under those styles', () => {
@@ -65,5 +67,32 @@ describe('the button type of a pop-up header', () => {
 
         expect(out).toContain('[dropdown:button_type]');
         expect(out).toContain('[action:tap]');
+    });
+});
+
+// Le style Home Assistant dessine l'en-tete du dialogue more info, un titre
+// sans icone. Laisser le champ actif laisserait croire que l'icone choisie
+// finira par s'afficher.
+describe('the icon field of a pop-up header', () => {
+    test('the Home Assistant style greys it out, since it draws no icon', () => {
+        const out = renderButtonEditor(makeEditor(popUp({ popup_style: 'home-assistant' })));
+
+        expect(out).toContain('[dropdown:icon:disabled]');
+    });
+
+    test('the Bubble and classic styles keep it, both draw one', () => {
+        for (const style of [undefined, 'bubble', 'classic']) {
+            const out = renderButtonEditor(makeEditor(popUp(style ? { popup_style: style } : {})));
+
+            expect(out).toContain('[dropdown:icon]');
+            expect(out).not.toContain('[dropdown:icon:disabled]');
+        }
+    });
+
+    test('a button card keeps it whatever a pop-up style would say', () => {
+        const out = renderButtonEditor(makeEditor({ card_type: 'button', entity: 'light.x', popup_style: 'home-assistant' }));
+
+        expect(out).toContain('[dropdown:icon]');
+        expect(out).not.toContain('[dropdown:icon:disabled]');
     });
 });

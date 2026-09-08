@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { isEntityType } from "../../tools/utils.js";
-import { hasClassicHeader } from "../pop-up/style.js";
+import { hasClassicHeader, isHomeAssistantStyle } from "../pop-up/style.js";
 import setupTranslation from '../../tools/localize.js';
 import { tTemplate } from '../../editor/utils.js';
 import { makeButtonSliderPanel } from '../../components/slider/editor.js';
@@ -45,6 +45,12 @@ export function renderButtonEditor(editor){
     // offers the button type or its actions. The config is left alone, going
     // back to the Bubble style hands the user their own value back.
     const classicHeader = isPopUp && hasClassicHeader(editor._config);
+
+    // The Home Assistant style draws the header of the more info dialog, which
+    // carries a title and no icon. The classic style does show one, so this is
+    // the narrower check of the two. The config is left alone, going back to
+    // another style hands the user their own icon back.
+    const iconIsHidden = isPopUp && isHomeAssistantStyle(editor._config);
 
     let button_type;
     if (classicHeader) {
@@ -113,7 +119,7 @@ export function renderButtonEditor(editor){
                             });
                         }}
                     ></ha-form>
-                    ${editor.makeDropdown(editor._optionalLabel(t('editor.common.icon')), "icon")}
+                    ${editor.makeDropdown(editor._optionalLabel(t('editor.common.icon')), "icon", undefined, iconIsHidden)}
                     ${editor.makeShowState()}
                 </div>
             </ha-expansion-panel>
