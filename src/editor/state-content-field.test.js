@@ -143,3 +143,34 @@ describe('the state content field', () => {
         expect(editor.makeShowState(subButton, '', 'sub_button', 0)).toContain(STATE_CONTENT_FIELD);
     });
 });
+
+// Ce style ne dessine ni icone ni fond derriere le titre, donc la couleur
+// d'accent n'a rien a teindre et l'icone n'a rien a montrer.
+describe('the switches the Home Assistant pop-up style settles', () => {
+    const ACCENT = 'editor.show.accent_color';
+    const panelFor = (config) => makeEditor(config).makeShowState();
+
+    // The attributes of a switch land between its aria-label and its closing
+    // tag, so this reads that one switch and not its neighbours.
+    const switchIsDisabled = (panel, label) => {
+        const from = panel.indexOf(`aria-label="${label}"`);
+        if (from === -1) return null;
+        return panel.slice(from, panel.indexOf('</ha-switch>', from)).includes('disabled=true');
+    };
+
+    const light = { entity: 'light.bas_tv', name: 'Kitchen 2', hash: '#kitchen2' };
+
+    test('the accent color switch is greyed out under it', () => {
+        expect(switchIsDisabled(panelFor({ card_type: 'pop-up', popup_style: 'home-assistant', ...light }), ACCENT)).toBe(true);
+    });
+
+    test('the Bubble and classic styles leave it alone, both paint a fill', () => {
+        for (const style of ['bubble', 'classic']) {
+            expect(switchIsDisabled(panelFor({ card_type: 'pop-up', popup_style: style, ...light }), ACCENT)).toBe(false);
+        }
+    });
+
+    test('a button card is never settled by a pop-up style', () => {
+        expect(switchIsDisabled(panelFor({ card_type: 'button', popup_style: 'home-assistant', ...light }), ACCENT)).toBe(false);
+    });
+});

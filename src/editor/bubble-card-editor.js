@@ -11,7 +11,7 @@ import '../components/editor/ha-selector-bc_object.js';
 import { renderButtonEditor } from '../cards/button/editor.js';
 import { renderSubButtonsEditor } from '../cards/sub-buttons/editor.js';
 import { renderPopUpEditor } from '../cards/pop-up/editor.js';
-import { hasClassicHeader } from '../cards/pop-up/style.js';
+import { hasClassicHeader, isHomeAssistantStyle } from '../cards/pop-up/style.js';
 import { renderSeparatorEditor } from '../cards/separator/editor.js';
 import { renderHorButtonStackEditor } from '../cards/horizontal-buttons-stack/editor.js';
 import { renderCoverEditor } from '../cards/cover/editor.js';
@@ -709,11 +709,12 @@ class BubbleCardEditor extends LitElement {
 
     makeShowState(context = this._config, config = '', array = false, index) {
         // The Home Assistant pop-up style copies a dialog that carries no icon
-        // before its title, so that switch shows what the style decided and
-        // refuses to be changed. The config is left alone: picking another
-        // style hands the user their own value back.
-        const iconForcedOff = this._config?.card_type === 'pop-up'
-            && this._config?.popup_style === 'home-assistant'
+        // before its title and paints no fill behind it. The switches that
+        // dress those two show what the style decided and refuse to be
+        // changed. The config is left alone: picking another style hands the
+        // user their own values back.
+        const homeAssistantHeader = this._config?.card_type === 'pop-up'
+            && isHomeAssistantStyle(this._config)
             && !array;
         const entity = context?.entity ?? this._config.entity ?? '';
         const nameButton = this._config.button_type === 'name';
@@ -815,6 +816,7 @@ class BubbleCardEditor extends LitElement {
                         aria-label="${t('editor.show.accent_color')}"
                         .checked=${context?.use_accent_color ?? false}
                         .configValue="${config + "use_accent_color"}"
+                        .disabled=${homeAssistantHeader}
                         @change="${this._valueChanged}"
                     ></ha-switch>
                     <div class="mdc-form-field">
@@ -825,8 +827,8 @@ class BubbleCardEditor extends LitElement {
             <ha-formfield>
                 <ha-switch
                     aria-label="${t('editor.show.icon')}"
-                    .disabled=${iconForcedOff}
-                    .checked=${iconForcedOff ? false : (context?.show_icon ?? true)}
+                    .disabled=${homeAssistantHeader}
+                    .checked=${homeAssistantHeader ? false : (context?.show_icon ?? true)}
                     .configValue="${config + "show_icon"}"
                     @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { show_icon: ev.target.checked }, array)}"
                 ></ha-switch>

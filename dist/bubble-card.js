@@ -4015,122 +4015,123 @@
                     ${this.makeLayoutOptions()}
                 </div>
             </ha-expansion-panel>
-        `}makeShowState(e=this._config,t="",n=!1,o){const a="pop-up"===this._config?.card_type&&"home-assistant"===this._config?.popup_style&&!n,r=e?.entity??this._config.entity??"",s="name"===this._config.button_type,l=!r,c=r?.startsWith("input_select")||r?.startsWith("select")||e.select_attribute,d="sub_button"===n||"string"==typeof n&&n.startsWith("sub_button"),u=d&&("select"===e?.sub_button_type||!e?.sub_button_type&&c),b="pop-up"===this._config?.card_type&&p(this._config),h=d||(!s||b)&&!l,m=d?"sub_button":"card",f=(0,H.OU)(e,m,r),g=e?.state_content??f??void 0,_=(0,i.Ay)(this._hassRender);return pn.qy`
+        `}makeShowState(e=this._config,t="",n=!1,o){const a="pop-up"===this._config?.card_type&&u(this._config)&&!n,r=e?.entity??this._config.entity??"",s="name"===this._config.button_type,l=!r,c=r?.startsWith("input_select")||r?.startsWith("select")||e.select_attribute,d="sub_button"===n||"string"==typeof n&&n.startsWith("sub_button"),b=d&&("select"===e?.sub_button_type||!e?.sub_button_type&&c),h="pop-up"===this._config?.card_type&&p(this._config),m=d||(!s||h)&&!l,f=d?"sub_button":"card",g=(0,H.OU)(e,f,r),_=e?.state_content??g??void 0,y=(0,i.Ay)(this._hassRender);return pn.qy`
 
             <ha-formfield>
                 <ha-switch
-                    aria-label="${_("editor.show.scrolling_effect")}"
+                    aria-label="${y("editor.show.scrolling_effect")}"
                     .checked=${e?.scrolling_effect??!0}
                     .configValue="${t+"scrolling_effect"}"
                     @change="${n?e=>this._arrayValueChange(o,{scrolling_effect:e.target.checked},n):this._valueChanged}"
                 ></ha-switch>
                 <div class="mdc-form-field">
-                    <label class="mdc-label">${_("editor.show.scrolling_effect")}</label>
+                    <label class="mdc-label">${y("editor.show.scrolling_effect")}</label>
                 </div>
             </ha-formfield>
             ${this._renderConditionalContent(d,pn.qy`
                 <ha-formfield>
                     <ha-switch
-                        aria-label="${_("editor.show.background")}"
+                        aria-label="${y("editor.show.background")}"
                         .checked=${e?.show_background??!0}
                         @change="${e=>this._arrayValueChange(o,{show_background:e.target.checked},n)}"
                     ></ha-switch>
                     <div class="mdc-form-field">
-                        <label class="mdc-label">${_("editor.show.background")}</label>
+                        <label class="mdc-label">${y("editor.show.background")}</label>
                     </div>
                 </ha-formfield>
             `)}
             ${this._renderConditionalContent(d&&(e?.show_background??!0),pn.qy`
                 <ha-formfield>
                     <ha-switch
-                        aria-label="${_("editor.show.state_background")}"
+                        aria-label="${y("editor.show.state_background")}"
                         .checked=${e?.state_background??!0}
                         @change="${e=>this._arrayValueChange(o,{state_background:e.target.checked},n)}"
                     ></ha-switch>
                     <div class="mdc-form-field">
-                        <label class="mdc-label">${_("editor.show.state_background")}</label>
+                        <label class="mdc-label">${y("editor.show.state_background")}</label>
                     </div>
                 </ha-formfield>
             `)}
             ${this._renderConditionalContent(d&&(e?.state_background??!0)&&r.startsWith("light"),pn.qy`
                 <ha-formfield>
                     <ha-switch
-                        aria-label="${_("editor.show.light_background")}"
+                        aria-label="${y("editor.show.light_background")}"
                         .checked=${e?.light_background??!0}
                         @change="${e=>this._arrayValueChange(o,{light_background:e.target.checked},n)}"
                     ></ha-switch>
                     <div class="mdc-form-field">
-                        <label class="mdc-label">${_("editor.show.light_background")}</label>
+                        <label class="mdc-label">${y("editor.show.light_background")}</label>
                     </div>
                 </ha-formfield>
             `)}
             ${this._renderConditionalContent(!d&&r.startsWith("light"),pn.qy`
                 <ha-formfield>
                     <ha-switch
-                        aria-label="${_("editor.show.accent_color")}"
+                        aria-label="${y("editor.show.accent_color")}"
                         .checked=${e?.use_accent_color??!1}
                         .configValue="${t+"use_accent_color"}"
+                        .disabled=${a}
                         @change="${this._valueChanged}"
                     ></ha-switch>
                     <div class="mdc-form-field">
-                        <label class="mdc-label">${_("editor.show.accent_color")}</label>
+                        <label class="mdc-label">${y("editor.show.accent_color")}</label>
                     </div>
                 </ha-formfield>
             `)}
             <ha-formfield>
                 <ha-switch
-                    aria-label="${_("editor.show.icon")}"
+                    aria-label="${y("editor.show.icon")}"
                     .disabled=${a}
                     .checked=${!a&&(e?.show_icon??!0)}
                     .configValue="${t+"show_icon"}"
                     @change="${n?e=>this._arrayValueChange(o,{show_icon:e.target.checked},n):this._valueChanged}"
                 ></ha-switch>
                 <div class="mdc-form-field">
-                    <label class="mdc-label">${_("editor.show.icon")}</label>
+                    <label class="mdc-label">${y("editor.show.icon")}</label>
                 </div>
             </ha-formfield>
             <ha-formfield>
                 <ha-switch
-                    aria-label="${_("editor.show.force_icon")}"
+                    aria-label="${y("editor.show.force_icon")}"
                     .checked=${e?.force_icon??!1}
                     .configValue="${t+"force_icon"}"
                     .disabled="${(s||l)&&!d}"
                     @change="${n?e=>this._arrayValueChange(o,{force_icon:e.target.checked},n):this._valueChanged}"
                 ></ha-switch>
                 <div class="mdc-form-field">
-                    <label class="mdc-label">${_("editor.show.force_icon")}</label>
+                    <label class="mdc-label">${y("editor.show.force_icon")}</label>
                 </div>
             </ha-formfield>
             <ha-formfield>
                 <ha-switch
-                    aria-label="${_("editor.show.name")}"
+                    aria-label="${y("editor.show.name")}"
                     .checked=${e?.show_name??!d}
                     .configValue="${t+"show_name"}"
                     @change="${n?e=>this._arrayValueChange(o,{show_name:e.target.checked},n):this._valueChanged}"
                 ></ha-switch>
                 <div class="mdc-form-field">
-                    <label class="mdc-label">${_("editor.show.name")}</label>
+                    <label class="mdc-label">${y("editor.show.name")}</label>
                 </div>
             </ha-formfield>
-            ${this._renderConditionalContent(h,pn.qy`
+            ${this._renderConditionalContent(m,pn.qy`
                 <ha-form
                     .hass=${this._hassRender}
-                    .data=${{state_content:g}}
+                    .data=${{state_content:_}}
                     .schema=${[{name:"state_content",selector:{ui_state_content:{entity_id:r||void 0}}}]}
-                    .computeLabel=${()=>_("editor.show.state_content")}
-                    @value-changed=${e=>{const i=e.detail?.value?.state_content,a=null==i||Array.isArray(i)&&0===i.length?f?[]:void 0:i;n?this._arrayValueChange(o,{state_content:a},n):this._valueChanged({target:{configValue:t+"state_content"},detail:{value:a}})}}
+                    .computeLabel=${()=>y("editor.show.state_content")}
+                    @value-changed=${e=>{const i=e.detail?.value?.state_content,a=null==i||Array.isArray(i)&&0===i.length?g?[]:void 0:i;n?this._arrayValueChange(o,{state_content:a},n):this._valueChanged({target:{configValue:t+"state_content"},detail:{value:a}})}}
                 ></ha-form>
             `)}
-            ${this._renderConditionalContent(u,pn.qy`
+            ${this._renderConditionalContent(b,pn.qy`
                 <ha-formfield>
                     <ha-switch
-                        aria-label="${_("editor.show.arrow")}"
+                        aria-label="${y("editor.show.arrow")}"
                         .checked=${e?.show_arrow??!0}
                         .configValue="${t+"show_arrow"}"
                         @change="${n?e=>this._arrayValueChange(o,{show_arrow:e.target.checked},n):this._valueChanged}"
                     ></ha-switch>
                     <div class="mdc-form-field">
-                        <label class="mdc-label">${_("editor.show.arrow")}</label>
+                        <label class="mdc-label">${y("editor.show.arrow")}</label>
                     </div>
                 </ha-formfield>
             `)}
