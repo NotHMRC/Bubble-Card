@@ -1,5 +1,5 @@
 import { tGlobal } from '../../tools/localize.js';
-import { getPopupStyleDefault, hasClassicHeader } from "./style.js";
+import { getPopupStyleDefault, hasClassicHeader, effectiveButtonType } from "./style.js";
 import { render } from "lit";
 import { convertToRGBA } from "../../tools/style.js";
 import { createElement, forwardHaptic } from "../../tools/utils.js";
@@ -189,9 +189,10 @@ export function renderHeaderButton(context) {
     }
 
     if (isClassicStyle) {
-      // Force switch-type: entity-based state styling, no background fill (overridden by CSS).
+      // Entity-based state styling, no background fill (overridden by CSS), and
+      // the type the editor offers for this header, from the same place.
       // Disable all tap actions so neither the icon nor the card are interactive.
-      context.config.button_type = 'switch';
+      context.config.button_type = effectiveButtonType(context.config);
       context.config.tap_action = { action: 'none' };
       context.config.double_tap_action = { action: 'none' };
       context.config.hold_action = { action: 'none' };

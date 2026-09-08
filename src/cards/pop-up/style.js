@@ -24,6 +24,18 @@ export function hasClassicHeader(config) {
     return style === POPUP_STYLE_CLASSIC || style === POPUP_STYLE_HOME_ASSISTANT;
 }
 
+// The button a card really draws. A pop-up wearing the header of the more info
+// dialog is built as a switch whatever `button_type` says, so the key alone is
+// not the answer: create.js forces it before building, and the editor has to
+// offer what that header will be rather than what the config still remembers.
+// One place, so the card and the editor cannot drift apart.
+export function effectiveButtonType(config) {
+    if (config?.card_type === 'pop-up' && hasClassicHeader(config)) {
+        return 'switch';
+    }
+    return config?.button_type;
+}
+
 // What a styling option is worth when the config leaves it out. The Home
 // Assistant style changes three of them, and both the card and the editor read
 // this table: the editor has to show what the pop-up actually does, and a

@@ -194,7 +194,8 @@ jest.unstable_mockModule('./editor.js', () => ({
     })),
 }));
 
-const { createHeader, createStructure, prepareStandaloneStructure, prepareStructure } = await import('./create.js');
+const { createHeader, createStructure, prepareStandaloneStructure, prepareStructure, renderHeaderButton } = await import('./create.js');
+const { handleButton } = await import('../../cards/button/index.js');
 
 // `location` is a read-only global under Node, so it is replaced rather than
 // assigned to.
@@ -685,5 +686,43 @@ describe('prepareStandaloneStructure', () => {
         const context = buildStandalonePopupContext();
 
         expect(context.handleWheel).toBeUndefined();
+    });
+});
+
+// The header of those styles is drawn as a switch, and the editor offers the
+// fields of a switch, both from `effectiveButtonType`. This is the card half of
+// that promise, and it also checks the config is handed back untouched.
+describe('the button type of a more info header', () => {
+    const makeContext = (config) => ({
+        config,
+        elements: { header: createMockElement('div'), name: createMockElement('div') },
+        content: createMockElement('div'),
+        shadowRoot: createMockElement('div'),
+        popUp: createMockElement('div'),
+        editor: false,
+        detectedEditor: false,
+        closest: jest.fn(() => null),
+    });
+
+    test.each(['classic', 'home-assistant'])('%s builds it as a switch and puts the config back', (style) => {
+        const config = { card_type: 'pop-up', hash: '#kitchen', popup_style: style, button_type: 'slider', name: 'Kitchen' };
+        let seen;
+        handleButton.mockImplementationOnce((context) => { seen = context.config.button_type; });
+
+        renderHeaderButton(makeContext(config));
+
+        expect(seen).toBe('switch');
+        expect(config.button_type).toBe('slider');
+    });
+
+    test('a Bubble pop-up keeps the type it was given', () => {
+        const config = { card_type: 'pop-up', hash: '#kitchen', popup_style: 'bubble', button_type: 'slider', name: 'Kitchen' };
+        let seen;
+        handleButton.mockImplementationOnce((context) => { seen = context.config.button_type; });
+
+        renderHeaderButton(makeContext(config));
+
+        expect(seen).toBe('slider');
+        expect(config.button_type).toBe('slider');
     });
 });

@@ -329,4 +329,15 @@ describe('pop-up styles', () => {
     expect(styles).toMatch(/\.is-popup-opened\s*\{[^}]*box-shadow: 0px 0px 50px rgba\(0, 0, 0, var\(--custom-shadow-opacity\)\);/);
     expect(styles).not.toMatch(/\.bubble-pop-up\.is-opening\s*,\s*\.bubble-pop-up\.is-closing\s*\{[^}]*box-shadow:\s*none\s*!important/);
   });
+
+  // The rule was written for the classic style alone, and the Home Assistant
+  // one wears the same header: without it its sub-buttons fell through to their
+  // own fallback and painted nothing at all.
+  test('both more info headers hand their sub-buttons a surface', () => {
+    const rule = styles.match(/\.bubble-pop-up\.popup-style-classic\s*>\s*\.bubble-header-container,\s*\.bubble-pop-up\.popup-style-home-assistant\s*>\s*\.bubble-header-container\s*\{([^}]*)\}/);
+
+    expect(rule).not.toBeNull();
+    expect(rule[1]).toContain('--bubble-sub-button-background-color:');
+    expect(rule[1]).toContain('--bubble-sub-slider-background-color:');
+  });
 });

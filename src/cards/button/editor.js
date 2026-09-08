@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { isEntityType } from "../../tools/utils.js";
-import { hasClassicHeader, isHomeAssistantStyle } from "../pop-up/style.js";
+import { hasClassicHeader, isHomeAssistantStyle, effectiveButtonType } from "../pop-up/style.js";
 import setupTranslation from '../../tools/localize.js';
 import { tTemplate } from '../../editor/utils.js';
 import { makeButtonSliderPanel } from '../../components/slider/editor.js';
@@ -26,16 +26,6 @@ function getButtonList(t){
 
 export function renderButtonEditor(editor){
     const t = setupTranslation(editor.hass);
-    let entityList = {};
-    if (editor._config.button_type === 'slider' && !editor._disableEntityFilter) {
-        entityList = {
-            filter: [
-                { domain: ["light", "media_player", "cover", "input_number", "number", "climate", "fan"] },
-                { domain: "sensor", device_class: "battery" },
-            ],
-        }
-    }
-
     const isPopUp = editor._config.card_type === 'pop-up';
 
     let button_action = editor._config.button_action || '';
@@ -46,21 +36,30 @@ export function renderButtonEditor(editor){
     // back to the Bubble style hands the user their own value back.
     const classicHeader = isPopUp && hasClassicHeader(editor._config);
 
+    // A card that has never been given a type gets one now. Reading the answer
+    // back through `effectiveButtonType` is what keeps this editor showing the
+    // button the card draws rather than the key the config still holds.
+    if (!classicHeader && !editor._config.button_type) {
+        editor._config.button_type = isPopUp ? 'name' : 'switch';
+    }
+    const button_type = effectiveButtonType(editor._config);
+
+    let entityList = {};
+    if (button_type === 'slider' && !editor._disableEntityFilter) {
+        entityList = {
+            filter: [
+                { domain: ["light", "media_player", "cover", "input_number", "number", "climate", "fan"] },
+                { domain: "sensor", device_class: "battery" },
+            ],
+        }
+    }
+
     // The Home Assistant style draws the header of the more info dialog, which
     // carries a title and no icon. The classic style does show one, so this is
     // the narrower check of the two. The config is left alone, going back to
     // another style hands the user their own icon back.
     const iconIsHidden = isPopUp && isHomeAssistantStyle(editor._config);
 
-    let button_type;
-    if (classicHeader) {
-        button_type = 'switch';
-    } else {
-        if (!editor._config.button_type) {
-            editor._config.button_type = isPopUp ? 'name' : 'switch';
-        }
-        button_type = editor._config.button_type;
-    }
     const buttonTypeDropdown = !classicHeader
         ? editor.makeDropdown(t('editor.common.button_type'), "button_type", getButtonList(t))
         : '';
@@ -80,7 +79,7 @@ export function renderButtonEditor(editor){
                             },
                         ]}
                 .computeLabel=${editor._computeLabelCallback}
-                .disabled="${editor._config.button_type === 'name'}"
+                .disabled="${button_type === 'name'}"
                 @value-changed=${editor._valueChanged}
             ></ha-form>` : ''}
             <ha-expansion-panel outlined>
@@ -136,7 +135,7 @@ export function renderButtonEditor(editor){
                     ${editor.makeActionPanel('hold')}
                 </div>
             </ha-expansion-panel>
-            <ha-expansion-panel outlined style="display: ${editor._config.button_type === 'slider' && editor._config.tap_to_slide ? 'none' : ''}">
+            <ha-expansion-panel outlined style="display: ${button_type === 'slider' && editor._config.tap_to_slide ? 'none' : ''}">
                 <h4 slot="header">
                 <ha-icon icon="mdi:gesture-tap-button"></ha-icon>
                 ${t('editor.actions.on_card')}
@@ -150,14 +149,14 @@ export function renderButtonEditor(editor){
                       - switch: tap="toggle", double="none", hold="more-info"
                     -->
                     ${editor.makeActionPanel('tap', button_action,
-                        editor._config.button_type === 'name' ? 'none' :
-                        editor._config.button_type === 'state' ? 'more-info' :
-                        editor._config.button_type === 'slider' ?
+                        button_type === 'name' ? 'none' :
+                        button_type === 'state' ? 'more-info' :
+                        button_type === 'slider' ?
                             (isEntityType(editor, "sensor", editor._config.entity) ? 'more-info' : 'toggle') :
                             'toggle',
                         'button_action')}
                     ${editor.makeActionPanel('double_tap', button_action, 'none', 'button_action')}
-                    ${editor._config.button_type === 'slider' && !editor._config.read_only_slider ? html`
+                    ${button_type === 'slider' && !editor._config.read_only_slider ? html`
                         <div class="bubble-info">
                             <h4 class="bubble-section-title">
                                 <ha-icon icon="mdi:information-outline"></ha-icon>
@@ -169,7 +168,7 @@ export function renderButtonEditor(editor){
                         </div>
                     ` : html`
                         ${editor.makeActionPanel('hold', button_action,
-                            editor._config.button_type === 'name' ? 'none' :
+                            button_type === 'name' ? 'none' :
                             'more-info',
                             'button_action')}
                     `}
@@ -201,13 +200,13 @@ export function renderButtonEditor(editor){
                         name: html`<b>${t('editor.button.intro_name')}</b>`
                     })}</p>
 
-                    ${editor._config.button_type === 'switch' || !editor._config.button_type ? html`
+                    ${button_type === 'switch' || !button_type ? html`
                         <p><strong>${t('editor.button.switch_title')}</strong> ${tTemplate(t('editor.button.switch_body'), {
                             section: html`<b>${t('editor.actions.on_card')}</b>`
                         })}</p>
                     ` : ''}
 
-                    ${editor._config.button_type === 'slider' ? html`
+                    ${button_type === 'slider' ? html`
                         <p><strong>${t('editor.button.slider_title')}</strong> ${t('editor.button.slider_body')}</p>
                         <p>${t('editor.button.slider_supported')}</p>
                         <ul class="icon-list">
@@ -227,11 +226,11 @@ export function renderButtonEditor(editor){
                         })}</p>
                     ` : ''}
 
-                    ${editor._config.button_type === 'state' ? html`
+                    ${button_type === 'state' ? html`
                         <p><strong>${t('editor.button.state_title')}</strong> ${t('editor.button.state_body')}</p>
                     ` : ''}
 
-                    ${editor._config.button_type === 'name' ? html`
+                    ${button_type === 'name' ? html`
                         <p><strong>${t('editor.button.name_title')}</strong> ${t('editor.button.name_body')}</p>
                     ` : ''}
                 </div>
