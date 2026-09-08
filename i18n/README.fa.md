@@ -172,7 +172,7 @@ Bubble Card یک مجموعه کارت مینیمال و قابل شخصی‌س�
 | نام | نوع | الزام | گزینه‌های پشتیبانی‌شده | توضیح |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **الزامی** | هر هش یکتا (مثلاً `'#kitchen'`) با ' ' | این نحوه باز کردن پاپ‌آپ شماست |
-| `popup_style` | string | اختیاری | `bubble` (پیش‌فرض) یا `classic` | سبک بصری پاپ‌آپ را تعریف می‌کند |
+| `popup_style` | string | اختیاری | `bubble` (پیش‌فرض)، `classic` یا `home-assistant` | سبک بصری پاپ‌آپ را تعریف می‌کند |
 | `popup_mode` | string | اختیاری | `default` (پیش‌فرض)، `fit-content`، `centered` یا `adaptive-dialog` | حالت چیدمان پاپ‌آپ را تعریف می‌کند |
 | `with_bottom_offset` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | فقط با `popup_mode: fit-content` یا `adaptive-dialog` استفاده می‌شود. یک افست پایینی را در موبایل اعمال می‌کند، مفید وقتی داشبورد شما یک کارت فوتر دارد. |
 | `full_width_on_mobile` | boolean | اختیاری | `true` یا `false` (پیش‌فرض) | فقط با `popup_mode: centered` استفاده می‌شود. پاپ‌آپ را در موبایل به عرض کامل صفحه گسترش می‌دهد، مفید برای نمایشگرهای کوچک‌تر. |

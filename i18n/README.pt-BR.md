@@ -170,7 +170,7 @@ Este cartão permite criar um pop-up com qualquer conteúdo. Cada pop-up fica **
 | Nome | Tipo | Requisito | Opções suportadas | Descrição |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obrigatório** | Qualquer hash único (por exemplo, `'#kitchen'`) com ' ' | É assim que você vai abrir seu pop-up |
-| `popup_style` | string | Opcional | `bubble` (padrão) ou `classic` | Define o estilo visual do pop-up |
+| `popup_style` | string | Opcional | `bubble` (padrão), `classic` ou `home-assistant` | Define o estilo visual do pop-up |
 | `popup_mode` | string | Opcional | `default` (padrão), `fit-content`, `centered` ou `adaptive-dialog` | Define o modo de layout do pop-up |
 | `with_bottom_offset` | boolean | Opcional | `true` ou `false` (padrão) | Usado apenas com `popup_mode: fit-content` ou `adaptive-dialog`. Aplica um deslocamento inferior no celular, útil quando seu painel inclui um cartão de rodapé. |
 | `full_width_on_mobile` | boolean | Opcional | `true` ou `false` (padrão) | Usado apenas com `popup_mode: centered`. Expande o pop-up para a largura total da tela no celular, útil em telas menores. |

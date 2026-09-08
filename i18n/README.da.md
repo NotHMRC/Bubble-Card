@@ -170,7 +170,7 @@ Dette kort giver dig mulighed for at oprette en pop-up med et vilkårligt indhol
 | Navn | Type | Krav | Understøttede muligheder | Beskrivelse |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Påkrævet** | Enhver unik hash (f.eks. `'#kitchen'`) med ' ' | Sådan åbner du din pop-up |
-| `popup_style` | string | Valgfrit | `bubble` (standard) eller `classic` | Definer pop-uppens visuelle stil |
+| `popup_style` | string | Valgfrit | `bubble` (standard), `classic` eller `home-assistant` | Definer pop-uppens visuelle stil |
 | `popup_mode` | string | Valgfrit | `default` (standard), `fit-content`, `centered` eller `adaptive-dialog` | Definer pop-uppens layouttilstand |
 | `with_bottom_offset` | boolean | Valgfrit | `true` eller `false` (standard) | Bruges kun med `popup_mode: fit-content` eller `adaptive-dialog`. Tilføjer et bundmargen på mobil, nyttigt når dit dashboard indeholder et footer-kort. |
 | `full_width_on_mobile` | boolean | Valgfrit | `true` eller `false` (standard) | Bruges kun med `popup_mode: centered`. Udvider pop-uppen til fuld skærmbredde på mobil, nyttigt på mindre skærme. |

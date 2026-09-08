@@ -170,7 +170,7 @@ Cette carte vous permet de créer une pop-up avec le contenu de votre choix. Cha
 | Nom | Type | Nécessité | Options possibles | Description |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Requis** | N'importe quel hash unique (ex. `'#kitchen'`) avec ' ' | C'est ainsi que vous ouvrirez votre pop-up |
-| `popup_style` | string | Optionnel | `bubble` (par défaut) ou `classic` | Définit le style visuel de la pop-up |
+| `popup_style` | string | Optionnel | `bubble` (par défaut), `classic` ou `home-assistant` | Définit le style visuel de la pop-up |
 | `popup_mode` | string | Optionnel | `default` (par défaut), `fit-content`, `centered` ou `adaptive-dialog` | Définit le mode de disposition de la pop-up |
 | `with_bottom_offset` | boolean | Optionnel | `true` ou `false` (par défaut) | Utilisé uniquement avec `popup_mode: fit-content` ou `adaptive-dialog`. Applique un décalage en bas sur mobile, utile lorsque votre tableau de bord comprend une carte de pied de page. |
 | `full_width_on_mobile` | boolean | Optionnel | `true` ou `false` (par défaut) | Utilisé uniquement avec `popup_mode: centered`. Étend la pop-up sur toute la largeur de l'écran sur mobile, utile sur les petits écrans. |

@@ -170,7 +170,7 @@ See kaart võimaldab luua hüpikakna suvalise sisuga. Iga hüpikaken on **vaikim
 | Nimi | Tüüp | Nõue | Toetatud väärtused | Kirjeldus |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Kohustuslik** | Iga unikaalne hash (nt `'#kitchen'`) koos ' ' | Nii avad oma hüpikakna |
-| `popup_style` | string | Valikuline | `bubble` (vaikimisi) või `classic` | Määrab hüpikakna visuaalse stiili |
+| `popup_style` | string | Valikuline | `bubble` (vaikimisi), `classic` või `home-assistant` | Määrab hüpikakna visuaalse stiili |
 | `popup_mode` | string | Valikuline | `default` (vaikimisi), `fit-content`, `centered` või `adaptive-dialog` | Määrab hüpikakna paigutuse režiimi |
 | `with_bottom_offset` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kasutatakse ainult koos `popup_mode: fit-content` või `adaptive-dialog`. Rakendab mobiilis alumise nihke, kasulik kui sinu armatuurlaual on jaluse kaart. |
 | `full_width_on_mobile` | boolean | Valikuline | `true` või `false` (vaikimisi) | Kasutatakse ainult koos `popup_mode: centered`. Laiendab hüpikakna mobiilis täisekraani laiuseks, kasulik väiksemate ekraanide korral. |

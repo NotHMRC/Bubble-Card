@@ -170,7 +170,7 @@ Esta tarjeta te permite crear un pop-up con cualquier contenido. Cada pop-up est
 | Nombre | Tipo | Requisito | Opciones admitidas | Descripción |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obligatorio** | Cualquier hash único (p. ej. `'#kitchen'`) con ' ' | Así es como abrirás tu pop-up |
-| `popup_style` | string | Opcional | `bubble` (por defecto) o `classic` | Define el estilo visual del pop-up |
+| `popup_style` | string | Opcional | `bubble` (por defecto), `classic` o `home-assistant` | Define el estilo visual del pop-up |
 | `popup_mode` | string | Opcional | `default` (por defecto), `fit-content`, `centered` o `adaptive-dialog` | Define el modo de diseño del pop-up |
 | `with_bottom_offset` | boolean | Opcional | `true` o `false` (por defecto) | Solo se usa con `popup_mode: fit-content` o `adaptive-dialog`. Aplica un offset inferior en el móvil, útil cuando tu dashboard incluye una tarjeta en modo pie de página. |
 | `full_width_on_mobile` | boolean | Opcional | `true` o `false` (por defecto) | Solo se usa con `popup_mode: centered`. Expande el pop-up a todo el ancho de la pantalla en el móvil, útil en pantallas más pequeñas. |

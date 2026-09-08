@@ -170,7 +170,7 @@ Bu kart, istediğiniz içerikle bir pop-up oluşturmanızı sağlar. Her pop-up 
 | Ad | Tür | Gereklilik | Desteklenen seçenekler | Açıklama |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Gerekli** | ' ' ile herhangi bir benzersiz hash (ör. `'#kitchen'`) | Pop-up'ınızı bu şekilde açacaksınız |
-| `popup_style` | string | İsteğe bağlı | `bubble` (varsayılan) veya `classic` | Pop-up'ın görsel stilini tanımlar |
+| `popup_style` | string | İsteğe bağlı | `bubble` (varsayılan), `classic` veya `home-assistant` | Pop-up'ın görsel stilini tanımlar |
 | `popup_mode` | string | İsteğe bağlı | `default` (varsayılan), `fit-content`, `centered` veya `adaptive-dialog` | Pop-up'ın düzen modunu tanımlar |
 | `with_bottom_offset` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | Yalnızca `popup_mode: fit-content` veya `adaptive-dialog` ile kullanılır. Mobilde alt kısma bir boşluk uygular, panonuzda bir footer kart varsa faydalıdır. |
 | `full_width_on_mobile` | boolean | İsteğe bağlı | `true` veya `false` (varsayılan) | Yalnızca `popup_mode: centered` ile kullanılır. Pop-up'ı mobilde tam ekran genişliğine genişletir, daha küçük ekranlarda faydalıdır. |

@@ -170,7 +170,7 @@ Dës Kaart erlaabt et der, e Pop-up mat egal wéi engem Inhalt z'erstellen. All 
 | Numm | Typ | Ubidder | Ënnerstëtzte Optiounen | Beschreiwung |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obligatoresch** | Egal wéi en eendeitegen Hash (z.B. `'#kitchen'`) mat ' ' | Sou méchs du däi Pop-up op |
-| `popup_style` | string | Optional | `bubble` (Standard) oder `classic` | Definéiert de visuellen Stil vum Pop-up |
+| `popup_style` | string | Optional | `bubble` (Standard), `classic` oder `home-assistant` | Definéiert de visuellen Stil vum Pop-up |
 | `popup_mode` | string | Optional | `default` (Standard), `fit-content`, `centered` oder `adaptive-dialog` | Definéiert de Layout-Modus vum Pop-up |
 | `with_bottom_offset` | boolean | Optional | `true` oder `false` (Standard) | Gëtt nëmme mat `popup_mode: fit-content` oder `adaptive-dialog` benotzt. Setzt en Ofstand ënnen um Mobil, nëtzlech wann däin Dashboard eng Footer-Kaart huet. |
 | `full_width_on_mobile` | boolean | Optional | `true` oder `false` (Standard) | Gëtt nëmme mat `popup_mode: centered` benotzt. Erweidert de Pop-up op déi voll Bildschiermbreet um Mobil, nëtzlech op méi klenge Écranen. |

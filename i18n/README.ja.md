@@ -170,7 +170,7 @@ Bubble Card は、Home Assistant 向けのミニマルでカスタマイズ可�
 | 名前 | 型 | 必須 | サポートされているオプション | 説明 |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **必須** | ' ' を含む任意の一意なハッシュ (例: `'#kitchen'`) | ポップアップを開くために使われます |
-| `popup_style` | string | 任意 | `bubble` (デフォルト) または `classic` | ポップアップの見た目のスタイルを定義します |
+| `popup_style` | string | 任意 | `bubble` (デフォルト)、`classic` または `home-assistant` | ポップアップの見た目のスタイルを定義します |
 | `popup_mode` | string | 任意 | `default` (デフォルト)、`fit-content`、`centered` または `adaptive-dialog` | ポップアップのレイアウトモードを定義します |
 | `with_bottom_offset` | boolean | 任意 | `true` または `false` (デフォルト) | `popup_mode: fit-content` または `adaptive-dialog` の場合のみ使用されます。モバイルで下部オフセットを適用します。ダッシュボードにフッターカードが含まれている場合に便利です。 |
 | `full_width_on_mobile` | boolean | 任意 | `true` または `false` (デフォルト) | `popup_mode: centered` の場合のみ使用されます。モバイルでポップアップを画面幅いっぱいに広げます。小さいディスプレイで便利です。 |

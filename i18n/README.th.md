@@ -170,7 +170,7 @@ Bubble Card คือชุดการ์ดแบบมินิมอลแ�
 | Name | Type | Requirement | Supported options | Description |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Required** | แฮชที่ไม่ซ้ำกันใด ๆ (เช่น `'#kitchen'`) โดยมี ' ' | นี่คือวิธีที่คุณจะเปิดป๊อปอัปของคุณ |
-| `popup_style` | string | Optional | `bubble` (ค่าเริ่มต้น) หรือ `classic` | กำหนดสไตล์การแสดงผลของป๊อปอัป |
+| `popup_style` | string | Optional | `bubble` (ค่าเริ่มต้น), `classic` หรือ `home-assistant` | กำหนดสไตล์การแสดงผลของป๊อปอัป |
 | `popup_mode` | string | Optional | `default` (ค่าเริ่มต้น), `fit-content`, `centered` หรือ `adaptive-dialog` | กำหนดโหมดเลย์เอาต์ของป๊อปอัป |
 | `with_bottom_offset` | boolean | Optional | `true` หรือ `false` (ค่าเริ่มต้น) | ใช้ได้เฉพาะกับ `popup_mode: fit-content` หรือ `adaptive-dialog` เท่านั้น ใช้ระยะห่างด้านล่างบนมือถือ มีประโยชน์เมื่อแดชบอร์ดของคุณมีการ์ดฟุตเตอร์ |
 | `full_width_on_mobile` | boolean | Optional | `true` หรือ `false` (ค่าเริ่มต้น) | ใช้ได้เฉพาะกับ `popup_mode: centered` เท่านั้น ขยายป๊อปอัปให้เต็มความกว้างหน้าจอบนมือถือ มีประโยชน์บนจอที่เล็กกว่า |

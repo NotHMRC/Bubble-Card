@@ -170,7 +170,7 @@
 | Όνομα | Τύπος | Απαίτηση | Υποστηριζόμενες επιλογές | Περιγραφή |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Απαιτείται** | Οποιοδήποτε μοναδικό hash (π.χ. `'#kitchen'`) με ' ' | Έτσι θα ανοίγετε το pop-up σας |
-| `popup_style` | string | Προαιρετικό | `bubble` (προεπιλογή) ή `classic` | Ορίζει το οπτικό στυλ του pop-up |
+| `popup_style` | string | Προαιρετικό | `bubble` (προεπιλογή), `classic` ή `home-assistant` | Ορίζει το οπτικό στυλ του pop-up |
 | `popup_mode` | string | Προαιρετικό | `default` (προεπιλογή), `fit-content`, `centered` ή `adaptive-dialog` | Ορίζει τη διάταξη του pop-up |
 | `with_bottom_offset` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Χρησιμοποιείται μόνο με `popup_mode: fit-content` ή `adaptive-dialog`. Εφαρμόζει μια μετατόπιση κάτω σε κινητό, χρήσιμη όταν το dashboard σας περιλαμβάνει μια κάρτα υποσέλιδου. |
 | `full_width_on_mobile` | boolean | Προαιρετικό | `true` ή `false` (προεπιλογή) | Χρησιμοποιείται μόνο με `popup_mode: centered`. Επεκτείνει το pop-up σε πλήρες πλάτος οθόνης σε κινητό, χρήσιμο σε μικρότερες οθόνες. |

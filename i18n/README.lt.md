@@ -170,7 +170,7 @@ Visos parinktys gali būti sukonfigūruotos Home Assistant redaktoriuje. Tačiau
 | Pavadinimas | Tipas | Reikalavimas | Palaikomos parinktys | Aprašymas |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Privaloma** | Bet kokia unikali maiša (pvz. `'#kitchen'`) su ' ' | Taip atidarysite savo iškylantįjį langą |
-| `popup_style` | string | Neprivaloma | `bubble` (numatyta) arba `classic` | Nustato iškylančiojo lango vizualinį stilių |
+| `popup_style` | string | Neprivaloma | `bubble` (numatyta), `classic` arba `home-assistant` | Nustato iškylančiojo lango vizualinį stilių |
 | `popup_mode` | string | Neprivaloma | `default` (numatyta), `fit-content`, `centered` arba `adaptive-dialog` | Nustato iškylančiojo lango išdėstymo režimą |
 | `with_bottom_offset` | boolean | Neprivaloma | `true` arba `false` (numatyta) | Naudojama tik su `popup_mode: fit-content` arba `adaptive-dialog`. Pritaiko apatinį poslinkį mobiliajame įrenginyje, naudinga, kai jūsų prietaisų skydelyje yra poraštės kortelė. |
 | `full_width_on_mobile` | boolean | Neprivaloma | `true` arba `false` (numatyta) | Naudojama tik su `popup_mode: centered`. Išplečia iškylantįjį langą per visą ekrano plotį mobiliajame įrenginyje, naudinga mažesniuose ekranuose. |

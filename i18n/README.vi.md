@@ -170,7 +170,7 @@ Thẻ này cho phép bạn tạo một pop-up với bất kỳ nội dung nào. 
 | Tên | Kiểu | Yêu cầu | Tùy chọn được hỗ trợ | Mô tả |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Bắt buộc** | Bất kỳ hash duy nhất nào (ví dụ: `'#kitchen'`) với ' ' | Đây là cách bạn sẽ mở pop-up của mình |
-| `popup_style` | string | Tùy chọn | `bubble` (mặc định) hoặc `classic` | Xác định kiểu hiển thị của pop-up |
+| `popup_style` | string | Tùy chọn | `bubble` (mặc định), `classic` hoặc `home-assistant` | Xác định kiểu hiển thị của pop-up |
 | `popup_mode` | string | Tùy chọn | `default` (mặc định), `fit-content`, `centered` hoặc `adaptive-dialog` | Xác định chế độ bố cục của pop-up |
 | `with_bottom_offset` | boolean | Tùy chọn | `true` hoặc `false` (mặc định) | Chỉ dùng với `popup_mode: fit-content` hoặc `adaptive-dialog`. Áp dụng một khoảng đệm dưới cùng trên di động, hữu ích khi dashboard của bạn có thẻ footer. |
 | `full_width_on_mobile` | boolean | Tùy chọn | `true` hoặc `false` (mặc định) | Chỉ dùng với `popup_mode: centered`. Mở rộng pop-up ra toàn màn hình trên di động, hữu ích trên các màn hình nhỏ hơn. |

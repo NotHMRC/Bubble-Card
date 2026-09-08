@@ -170,7 +170,7 @@ Met deze kaart kun je een pop-up met willekeurige inhoud maken. Elke pop-up is *
 | Naam | Type | Vereiste | Ondersteunde opties | Beschrijving |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Vereist** | Elke unieke hash (bijv. `'#kitchen'`) met ' ' | Hiermee open je je pop-up |
-| `popup_style` | string | Optioneel | `bubble` (standaard) of `classic` | Bepaalt de visuele stijl van de pop-up |
+| `popup_style` | string | Optioneel | `bubble` (standaard), `classic` of `home-assistant` | Bepaalt de visuele stijl van de pop-up |
 | `popup_mode` | string | Optioneel | `default` (standaard), `fit-content`, `centered` of `adaptive-dialog` | Bepaalt de lay-outmodus van de pop-up |
 | `with_bottom_offset` | boolean | Optioneel | `true` of `false` (standaard) | Alleen gebruikt met `popup_mode: fit-content` of `adaptive-dialog`. Past een onderste marge toe op mobiel, handig wanneer je dashboard een voettekstkaart bevat. |
 | `full_width_on_mobile` | boolean | Optioneel | `true` of `false` (standaard) | Alleen gebruikt met `popup_mode: centered`. Vergroot de pop-up naar de volledige schermbreedte op mobiel, handig op kleinere schermen. |

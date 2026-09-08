@@ -170,7 +170,7 @@ Ova kartica vam omogućava da napravite iskačući prozor sa bilo kakvim sadrža
 | Naziv | Tip | Zahtev | Podržane opcije | Opis |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obavezno** | Bilo koji jedinstveni heš (npr. `'#kitchen'`) sa ' ' | Ovo je način na koji ćete otvoriti svoj iskačući prozor |
-| `popup_style` | string | Opciono | `bubble` (podrazumevano) ili `classic` | Definiše vizuelni stil iskačućeg prozora |
+| `popup_style` | string | Opciono | `bubble` (podrazumevano), `classic` ili `home-assistant` | Definiše vizuelni stil iskačućeg prozora |
 | `popup_mode` | string | Opciono | `default` (podrazumevano), `fit-content`, `centered` ili `adaptive-dialog` | Definiše režim rasporeda iskačućeg prozora |
 | `with_bottom_offset` | boolean | Opciono | `true` ili `false` (podrazumevano) | Koristi se samo sa `popup_mode: fit-content` ili `adaptive-dialog`. Primenjuje donji razmak na mobilnim uređajima, korisno kada vaša tabla sadrži footer karticu. |
 | `full_width_on_mobile` | boolean | Opciono | `true` ili `false` (podrazumevano) | Koristi se samo sa `popup_mode: centered`. Proširuje iskačući prozor na punu širinu ekrana na mobilnim uređajima, korisno na manjim displejima. |

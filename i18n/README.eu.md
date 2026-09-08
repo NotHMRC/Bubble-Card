@@ -170,7 +170,7 @@ Txartel honek edukin edozein duen laster-leiho bat sortzeko aukera ematen dizu. 
 | Izena | Mota | Beharra | Onartutako aukerak | Deskribapena |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Beharrezkoa** | Edozein hash bakar (adib. `'#kitchen'`) ' ' gabe | Zure laster-leihoa irekitzeko modua da hau |
-| `popup_style` | string | Aukerakoa | `bubble` (lehenetsia) edo `classic` | Laster-leihoaren estilo bisuala definitzen du |
+| `popup_style` | string | Aukerakoa | `bubble` (lehenetsia), `classic` edo `home-assistant` | Laster-leihoaren estilo bisuala definitzen du |
 | `popup_mode` | string | Aukerakoa | `default` (lehenetsia), `fit-content`, `centered` edo `adaptive-dialog` | Laster-leihoaren diseinu modua definitzen du |
 | `with_bottom_offset` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | `popup_mode: fit-content` edo `adaptive-dialog` erabiltzen denean bakarrik erabiltzen da. Beheko desplazamendu bat aplikatzen du mugikorrean, baliagarria zure panelak orri-oina badu. |
 | `full_width_on_mobile` | boolean | Aukerakoa | `true` edo `false` (lehenetsia) | `popup_mode: centered` erabiltzen denean bakarrik erabiltzen da. Laster-leihoa pantaila osoaren zabalerara zabaltzen du mugikorrean, baliagarria pantaila txikietan. |

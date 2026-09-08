@@ -170,7 +170,7 @@ Ta karta pozwala tworzyć pop-up z dowolną zawartością. Każdy pop-up jest **
 | Nazwa | Typ | Wymagane | Obsługiwane opcje | Opis |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Wymagane** | Dowolny unikalny hash (np. `'#kitchen'`) z ' ' | Tak otworzysz swój pop-up |
-| `popup_style` | string | Opcjonalne | `bubble` (domyślnie) lub `classic` | Określa styl wizualny pop-upu |
+| `popup_style` | string | Opcjonalne | `bubble` (domyślnie), `classic` lub `home-assistant` | Określa styl wizualny pop-upu |
 | `popup_mode` | string | Opcjonalne | `default` (domyślnie), `fit-content`, `centered` lub `adaptive-dialog` | Określa tryb układu pop-upu |
 | `with_bottom_offset` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Używane tylko z `popup_mode: fit-content` lub `adaptive-dialog`. Stosuje dolny odstęp na urządzeniach mobilnych, przydatne, gdy Twój panel zawiera kartę stopki. |
 | `full_width_on_mobile` | boolean | Opcjonalne | `true` lub `false` (domyślnie) | Używane tylko z `popup_mode: centered`. Rozszerza pop-up na pełną szerokość ekranu na urządzeniach mobilnych, przydatne przy mniejszych ekranach. |

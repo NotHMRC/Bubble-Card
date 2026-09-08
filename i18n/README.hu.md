@@ -170,7 +170,7 @@ Ez a kártya lehetővé teszi, hogy bármilyen tartalommal pop-upot hozz létre.
 | Név | Típus | Kötelezőség | Támogatott opciók | Leírás |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Kötelező** | Bármilyen egyedi hash (pl. `'#kitchen'`) ' ' jelekkel | Így fogod megnyitni a pop-upodat |
-| `popup_style` | string | Nem kötelező | `bubble` (alapértelmezett) vagy `classic` | Meghatározza a pop-up vizuális stílusát |
+| `popup_style` | string | Nem kötelező | `bubble` (alapértelmezett), `classic` vagy `home-assistant` | Meghatározza a pop-up vizuális stílusát |
 | `popup_mode` | string | Nem kötelező | `default` (alapértelmezett), `fit-content`, `centered` vagy `adaptive-dialog` | Meghatározza a pop-up elrendezési módját |
 | `with_bottom_offset` | boolean | Nem kötelező | `true` vagy `false` (alapértelmezett) | Csak `popup_mode: fit-content` vagy `adaptive-dialog` esetén használatos. Alsó térközt alkalmaz mobilon, hasznos, ha az irányítópultod tartalmaz egy lábléc kártyát. |
 | `full_width_on_mobile` | boolean | Nem kötelező | `true` vagy `false` (alapértelmezett) | Csak `popup_mode: centered` esetén használatos. A pop-upot mobilon a képernyő teljes szélességére nyújtja, hasznos kisebb kijelzőkön. |

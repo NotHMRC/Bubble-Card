@@ -170,7 +170,7 @@ Este cartão permite criar um pop-up com qualquer conteúdo. Cada pop-up está *
 | Nome | Tipo | Requisito | Opções suportadas | Descrição |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obrigatório** | Qualquer hash único (por exemplo, `'#kitchen'`) com ' ' | É assim que irá abrir o seu pop-up |
-| `popup_style` | string | Opcional | `bubble` (predefinição) ou `classic` | Define o estilo visual do pop-up |
+| `popup_style` | string | Opcional | `bubble` (predefinição), `classic` ou `home-assistant` | Define o estilo visual do pop-up |
 | `popup_mode` | string | Opcional | `default` (predefinição), `fit-content`, `centered` ou `adaptive-dialog` | Define o modo de disposição do pop-up |
 | `with_bottom_offset` | boolean | Opcional | `true` ou `false` (predefinição) | Usado apenas com `popup_mode: fit-content` ou `adaptive-dialog`. Aplica um desvio inferior no telemóvel, útil quando o seu dashboard inclui um cartão de rodapé. |
 | `full_width_on_mobile` | boolean | Opcional | `true` ou `false` (predefinição) | Usado apenas com `popup_mode: centered`. Expande o pop-up para a largura total do ecrã no telemóvel, útil em ecrãs mais pequenos. |

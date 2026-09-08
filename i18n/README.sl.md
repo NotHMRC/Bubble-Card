@@ -170,7 +170,7 @@ Ta kartica vam omogoča ustvarjanje pojavnega okna s poljubno vsebino. Vsako poj
 | Ime | Tip | Zahteva | Podprte možnosti | Opis |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obvezno** | Kateri koli edinstven hash (npr. `'#kitchen'`) z ' ' | Tako boste odprli svoje pojavno okno |
-| `popup_style` | string | Neobvezno | `bubble` (privzeto) ali `classic` | Določi vizualni slog pojavnega okna |
+| `popup_style` | string | Neobvezno | `bubble` (privzeto), `classic` ali `home-assistant` | Določi vizualni slog pojavnega okna |
 | `popup_mode` | string | Neobvezno | `default` (privzeto), `fit-content`, `centered` ali `adaptive-dialog` | Določi način postavitve pojavnega okna |
 | `with_bottom_offset` | boolean | Neobvezno | `true` ali `false` (privzeto) | Uporablja se samo z `popup_mode: fit-content` ali `adaptive-dialog`. Uporabi spodnji odmik na mobilnih napravah, uporabno, kadar nadzorna plošča vključuje kartico noge. |
 | `full_width_on_mobile` | boolean | Neobvezno | `true` ali `false` (privzeto) | Uporablja se samo z `popup_mode: centered`. Razširi pojavno okno na celotno širino zaslona na mobilnih napravah, uporabno pri manjših zaslonih. |

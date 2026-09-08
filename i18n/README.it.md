@@ -170,7 +170,7 @@ Questa scheda ti permette di creare un pop-up con qualsiasi contenuto. Ogni pop-
 | Nome | Tipo | Requisito | Opzioni supportate | Descrizione |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obbligatorio** | Qualsiasi hash univoco (ad es. `'#kitchen'`) con ' ' | Questo è il modo in cui aprirai il tuo pop-up |
-| `popup_style` | string | Facoltativo | `bubble` (predefinito) o `classic` | Definisce lo stile visivo del pop-up |
+| `popup_style` | string | Facoltativo | `bubble` (predefinito), `classic` o `home-assistant` | Definisce lo stile visivo del pop-up |
 | `popup_mode` | string | Facoltativo | `default` (predefinito), `fit-content`, `centered` o `adaptive-dialog` | Definisce la modalità di layout del pop-up |
 | `with_bottom_offset` | boolean | Facoltativo | `true` o `false` (predefinito) | Usato solo con `popup_mode: fit-content` o `adaptive-dialog`. Applica un offset inferiore su mobile, utile quando la tua dashboard include una scheda a piè di pagina. |
 | `full_width_on_mobile` | boolean | Facoltativo | `true` o `false` (predefinito) | Usato solo con `popup_mode: centered`. Espande il pop-up alla larghezza piena dello schermo su mobile, utile su display più piccoli. |

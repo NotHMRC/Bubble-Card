@@ -170,7 +170,7 @@ Esta tarxeta permíteche crear un pop-up con calquera contido. Cada pop-up está
 | Nome | Tipo | Requisito | Opcións admitidas | Descrición |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obrigatorio** | Calquera hash único (por exemplo, `'#kitchen'`) con ' ' | Así é como abrirás o teu pop-up |
-| `popup_style` | string | Opcional | `bubble` (por defecto) ou `classic` | Define o estilo visual do pop-up |
+| `popup_style` | string | Opcional | `bubble` (por defecto), `classic` ou `home-assistant` | Define o estilo visual do pop-up |
 | `popup_mode` | string | Opcional | `default` (por defecto), `fit-content`, `centered` ou `adaptive-dialog` | Define o modo de disposición do pop-up |
 | `with_bottom_offset` | boolean | Opcional | `true` ou `false` (por defecto) | Só se usa con `popup_mode: fit-content` ou `adaptive-dialog`. Aplica un desprazamento inferior en móbil, útil cando o teu panel inclúe unha tarxeta de rodapé. |
 | `full_width_on_mobile` | boolean | Opcional | `true` ou `false` (por defecto) | Só se usa con `popup_mode: centered`. Expande o pop-up ao ancho completo da pantalla en móbil, útil en pantallas máis pequenas. |

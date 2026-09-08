@@ -170,7 +170,7 @@ Mae'r cerdyn hwn yn caniatáu i chi greu naidlen gydag unrhyw gynnwys. Mae pob n
 | Enw | Math | Angenrheidiol | Opsiynau a gefnogir | Disgrifiad |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Gofynnol** | Unrhyw hash unigryw (e.e. `'#kitchen'`) gyda ' ' | Dyma sut y byddwch yn agor eich naidlen |
-| `popup_style` | string | Dewisol | `bubble` (diofyn) or `classic` | Diffiniwch arddull weledol y naidlen |
+| `popup_style` | string | Dewisol | `bubble` (diofyn), `classic` or `home-assistant` | Diffiniwch arddull weledol y naidlen |
 | `popup_mode` | string | Dewisol | `default` (diofyn), `fit-content`, `centered` or `adaptive-dialog` | Diffiniwch fodd cynllun y naidlen |
 | `with_bottom_offset` | boolean | Dewisol | `true` or `false` (diofyn) | Dim ond gyda `popup_mode: fit-content` neu `adaptive-dialog` y'i defnyddir. Yn rhoi atred waelod ar symudol, defnyddiol pan fo'ch dangosfwrdd yn cynnwys cerdyn troedyn. |
 | `full_width_on_mobile` | boolean | Dewisol | `true` or `false` (diofyn) | Dim ond gyda `popup_mode: centered` y'i defnyddir. Yn ehangu'r naidlen i led llawn y sgrin ar symudol, defnyddiol ar sgriniau llai. |

@@ -172,7 +172,7 @@ Bubble Card هي مجموعة بطاقات بسيطة وقابلة للتخصي�
 | الاسم | النوع | الإلزامية | الخيارات المدعومة | الوصف |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **مطلوب** | أي رمز hash فريد (مثل `'#kitchen'`) بين علامتي ' ' | بهذه الطريقة ستفتح نافذتك المنبثقة |
-| `popup_style` | string | اختياري | `bubble` (افتراضي) أو `classic` | يحدد النمط المرئي للنافذة المنبثقة |
+| `popup_style` | string | اختياري | `bubble` (افتراضي)، `classic` أو `home-assistant` | يحدد النمط المرئي للنافذة المنبثقة |
 | `popup_mode` | string | اختياري | `default` (افتراضي)، `fit-content`، `centered` أو `adaptive-dialog` | يحدد وضع تخطيط النافذة المنبثقة |
 | `with_bottom_offset` | boolean | اختياري | `true` أو `false` (افتراضي) | يُستخدم فقط مع `popup_mode: fit-content` أو `adaptive-dialog`. يطبّق إزاحة سفلية على الهاتف، مفيد عندما تتضمن لوحة التحكم لديك بطاقة تذييل. |
 | `full_width_on_mobile` | boolean | اختياري | `true` أو `false` (افتراضي) | يُستخدم فقط مع `popup_mode: centered`. يوسّع النافذة المنبثقة لتملأ عرض الشاشة بالكامل على الهاتف، مفيد على الشاشات الأصغر. |

@@ -170,7 +170,7 @@ Vi ankaŭ povas rigardi mian YouTube-kanalon por paŝo-post-paŝaj videoj.
 | Nomo | Tipo | Postulo | Subtenataj opcioj | Priskribo |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Postulata** | Ajna unika haketilo (ekz. `'#kitchen'`) kun ' ' | Tio estas kiel vi malfermos vian ŝprucfenestron |
-| `popup_style` | string | Malnepra | `bubble` (defaŭlta) aŭ `classic` | Difinas la vidan stilon de la ŝprucfenestro |
+| `popup_style` | string | Malnepra | `bubble` (defaŭlta), `classic` aŭ `home-assistant` | Difinas la vidan stilon de la ŝprucfenestro |
 | `popup_mode` | string | Malnepra | `default` (defaŭlta), `fit-content`, `centered` aŭ `adaptive-dialog` | Difinas la aranĝan reĝimon de la ŝprucfenestro |
 | `with_bottom_offset` | boolean | Malnepra | `true` aŭ `false` (defaŭlta) | Uzata nur kun `popup_mode: fit-content` aŭ `adaptive-dialog`. Aplikas malsupran deŝovon sur poŝtelefono, utila kiam via panelo enhavas piedan karton. |
 | `full_width_on_mobile` | boolean | Malnepra | `true` aŭ `false` (defaŭlta) | Uzata nur kun `popup_mode: centered`. Vastigas la ŝprucfenestron al plena ekrana larĝo sur poŝtelefono, utila sur pli malgrandaj ekranoj. |

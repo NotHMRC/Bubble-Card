@@ -170,7 +170,7 @@ Met hierdie kaart kan jy 'n pop-up met enige inhoud skep. Elke pop-up is **by ve
 | Naam | Tipe | Vereiste | Ondersteunde opsies | Beskrywing |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Vereis** | Enige unieke hutswaarde (bv. `'#kitchen'`) met ' ' | Dit is hoe jy jou pop-up sal oopmaak |
-| `popup_style` | string | Opsioneel | `bubble` (verstek) of `classic` | Definieer die visuele styl van die pop-up |
+| `popup_style` | string | Opsioneel | `bubble` (verstek), `classic` of `home-assistant` | Definieer die visuele styl van die pop-up |
 | `popup_mode` | string | Opsioneel | `default` (verstek), `fit-content`, `centered` of `adaptive-dialog` | Definieer die uitlegmodus van die pop-up |
 | `with_bottom_offset` | boolean | Opsioneel | `true` of `false` (verstek) | Word slegs gebruik met `popup_mode: fit-content` of `adaptive-dialog`. Pas 'n onderste verskuiwing op mobiel toe, nuttig wanneer jou paneelbord 'n voettekskaart insluit. |
 | `full_width_on_mobile` | boolean | Opsioneel | `true` of `false` (verstek) | Word slegs gebruik met `popup_mode: centered`. Brei die pop-up uit tot die volle skermbreedte op mobiel, nuttig op kleiner skerms. |

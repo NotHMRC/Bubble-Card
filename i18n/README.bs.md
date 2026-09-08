@@ -170,7 +170,7 @@ Ova kartica vam omogućava da napravite skočni prozor s bilo kojim sadržajem. 
 | Naziv | Tip | Obaveznost | Podržane opcije | Opis |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obavezno** | Bilo koji jedinstveni hash (npr. `'#kitchen'`) sa ' ' | Ovako ćete otvarati svoj skočni prozor |
-| `popup_style` | string | Opcionalno | `bubble` (zadano) ili `classic` | Definiše vizuelni stil skočnog prozora |
+| `popup_style` | string | Opcionalno | `bubble` (zadano), `classic` ili `home-assistant` | Definiše vizuelni stil skočnog prozora |
 | `popup_mode` | string | Opcionalno | `default` (zadano), `fit-content`, `centered` ili `adaptive-dialog` | Definiše režim rasporeda skočnog prozora |
 | `with_bottom_offset` | boolean | Opcionalno | `true` ili `false` (zadano) | Koristi se samo uz `popup_mode: fit-content` ili `adaptive-dialog`. Primjenjuje donji pomak na mobitelu, korisno kada vaša kontrolna tabla sadrži karticu podnožja. |
 | `full_width_on_mobile` | boolean | Opcionalno | `true` ili `false` (zadano) | Koristi se samo uz `popup_mode: centered`. Proširuje skočni prozor na punu širinu ekrana na mobitelu, korisno na manjim ekranima. |

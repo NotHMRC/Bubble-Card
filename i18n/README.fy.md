@@ -170,7 +170,7 @@ Mei dizze kaart kinst in pop-up meitsje mei elke ynhâld. Elke pop-up is **stand
 | Namme | Type | Fereaske | Stipe opsjes | Beskriuwing |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Fereaske** | Elke unike hash (bgl. `'#kitchen'`) mei ' ' | Sa iepenest dyn pop-up |
-| `popup_style` | string | Opsjoneel | `bubble` (standert) of `classic` | Bepaalt it fisuele styl fan de pop-up |
+| `popup_style` | string | Opsjoneel | `bubble` (standert), `classic` of `home-assistant` | Bepaalt it fisuele styl fan de pop-up |
 | `popup_mode` | string | Opsjoneel | `default` (standert), `fit-content`, `centered` of `adaptive-dialog` | Bepaalt de yndielingsmodus fan de pop-up |
 | `with_bottom_offset` | boolean | Opsjoneel | `true` of `false` (standert) | Wurdt allinnich brûkt mei `popup_mode: fit-content` of `adaptive-dialog`. Past in offset ûnderoan ta op mobyl, nuttich ast dyn dashboard in fuottekstkaart hat. |
 | `full_width_on_mobile` | boolean | Opsjoneel | `true` of `false` (standert) | Wurdt allinnich brûkt mei `popup_mode: centered`. Fergrutet de pop-up nei folle skermbreedte op mobyl, nuttich op lytsere skermen. |

@@ -170,7 +170,7 @@ Kartu ini memungkinkan Anda membuat pop-up dengan konten apa pun. Setiap pop-up 
 | Nama | Tipe | Kebutuhan | Opsi yang didukung | Deskripsi |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Wajib** | Hash unik apa pun (misalnya `'#kitchen'`) dengan ' ' | Cara Anda membuka pop-up Anda |
-| `popup_style` | string | Opsional | `bubble` (default) atau `classic` | Menentukan gaya visual pop-up |
+| `popup_style` | string | Opsional | `bubble` (default), `classic` atau `home-assistant` | Menentukan gaya visual pop-up |
 | `popup_mode` | string | Opsional | `default` (default), `fit-content`, `centered` atau `adaptive-dialog` | Menentukan mode tata letak pop-up |
 | `with_bottom_offset` | boolean | Opsional | `true` atau `false` (default) | Hanya digunakan dengan `popup_mode: fit-content` atau `adaptive-dialog`. Menerapkan offset bawah pada mobile, berguna jika dashboard Anda menyertakan kartu footer. |
 | `full_width_on_mobile` | boolean | Opsional | `true` atau `false` (default) | Hanya digunakan dengan `popup_mode: centered`. Memperluas pop-up ke lebar layar penuh pada mobile, berguna pada layar yang lebih kecil. |

@@ -165,7 +165,7 @@ This card allows you to create a pop-up with any content. Each pop-up is **hidde
 | Name | Type | Requirement | Supported options | Description |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Required** | Any unique hash (e.g. `'#kitchen'`) with ' ' | This is how you will open your pop-up |
-| `popup_style` | string | Optional | `bubble` (default) or `classic` | Define the pop-up visual style |
+| `popup_style` | string | Optional | `bubble` (default), `classic` or `home-assistant` | Define the pop-up visual style |
 | `popup_mode` | string | Optional | `default` (default), `fit-content`, `centered` or `adaptive-dialog` | Define the pop-up layout mode |
 | `with_bottom_offset` | boolean | Optional | `true` or `false` (default) | Only used with `popup_mode: fit-content` or `adaptive-dialog`. Applies a bottom offset on mobile, useful when your dashboard includes a footer card. |
 | `full_width_on_mobile` | boolean | Optional | `true` or `false` (default) | Only used with `popup_mode: centered`. Expands the pop-up to full screen width on mobile, useful on smaller displays. |

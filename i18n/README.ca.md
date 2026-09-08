@@ -170,7 +170,7 @@ Aquesta targeta us permet crear un pop-up amb qualsevol contingut. Cada pop-up e
 | Nom | Tipus | Obligatorietat | Opcions admeses | Descripció |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obligatori** | Qualsevol hash únic (p. ex. `'#kitchen'`) amb ' ' | Així és com obrireu el vostre pop-up |
-| `popup_style` | string | Opcional | `bubble` (per defecte) o `classic` | Defineix l'estil visual del pop-up |
+| `popup_style` | string | Opcional | `bubble` (per defecte), `classic` o `home-assistant` | Defineix l'estil visual del pop-up |
 | `popup_mode` | string | Opcional | `default` (per defecte), `fit-content`, `centered` o `adaptive-dialog` | Defineix el mode de disposició del pop-up |
 | `with_bottom_offset` | boolean | Opcional | `true` o `false` (per defecte) | Només s'utilitza amb `popup_mode: fit-content` o `adaptive-dialog`. Aplica un marge inferior al mòbil, útil quan el vostre tauler inclou una targeta de peu de pàgina. |
 | `full_width_on_mobile` | boolean | Opcional | `true` o `false` (per defecte) | Només s'utilitza amb `popup_mode: centered`. Amplia el pop-up a tota l'amplada de la pantalla al mòbil, útil en pantalles petites. |

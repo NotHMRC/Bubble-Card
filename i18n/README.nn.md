@@ -170,7 +170,7 @@ Dette kortet lèt deg lage ein pop-up med kva innhald du vil. Kvar pop-up er **s
 | Namn | Type | Krav | Støtta val | Skildring |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Påkravd** | Ein unik hash (t.d. `'#kitchen'`) med ' ' | Slik opnar du pop-uppen din |
-| `popup_style` | string | Valfritt | `bubble` (standard) eller `classic` | Definerer det visuelle utsjånaden til pop-uppen |
+| `popup_style` | string | Valfritt | `bubble` (standard), `classic` eller `home-assistant` | Definerer det visuelle utsjånaden til pop-uppen |
 | `popup_mode` | string | Valfritt | `default` (standard), `fit-content`, `centered` eller `adaptive-dialog` | Definerer oppsettmodusen til pop-uppen |
 | `with_bottom_offset` | boolean | Valfritt | `true` eller `false` (standard) | Berre brukt med `popup_mode: fit-content` eller `adaptive-dialog`. Legg til ein botnforskyving på mobil, nyttig når dashbordet ditt har eit bunnkort. |
 | `full_width_on_mobile` | boolean | Valfritt | `true` eller `false` (standard) | Berre brukt med `popup_mode: centered`. Utvidar pop-uppen til full skjermbreidd på mobil, nyttig på mindre skjermar. |

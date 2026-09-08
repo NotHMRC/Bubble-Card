@@ -170,7 +170,7 @@ Dette kortet lar deg lage en pop-up med hvilket som helst innhold. Hver pop-up e
 | Navn | Type | Krav | Støttede valg | Beskrivelse |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Påkrevd** | En hvilken som helst unik hash (f.eks. `'#kitchen'`) med ' ' | Dette er hvordan du åpner pop-upen din |
-| `popup_style` | string | Valgfritt | `bubble` (standard) eller `classic` | Angir det visuelle uttrykket til pop-upen |
+| `popup_style` | string | Valgfritt | `bubble` (standard), `classic` eller `home-assistant` | Angir det visuelle uttrykket til pop-upen |
 | `popup_mode` | string | Valgfritt | `default` (standard), `fit-content`, `centered` eller `adaptive-dialog` | Angir layoutmodusen til pop-upen |
 | `with_bottom_offset` | boolean | Valgfritt | `true` eller `false` (standard) | Brukes bare med `popup_mode: fit-content` eller `adaptive-dialog`. Legger til en bunnforskyvning på mobil, nyttig når dashbordet ditt har et bunntekst-kort. |
 | `full_width_on_mobile` | boolean | Valgfritt | `true` eller `false` (standard) | Brukes bare med `popup_mode: centered`. Utvider pop-upen til full skjermbredde på mobil, nyttig på mindre skjermer. |

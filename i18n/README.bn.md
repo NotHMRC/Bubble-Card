@@ -170,7 +170,7 @@ Bubble Card হলো Home Assistant-এর জন্য একটি মিন�
 | নাম | ধরন | প্রয়োজনীয়তা | সাপোর্টেড অপশন | বর্ণনা |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **আবশ্যক** | ' ' সহ যেকোনো অনন্য হ্যাশ (যেমন `'#kitchen'`) | এভাবেই আপনি আপনার পপ-আপ খুলবেন |
-| `popup_style` | string | ঐচ্ছিক | `bubble` (ডিফল্ট) বা `classic` | পপ-আপের ভিজ্যুয়াল স্টাইল নির্ধারণ করে |
+| `popup_style` | string | ঐচ্ছিক | `bubble` (ডিফল্ট), `classic` বা `home-assistant` | পপ-আপের ভিজ্যুয়াল স্টাইল নির্ধারণ করে |
 | `popup_mode` | string | ঐচ্ছিক | `default` (ডিফল্ট), `fit-content`, `centered` বা `adaptive-dialog` | পপ-আপের লেআউট মোড নির্ধারণ করে |
 | `with_bottom_offset` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | শুধু `popup_mode: fit-content` বা `adaptive-dialog`-এর সাথে ব্যবহৃত। মোবাইলে নিচে একটি অফসেট প্রয়োগ করে, আপনার ড্যাশবোর্ডে ফুটার কার্ড থাকলে দরকারি। |
 | `full_width_on_mobile` | boolean | ঐচ্ছিক | `true` বা `false` (ডিফল্ট) | শুধু `popup_mode: centered`-এর সাথে ব্যবহৃত। মোবাইলে পপ-আপকে স্ক্রিনের পুরো প্রস্থে প্রসারিত করে, ছোট ডিসপ্লেতে দরকারি। |

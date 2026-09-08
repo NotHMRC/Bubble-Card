@@ -170,7 +170,7 @@ Det här kortet låter dig skapa en pop-up med valfritt innehåll. Varje pop-up 
 | Namn | Typ | Krav | Alternativ som stöds | Beskrivning |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Krävs** | Valfritt unikt hash (t.ex. `'#kitchen'`) med ' ' | Så här öppnar du din pop-up |
-| `popup_style` | string | Valfritt | `bubble` (standard) eller `classic` | Anger pop-upens visuella stil |
+| `popup_style` | string | Valfritt | `bubble` (standard), `classic` eller `home-assistant` | Anger pop-upens visuella stil |
 | `popup_mode` | string | Valfritt | `default` (standard), `fit-content`, `centered` eller `adaptive-dialog` | Anger pop-upens layoutläge |
 | `with_bottom_offset` | boolean | Valfritt | `true` eller `false` (standard) | Används endast med `popup_mode: fit-content` eller `adaptive-dialog`. Applicerar en nedre förskjutning på mobil, användbart när din dashboard innehåller ett sidfotskort. |
 | `full_width_on_mobile` | boolean | Valfritt | `true` eller `false` (standard) | Används endast med `popup_mode: centered`. Expanderar pop-upen till full skärmbredd på mobil, användbart på mindre skärmar. |

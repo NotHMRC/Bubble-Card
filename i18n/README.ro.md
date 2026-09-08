@@ -170,7 +170,7 @@ Acest card îți permite să creezi un pop-up cu orice conținut. Fiecare pop-up
 | Nume | Tip | Cerință | Opțiuni acceptate | Descriere |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obligatoriu** | Orice hash unic (de ex. `'#kitchen'`) cu ' ' | Așa vei deschide pop-up-ul tău |
-| `popup_style` | string | Opțional | `bubble` (implicit) sau `classic` | Definește stilul vizual al pop-up-ului |
+| `popup_style` | string | Opțional | `bubble` (implicit), `classic` sau `home-assistant` | Definește stilul vizual al pop-up-ului |
 | `popup_mode` | string | Opțional | `default` (implicit), `fit-content`, `centered` sau `adaptive-dialog` | Definește modul de aspect al pop-up-ului |
 | `with_bottom_offset` | boolean | Opțional | `true` sau `false` (implicit) | Folosit doar cu `popup_mode: fit-content` sau `adaptive-dialog`. Aplică un decalaj (offset) în partea de jos pe mobil, util când dashboard-ul tău include un card de subsol. |
 | `full_width_on_mobile` | boolean | Opțional | `true` sau `false` (implicit) | Folosit doar cu `popup_mode: centered`. Extinde pop-up-ul la lățimea completă a ecranului pe mobil, util pe ecrane mai mici. |

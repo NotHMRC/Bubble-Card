@@ -170,7 +170,7 @@ Hægt er að stilla alla valkosti í Home Assistant ritlinum. En þú finnur ná
 | Heiti | Tegund | Krafa | Studdir valkostir | Lýsing |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Skylda** | Hvaða einkvæmt hash sem er (t.d. `'#kitchen'`) með ' ' | Þannig opnar þú sprettiglugga þinn |
-| `popup_style` | string | Valfrjálst | `bubble` (sjálfgefið) eða `classic` | Skilgreinir sjónrænan stíl sprettigluggans |
+| `popup_style` | string | Valfrjálst | `bubble` (sjálfgefið), `classic` eða `home-assistant` | Skilgreinir sjónrænan stíl sprettigluggans |
 | `popup_mode` | string | Valfrjálst | `default` (sjálfgefið), `fit-content`, `centered` eða `adaptive-dialog` | Skilgreinir útlitsham sprettigluggans |
 | `with_bottom_offset` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Aðeins notað með `popup_mode: fit-content` eða `adaptive-dialog`. Bætir við neðri spássíu á farsíma, gagnlegt þegar mælaborðið þitt inniheldur fótarkort. |
 | `full_width_on_mobile` | boolean | Valfrjálst | `true` eða `false` (sjálfgefið) | Aðeins notað með `popup_mode: centered`. Stækkar sprettigluggann í fulla skjábreidd á farsíma, gagnlegt á minni skjám. |

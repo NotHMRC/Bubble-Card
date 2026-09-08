@@ -170,7 +170,7 @@ Visas opcijas var konfigurēt Home Assistant redaktorā. Bet zemāk esošajā do
 | Nosaukums | Tips | Prasība | Atbalstītās opcijas | Apraksts |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Obligāts** | Jebkurš unikāls hash (piemēram, `'#kitchen'`) ar ' ' | Šādi jūs atvērsiet savu uznirstošo logu |
-| `popup_style` | string | Neobligāts | `bubble` (noklusējums) vai `classic` | Nosaka uznirstošā loga vizuālo stilu |
+| `popup_style` | string | Neobligāts | `bubble` (noklusējums), `classic` vai `home-assistant` | Nosaka uznirstošā loga vizuālo stilu |
 | `popup_mode` | string | Neobligāts | `default` (noklusējums), `fit-content`, `centered` vai `adaptive-dialog` | Nosaka uznirstošā loga izkārtojuma režīmu |
 | `with_bottom_offset` | boolean | Neobligāts | `true` vai `false` (noklusējums) | Izmanto tikai kopā ar `popup_mode: fit-content` vai `adaptive-dialog`. Pielieto apakšējo nobīdi mobilajā ierīcē, noderīgi, ja jūsu vadības panelim ir kājene. |
 | `full_width_on_mobile` | boolean | Neobligāts | `true` vai `false` (noklusējums) | Izmanto tikai kopā ar `popup_mode: centered`. Izplata uznirstošo logu pilnā ekrāna platumā mobilajā ierīcē, noderīgi mazākiem displejiem. |

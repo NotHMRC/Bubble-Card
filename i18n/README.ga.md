@@ -170,7 +170,7 @@ Ligeann an cárta seo duit preabfhuinneog a chruthú le hábhar ar bith. Bíonn 
 | Ainm | Cineál | Riachtanas | Roghanna a dtacaítear leo | Cur síos |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Riachtanach** | Aon hais uathúil (m.sh. `'#kitchen'`) le ' ' | Seo mar a osclóidh tú do phreabfhuinneog |
-| `popup_style` | string | Roghnach | `bubble` (réamhshocraithe) nó `classic` | Sainigh stíl amhairc na preabfhuinneoige |
+| `popup_style` | string | Roghnach | `bubble` (réamhshocraithe), `classic` nó `home-assistant` | Sainigh stíl amhairc na preabfhuinneoige |
 | `popup_mode` | string | Roghnach | `default` (réamhshocraithe), `fit-content`, `centered` nó `adaptive-dialog` | Sainigh mód leagan amach na preabfhuinneoige |
 | `with_bottom_offset` | boolean | Roghnach | `true` nó `false` (réamhshocraithe) | Ní úsáidtear é ach le `popup_mode: fit-content` nó `adaptive-dialog`. Cuireann sé fritháireamh bun i bhfeidhm ar an bhfón póca, úsáideach nuair a bhíonn cárta buntásc i do dhaisbord. |
 | `full_width_on_mobile` | boolean | Roghnach | `true` nó `false` (réamhshocraithe) | Ní úsáidtear é ach le `popup_mode: centered`. Leathnaíonn sé an phreabfhuinneog go leithead iomlán an scáileáin ar an bhfón póca, úsáideach ar scáileáin níos lú. |

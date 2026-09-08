@@ -170,7 +170,7 @@ Mit dieser Karte kannst du ein Pop-up mit beliebigem Inhalt erstellen. Jedes Pop
 | Name | Typ | Erforderlichkeit | Unterstützte Optionen | Beschreibung |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Erforderlich** | Ein beliebiger eindeutiger Hash (z. B. `'#kitchen'`) mit ' ' | So wirst du dein Pop-up öffnen |
-| `popup_style` | string | Optional | `bubble` (Standard) oder `classic` | Legt den visuellen Stil des Pop-ups fest |
+| `popup_style` | string | Optional | `bubble` (Standard), `classic` oder `home-assistant` | Legt den visuellen Stil des Pop-ups fest |
 | `popup_mode` | string | Optional | `default` (Standard), `fit-content`, `centered` oder `adaptive-dialog` | Legt den Layout-Modus des Pop-ups fest |
 | `with_bottom_offset` | boolean | Optional | `true` oder `false` (Standard) | Nur zusammen mit `popup_mode: fit-content` oder `adaptive-dialog` verwendet. Wendet auf Mobilgeräten einen unteren Abstand an, nützlich, wenn dein Dashboard eine Fußzeilenkarte enthält. |
 | `full_width_on_mobile` | boolean | Optional | `true` oder `false` (Standard) | Nur zusammen mit `popup_mode: centered` verwendet. Erweitert das Pop-up auf Mobilgeräten auf die volle Bildschirmbreite, nützlich auf kleineren Displays. |

@@ -170,7 +170,7 @@ Bubble Card, Home Assistant के लिए एक न्यूनतम और
 | नाम | प्रकार | आवश्यकता | समर्थित विकल्प | विवरण |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **आवश्यक** | कोई भी यूनिक hash (जैसे `'#kitchen'`) ' ' के साथ | आप इसी से अपना पॉप-अप खोलेंगे |
-| `popup_style` | string | वैकल्पिक | `bubble` (डिफ़ॉल्ट) या `classic` | पॉप-अप की विज़ुअल स्टाइल तय करें |
+| `popup_style` | string | वैकल्पिक | `bubble` (डिफ़ॉल्ट), `classic` या `home-assistant` | पॉप-अप की विज़ुअल स्टाइल तय करें |
 | `popup_mode` | string | वैकल्पिक | `default` (डिफ़ॉल्ट), `fit-content`, `centered` या `adaptive-dialog` | पॉप-अप का लेआउट मोड तय करें |
 | `with_bottom_offset` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | केवल `popup_mode: fit-content` या `adaptive-dialog` के साथ इस्तेमाल होता है। मोबाइल पर बॉटम ऑफसेट लागू करता है, यह तब उपयोगी है जब आपके डैशबोर्ड में फुटर कार्ड शामिल हो। |
 | `full_width_on_mobile` | boolean | वैकल्पिक | `true` या `false` (डिफ़ॉल्ट) | केवल `popup_mode: centered` के साथ इस्तेमाल होता है। पॉप-अप को मोबाइल पर पूरी स्क्रीन चौड़ाई तक बढ़ाता है, छोटी डिस्प्ले पर उपयोगी। |

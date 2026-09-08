@@ -170,7 +170,7 @@ Táto karta umožňuje vytvoriť pop-up s akýmkoľvek obsahom. Každý pop-up j
 | Názov | Typ | Požiadavka | Podporované možnosti | Popis |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Povinné** | Akýkoľvek jedinečný hash (napr. `'#kitchen'`) s ' ' | Takto svoj pop-up otvoríte |
-| `popup_style` | string | Voliteľné | `bubble` (predvolené) alebo `classic` | Určuje vizuálny štýl pop-upu |
+| `popup_style` | string | Voliteľné | `bubble` (predvolené), `classic` alebo `home-assistant` | Určuje vizuálny štýl pop-upu |
 | `popup_mode` | string | Voliteľné | `default` (predvolené), `fit-content`, `centered` alebo `adaptive-dialog` | Určuje režim rozloženia pop-upu |
 | `with_bottom_offset` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Používa sa iba s `popup_mode: fit-content` alebo `adaptive-dialog`. Aplikuje spodný odsadenie na mobile, užitočné, keď váš dashboard obsahuje pätu karty. |
 | `full_width_on_mobile` | boolean | Voliteľné | `true` alebo `false` (predvolené) | Používa sa iba s `popup_mode: centered`. Rozšíri pop-up na celú šírku obrazovky na mobile, užitočné na menších displejoch. |

@@ -172,7 +172,7 @@ Bubble Card היא אוסף כרטיסים מינימליסטי וניתן לה�
 | שם | סוג | דרישה | אפשרויות נתמכות | תיאור |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **חובה** | כל hash ייחודי (למשל `'#kitchen'`) עם ' ' | כך תפתחו את החלון הקופץ שלכם |
-| `popup_style` | string | אופציונלי | `bubble` (ברירת מחדל) או `classic` | הגדרת הסגנון החזותי של החלון הקופץ |
+| `popup_style` | string | אופציונלי | `bubble` (ברירת מחדל), `classic` או `home-assistant` | הגדרת הסגנון החזותי של החלון הקופץ |
 | `popup_mode` | string | אופציונלי | `default` (ברירת מחדל), `fit-content`, `centered` או `adaptive-dialog` | הגדרת מצב הפריסה של החלון הקופץ |
 | `with_bottom_offset` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | בשימוש רק עם `popup_mode: fit-content` או `adaptive-dialog`. מחיל היסט תחתון בנייד, שימושי כאשר לוח המחוונים שלכם כולל כרטיס כותרת תחתונה. |
 | `full_width_on_mobile` | boolean | אופציונלי | `true` או `false` (ברירת מחדל) | בשימוש רק עם `popup_mode: centered`. מרחיב את החלון הקופץ לרוחב מסך מלא בנייד, שימושי במסכים קטנים יותר. |

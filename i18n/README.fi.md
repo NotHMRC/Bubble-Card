@@ -170,7 +170,7 @@ Tämä kortti antaa sinun luoda ponnahdusikkunan minkä tahansa sisällön kanss
 | Nimi | Tyyppi | Vaatimus | Tuetut valinnat | Kuvaus |
 | --- | --- | --- | --- | --- |
 | `hash` | string | **Pakollinen** | Mikä tahansa yksilöllinen hash (esim. `'#kitchen'`) heittomerkeillä ' ' | Näin avaat ponnahdusikkunasi |
-| `popup_style` | string | Valinnainen | `bubble` (oletus) tai `classic` | Määrittää ponnahdusikkunan visuaalisen tyylin |
+| `popup_style` | string | Valinnainen | `bubble` (oletus), `classic` tai `home-assistant` | Määrittää ponnahdusikkunan visuaalisen tyylin |
 | `popup_mode` | string | Valinnainen | `default` (oletus), `fit-content`, `centered` tai `adaptive-dialog` | Määrittää ponnahdusikkunan asettelutilan |
 | `with_bottom_offset` | boolean | Valinnainen | `true` tai `false` (oletus) | Käytetään vain asetuksen `popup_mode: fit-content` tai `adaptive-dialog` kanssa. Lisää alamarginaalin mobiilissa, hyödyllinen kun kojelaudassasi on alatunnistekortti. |
 | `full_width_on_mobile` | boolean | Valinnainen | `true` tai `false` (oletus) | Käytetään vain asetuksen `popup_mode: centered` kanssa. Laajentaa ponnahdusikkunan koko näytön leveyteen mobiilissa, hyödyllinen pienemmillä näytöillä. |
