@@ -113,6 +113,27 @@ describe('the state content field', () => {
 
     test('a name button is not either, entity or not', () => {
         expect(showsStateContent({ card_type: 'button', button_type: 'name', entity: 'light.kitchen' })).toBe(false);
+        expect(showsStateContent({ card_type: 'pop-up', hash: '#home', button_type: 'name', entity: 'light.kitchen' })).toBe(false);
+    });
+
+    // The card builds these headers as a switch whatever `button_type` says, so
+    // they draw a state line and the editor cannot pretend otherwise.
+    test('a pop-up wearing the more info header is asked, name button or not', () => {
+        for (const style of ['classic', 'home-assistant']) {
+            expect(showsStateContent({
+                card_type: 'pop-up', hash: '#kitchen2', popup_style: style,
+                button_type: 'name', name: 'Kitchen 2', entity: 'light.bas_tv',
+            })).toBe(true);
+        }
+    });
+
+    test('but only when it has an entity to describe', () => {
+        for (const style of ['classic', 'home-assistant']) {
+            expect(showsStateContent({
+                card_type: 'pop-up', hash: '#rooms', popup_style: style,
+                button_type: 'name', name: 'Rooms',
+            })).toBe(false);
+        }
     });
 
     test('a sub-button keeps its field, its line can hold a template of its own', () => {

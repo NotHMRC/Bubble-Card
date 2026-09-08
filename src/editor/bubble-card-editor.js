@@ -11,6 +11,7 @@ import '../components/editor/ha-selector-bc_object.js';
 import { renderButtonEditor } from '../cards/button/editor.js';
 import { renderSubButtonsEditor } from '../cards/sub-buttons/editor.js';
 import { renderPopUpEditor } from '../cards/pop-up/editor.js';
+import { hasClassicHeader } from '../cards/pop-up/style.js';
 import { renderSeparatorEditor } from '../cards/separator/editor.js';
 import { renderHorButtonStackEditor } from '../cards/horizontal-buttons-stack/editor.js';
 import { renderCoverEditor } from '../cards/cover/editor.js';
@@ -727,7 +728,19 @@ class BubbleCardEditor extends LitElement {
         // its tile card. Without a key the picker shows what the card shows by
         // default, and clearing it writes an empty list where that default
         // would otherwise come back. The line describes an entity, so a card
-        // without one, a pop-up header for instance, is not asked about it.
+        // without one is not asked about it. Having one is the whole condition:
+        // a `name` button draws no line on its own, but it draws the one it is
+        // given, and a pop-up header wearing the more info look is built as a
+        // switch whatever `button_type` says.
+        // A pop-up wearing the more info header is built as a switch whatever
+        // `button_type` says, see the forcing in pop-up/create.js, so it draws a
+        // state line and the editor has to offer it. Everywhere else a `name`
+        // button keeps its own answer.
+        const headerRendersAsSwitch = this._config?.card_type === 'pop-up'
+            && hasClassicHeader(this._config);
+        const showsStateContent = isSubButton
+            || ((!nameButton || headerRendersAsSwitch) && !noEntity);
+
         const stateContentKind = isSubButton ? 'sub_button' : 'card';
         const stateContentDefault = defaultStateContent(context, stateContentKind, entity);
         const stateContentValue = context?.state_content ?? stateContentDefault ?? undefined;
@@ -844,7 +857,7 @@ class BubbleCardEditor extends LitElement {
                     <label class="mdc-label">${t('editor.show.name')}</label>
                 </div>
             </ha-formfield>
-            ${this._renderConditionalContent(isSubButton || (!nameButton && !noEntity), html`
+            ${this._renderConditionalContent(showsStateContent, html`
                 <ha-form
                     .hass=${this._hassRender}
                     .data=${{ state_content: stateContentValue }}
