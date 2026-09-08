@@ -841,7 +841,7 @@ class BubbleCardEditor extends LitElement {
                     aria-label="${t('editor.show.force_icon')}"
                     .checked=${context?.force_icon ?? false}
                     .configValue="${config + "force_icon"}"
-                    .disabled="${(nameButton || noEntity) && !isSubButton}"
+                    .disabled="${homeAssistantHeader || ((nameButton || noEntity) && !isSubButton)}"
                     @change="${!array ? this._valueChanged : (ev) => this._arrayValueChange(index, { force_icon: ev.target.checked }, array)}"
                 ></ha-switch>
                 <div class="mdc-form-field">

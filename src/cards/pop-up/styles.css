@@ -544,7 +544,11 @@
     display: none !important;
 }
 
-.bubble-pop-up.popup-style-classic > .bubble-header-container {
+/* Both styles wear the header of the more info dialog, so both give its
+   sub-buttons a surface of their own. Without this the Home Assistant one left
+   them to their own fallback and they painted nothing at all. */
+.bubble-pop-up.popup-style-classic > .bubble-header-container,
+.bubble-pop-up.popup-style-home-assistant > .bubble-header-container {
     --bubble-sub-button-background-color: var(--bubble-main-background-color, var(--background-color-2, var(--secondary-background-color)));
     --bubble-sub-slider-background-color: var(--bubble-main-background-color, var(--background-color-2, var(--secondary-background-color)));
 }

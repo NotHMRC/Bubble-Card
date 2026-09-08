@@ -155,7 +155,9 @@ describe('the switches the Home Assistant pop-up style settles', () => {
     const switchIsDisabled = (panel, label) => {
         const from = panel.indexOf(`aria-label="${label}"`);
         if (from === -1) return null;
-        return panel.slice(from, panel.indexOf('</ha-switch>', from)).includes('disabled=true');
+        // Some bindings are quoted in the template and some are not, so the
+        // rendered text is `disabled=true` or `disabled="true"`.
+        return /disabled="?true/.test(panel.slice(from, panel.indexOf('</ha-switch>', from)));
     };
 
     const light = { entity: 'light.bas_tv', name: 'Kitchen 2', hash: '#kitchen2' };
@@ -172,5 +174,17 @@ describe('the switches the Home Assistant pop-up style settles', () => {
 
     test('a button card is never settled by a pop-up style', () => {
         expect(switchIsDisabled(panelFor({ card_type: 'button', popup_style: 'home-assistant', ...light }), ACCENT)).toBe(false);
+    });
+
+    // Same reason as the accent color: there is no icon left to prefer over an
+    // entity picture. A `name` button greys it out on its own, so this reads a
+    // `switch` one, where only the style can.
+    test('the icon priority switch is greyed out under it too', () => {
+        const FORCE = 'editor.show.force_icon';
+        const withSwitch = { ...light, button_type: 'switch' };
+
+        expect(switchIsDisabled(panelFor({ card_type: 'pop-up', popup_style: 'home-assistant', ...withSwitch }), FORCE)).toBe(true);
+        expect(switchIsDisabled(panelFor({ card_type: 'pop-up', popup_style: 'classic', ...withSwitch }), FORCE)).toBe(false);
+        expect(switchIsDisabled(panelFor({ card_type: 'button', ...withSwitch }), FORCE)).toBe(false);
     });
 });
