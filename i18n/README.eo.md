@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Rondeco de anguloj por la subbutonoj |
 | `--bubble-sub-button-background-color` | `color` | Fona koloro por la subbutonoj |
-| `--bubble-sub-button-outline` | `box-shadow` | Konturo aldonata al ŝovila subbutono, nur kiam ĝi estas pentrata en la sama koloro kiel la karto malantaŭ ĝi, kio lasus nenion sur la ekrano por montri, ke tie estas ŝovilo (agordu ĝin al `none` por forigi ĝin) |
 | `--bubble-sub-slider-border-radius` | `px` | Rondeco de anguloj por ŝovilaj subbutonoj |
 | `--bubble-sub-slider-background-color` | `color` | Fona koloro por ŝovilaj subbutonoj |
 | `--bubble-sub-slider-height` | `px` | Alto por ĉiam-videblaj ŝovilaj subbutonoj |
-| `--bubble-sub-slider-outline` | `box-shadow` | La sama konturo, konservita por klareco, retropaŝas al `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Teksta koloro sur helaj fonoj de subbutonoj |
 
 </details>

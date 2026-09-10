@@ -1305,11 +1305,9 @@ Slaideri alamnupud toetavad samu slaideri valikuid, mis nupu slaiderid, sealhulg
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Alamnuppude joonte raadius |
 | `--bubble-sub-button-background-color` | `color` | Alamnuppude taustavärv |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontuur, mis lisatakse liuguriga alamnupule, ainult siis, kui see joonistub sama värvi kui kaart selle taga, mistõttu ei jääks ekraanile midagi, mis näitaks, et seal on liugur (määra `none`, et see eemaldada) |
 | `--bubble-sub-slider-border-radius` | `px` | Slaideri alamnuppude joonte raadius |
 | `--bubble-sub-slider-background-color` | `color` | Slaideri alamnuppude taustavärv |
 | `--bubble-sub-slider-height` | `px` | Alati nähtavate slaideri alamnuppude kõrgus |
-| `--bubble-sub-slider-outline` | `box-shadow` | Sama kontuur, selguse huvides alles hoitud, muidu kasutatakse `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Teksti värv heledatel alamnupu taustadel |
 
 </details>

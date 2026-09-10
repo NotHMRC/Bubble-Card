@@ -1305,11 +1305,9 @@ Liukusäädin-alipainikkeet tukevat samoja liukusäätimen asetuksia kuin painik
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Alipainikkeiden kulmien pyöristys |
 | `--bubble-sub-button-background-color` | `color` | Alipainikkeiden taustaväri |
-| `--bubble-sub-button-outline` | `box-shadow` | Ääriviiva joka lisätään liukusäädin-alipainikkeeseen, vain silloin kun se piirtyy samalla värillä kuin sen takana oleva kortti, jolloin ruudulle ei jäisi mitään osoittamaan että siinä on liukusäädin (aseta `none` poistaaksesi sen) |
 | `--bubble-sub-slider-border-radius` | `px` | Liukusäädin-alipainikkeiden kulmien pyöristys |
 | `--bubble-sub-slider-background-color` | `color` | Liukusäädin-alipainikkeiden taustaväri |
 | `--bubble-sub-slider-height` | `px` | Aina näkyvien liukusäädin-alipainikkeiden korkeus |
-| `--bubble-sub-slider-outline` | `box-shadow` | Sama ääriviiva, säilytetty selkeyden vuoksi, palautuu arvoon `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekstin väri vaaleilla alipainiketaustoilla |
 
 </details>

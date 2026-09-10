@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Радијус ивица за под-дугмад |
 | `--bubble-sub-button-background-color` | `color` | Боја позадине за под-дугмад |
-| `--bubble-sub-button-outline` | `box-shadow` | Контура додата под-дугмету типа клизач, само када се исцртава истом бојом као картица иза њега, због чега на екрану не би остало ништа што показује да је ту клизач (поставите је на `none` да је уклоните) |
 | `--bubble-sub-slider-border-radius` | `px` | Радијус ивица за под-дугмад типа клизач |
 | `--bubble-sub-slider-background-color` | `color` | Боја позадине за под-дугмад типа клизач |
 | `--bubble-sub-slider-height` | `px` | Висина за увек приказане клизаче под-дугмади |
-| `--bubble-sub-slider-outline` | `box-shadow` | Иста контура, задржана ради јасноће, враћа се на `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Боја текста на светлим позадинама под-дугмади |
 
 </details>

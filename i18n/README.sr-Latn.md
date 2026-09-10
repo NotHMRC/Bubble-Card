@@ -1305,11 +1305,9 @@ Klizači pod-dugmadi podržavaju iste opcije kao klizači dugmeta, uključujući
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Poluprečnik ivice za pod-dugmad |
 | `--bubble-sub-button-background-color` | `color` | Boja pozadine za pod-dugmad |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontura dodata klizač pod-dugmetu, samo kada se iscrtava istom bojom kao kartica iza njega, zbog čega na ekranu ne bi ostalo ništa što pokazuje da je tu klizač (postavite je na `none` da je uklonite) |
 | `--bubble-sub-slider-border-radius` | `px` | Poluprečnik ivice za klizače pod-dugmadi |
 | `--bubble-sub-slider-background-color` | `color` | Boja pozadine za klizače pod-dugmadi |
 | `--bubble-sub-slider-height` | `px` | Visina za uvek vidljive klizače pod-dugmadi |
-| `--bubble-sub-slider-outline` | `box-shadow` | Ista kontura, zadržana radi jasnoće, vraća se na `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Boja teksta na svetlim pozadinama pod-dugmadi |
 
 </details>

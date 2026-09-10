@@ -12,10 +12,6 @@ const stopTimerInterval = jest.fn();
 const invalidateStyleCache = jest.fn();
 jest.unstable_mockModule('./tools/utils.js', () => ({ invalidateStyleCache, stopTimerInterval, stopRelativeTimeInterval: jest.fn() }));
 jest.unstable_mockModule('./tools/text-scrolling.js', () => ({ cleanupScrollingEffects: jest.fn(), resumeScrollingEffects: jest.fn() }));
-jest.unstable_mockModule('./components/sub-button/outline.js', () => ({
-    cancelSubButtonOutlines: jest.fn(),
-    scheduleSubButtonOutlines: jest.fn(),
-}));
 jest.unstable_mockModule('./modules/suggestions.js', () => ({ getEntitySuggestion: jest.fn() }));
 jest.unstable_mockModule('./cards/pop-up/helpers.js', () => ({
     registerPopupContext: jest.fn(),

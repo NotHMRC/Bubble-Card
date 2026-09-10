@@ -11,7 +11,6 @@ jest.unstable_mockModule('../../tools/utils.js', () => ({
     `${Number(value).toFixed(decimals ?? 0)}${unit ? ` ${unit}` : ''}`,
   getTemperatureUnit: () => '°C',
   isDocumentRTL: () => false,
-  // Not used here, but helpers.js pulls in sub-button/outline.js, which imports it
   // from the same module: a mock missing it breaks the whole import chain.
   getStyleGeneration: () => 0
 }));

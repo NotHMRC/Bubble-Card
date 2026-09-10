@@ -6,7 +6,6 @@ import {
   getTemperatureUnit,
   isDocumentRTL
 } from '../../tools/utils.js';
-import { scheduleSubButtonOutlines } from '../sub-button/outline.js';
 import { isInstantSliderWrite, keepSliderWriteInstant } from './instant-writes.js';
 
 // Re-exported so the slider component keeps one import surface for its callers.
@@ -110,7 +109,6 @@ export function setRangeFillTransform(context, percentage) {
   // The fill is a background for whatever stands in front of it: a sub-button
   // the fill just reached may now share its color (no-op for slider contexts,
   // they own no sub-button)
-  scheduleSubButtonOutlines(context);
 }
 
 export function getAdjustedValue(value, step) {

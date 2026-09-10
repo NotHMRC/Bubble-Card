@@ -1305,11 +1305,9 @@ Nút phụ dạng thanh trượt hỗ trợ các tùy chọn thanh trượt gi�
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Bán kính bo góc cho nút phụ |
 | `--bubble-sub-button-background-color` | `color` | Màu nền cho nút phụ |
-| `--bubble-sub-button-outline` | `box-shadow` | Đường viền chỉ được thêm vào một nút phụ dạng thanh trượt khi nó có cùng màu với thẻ phía sau, điều khiến màn hình không còn gì cho thấy có một thanh trượt ở đó (đặt thành `none` để bỏ đi) |
 | `--bubble-sub-slider-border-radius` | `px` | Bán kính bo góc cho nút phụ dạng thanh trượt |
 | `--bubble-sub-slider-background-color` | `color` | Màu nền cho nút phụ dạng thanh trượt |
 | `--bubble-sub-slider-height` | `px` | Chiều cao cho nút phụ dạng thanh trượt luôn hiển thị |
-| `--bubble-sub-slider-outline` | `box-shadow` | Cùng đường viền đó, giữ lại cho rõ ràng, quay về `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Màu chữ trên nền nút phụ sáng màu |
 
 </details>

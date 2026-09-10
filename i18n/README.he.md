@@ -1307,11 +1307,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | רדיוס פינות עבור כפתורי המשנה |
 | `--bubble-sub-button-background-color` | `color` | צבע רקע עבור כפתורי המשנה |
-| `--bubble-sub-button-outline` | `box-shadow` | מתאר שנוסף לכפתור משנה מסוג מחוון, רק כאשר הוא נצבע באותו צבע ככרטיס שמאחוריו, כך שלא היה נשאר דבר על המסך שמראה שיש שם מחוון (הגדירו אותו כ-`none` כדי להסיר אותו) |
 | `--bubble-sub-slider-border-radius` | `px` | רדיוס פינות עבור כפתורי משנה מסוג מחוון |
 | `--bubble-sub-slider-background-color` | `color` | צבע רקע עבור כפתורי משנה מסוג מחוון |
 | `--bubble-sub-slider-height` | `px` | גובה עבור כפתורי משנה מסוג מחוון מוצג תמידית |
-| `--bubble-sub-slider-outline` | `box-shadow` | אותו מתאר, נשמר לשם בהירות, נסוג ל-`--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | צבע טקסט על רקעי כפתורי משנה בהירים |
 
 </details>

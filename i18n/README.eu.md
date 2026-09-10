@@ -1305,11 +1305,9 @@ Graduatzaile motako azpibotoiek botoi-graduatzaileen aukera berak onartzen dituz
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Azpibotoien ertz-erradioa |
 | `--bubble-sub-button-background-color` | `color` | Azpibotoien atzeko planoaren kolorea |
-| `--bubble-sub-button-outline` | `box-shadow` | Graduatzaile motako azpibotoi bati gehitzen zaion ingerada, atzeko txartelaren kolore berean marrazten denean soilik, horrek pantailan ez bailuke ezer utziko graduatzaile bat dagoela erakusteko (ezarri `none` kentzeko) |
 | `--bubble-sub-slider-border-radius` | `px` | Graduatzaile motako azpibotoien ertz-erradioa |
 | `--bubble-sub-slider-background-color` | `color` | Graduatzaile motako azpibotoien atzeko planoaren kolorea |
 | `--bubble-sub-slider-height` | `px` | Beti ikusgai dagoen graduatzailearen altuera |
-| `--bubble-sub-slider-outline` | `box-shadow` | Ingerada bera, argitasunerako mantendua, `--bubble-sub-button-outline` erabiltzen du bestela |
 | `--bubble-sub-button-dark-text-color` | `color` | Testuaren kolorea atzeko plano argiak dituzten azpibotoietan |
 
 </details>

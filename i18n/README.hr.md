@@ -1305,11 +1305,9 @@ Klizači za podgumbe podržavaju iste opcije klizača kao i klizači gumba, uklj
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radijus zaobljenja rubova za podgumbe |
 | `--bubble-sub-button-background-color` | `color` | Boja pozadine za podgumbe |
-| `--bubble-sub-button-outline` | `box-shadow` | Obrub koji se dodaje podgumbu klizača, samo kada se oboji istom bojom kao kartica iza njega, zbog čega na zaslonu ne bi ostalo ništa što pokazuje da je ondje klizač (postavite ga na `none` da ga uklonite) |
 | `--bubble-sub-slider-border-radius` | `px` | Radijus zaobljenja rubova za podgumbe klizače |
 | `--bubble-sub-slider-background-color` | `color` | Boja pozadine za podgumbe klizače |
 | `--bubble-sub-slider-height` | `px` | Visina za trajno vidljive podgumbe klizače |
-| `--bubble-sub-slider-outline` | `box-shadow` | Isti obrub, zadržan radi jasnoće, vraća se na `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Boja teksta na svijetlim pozadinama podgumba |
 
 </details>

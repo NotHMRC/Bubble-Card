@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Радиус скругления дополнительных кнопок |
 | `--bubble-sub-button-background-color` | `color` | Цвет фона дополнительных кнопок |
-| `--bubble-sub-button-outline` | `box-shadow` | Контур, добавляемый дополнительной кнопке-ползунку, только тогда, когда она рисуется тем же цветом, что и карточка позади, из-за чего на экране не осталось бы ничего, что показывало бы, что там есть ползунок (задайте `none`, чтобы убрать его) |
 | `--bubble-sub-slider-border-radius` | `px` | Радиус скругления дополнительных кнопок-ползунков |
 | `--bubble-sub-slider-background-color` | `color` | Цвет фона дополнительных кнопок-ползунков |
 | `--bubble-sub-slider-height` | `px` | Высота всегда видимых дополнительных кнопок-ползунков |
-| `--bubble-sub-slider-outline` | `box-shadow` | Тот же контур, оставлен для ясности, при отсутствии используется `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Цвет текста на ярком фоне дополнительной кнопки |
 
 </details>

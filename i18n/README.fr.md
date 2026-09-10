@@ -1305,11 +1305,9 @@ Les sous-boutons curseur prennent en charge les mêmes options que les curseurs 
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Arrondi des angles des sous-boutons |
 | `--bubble-sub-button-background-color` | `color` | Couleur de fond des sous-boutons |
-| `--bubble-sub-button-outline` | `box-shadow` | Contour ajouté à un sous-bouton curseur, uniquement lorsqu'il se peint de la même couleur que la carte derrière lui, ce qui ne laisserait rien à l'écran pour montrer qu'un curseur est là (mettez-le à `none` pour l'enlever) |
 | `--bubble-sub-slider-border-radius` | `px` | Arrondi des angles des sous-boutons curseur |
 | `--bubble-sub-slider-background-color` | `color` | Couleur de fond des sous-boutons curseur |
 | `--bubble-sub-slider-height` | `px` | Hauteur des sous-boutons curseur toujours visibles |
-| `--bubble-sub-slider-outline` | `box-shadow` | Le même contour, gardé par clarté, se rabat sur `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Couleur du texte sur les fonds clairs de sous-bouton |
 
 </details>

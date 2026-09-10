@@ -1305,11 +1305,9 @@ Skuifbalk-subknoppies ondersteun dieselfde skuifbalkopsies as knoppie-skuifbalke
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Randradius van die subknoppies |
 | `--bubble-sub-button-background-color` | `color` | Agtergrondkleur van die subknoppies |
-| `--bubble-sub-button-outline` | `box-shadow` | Omlyning wat by 'n skuifbalk-subknoppie gevoeg word, net wanneer dit dieselfde kleur as die kaart daaragter verf, wat niks op die skerm sou laat om te wys dat daar 'n skuifbalk is nie (stel dit op `none` om dit te verwyder) |
 | `--bubble-sub-slider-border-radius` | `px` | Randradius van skuifbalk-subknoppies |
 | `--bubble-sub-slider-background-color` | `color` | Agtergrondkleur van skuifbalk-subknoppies |
 | `--bubble-sub-slider-height` | `px` | Hoogte van altyd sigbare skuifbalk-subknoppies |
-| `--bubble-sub-slider-outline` | `box-shadow` | Dieselfde omlyning, vir duidelikheid behou, val terug op `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Tekskleur op helder subknoppie-agtergronde |
 
 </details>

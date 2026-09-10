@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | സബ്-ബട്ടണുകൾക്കുള്ള border radius |
 | `--bubble-sub-button-background-color` | `color` | സബ്-ബട്ടണുകൾക്കുള്ള പശ്ചാത്തല നിറം |
-| `--bubble-sub-button-outline` | `box-shadow` | ഒരു സ്ലൈഡർ സബ്-ബട്ടണിൽ, അത് അതിനു പിന്നിലെ കാർഡിന്റെ അതേ നിറത്തിൽ വരയ്ക്കപ്പെട്ട് അവിടെ ഒരു സ്ലൈഡർ ഉണ്ടെന്ന് കാണിക്കാൻ സ്ക്രീനിൽ ഒന്നും ബാക്കിയാകാത്തപ്പോൾ മാത്രം ചേർക്കുന്ന ഔട്ട്‌ലൈൻ (നീക്കം ചെയ്യാൻ `none` ആയി സജ്ജമാക്കുക) |
 | `--bubble-sub-slider-border-radius` | `px` | സ്ലൈഡർ സബ്-ബട്ടണുകൾക്കുള്ള border radius |
 | `--bubble-sub-slider-background-color` | `color` | സ്ലൈഡർ സബ്-ബട്ടണുകൾക്കുള്ള പശ്ചാത്തല നിറം |
 | `--bubble-sub-slider-height` | `px` | എപ്പോഴും ദൃശ്യമാകുന്ന സ്ലൈഡർ സബ്-ബട്ടണുകൾക്കുള്ള ഉയരം |
-| `--bubble-sub-slider-outline` | `box-shadow` | അതേ ഔട്ട്‌ലൈൻ, വ്യക്തതയ്ക്കായി നിലനിർത്തിയിരിക്കുന്നു, `--bubble-sub-button-outline` ലേക്ക് മടങ്ങുന്നു |
 | `--bubble-sub-button-dark-text-color` | `color` | തിളക്കമുള്ള സബ്-ബട്ടൺ പശ്ചാത്തലങ്ങളിലെ ടെക്സ്റ്റ് നിറം |
 
 </details>

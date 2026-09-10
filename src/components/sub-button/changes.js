@@ -6,7 +6,6 @@ import { handleDefaultSubButton } from "./types/default/index.js";
 import { handleDropdownSubButton } from "./types/dropdown/index.js";
 import { handleSliderSubButton } from "./types/slider/index.js";
 import { updateSlider } from "../slider/changes.js";
-import { scheduleSubButtonOutlines } from "./outline.js";
 import { isTemplate } from "../../tools/jinja.js";
 
 export function updateSubButtons(context, subButtons) {
@@ -110,7 +109,6 @@ export function updateSubButtons(context, subButtons) {
 
   // Colors and layout have just been settled, decide which sub-buttons blend
   // into the card behind them and need an outline to stay readable
-  scheduleSubButtonOutlines(context);
 }
 
 function updateSubButtonContent(context, element, options) {

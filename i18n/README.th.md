@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | รัศมีขอบมนสำหรับปุ่มย่อย |
 | `--bubble-sub-button-background-color` | `color` | สีพื้นหลังสำหรับปุ่มย่อย |
-| `--bubble-sub-button-outline` | `box-shadow` | เส้นขอบที่เพิ่มให้ปุ่มย่อยแบบแถบเลื่อนเฉพาะเมื่อมันมีสีเดียวกับการ์ดที่อยู่ข้างหลัง ซึ่งจะไม่เหลืออะไรบนหน้าจอที่บอกว่ามีแถบเลื่อนอยู่ตรงนั้น (ตั้งเป็น `none` เพื่อเอาออก) |
 | `--bubble-sub-slider-border-radius` | `px` | รัศมีขอบมนสำหรับปุ่มย่อยแบบแถบเลื่อน |
 | `--bubble-sub-slider-background-color` | `color` | สีพื้นหลังสำหรับปุ่มย่อยแบบแถบเลื่อน |
 | `--bubble-sub-slider-height` | `px` | ความสูงสำหรับปุ่มย่อยแบบแถบเลื่อนที่แสดงตลอดเวลา |
-| `--bubble-sub-slider-outline` | `box-shadow` | เส้นขอบเดียวกัน คงไว้เพื่อความชัดเจน จะย้อนกลับไปใช้ `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | สีข้อความบนพื้นหลังปุ่มย่อยที่สว่าง |
 
 </details>

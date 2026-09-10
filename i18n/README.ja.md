@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | サブボタンの角丸半径 |
 | `--bubble-sub-button-background-color` | `color` | サブボタンの背景色 |
-| `--bubble-sub-button-outline` | `box-shadow` | スライダーのサブボタンに、それが背後のカードと同じ色になり、そこにスライダーがあることを示すものが画面から消えてしまう場合にだけ追加される輪郭 (`none` に設定すると消せます) |
 | `--bubble-sub-slider-border-radius` | `px` | スライダーサブボタンの角丸半径 |
 | `--bubble-sub-slider-background-color` | `color` | スライダーサブボタンの背景色 |
 | `--bubble-sub-slider-height` | `px` | 常時表示スライダーサブボタンの高さ |
-| `--bubble-sub-slider-outline` | `box-shadow` | 同じ輪郭。分かりやすさのために残してあり、未指定なら `--bubble-sub-button-outline` にフォールバックします |
 | `--bubble-sub-button-dark-text-color` | `color` | 明るいサブボタン背景上のテキストの色 |
 
 </details>

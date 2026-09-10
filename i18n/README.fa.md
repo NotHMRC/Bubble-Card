@@ -1307,11 +1307,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | شعاع گوشه برای زیردکمه‌ها |
 | `--bubble-sub-button-background-color` | `color` | رنگ پس‌زمینه برای زیردکمه‌ها |
-| `--bubble-sub-button-outline` | `box-shadow` | خط دوری که تنها زمانی به زیردکمه اسلایدر افزوده می‌شود که همان رنگ کارت پشت خودش را بگیرد و چیزی روی صفحه نماند که نشان دهد اسلایدری آنجاست (برای حذف آن روی `none` تنظیمش کنید) |
 | `--bubble-sub-slider-border-radius` | `px` | شعاع گوشه برای زیردکمه‌های اسلایدر |
 | `--bubble-sub-slider-background-color` | `color` | رنگ پس‌زمینه برای زیردکمه‌های اسلایدر |
 | `--bubble-sub-slider-height` | `px` | ارتفاع برای زیردکمه‌های اسلایدر همیشه‌نمایان |
-| `--bubble-sub-slider-outline` | `box-shadow` | همان خط دور، برای وضوح نگه داشته شده، در نبود آن به `--bubble-sub-button-outline` برمی‌گردد |
 | `--bubble-sub-button-dark-text-color` | `color` | رنگ متن روی پس‌زمینه‌های روشن زیردکمه |
 
 </details>

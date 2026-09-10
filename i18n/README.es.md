@@ -1305,11 +1305,9 @@ Los sub-botones de control deslizante admiten las mismas opciones de control des
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radio del borde de los sub-botones |
 | `--bubble-sub-button-background-color` | `color` | Color de fondo de los sub-botones |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorno añadido a un sub-botón de control deslizante, solo cuando se pinta del mismo color que la tarjeta que tiene detrás, lo que no dejaría nada en pantalla que indique que ahí hay un control deslizante (ponlo en `none` para quitarlo) |
 | `--bubble-sub-slider-border-radius` | `px` | Radio del borde de los sub-botones de control deslizante |
 | `--bubble-sub-slider-background-color` | `color` | Color de fondo de los sub-botones de control deslizante |
 | `--bubble-sub-slider-height` | `px` | Altura de los sub-botones de control deslizante siempre visibles |
-| `--bubble-sub-slider-outline` | `box-shadow` | El mismo contorno, conservado por claridad, recurre a `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Color del texto sobre fondos de sub-botón claros |
 
 </details>

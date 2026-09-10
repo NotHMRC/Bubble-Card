@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | सब-बटन के लिए बॉर्डर रेडियस |
 | `--bubble-sub-button-background-color` | `color` | सब-बटन के लिए बैकग्राउंड रंग |
-| `--bubble-sub-button-outline` | `box-shadow` | स्लाइडर सब-बटन पर तभी जोड़ी जाने वाली आउटलाइन जब वह अपने पीछे के कार्ड जैसा ही रंग लेता है, जिससे स्क्रीन पर ऐसा कुछ नहीं बचता जो बताए कि वहाँ स्लाइडर है (हटाने के लिए इसे `none` पर सेट करें) |
 | `--bubble-sub-slider-border-radius` | `px` | स्लाइडर सब-बटन के लिए बॉर्डर रेडियस |
 | `--bubble-sub-slider-background-color` | `color` | स्लाइडर सब-बटन के लिए बैकग्राउंड रंग |
 | `--bubble-sub-slider-height` | `px` | हमेशा-दृश्यमान स्लाइडर सब-बटन के लिए ऊंचाई |
-| `--bubble-sub-slider-outline` | `box-shadow` | वही आउटलाइन, स्पष्टता के लिए रखी गई, न होने पर `--bubble-sub-button-outline` पर लौटती है |
 | `--bubble-sub-button-dark-text-color` | `color` | चमकीले सब-बटन बैकग्राउंड पर टेक्स्ट का रंग |
 
 </details>

@@ -1305,11 +1305,9 @@ Sleða undirhnappar (slider) styðja sömu sleðavalkosti og hnappasleðar, þar
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Hornaradíus undirhnappanna |
 | `--bubble-sub-button-background-color` | `color` | Bakgrunnslitur undirhnappanna |
-| `--bubble-sub-button-outline` | `box-shadow` | Útlína sem bætist á sleðaundirhnapp, aðeins þegar hann er málaður í sama lit og kortið á bak við hann, þannig að ekkert yrði eftir á skjánum til að sýna að þar sé sleði (settu `none` til að fjarlægja hana) |
 | `--bubble-sub-slider-border-radius` | `px` | Hornaradíus fyrir sleða undirhnappa |
 | `--bubble-sub-slider-background-color` | `color` | Bakgrunnslitur fyrir sleða undirhnappa |
 | `--bubble-sub-slider-height` | `px` | Hæð fyrir sleða undirhnappa sem eru alltaf sýnilegir |
-| `--bubble-sub-slider-outline` | `box-shadow` | Sama útlína, höfð til skýringar, fellur aftur á `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Textalitur á björtum bakgrunni undirhnapps |
 
 </details>

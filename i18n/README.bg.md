@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Радиус на ъглите на подбутоните |
 | `--bubble-sub-button-background-color` | `color` | Цвят на фона на подбутоните |
-| `--bubble-sub-button-outline` | `box-shadow` | Контур, добавен към подбутон плъзгач, само когато той се изчертава в същия цвят като картата зад него, което не би оставило нищо на екрана, което да показва, че там има плъзгач (задайте `none`, за да го премахнете) |
 | `--bubble-sub-slider-border-radius` | `px` | Радиус на ъглите на подбутоните плъзгачи |
 | `--bubble-sub-slider-background-color` | `color` | Цвят на фона на подбутоните плъзгачи |
 | `--bubble-sub-slider-height` | `px` | Височина на винаги видимите подбутони плъзгачи |
-| `--bubble-sub-slider-outline` | `box-shadow` | Същият контур, запазен за яснота, връща се към `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Цвят на текста върху светли фонове на подбутоните |
 
 </details>

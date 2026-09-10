@@ -1305,11 +1305,9 @@ Els subbotons de control lliscant admeten les mateixes opcions de control llisca
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radi de la vora per als subbotons |
 | `--bubble-sub-button-background-color` | `color` | Color de fons per als subbotons |
-| `--bubble-sub-button-outline` | `box-shadow` | Contorn afegit a un subbotó de control lliscant, només quan es pinta del mateix color que la targeta de darrere, cosa que no deixaria res a la pantalla per indicar que hi ha un control lliscant (poseu-hi `none` per treure'l) |
 | `--bubble-sub-slider-border-radius` | `px` | Radi de la vora per als subbotons de control lliscant |
 | `--bubble-sub-slider-background-color` | `color` | Color de fons per als subbotons de control lliscant |
 | `--bubble-sub-slider-height` | `px` | Alçada per als subbotons de control lliscant sempre visibles |
-| `--bubble-sub-slider-outline` | `box-shadow` | El mateix contorn, mantingut per claredat, recorre a `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Color del text sobre fons de subbotó clars |
 
 </details>

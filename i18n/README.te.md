@@ -1305,11 +1305,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | సబ్-బటన్‌ల కోసం బోర్డర్ రేడియస్ |
 | `--bubble-sub-button-background-color` | `color` | సబ్-బటన్‌ల కోసం బ్యాక్‌గ్రౌండ్ రంగు |
-| `--bubble-sub-button-outline` | `box-shadow` | ఒక స్లయిడర్ సబ్-బటన్ దాని వెనుక ఉన్న కార్డ్ రంగుతోనే రంగు వేసుకున్నప్పుడు మాత్రమే జోడించే ఔట్‌లైన్, లేకపోతే అక్కడ స్లయిడర్ ఉందని చూపడానికి తెరపై ఏమీ మిగలదు (తొలగించడానికి `none` గా సెట్ చేయండి) |
 | `--bubble-sub-slider-border-radius` | `px` | స్లయిడర్ సబ్-బటన్‌ల కోసం బోర్డర్ రేడియస్ |
 | `--bubble-sub-slider-background-color` | `color` | స్లయిడర్ సబ్-బటన్‌ల కోసం బ్యాక్‌గ్రౌండ్ రంగు |
 | `--bubble-sub-slider-height` | `px` | ఎల్లప్పుడూ కనిపించే స్లయిడర్ సబ్-బటన్‌ల కోసం ఎత్తు |
-| `--bubble-sub-slider-outline` | `box-shadow` | అదే ఔట్‌లైన్, స్పష్టత కోసం ఉంచబడింది, `--bubble-sub-button-outline` కు తిరిగి వస్తుంది |
 | `--bubble-sub-button-dark-text-color` | `color` | ప్రకాశవంతమైన సబ్-బటన్ బ్యాక్‌గ్రౌండ్‌లపై టెక్స్ట్ రంగు |
 
 </details>

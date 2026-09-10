@@ -1305,11 +1305,9 @@ Podprzyciski typu suwak obsługują te same opcje co suwaki przycisków, w tym:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Promień zaokrąglenia podprzycisków |
 | `--bubble-sub-button-background-color` | `color` | Kolor tła podprzycisków |
-| `--bubble-sub-button-outline` | `box-shadow` | Obrys dodawany do podprzycisku typu suwak tylko wtedy, gdy przyjmuje ten sam kolor co karta za nim, przez co na ekranie nie zostałoby nic, co pokazywałoby, że jest tam suwak (ustaw `none`, aby go usunąć) |
 | `--bubble-sub-slider-border-radius` | `px` | Promień zaokrąglenia podprzycisków typu suwak |
 | `--bubble-sub-slider-background-color` | `color` | Kolor tła podprzycisków typu suwak |
 | `--bubble-sub-slider-height` | `px` | Wysokość zawsze widocznych podprzycisków typu suwak |
-| `--bubble-sub-slider-outline` | `box-shadow` | Ten sam obrys, zachowany dla przejrzystości, w razie braku używa `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Kolor tekstu na jasnych tłach podprzycisków |
 
 </details>

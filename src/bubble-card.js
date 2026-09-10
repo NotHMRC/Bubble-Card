@@ -7,7 +7,6 @@ import { createBubbleDefaultColor } from './tools/style.js';
 import { updateThemeBackgroundColor } from './cards/pop-up/backdrop.js';
 import { invalidateStyleCache, stopTimerInterval, stopRelativeTimeInterval } from './tools/utils.js';
 import { cleanupScrollingEffects, resumeScrollingEffects } from './tools/text-scrolling.js';
-import { cancelSubButtonOutlines } from './components/sub-button/outline.js';
 import { cancelDeferredCardUpdate, deferCardUpdate } from './tools/deferred-card-updates.js';
 import { awaitsPreviewHydration, notePreviewHeight, observePreviewHydration, setPreviewMode, unobservePreviewHydration } from './tools/lazy-preview.js';
 import { updatePreviewBadge } from './tools/preview-badge.js';
@@ -185,7 +184,6 @@ class BubbleCard extends HTMLElement {
       }
     } catch (e) {}
     try { if (this.content) cleanupScrollingEffects(this.content); } catch (e) {}
-    try { cancelSubButtonOutlines(this); } catch (e) {}
     try {
       if (this.elements?._volumeOutsideHandler) {
         document.removeEventListener('click', this.elements._volumeOutsideHandler);

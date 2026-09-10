@@ -1307,11 +1307,9 @@ sub_button:
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | نصف قطر حواف الأزرار الفرعية |
 | `--bubble-sub-button-background-color` | `color` | لون خلفية الأزرار الفرعية |
-| `--bubble-sub-button-outline` | `box-shadow` | حدّ يُضاف إلى زر فرعي من نوع شريط تمرير، فقط عندما يُرسم بنفس لون البطاقة خلفه، ما لا يترك على الشاشة ما يدل على وجود شريط التمرير (اضبطه على `none` لإزالته) |
 | `--bubble-sub-slider-border-radius` | `px` | نصف قطر حواف الأزرار الفرعية من نوع شريط التمرير |
 | `--bubble-sub-slider-background-color` | `color` | لون خلفية الأزرار الفرعية من نوع شريط التمرير |
 | `--bubble-sub-slider-height` | `px` | ارتفاع الأزرار الفرعية من نوع شريط التمرير الظاهرة دائمًا |
-| `--bubble-sub-slider-outline` | `box-shadow` | الحدّ نفسه، مُبقى للتوضيح، ويعود إلى `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | لون النص على خلفيات الأزرار الفرعية الفاتحة |
 
 </details>

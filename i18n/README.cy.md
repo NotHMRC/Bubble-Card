@@ -1305,11 +1305,9 @@ Mae is-fotymau llithrydd yn cefnogi'r un opsiynau llithrydd â llithryddion botw
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Radiws ymyl ar gyfer yr is-fotymau |
 | `--bubble-sub-button-background-color` | `color` | Lliw cefndir ar gyfer yr is-fotymau |
-| `--bubble-sub-button-outline` | `box-shadow` | Amlinelliad a ychwanegir at is-fotwm llithrydd, dim ond pan fydd yn cael ei baentio yn yr un lliw â'r cerdyn y tu ôl iddo, na fyddai'n gadael dim ar y sgrin i ddangos bod llithrydd yno (gosodwch ef i `none` i'w dynnu) |
 | `--bubble-sub-slider-border-radius` | `px` | Radiws ymyl ar gyfer is-fotymau llithrydd |
 | `--bubble-sub-slider-background-color` | `color` | Lliw cefndir ar gyfer is-fotymau llithrydd |
 | `--bubble-sub-slider-height` | `px` | Uchder ar gyfer is-fotymau llithrydd gweladwy bob amser |
-| `--bubble-sub-slider-outline` | `box-shadow` | Yr un amlinelliad, wedi'i gadw er eglurder, yn syrthio'n ôl ar `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Lliw testun ar gefndiroedd is-fotwm llachar |
 
 </details>

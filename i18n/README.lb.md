@@ -1305,11 +1305,9 @@ Slider-Sub-Knäppercher ënnerstëtzen déiselwecht Slider-Optiounen wéi Knäpp
 | --- | --- | --- |
 | `--bubble-sub-button-border-radius` | `px` | Rondung vun de Käerten fir d'Sub-Knäppercher |
 | `--bubble-sub-button-background-color` | `color` | Hannergrondfaarf fir d'Sub-Knäppercher |
-| `--bubble-sub-button-outline` | `box-shadow` | Kontur déi engem Slider-Sub-Knäppchen nëmmen dann derbäigesat gëtt, wann en déiselwecht Faarf mécht wéi d'Kaart derhannert, sou datt näischt méi um Bildschierm bleift wat weist datt do e Slider ass (setzt en op `none` fir en ewechzehuelen) |
 | `--bubble-sub-slider-border-radius` | `px` | Rondung vun de Käerten fir Slider-Sub-Knäppercher |
 | `--bubble-sub-slider-background-color` | `color` | Hannergrondfaarf fir Slider-Sub-Knäppercher |
 | `--bubble-sub-slider-height` | `px` | Héicht fir ëmmer-siichtbar Slider-Sub-Knäppercher |
-| `--bubble-sub-slider-outline` | `box-shadow` | Déiselwecht Kontur, fir d'Kloerheet behalen, fällt zréck op `--bubble-sub-button-outline` |
 | `--bubble-sub-button-dark-text-color` | `color` | Textfaarf op hellen Hannergrënn vum Sub-Knäppchen |
 
 </details>
