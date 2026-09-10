@@ -52,7 +52,7 @@
 }
 
 .slider-use-accent-color {
-    background-color: var(--bubble-button-accent-color, var(--bubble-accent-color, var(--bubble-default-color))) !important;
+    background-color: var(--bubble-slider-fill-color, var(--bubble-button-accent-color, var(--bubble-accent-color, var(--bubble-default-color)))) !important;
     opacity: 1;
 }
 

@@ -248,6 +248,38 @@ export function isColorLight(cssVariable, threshold = 0.5) {
     return isLight;
 }
 
+// The color an expression paints, as numbers. Variables are looked up on the
+// document first, then on the card: a card scopes some of its own, and reading
+// those from the root alone answered nothing at all, which is how an entity
+// whose state carries a digit (`var(--bubble-icon-color)`, see getIconColor)
+// went through this whole function without ever being read.
+function resolveSurfaceRgb(expression, context) {
+  if (!expression) return null;
+
+  let resolved = resolveCssVariable(expression);
+  if (resolved && resolved.startsWith('var(')) {
+    const match = resolved.match(/var\((--[^,)]+),?\s*(.*)?\)/);
+    if (match) {
+      const [, varName] = match;
+      let computed = getCachedDocumentElementStyles().getPropertyValue(varName).trim();
+      if (!computed && context?.card) {
+        try { computed = getComputedStyle(context.card).getPropertyValue(varName).trim(); } catch (_) {}
+      }
+      if (computed) resolved = computed;
+    }
+  }
+
+  const rgb = hexToRgb(resolved) || rgbStringToRgb(resolved);
+  if (rgb) return rgb;
+
+  // `var(--bubble-icon-color)` carries no fallback of its own and nothing in
+  // here ever sets it, so an unset one answers nothing. The surfaces that read
+  // it paint the accent color, their stylesheet says so, and that is the color
+  // this has to compare and step away from.
+  const accent = resolveCssVariable('var(--bubble-accent-color, var(--bubble-default-color))');
+  return hexToRgb(accent) || rgbStringToRgb(accent);
+}
+
 export function getStateSurfaceColor(context, entity = context.config.entity, useLightBackground = true, cardBackgroundColor = null, subButtonColor = null) {
   
   // If light_background is false, force use of accent color instead of RGB light color
@@ -264,89 +296,43 @@ export function getStateSurfaceColor(context, entity = context.config.entity, us
   }
 
   try {
-    // Resolve CSS variables recursively
-    let resolved = resolveCssVariable(baseColorExpr);
-    // If still a variable, try resolving from document root
-    if (resolved && resolved.startsWith('var(')) {
-      const match = resolved.match(/var\((--[^,]+),?\s*(.*)?\)/);
-      if (match) {
-        const [, varName] = match;
-        const computed = getCachedDocumentElementStyles().getPropertyValue(varName).trim();
-        if (computed) resolved = computed;
-      }
-    }
-    
-    const rgb = hexToRgb(resolved) || rgbStringToRgb(resolved);
-
+    const rgb = resolveSurfaceRgb(baseColorExpr, context);
     if (!rgb) {
       return baseColorExpr;
     }
 
-    // For RGB light colors (useLightBackground === true), always apply derivation
-    // For accent colors (useLightBackground === false), only apply if card background matches or sub-button color matches
-    const isRgbLightColor = useLightBackground && entity?.startsWith('light.') && !context.config.use_accent_color;
-    
-    // Check if sub-button color matches (for slider contrast)
-    let shouldApplyDerivation = false;
-    
-    if (subButtonColor) {
-      let subButtonResolved = resolveCssVariable(subButtonColor);
-      if (subButtonResolved && subButtonResolved.startsWith('var(')) {
-        const match = subButtonResolved.match(/var\((--[^,]+),?\s*(.*)?\)/);
-        if (match) {
-          const [, varName] = match;
-          const computed = getCachedDocumentElementStyles().getPropertyValue(varName).trim();
-          if (computed) subButtonResolved = computed;
-        }
-      }
-      const subButtonRgb = hexToRgb(subButtonResolved) || rgbStringToRgb(subButtonResolved);
-      
-      if (subButtonRgb && areColorsSimilar(rgb, subButtonRgb)) {
-        shouldApplyDerivation = true;
-      }
-    }
-    
-    if (!isRgbLightColor && cardBackgroundColor) {
-      // Check if card background matches sub-button color
-      // Only apply derivation if colors are similar (to avoid unnecessary changes)
-      let cardResolved = resolveCssVariable(cardBackgroundColor);
-      if (cardResolved && cardResolved.startsWith('var(')) {
-        const match = cardResolved.match(/var\((--[^,]+),?\s*(.*)?\)/);
-        if (match) {
-          const [, varName] = match;
-          const computed = getCachedDocumentElementStyles().getPropertyValue(varName).trim();
-          if (computed) cardResolved = computed;
-        }
-      }
-      const cardRgb = hexToRgb(cardResolved) || rgbStringToRgb(cardResolved);
-      
-      // Only apply derivation if card background and sub-button colors are similar
-      if (cardRgb && areColorsSimilar(rgb, cardRgb)) {
-        shouldApplyDerivation = true;
-      }
-    }
-    
-    // For accent colors, only apply derivation if card background or sub-button color matches
-    // For RGB light colors, always apply derivation
-    if (!isRgbLightColor && !shouldApplyDerivation) {
-      return baseColorExpr;
-    }
-
-    // Check if text color is light (white/light colors)
-    // If text is light, we need to darken the background to maintain contrast
-    // If text is dark, we need to lighten the background
+    // Darken if the text on it is light, lighten if it is dark.
     const textColor = resolveCssVariable('var(--primary-text-color, #ffffff)');
     const textRgb = hexToRgb(textColor) || rgbStringToRgb(textColor);
     const isTextLight = textRgb ? calculateLuminance(...textRgb) > 0.5 : true;
-    
-    // Darken if text is light (to contrast with white text), lighten if text is dark (to contrast with dark text)
-    const factor = isRgbLightColor
-      ? (isTextLight ? 0.84 : 1.16)  // Stronger adjustment for RGB light colors
-      : (isTextLight ? 0.92 : 1.08); // Subtle adjustment for accent colors
-    
-    const adjustedRgb = adjustColor(rgb, factor);
 
-    return `rgb(${adjustedRgb[0]}, ${adjustedRgb[1]}, ${adjustedRgb[2]})`;
+    // Two steps, and they answer different questions.
+    //
+    // The first keeps a light's own color readable under the text written on
+    // it. A card does it to itself, so it is not about telling two surfaces
+    // apart, and it runs whether or not anything was handed in to compare.
+    const isRgbLightColor = useLightBackground && entity?.startsWith('light.') && !context.config.use_accent_color;
+    let painted = isRgbLightColor ? adjustColor(rgb, isTextLight ? 0.84 : 1.16) : rgb;
+
+    // The second is the separation. It compares what this surface would paint,
+    // after the step above, against what it stands on. A light sub-button used
+    // to be excluded from it and took the same first step as its card, so the
+    // two moved together and stayed identical.
+    const behind = [subButtonColor, cardBackgroundColor]
+      .map((expression) => resolveSurfaceRgb(expression, context))
+      .filter(Boolean);
+    const wouldBlend = behind.some((surface) => areColorsSimilar(painted, surface));
+    if (wouldBlend) {
+      painted = adjustColor(painted, isTextLight ? 0.92 : 1.08);
+    }
+
+    // Nothing moved, so the expression goes back untouched and keeps following
+    // its own variables.
+    if (!isRgbLightColor && !wouldBlend) {
+      return baseColorExpr;
+    }
+
+    return `rgb(${painted[0]}, ${painted[1]}, ${painted[2]})`;
   } catch (_) {
     return baseColorExpr;
   }

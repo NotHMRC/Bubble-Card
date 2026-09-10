@@ -231,28 +231,34 @@ export function updateSliderStyle(context) {
   context._lastSliderStyleChange = now;
 
   if (isOn) {
-    if (isLightBrightnessSlider && !useAccentColor) {
-      // Use light color for brightness slider
-      const cardType = context.config.card_type;
-      const cardBackgroundColor = cardType === 'button'
-        ? context.card?.style.getPropertyValue('--bubble-button-background-color')
-        : context.popUp?.style.getPropertyValue('--bubble-button-background-color');
-      
-      const surfaceColor = getStateSurfaceColor(context, context.config.entity, true, cardBackgroundColor || null, null);
-      
+    // A fill painting the color of the card behind it leaves nothing on screen
+    // to say a slider is there, a rail carrying no icon and no label. Both
+    // branches ask getStateSurfaceColor for their color, which steps away from
+    // the card only when the two would otherwise be the same: a light color
+    // reads as one, and the accent color as the other. The wiring used to stop
+    // at brightness sliders, and every media player, cover, fan or climate
+    // slider took the accent color raw.
+    // The color to step away from, read the way a sub-button reads it. A slider
+    // sub-button builds its own context, whose config carries no `card_type`,
+    // so branching on that key looked at a pop-up that is not there and handed
+    // the comparison an empty string: every fill then kept the raw color of the
+    // card behind it. Both holders are asked instead, and whichever answers is
+    // the surface this fill stands on.
+    const cardBackgroundColor = context.card?.style.getPropertyValue('--bubble-button-background-color')
+      || context.popUp?.style.getPropertyValue('--bubble-button-background-color');
+    const readsLightColor = isLightBrightnessSlider && !useAccentColor;
+    const surfaceColor = getStateSurfaceColor(context, context.config.entity, readsLightColor, cardBackgroundColor || null, null);
+
+    if (readsLightColor) {
       if (!hasLightColorClass) {
         rangeFill.classList.remove('slider-use-accent-color');
         rangeFill.classList.add('slider-use-light-color');
       }
-      rangeFill.style.setProperty('--bubble-slider-fill-color', surfaceColor);
-    } else {
-      // Use accent color
-      if (!hasAccentColorClass) {
-        rangeFill.classList.remove('slider-use-light-color');
-        rangeFill.style.removeProperty('--bubble-slider-fill-color');
-        rangeFill.classList.add('slider-use-accent-color');
-      }
+    } else if (!hasAccentColorClass) {
+      rangeFill.classList.remove('slider-use-light-color');
+      rangeFill.classList.add('slider-use-accent-color');
     }
+    rangeFill.style.setProperty('--bubble-slider-fill-color', surfaceColor);
   } else {
     if (hasLightColorClass || hasAccentColorClass) {
       rangeFill.classList.remove('slider-use-light-color', 'slider-use-accent-color');
