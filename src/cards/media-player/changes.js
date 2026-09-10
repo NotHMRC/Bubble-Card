@@ -421,83 +421,174 @@ function fadeOutCovers(context) {
 
 // Exported: the Bubble Dashboard module reuses this exact crossfade for its
 // media card cover layers (two layers, image preloaded before the fade).
-export function crossfadeTo(layerState, imageUrl, onComplete) {
-    if (!layerState) return;
+// The cover crossfade: two layers, one fade at a time.
+//
+// Rewritten because the previous version raced with itself. It started a fade,
+// swapped `visibleIndex` only 50 ms later at commit time, and left the
+// preload asynchronous in between — so a call arriving in that window could
+// not tell which layer was free, recycled the one still on screen, and wrote
+// an image onto it at whatever opacity it had reached. A card re-evaluates on
+// every hass update, and a playing player emits many per second, so a single
+// track change went through that window a dozen times and the result differed
+// from one skip to the next.
+//
+// The rules here are deliberately few:
+//   - `target` is where we are heading. Asking again for it does nothing,
+//     which is what stops a fade being restarted on every update.
+//   - one fade runs at a time. A request arriving mid-fade is QUEUED, never
+//     started on top, so no layer is ever recycled while it is visible and no
+//     transition is ever interrupted.
+//   - only the LAST queued request survives: holding "next" costs one extra
+//     fade, not one per press.
+//   - `visibleIndex` flips when the fade STARTS, so the next request always
+//     sees the correct back layer.
+const COVER_FADE_MS = 2000; // matches the transition in styles.css
+// How long after a fade STARTS its incoming layer is still faint enough that
+// replacing its image passes unnoticed. Home Assistant often reports a track
+// change as TWO pictures a moment apart (a first url, then the resolved one),
+// and queueing the second ran a whole extra fade right after the first — the
+// short second transition, with the icon showing through its dip. Inside this
+// window the two are treated as what they are: one change.
+const COVER_SWAP_WINDOW_MS = 350;
 
-    // Preload token: covers can change in quick succession (fallback poster
-    // -> banner -> native artwork) and each call preloads asynchronously.
-    // Only the LATEST call may apply its image — without this, a slower
-    // earlier preload lands AFTER a newer one and the displayed cover goes
-    // stale (or swaps with no fade).
-    const token = (layerState.pendingToken || 0) + 1;
-    layerState.pendingToken = token;
+// evaluateCoverState appends a fingerprint of the playing media to every cover
+// url as `v=…` (media_content_id + title + artist). Two urls carrying the SAME
+// fingerprint are the same artwork for the same track, however different the
+// rest looks: an integration commonly reissues a picture in another form a
+// beat later — measured here, `http://api.deezer.com/2.0/album/X/image` at
+// 641 ms then `https://api.deezer.com/album/X/image` at 2200 ms, same album.
+// Fading again for that is what showed as a second, shorter transition just
+// after the first, with the icon surfacing through its dip.
+const coverFingerprint = (url) => {
+    const match = /[?&]v=([^&]*)/.exec(url || '');
+    return match ? match[1] : null;
+};
 
-    const nextIndex = layerState.visibleIndex === 0 ? 1 : 0;
-    const nextLayer = layerState.layers[nextIndex];
+const sameCover = (a, b) => {
+    if (a === b) return true;
+    const fa = coverFingerprint(a);
+    return fa !== null && fa === coverFingerprint(b);
+};
 
-    // A superseded call may have left the back layer mid-fade (visible but
-    // never committed): revert it, otherwise BOTH layers stay on screen and
-    // the next image lands on an already-visible layer — a hard swap with
-    // no fade. Must happen before the early return too, or a call back to
-    // the current value would leave that stale layer up forever.
-    nextLayer.classList.remove('is-visible');
+function paintLayer(layer, url) {
+    if (url) {
+        layer.style.backgroundImage = `url(${url})`;
+        layer.classList.remove('is-empty');
+    } else {
+        layer.style.backgroundImage = '';
+        layer.classList.add('is-empty');
+    }
+}
 
-    if (layerState.currentValue === imageUrl) {
-        if (onComplete) onComplete();
+function beginFade(layerState, url, onComplete) {
+    const token = (layerState.fadeToken || 0) + 1;
+    layerState.fadeToken = token;
+
+    const paint = () => {
+        if (layerState.fadeToken !== token) return;
+        const frontIndex = layerState.visibleIndex;
+        const backIndex = frontIndex === 0 ? 1 : 0;
+        const back = layerState.layers[backIndex];
+        const front = layerState.layers[frontIndex];
+        paintLayer(back, url);
+
+        // One frame, so the layer just painted has a value to animate FROM.
+        // Setting the class in the same frame swaps it in with no fade at all.
+        requestAnimationFrame(() => {
+            if (layerState.fadeToken !== token) return;
+            back.classList.add('is-visible');
+            front.classList.remove('is-visible');
+            layerState.visibleIndex = backIndex;
+            layerState.currentValue = url;
+            layerState.fading = true;
+            layerState.fadeStartedAt = Date.now();
+
+            clearTimeout(layerState.fadeTimer);
+            layerState.fadeTimer = setTimeout(() => {
+                layerState.fading = false;
+                if (onComplete) onComplete();
+                const next = layerState.queued;
+                layerState.queued = null;
+                if (!next) return;
+                if (next.url === layerState.currentValue) {
+                    if (next.onComplete) next.onComplete();
+                    return;
+                }
+                beginFade(layerState, next.url, next.onComplete);
+            }, COVER_FADE_MS);
+        });
+    };
+
+    if (!url) {
+        paint();
         return;
     }
 
-    const currentLayer = layerState.layers[layerState.visibleIndex];
+    // Preloaded, so the fade never reveals a blank layer.
+    const img = new Image();
+    img.onload = paint;
+    img.onerror = () => {
+        if (layerState.fadeToken !== token) return;
+        // Unreachable: forget it as a destination so a later attempt retries.
+        layerState.target = layerState.currentValue;
+        if (onComplete) onComplete();
+    };
+    img.src = url;
+}
 
-    const startTransition = () => {
-        nextLayer.classList.add('is-visible');
-        const commit = () => {
-            if (layerState.pendingToken !== token) return; // superseded
-            currentLayer.classList.remove('is-visible');
-            layerState.visibleIndex = nextIndex;
-            layerState.currentValue = imageUrl;
-            if (onComplete) {
-                setTimeout(onComplete, 1000);
-            }
-        };
-        if (typeof requestAnimationFrame === 'function') {
-            requestAnimationFrame(() => {
-                setTimeout(commit, 50);
-            });
-        } else {
-            setTimeout(commit, 50);
-        }
+// Replaces the image on the layer currently fading IN, leaving both
+// transitions untouched. Only ever called while that layer is still faint.
+function swapIncoming(layerState, url, onComplete) {
+    const token = (layerState.swapToken || 0) + 1;
+    layerState.swapToken = token;
+
+    const apply = () => {
+        if (layerState.swapToken !== token || layerState.target !== url) return;
+        paintLayer(layerState.layers[layerState.visibleIndex], url);
+        layerState.currentValue = url;
+        if (onComplete) onComplete();
     };
 
-    if (imageUrl) {
-        const normalized = `url(${imageUrl})`;
-        const isAlreadySet = nextLayer.style.backgroundImage === normalized;
-
-        if (!isAlreadySet) {
-            const img = new Image();
-            img.onload = () => {
-                if (layerState.pendingToken !== token) return; // superseded
-                nextLayer.style.backgroundImage = normalized;
-                nextLayer.classList.remove('is-empty');
-                startTransition();
-            };
-            img.onerror = () => {
-                if (layerState.pendingToken !== token) return; // superseded
-                nextLayer.style.backgroundImage = '';
-                nextLayer.classList.add('is-empty');
-                layerState.currentValue = '';
-                if (onComplete) onComplete();
-            };
-            img.src = imageUrl;
-        } else {
-            nextLayer.classList.remove('is-empty');
-            startTransition();
-        }
-    } else {
-        nextLayer.style.backgroundImage = '';
-        nextLayer.classList.add('is-empty');
-        startTransition();
+    if (!url) {
+        apply();
+        return;
     }
+    const img = new Image();
+    img.onload = apply;
+    img.onerror = () => {
+        if (layerState.swapToken !== token) return;
+        layerState.target = layerState.currentValue;
+        if (onComplete) onComplete();
+    };
+    img.src = url;
+}
+
+export function crossfadeTo(layerState, imageUrl, onComplete) {
+    if (!layerState) return;
+    const url = imageUrl || '';
+
+    // Already showing it, or already fading towards it. Same artwork under
+    // another url counts: what is on screen is already right, so it is only
+    // recorded, never faded to again.
+    if (sameCover(layerState.target, url)) {
+        layerState.target = url;
+        if (onComplete) onComplete();
+        return;
+    }
+    layerState.target = url;
+
+    if (layerState.fading) {
+        // Still at the very start of the fade: swap the image the incoming
+        // layer carries instead of running a second fade after this one.
+        if (Date.now() - (layerState.fadeStartedAt || 0) < COVER_SWAP_WINDOW_MS) {
+            swapIncoming(layerState, url, onComplete);
+            return;
+        }
+        layerState.queued = { url, onComplete };
+        return;
+    }
+
+    beginFade(layerState, url, onComplete);
 }
 
 export function changeStyle(context) {
