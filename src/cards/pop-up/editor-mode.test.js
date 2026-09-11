@@ -13,6 +13,7 @@ const handlePopUpCards = jest.fn();
 const setStandalonePopUpCardsActive = jest.fn();
 jest.unstable_mockModule('./cards/index.js', () => ({ noteFoldCalibration: jest.fn(), handlePopUpCards, setStandalonePopUpCardsActive }));
 jest.unstable_mockModule('./helpers.js', () => ({
+    BUBBLE_URL_EVENT: 'bubble-card-location-changed',
     restorePopupHostLayout: jest.fn(),
     suspendPopupHostLayout: jest.fn(),
 }));
@@ -72,7 +73,7 @@ const placeholderShown = (context) =>
 beforeEach(() => {
     jest.clearAllMocks();
     inPicker = false;
-    globalThis.window = { addEventListener: jest.fn() };
+    globalThis.window = { addEventListener: jest.fn(), dispatchEvent: jest.fn() };
 });
 
 describe('what a pop-up shows in an editor context', () => {
@@ -167,5 +168,30 @@ describe('giving the host back its layout when edit mode starts', () => {
         changeEditor(context);
 
         expect(restorePopupHostLayout).not.toHaveBeenCalled();
+    });
+});
+
+// #2606: once the dashboard has been in edit mode, every dialog closed anywhere
+// in the frontend makes this nudge fire. It changes nothing about the URL, but
+// announced as `location-changed` Home Assistant answered each one by clearing
+// and re-adding `edit=1`, two history.replaceState per closed dialog. Safari
+// throws past a hundred of those per ten seconds.
+describe('the nudge sent after an editor dialog closes', () => {
+    test('travels on a private type, never as a navigation', () => {
+        jest.useFakeTimers();
+        try {
+            changeEditor(createContext());
+
+            const registered = window.addEventListener.mock.calls.find(([type]) => type === 'dialog-closed');
+            expect(registered).toBeDefined();
+
+            registered[1]();
+            jest.advanceTimersByTime(100);
+
+            expect(window.dispatchEvent).toHaveBeenCalledTimes(1);
+            expect(window.dispatchEvent.mock.calls[0][0].type).toBe('bubble-card-location-changed');
+        } finally {
+            jest.useRealTimers();
+        }
     });
 });

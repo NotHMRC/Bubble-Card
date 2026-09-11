@@ -112,7 +112,7 @@ jest.unstable_mockModule('./styles.css', () => ({
     default: '',
 }));
 
-await import('./helpers.js');
+const { BUBBLE_URL_EVENT } = await import('./helpers.js');
 
 const VIEW = 'http://localhost/lovelace/test';
 
@@ -135,10 +135,30 @@ function closePopup() {
     locationChanged({ source: 'bubble-popup-remove-hash' });
 }
 
+/** A re-tap on the button of an open pop-up: same hash, nothing written. */
+function reTapSameHash() {
+    const event = new Event(BUBBLE_URL_EVENT);
+    event.detail = { source: 'bubble-popup-add-hash', sameHash: true, replace: false };
+    window.dispatchEvent(event);
+}
+
 describe('the location deduper, and the orphaned history entry of #2563', () => {
     beforeEach(() => {
         historyObject.back.mockClear();
         updateMockLocation(locationObject, VIEW);
+    });
+
+    // #2606: a re-tap does not move the URL, so it stopped announcing itself as
+    // a navigation and travels on Bubble Card's own event type. The deduper has
+    // to keep hearing it, because it is what tells it the entry on the stack
+    // belongs to the first open and not to the close about to happen. Registered
+    // for the private type too, this behaves exactly as it did before.
+    test('still hears a re-tap that no longer announces itself as a navigation', () => {
+        openPopup('#salon');
+        reTapSameHash();
+        closePopup();
+
+        expect(historyObject.back).not.toHaveBeenCalled();
     });
 
     test('takes back the entry the open pushed, however long the pop-up stayed open', () => {

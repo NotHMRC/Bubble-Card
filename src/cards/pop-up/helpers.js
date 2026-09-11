@@ -15,6 +15,18 @@ import { flushDeferredCardUpdates } from '../../tools/deferred-card-updates.js';
 // Re-exported so the pop-up runtime keeps one import surface for its callers.
 export { isDialogNode };
 
+// Home Assistant answers `location-changed` by re-reading the URL, and since
+// 2026.9 that answer costs `history.replaceState` calls whenever a query
+// parameter it owns is in the URL (`edit=1`, `more-info-entity-id`): it strips
+// the parameter and puts it straight back, on every event, for the rest of the
+// session. Safari caps replaceState at 100 per 10 s and throws past that
+// (#2606). So `location-changed` is kept for the moments the URL really moved,
+// which is the protocol `common/navigate.ts` follows and what third-party hash
+// routing listens for, and the signals that only ever needed to reach our own
+// listeners travel on this private type instead. Every Bubble Card listener
+// that reacts to one reacts to the other, so nothing changes on our side.
+export const BUBBLE_URL_EVENT = 'bubble-card-location-changed';
+
 function resetPopupScroll(context) {
     const container = context.elements?.popUpContainer;
     if (container) {
@@ -1049,7 +1061,7 @@ if (!window.__bubbleLocationDeduperAdded) {
         let pendingPreviousHash = "";
         let lastKnownHash = window.location.hash || "";
 
-        window.addEventListener('location-changed', (event) => {
+        const onUrlEvent = (event) => {
             const href = window.location.href;
             const hasHash = !!window.location.hash;
             const base = href.split('#')[0];
@@ -1106,7 +1118,9 @@ if (!window.__bubbleLocationDeduperAdded) {
             pendingHashPushed = false;
             pendingPreviousHash = "";
             lastKnownHash = window.location.hash || "";
-        });
+        };
+        window.addEventListener('location-changed', onUrlEvent);
+        window.addEventListener(BUBBLE_URL_EVENT, onUrlEvent);
         window.__bubbleLocationDeduperAdded = true;
     } catch (_) {
     }
@@ -1172,8 +1186,8 @@ function noteOutsideInteractionStart(event, context) {
     context._allowOutsideCloseFromInteraction = true;
 }
 
-function createLocationChangedEvent(detail = undefined) {
-    const event = new Event('location-changed');
+function createLocationChangedEvent(detail = undefined, type = 'location-changed') {
+    const event = new Event(type);
     if (detail !== undefined) {
         event.detail = detail;
     }
@@ -1271,11 +1285,14 @@ export function addHash(hash) {
 
     const normalizedHash = hash.startsWith('#') ? hash : `#${hash}`;
     if (location.hash === normalizedHash) {
+        // Re-tap on the button of an already open pop-up. Nothing about the URL
+        // moves, and the only listener with anything to do is our own, which
+        // reads this as a close.
         window.dispatchEvent(createLocationChangedEvent({
             source: 'bubble-popup-add-hash',
             sameHash: true,
             replace: false,
-        }));
+        }, BUBBLE_URL_EVENT));
         return true;
     }
 
@@ -2661,7 +2678,7 @@ function isExplicitSameHashNavigationEvent(event, currentHash, previousHash) {
         return false;
     }
 
-    if (event?.type !== 'location-changed') {
+    if (event?.type !== 'location-changed' && event?.type !== BUBBLE_URL_EVENT) {
         return false;
     }
 
@@ -2917,6 +2934,7 @@ function ensureGlobalUrlListener() {
     };
 
     window.addEventListener('location-changed', handler);
+    window.addEventListener(BUBBLE_URL_EVENT, handler);
     window.addEventListener('popstate', handler);
     window.addEventListener('hashchange', handler);
 }

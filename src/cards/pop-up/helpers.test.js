@@ -205,7 +205,7 @@ jest.unstable_mockModule('./styles.css', () => ({
     default: '',
 }));
 
-const { cleanupPopupRuntime, closePopup, getPopupStyle, hasClassicHeader, isDialogNode, isPopupOpenSequenceActive, keepPopupHostMounted, updateListeners, navigateToPreviousPopup, openPopup, registerPopupContext, removeHash, restorePopupHostLayout, shouldHoldDashboardHassUpdate, suspendPopupHostLayout, syncDeferredPopupHostLayout, syncPopupStyleClasses } = await import('./helpers.js');
+const { addHash, BUBBLE_URL_EVENT, cleanupPopupRuntime, closePopup, getPopupStyle, hasClassicHeader, isDialogNode, isPopupOpenSequenceActive, keepPopupHostMounted, updateListeners, navigateToPreviousPopup, openPopup, registerPopupContext, removeHash, restorePopupHostLayout, shouldHoldDashboardHassUpdate, suspendPopupHostLayout, syncDeferredPopupHostLayout, syncPopupStyleClasses } = await import('./helpers.js');
 const { invalidateWakeSyncCache } = await import('./index.js');
 const { deferCardUpdate } = await import('../../tools/deferred-card-updates.js');
 
@@ -2745,6 +2745,54 @@ describe('standalone popup lifecycle', () => {
 
         expect(context.popUp.classList.contains('is-popup-opened')).toBe(true);
     });
+
+    // #2606: a re-tap on the button of an already open pop-up closes it, and
+    // that signal has always travelled on a synthetic `location-changed` even
+    // though the URL never moved. Home Assistant answers every one of those by
+    // rewriting its own query parameters, so it travels on a private type now.
+    // The toggle itself has to behave exactly as it did.
+    test('closes on a re-tap of the hash already in the URL, without announcing a navigation', () => {
+        const context = createStandaloneContext({ hash: '#popup-a' });
+        usedContexts.push(context);
+
+        registerPopupContext(context);
+
+        window.history.pushState({}, '', 'http://localhost/lovelace/test#popup-a');
+        window.dispatchEvent(new Event('location-changed'));
+        flushRafQueue();
+        flushRafQueue();
+        flushRafQueue();
+        dispatchTransformTransitionEnd(context.popUp);
+        flushRafQueue();
+
+        expect(context.popUp.classList.contains('is-popup-opened')).toBe(true);
+
+        // The harness stops short of the real completion frame, and the toggle
+        // is deliberately refused while the open is still settling, so the
+        // settle is stated here the way the outside-click tests above do.
+        context._popupOpenSettled = true;
+        context._popupOpenSettledAt = Date.now() - 200;
+
+        jest.clearAllMocks();
+        const announced = [];
+        const spy = (event) => announced.push(event.type);
+        window.addEventListener('location-changed', spy);
+
+        addHash('#popup-a');
+
+        window.removeEventListener('location-changed', spy);
+
+        // The re-tap says nothing to Home Assistant. The close it produces does,
+        // because that one really does move the URL.
+        expect(announced).toEqual(['location-changed']);
+        expect(window.history.pushState).not.toHaveBeenCalled();
+        expect(window.history.replaceState).toHaveBeenCalledWith(
+            null,
+            '',
+            'http://localhost/lovelace/test',
+        );
+        expect(context.popUp.classList.contains('is-closing')).toBe(true);
+    });
 });
 
 describe('resolvePopupHostElements shadow DOM fallback', () => {
@@ -3863,5 +3911,78 @@ describe('pop-up styles', () => {
 
         expect(popUp.classes.has('popup-style-classic')).toBe(false);
         expect(popUp.classes.has('popup-style-home-assistant')).toBe(false);
+    });
+});
+
+// Home Assistant re-reads the URL on every `location-changed`, and when one of
+// its own query parameters is there it strips it and puts it straight back, two
+// to three `history.replaceState` per event. Safari caps those at 100 per 10 s
+// and throws past that (#2606). A navigation still has to be announced, both
+// because it is Home Assistant's own protocol and because third-party hash
+// routing listens for it. Anything that never left Bubble Card must not be.
+describe('what Bubble Card announces to Home Assistant', () => {
+    function recorded(run) {
+        const seen = [];
+        const spy = (event) => seen.push(event.type);
+        window.addEventListener('location-changed', spy);
+        window.addEventListener(BUBBLE_URL_EVENT, spy);
+        try {
+            run();
+        } finally {
+            window.removeEventListener('location-changed', spy);
+            window.removeEventListener(BUBBLE_URL_EVENT, spy);
+        }
+        return seen;
+    }
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+        jest.useFakeTimers();
+        window.__bubbleLocationDeduperAdded = true;
+        window.__bubbleDialogListenerAdded = true;
+        updateMockLocation(window.location, 'http://localhost/lovelace/test');
+    });
+
+    afterEach(() => {
+        jest.runOnlyPendingTimers();
+        jest.useRealTimers();
+    });
+
+    test('an open announces the navigation it really made', () => {
+        const seen = recorded(() => addHash('#salon'));
+
+        expect(window.history.pushState).toHaveBeenCalledWith(null, '', 'http://localhost/lovelace/test#salon');
+        expect(seen).toEqual(['location-changed']);
+    });
+
+    test('a close announces the navigation it really made', () => {
+        updateMockLocation(window.location, 'http://localhost/lovelace/test#salon');
+
+        const seen = recorded(() => removeHash(true));
+
+        expect(window.history.replaceState).toHaveBeenCalled();
+        expect(seen).toEqual(['location-changed']);
+    });
+
+    test('the deferred close path announces it too', () => {
+        updateMockLocation(window.location, 'http://localhost/lovelace/test#salon');
+
+        const seen = recorded(() => {
+            removeHash();
+            jest.advanceTimersByTime(60);
+        });
+
+        expect(seen).toEqual(['location-changed']);
+    });
+
+    test('a re-tap on the hash already in the URL announces nothing', () => {
+        updateMockLocation(window.location, 'http://localhost/lovelace/test#salon');
+
+        const seen = recorded(() => addHash('#salon'));
+
+        // Neither the history nor Home Assistant hears about a URL that did not move.
+        expect(window.history.pushState).not.toHaveBeenCalled();
+        expect(window.history.replaceState).not.toHaveBeenCalled();
+        expect(seen).toEqual([BUBBLE_URL_EVENT]);
     });
 });

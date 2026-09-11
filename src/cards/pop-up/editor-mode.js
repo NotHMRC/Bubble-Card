@@ -2,7 +2,7 @@ import { getBackdrop } from './backdrop.js';
 import setupTranslation, { getGlobalHass, ensureEditorTranslations } from '../../tools/localize.js';
 import { isHaCardWrapper } from '../../tools/ha-boundary.js';
 import { handlePopUpCards, setStandalonePopUpCardsActive } from './cards/index.js';
-import { restorePopupHostLayout, suspendPopupHostLayout } from './helpers.js';
+import { BUBBLE_URL_EVENT, restorePopupHostLayout, suspendPopupHostLayout } from './helpers.js';
 import { isLegacyPopUpConfig } from './migration.js';
 import { appendLegacyPopup, hideLegacyPopupContent } from './legacy.js';
 import { createElement, toggleBodyScroll } from '../../tools/utils.js';
@@ -244,7 +244,13 @@ export function changeEditor(context) {
                 setTimeout(() => {
                     window.bubbleNewlyCreatedInstances?.clear();
                     window.bubbleNewlyCreatedHashes?.clear();
-                    window.dispatchEvent(new Event('location-changed'));
+                    // Nudges our own pop-up runtime to re-read the URL after an
+                    // editor dialog closed. The URL has not changed, so this
+                    // must not be announced as a navigation: in edit mode Home
+                    // Assistant answered every one of these by clearing and
+                    // re-adding `edit=1`, two replaceState per closed dialog
+                    // (#2606).
+                    window.dispatchEvent(new Event(BUBBLE_URL_EVENT));
                 }, 100);
             }, { capture: true });
             window.__bubblePopupEditorDialogListenerAdded = true;

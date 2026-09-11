@@ -9,6 +9,7 @@ jest.unstable_mockModule('./backdrop.js', () => ({
 }));
 
 jest.unstable_mockModule('./helpers.js', () => ({
+    BUBBLE_URL_EVENT: 'bubble-card-location-changed',
     isHomeAssistantStyle: (config) => config?.popup_style === 'home-assistant',
     addHash: jest.fn(),
     keepPopupHostMounted: jest.fn((context) => {
