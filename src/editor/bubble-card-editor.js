@@ -35,6 +35,12 @@ import cardsEditorStyles from '../cards/pop-up/cards/styles.css';
 import { getLazyLoadedPanelContent, tTemplate } from './utils.js';
 import { bridgeDialogCloseToParent, createReopenedStandaloneParentDialogParams, createStandaloneParentDialogParamsFromDialog, forceDialogDirtyState, getDialogCardElementEditor, restoreDialogCardEditorVisualState } from './standalone-dialog-bridge.js';
 
+// Stands for "no reading yet" in the auto-rows confirmation. `undefined` is a
+// value a reading can legitimately produce, so it cannot double as the empty
+// state: the first reading after the editor opens has to be unconfirmed too,
+// which is exactly the one taken while the card is still being assembled.
+const NO_ROWS_READING = Symbol('no rows reading');
+
 class BubbleCardEditor extends LitElement {
     _previewStyleApplied = false;
     _entityCache = {};
@@ -52,6 +58,10 @@ class BubbleCardEditor extends LitElement {
     _disallowStandalonePopup = false;
     // Stabilization for auto-rows calculation to prevent loops from micro layout changes
     _lastMeasuredHeights = null;
+    // What the previous finished reading computed, and how many readings in a
+    // row have disagreed. See the confirmation guard in _computeAndApplyRows.
+    _lastComputedRows = NO_ROWS_READING;
+    _unconfirmedRowsPasses = 0;
 
     constructor() {
         super();
@@ -212,7 +222,9 @@ class BubbleCardEditor extends LitElement {
                 try {
                     this._firstRowsComputation = true; // Bypass first-computation skip
                     this._lastMeasuredHeights = null; // Reset to force fresh calculation
-                    this._setupAutoRowsObserver();
+                    this._lastComputedRows = NO_ROWS_READING;
+                    this._unconfirmedRowsPasses = 0;
+                            this._setupAutoRowsObserver();
                     const card = this._getBubbleCardFromPreview();
                     if (card) {
                         this._computeAndApplyRows(card);
@@ -2222,6 +2234,11 @@ class BubbleCardEditor extends LitElement {
         return { applied: false };
       }
 
+      // Same reason as the guard further down, one step earlier: between a
+      // rebuild and the next render the preview holds a card that is no longer
+      // in the document, and every box it reports is zero.
+      if (bubbleCard.isConnected === false) return { applied: false, detached: true };
+
       const isCalendar = this._config.card_type === 'calendar';
       const isSeparator = this._config.card_type === 'separator';
       const bottomSubButtons = bubbleCard.querySelector('.bubble-sub-button-bottom-container');
@@ -2397,6 +2414,13 @@ class BubbleCardEditor extends LitElement {
         computedRows = undefined;
       }
       
+      // Every finished reading is remembered, the ones that change nothing
+      // included: the guard further down asks what the reading BEFORE this one
+      // said, and an early return here would leave it answering for some older
+      // pass that happened to match.
+      const previousComputedRows = this._lastComputedRows;
+      this._lastComputedRows = computedRows;
+
       const currentRows = this._config.rows;
 
       if (computedRows === currentRows || (computedRows === undefined && currentRows === undefined)) {
@@ -2415,6 +2439,36 @@ class BubbleCardEditor extends LitElement {
       }
 
       if (this._rowsAutoMode === false) return { applied: false };
+
+      // A reading is written only once the reading before it agreed.
+      //
+      // The card is measured while Home Assistant is still assembling it, and a
+      // row it will not keep can be there for exactly one pass. Measured on a
+      // media player card carrying no rows of its own:
+      // `.bubble-buttons-container.bottom-fixed` is found on the first pass and
+      // gone on the next, so rows is written and then erased. Every write
+      // rebuilds the preview, because Home Assistant rebuilds a preview card on
+      // ANY config change (hui-card.ts: `typeChanged || this.preview`), and each
+      // rebuild restarts every cover fade on the card from nothing. The pair can
+      // keep trading places for as long as the dialog is open: 16 writes in 10s,
+      // alternating 1.676 and nothing, for 12 rebuilds of the preview.
+      //
+      // The height memo above cannot catch it. It ignores differences under 1px,
+      // and this one is a whole row appearing and disappearing.
+      if (previousComputedRows !== computedRows) {
+        // Bounded: nothing is written while this runs, so the card stops
+        // changing and the reading settles within a frame or two. The cap is
+        // there so a card that never settles costs a few frames, not a
+        // measurement on every frame the dialog stays open.
+        if ((this._unconfirmedRowsPasses = (this._unconfirmedRowsPasses || 0) + 1) <= 4) {
+          // The height memo would swallow the confirmation pass, which reads
+          // the same heights by definition.
+          this._lastMeasuredHeights = null;
+          this._scheduleAutoRowsCompute();
+        }
+        return { applied: false, unconfirmed: true };
+      }
+      this._unconfirmedRowsPasses = 0;
 
       const newConfig = { ...this._config };
       if (computedRows === undefined) {
@@ -3170,6 +3224,22 @@ class BubbleCardEditor extends LitElement {
     const cfg = detail?.config || {};
     const target = this._config || {};
     let score = 0;
+    // The copy Home Assistant builds inside the dialog outranks everything.
+    //
+    // Every other signal here can tie: `isEditor` is true for every card on the
+    // page while the dialog is open, and a dashboard can hold several cards of
+    // the same type on the same entity, which is two cards scoring identically
+    // and the first one arriving winning. When that first one is a card from
+    // the view, the auto-rows pass measures ITS height and writes it into the
+    // edited card's config. Measured on a media player card carrying no rows of
+    // its own: the first two passes read a view card with a bottom button row
+    // and wrote rows 1.676, the next two read the real preview, found no such
+    // row and erased it, and each write rebuilt the preview and restarted every
+    // cover fade on the card.
+    //
+    // `inEditorPreview` is the one answer that cannot tie: it is the ancestor
+    // walk, true only for the copy inside the card editor.
+    if (detail?.context?.inEditorPreview) score += 100;
     if (detail?.isEditor || detail?.editMode) score += 5;
     if (cfg.card_type && cfg.card_type === target.card_type) score += 4;
     if (cfg.entity && cfg.entity === target.entity) score += 3;
@@ -3203,6 +3273,8 @@ class BubbleCardEditor extends LitElement {
     this._previewCardHost = null;
     this._previewCardScore = -Infinity;
     this._lastMeasuredHeights = null;
+    this._lastComputedRows = NO_ROWS_READING;
+    this._unconfirmedRowsPasses = 0;
   }
 }
 

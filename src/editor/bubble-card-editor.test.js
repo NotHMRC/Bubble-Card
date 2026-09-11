@@ -351,3 +351,138 @@ describe('BubbleCardEditor module attribute selectors', () => {
         expect(attributeEntityIds(processed)).toEqual(['weather.home', undefined]);
     });
 });
+
+// Auto rows: a reading is written only once the reading before it agreed.
+//
+// The card is measured while Home Assistant is still assembling it, and a row
+// it will not keep can be there for exactly one pass. Every write rebuilds the
+// preview, because Home Assistant rebuilds a preview card on any config
+// change, and each rebuild restarts every cover fade on the card. Measured
+// before the guard: 16 config writes in 10s, alternating 1.676 and nothing.
+describe('BubbleCardEditor auto rows confirmation', () => {
+    const boite = (height) => ({ getBoundingClientRect: () => ({ height, width: 300 }) });
+
+    // Only the selectors _computeAndApplyRows reads. null is a part the card
+    // does not have, which is what the real markup gives.
+    const carte = (hauteurBasFixe, { connected = true } = {}) => ({
+        isConnected: connected,
+        querySelector: (sel) => {
+            if (sel === '.bubble-buttons-container.bottom-fixed') return hauteurBasFixe ? boite(hauteurBasFixe) : null;
+            if (sel === '.bubble-container') return boite(56);
+            return null;
+        },
+    });
+
+    let editeur;
+    beforeEach(() => {
+        jest.clearAllMocks();
+        global.getComputedStyle = () => ({
+            bottom: '0px', marginTop: '0px', marginBottom: '0px',
+            paddingTop: '0px', paddingBottom: '0px',
+            getPropertyValue: (name) => (name === '--row-height' ? '56' : name === '--row-gap' ? '8' : ''),
+        });
+        editeur = new BubbleCardEditor();
+        editeur._config = { type: 'custom:bubble-card', card_type: 'media-player', entity: 'media_player.x' };
+        editeur._rowsAutoMode = true;
+        // The very first computation is skipped on purpose elsewhere; these
+        // tests are about what happens afterwards.
+        editeur._firstRowsComputation = true;
+        jest.spyOn(editeur, '_scheduleAutoRowsCompute').mockImplementation(() => {});
+    });
+
+    test('a first reading waits for the next one', () => {
+        const r = editeur._computeAndApplyRows(carte(79));
+        expect(r).toEqual({ applied: false, unconfirmed: true });
+        expect(fireEvent).not.toHaveBeenCalled();
+        expect(editeur._scheduleAutoRowsCompute).toHaveBeenCalled();
+    });
+
+    // Rows still get applied, one pass later than before.
+    test('a reading the next one agrees with is applied', () => {
+        editeur._computeAndApplyRows(carte(79));
+        const r = editeur._computeAndApplyRows(carte(79));
+        expect(r.applied).toBe(true);
+        expect(typeof r.rows).toBe('number');
+        expect(fireEvent).toHaveBeenCalledTimes(1);
+    });
+
+    // The confirmation pass reads the same heights by definition, so the memo
+    // must not be the thing that swallows it.
+    test('the height memo does not swallow the confirmation', () => {
+        editeur._computeAndApplyRows(carte(79));
+        expect(editeur._lastMeasuredHeights).toBe(null);
+    });
+
+    // The bug itself: a row appearing and disappearing never reaches the config.
+    test('a row that keeps trading places never reaches the config', () => {
+        for (let i = 0; i < 8; i++) editeur._computeAndApplyRows(carte(i % 2 ? 79 : 0));
+        expect(fireEvent).not.toHaveBeenCalled();
+        expect(editeur._config.rows).toBeUndefined();
+    });
+
+    // And it must not cost a measurement on every frame for as long as the
+    // dialog stays open.
+    test('an unsettled card stops asking for more passes', () => {
+        for (let i = 0; i < 8; i++) editeur._computeAndApplyRows(carte(i % 2 ? 79 : 0));
+        expect(editeur._scheduleAutoRowsCompute.mock.calls.length).toBeLessThanOrEqual(4);
+    });
+
+    // A card that genuinely lost its row still loses its override, one pass
+    // later. Nothing is written on the first reading either, which is the one
+    // taken while the card is still being assembled.
+    test('a row really gone is erased once the reading holds', () => {
+        editeur._config = { ...editeur._config, rows: 1.676 };
+        expect(editeur._computeAndApplyRows(carte(0))).toEqual({ applied: false, unconfirmed: true });
+        expect(fireEvent).not.toHaveBeenCalled();
+        const r = editeur._computeAndApplyRows(carte(0));
+        expect(r.applied).toBe(true);
+        expect(fireEvent).toHaveBeenCalledTimes(1);
+        expect(fireEvent.mock.calls[0][2].config.rows).toBeUndefined();
+    });
+
+    test('a card that is no longer in the document is not measured at all', () => {
+        const r = editeur._computeAndApplyRows(carte(79, { connected: false }));
+        expect(r).toEqual({ applied: false, detached: true });
+        expect(fireEvent).not.toHaveBeenCalled();
+    });
+});
+
+// The preview card the editor measures has to be the one in the dialog.
+//
+// Every other signal can tie: `isEditor` is true for every card on the page
+// while the dialog is open, and a dashboard can hold several cards of the same
+// type on the same entity. The first to arrive used to win, and when that was
+// a card from the view the auto-rows pass measured its height and wrote it
+// into the edited card's config.
+describe('BubbleCardEditor preview card scoring', () => {
+    let editeur;
+    beforeEach(() => {
+        jest.clearAllMocks();
+        editeur = new BubbleCardEditor();
+        editeur._config = { card_type: 'media-player', entity: 'media_player.salon' };
+    });
+
+    const contexte = (dansApercu) => ({
+        context: { inEditorPreview: dansApercu },
+        config: { card_type: 'media-player', entity: 'media_player.salon' },
+        isEditor: true,
+        editMode: true,
+    });
+
+    test('the copy inside the dialog outranks an identical card from the view', () => {
+        expect(editeur._scoreCardContext(contexte(true)))
+            .toBeGreaterThan(editeur._scoreCardContext(contexte(false)));
+    });
+
+    // Two cards of the same type on the same entity used to score the same.
+    test('without it the two are indistinguishable', () => {
+        const vue = contexte(false);
+        const autreVue = contexte(false);
+        expect(editeur._scoreCardContext(vue)).toBe(editeur._scoreCardContext(autreVue));
+    });
+
+    // A context that says nothing about it is still usable, just outranked.
+    test('a context without the flag still scores on the rest', () => {
+        expect(editeur._scoreCardContext({ config: editeur._config, isEditor: true })).toBeGreaterThan(0);
+    });
+});
