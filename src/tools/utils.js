@@ -4,6 +4,7 @@ import { getIconColor } from "./icon.js";
 import { adjustColor, areColorsSimilar, calculateLuminance, hexToRgb, rgbStringToRgb } from "./color.js";
 import { resolveTemplate } from "./render-template.js";
 import { isTemplate } from "./jinja.js";
+import { resolveLovelaceRoot } from "./ha-boundary.js";
 
 // Kept re-exported: the color primitives moved to their own leaf module, every
 // existing import of them still points here
@@ -935,13 +936,6 @@ export function stopElementTimerInterval(element) {
     }
 }
 
-// Variables to store DOM references
-let cachedHomeAssistant = null;
-let cachedMain = null;
-let cachedDrawer = null;
-let cachedHuiRoot = null;
-let isCached = false;
-
 export function setLayout(context, targetElementOverride = null, defaultLayoutOverride = null) {
     const targetElement = targetElementOverride || context.content;
 
@@ -1006,27 +1000,13 @@ export function setLayout(context, targetElementOverride = null, defaultLayoutOv
     if (defaultLayoutOverride) {
         determinedLayoutClass = context.config.card_layout ?? defaultLayoutOverride;
     } else {
-        if (!isCached) {
-            cachedHomeAssistant = document.querySelector("body > home-assistant");
-            cachedMain = cachedHomeAssistant?.shadowRoot?.querySelector("home-assistant-main");
-            cachedDrawer = cachedMain?.shadowRoot?.querySelector("ha-drawer > partial-panel-resolver > ha-panel-lovelace");
-            cachedHuiRoot = cachedDrawer?.shadowRoot?.querySelector("hui-root");
-            
-            if (cachedHomeAssistant && cachedMain && cachedDrawer && cachedHuiRoot) {
-                isCached = true;
-            } else {
-                cachedHomeAssistant = null; cachedMain = null; cachedDrawer = null; cachedHuiRoot = null;
-                isCached = false;
-            }
-        }
+        // The walk down to hui-root, and its cache, live in ha-boundary.js so
+        // this file and the footer padding cannot drift apart on what HA's
+        // dashboard looks like.
+        const huiRoot = resolveLovelaceRoot();
 
-        if (cachedHuiRoot && !cachedHuiRoot.isConnected) {
-            isCached = false; 
-            cachedHomeAssistant = null; cachedMain = null; cachedDrawer = null; cachedHuiRoot = null;
-        }
-        
         let defaultViewLayout = "normal";
-        if (cachedHuiRoot?.shadowRoot) {
+        if (huiRoot?.shadowRoot) {
             // Masonry is the only layout that takes the "normal" default;
             // sections, panel, sidebar and custom views all take "large".
             // So the question is really "is this a masonry view?", and the
@@ -1036,7 +1016,7 @@ export function setLayout(context, targetElementOverride = null, defaultLayoutOv
             // masonry dashboard to the large layout — a visual change users
             // would blame on Bubble Card. Descendant selectors so an extra
             // wrapper element cannot break the chain.
-            const root = cachedHuiRoot.shadowRoot;
+            const root = huiRoot.shadowRoot;
             const masonryView = root.querySelector("hui-masonry-view");
             const anyViewRendered = masonryView || root.querySelector(
                 "#view, hui-view, hui-sections-view, hui-panel-view, hui-sidebar-view"

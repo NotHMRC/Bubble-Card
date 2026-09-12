@@ -97,3 +97,41 @@ export function resolveLegacyStackRoot(verticalStack) {
     }
     return fallback;
 }
+
+// Lovelace's dashboard root. It sits four shadow roots below the document, and
+// callers reach for it on every render, so the walk is cached and revalidated
+// through isConnected: HA swaps the whole panel when you leave the dashboard.
+let cachedLovelaceRoot = null;
+
+export function resolveLovelaceRoot() {
+    if (cachedLovelaceRoot?.isConnected) {
+        return cachedLovelaceRoot;
+    }
+
+    cachedLovelaceRoot = null;
+    if (typeof document === 'undefined') {
+        return null;
+    }
+
+    const main = document
+        .querySelector('body > home-assistant')
+        ?.shadowRoot?.querySelector('home-assistant-main');
+    const panel = main
+        ?.shadowRoot?.querySelector('ha-drawer > partial-panel-resolver > ha-panel-lovelace');
+
+    cachedLovelaceRoot = panel?.shadowRoot?.querySelector('hui-root') || null;
+    return cachedLovelaceRoot;
+}
+
+// The element the current view is rendered as. hui-view is the wrapper HA
+// keeps whatever the view type is, and the view itself is its only child, so
+// asking for that child answers for sections, masonry, panel and sidebar
+// views alike, and for a third-party view element such as Layout Card's
+// grid-layout, which no list of HA tag names could name.
+//
+// Deliberately a view element and never an ancestor: #view carries HA's own
+// safe-area padding, which an inline style would silently override.
+export function resolveLovelaceViewElement() {
+    const view = resolveLovelaceRoot()?.shadowRoot?.querySelector('#view > hui-view');
+    return view?.firstElementChild || null;
+}

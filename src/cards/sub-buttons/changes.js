@@ -2,6 +2,7 @@ import {
   setLayout
 } from '../../tools/utils.js';
 import { isInsidePopupShell } from '../../tools/popup-dom.js';
+import { resolveLovelaceViewElement } from '../../tools/ha-boundary.js';
 import { handleCustomStyles } from '../../tools/style-processor.js';
 
 const DEFAULT_BOTTOM_OFFSET = 16;
@@ -11,30 +12,13 @@ function getCardContainer(context) {
     return context.cardContainer || context.card.parentNode?.host?.parentNode?.parentNode;
 }
 
-function getHomeAssistantContainer(cardContainer) {
-    const homeAssistant = document.querySelector("body > home-assistant");
-    if (!homeAssistant?.shadowRoot) return cardContainer?.parentNode;
-
-    const main = homeAssistant.shadowRoot.querySelector("home-assistant-main");
-    if (!main?.shadowRoot) return cardContainer?.parentNode;
-
-    const drawer = main.shadowRoot.querySelector("ha-drawer > partial-panel-resolver > ha-panel-lovelace");
-    if (!drawer?.shadowRoot) return cardContainer?.parentNode;
-
-    const root = drawer.shadowRoot.querySelector("hui-root");
-    if (!root?.shadowRoot) return cardContainer?.parentNode;
-
-    const sectionsView = root.shadowRoot.querySelector("#view > hui-view > hui-sections-view");
-    return sectionsView || cardContainer?.parentNode;
-}
-
-function updateFooterPadding(card, container, context) {
+function updateFooterPadding(view, context) {
     const measureCard = () => {
-        const cardHeight = Number(card.offsetHeight || card.getBoundingClientRect().height) || 0;
+        const cardHeight = Number(context.card.offsetHeight || context.card.getBoundingClientRect().height) || 0;
         const bottomOffset = Number(context?.config?.footer_bottom_offset) || DEFAULT_BOTTOM_OFFSET;
         const padding = cardHeight + bottomOffset + DEFAULT_PADDING_EXTRA;
-        
-        container.style.paddingBottom = `${padding}px`;
+
+        view.style.paddingBottom = `${padding}px`;
     };
 
     requestAnimationFrame(() => {
@@ -55,11 +39,14 @@ function applyFooterPadding(context) {
         return;
     }
 
-    const cardContainer = getCardContainer(context);
-    const haContainer = getHomeAssistantContainer(cardContainer);
+    // Only the view element itself. Walking up from the card instead used to
+    // land on whatever sat above it, which on any view that is not a sections
+    // view is a shadow root with no style at all: that threw on every render,
+    // about once a second, and reserved nothing (#2607).
+    const view = resolveLovelaceViewElement();
 
-    if (haContainer) {
-        updateFooterPadding(context.card, haContainer, context);
+    if (view?.style) {
+        updateFooterPadding(view, context);
     }
 }
 
