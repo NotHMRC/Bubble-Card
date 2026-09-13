@@ -49,6 +49,9 @@ jest.unstable_mockModule('../tools/localize.js', () => ({
     isEditorEnglishForced: jest.fn(() => false),
     setEditorEnglishForced: jest.fn(),
     getCurrentLocale: jest.fn(() => 'en'),
+    // Reached through ../modules/utils.js, which the editor imports for
+    // schemaDefaults.
+    tGlobal: jest.fn((key) => key),
 }));
 jest.unstable_mockModule('./styles.css', () => ({ default: '' }));
 jest.unstable_mockModule('../modules/styles.css', () => ({ default: '' }));

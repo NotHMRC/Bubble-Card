@@ -46,6 +46,9 @@ jest.unstable_mockModule('../tools/localize.js', () => ({
     isEditorEnglishForced: jest.fn(() => false),
     setEditorEnglishForced: jest.fn(),
     getCurrentLocale: jest.fn(() => 'en'),
+    // Reached through ../modules/utils.js, which the editor imports for
+    // schemaDefaults.
+    tGlobal: jest.fn((key) => key),
 }));
 jest.unstable_mockModule('./styles.css', () => ({ default: '' }));
 jest.unstable_mockModule('../modules/styles.css', () => ({ default: '' }));
@@ -84,6 +87,7 @@ global.document = {
 await import('./bubble-card-editor.js');
 const BubbleCardEditor = definedElements['bubble-card-editor'];
 const { fireEvent } = await import('../tools/utils.js');
+const { schemaDefaults } = await import('../modules/utils.js');
 
 describe('BubbleCardEditor lifecycle contract', () => {
     beforeEach(() => {
@@ -484,5 +488,155 @@ describe('BubbleCardEditor preview card scoring', () => {
     // A context that says nothing about it is still usable, just outranked.
     test('a context without the flag still scores on the rest', () => {
         expect(editeur._scoreCardContext({ config: editeur._config, isEditor: true })).toBeGreaterThan(0);
+    });
+});
+
+
+// A module configuration form shows the defaults its module declared for the
+// fields the card has not set, so an untouched dropdown reads as what the card
+// does rather than as nothing at all. ha-form hands the whole form back on any
+// edit, so those shown values have to be taken out again on the way to the
+// config, or looking at a form would write it.
+//
+// The rule that makes that safe, and that keeps a config written by an older
+// version reading the same: only keys MISSING from the card can be shown as a
+// default, so only those can ever be removed.
+describe('BubbleCardEditor module defaults in the form', () => {
+
+    const schema = () => [
+        // A line of explanation carries no name and no value: a form is full of
+        // them and none of them is a key of anything.
+        { type: 'constant', label: 'What this module does' },
+        { name: 'title', label: 'Title', selector: { text: {} } },
+        { name: 'layout', label: 'Layout', selector: { select: {} }, default: 'default' },
+        {
+            type: 'expandable',
+            title: 'Styling',
+            schema: [
+                { type: 'constant', label: 'How it looks' },
+                { name: 'shape', label: 'Shape', selector: { select: {} }, default: 'square' },
+                { name: 'opacity', label: 'Opacity', selector: { number: {} }, default: 1 },
+            ],
+        },
+    ];
+
+    describe('what the form is given to show', () => {
+        test('a field the card has not set shows the default its module declared', () => {
+            expect(schemaDefaults(schema(), {})).toEqual({ layout: 'default', shape: 'square', opacity: 1 });
+        });
+
+        test('a field the card carries is left alone, including one sitting on the default', () => {
+            const shown = schemaDefaults(schema(), { layout: 'square', shape: 'square' });
+            expect(shown).toEqual({ opacity: 1 });
+        });
+
+        // A section with no name shares the config of what holds it, which is
+        // how ha-form hands a value down to it.
+        test('a named section keeps its own object, so its fields are not keys of this one', () => {
+            const nested = [{
+                name: 'group', type: 'expandable', title: 'Group',
+                schema: [{ name: 'shape', selector: { select: {} }, default: 'square' }],
+            }];
+            expect(schemaDefaults(nested, {})).toEqual({});
+        });
+
+        // The list-shaped modules keep their config in an array, whose keys are
+        // positions. Merging named defaults into one would turn it into an
+        // object, and the editor would no longer read it back as a list.
+        test('a list-shaped module is left out of this entirely', () => {
+            expect(schemaDefaults(schema(), [{ entity: 'light.a' }])).toEqual({});
+        });
+
+        test('a module that declares no default contributes nothing', () => {
+            expect(schemaDefaults([{ name: 'title', selector: { text: {} } }], {})).toEqual({});
+        });
+    });
+
+    describe('what reaches the card config', () => {
+        function editorEditing(saved) {
+            const editor = new BubbleCardEditor();
+            editor._config = { card_type: 'button', my_module: saved ? { ...saved } : undefined };
+            editor._workingModuleConfigs = { my_module: saved ? { ...saved } : {} };
+            editor.requestUpdate = jest.fn();
+            return editor;
+        }
+        const written = () => fireEvent.mock.calls.at(-1)[2].config.my_module;
+
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
+
+        test('a field left as it was shown is not written to the card', () => {
+            const editor = editorEditing(null);
+
+            // Typing a title hands back every field of the form, defaults and all.
+            editor._valueChangedInHaForm(
+                { detail: { value: { title: 'Kitchen', layout: 'default', shape: 'square', opacity: 1 } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual({ title: 'Kitchen' });
+        });
+
+        test('a field moved off what it was shown is written', () => {
+            const editor = editorEditing(null);
+
+            editor._valueChangedInHaForm(
+                { detail: { value: { layout: 'square', shape: 'square', opacity: 1 } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual({ layout: 'square' });
+        });
+
+        // The compatibility rule, stated as a test: a card that already says
+        // `layout: default` keeps saying it, even though the module declares
+        // that very value as its default.
+        test('a value the card already carried is never dropped', () => {
+            const editor = editorEditing({ layout: 'default' });
+
+            editor._valueChangedInHaForm(
+                { detail: { value: { layout: 'default', shape: 'original', opacity: 1 } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual({ layout: 'default', shape: 'original' });
+        });
+
+        // The narrow case, and it comes out right: once the field has been
+        // moved the card carries the key, so choosing the default again is a
+        // choice like any other and is written down.
+        test('a field moved away and set back to its default is written down', () => {
+            const editor = editorEditing(null);
+            const edit = (value) => editor._valueChangedInHaForm({ detail: { value } }, 'my_module', schema());
+
+            edit({ layout: 'square', shape: 'square', opacity: 1 });
+            expect(editor._workingModuleConfigs.my_module).toEqual({ layout: 'square' });
+
+            edit({ layout: 'default', shape: 'square', opacity: 1 });
+            expect(written()).toEqual({ layout: 'default' });
+        });
+
+        test('a module that declares no default hands its form value through untouched', () => {
+            const editor = editorEditing(null);
+            const value = { title: 'Kitchen' };
+
+            editor._valueChangedInHaForm({ detail: { value } }, 'my_module', [{ name: 'title', selector: { text: {} } }]);
+
+            expect(editor._workingModuleConfigs.my_module).toBe(value);
+        });
+
+        // ha-form turns a list into numbered keys and the editor turns it back.
+        // Nothing above may get between those two.
+        test('a list-shaped module still comes back as a list', () => {
+            const editor = editorEditing(null);
+
+            editor._valueChangedInHaForm(
+                { detail: { value: { 0: { entity: 'light.a' }, 1: { entity: 'light.b' } } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual([{ entity: 'light.a' }, { entity: 'light.b' }]);
+        });
     });
 });

@@ -27,6 +27,7 @@ import { makeModulesEditor } from '../modules/editor.js';
 import { makeModuleStore, _fetchModuleStore } from '../modules/store.js';
 import { dropSuggestionsPreviewIfStale, releaseSuggestionsPreview } from '../modules/module-editor.js';
 import { yamlKeysMap } from '../modules/registry.js';
+import { schemaDefaults } from '../modules/utils.js';
 import setupTranslation, { ensureEditorTranslations, isEditorEnglishForced, setEditorEnglishForced, getCurrentLocale } from '../tools/localize.js';
 import { migrateStateContent, defaultStateContent } from '../tools/state-content.js';
 import styles from './styles.css';
@@ -1441,6 +1442,25 @@ class BubbleCardEditor extends LitElement {
           value = keys
             .sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
             .map(k => value[k]);
+        }
+      }
+
+      // Take back out whatever the form was only showing. The form displays a
+      // module's declared default on every field the card has not set, and
+      // ha-form hands the whole form back on any edit, so those would be
+      // written to the card for having been looked at. A field still holding
+      // the default it was shown was not chosen.
+      //
+      // Only keys the card was MISSING can be in here (schemaDefaults reads
+      // the copy as it stood before this edit), so a value the card already
+      // carried is never removed, whatever it is equal to. That is what keeps
+      // a config written by an older version reading exactly as it did.
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        const shown = schemaDefaults(originalSchema, this._workingModuleConfigs?.[key]);
+        const unchosen = Object.keys(shown).filter(name => value[name] === shown[name]);
+        if (unchosen.length > 0) {
+          value = { ...value };
+          unchosen.forEach(name => delete value[name]);
         }
       }
 

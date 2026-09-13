@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { fireEvent, isHomeAssistantVersionAtLeast } from '../tools/utils.js';
 import { yamlKeysMap, initializeModules } from './registry.js';
-import { getTextFromMap } from './utils.js';
+import { getTextFromMap, schemaDefaults } from './utils.js';
 import { makeModuleStore } from './store.js';
 import { 
   renderModuleEditorForm, 
@@ -934,6 +934,17 @@ export function makeModulesEditor(context) {
               // Retrieve the working copy (this reference should be stable across edits from this form)
               const workingConfig = context._workingModuleConfigs[key];
 
+              // What the form shows is the working copy plus the defaults the
+              // module declared for the fields it has not set. Display only:
+              // _valueChangedInHaForm takes those same keys back out, so
+              // nothing reaches the card config for having been shown. A
+              // module that declares no default keeps the very object it
+              // always had, and the path it always took.
+              const shownDefaults = schemaDefaults(formSchema, workingConfig);
+              const formData = Object.keys(shownDefaults).length
+                ? { ...shownDefaults, ...workingConfig }
+                : workingConfig;
+
               // Use supportedCards if available, otherwise use unsupportedCards for backward compatibility
               const cardType = context._config.card_type ?? "";
               let unsupported = false;
@@ -1108,7 +1119,7 @@ export function makeModulesEditor(context) {
                           <ha-form
                             class="${!isChecked ? 'disabled' : ''}"
                             .hass=${context.hass}
-                            .data=${workingConfig}
+                            .data=${formData}
                             .schema=${processedFormSchema}
                             .computeLabel=${(schema) => (translateThisModule && schema?.label)
                               ? translateUiText(schema.label, context.hass, () => context.requestUpdate())

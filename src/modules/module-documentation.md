@@ -176,7 +176,7 @@ code: |
 
 - **Use optional chaining**: Always use the optional chaining operator (`?.`) when accessing nested configuration properties to prevent errors if the configuration is missing.
 
-- **Provide default values if possible**: In some cases, use the OR operator (`||`) to supply default values in case the configuration value is undefined.
+- **Provide default values if possible**: In some cases, use the OR operator (`||`) to supply default values in case the configuration value is undefined. Whatever you fall back to here is what the editor shows for that field, so declare the same value as its `default` in your schema (see [Default values](#default-values)).
 
 ### Example: Complete module with editor and code
 
@@ -226,7 +226,86 @@ Every field in your editor schema can have these common properties:
 | `label` | string | The displayed name for the field |
 | `required` | boolean | Whether the field is required |
 | `disabled` | boolean | Whether the field is disabled |
-| `default` | any | Default value if no value is provided |
+| `default` | any | The value your module applies when the key is absent. Shown in the form, see [Default values](#default-values) |
+| `visible` | condition | Hides the field while the condition does not hold, see [Conditional fields](#conditional-fields) |
+
+### Default values
+
+A `default` is shown in the form on every card that has not set that key, so a
+form reads as what the card actually does instead of leaving a control empty.
+It is display only: the value is taken back out on its way to the card
+configuration, and a field left exactly as it was shown stores nothing.
+
+That makes `default` a promise about behaviour. Declare the value your module
+applies when the key is absent, because that is now what the form says out
+loud:
+
+```yaml
+- name: card_layout
+  label: Card layout
+  selector:
+    select:
+      mode: dropdown
+      options:
+        - label: Default
+          value: default
+        - label: Square
+          value: square
+  default: default
+```
+
+```js
+const layout = this.config.card_layout ?? 'default';
+```
+
+Two consequences worth knowing:
+
+- Choosing the declared default by hand stores nothing, exactly like leaving
+  the field alone, so a card follows your module if you ever change that
+  default.
+- A key a card **already** carries is never removed, whatever it holds, so a
+  configuration written before any of this keeps every value it had.
+
+### Conditional fields
+
+`visible` hides a field while its condition does not hold, which is how an
+option that cannot do anything where the card stands stays out of the way.
+Home Assistant evaluates it, so it needs nothing from Bubble Card. Home
+Assistant 2026.9 supports it and 2026.3 does not, and a version without it
+ignores the key and shows every field, so your form has to stay usable with
+all of them visible.
+
+```yaml
+- name: progress_position
+  label: Progress bar position
+  selector:
+    select:
+      mode: dropdown
+      options:
+        - label: Above the buttons
+          value: above
+        - label: Below the buttons
+          value: below
+  default: above
+  visible:
+    - field: progress_bar
+      operator: in
+      value: [full, auto]
+```
+
+A list of conditions is an AND. The operators are `eq`, `not_eq`, `in`,
+`not_in`, `exists` and `not_exists`, and `and`, `or` and `not` nest them.
+
+Two traps:
+
+- Conditions read the saved configuration, where a field nobody has touched is
+  **undefined** and not its default. Write each one so that undefined lands on
+  the right side by itself. Above, a card that has never set `progress_bar` is
+  read as neither `full` nor `auto`, which is right when the default is the
+  compact bar and wrong if it ever becomes the full one.
+- Never put `visible` on a `constant`. A hidden field is remembered by name and
+  a `constant` has none, so hiding one takes every `constant` of that form down
+  with it.
 
 ## Field types
 
@@ -1384,9 +1463,9 @@ two behaviours and only testing one.
 
 1. **Keep it simple**: Only include fields that users actually need to configure
 2. **Use clear labels**: Make field labels descriptive but concise
-3. **Provide defaults**: Set sensible default values where possible
+3. **Provide defaults**: Declare a `default` on every field, and declare the value your code applies when the key is absent, because the form shows it
 4. **Group related fields**: Use grid or expandable sections to organize complex options
-5. **Add descriptions**: Use the description property to explain complex options
+5. **Add descriptions**: Use the description property to explain complex options, and `visible` to hide the ones that cannot apply
 6. **Test your UI**: Ensure your form is user-friendly before sharing
 
 ## Example: Complete module editor schema

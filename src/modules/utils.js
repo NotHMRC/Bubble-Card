@@ -39,6 +39,45 @@ export function getTextFromMap(key) {
   return { name, description, formSchema, supportedCards, unsupportedCard, moduleVersion, creator, moduleLink };
 }
 
+// The defaults a module declared for the fields its card has NOT set.
+//
+// A configuration form should show what the card actually does, and a field
+// nobody has touched sat empty instead of showing the module's own default.
+// Home Assistant fills that in by itself on a switch, and in the box of a
+// number selector, and has no way to do it on a dropdown, which is exactly
+// where an empty field read as a missing setting.
+//
+// Only keys MISSING from the config are collected, and that is what makes
+// showing them safe: a value the card already carries is never in here, so
+// `_valueChangedInHaForm` can drop everything this returns without ever
+// touching something the user chose.
+//
+// A declared default is therefore a promise about behaviour: it has to be what
+// the module does when the key is absent, because that is what the form now
+// says out loud.
+export function schemaDefaults(schema, config, into = {}) {
+  // A list-shaped module keeps its config in an array, whose keys are
+  // positions. Nothing here belongs in one.
+  if (Array.isArray(config)) return into;
+
+  for (const field of Array.isArray(schema) ? schema : []) {
+    if (!field || typeof field !== 'object') continue;
+
+    // A section with no name shares the config of what holds it, which is the
+    // rule ha-form follows to hand a value down (`getValue`). A named one
+    // nests its own object, and its fields are not keys of this config at all.
+    if (Array.isArray(field.schema) && (!field.name || field.flatten)) {
+      schemaDefaults(field.schema, config, into);
+    }
+
+    if (!field.name || !('default' in field)) continue;
+    if (config && Object.prototype.hasOwnProperty.call(config, field.name)) continue;
+    into[field.name] = field.default;
+  }
+
+  return into;
+}
+
 // Formats a module description to be more readable
 export function _formatModuleDescription(description) {
   if (!description) return tGlobal('editor.modules.no_description_available');
