@@ -512,3 +512,35 @@ describe('calendar limit on the rendered card', () => {
             .toEqual(['holiday', 'a', 'holiday', 'b']);
     });
 });
+
+describe('calendar with a calendar that fails to load', () => {
+    let warn;
+
+    beforeEach(() => {
+        warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+        warn.mockRestore();
+    });
+
+    test('keeps the events of the other calendars', async () => {
+        const context = listContext(
+            { entities: [{ entity: 'calendar.work' }, { entity: 'calendar.broken' }] },
+            [eventAt('a', 0), eventAt('b', 1)],
+        );
+        const answer = context._hass.callApi.getMockImplementation();
+        // Rejected the way hass.callApi does for an unavailable calendar
+        context._hass.callApi.mockImplementation(async (method, url) => {
+            if (url.startsWith('calendars/calendar.broken?')) {
+                throw { error: 'Response error: 400', status_code: 400, body: '' };
+            }
+            return answer(method, url);
+        });
+
+        await changeEventList(context);
+
+        expect(context.events.map(event => event.summary)).toEqual(['a', 'b']);
+        expect(warn).toHaveBeenCalledWith(expect.stringContaining('calendar.broken'), expect.anything());
+    });
+});
