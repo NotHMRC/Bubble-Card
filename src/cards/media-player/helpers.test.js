@@ -67,6 +67,29 @@ describe('computeMediaDescription', () => {
         expect(described({ media_content_type: 'channel', app_name: 'TuneIn' })).toBe('TuneIn');
     });
 
+    // The branch that catches everything HA does not name, `track` and `album`
+    // included, which is what Music Assistant and half the integrations
+    // report. Falling through to the app would swap the artist those cards
+    // display for the name of the software playing it.
+    test('an unnamed kind keeps its artist rather than naming the app', () => {
+        expect(described({ media_content_type: 'track', media_artist: 'Nina Simone', app_name: 'Music Assistant' }))
+            .toBe('Nina Simone');
+        expect(described({ media_content_type: 'album', media_artist: 'Nina Simone', app_name: 'Plex' }))
+            .toBe('Nina Simone');
+    });
+
+    // Whether the block is worth showing is not the same question as what to
+    // write in it. A player reporting an app and nothing else would open it on
+    // a blank first line, where the card shows its own name today.
+    test('the app alone does not count as knowing what is playing', () => {
+        const attrs = { app_name: 'Netflix' };
+        expect(described(attrs)).toBe('Netflix');
+        expect(computeMediaDescription({
+            config: { entity: ENTITY },
+            _hass: { states: { [ENTITY]: { state: 'playing', attributes: attrs } } },
+        }, { withApp: false })).toBe('');
+    });
+
     test('a player with nothing at all describes nothing', () => {
         expect(described({})).toBe('');
         expect(computeMediaDescription({ config: { entity: ENTITY }, _hass: { states: {} } })).toBe('');

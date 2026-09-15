@@ -26,10 +26,21 @@ export function updateEntity(context, value) {
 // hides the whole block (changeDisplayedInfo), so the card showed the entity
 // name instead of what is playing.
 //
-// One addition to HA's rule. Its default branch answers `app_name` and nothing
-// else, so a player reporting an artist and no content type at all would LOSE
-// the artist it displays today. The artist stays the last word.
-export function computeMediaDescription(context) {
+// Two additions to HA's rule, both there so that no card reading correctly
+// today reads differently tomorrow.
+//
+// Its default branch answers `app_name` and stops. That branch catches every
+// content type it does not name, `track` and `album` among them, which is what
+// Music Assistant and a good half of the integrations report. Falling through
+// to the app would replace the artist those cards display with the name of the
+// software playing it, so the ARTIST is tried first and the app only when
+// there is nothing else at all.
+//
+// And the app alone does not count as knowing what is playing (`withApp`).
+// `changeDisplayedInfo` shows the media block as soon as this returns
+// something, so an app name on a player reporting no title would open it on a
+// blank first line, where the card shows its own name today.
+export function computeMediaDescription(context, { withApp = true } = {}) {
     const read = (name) => {
         const value = getAttribute(context, name);
         return value === undefined || value === null ? '' : String(value).trim();
@@ -60,7 +71,7 @@ export function computeMediaDescription(context) {
         }
     })();
 
-    return described || read('app_name') || artist;
+    return described || artist || (withApp ? read('app_name') : '');
 }
 
 // Media player feature bit masks aligned with Home Assistant

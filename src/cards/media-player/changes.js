@@ -160,7 +160,9 @@ export function changeMediaInfo(context) {
 export function changeDisplayedInfo(context) {
     const normalize = (value) => value === undefined || value === null ? '' : String(value).trim();
     const title = normalize(getAttribute(context, "media_title"));
-    const artist = computeMediaDescription(context);
+    // Without the app name: whether the block is worth showing is not the same
+    // question as what to write in it.
+    const artist = computeMediaDescription(context, { withApp: false });
     const source = normalize(getAttribute(context, "source"));
     const isTitleSourceOnly = title !== '' && source !== '' && title === source;
     const noMediaInfo = (title + artist) === '' || isTitleSourceOnly;
