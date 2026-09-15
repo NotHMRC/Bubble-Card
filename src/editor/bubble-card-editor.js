@@ -1436,15 +1436,6 @@ class BubbleCardEditor extends LitElement {
     _valueChangedInHaForm(e, key, originalSchema) {
       let value = e.detail.value;
 
-      if (value && typeof value === "object" && !Array.isArray(value)) {
-        const keys = Object.keys(value);
-        if (keys.length > 0 && keys.every(k => !isNaN(parseInt(k, 10)))) {
-          value = keys
-            .sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
-            .map(k => value[k]);
-        }
-      }
-
       // Take back out whatever the form was only showing. The form displays a
       // module's declared default on every field the card has not set, and
       // ha-form hands the whole form back on any edit, so those would be
@@ -1454,13 +1445,30 @@ class BubbleCardEditor extends LitElement {
       // Only keys the card was MISSING can be in here (schemaDefaults reads
       // the copy as it stood before this edit), so a value the card already
       // carried is never removed, whatever it is equal to. That is what keeps
-      // a config written by an older version reading exactly as it did.
-      if (value && typeof value === "object" && !Array.isArray(value)) {
-        const shown = schemaDefaults(originalSchema, this._workingModuleConfigs?.[key]);
+      // a config written by an older version reading exactly as it did. With
+      // no copy to compare against there is no way to tell the two apart, and
+      // nothing is removed at all.
+      //
+      // BEFORE the list is put back together below: a module keeping its
+      // config in an array is handed back with numbered keys, and a default
+      // sitting among them is a key that is not a number, which would leave
+      // the whole thing an object.
+      const before = this._workingModuleConfigs?.[key];
+      if (before && value && typeof value === "object" && !Array.isArray(value)) {
+        const shown = schemaDefaults(originalSchema, before);
         const unchosen = Object.keys(shown).filter(name => value[name] === shown[name]);
         if (unchosen.length > 0) {
           value = { ...value };
           unchosen.forEach(name => delete value[name]);
+        }
+      }
+
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        const keys = Object.keys(value);
+        if (keys.length > 0 && keys.every(k => !isNaN(parseInt(k, 10)))) {
+          value = keys
+            .sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
+            .map(k => value[k]);
         }
       }
 

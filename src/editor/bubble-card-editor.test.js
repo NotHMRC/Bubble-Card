@@ -638,5 +638,34 @@ describe('BubbleCardEditor module defaults in the form', () => {
 
             expect(written()).toEqual([{ entity: 'light.a' }, { entity: 'light.b' }]);
         });
+
+        // And still comes back as one when its module declares a default: a key
+        // that is not a number among the numbered ones is what stops the list
+        // from being put back together, so the shown defaults come out first.
+        test('a list-shaped module survives a module that declares defaults', () => {
+            const editor = editorEditing(null);
+
+            editor._valueChangedInHaForm(
+                { detail: { value: { 0: { entity: 'light.a' }, 1: { entity: 'light.b' }, layout: 'default', shape: 'square', opacity: 1 } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual([{ entity: 'light.a' }, { entity: 'light.b' }]);
+        });
+
+        // Without the copy as it stood before the edit there is no telling a
+        // value the card carried from one the form was only showing, so the
+        // safe answer is to remove nothing.
+        test('with no working copy at all, nothing is taken out', () => {
+            const editor = editorEditing(null);
+            editor._workingModuleConfigs = {};
+
+            editor._valueChangedInHaForm(
+                { detail: { value: { title: 'Kitchen', layout: 'default' } } },
+                'my_module', schema(),
+            );
+
+            expect(written()).toEqual({ title: 'Kitchen', layout: 'default' });
+        });
     });
 });

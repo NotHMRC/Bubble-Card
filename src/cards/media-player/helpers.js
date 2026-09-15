@@ -41,8 +41,13 @@ export function updateEntity(context, value) {
 // something, so an app name on a player reporting no title would open it on a
 // blank first line, where the card shows its own name today.
 export function computeMediaDescription(context, { withApp = true } = {}) {
+    // The attributes object once, rather than seven trips through
+    // getAttribute: this runs twice on every hass update of every media card
+    // on the dashboard, and every one of those trips runs a path tokenizer
+    // over a name that never has a path in it.
+    const attrs = context?._hass?.states?.[context?.config?.entity]?.attributes || {};
     const read = (name) => {
-        const value = getAttribute(context, name);
+        const value = attrs[name];
         return value === undefined || value === null ? '' : String(value).trim();
     };
     const artist = read('media_artist');
