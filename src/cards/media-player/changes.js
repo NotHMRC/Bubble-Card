@@ -7,7 +7,7 @@ import {
 } from '../../tools/utils.js';
 import { applyScrollingEffect } from '../../tools/text-scrolling.js';
 import { updateContentContainerFixedClass } from '../../components/base-card/changes.js';
-import { computePlaybackControl, getMediaControlsSupport, hasMediaControl } from './helpers.js';
+import { computePlaybackControl, getMediaControlsSupport, hasMediaControl, computeMediaDescription } from './helpers.js';
 import { getIcon, getImage, getIconColor } from '../../tools/icon.js';
 import { updateSlider } from '../../components/slider/changes.js';
 import { handleCustomStyles } from '../../tools/style-processor.js';
@@ -137,7 +137,8 @@ export function changeMediaIcon(context) {
 
 export function changeMediaInfo(context) {
     const title = getAttribute(context, "media_title");
-    const artist = getAttribute(context, "media_artist");
+    // Not `media_artist`: what belongs on that line depends on what is playing.
+    const artist = computeMediaDescription(context);
     const mediaState = title + artist;
 
     if (mediaState !== context.previousMediaState) {
@@ -159,7 +160,7 @@ export function changeMediaInfo(context) {
 export function changeDisplayedInfo(context) {
     const normalize = (value) => value === undefined || value === null ? '' : String(value).trim();
     const title = normalize(getAttribute(context, "media_title"));
-    const artist = normalize(getAttribute(context, "media_artist"));
+    const artist = computeMediaDescription(context);
     const source = normalize(getAttribute(context, "source"));
     const isTitleSourceOnly = title !== '' && source !== '' && title === source;
     const noMediaInfo = (title + artist) === '' || isTitleSourceOnly;

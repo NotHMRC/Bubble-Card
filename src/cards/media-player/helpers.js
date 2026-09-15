@@ -13,6 +13,56 @@ export function updateEntity(context, value) {
     }
 };
 
+// The line under the title, by Home Assistant's own rule
+// (frontend, src/data/media-player.ts, computeMediaDescription), so a Bubble
+// card reads like every other card of the dashboard.
+//
+// Reading `media_artist` alone, which is all this did, is right for music and
+// wrong for everything else: a TV show carries its name in `media_series_title`
+// with the season and the episode beside it, a radio in `media_channel`, a
+// playlist in `media_playlist`, and a Chromecast playing something the
+// integration knows nothing about carries only `app_name`. On all of those the
+// second line came out empty, and an empty second line with an empty title
+// hides the whole block (changeDisplayedInfo), so the card showed the entity
+// name instead of what is playing.
+//
+// One addition to HA's rule. Its default branch answers `app_name` and nothing
+// else, so a player reporting an artist and no content type at all would LOSE
+// the artist it displays today. The artist stays the last word.
+export function computeMediaDescription(context) {
+    const read = (name) => {
+        const value = getAttribute(context, name);
+        return value === undefined || value === null ? '' : String(value).trim();
+    };
+    const artist = read('media_artist');
+
+    const described = (() => {
+        switch (read('media_content_type')) {
+            case 'music':
+            case 'image':
+                return artist;
+            case 'playlist':
+                return read('media_playlist') || artist;
+            case 'tvshow': {
+                // Built piece by piece: a series with no season is its own
+                // description, and a season with no episode stops at the S.
+                const series = read('media_series_title');
+                if (!series) return '';
+                const season = read('media_season');
+                if (!season) return series;
+                const episode = read('media_episode');
+                return `${series} S${season}${episode ? `E${episode}` : ''}`;
+            }
+            case 'channel':
+                return read('media_channel');
+            default:
+                return '';
+        }
+    })();
+
+    return described || read('app_name') || artist;
+}
+
 // Media player feature bit masks aligned with Home Assistant
 // See: MediaPlayerEntityFeature docs
 const SUPPORT_PAUSE = 1;
