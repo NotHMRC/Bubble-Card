@@ -145,7 +145,7 @@ Then in your module's `code` section, you would access these values like this:
   background: var(--${this.config.module_id?.color}-color) !important;
   
   /* Access the "size" field with a default value if undefined */
-  --mdc-icon-size: ${this.config.module_id?.size || 24}px;
+  --mdc-icon-size: ${this.config.module_id?.size ?? 24}px;
   
   /* Access the "show_icon" boolean field */
   display: ${this.config.module_id?.show_icon ? 'flex' : 'none'};
@@ -176,7 +176,7 @@ code: |
 
 - **Use optional chaining**: Always use the optional chaining operator (`?.`) when accessing nested configuration properties to prevent errors if the configuration is missing.
 
-- **Provide default values if possible**: In some cases, use the OR operator (`||`) to supply default values in case the configuration value is undefined. Whatever you fall back to here is what the editor shows for that field, so declare the same value as its `default` in your schema (see [Default values](#default-values)).
+- **Provide default values if possible**: Use the nullish coalescing operator (`??`) to supply a default value when the configuration value is undefined. Avoid `||`, which also replaces `0`, `false` and an empty string, so a slider moved to 0 would get its default back. Whatever you fall back to here is what the editor shows for that field, so declare the same value as its `default` in your schema (see [Default values](#default-values)).
 
 ### Example: Complete module with editor and code
 
@@ -231,8 +231,9 @@ Every field in your editor schema can have these common properties:
 
 ### Default values
 
-A `default` is shown in the form on every card that has not set that key, so a
-form reads as what the card actually does instead of leaving a control empty.
+A `default` is shown in the form on every card that has not set that key
+(except inside a `grid` or `expandable` that has a `name`), so a form reads as
+what the card actually does instead of leaving a control empty.
 It is display only: the value is taken back out on its way to the card
 configuration, and a field left exactly as it was shown stores nothing.
 
@@ -255,7 +256,7 @@ loud:
 ```
 
 ```js
-const layout = this.config.card_layout ?? 'default';
+const layout = this.config.module_id?.card_layout ?? 'default';
 ```
 
 Two consequences worth knowing:
@@ -298,11 +299,10 @@ A list of conditions is an AND. The operators are `eq`, `not_eq`, `in`,
 
 Two traps:
 
-- Conditions read the saved configuration, where a field nobody has touched is
-  **undefined** and not its default. Write each one so that undefined lands on
-  the right side by itself. Above, a card that has never set `progress_bar` is
-  read as neither `full` nor `auto`, which is right when the default is the
-  compact bar and wrong if it ever becomes the full one.
+- Conditions read what the form shows, so a field nobody has touched counts as
+  its `default`. A field without a `default`, or inside a `grid` or
+  `expandable` that has a `name`, is **undefined** until it is set, so write
+  those conditions so that undefined lands on the right side by itself.
 - Never put `visible` on a `constant`. A hidden field is remembered by name and
   a `constant` has none, so hiding one takes every `constant` of that form down
   with it.
