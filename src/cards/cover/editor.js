@@ -1,6 +1,6 @@
 import { html } from "lit";
 import setupTranslation from '../../tools/localize.js';
-import { coverEntityFeature } from "./changes.js";
+import { coverEntityFeature, tiltButtonSupport, tiltsByPositionOnly } from "./changes.js";
 
 export function renderCoverEditor(editor){
     const t = setupTranslation(editor.hass);
@@ -16,6 +16,12 @@ export function renderCoverEditor(editor){
         coverEntityFeature.CLOSE_TILT |
         coverEntityFeature.SET_TILT_POSITION
     ));
+
+    // The panel opens for any kind of tilt, but the position dropdown only
+    // means something once a button can exist, so it stays greyed out until a
+    // tilt action is filled in for a cover that only tilts to an angle (#2618)
+    const tiltsByPosition = tiltsByPositionOnly(stateObj);
+    const hasTiltButtons = tiltButtonSupport(stateObj, editor._config).any;
 
     return html`
         <div class="card-config">
@@ -106,13 +112,24 @@ export function renderCoverEditor(editor){
                   ${t('editor.cover.tilt_title')}
                 </h4>
                 <div class="content">
+                    ${tiltsByPosition ? html`
+                    <div class="bubble-info">
+                        <h4 class="bubble-section-title">
+                            <ha-icon icon="mdi:information-outline"></ha-icon>
+                            ${t('editor.cover.tilt_position_only_title')}
+                        </h4>
+                        <div class="content">
+                            <p>${t('editor.cover.tilt_position_only_body')}</p>
+                        </div>
+                    </div>
+                    ` : ''}
                     ${editor.makeDropdown(t('editor.cover.tilt_position'), "tilt_buttons", [
                         { value: 'top', label: t('editor.common.top') + t('editor.common.default_suffix') },
                         { value: 'bottom', label: t('editor.common.bottom') },
                         { value: 'left', label: t('editor.common.left') },
                         { value: 'right', label: t('editor.common.right') },
                         { value: 'hidden', label: t('editor.common.hidden') },
-                    ])}
+                    ], !hasTiltButtons)}
                     <ha-form
                         .hass=${editor.hass}
                         .data=${{ open_tilt_service: editor._config?.open_tilt_service || 'cover.open_cover_tilt' }}

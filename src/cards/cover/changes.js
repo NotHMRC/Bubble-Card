@@ -119,6 +119,52 @@ export function canCloseTilt(stateObj) {
   return assumedState || !isTiltFullyClosed(stateObj);
 }
 
+// Home Assistant's own tilt actions, which are also the values the editor shows
+// in its two tilt action fields. A cover carrying neither OPEN_TILT nor
+// CLOSE_TILT is refused by both, since core registers each one with its feature
+// as required, so neither ever counts as a way to drive a tilt button.
+export const DEFAULT_OPEN_TILT_SERVICE = 'cover.open_cover_tilt';
+export const DEFAULT_CLOSE_TILT_SERVICE = 'cover.close_cover_tilt';
+
+function hasCustomService(service, defaultService) {
+  return typeof service === 'string' && service !== '' && service !== defaultService;
+}
+
+/**
+ * Which tilt buttons the card can offer, one by one.
+ *
+ * Home Assistant grants OPEN_TILT and CLOSE_TILT to a cover that tilts by
+ * impulse, and SET_TILT_POSITION to one that only tilts to a given angle. Only
+ * the first pair drives buttons, which is why hui-cover-tilt-card-feature gates
+ * on OPEN_TILT or CLOSE_TILT and leaves SET_TILT_POSITION to the slider.
+ * Counting SET_TILT_POSITION as button support put a tilt row with nothing in
+ * it on a KNX cover that has an angle address and no step address (#2618).
+ *
+ * An action or script of the user's own is the way out. The button calls it
+ * with the cover's entity_id and nothing else, so a script can tilt a cover
+ * Home Assistant refuses to tilt by impulse. These two fields stay generic for
+ * other reasons too, such as swapping them to invert the direction.
+ */
+export function tiltButtonSupport(stateObj, config) {
+  const open = supportsFeature(stateObj, coverEntityFeature.OPEN_TILT)
+    || hasCustomService(config?.open_tilt_service, DEFAULT_OPEN_TILT_SERVICE);
+  const close = supportsFeature(stateObj, coverEntityFeature.CLOSE_TILT)
+    || hasCustomService(config?.close_tilt_service, DEFAULT_CLOSE_TILT_SERVICE);
+  return { open, close, any: open || close };
+}
+
+/**
+ * Whether the cover can only be tilted to an angle, never by impulse.
+ *
+ * The editor says so out loud in this case, rather than offering a tilt row
+ * that can never hold a button.
+ */
+export function tiltsByPositionOnly(stateObj) {
+  return supportsFeature(stateObj, coverEntityFeature.SET_TILT_POSITION)
+    && !supportsFeature(stateObj, coverEntityFeature.OPEN_TILT)
+    && !supportsFeature(stateObj, coverEntityFeature.CLOSE_TILT);
+}
+
 export function changeCoverIcons(context) {
   const stateObj = context._hass?.states?.[context.config.entity];
   if (!stateObj?.attributes) return;
@@ -127,11 +173,7 @@ export function changeCoverIcons(context) {
   const supportsClose = supportsFeature(stateObj, coverEntityFeature.CLOSE);
   const supportsStop = supportsFeature(stateObj, coverEntityFeature.STOP);
 
-  const supportsOpenTilt = supportsFeature(stateObj, coverEntityFeature.OPEN_TILT);
-  const supportsCloseTilt = supportsFeature(stateObj, coverEntityFeature.CLOSE_TILT);
-  const supportsSetTiltPosition = supportsFeature(stateObj, coverEntityFeature.SET_TILT_POSITION);
-
-  const hasTiltSupport = supportsOpenTilt || supportsCloseTilt || supportsSetTiltPosition;
+  const tiltButtons = tiltButtonSupport(stateObj, context.config);
 
   const canOpenCover = canOpen(stateObj);
   const canCloseCover = canClose(stateObj);
@@ -179,8 +221,14 @@ export function changeCoverIcons(context) {
   }
 
   // Tilt button states
+  //
+  // Each button stands on its own support, the way ha-cover-tilt-controls hides
+  // them one by one. Restoring the display matters as much as removing it,
+  // since this used to be one way for the life of the card, so a tilt service
+  // typed in the editor never brought its button back (#2618).
   if (context.elements.buttonTiltOpen) {
-    if (supportsOpenTilt) {
+    if (tiltButtons.open) {
+      context.elements.buttonTiltOpen.style.display = "";
       if (canOpenTiltCover) {
         context.elements.buttonTiltOpen.classList.remove("disabled");
       } else {
@@ -192,7 +240,8 @@ export function changeCoverIcons(context) {
   }
 
   if (context.elements.buttonTiltClose) {
-    if (supportsCloseTilt) {
+    if (tiltButtons.close) {
+      context.elements.buttonTiltClose.style.display = "";
       if (canCloseTiltCover) {
         context.elements.buttonTiltClose.classList.remove("disabled");
       } else {
@@ -209,19 +258,17 @@ export function positionTiltButtons(context) {
   const tiltButtonsPosition = tiltButtonsConfig || 'top';
 
   const stateObj = context._hass?.states?.[context.config.entity];
-  const hasTiltSupport = stateObj && (
-    supportsFeature(stateObj, coverEntityFeature.OPEN_TILT) ||
-    supportsFeature(stateObj, coverEntityFeature.CLOSE_TILT) ||
-    supportsFeature(stateObj, coverEntityFeature.SET_TILT_POSITION)
-  );
+  // The row follows the buttons it is meant to hold, so it never takes a slot
+  // in the layout for two hidden buttons (#2618)
+  const hasTiltButtons = tiltButtonSupport(stateObj, context.config).any;
 
   // Skip DOM manipulation when position and tilt support haven't changed
   if (context._lastTiltPosition === tiltButtonsPosition &&
-      context._lastTiltSupport === hasTiltSupport) {
+      context._lastTiltButtons === hasTiltButtons) {
     return;
   }
   context._lastTiltPosition = tiltButtonsPosition;
-  context._lastTiltSupport = hasTiltSupport;
+  context._lastTiltButtons = hasTiltButtons;
 
   const tilt = context.elements.tiltButtonsContainer;
   if (!tilt) return;
@@ -230,7 +277,7 @@ export function positionTiltButtons(context) {
     if (parent?.contains(tilt)) parent.removeChild(tilt);
   };
 
-  if (!hasTiltSupport || tiltButtonsConfig === 'hidden') {
+  if (!hasTiltButtons || tiltButtonsConfig === 'hidden') {
     tilt.style.display = 'none';
     tilt.classList.remove('full-width');
     // Cleanup column wrapper if it exists
