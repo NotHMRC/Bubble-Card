@@ -650,6 +650,122 @@ describe('standalone popup lifecycle', () => {
         expect(toggleBodyScroll).toHaveBeenCalledWith(true);
     });
 
+    // The fallback counted from the class flip, and a slow device only starts
+    // its slide well after it, so the finalize ran while the pop-up was moving.
+    describe('a fallback that comes while the slide is still running', () => {
+        // What the engine answers for the shell, a transform transition that
+        // has `remaining` ms left, or nothing at all once it is over.
+        const stubShellTransition = (context, state) => {
+            context.popUp.getAnimations = jest.fn(() => (state.remaining === null ? [] : [{
+                transitionProperty: 'transform',
+                playState: 'running',
+                currentTime: 300 - state.remaining,
+                effect: { getComputedTiming: () => ({ endTime: 300 }) },
+            }]));
+        };
+
+        const openUntilTheSlide = (context) => {
+            openPopup(context);
+            flushStandaloneClosedStatePrimeFrame();
+            flushRafQueue(); // phase 2, arms the transition fallback timer
+        };
+
+        test('gives the slide the time it has left instead of finalizing', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            const state = { remaining: 210 };
+            stubShellTransition(context, state);
+
+            openUntilTheSlide(context);
+            jest.advanceTimersByTime(360);
+
+            // Started 90ms late, so still sliding, and nothing of the finalize has run.
+            expect(context.popUp.getAnimations).toHaveBeenCalledTimes(1);
+            expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+            // The rest of the slide plus the margin, then the engine says it is over.
+            state.remaining = null;
+            jest.advanceTimersByTime(269);
+            expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+            jest.advanceTimersByTime(1);
+            expect(context.popUp.classList.contains('is-opening')).toBe(false);
+        });
+
+        test('still lets the real end finish the open first', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            stubShellTransition(context, { remaining: 210 });
+
+            openUntilTheSlide(context);
+            jest.advanceTimersByTime(360);
+            expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+            dispatchTransformTransitionEnd(context.popUp, 0.3);
+            flushRafQueue();
+            expect(context.popUp.classList.contains('is-opening')).toBe(false);
+
+            // The re-armed fallback went with the wait, it asks nothing more.
+            jest.advanceTimersByTime(1000);
+            expect(context.popUp.getAnimations).toHaveBeenCalledTimes(1);
+        });
+
+        test('never asks the engine when the end comes in time', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            stubShellTransition(context, { remaining: 210 });
+
+            openUntilTheSlide(context);
+            jest.advanceTimersByTime(320);
+            dispatchTransformTransitionEnd(context.popUp, 0.3);
+            flushRafQueue();
+            jest.advanceTimersByTime(1000);
+
+            expect(context.popUp.getAnimations).not.toHaveBeenCalled();
+        });
+
+        test('stops waiting for a slide that never ends', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            // An engine that keeps answering the same thing for ever.
+            stubShellTransition(context, { remaining: 300 });
+
+            openUntilTheSlide(context);
+            // Eight deadlines of 360ms fit under the 3000ms a slide is waited
+            // for at most, a ninth would not.
+            jest.advanceTimersByTime(2879);
+            expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+            jest.advanceTimersByTime(1);
+            expect(context.popUp.classList.contains('is-opening')).toBe(false);
+            expect(context.popUp.getAnimations).toHaveBeenCalledTimes(8);
+        });
+
+        test('finalizes on the deadline when the engine has nothing running', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            stubShellTransition(context, { remaining: null });
+
+            openUntilTheSlide(context);
+            jest.advanceTimersByTime(359);
+            expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+            jest.advanceTimersByTime(1);
+            expect(context.popUp.classList.contains('is-opening')).toBe(false);
+        });
+
+        test('finalizes on the deadline when the engine throws', () => {
+            const context = createStandaloneContext();
+            usedContexts.push(context);
+            context.popUp.getAnimations = jest.fn(() => { throw new Error('not here'); });
+
+            openUntilTheSlide(context);
+            jest.advanceTimersByTime(360);
+
+            expect(context.popUp.classList.contains('is-opening')).toBe(false);
+        });
+    });
+
     test('clears stale inline drag transform before reopening a standalone popup', () => {
         const context = createStandaloneContext();
         usedContexts.push(context);

@@ -12,6 +12,7 @@ import { startContentInsetSync } from '../../tools/content-inset.js';
 import { runWithInstantSliderWrites } from '../../components/slider/instant-writes.js';
 import { flushDeferredCardUpdates } from '../../tools/deferred-card-updates.js';
 import { holdScrollingEffects } from '../../tools/text-scrolling.js';
+import { monotonicNow } from '../../tools/monotonic-time.js';
 
 // Re-exported so the pop-up runtime keeps one import surface for its callers.
 export { isDialogNode };
@@ -286,15 +287,47 @@ function scheduleStandaloneCardSync(context) {
     });
 }
 
+// What is left of the transform transition of the shell, as the engine sees it,
+// or 0 when there is none, when it is over, or when the engine cannot be asked.
+// Asking resolves the style first, so a transition the main thread was too busy
+// to create yet is created here and answers with its whole duration.
+function getShellTransitionRemainingMs(popUp) {
+    if (typeof popUp?.getAnimations !== 'function') {
+        return 0;
+    }
+
+    try {
+        for (const animation of popUp.getAnimations()) {
+            if (animation.transitionProperty !== 'transform' || animation.playState !== 'running') {
+                continue;
+            }
+
+            const endTime = Number(animation.effect?.getComputedTiming?.().endTime);
+            const currentTime = Number(animation.currentTime ?? 0);
+            if (!Number.isFinite(endTime) || !Number.isFinite(currentTime)) {
+                return 0;
+            }
+
+            return Math.max(0, endTime - currentTime);
+        }
+    } catch (_) {}
+
+    return 0;
+}
+
 function waitForStandalonePopupTransition(context, callback) {
     clearStandaloneTransitionCompletion(context);
     let callbackDone = false;
+
+    // However slow the device, a slide is never waited for longer than this.
+    const maxWaitMs = popupState.animationDuration * 10;
+    const armedAt = monotonicNow();
 
     // The slide brings the text of the pop-up within reach of the observers
     // that measure it and start its marquees. That work waits for the slide to
     // be over, see text-scrolling.js. The lapse only matters if no end ever
     // comes, which the fallback below already rules out.
-    context._releaseScrollingHold = holdScrollingEffects(popupState.animationDuration + 700);
+    context._releaseScrollingHold = holdScrollingEffects(maxWaitMs + 500);
 
     const handleTransitionEnd = (event) => {
         if (event.target !== context.popUp) return;
@@ -322,13 +355,35 @@ function waitForStandalonePopupTransition(context, callback) {
     };
     context._standaloneTransitionEndHandler = handleTransitionEnd;
     context.popUp.addEventListener('transitionend', handleTransitionEnd);
-    context._standaloneTransitionFallback = setTimeout(() => {
-        clearStandaloneTransitionCompletion(context);
-        if (!callbackDone) {
-            callbackDone = true;
-            callback();
-        }
-    }, popupState.animationDuration + 60);
+
+    // The fallback is there for the end that never comes. It used to count from
+    // the class flip, while the slide only starts once the main thread has
+    // produced a frame, so a slow device lost the race on every open. With the
+    // main thread of an Android WebView throttled 4 times the slide starts 79
+    // to 93ms after the flip and the fallback ran the whole finalize 55 to 58ms
+    // before its end, throttled 8 times it ran it in the middle of the slide.
+    // The same damage as the end with no time elapsed above, on every open.
+    // So when the deadline comes the engine is asked, and a transition that is
+    // still running gets the time it has left.
+    const armFallback = (delayMs) => {
+        context._standaloneTransitionFallback = setTimeout(() => {
+            context._standaloneTransitionFallback = null;
+
+            const remainingMs = getShellTransitionRemainingMs(context.popUp);
+            const waitedMs = monotonicNow() - armedAt;
+            if (remainingMs > 0 && waitedMs + remainingMs + 60 <= maxWaitMs) {
+                armFallback(remainingMs + 60);
+                return;
+            }
+
+            clearStandaloneTransitionCompletion(context);
+            if (!callbackDone) {
+                callbackDone = true;
+                callback();
+            }
+        }, delayMs);
+    };
+    armFallback(popupState.animationDuration + 60);
 }
 // The `transition` shorthand does not read back as the exact keyword it was
 // assigned on every engine (older WebKit expands it), so the inline
