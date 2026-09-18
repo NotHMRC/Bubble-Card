@@ -115,6 +115,11 @@ function clearStandaloneTransitionCompletion(context) {
         clearTimeout(context._standaloneTransitionFallback);
         context._standaloneTransitionFallback = null;
     }
+    // The end of a transition hands its callback to the next frame, and until
+    // that frame runs the callback belongs to the wait like everything above.
+    // Left out of it, a close started in between let the finalize of the open
+    // run on top of the closing pop-up and take its closing class away.
+    clearContextFrame(context, '_standaloneTransitionEndFrame');
     // Given back wherever the wait ends, the real end, the fallback or an open
     // abandoned half way, so no path has to remember it.
     if (context._releaseScrollingHold) {
@@ -346,7 +351,8 @@ function waitForStandalonePopupTransition(context, callback) {
         // Defer callback to next frame so expensive work (scrollHeight read,
         // style recalc) happens after the transition paint — avoids the ~40ms
         // synchronous cost that blocks the transition frame.
-        requestAnimationFrame(() => {
+        context._standaloneTransitionEndFrame = requestAnimationFrame(() => {
+            context._standaloneTransitionEndFrame = null;
             if (!callbackDone) {
                 callbackDone = true;
                 callback();

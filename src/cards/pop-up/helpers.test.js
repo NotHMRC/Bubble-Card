@@ -626,6 +626,35 @@ describe('standalone popup lifecycle', () => {
         expect(scrollingHoldReleases[1]).toHaveBeenCalledTimes(1);
     });
 
+    // The end of the opening hands its finalize to the next frame. A close that
+    // starts before that frame runs used to get that finalize on top of it,
+    // which took the closing class away from a pop-up on its way out.
+    test('drops the pending finalize of an open when the pop-up closes right after its end', () => {
+        const context = createStandaloneContext({ open_action: { action: 'none' } });
+        usedContexts.push(context);
+
+        openPopup(context);
+        flushHeavyOpenTask();
+        flushStandaloneClosedStatePrimeFrame();
+        flushRafQueue(); // phase 2, the slide starts
+
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        // The finalize of the open now waits for the next frame.
+        closePopup(context);
+        expect(context.popUp.classList.contains('is-closing')).toBe(true);
+
+        flushRafQueue();
+        flushRafQueue();
+
+        expect(context.popUp.classList.contains('is-closing')).toBe(true);
+
+        // The close still ends the way it always does.
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        flushRafQueue();
+        expect(context.popUp.classList.contains('is-closing')).toBe(false);
+        expect(context.popUp.classList.contains('is-popup-closed')).toBe(true);
+    });
+
     test('falls back when standalone transition end is missing', () => {
         const context = createStandaloneContext();
         usedContexts.push(context);
