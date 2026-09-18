@@ -61,11 +61,46 @@ const canDeferMeasures = typeof IntersectionObserver === 'function';
 // them without walking every node of the card.
 const MARKER = 'data-bubble-scroll';
 
+// A pop-up sliding in carries its text past the near observer, which released
+// every held measurement in the middle of the slide. A forced layout, the marquee
+// markup written, sixteen animations started and as many layers promoted, 80ms
+// into a 300ms transition. Traced on a 120Hz phone, that alone dropped 2 to 3
+// frames of every open. Nobody reads a marquee on a pop-up that is still moving,
+// so whoever runs a transition takes a hold for its length, and what was queued
+// meanwhile goes through in one flush once the last holder lets go.
+//
+// A hold lapses on its own. An open abandoned half way must never leave the
+// texts of the whole page unmeasured.
+let holds = 0;
+const heldVisibility = new Map();
+
+function resumeHeld() {
+    for (const [el, isIntersecting] of heldVisibility) applyVisibility(el, isIntersecting);
+    heldVisibility.clear();
+    if (pending.size) scheduleFlush();
+}
+
+export function holdScrollingEffects(maxMs = 1000) {
+    let live = true;
+    let timer = 0;
+    const release = () => {
+        if (!live) return;
+        live = false;
+        clearTimeout(timer);
+        holds--;
+        if (holds === 0) resumeHeld();
+    };
+    holds++;
+    timer = setTimeout(release, maxMs);
+    return release;
+}
+
 function unobserve(el) {
     if (resizeObs) try { resizeObs.unobserve(el); } catch (e) {}
     if (intersectionObs) try { intersectionObs.unobserve(el); } catch (e) {}
     if (nearObs) try { nearObs.unobserve(el); } catch (e) {}
     pending.delete(el);
+    heldVisibility.delete(el);
 }
 
 function release(el, state) {
@@ -160,18 +195,27 @@ function sameWidth(a, b) {
     return a !== undefined && b !== undefined && Math.abs(a - b) < 0.01;
 }
 
+function applyVisibility(el, isIntersecting) {
+    const state = scrollState.get(el);
+    if (!state?.span) return;
+    state.span.style.animationPlayState = isIntersecting ? 'running' : 'paused';
+    // A composited layer only pays for itself while the animation
+    // actually runs, and a dashboard holds far more marquees off
+    // screen than on it.
+    state.span.style.willChange = isIntersecting ? 'transform' : 'auto';
+}
+
 function getIntersectionObserver() {
     if (!intersectionObs) {
         intersectionObs = new IntersectionObserver(entries => {
             for (const entry of entries) {
-                const state = scrollState.get(entry.target);
-                if (state?.span) {
-                    state.span.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
-                    // A composited layer only pays for itself while the animation
-                    // actually runs, and a dashboard holds far more marquees off
-                    // screen than on it.
-                    state.span.style.willChange = entry.isIntersecting ? 'transform' : 'auto';
+                // Starting a marquee promotes a layer, which is the last thing a
+                // slide in progress needs. The latest answer is kept for later.
+                if (holds > 0) {
+                    heldVisibility.set(entry.target, entry.isIntersecting);
+                    continue;
                 }
+                applyVisibility(entry.target, entry.isIntersecting);
             }
         }, { threshold: 0.1 });
     }
@@ -238,7 +282,7 @@ function hookFontLoading() {
 }
 
 function scheduleFlush() {
-    if (rafId) return;
+    if (rafId || holds > 0) return;
     rafId = requestAnimationFrame(flush);
 }
 
@@ -280,6 +324,9 @@ function releaseRange() {
 // Single batched update: read phase then write phase to avoid layout thrashing
 function flush() {
     rafId = 0;
+    // Scheduled before a hold began and due in the middle of it, so everything
+    // stays queued and the release schedules the flush again.
+    if (holds > 0) return;
     const batch = [...pending];
     pending.clear();
 

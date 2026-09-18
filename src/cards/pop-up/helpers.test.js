@@ -197,6 +197,17 @@ jest.unstable_mockModule('../../tools/content-inset.js', () => ({
     startContentInsetSync,
 }));
 
+// One release function per hold, so a test can tell which hold was given back.
+const scrollingHoldReleases = [];
+const holdScrollingEffects = jest.fn(() => {
+    const release = jest.fn();
+    scrollingHoldReleases.push(release);
+    return release;
+});
+jest.unstable_mockModule('../../tools/text-scrolling.js', () => ({
+    holdScrollingEffects,
+}));
+
 jest.unstable_mockModule('./index.js', () => ({
     invalidateWakeSyncCache: jest.fn(),
 }));
@@ -549,6 +560,70 @@ describe('standalone popup lifecycle', () => {
 
         expect(context.popUp.classList.contains('is-closing')).toBe(false);
         expect(context.sectionRow.style.display).toBe('none');
+    });
+
+    // The slide carries the text of the pop-up past the observers that measure
+    // it and start its marquees, and that work dropped frames in the middle of it.
+    test('holds text scrolling work for the length of the slide', () => {
+        const context = createStandaloneContext({ open_action: { action: 'none' } });
+        usedContexts.push(context);
+        scrollingHoldReleases.length = 0;
+
+        openPopup(context);
+        flushHeavyOpenTask();
+        flushStandaloneClosedStatePrimeFrame();
+
+        // Nothing is held while the pop-up is built, the text work of that
+        // phase lands before the slide and costs it nothing.
+        expect(holdScrollingEffects).not.toHaveBeenCalled();
+
+        flushRafQueue(); // phase 2, the slide starts
+
+        expect(holdScrollingEffects).toHaveBeenCalledTimes(1);
+        expect(scrollingHoldReleases[0]).not.toHaveBeenCalled();
+
+        // A report with no time elapsed is not the end, the hold stays.
+        dispatchTransformTransitionEnd(context.popUp, 0);
+        expect(scrollingHoldReleases[0]).not.toHaveBeenCalled();
+
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        expect(scrollingHoldReleases[0]).toHaveBeenCalledTimes(1);
+    });
+
+    test('gives the text scrolling hold back when the transition end never comes', () => {
+        const context = createStandaloneContext();
+        usedContexts.push(context);
+        scrollingHoldReleases.length = 0;
+
+        openPopup(context);
+        flushStandaloneClosedStatePrimeFrame();
+        flushRafQueue();
+
+        expect(scrollingHoldReleases).toHaveLength(1);
+        jest.advanceTimersByTime(360);
+        expect(scrollingHoldReleases[0]).toHaveBeenCalledTimes(1);
+    });
+
+    test('gives the text scrolling hold back when the pop-up is closed while it opens', () => {
+        const context = createStandaloneContext({ open_action: { action: 'none' } });
+        usedContexts.push(context);
+        scrollingHoldReleases.length = 0;
+
+        openPopup(context);
+        flushHeavyOpenTask();
+        flushStandaloneClosedStatePrimeFrame();
+        flushRafQueue();
+        expect(scrollingHoldReleases).toHaveLength(1);
+
+        // Closing takes a hold of its own for its slide, and the one of the
+        // abandoned open is given back on the way.
+        closePopup(context);
+        expect(scrollingHoldReleases[0]).toHaveBeenCalledTimes(1);
+        expect(scrollingHoldReleases).toHaveLength(2);
+        expect(scrollingHoldReleases[1]).not.toHaveBeenCalled();
+
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        expect(scrollingHoldReleases[1]).toHaveBeenCalledTimes(1);
     });
 
     test('falls back when standalone transition end is missing', () => {

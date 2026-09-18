@@ -11,6 +11,7 @@ import { HA_CARD_WRAPPER_TAG, isDialogNode, isHaCardWrapper } from '../../tools/
 import { startContentInsetSync } from '../../tools/content-inset.js';
 import { runWithInstantSliderWrites } from '../../components/slider/instant-writes.js';
 import { flushDeferredCardUpdates } from '../../tools/deferred-card-updates.js';
+import { holdScrollingEffects } from '../../tools/text-scrolling.js';
 
 // Re-exported so the pop-up runtime keeps one import surface for its callers.
 export { isDialogNode };
@@ -112,6 +113,12 @@ function clearStandaloneTransitionCompletion(context) {
     if (context._standaloneTransitionFallback) {
         clearTimeout(context._standaloneTransitionFallback);
         context._standaloneTransitionFallback = null;
+    }
+    // Given back wherever the wait ends, the real end, the fallback or an open
+    // abandoned half way, so no path has to remember it.
+    if (context._releaseScrollingHold) {
+        context._releaseScrollingHold();
+        context._releaseScrollingHold = null;
     }
 }
 function scheduleStandaloneFrame(context, frameKey, callback) {
@@ -282,6 +289,12 @@ function scheduleStandaloneCardSync(context) {
 function waitForStandalonePopupTransition(context, callback) {
     clearStandaloneTransitionCompletion(context);
     let callbackDone = false;
+
+    // The slide brings the text of the pop-up within reach of the observers
+    // that measure it and start its marquees. That work waits for the slide to
+    // be over, see text-scrolling.js. The lapse only matters if no end ever
+    // comes, which the fallback below already rules out.
+    context._releaseScrollingHold = holdScrollingEffects(popupState.animationDuration + 700);
 
     const handleTransitionEnd = (event) => {
         if (event.target !== context.popUp) return;

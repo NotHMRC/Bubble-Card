@@ -446,6 +446,128 @@ describe('text scrolling weight', () => {
     });
 });
 
+// A pop-up sliding in brings its text within reach of both observers, and what
+// they started landed in the middle of the slide. Whoever runs a transition
+// takes a hold, and the work goes through once the last holder lets go.
+describe('holding the work back while something slides', () => {
+    test('keeps a queued measurement for after the hold', async () => {
+        const { applyScrollingEffect, holdScrollingEffects } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        const release = holdScrollingEffects();
+        applyScrollingEffect(context, element, 'a very long name');
+
+        // Not even a frame is asked for, a slide has no use for one.
+        expect(frames).toHaveLength(0);
+        runFrame();
+
+        // The text is written straight away, only the marquee waits.
+        expect(element.innerHTML).toBe('a very long name');
+        expect(element.reads).toBe(0);
+        expect(isAnimated(element)).toBe(false);
+
+        release();
+        runFrame();
+
+        expect(isAnimated(element)).toBe(true);
+    });
+
+    test('does not run a flush that was already scheduled when the hold began', async () => {
+        const { applyScrollingEffect, holdScrollingEffects } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        applyScrollingEffect(context, element, 'a very long name');
+        const release = holdScrollingEffects();
+        runFrame();
+
+        expect(element.reads).toBe(0);
+        expect(isAnimated(element)).toBe(false);
+
+        release();
+        runFrame();
+
+        expect(isAnimated(element)).toBe(true);
+    });
+
+    test('keeps the play state and the compositing hint for after the hold', async () => {
+        const { applyScrollingEffect, holdScrollingEffects } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        applyScrollingEffect(context, element, 'a very long name');
+        runFrame();
+        animObserver().fire(element, false);
+        expect(element.span.style.willChange).toBe('auto');
+
+        const release = holdScrollingEffects();
+        animObserver().fire(element, true);
+
+        expect(element.span.style.animationPlayState).toBe('paused');
+        expect(element.span.style.willChange).toBe('auto');
+
+        release();
+
+        expect(element.span.style.animationPlayState).toBe('running');
+        expect(element.span.style.willChange).toBe('transform');
+    });
+
+    test('waits for every holder, and a holder only counts once', async () => {
+        const { applyScrollingEffect, holdScrollingEffects } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        const closing = holdScrollingEffects();
+        const opening = holdScrollingEffects();
+        applyScrollingEffect(context, element, 'a very long name');
+
+        closing();
+        closing();
+        runFrame();
+        expect(isAnimated(element)).toBe(false);
+
+        opening();
+        runFrame();
+        expect(isAnimated(element)).toBe(true);
+    });
+
+    test('lapses on its own, so an abandoned transition strands nothing', async () => {
+        jest.useFakeTimers();
+        try {
+            const { applyScrollingEffect, holdScrollingEffects } = await loadModule();
+            const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+            holdScrollingEffects(1000);
+            applyScrollingEffect(context, element, 'a very long name');
+            runFrame();
+            expect(isAnimated(element)).toBe(false);
+
+            jest.advanceTimersByTime(999);
+            runFrame();
+            expect(isAnimated(element)).toBe(false);
+
+            jest.advanceTimersByTime(1);
+            runFrame();
+            expect(isAnimated(element)).toBe(true);
+        } finally {
+            jest.useRealTimers();
+        }
+    });
+
+    test('forgets a held answer for an element that left meanwhile', async () => {
+        const { applyScrollingEffect, cleanupScrollingEffects, holdScrollingEffects } = await loadModule();
+        const element = createElement({ boxWidth: 100, contentWidth: 300 });
+
+        applyScrollingEffect(context, element, 'a very long name');
+        runFrame();
+        animObserver().fire(element, false);
+
+        const release = holdScrollingEffects();
+        animObserver().fire(element, true);
+        cleanupScrollingEffects(rootOf(element));
+        release();
+
+        expect(element.span.style.willChange).not.toBe('transform');
+    });
+});
+
 describe('disconnect and reconnect', () => {
     test('releases the observers and pauses the marquee on the way out', async () => {
         const { applyScrollingEffect, cleanupScrollingEffects } = await loadModule();
