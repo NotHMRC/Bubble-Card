@@ -61,9 +61,15 @@ export async function changeEventList(context) {
 
   const promises = context.config.entities.map(async (entity) => {
     const url = `calendars/${entity.entity}?${params}`;
-    const events = await context._hass.callApi("get", url);
 
-    return events.map(e => ({...e, entity}));
+    try {
+      const events = await context._hass.callApi("get", url);
+      return events.map(e => ({...e, entity}));
+    } catch (error) {
+      // An unavailable calendar answers a 400, which must not empty the whole card
+      console.warn(`Bubble Card - Could not load the events of ${entity.entity}:`, error);
+      return [];
+    }
   });
 
   const events = await Promise.all(promises);
