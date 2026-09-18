@@ -573,7 +573,34 @@ describe('prepareStandaloneStructure', () => {
 
         prepareStandaloneStructure(context);
 
-        expect(context.popUp.style.setProperty).toHaveBeenCalledWith('--custom-popup-filter', 'blur(0px)');
+        // Not blur(0px), which the engine still treats as a filter to run on
+        // every frame of the slide.
+        expect(context.popUp.style.setProperty).toHaveBeenCalledWith('--custom-popup-filter', 'none');
+    });
+
+    test.each([
+        ['0', 'none'],
+        [0, 'none'],
+        ['0px', 'none'],
+        ['', 'none'],
+        ['not a number', 'none'],
+        ['-4', 'none'],
+        ['0.5', 'blur(0.5px)'],
+        [12, 'blur(12px)'],
+    ])('a bg_blur of %p writes a filter of %s', (bgBlur, expected) => {
+        const context = {
+            config: { bg_blur: bgBlur },
+            content: createMockElement('div'),
+            shadowRoot: createMockElement('div'),
+            popUp: createMockElement('div'),
+            editor: false,
+            detectedEditor: false,
+            closest: jest.fn(() => null),
+        };
+
+        prepareStandaloneStructure(context);
+
+        expect(context.popUp.style.setProperty).toHaveBeenCalledWith('--custom-popup-filter', expected);
     });
 
     test('every other style keeps the blur it has always had', () => {

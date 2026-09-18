@@ -113,8 +113,18 @@ function _applyPopupVariables(context) {
   let _popupBlurValue;
   if (!_isBackdropHidden && _hasBackdropBlur) {
     _popupBlurValue = "none";
-  } else {
+  } else if (_bgBlur > 0) {
     _popupBlurValue = `blur(${_bgBlur}px)`;
+  } else {
+    // A blur of 0 is still a backdrop-filter to the engine, which keeps the
+    // render surface and the filter pass of a real one for a result nobody can
+    // see. Traced on an Android WebView at 120Hz while the pop-up slides,
+    // blur(0px) costs 11.5 render passes and 5.6ms of GPU per frame with peaks
+    // at 8.6ms, against 10.5 passes, 4.0ms and 5.5ms with none, on a budget of
+    // 8.3ms. It is also what the Home Assistant style asks for by default. The
+    // shell keeps its stacking context and its containing block either way,
+    // from its isolation and from its transform.
+    _popupBlurValue = "none";
   }
 
   context.popUp.style.setProperty("--custom-popup-filter", _popupBlurValue);
