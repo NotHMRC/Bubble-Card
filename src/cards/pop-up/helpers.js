@@ -286,6 +286,16 @@ function waitForStandalonePopupTransition(context, callback) {
     const handleTransitionEnd = (event) => {
         if (event.target !== context.popUp) return;
         if (event.propertyName && event.propertyName !== 'transform') return;
+        // A transition handed to the compositor learns its real start time one
+        // frame late. When that time is ahead of the main thread clock, the
+        // transition falls back to its before phase for a frame, which the
+        // engine reports as an end with no time elapsed, then starts it again.
+        // Taking that for the end ran the whole finalize (opening class and
+        // will-change dropped, hass gate released, scroll lock, hydration) in
+        // the first frames of the slide it was meant to follow. Traced on an
+        // Android WebView, about one open in eight, up to 9 frames dropped out
+        // of 37. A transition that really ran reports its duration.
+        if (event.elapsedTime === 0) return;
         clearStandaloneTransitionCompletion(context);
         // Defer callback to next frame so expensive work (scrollHeight read,
         // style recalc) happens after the transition paint — avoids the ~40ms

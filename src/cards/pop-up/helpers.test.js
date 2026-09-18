@@ -237,9 +237,12 @@ function flushHeavyOpenTask() {
     jest.advanceTimersByTime(0);
 }
 
-function dispatchTransformTransitionEnd(element) {
+function dispatchTransformTransitionEnd(element, elapsedTime) {
     const event = new Event('transitionend');
     Object.defineProperty(event, 'propertyName', { value: 'transform' });
+    if (elapsedTime !== undefined) {
+        Object.defineProperty(event, 'elapsedTime', { value: elapsedTime });
+    }
     element.dispatchEvent(event);
 }
 
@@ -474,6 +477,78 @@ describe('standalone popup lifecycle', () => {
         expect(toggleBodyScroll).toHaveBeenCalledWith(true);
         expect(callAction).toHaveBeenCalledWith(context.popUp, context.config, 'open_action');
         expect(context.popUp.classList.contains('is-opening')).toBe(false);
+    });
+
+    // The compositor hands a transition its real start time a frame late, and
+    // the engine can report that as an end with no time elapsed before it
+    // starts the transition again. It is not the end of the slide.
+    test('ignores a transition end that reports no elapsed time while opening', () => {
+        const context = createStandaloneContext({ open_action: { action: 'none' } });
+        usedContexts.push(context);
+
+        openPopup(context);
+        flushHeavyOpenTask();
+        flushStandaloneClosedStatePrimeFrame();
+        flushRafQueue(); // phase 2, the slide starts
+
+        expect(context.popUp.classList.contains('is-opening')).toBe(true);
+
+        dispatchTransformTransitionEnd(context.popUp, 0);
+        flushRafQueue();
+        flushRafQueue();
+        flushRafQueue();
+
+        // Still sliding, nothing of the finalize has run.
+        expect(context.popUp.classList.contains('is-opening')).toBe(true);
+        expect(toggleBodyScroll).not.toHaveBeenCalled();
+        expect(callAction).not.toHaveBeenCalled();
+
+        // The real end reports the duration of the transition.
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        flushRafQueue();
+        flushRafQueue();
+        flushRafQueue();
+
+        expect(context.popUp.classList.contains('is-opening')).toBe(false);
+        expect(toggleBodyScroll).toHaveBeenCalledWith(true);
+        expect(callAction).toHaveBeenCalledWith(context.popUp, context.config, 'open_action');
+    });
+
+    // Closing waits on the same listener, where the same report would suspend
+    // the host while the pop-up is still sliding out.
+    test('ignores a transition end that reports no elapsed time while closing', () => {
+        const context = {
+            ...createStandaloneContext(),
+            ...createStandaloneHost(),
+            style: { display: 'flex' },
+        };
+        usedContexts.push(context);
+
+        openPopup(context);
+        flushStandaloneClosedStatePrimeFrame();
+        flushRafQueue();
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        // Let the open finalize completely before the user closes.
+        flushRafQueue();
+        flushRafQueue();
+        flushRafQueue();
+
+        closePopup(context);
+        expect(context.popUp.classList.contains('is-closing')).toBe(true);
+
+        dispatchTransformTransitionEnd(context.popUp, 0);
+        flushRafQueue();
+        flushRafQueue();
+
+        expect(context.popUp.classList.contains('is-closing')).toBe(true);
+        expect(context.sectionRow.style.display).toBe('');
+
+        dispatchTransformTransitionEnd(context.popUp, 0.3);
+        flushRafQueue();
+        flushRafQueue();
+
+        expect(context.popUp.classList.contains('is-closing')).toBe(false);
+        expect(context.sectionRow.style.display).toBe('none');
     });
 
     test('falls back when standalone transition end is missing', () => {
