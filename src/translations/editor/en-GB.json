@@ -106,7 +106,7 @@
       "groups_mode_body": "You are now in {mode_bold}. All sub-buttons must be inside a group to ensure consistent ordering. You can rename, reorder, or delete groups as needed.",
       "groups_mode_bold": "groups mode",
       "panel_title": "Sub-buttons",
-      "info_body": "This editor allows you to add customized sub-buttons to your card. Sub-buttons support three types:",
+      "info_body": "This editor allows you to add customised sub-buttons to your card. Sub-buttons support three types:",
       "desc_default": "Standard button with tap actions",
       "desc_slider": "Control or display numeric values (brightness, volume, temperature, etc.)",
       "desc_dropdown": "Dropdown menu for selectable entities",
@@ -136,7 +136,7 @@
       "state_background": "Background colour based on state",
       "light_background": "Background colour based on light colour",
       "accent_color": "Use accent colour instead of light colour",
-      "force_icon": "Prioritize icon over entity picture",
+      "force_icon": "Prioritise icon over entity picture",
       "arrow": "Show arrow (Select entities only)"
     },
     "actions": {
